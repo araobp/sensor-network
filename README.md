@@ -1,6 +1,6 @@
 # IoT low level blocks
 
-# Background and motivation
+## Background and motivation
 
 I use PIC to develop sensors/actuators for IoT.
 
