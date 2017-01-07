@@ -1,8 +1,25 @@
-
+#include <math.h>
 #include "mcc_generated_files/mcc.h"
 #include "mcc_generated_files/eusart.h"
 
 #define _XTAL_FREQ 500000
+
+// HMC5883L
+#define HMC5883L_ADDRESS 0x1e
+#define X_MSB_REG 0x03
+#define X_LSB_REG 0x04
+#define Z_MSB_REG 0x05
+#define Z_LSB_REG 0x06
+#define Y_MSB_REG 0x07
+#define Y_LSB_REG 0x08
+#define MODE_REGISTER 0x02
+//#define CONTINUOUS_MEASUREMENT 0x00
+#define SINGLE_MEASUREMENT 0x01
+// Calibration
+#define X_MAX 263
+#define X_MIN -326
+#define Y_MAX 55
+#define Y_MIN -537
 
 // L3GD20 gyroscope
 #define L3GD20_ADDRESS 0b1101011
@@ -58,9 +75,69 @@ uint8_t i2c_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len
     return read_status;
 }
 
-int16_t calc_angular_rate(uint8_t msb, uint8_t lsb) {
-    int16_t rate = (int16_t)(((msb << 8) & 0xff00) | lsb);
-    return (int16_t)(rate * SENSIVITY);
+int16_t convert(uint8_t msb, uint8_t lsb) {
+    return (int16_t)(((msb << 8) & 0xff00) | lsb);
+}
+
+float Xsf=1.0;
+float Ysf=1.0;
+float Xoff=0.0;
+float Yoff=0.0;
+
+void calibrate_hmc5883l(int16_t x_max, int16_t x_min, int16_t y_max, int16_t y_min) {
+    int16_t x_sf = (y_max - y_min) / (x_max - x_min);
+    if (x_sf > 1.0) {
+        Xsf = x_sf;
+    }
+    int16_t y_sf = (x_max - x_min) / (y_max - y_min);
+    if (y_sf > 1.0) {
+        Ysf = x_sf;
+    }
+    Xoff = ((x_max - x_min) / 2 - x_max) * Xsf;
+    Yoff = ((y_max - y_min) / 2 - y_max) * Ysf;
+}
+
+// get direction in radian
+double get_radian(void)
+{
+    uint8_t buf[1];
+    uint8_t lsb, msb;
+    int16_t x, y, z;
+    
+    // read registers
+    i2c_read(HMC5883L_ADDRESS, X_MSB_REG, buf, 1);
+    msb = buf[0];
+    i2c_read(HMC5883L_ADDRESS, X_LSB_REG, buf, 1);
+    lsb = buf[0];
+    printf("%x:%x\n", msb, lsb);
+    x = convert(msb, lsb);
+    
+    i2c_read(HMC5883L_ADDRESS, Y_MSB_REG, buf, 1);
+    msb = buf[0];
+    i2c_read(HMC5883L_ADDRESS, Y_LSB_REG, buf, 1);
+    lsb = buf[0];
+    y = convert(msb, lsb);
+    
+    /*
+    i2c_read(HMC5883L_ADDRESS, Z_MSB_REG, buf, 1);
+     msb = buf[0];
+    i2c_read(HMC5883L_ADDRESS, Z_LSB_REG, buf, 1);
+    lsb = buf[0];
+    z = (int16_t)(convert(msb, lsb) * SENSIVITY);
+    */
+    
+    // calibration (assuming that the sensor is level with the ground),
+    // i.e., XH is x and YH is y.
+    x = (int16_t)(Xsf * x + Xoff);
+    y = (int16_t)(Ysf * y + Yoff);
+  
+    // return radian
+    return atan2((double)y, (double)x);
+}
+
+// get direction in degree
+int8_t get_degree() {
+  return (int8_t)(get_radian() * 180 / M_PI);
 }
 
 int main(void)
@@ -74,9 +151,9 @@ int main(void)
     
     uint8_t buf[2];
 
-    // printf("Init completed\n");
+    calibrate_hmc5883l(X_MAX, X_MIN, Y_MAX, Y_MIN);
     
-    buf[0] = WHO_AM_I;
+    // printf("Init completed\n");
     
     uint8_t status;
     status = i2c_read(L3GD20_ADDRESS, WHO_AM_I, buf, 1);
@@ -99,7 +176,7 @@ int main(void)
             break;
     }
     */
-
+    
     uint8_t lsb;
     uint8_t msb;
     int16_t x_rate, y_rate, z_rate;
@@ -107,24 +184,28 @@ int main(void)
     while (1)
     {
         __delay_ms(1000);
+                
+        int8_t orientation = get_degree();
+        i2c_write(HMC5883L_ADDRESS, MODE_REGISTER, SINGLE_MEASUREMENT);
+
         i2c_read(L3GD20_ADDRESS, OUT_X_L, buf, 1);
         lsb = buf[0];
         i2c_read(L3GD20_ADDRESS, OUT_X_H, buf, 1);
         msb = buf[0];
-        x_rate = calc_angular_rate(msb, lsb);
+        x_rate = (int16_t)(convert(msb, lsb) * SENSIVITY);
         i2c_read(L3GD20_ADDRESS, OUT_Y_L, buf, 1);
         lsb = buf[0];
         i2c_read(L3GD20_ADDRESS, OUT_Y_H, buf, 1);
         msb = buf[0];
-        y_rate = calc_angular_rate(msb, lsb);
+        y_rate = (int16_t)(convert(msb, lsb) * SENSIVITY);
         i2c_read(L3GD20_ADDRESS, OUT_Z_L, buf, 1);
         lsb = buf[0];
         i2c_read(L3GD20_ADDRESS, OUT_Z_H, buf, 1);
         msb = buf[0];
-        z_rate = calc_angular_rate(msb, lsb);
+        z_rate = (int16_t)(convert(msb, lsb) * SENSIVITY);
         
-        printf("{\"x-axis\": %d, \"y-axis\": %d, \"z-axis\": %d}\n", x_rate, y_rate, z_rate);
-        
+        printf("{\"orientation\": %d, \"x-axis\": %d, \"y-axis\": %d, \"z-axis\": %d}\n", orientation, x_rate, y_rate, z_rate);
+ 
         LATBbits.LATB7 ^= 1;
         CLRWDT();
     }
