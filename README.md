@@ -1,5 +1,7 @@
 # IoT low level blocks
 
+![hc_sr04_test](./doc/hc_sr04_test.png)
+
 ## Background and motivation
 
 I use PIC to develop sensors/actuators for IoT.
