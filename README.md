@@ -32,6 +32,8 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
 
 All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
 
+I run Node-RED on my RasPi 3:
+
 ![node-red-1](./doc/node-red-1.png)
 
 ![node-red-2](./doc/node-red-2.png)
