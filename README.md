@@ -6,7 +6,7 @@
 
 I use PIC to develop sensors/actuators for IoT.
 
-This repo has low level blocks for IoT:
+This repo has low level blocks for IoT.
 
 ## UART as universal interface for IoT blocks
 
