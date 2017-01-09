@@ -11,8 +11,6 @@ This repo has low level blocks for IoT:
 ## UART as universal interface for IoT blocks
 
 All the blocks support UART interface. I use two types of bridges to connect the blocks to the Internet:
-- USB-UART bridge
--
 
 IoT blocks with USB-UART bridge(*1):
 ```
