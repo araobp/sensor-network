@@ -40,8 +40,6 @@ I mainly use PIC16F1825 or PIC16F1823.
 |PIC16F1823|14   |Serial communications                   |
 |PIC16F1825|14   |Serial communications, large memory size|
 
-PIC16F1825 and PIC16F18F1503.
-
 ## Working with Node-RED
 
 All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
