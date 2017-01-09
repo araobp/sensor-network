@@ -36,9 +36,9 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
 
 ### Sensor/actuator
 
-- [Distance sensor block (HC-SR04)]
+- [Distance sensor block (HC-SR04)](./distance.X)
 - [Orientation sensor block (HMC5883L and L3GD20)](./orientation.X)
-- [Servo motor actuator block (TowerPro sg90)]
+- [Servo motor actuator block (TowerPro sg90)](./servomotor.X)
 
 ### Bridge
 
