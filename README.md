@@ -27,6 +27,7 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
 - [Distance sensor block (HC-SR04)]
 - [Orientation sensor block (HMC5883L and L3GD20)](./orientation.X)
 - [Servo motor actuator block (TowerPro sg90)]
+- [USB-UART bridge with 5V to 3.3V step down](./doc/STEP_DOWN.md)
 
 ## Working with Node-RED
 
