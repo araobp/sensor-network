@@ -30,6 +30,18 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
 - [USB-UART bridge with 5V supply]
 - [USB-UART bridge with 3.3V supply](./doc/STEP_DOWN.md)
 
+## PIC16F models
+
+I mainly use PIC16F1825 or PIC16F1823.
+
+|Model     |pins |Characteristics                         |
+|----------|-----|----------------------------------------|
+|PIC16F1508|20   |High-resolution PWM with CLCs           |
+|PIC16F1823|14   |Serial communications                   |
+|PIC16F1825|14   |Serial communications, large memory size|
+
+PIC16F1825 and PIC16F18F1503.
+
 ## Working with Node-RED
 
 All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
