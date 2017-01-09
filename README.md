@@ -8,27 +8,45 @@ I use PIC to develop sensors/actuators for IoT.
 
 This repo has low level blocks for IoT:
 
+## UART as universal interface for IoT blocks
+
+All the blocks support UART interface. I use two types of bridges to connect the blocks to the Internet:
+- USB-UART bridge
+-
+
+IoT blocks with USB-UART bridge(*1):
 ```
-                            DC 5V
-                              |
-                              V
-                           +-----+                      
-[sensor block 1]---USB-----|     |                      (        )
-[sensor block 2]---USB-----| USB |----[IoT gateway]----(  Cloud   )
-[actuator block 1]---USB---| hub |    such as RasPi     (        )
-[actuator block 2]---USB---|     |
-                           +-----+
+                                   +-----+                      
+[sensor block 1]-UART-[*1]---USB---|     |                    (        )
+[sensor block 2]-UART-[*1]---USB---| USB |---[IoT gateway]---( Internet )
+[actuator block 1]-UART-[*1]--USB--| hub |    such as RasPi   (        )
+[actuator block 2]-UART-[*1]--USB--|     |
+                                   +-----+
+```
+
+IoT blocks with MQTT-UART bridge:
+```
+                   MQTT-UART bridge
+                      +-------+                (        )
+[sensor block 3]-UART-|ESP8266|---MQTT/WiFi---( Internet )
+                      +-------+                (        )            
 ```
 
 Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
 
 ## Blocks
 
+### Sensor/actuator
+
 - [Distance sensor block (HC-SR04)]
 - [Orientation sensor block (HMC5883L and L3GD20)](./orientation.X)
 - [Servo motor actuator block (TowerPro sg90)]
+
+### Bridge
+
 - [USB-UART bridge with 5V supply]
 - [USB-UART bridge with 3.3V supply](./doc/STEP_DOWN.md)
+- [ESP8266(ESP-WROOM-02)]
 
 ## PIC16F models
 
