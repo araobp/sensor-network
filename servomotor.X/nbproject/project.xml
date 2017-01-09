@@ -4,13 +4,13 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>servomotor</name>
-            <creation-uuid>b9979bf0-611e-44f5-8a34-f1feb29092f9</creation-uuid>
+            <creation-uuid>f421e365-5e61-4c73-b528-e5f37887fa85</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <asminc-extensions/>
-            <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <sourceEncoding>US-ASCII</sourceEncoding>
             <make-dep-projects/>
         </data>
     </configuration>

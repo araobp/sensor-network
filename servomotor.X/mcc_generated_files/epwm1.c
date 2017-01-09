@@ -1,17 +1,17 @@
 /**
-  Generated Main Source File
+  ECCP1 Generated Driver File
 
-  Company:
+  @Company
     Microchip Technology Inc.
 
-  File Name:
-    main.c
+  @File Name
+    eccp1.c
 
-  Summary:
-    This is the main file generated using MPLAB(c) Code Configurator
+  @Summary
+    This is the generated driver implementation file for the ECCP1 driver using MPLAB(c) Code Configurator
 
-  Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
+  @Description
+    This source file provides APIs for ECCP1.
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16F1829
@@ -43,35 +43,57 @@
     TERMS.
 */
 
-#include "mcc_generated_files/mcc.h"
+/**
+  Section: Included Files
+*/
 
-/*
-                         Main application
- */
-void main(void)
+#include <xc.h>
+#include "epwm1.h"
+
+/**
+  Section: Macro Declarations
+*/
+
+#define PWM1_INITIALIZE_DUTY_VALUE    101
+
+/**
+  Section: EPWM Module APIs
+*/
+
+void EPWM1_Initialize (void)
 {
-    // initialize the device
-    SYSTEM_Initialize();
+    // Set the PWM to the options selected in MPLAB(c) Code Configurator
+    
+    // CCP1M P1A,P1C: active high; P1B,P1D: active high; DC1B 1; P1M single; 
+    CCP1CON = 0x1C;
+    
+    // CCP1ASE operating; PSS1BD low; PSS1AC low; CCP1AS disabled; 
+    ECCP1AS = 0x00;
+    
+    // P1RSEN automatic_restart; P1DC 0; 
+    PWM1CON = 0x80;
+    
+    // STR1D P1D_to_port; STR1C P1C_to_port; STR1B P1B_to_port; STR1A P1A_to_CCP1M; STR1SYNC start_at_begin; 
+    PSTR1CON = 0x01;
+    
+    // CCPR1L 25; 
+    CCPR1L = 0x19;
+    
+    // CCPR1H 0; 
+    CCPR1H = 0x00;
+    
+    
+    // Selecting Timer2
+    CCPTMRSbits.C1TSEL = 0x0;
+}
 
-    // When using interrupts, you need to set the Global and Peripheral Interrupt Enable bits
-    // Use the following macros to:
-
-    // Enable the Global Interrupts
-    //INTERRUPT_GlobalInterruptEnable();
-
-    // Enable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptEnable();
-
-    // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
-
-    // Disable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptDisable();
-
-    while (1)
-    {
-        // Add your application code
-    }
+void EPWM1_LoadDutyValue(uint16_t dutyValue)
+{
+   // Writing to 8 MSBs of pwm duty cycle in CCPRL register
+    CCPR1L = ((dutyValue & 0x03FC)>>2);
+    
+   // Writing to 2 LSBs of pwm duty cycle in CCPCON register
+    CCP1CON = (CCP1CON & 0xCF) | ((dutyValue & 0x0003)<<4);
 }
 /**
  End of File

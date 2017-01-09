@@ -32,13 +32,15 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
 
 ## PIC16F models
 
-I mainly use PIC16F1825 or PIC16F1823.
+I mainly use PIC16F1825.
 
-|Model     |pins |Characteristics                         |
-|----------|-----|----------------------------------------|
-|PIC16F1508|20   |High-resolution PWM with CLCs           |
-|PIC16F1823|14   |Serial communications                   |
-|PIC16F1825|14   |Serial communications, large memory size|
+|Model     |pins |Characteristics                          |
+|----------|-----|-----------------------------------------|
+|PIC16F1508|20   |High-resolution PWM with CLCs            |
+|PIC16F1509|20   |High-resolution PWM with CLCs, larger memory size|
+|PIC16F1823|14   |Serial communications                    |
+|[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Serial communications, larger memory size|
+|[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Serial communications, larger memory size|
 
 ## Working with Node-RED
 

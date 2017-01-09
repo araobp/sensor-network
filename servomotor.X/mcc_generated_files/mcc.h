@@ -14,7 +14,7 @@
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15
-        Device            :  PIC16F1508
+        Device            :  PIC16F1829
         Version           :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
@@ -50,9 +50,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "interrupt_manager.h"
-#include "pwm1.h"
 #include "eusart.h"
 #include "tmr2.h"
+#include "epwm1.h"
 
 #define _XTAL_FREQ  1000000
 

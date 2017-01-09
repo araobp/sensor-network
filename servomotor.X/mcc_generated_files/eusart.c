@@ -14,7 +14,7 @@
     This header file provides implementations for driver APIs for EUSART.
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15
-        Device            :  PIC16F1508
+        Device            :  PIC16F1829
         Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
@@ -80,14 +80,14 @@ void EUSART_Initialize(void)
 
     // Set the EUSART module to the options selected in the user interface.
 
-    // ABDOVF no_overflow; SCKP Non-Inverted; RCIDL idle; BRG16 16bit_generator; WUE disabled; ABDEN disabled; 
-    BAUDCON = 0x48;
+    // ABDOVF no_overflow; SCKP Non-Inverted; BRG16 16bit_generator; WUE disabled; ABDEN disabled; 
+    BAUDCON = 0x08;
 
-    // SPEN enabled; OERR no_error; RX9 8-bit; RX9D 0; CREN enabled; ADDEN disabled; SREN disabled; FERR no_error; 
-    RCSTA = 0x90;
+    // SPEN enabled; RX9 8-bit; CREN disabled; ADDEN disabled; SREN disabled; 
+    RCSTA = 0x80;
 
-    // TRMT TSR_empty; TX9 8-bit; TX9D 0; SENDB sync_break_complete; TXEN enabled; SYNC asynchronous; BRGH hi_speed; CSRC slave; 
-    TXSTA = 0x26;
+    // TX9 8-bit; TX9D 0; SENDB sync_break_complete; TXEN disabled; SYNC asynchronous; BRGH hi_speed; CSRC slave; 
+    TXSTA = 0x04;
 
     // Baud Rate = 9600; SPBRGL 25; 
     SPBRGL = 0x19;
@@ -112,6 +112,7 @@ void EUSART_Initialize(void)
 uint8_t EUSART_Read(void)
 {
     uint8_t readValue  = 0;
+    RCSTAbits.CREN = 1;	
     
     while(0 == eusartRxCount)
     {
