@@ -54,7 +54,7 @@
   Section: Macro Declarations
 */
 
-#define PWM1_INITIALIZE_DUTY_VALUE    76
+#define PWM1_INITIALIZE_DUTY_VALUE    50
 
 /**
   Section: EPWM Module APIs
@@ -64,8 +64,8 @@ void EPWM1_Initialize (void)
 {
     // Set the PWM to the options selected in MPLAB(c) Code Configurator
     
-    // CCP1M P1A,P1C: active high; P1B,P1D: active high; DC1B 0; P1M single; 
-    CCP1CON = 0x0C;
+    // CCP1M P1A,P1C: active high; P1B,P1D: active high; DC1B 2; P1M single; 
+    CCP1CON = 0x2C;
     
     // CCP1ASE operating; PSS1BD low; PSS1AC low; CCP1AS disabled; 
     ECCP1AS = 0x00;
@@ -76,8 +76,8 @@ void EPWM1_Initialize (void)
     // STR1D P1D_to_port; STR1C P1C_to_port; STR1B P1B_to_port; STR1A P1A_to_CCP1M; STR1SYNC start_at_begin; 
     PSTR1CON = 0x01;
     
-    // CCPR1L 19; 
-    CCPR1L = 0x13;
+    // CCPR1L 12; 
+    CCPR1L = 0x0C;
     
     // CCPR1H 0; 
     CCPR1H = 0x00;

@@ -2,9 +2,6 @@
 
 #define _XTAL_FREQ 1000000
 
-/*
-                         Main application
- */
 void main(void)
 {
     // initialize the device
@@ -25,7 +22,7 @@ void main(void)
     EPWM1_LoadDutyValue(dutyValue);
     while (1)
     {
-        __delay_ms(1000);
+        __delay_ms(500);
         LATCbits.LATC4 ^= 1;
         //printf("Hello World\n");
         if (EUSART_DataReady) {
@@ -49,6 +46,3 @@ void main(void)
         CLRWDT();
     } 
 }
-/**
- End of File
-*/
