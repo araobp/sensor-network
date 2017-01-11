@@ -4,7 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/servomotor.X/mcc_generated_files/eusart.h</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/servomotor.X/mcc_generated_files/memory.c</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/servomotor.X/mcc_generated_files/eusart.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/servomotor.X/mcc_generated_files/memory.h</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/servomotor.X/main.c</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/servomotor.X/mcc_generated_files/epwm1.c</file>
         </group>
