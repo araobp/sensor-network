@@ -97,6 +97,8 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 - [Servo motor actuator block (TowerPro sg90)](./servomotor.X)
  - [pin assignment](./doc/servomotor_pin.png)
 
+Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
+
 ## Working with Node-RED
 
 All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
