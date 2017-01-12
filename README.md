@@ -1,16 +1,36 @@
-# IoT low level blocks
+# IoT low-level blocks
 
 ![hc_sr04_test](./doc/hc_sr04_test.png)
 
 ## Background and motivation
 
-I use PIC to develop sensors/actuators for IoT.
+GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces.
 
-This repo has low level blocks for IoT.
+I have decided to develop a gateway that works as a bridge between those low-level interfaces and USB.
 
-## UART as universal interface for IoT blocks
+## Common architecture
 
-All the blocks support UART interface. I use two types of bridges to connect the blocks to the Internet:
+```
+
+<--- IoT low-level block ---->
+sensor
+actuator      MCU     Comm. module
+  +---+      +---+      +---+         +---
+  |   |      |   |      |   |         | Win PC
+  |   |--*1--|   |--*2--|   |---USB---| RasPi
+  |   |      |   |      |   |         | IoT gateway
+  +---+      +---+      +---+         +---
+
+*1 GPIO/I2C/SPI/UART
+*2 UART
+
+MCU works as such a gateway.
+```
+I use Microchip PIC16F1 series MCU to develop the block.
+
+## USB/UART (i.e., serial) as universal interface for IoT blocks
+
+All the blocks support USB/UART interface. I use two types of bridges to connect the blocks to the Internet:
 
 IoT blocks with USB-UART bridge(*1):
 ```
@@ -22,6 +42,8 @@ IoT blocks with USB-UART bridge(*1):
                                    +-----+
 ```
 
+Note: In case of PIC16F1455/1459, USB-UART bridge is unnecessary.
+
 IoT blocks with MQTT-UART bridge:
 ```
                    MQTT-UART bridge
@@ -30,11 +52,43 @@ IoT blocks with MQTT-UART bridge:
                       +-------+                (        )            
 ```
 
-Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
+## PIC16F1 models
 
-## Blocks
+|Model     |# of pins |Characteristics                 |
+|----------|-----|--------------------------------|
+|[PIC16F1455](http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf)|14   |Built-in USB                    |
+|[PIC16F1459](http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf)|20   |Built-in USB                    |
+|[PIC16F1508](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
+|[PIC16F1509](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
+|[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Variety of Serial communications|
+|[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Variety of Serial communications|
 
-### Sensor/actuator
+## Communication modules
+
+- [USB-UART bridge with 5V supply]
+- [USB-UART bridge with 3.3V supply](./doc/STEP_DOWN.md)
+- [ESP8266(ESP-WROOM-02)]
+- [USB Micro B connector(for PIC16F1455/1459)](http://akizukidenshi.com/catalog/g/gK-06656/)
+
+## prototype
+
+This prototype uses PIC16F1825:
+
+![prototype1](./doc/prototype1.png)
+
+- 10k ohm pull-up register sits between Vdd and MCLR pins (50k ohm is better)
+- The 5P pin header (L type) is for PICkit3.
+- The 2P pin header (L type) supplies 5V/3.3V to a sensor/actuator component.
+- The other 2P pin header is connected to TX/RX of the USB/UART bridge(FT234X)
+- The 6P pin headers are connected to PIC16F1825.
+- The LED (w/ 1k ohm register) blinks every while loop:
+turn on/off every __delay_ms(period);
+- The green jumper pin is to enable/disable the LED blinking.
+- The tactile switch is a reset button: shorts MCLR pin to GND.
+
+## Firmware implementation
+
+Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, Timer etc.
 
 - [Distance sensor block (HC-SR04)](./distance.X)
  - [pin assignment](./doc/distance_pin.png)
@@ -42,24 +96,6 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C etc.
  - [pin assignment](./doc/orientation_pin.png)
 - [Servo motor actuator block (TowerPro sg90)](./servomotor.X)
  - [pin assignment](./doc/servomotor_pin.png)
-
-### Bridge
-
-- [USB-UART bridge with 5V supply]
-- [USB-UART bridge with 3.3V supply](./doc/STEP_DOWN.md)
-- [ESP8266(ESP-WROOM-02)]
-
-## PIC16F models
-
-I mainly use PIC16F1825.
-
-|Model     |pins |Characteristics                          |
-|----------|-----|-----------------------------------------|
-|PIC16F1508|20   |High-resolution PWM with CLCs            |
-|PIC16F1509|20   |High-resolution PWM with CLCs, larger memory size|
-|PIC16F1823|14   |Serial communications                    |
-|[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Serial communications, larger memory size|
-|[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Serial communications, larger memory size|
 
 ## Working with Node-RED
 
@@ -70,3 +106,17 @@ I run Node-RED on my RasPi 3:
 ![node-red-1](./doc/node-red-1.png)
 
 ![node-red-2](./doc/node-red-2.png)
+
+## Using the blocks With UNIX pipe
+
+It is very easy!
+
+- Reading data from a sensor and feeding it to other UNIX commands via a pipe:
+```
+$ cat /dev/serial/by-id/<device_id> | command 1 | command 2 ...
+```
+
+- Sending data to a sensor/actuator:
+```
+$ echo <command> > /dev/serial/by-id/<device_id>
+```
