@@ -99,6 +99,10 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
 
+## Usage
+
+[usage](./doc/USAGE.md)
+
 ## Working with Node-RED
 
 All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
