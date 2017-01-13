@@ -64,14 +64,14 @@ void TMR0_Initialize(void)
 {
     // Set TMR0 to the options selected in the User Interface
 
-    // PSA assigned; PS 1:256; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
-    OPTION_REG = (OPTION_REG & 0xC0) | 0xD7 & 0x3F; 
+    // PSA assigned; PS 1:8; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
+    OPTION_REG = (OPTION_REG & 0xC0) | 0xD2 & 0x3F; 
 
-    // TMR0 12; 
-    TMR0 = 0x0C;
+    // TMR0 0; 
+    TMR0 = 0x00;
 
     // Load the TMR value to reload variable
-    timer0ReloadVal= 12;
+    timer0ReloadVal= 0;
 
     // Clear Interrupt flag before enabling the interrupt
     INTCONbits.TMR0IF = 0;
@@ -114,7 +114,7 @@ void TMR0_ISR(void)
 
     TMR0 = timer0ReloadVal;
 
-    // callback function - called every 2th pass
+    // callback function - called every 6th pass
     if (++CountCallBack >= TMR0_INTERRUPT_TICKER_FACTOR)
     {
         // ticker function call
