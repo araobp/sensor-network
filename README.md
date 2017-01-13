@@ -1,4 +1,4 @@
-# IoT low-level blocks
+# Blocks: pretty-easy IoT
 
 ![hc_sr04_test](./doc/hc_sr04_test.png)
 
@@ -99,9 +99,25 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
 
-## Usage
+## Using the blocks With UNIX pipe
 
-[usage](./doc/USAGE.md)
+It is pretty easy!
+
+Things are recognized as "tty devices" on UNIX/Linux or as "COM ports" on Windows.
+
+Linux also supports "/dev/serial/by-id" that assigns an unique name to each thing.
+
+- Reading data from a sensor and feeding it to other UNIX commands via a pipe:
+```
+$ cat /dev/serial/by-id/<device_id> | command 1 | command 2 ...
+```
+
+- Sending data to a sensor/actuator:
+```
+$ echo <command> > /dev/serial/by-id/<device_id>
+```
+
+See this [usage](./doc/USAGE.md) page.
 
 ## Working with Node-RED
 
@@ -113,16 +129,7 @@ I run Node-RED on my RasPi 3:
 
 ![node-red-2](./doc/node-red-2.png)
 
-## Using the blocks With UNIX pipe
 
-It is very easy!
+## Remote management with Ansible
 
-- Reading data from a sensor and feeding it to other UNIX commands via a pipe:
-```
-$ cat /dev/serial/by-id/<device_id> | command 1 | command 2 ...
-```
-
-- Sending data to a sensor/actuator:
-```
-$ echo <command> > /dev/serial/by-id/<device_id>
-```
+I plan to use Ansible to manage things...
