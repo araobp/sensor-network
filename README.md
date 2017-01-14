@@ -123,6 +123,8 @@ See this [usage](./doc/USAGE.md) page.
 
 I think Python is the best choice for writing IoT agent with those IoT low-level blocks. I am writing a sample IoT agent with the blocks with Python Tornado package.
 
+Python is also a choice for Data Analysis (Jupyter/IPython), Computer Vison (OpenCV) and AI (TensorFlow etc).
+
 I have also developed a remote management framework ["tega"](https://github.com/araobp/tega) for IoT.
 
 In addition to that, I am examining if Ansible can be used for managing the things.
