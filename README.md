@@ -6,7 +6,7 @@
 
 GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces.
 
-I have decided to develop a gateway that works as a bridge between those low-level interfaces and USB.
+I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
 
 ## Common architecture
 
