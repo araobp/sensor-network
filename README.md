@@ -86,6 +86,8 @@ turn on/off every __delay_ms(period);
 - The green jumper pin is to enable/disable the LED blinking.
 - The tactile switch is a reset button: shorts MCLR pin to GND.
 
+![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=480&h=360)
+
 ## Firmware implementation
 
 Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, Timer etc.
