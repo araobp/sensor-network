@@ -90,7 +90,7 @@ turn on/off every __delay_ms(period);
 
 The following is schematic of the base board. This is absolutely cheaper than A*duino.
 
-![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=480&h=360)
+![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=680&h=400)
 
 The blocks may use I2C for inter-block communications.  In that case, the master needs to hide all the details of low-level communications from the user.
 
