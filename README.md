@@ -92,7 +92,9 @@ This PIC board is absolutely cheaper than A*duino.
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=480&h=360)
 
-For inter-block communications, UART TX/RX pins may be used as I2C SDA/SCL. But that makes things difficult, and contradicts the goal of this project.
+The blocks may use I2C for inter-block communications.  In that case, the master needs to hide all the details of low-level communications from the user.
+
+![pico_i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=480&h=283)
 
 ## Firmware implementation
 
