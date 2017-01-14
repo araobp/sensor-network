@@ -99,7 +99,7 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
 
-## Using the blocks With UNIX pipe
+## Using the blocks with UNIX pipe
 
 It is pretty easy!
 
@@ -121,13 +121,11 @@ See this [usage](./doc/USAGE.md) page.
 
 ## Python for IoT agent
 
-I think Python is the best choice for writing IoT agent with those IoT low-level blocks.
-
-I am writing a sample IoT agent with the blocks with Python Tornado package.
+I think Python is the best choice for writing IoT agent with those IoT low-level blocks. I am writing a sample IoT agent with the blocks with Python Tornado package.
 
 I have also developed a remote management framework ["tega"](https://github.com/araobp/tega) for IoT.
 
-In addition to that, I am also examining if Ansible can be used for managing the things.
+In addition to that, I am examining if Ansible can be used for managing the things.
 
 ## Node-RED for rapid IoT prototyping
 
