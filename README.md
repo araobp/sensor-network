@@ -152,5 +152,5 @@ Now that my IoT low-level blocks support config commands via serial, how do I us
 
 For example, before starting Node-RED, I need to set the terminal mode as follows, to disable "\n to \r\n" translation:
 ```
-$ stty -F /dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DJ00LKSL-if00-port0 -onlcr
+$ stty -F /dev/serial/by-id/<device_id> -onlcr
 ```
