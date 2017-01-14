@@ -127,21 +127,11 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 
 See this [usage](./doc/USAGE.md) page.
 
-## Python for IoT agent
-
-I think Python is the best choice for writing IoT agent with those IoT low-level blocks. I am writing a sample IoT agent with the blocks with Python Tornado package.
-
-Python is also a choice for Data Analysis (Jupyter/IPython), Computer Vison (OpenCV) and AI (TensorFlow etc).
-
-I have also developed a remote management framework ["tega"](https://github.com/araobp/tega) for IoT.
-
-In addition to that, I am examining if Ansible can be used for managing the things.
-
 ## Node-RED for rapid IoT prototyping
 
-Although I am not so fond of Node.js (I would rather use Python Tornado package for  event-driven programs), Node-RED is thought of as a good tool for rapid prototyping in IoT communities, although I am not so agree with that idea...
+Node-RED is thought of as a good tool for rapid prototyping in IoT communities.
 
-All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
+All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
 
 I run Node-RED on my RasPi 3:
 
