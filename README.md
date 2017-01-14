@@ -119,7 +119,17 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 
 See this [usage](./doc/USAGE.md) page.
 
-## Working with Node-RED
+## Go lang for IoT agent
+
+I think Go lang is the best choice for writing IoT agent with those IoT low-level blocks.
+
+Go is good at writing "data flow", and Go also supports light-weight thread.
+
+I am writing a sample IoT agent with the blocks.
+
+## Node-RED for rapid IoT prototyping
+
+Although I am not so fond of Node.js (I would rather use Python Tornado package for  event-driven programs), Node-RED is thought of as a good tool for rapid prototyping in IoT communities, although I am not so agree with that idea...
 
 All the blocks just use USB as an interface to IoT gateway, so it is very easy to integrate these blocks with Node-RED.
 
@@ -129,7 +139,8 @@ I run Node-RED on my RasPi 3:
 
 ![node-red-2](./doc/node-red-2.png)
 
+## Remote management
 
-## Remote management with Ansible
+I have developed a remote management framework ["tega"](https://github.com/araobp/tega) for IoT. It also supports Go lang.
 
-I plan to use Ansible to manage things...
+I am also examining if Ansible can be used for managing the things.
