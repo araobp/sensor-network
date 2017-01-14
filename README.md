@@ -92,6 +92,11 @@ The following is schematic of the base board. This is absolutely cheaper than A*
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=680&h=400)
 
+|Jumper pin|on           |off         |
+|----------|-------------|------------|
+|J1        |Enable LED   |Disable LED |
+|J2        |Tactile SW as reset button|Tactile SW as a general purpose SW|
+
 The blocks may use I2C for inter-block communications.  In that case, the master needs to hide all the details of low-level communications from the user.
 
 ![pico_i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=480&h=283)
