@@ -88,7 +88,7 @@ turn on/off every __delay_ms(period);
 
 ## Hardware schematic
 
-This PIC board is absolutely cheaper than A*duino.
+The following is schematic of the base board. This is absolutely cheaper than A*duino.
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=480&h=360)
 
