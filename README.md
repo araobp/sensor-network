@@ -119,13 +119,15 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 
 See this [usage](./doc/USAGE.md) page.
 
-## Go lang for IoT agent
+## Python for IoT agent
 
-I think Go lang is the best choice for writing IoT agent with those IoT low-level blocks.
+I think Python is the best choice for writing IoT agent with those IoT low-level blocks.
 
-Go is good at writing "data flow", and Go also supports light-weight thread.
+I am writing a sample IoT agent with the blocks with Python Tornado package.
 
-I am writing a sample IoT agent with the blocks.
+I have also developed a remote management framework ["tega"](https://github.com/araobp/tega) for IoT.
+
+In addition to that, I am also examining if Ansible can be used for managing the things.
 
 ## Node-RED for rapid IoT prototyping
 
@@ -138,9 +140,3 @@ I run Node-RED on my RasPi 3:
 ![node-red-1](./doc/node-red-1.png)
 
 ![node-red-2](./doc/node-red-2.png)
-
-## Remote management
-
-I have developed a remote management framework ["tega"](https://github.com/araobp/tega) for IoT. It also supports Go lang.
-
-I am also examining if Ansible can be used for managing the things.
