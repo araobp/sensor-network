@@ -92,6 +92,8 @@ This PIC board is absolutely cheaper than A*duino.
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=480&h=360)
 
+For inter-block communications, UART TX/RX pins may be used as I2C SDA/SCL. But that makes things difficult, and contradicts the goal of this project.
+
 ## Firmware implementation
 
 Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, Timer etc.
