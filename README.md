@@ -95,7 +95,7 @@ The following is schematic of the base board. This is absolutely cheaper than A*
 |Jumper pin|on           |off         |
 |----------|-------------|------------|
 |J1        |Enable LED   |Disable LED |
-|J2        |Tactile SW as reset button|Tactile SW as a general purpose SW|
+|J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
 The blocks may use I2C for inter-block communications.  In that case, the master needs to hide all the details of low-level communications from the user.
 
@@ -145,3 +145,12 @@ I run Node-RED on my RasPi 3:
 ![node-red-1](./doc/node-red-1.png)
 
 ![node-red-2](./doc/node-red-2.png)
+
+### How does Node-RED manage sensors/actuators?
+
+Now that my IoT low-level blocks support config commands via serial, how do I use Node-RED to configure those devices?
+
+For example, before starting Node-RED, I need to set the terminal mode as follows, to disable "\n to \r\n" translation:
+```
+$ stty -F /dev/serial/by-id/usb-FTDI_FT230X_Basic_UART_DJ00LKSL-if00-port0 -onlcr
+```
