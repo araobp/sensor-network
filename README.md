@@ -148,7 +148,7 @@ I run Node-RED on my RasPi 3:
 
 I am currently developing flows using the blocks: [node-red flows](./node-red).
 
-### TTY setting
+## TTY setting
 
 - TTY initialization
 
@@ -179,3 +179,10 @@ werase = ^W; lnext = ^V; flush = ^O; min = 1; time = 0;
 -isig -icanon -iexten -echo -echoe -echok -echonl -noflsh -xcase -tostop -echoprt
 -echoctl -echoke
 ```
+
+## Future work
+
+I am going to study [Ansible](https://www.ansible.com/) to see if it can be used for managing Node-RED:
+- settings.js (config management)
+- flow management
+- node management
