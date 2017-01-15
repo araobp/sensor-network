@@ -38,7 +38,7 @@ void tmr0_handler(void) {
         if (d >= 2 || d <= 400)  {
             printf("%u\n", d);
         } else {
-            printf("distance out of range\n");
+            printf("-1\n");  // out of range
         }
     }
     CLRWDT();
@@ -56,13 +56,13 @@ void main(void)
     TMR0_SetInterruptHandler(tmr0_handler);
     TMR1_Initialize();
     EUSART_Initialize();
-    printf("Period: %x\n", period);
+    // printf("Period: %x\n", period);
 
     while (1)
     {
         do {
             c = EUSART_Read();
-            printf("%c\n", c);
+            // printf("%c\n", c);
             if (c == '\n') {
                 
                 buf[cnt] = '\0';
@@ -70,7 +70,7 @@ void main(void)
                 period = atoi(buf);
                 period_10 = period/10;
                 DATAEE_WriteByte(0, period);
-                printf("New Period: %s\n", buf);
+                // printf("New Period: %s\n", buf);
             } else if (cnt < 3) {
                 buf[cnt++] = c;
             } else {
