@@ -146,11 +146,34 @@ I run Node-RED on my RasPi 3:
 
 ![node-red-2](./doc/node-red-2.png)
 
-### How does Node-RED manage sensors/actuators?
+### TTY setting
 
-Now that my IoT low-level blocks support config commands via serial, how do I use Node-RED to configure those devices?
+- TTY initialization
 
-For example, before starting Node-RED, I need to set the terminal mode as follows, to disable "\n to \r\n" translation:
+  Before starting Node-RED, disable "\n to \r\n" translation:
 ```
 $ stty -F /dev/serial/by-id/<device_id> -onlcr
+```
+
+- Recovering from broken TTY
+
+  Try this:
+```
+$ echo ^c^o > /dev/serial/by-id/<device_id>
+```
+
+- Showing the tty settings
+
+  ```
+$ stty -F /dev/serial/by-id/<device_id> -a
+speed 9600 baud; rows 0; columns 0; line = 0;
+intr = ^C; quit = ^\; erase = ^?; kill = ^U; eof = ^D; eol = <undef>;
+eol2 = <undef>; swtch = <undef>; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R;
+werase = ^W; lnext = ^V; flush = ^O; min = 1; time = 0;
+-parenb -parodd -cmspar cs8 hupcl -cstopb cread clocal -crtscts
+-ignbrk -brkint ignpar -parmrk -inpck -istrip -inlcr -igncr icrnl -ixon -ixoff
+-iuclc -ixany -imaxbel -iutf8
+-opost -olcuc -ocrnl -onlcr -onocr -onlret -ofill -ofdel nl0 cr0 tab0 bs0 vt0 ff0
+-isig -icanon -iexten -echo -echoe -echok -echonl -noflsh -xcase -tostop -echoprt
+-echoctl -echoke
 ```
