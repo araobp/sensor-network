@@ -105,14 +105,32 @@ The blocks may use I2C for inter-block communications.  In that case, the master
 
 Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, Timer etc.
 
-- [Distance sensor block (HC-SR04)](./distance.X)
+#### PIC16F1455
+
+- [I2C-USB bridge]
+
+#### PIC16F1825
+
+- [5V: Just red LED & tactile switch]
+- [5V: Solenoid (SparkFun ROB11015)]
+- [5V: Distance sensor block (HC-SR04)](./distance.X)
  - [pin assignment](./doc/distance_pin.png)
-- [Orientation sensor block (HMC5883L and L3GD20)](./orientation.X)
+- [5V: Acceleration sensor block （KXR94-2050)]
+- [5V: Spped sensor block (A1324LUA-T)]
+
+#### PIC16F1829
+
+- [3.3V: Orientation sensor block (HMC5883L and L3GD20)](./orientation.X)
  - [pin assignment](./doc/orientation_pin.png)
-- [Servo motor actuator block (TowerPro sg90)](./servomotor.X)
+- [5V: Servo motor actuator block (TowerPro sg90)](./servomotor.X)
  - [pin assignment](./doc/servomotor_pin.png)
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
+
+## Non-PIC blocks
+
+- [USB video with OpenCV]
+- [Text-to-Speech for Japanese]
 
 ## Using the blocks with UNIX pipe
 
