@@ -1,6 +1,6 @@
 # Blocks: pretty-easy IoT
 
-![hc_sr04_test](./doc/hc_sr04_test.png)
+![nodered-inside](./doc/nodered-inside.png)
 
 ## Background and motivation
 
@@ -181,6 +181,13 @@ werase = ^W; lnext = ^V; flush = ^O; min = 1; time = 0;
 ```
 
 ## Future work
+
+#### TTL serial JPEG camera
+
+I want to develop a block supporting video with this TTL serial camera:
+http://akizukidenshi.com/catalog/g/gM-11506/
+
+#### Ansible
 
 I am going to study [Ansible](https://www.ansible.com/) to see if it can be used for managing Node-RED:
 - settings.js (config management)
