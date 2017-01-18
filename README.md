@@ -111,11 +111,11 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 
 #### PIC16F1825
 
-- [5V: Just red LED & tactile switch]
+- [5V: Just red LED & tactile switch (Omron B3J-1000 or small one)]
 - [5V: Solenoid (SparkFun ROB11015)]
 - [5V: Distance sensor block (HC-SR04)](./distance.X)
  - [pin assignment](./doc/distance_pin.png)
-- [5V: Acceleration sensor block （KXR94-2050)]
+- [5V: Acceleration sensor block （KXR94-2050)](./acceleration.X)
 - [5V: Spped sensor block (A1324LUA-T)]
 
 #### PIC16F1829
