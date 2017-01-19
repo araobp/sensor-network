@@ -116,7 +116,7 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 - [5V: Distance sensor block (HC-SR04)](./distance.X)
  - [pin assignment](./doc/distance_pin.png)
 - [5V: Acceleration sensor block （KXR94-2050)](./acceleration.X)
-- [5V: Rotational speed sensor block (A1324LUA-T)](./rotation.x)
+- [5V: Spped sensor block (A1324LUA-T)]
 
 #### PIC16F1829
 
