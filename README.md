@@ -118,7 +118,7 @@ Note: I use MPLAB Code Configurator (MCC) to generate code for USART, I2C, PWM, 
 - [5V: Acceleration sensor block （KXR94-2050)](./acceleration.X)
  - [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./rotation.X)
- - [pin assignment](./doc/rotaion_pin.ong)
+ - [pin assignment](./doc/rotation_pin.ong)
 
 #### PIC16F1829
 
