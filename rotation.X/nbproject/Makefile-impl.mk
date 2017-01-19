@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=rotation
+PROJECTNAME=rotation.X
 
 # Active Configuration
 DEFAULTCONF=default

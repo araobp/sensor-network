@@ -1,23 +1,21 @@
 /**
-  Generated Interrupt Manager Header File
+  @Generated MPLAB(c) Code Configurator Header File
 
   @Company:
     Microchip Technology Inc.
 
   @File Name:
-    interrupt_manager.h
+    mcc.h
 
   @Summary:
-    This is the Interrupt Manager file generated using MPLAB(c) Code Configurator
+    This is the mcc.h file generated using MPLAB(c) Code Configurator
 
   @Description:
-    This header file provides implementations for global interrupt handling.
-    For individual peripheral handlers please see the peripheral driver for
-    all modules selected in the GUI.
+    This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16F1825
-        Driver Version    :  2.00
+        Version           :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
@@ -45,8 +43,16 @@
     TERMS.
 */
 
-#ifndef INTERRUPT_MANAGER_H
-#define INTERRUPT_MANAGER_H
+#ifndef MCC_H
+#define	MCC_H
+#include <xc.h>
+#include "pin_manager.h"
+#include <stdint.h>
+#include <stdbool.h>
+#include "adc.h"
+#include "eusart.h"
+
+#define _XTAL_FREQ  500000
 
 
 /**
@@ -55,11 +61,12 @@
  * @Returns
     none
  * @Description
-    This macro will enable global interrupts.
+    Initializes the device to the default states configured in the
+ *                  MCC GUI
  * @Example
-    INTERRUPT_GlobalInterruptEnable();
+    SYSTEM_Initialize(void);
  */
-#define INTERRUPT_GlobalInterruptEnable() (INTCONbits.GIE = 1)
+void SYSTEM_Initialize(void);
 
 /**
  * @Param
@@ -67,11 +74,12 @@
  * @Returns
     none
  * @Description
-    This macro will disable global interrupts.
+    Initializes the oscillator to the default states configured in the
+ *                  MCC GUI
  * @Example
-    INTERRUPT_GlobalInterruptDisable();
+    OSCILLATOR_Initialize(void);
  */
-#define INTERRUPT_GlobalInterruptDisable() (INTCONbits.GIE = 0)
+void OSCILLATOR_Initialize(void);
 
 /**
  * @Param
@@ -79,38 +87,15 @@
  * @Returns
     none
  * @Description
-    This macro will enable peripheral interrupts.
+    Initializes the WDT module to the default states configured in the
+ *                  MCC GUI
  * @Example
-    INTERRUPT_PeripheralInterruptEnable();
+    WDT_Initialize(void);
  */
-#define INTERRUPT_PeripheralInterruptEnable() (INTCONbits.PEIE = 1)
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    This macro will disable peripheral interrupts.
- * @Example
-    INTERRUPT_PeripheralInterruptDisable();
- */
-#define INTERRUPT_PeripheralInterruptDisable() (INTCONbits.PEIE = 0)
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Main interrupt service routine. Calls module interrupt handlers.
- * @Example
-    INTERRUPT_InterruptManager();
- */
-void interrupt INTERRUPT_InterruptManager(void);
+void WDT_Initialize(void);
 
 
-#endif  // INTERRUPT_MANAGER_H
+#endif	/* MCC_H */
 /**
  End of File
 */
