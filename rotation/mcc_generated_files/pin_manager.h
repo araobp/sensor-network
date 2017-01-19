@@ -6,7 +6,7 @@
 
   @File Name:
     pin_manager.h
-
+ 
   @Summary:
     This is the Pin Manager file generated using MPLAB(c) Code Configurator
 
@@ -59,22 +59,56 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
-// get/set channel_AN6 aliases
-#define channel_AN6_TRIS               TRISCbits.TRISC2
-#define channel_AN6_LAT                LATCbits.LATC2
-#define channel_AN6_PORT               PORTCbits.RC2
-#define channel_AN6_WPU                WPUCbits.WPUC2
-#define channel_AN6_ANS                ANSELCbits.ANSC2
-#define channel_AN6_SetHigh()            do { LATCbits.LATC2 = 1; } while(0)
-#define channel_AN6_SetLow()             do { LATCbits.LATC2 = 0; } while(0)
-#define channel_AN6_Toggle()             do { LATCbits.LATC2 = ~LATCbits.LATC2; } while(0)
-#define channel_AN6_GetValue()           PORTCbits.RC2
-#define channel_AN6_SetDigitalInput()    do { TRISCbits.TRISC2 = 1; } while(0)
-#define channel_AN6_SetDigitalOutput()   do { TRISCbits.TRISC2 = 0; } while(0)
-#define channel_AN6_SetPullup()      do { WPUCbits.WPUC2 = 1; } while(0)
-#define channel_AN6_ResetPullup()    do { WPUCbits.WPUC2 = 0; } while(0)
-#define channel_AN6_SetAnalogMode()  do { ANSELCbits.ANSC2 = 1; } while(0)
-#define channel_AN6_SetDigitalMode() do { ANSELCbits.ANSC2 = 0; } while(0)
+// get/set IO_RA2 aliases
+#define IO_RA2_TRIS               TRISAbits.TRISA2
+#define IO_RA2_LAT                LATAbits.LATA2
+#define IO_RA2_PORT               PORTAbits.RA2
+#define IO_RA2_WPU                WPUAbits.WPUA2
+#define IO_RA2_ANS                ANSELAbits.ANSA2
+#define IO_RA2_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
+#define IO_RA2_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
+#define IO_RA2_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
+#define IO_RA2_GetValue()           PORTAbits.RA2
+#define IO_RA2_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
+#define IO_RA2_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
+#define IO_RA2_SetPullup()      do { WPUAbits.WPUA2 = 1; } while(0)
+#define IO_RA2_ResetPullup()    do { WPUAbits.WPUA2 = 0; } while(0)
+#define IO_RA2_SetAnalogMode()  do { ANSELAbits.ANSA2 = 1; } while(0)
+#define IO_RA2_SetDigitalMode() do { ANSELAbits.ANSA2 = 0; } while(0)
+
+// get/set IO_RA4 aliases
+#define IO_RA4_TRIS               TRISAbits.TRISA4
+#define IO_RA4_LAT                LATAbits.LATA4
+#define IO_RA4_PORT               PORTAbits.RA4
+#define IO_RA4_WPU                WPUAbits.WPUA4
+#define IO_RA4_ANS                ANSELAbits.ANSA4
+#define IO_RA4_SetHigh()            do { LATAbits.LATA4 = 1; } while(0)
+#define IO_RA4_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
+#define IO_RA4_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
+#define IO_RA4_GetValue()           PORTAbits.RA4
+#define IO_RA4_SetDigitalInput()    do { TRISAbits.TRISA4 = 1; } while(0)
+#define IO_RA4_SetDigitalOutput()   do { TRISAbits.TRISA4 = 0; } while(0)
+#define IO_RA4_SetPullup()      do { WPUAbits.WPUA4 = 1; } while(0)
+#define IO_RA4_ResetPullup()    do { WPUAbits.WPUA4 = 0; } while(0)
+#define IO_RA4_SetAnalogMode()  do { ANSELAbits.ANSA4 = 1; } while(0)
+#define IO_RA4_SetDigitalMode() do { ANSELAbits.ANSA4 = 0; } while(0)
+
+// get/set IO_RC2 aliases
+#define IO_RC2_TRIS               TRISCbits.TRISC2
+#define IO_RC2_LAT                LATCbits.LATC2
+#define IO_RC2_PORT               PORTCbits.RC2
+#define IO_RC2_WPU                WPUCbits.WPUC2
+#define IO_RC2_ANS                ANSELCbits.ANSC2
+#define IO_RC2_SetHigh()            do { LATCbits.LATC2 = 1; } while(0)
+#define IO_RC2_SetLow()             do { LATCbits.LATC2 = 0; } while(0)
+#define IO_RC2_Toggle()             do { LATCbits.LATC2 = ~LATCbits.LATC2; } while(0)
+#define IO_RC2_GetValue()           PORTCbits.RC2
+#define IO_RC2_SetDigitalInput()    do { TRISCbits.TRISC2 = 1; } while(0)
+#define IO_RC2_SetDigitalOutput()   do { TRISCbits.TRISC2 = 0; } while(0)
+#define IO_RC2_SetPullup()      do { WPUCbits.WPUC2 = 1; } while(0)
+#define IO_RC2_ResetPullup()    do { WPUCbits.WPUC2 = 0; } while(0)
+#define IO_RC2_SetAnalogMode()  do { ANSELCbits.ANSC2 = 1; } while(0)
+#define IO_RC2_SetDigitalMode() do { ANSELCbits.ANSC2 = 0; } while(0)
 
 // get/set IO_RC3 aliases
 #define IO_RC3_TRIS               TRISCbits.TRISC3
