@@ -14,11 +14,11 @@ I have decided to develop a gateway that works as a bridge between those low-lev
 
 <--- IoT low-level block ---->
 sensor
-actuator      MCU     Comm. module
+actuator      MCU     Comm. module    IoT gateway
   +---+      +---+      +---+         +---
   |   |      |   |      |   |         | Win PC
   |   |--*1--|   |--*2--|   |---USB---| RasPi
-  |   |      |   |      |   |         | IoT gateway
+  |   |      |   |      |   |         | OpenWRT
   +---+      +---+      +---+         +---
 
 *1 GPIO/I2C/SPI/UART
@@ -38,7 +38,7 @@ IoT blocks with USB-UART bridge(*1):
 [sensor block 1]-UART-[*1]---USB---|     |                    (        )
 [sensor block 2]-UART-[*1]---USB---| USB |---[IoT gateway]---( Internet )
 [actuator block 1]-UART-[*1]--USB--| hub |    such as RasPi   (        )
-[actuator block 2]-UART-[*1]--USB--|     |
+[actuator block 2]-UART-[*1]--USB--|     |    or OpenWRT
                                    +-----+
 ```
 
@@ -153,6 +153,15 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 ```
 
 See this [usage](./doc/USAGE.md) page.
+
+## Using the blocks with OpenWRT
+
+I run OpenWRT on my router (Buffalo BHR-4GRV) with the following capabilities:
+- Python 2.7
+- OpenFlow(Open vSwitch)
+- Remote config management framework "[neutron-lan](https://github.com/araobp/neutron-lan)"
+
+The router is also equipped with one USB port, thus my router works as IoT gateway for the blocks developed in this project. I am going to add MQTT client capability to the router later on.
 
 ## Node-RED for rapid IoT prototyping
 
