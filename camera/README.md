@@ -4,6 +4,8 @@ OpenCV officially supports C++ API and Python API.
 
 This MQTT client (written in Python to utilize OpenCV) works as a bridge between an USB camera and Node-RED.
 
+The captured image is encoded into BASE64 format for handling the data in the 7bit world.
+
 ## Architecture
 
 ```
@@ -14,6 +16,17 @@ This MQTT client (written in Python to utilize OpenCV) works as a bridge between
 ## Starting MQTT client for video capturing and image filtering
 ```
 $ ./camera.py
+```
+
+## Image filters
+
+Modify "conf.yaml" to choose filters supported by OpenCV, as follows:
+
+```
+# OpenCV filters
+filters:
+  - resize: 640x480
+  - color: BGR2GRAY
 ```
 
 ## Test
@@ -35,6 +48,3 @@ $ ./mqtt.js sub image > /tmp/test.b64
 ```
 $ base64 -d /tmp/test.b64 > /tmp/test.jpg
 ```
-
-
-
