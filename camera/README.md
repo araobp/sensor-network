@@ -31,6 +31,8 @@ filters:
 
 ## Test
 
+I have tested the client with npm mqtt.
+
 - send "capture" command to the client
 
 ```
