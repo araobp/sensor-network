@@ -1,0 +1,19 @@
+# device ID
+device_id: camera1
+
+# /dev/video0
+video_id: 0
+
+# image format
+format: jpeg
+
+# OpenCV filters
+filters:
+  - resize: 640x480
+  - color: BGR2GRAY
+
+# MQTT client
+mqtt:
+  host: localhost
+  port: 1883
+  topic: image
