@@ -38,10 +38,10 @@ def capture():
         for filter_ in FILTERS:
             for func in filter_.keys():
                 args = filter_[func]
-                filtered_img = globals()[func](img,args)
-                encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
-                result,encimg = cv2.imencode('.jpg', filtered_img, encode_param)
-                client.publish('image', base64.b64encode(encimg), qos=0, retain=False)
+                img = globals()[func](img,args)
+        encode_param = [int(cv2.IMWRITE_JPEG_QUALITY), 100]
+        result,encimg = cv2.imencode('.jpg', img, encode_param)
+        client.publish('image', base64.b64encode(encimg), qos=0, retain=False)
     except Exception:
         traceback.print_exc()
 
