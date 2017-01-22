@@ -1,6 +1,6 @@
 # Blocks: pretty-easy IoT
 
-![nodered-inside](./doc/nodered-inside.png)
+![blocks_with_raspi](./doc/blocks_with_raspi.jpg)
 
 ## Background and motivation
 
@@ -70,25 +70,22 @@ IoT blocks with MQTT-UART bridge:
 - [ESP8266(ESP-WROOM-02)]
 - [USB Micro B connector(for PIC16F1455/1459)](http://akizukidenshi.com/catalog/g/gK-06656/)
 
-## prototype
+## Blocks base board prototyping
+
+#### Base board
 
 This prototype uses PIC16F1825:
 
-![prototype1](./doc/prototype1.png)
+![prototype2](./doc/prototype2.jpg)
 
-- 10k ohm pull-up register sits between Vdd and MCLR pins (50k ohm is better)
-- The 5P pin header (L type) is for PICkit3.
-- The 2P pin header (L type) supplies 5V/3.3V to a sensor/actuator component.
-- The other 2P pin header is connected to TX/RX of the USB/UART bridge(FT234X)
-- The 6P pin headers are connected to PIC16F1825.
-- The LED (w/ 1k ohm register) blinks every while loop:
-turn on/off every __delay_ms(period);
+- 51k ohm pull-up register sits between Vdd and MCLR pins
+- The 5P pin socket is for PICkit3.
 - The green jumper pin is to enable/disable the LED blinking.
 - The tactile switch is a reset button: shorts MCLR pin to GND.
 
-## Hardware schematic
+#### Schematic
 
-The following is schematic of the base board. This is absolutely cheaper than A*duino.
+The following is schematic of the base board:
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=680&h=400)
 
@@ -131,7 +128,7 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 
 ## Non-PIC blocks
 
-- [USB video with OpenCV]
+- [USB video with OpenCV](./camera)
 - [Text-to-Speech for Japanese]
 
 ## Using the blocks with UNIX pipe
