@@ -131,6 +131,20 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 - [USB video with OpenCV](./camera)
 - [Text-to-Speech for Japanese]
 
+## Networking with the blocks
+
+I plan to develop "UART router":
+
+```             
+                  +----+
+[block]-- UART ---|    |
+                  |PIC |--- USB ---[host]
+[block]-- UART ---|    |
+                  +----+
+```
+
+I also plan to develop "routing protocol over UART".
+
 ## Using the blocks with UNIX pipe
 
 It is pretty easy!
@@ -174,6 +188,15 @@ I run Node-RED on my RasPi 3:
 ![node-red-2](./doc/node-red-2.png)
 
 I am currently developing flows using the blocks: [node-red flows](./node-red).
+
+Note: Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs etc. The tool is for IT guys, not for networking guys.
+
+## Ansible
+
+I am going to use Ansible to manage the system:
+- sensor/actuator blocks
+- IoT gateways (RasPi/OpenWrt)
+- Node-RED or other applications
 
 ## Internet of Hamsters (IoH)
 
@@ -219,10 +242,3 @@ werase = ^W; lnext = ^V; flush = ^O; min = 1; time = 0;
 
 I want to develop a block supporting video with this TTL serial camera:
 http://akizukidenshi.com/catalog/g/gM-11506/
-
-#### Ansible
-
-I am going to study [Ansible](https://www.ansible.com/) to see if it can be used for managing Node-RED:
-- settings.js (config management)
-- flow management
-- node management
