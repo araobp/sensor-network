@@ -174,6 +174,12 @@ I run Node-RED on my RasPi 3:
 
 I am currently developing flows using the blocks: [node-red flows](./node-red).
 
+## Internet of Hamsters (IoH)
+
+[HAMSTER.md](./doc/HAMSTER.md)
+
+![hamster_wheel1](doc/hamster_wheel1.png)
+
 ## TTY setting
 
 - TTY initialization
