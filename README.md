@@ -18,7 +18,7 @@ actuator      MCU     Comm. module    IoT gateway
   +---+      +---+      +---+         +---
   |   |      |   |      |   |         | Win PC
   |   |--*1--|   |--*2--|   |---USB---| RasPi
-  |   |      |   |      |   |         | OpenWRT
+  |   |      |   |      |   |         | OpenWrt
   +---+      +---+      +---+         +---
 
 *1 GPIO/I2C/SPI/UART
@@ -38,7 +38,7 @@ IoT blocks with USB-UART bridge(*1):
 [sensor block 1]-UART-[*1]---USB---|     |                    (        )
 [sensor block 2]-UART-[*1]---USB---| USB |---[IoT gateway]---( Internet )
 [actuator block 1]-UART-[*1]--USB--| hub |    such as RasPi   (        )
-[actuator block 2]-UART-[*1]--USB--|     |    or OpenWRT
+[actuator block 2]-UART-[*1]--USB--|     |    or OpenWrt
                                    +-----+
 ```
 
@@ -151,9 +151,9 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 
 See this [usage](./doc/USAGE.md) page.
 
-## Using the blocks with OpenWRT
+## Using the blocks with OpenWrt
 
-I run OpenWRT on my router (Buffalo BHR-4GRV) that I bought in Akihabara, Tokyo. The router was really cheap and the price was around $30.
+I run OpenWrt on my router (Buffalo BHR-4GRV) that I bought in Akihabara, Tokyo. The router was really cheap and the price was around $30.
 
 The router is also equipped with one USB port, thus my router works as IoT gateway for the blocks developed in this project.
 
