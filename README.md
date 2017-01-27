@@ -153,12 +153,13 @@ See this [usage](./doc/USAGE.md) page.
 
 ## Using the blocks with OpenWRT
 
-I run OpenWRT on my router (Buffalo BHR-4GRV) with the following capabilities:
-- Python 2.7
-- OpenFlow(Open vSwitch)
-- Remote config management framework "[neutron-lan](https://github.com/araobp/neutron-lan)"
+I run OpenWRT on my router (Buffalo BHR-4GRV) that I bought in Akihabara, Tokyo. The router was really cheap and the price was around $30.
 
-The router is also equipped with one USB port, thus my router works as IoT gateway for the blocks developed in this project. I am going to add MQTT client capability to the router later on.
+The router is also equipped with one USB port, thus my router works as IoT gateway for the blocks developed in this project.
+
+![bhr-4grv](./doc/bhr-4grv.png)
+
+So I don't need expensive IoT gateway products (Intel ATOM-based or ARM-based ones).
 
 ## Node-RED for rapid IoT prototyping
 
