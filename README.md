@@ -180,6 +180,8 @@ See this [usage](./doc/USAGE.md) page.
 
 ## Using the blocks with OpenWrt
 
+[OpenWrt](./openwrt)
+
 I run OpenWrt on my router (Buffalo BHR-4GRV) that I bought in Akihabara, Tokyo. The router was really cheap and the price was around $30.
 
 The router is also equipped with one USB port, thus my router works as IoT gateway for the blocks developed in this project.
@@ -205,6 +207,8 @@ I am currently developing flows using the blocks: [node-red flows](./node-red).
 Note: Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys.
 
 ## Ansible
+
+[Ansible](./ansible)
 
 I am going to use Ansible to manage the system:
 - sensor/actuator blocks
