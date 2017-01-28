@@ -4,11 +4,20 @@
 
 Board
 ```
-           o Vout z-axis -- 8 pin
-   [Chip]  o Vout y-axis -- 11 pin
-           o Vout x-axis -- 3 pin
+y
+^          o Vout z-axis -- 8 pin
+|  [Chip]  o Vout y-axis -- 11 pin
++--> x     o Vout x-axis -- 3 pin
            o GND
            o Vdd (2.5V - 5.25V)
+```
+
+Output example
+```
+492,512,715
+493,513,715
+492,513,716
+     :
 ```
 
 UART
@@ -24,6 +33,14 @@ Board
           o Vcc
   [Chip]  o GND
           o Vout -- 8 pin
+```
+
+Output example
+```
+1
+1
+1
+:
 ```
 
 UART
