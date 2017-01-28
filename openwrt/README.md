@@ -34,6 +34,20 @@ BusyBox v1.23.2 (2015-07-25 15:09:46 CEST) built-in shell (ash)
 |openwrt2|192.168.57.102|
 |openwrt3|192.168.57.103|
 
+LAN port (br-lan): 192.168.1.1
+
+There are two ways to connect to the routers from my PC:
+
+From RasPi that is directly connected to one of the router's LAN ports:
+```
+$ telnet 192.168.1.1
+```
+
+From SSH via the WAN port:
+```
+$ ssh root@192.168.57.102
+```
+
 ## Adding default GW
 
 ```
