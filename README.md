@@ -131,6 +131,10 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 - [USB video with OpenCV](./camera)
 - [Text-to-Speech for Japanese]
 
+## Sensor/actuator boards
+
+[boards](./boards/README.md)
+
 ## Networking with the blocks
 
 I plan to develop "UART router":

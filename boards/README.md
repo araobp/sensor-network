@@ -1,0 +1,43 @@
+## PIC16F1825
+
+#### Acceleration sensor board (3.3V/5V)
+
+Board
+```
+           o Vout z-axis -- 8 pin
+   [Chip]  o Vout y-axis -- 11 pin
+           o Vout x-axis -- 3 pin
+           o GND
+           o Vdd (2.5V - 5.25V)
+```
+
+UART
+```
+           TX --> 5 pin (RX)
+           RX <-- 6 pin (TX)
+```
+
+#### Hall sensor board (5V)
+
+Board
+```
+          o Vcc
+  [Chip]  o GND
+          o Vout -- 8 pin
+```
+
+UART
+```
+           TX --> 5 pin (RX)
+           RX <-- 6 pin (TX)
+```
+
+#### LED and switch (3.3V/5V)
+
+```
+             o Vdd
+ [Switch]    o GND
+             o Vout (digital)
+ [LED][LED]  o Vin (LED red)
+             o Vin (LED blue)
+```
