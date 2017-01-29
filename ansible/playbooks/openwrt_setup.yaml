@@ -1,0 +1,23 @@
+# Playbook for Buffalo BHR-4GRV
+- name: setup OpenWrt
+  hosts: openwrt 
+  become: True 
+  vars:
+    default_gw: 192.168.57.1
+  tasks:
+  - name: add route to default gw 
+    command: route add default gw {{ default_gw }}
+    failed_when: False
+  - name: install packages 
+    opkg: name={{item}} state=present update_cache=yes
+    with_items:
+      - python-light
+      - python-pip
+      - ip
+      - tcpdump
+      - openvswitch
+      - kmod-usb-serial
+      - kmod-usb-serial-ftdi
+      - mosquitto
+      - mosquitto-client
+      - libmosquitto

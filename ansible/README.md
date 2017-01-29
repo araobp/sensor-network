@@ -17,13 +17,13 @@ For OpenWrt to work with Ansible, refer to these pages:
 - http://www.ojscurity.com/2014/12/manage-openwrt-devices-with-ansible.html
 - http://www.gilesorr.com/blog/openwrt-ansible.html
 
-## Inventory
+## Directory structure for Ansible
 
-The file name is "hosts":
-```
-[raspi]
-192.168.XXX.XXX ansible_user=pi
-```
+- [.ansinle.cfg](./.ansible.cfg)
+- [inventory](./inventory)
+- [playbooks](./playbooks)
+- [shell script for setting up OpenWrt routers](./openwrt_setup.sh)
+
 
 ## Ping test
 ```
@@ -32,4 +32,35 @@ $ ansible raspi -i hosts -m ping
     "changed": false,
     "ping": "pong"
 }
+```
+
+## OpenWrt setup
+
+The below is the output of ./openwrt_setup.sh:
+
+```
+arao@debian:~/blocks/ansible$ ./openwrt_setup.sh 
+
+PLAY [setup OpenWrt] ***********************************************************
+
+TASK [setup] *******************************************************************
+ok: [192.168.57.102]
+
+TASK [add route to default gw] *************************************************
+changed: [192.168.57.102]
+
+TASK [install packages] ********************************************************
+ok: [192.168.57.102] => (item=python-light)
+ok: [192.168.57.102] => (item=python-pip)
+ok: [192.168.57.102] => (item=ip)
+ok: [192.168.57.102] => (item=openvswitch)
+ok: [192.168.57.102] => (item=kmod-usb-serial)
+ok: [192.168.57.102] => (item=kmod-usb-serial-ftdi)
+ok: [192.168.57.102] => (item=mosquitto)
+ok: [192.168.57.102] => (item=mosquitto-client)
+ok: [192.168.57.102] => (item=libmosquitto)
+
+PLAY RECAP *********************************************************************
+192.168.57.102             : ok=3    changed=1    unreachable=0    failed=0   
+
 ```
