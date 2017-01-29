@@ -39,7 +39,14 @@ $ ansible raspi -i hosts -m ping
 The below is the output of ./openwrt_setup.sh:
 
 ```
-arao@debian:~/blocks/ansible$ ./openwrt_setup.sh 
+
+   Ansible  ----------------------> SSH server
+ [Debian Linux]                 [OpenWrt         ]
+ [VirtualBox  ]                 [Buffalo BHR-4GRV]
+```
+
+```
+arao@debian:~/blocks/ansible$ ./openwrt_setup.sh
 
 PLAY [setup OpenWrt] ***********************************************************
 
