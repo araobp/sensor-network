@@ -5,17 +5,22 @@
   vars:
     default_gw: 192.168.57.1
   tasks:
-  - name: add route to default gw 
-    command: route add default gw {{ default_gw }}
+  - name: add route to default gw permanently 
+#    command: route add default gw {{ default_gw }}
+    command: "{{item}}"
+    with_items:
+      - uci set network.wan.gateway={{default_gw}}
+      - uci commit
+      - /etc/init.d/network reload
     failed_when: False
   - name: install packages 
     opkg: name={{item}} state=present update_cache=yes
     with_items:
-      - python-light
       - python-pip
       - ip
       - tcpdump
       - openvswitch
+      - coreutils-stty
       - kmod-usb-serial
       - kmod-usb-serial-ftdi
       - mosquitto
