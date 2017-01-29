@@ -114,3 +114,7 @@ gre                     3136  2 openvswitch
 libcrc32c                480  1 openvswitch
 openvswitch            70704  0
 ```
+
+## Working with Ansible and UCI (I never use NetConf)
+
+A combination of Ansible and UCI is much easier to use than those products provided by tail-f (NetConf): ==> [ansible](https://github.com/araobp/blocks/ansible)
