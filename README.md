@@ -1,16 +1,22 @@
-# Blocks: pretty-easy IoT
+# Blocks: pretty-easy IoT with PIC16F1, OpenWrt and Ansible
 
 ![blocks_with_raspi](./doc/blocks_with_raspi.jpg)
 
 ## Background and motivation
 
-GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces. I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
+### IoT building blocks of sensors/actuators
 
-In addition, I want to develop something like "Software-Defined Networking of Things". Once I was involved in several SDN(Software-Defined Networking) projects, but my focus this time is on very low level interfaces (GPIO/I2C/SPI/UART) and very primitive components (sensors/actuators).
+GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces. I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB), so that I can realize IoT building blocks for very-easy IoT system integration. I use [Microchip PIC16F1 series 8bit MCU](www.microchip.com/design-centers/8-bit) to develop the gateway, since they are very cheap and small.
 
-## Low-level blocks
+Last year I saw eight-years-old kids working on robot programming with [LEGO Mindstorms](https://www.lego.com/en-gb/mindstorms). It was a bit surprising. I also had a chance to see [Microduino mCookie](https://www.microduino.cc/). They give me a hint. I also refer to [Grove](http://wiki.seeed.cc/Grove_Starter_Kit_Plus/).
 
-IoT is Internet of Things. Sensors/actuators communicate with other sensors/actuators or with human being. IoT is not a new concept at all. IoT is about opening up vertically-integrated legacy systems with IP (internet Protocol).
+### White box switches
+
+Although I have been very interested in "NOS for white box" such as [Cumulus Linux](https://cumulusnetworks.com/) since several years ago, I have never had a chance to touch it -- I am just a poor Sunday programmer. So I have been running [OpenWrt](https://openwrt.org/) on my cheap small routers at home... OpenWrt is a tiny-version of white box NOS. I recently came up with sort of "Software-Defined Networking for IoT" with the building blocks, OpenWrt and Ansible.
+
+## IoT building blocks
+
+IoT is Internet of Things. Sensors/actuators communicate with other sensors/actuators or with human being. IoT is not a new concept at all. IoT is about opening up vertically-integrated legacy systems with IP (internet Protocol), as once I worked on Telephony and witnessed that plain-old Telephony systems dissapeared.
 
 Most of sensors/actuators require some sort of gateway to be able to speak IP. They call it IoT gateway.
 
@@ -21,11 +27,11 @@ I focus on opening up sensors/actuators in a LEGO-block manner. In this project,
 <--- IoT low-level block ---->
 sensor
 actuator      MCU     Comm. module    IoT gateway
-  +---+      +---+      +---+         +---
-  |   |      |   |      |   |         | Win PC
-  |   |--*1--|   |--*2--|   |---USB---| RasPi
-  |   |      |   |      |   |         | OpenWrt
-  +---+      +---+      +---+         +---
+  +---+      +---+      +---+         +--------+
+  |   |      |   |      |   |         | Win PC |           (         )
+  |   |--*1--|   |--*2--|   |---USB---| RasPi  |----------(The internet)
+  |   |      |   |      |   |         | OpenWrt|           (         )
+  +---+      +---+      +---+         +--------+
 
 *1 GPIO/I2C/SPI/UART
 *2 UART
@@ -36,7 +42,7 @@ I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
 
 All the blocks support USB/UART interface. I define two types of bridges to connect the blocks to the Internet.
 
-I use FTDI's USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB*" device.
+I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB*" device.
 
 IoT blocks with FTDI's USB-UART bridge(*1):
 ```
@@ -58,7 +64,7 @@ IoT blocks with MQTT-UART bridge:
                       +-------+                (        )            
 ```
 
-## PIC16F1 models
+## PIC16F1 MCU models
 
 |Model     |# of pins |Characteristics                 |
 |----------|-----|--------------------------------|
@@ -76,11 +82,11 @@ IoT blocks with MQTT-UART bridge:
 - [ESP8266(ESP-WROOM-02)]
 - [USB Micro B connector(for PIC16F1455/1459)](http://akizukidenshi.com/catalog/g/gK-06656/)
 
-## Base board prototyping
+## Base board prototyping for IoT building blocks
 
 #### Base board prototype #2
 
-This prototype uses PIC16F1825. It costs around $3, much cheaper than A*duino, but it requires one hour for soldering components onto the universal board.
+This prototype uses PIC16F1825. It costs around $3, much cheaper than A*duino, but it requires one hour for soldering components onto the universal board. I have made three boards so far (it means I spent three hours to make them).
 
 ![prototype2](./doc/prototype2.jpg)
 
@@ -91,7 +97,7 @@ This prototype uses PIC16F1825. It costs around $3, much cheaper than A*duino, b
 
 #### Schematic of the base board
 
-The following is schematic of the base board:
+The following is schematic of the base board prototype #2:
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=680&h=400)
 
@@ -141,13 +147,13 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 
 ## Sensor/actuator boards
 
-[boards](./boards/README.md)
+I have made these [boards](./boards/README.md) so far. They are connected to the base board.
 
 ## Networking with the blocks
 
-I plan to develop "UART router" supporting various networking topology.
+I plan to develop "UART router" and "routing protocol over UART" supporting various networking topology.
 
-Hub-and-spoke:
+For example, hub-and-spoke topo:
 ```             
                   +----+
 [block]-- UART ---|    |
@@ -155,8 +161,6 @@ Hub-and-spoke:
 [block]-- UART ---|    |
                   +----+
 ```
-
-I also plan to develop "routing protocol over UART".
 
 ## Using the blocks with UNIX pipe
 
@@ -180,7 +184,7 @@ See this [usage](./doc/USAGE.md) page.
 
 ## Using the blocks with OpenWrt
 
-[OpenWrt](./openwrt)
+==> [OpenWrt](./openwrt)
 
 I run OpenWrt on my router (Buffalo BHR-4GRV) that I bought in Akihabara, Tokyo. The router was really cheap and the price was around $30.
 
@@ -189,6 +193,8 @@ The router is also equipped with one USB port, thus my router works as IoT gatew
 ![bhr-4grv](./doc/bhr-4grv.png)
 
 So I don't need expensive IoT gateway products (Intel ATOM-based or ARM-based ones). I don't even want RasPi in most of cases.
+
+OpenWrt is free OS for IoT gateways as well as for WiFi routers.
 
 ## Node-RED for rapid IoT prototyping
 
@@ -204,22 +210,24 @@ I run Node-RED on my RasPi 3:
 
 I am currently developing flows using the blocks: [node-red flows](./node-red).
 
-Note: Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys.
+Note: Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys. I am not so interested in Node-RED.
 
 ## Ansible
 
-[Ansible](./ansible)
+==> [Ansible](./ansible)
 
 I am going to use Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
 - Node-RED or other applications
 
+I tried out Ansible in the past (three years ago). It was not a good tool, but it seems to me that a lot of improvements have been made since then. So I use Ansible this time.
+
 ## Internet of Hamsters (IoH)
 
 If you want to learn IoT by doing, you had better have hamster. There are a lot of "things" you want to work on with IoT.
 
-[HAMSTER.md](./doc/HAMSTER.md)
+==> [HAMSTER.md](./doc/HAMSTER.md)
 
 ![hamster_wheel1](doc/hamster_wheel1.png)
 
