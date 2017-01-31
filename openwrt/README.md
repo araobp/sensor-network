@@ -118,3 +118,29 @@ openvswitch            70704  0
 ## Working with Ansible and UCI (I never use NetConf)
 
 A combination of Ansible and UCI is much easier to use than those products provided by tail-f (NetConf): ==> [ansible](https://github.com/araobp/blocks/ansible)
+
+## Building OpenWrt
+
+https://wiki.openwrt.org/doc/howto/buildroot.exigence
+
+## vCPE with USB over IP
+
+My goal is to use OpenWrt as IoT gateway, so I want to make this experiment:
+
+Pattern 1:
+```
+[USB device]----USB----[OpenWrt]----USB over IP----[Device driver on Windows10]
+```
+
+Pattern 2:
+```
+[USB device]----USB----[OpenWrt]----USB over IP----[vCPE on NFV infrastracture]
+```
+
+Refer to these pages:
+- http://usbip.sourceforge.net/
+- https://wiki.openwrt.org/doc/howto/usb.iptunnel
+
+The "vCPE" approach seems clever than managing device drivers on remote routers (remote CPEs).
+
+
