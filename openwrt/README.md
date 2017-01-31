@@ -141,6 +141,6 @@ Refer to these pages:
 - http://usbip.sourceforge.net/
 - https://wiki.openwrt.org/doc/howto/usb.iptunnel
 
-The "vCPE" approach seems clever than managing device drivers on remote routers (remote CPEs).
+The "vCPE" approach seems clever than managing device drivers on remote routers (remote CPEs), but I am concerned with its latency.
 
 
