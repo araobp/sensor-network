@@ -1,6 +1,6 @@
 # Blocks: pretty-easy IoT with PIC16F1, OpenWrt and Ansible
 
-![blocks_with_raspi](./doc/blocks_with_raspi.jpg)
+![blocks_with_raspi](./doc/toy1.png)
 
 ## Background and motivation
 
@@ -37,6 +37,8 @@ actuator      MCU     Comm. module    IoT gateway
 *2 UART
 ```
 I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
+
+![toy2](./doc/toy2.png)
 
 ## USB/UART (i.e., serial) as universal interface for IoT blocks
 
@@ -195,6 +197,14 @@ The router is also equipped with one USB port, thus my router works as IoT gatew
 So I don't need expensive IoT gateway products (Intel ATOM-based or ARM-based ones). I don't even want RasPi in most of cases.
 
 OpenWrt is free OS for IoT gateways as well as for WiFi routers.
+
+![toy3](./doc/toy3.png)
+
+![toy4](./doc/toy4.png)
+
+![toy5](./doc/toy5.png)
+
+![toy6](./doc/toy6.png)
 
 ## Node-RED for rapid IoT prototyping
 
