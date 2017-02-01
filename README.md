@@ -198,13 +198,18 @@ So I don't need expensive IoT gateway products (Intel ATOM-based or ARM-based on
 
 OpenWrt is free OS for IoT gateways as well as for WiFi routers.
 
+For example, I connect the acceleration sensor block to my router, then I think that it may work as a distributed earthquake sensing system.
+
 ![toy3](./doc/toy3.png)
 
 ![toy4](./doc/toy4.png)
 
 ![toy5](./doc/toy5.png)
 
+I like playing the piano, and I think of developing Internet of Pianos (IoP) with MIDI and the router:
 ![toy6](./doc/toy6.png)
+
+MIDI is also a control protocol for projection mapping. In the IoT world, [Firmata](https://github.com/firmata/protocol) is based on MIDI.
 
 ## Node-RED for rapid IoT prototyping
 
