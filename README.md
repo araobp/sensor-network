@@ -1,4 +1,4 @@
-# Blocks: pretty-easy IoT with PIC16F1, OpenWrt and Ansible
+# Blocks: pretty-easy IoT with PIC16F1
 
 ![blocks_with_raspi](./doc/toy1.png)
 
