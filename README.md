@@ -48,7 +48,7 @@ I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
 
 All the blocks support USB/UART interface. I define two types of bridges to connect the blocks to the Internet.
 
-I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB*" device.
+I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB*" device. On the other hand, Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually), then recognizes it as COM* device. In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
 
 IoT blocks with FTDI's USB-UART bridge(*1):
 ```
@@ -62,13 +62,18 @@ IoT blocks with FTDI's USB-UART bridge(*1):
 
 Note: In case of PIC16F1455/1459, USB-UART bridge is unnecessary.
 
-IoT blocks with MQTT-UART bridge:
+IoT blocks with MQTT-UART(or "UART over IP"?) bridge:
 ```
                    MQTT-UART bridge
-                      +-------+                (        )
-[sensor block 3]-UART-|ESP8266|---MQTT/WiFi---( Internet )
-                      +-------+                (        )            
+                      +-------+                      (        )
+[sensor block 3]-UART-|Comm.  |---wireless access---( Internet )
+                      |module |                      (      )            
+                      +-------+
 ```
+
+The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, Sigfox.
+
+(*) Note: I have not decided if MQTT is the right way or not. I have also studying other possibilities: "UART over IP", "USB over IP" or "Firmata". For WiFI, I use ESP8266.
 
 ## PIC16F1 MCU models
 
