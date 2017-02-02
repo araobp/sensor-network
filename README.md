@@ -1,6 +1,10 @@
 # Blocks: pretty-easy IoT with PIC16F1
 
+IoT wagon with sensors and actuators
 ![blocks_with_raspi](./doc/toy1.png)
+
+IoT experiment in a hotel room, on a business trip to Okinawa
+![okinawa](./doc/okinawa.png)
 
 ## Background and motivation
 
