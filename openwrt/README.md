@@ -123,7 +123,9 @@ A combination of Ansible and UCI is much easier to use than those products provi
 
 https://wiki.openwrt.org/doc/howto/buildroot.exigence
 
-I have built OpenWrt with kernale namespaces enabled. The image is under ~/openwrt/bin/ar71xx:
+I have built OpenWrt with kernale namespaces enabled ([.config](./config)). 
+
+The image is under ~/openwrt/bin/ar71xx:
 
 ```
 arao@debian:~/openwrt/bin/ar71xx$ ls
