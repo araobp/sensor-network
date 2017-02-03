@@ -123,6 +123,32 @@ A combination of Ansible and UCI is much easier to use than those products provi
 
 https://wiki.openwrt.org/doc/howto/buildroot.exigence
 
+I have built OpenWrt with kernale namespaces enabled. The image is under ~/openwrt/bin/ar71xx:
+
+```
+arao@debian:~/openwrt/bin/ar71xx$ ls
+md5sums
+openwrt-ar71xx-generic-nbg460n_550n_550nh-u-boot.bin
+openwrt-ar71xx-generic-root.squashfs
+openwrt-ar71xx-generic-root.squashfs-64k
+openwrt-ar71xx-generic-uImage-gzip.bin
+openwrt-ar71xx-generic-uImage-lzma.bin
+openwrt-ar71xx-generic-vmlinux.bin
+openwrt-ar71xx-generic-vmlinux.elf
+openwrt-ar71xx-generic-vmlinux.gz
+openwrt-ar71xx-generic-vmlinux.lzma
+openwrt-ar71xx-generic-vmlinux-lzma.elf
+openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-factory.bin
+openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-sysupgrade.bin
+openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-tftp.bin
+packages
+sha256sums
+uboot-ar71xx-nbg460n_550n_550nh
+```
+
+Then I use tftp to put the image to my router via tftp.
+
+
 ## vCPE with USB over IP
 
 My goal is to use OpenWrt as IoT gateway, so I want to make this experiment:
