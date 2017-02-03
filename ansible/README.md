@@ -10,12 +10,16 @@ Once I developed an Ansible-like took [neutron-lan](https://github.com/araobp/ne
 
 ```
 $ ssh-keygen -t rsa
-$ ssh-copy-id pi@192.168.XXX.XXX
+$ ssh-copy-id root@192.168.XXX.XXX
 ```
 
 For OpenWrt to work with Ansible, refer to these pages:
 - http://www.ojscurity.com/2014/12/manage-openwrt-devices-with-ansible.html
 - http://www.gilesorr.com/blog/openwrt-ansible.html
+
+```
+arao@debian:~$ cat .ssh/id_rsa.pub | ssh root@192.168.57.103 'cat > /etc/dropbear/authorized_keys && chmod 600 /etc/dropbear/authorized_keys'
+```
 
 ## Directory structure for Ansible
 

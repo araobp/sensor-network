@@ -156,7 +156,7 @@ Now that the image is on Debian linux VM on VirtualBox and my DELL PC does not h
 arao@debian:~/openwrt/bin/ar71xx$ scp openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-tftp.bin pi@192.168.57.132:/tmp
 ```
 
-Next, I register a route to the router:
+Next, I assign IP address to eth0 of the router:
 
 ```
 pi@raspberrypi:~ $ sudo ip addr add 192.168.11.2/24 dev eth0
@@ -176,6 +176,95 @@ ntt.setup (192.168.57.1) at 00:3a:9d:89:0c:7e [ether] on wlan0
 ```
 
 Then I use tftp to put the image to my router via tftp.
+```
+pi@raspberrypi:/tmp $ tftp 192.168.11.1
+tftp> verbose
+tftp> binary
+tftp> trace
+tftp> rexmt 1
+tftp> timeout 60
+tftp> put openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-tftp.bin
+```
+
+The timing to put the image: around 5 to 8 seconds after power on.
+
+Wait until DIAG LED stops blinking.
+
+```
+pi@raspberrypi:/tmp $ sudo ip route del 192.168.11.0/24 dev eth0
+pi@raspberrypi:/tmp $ sudo ip addr del 192.168.11.2/24 dev eth0
+```
+
+OpenWrt seems to require time to initialize itself for the first time.
+
+Log in the router.
+```
+pi@raspberrypi:~ $ telnet 192.168.1.1
+root@OpenWrt:~# passwd
+Changing password for root
+New password: XXXXXX
+Retype password: XXXXXX
+Password for root changed by root
+
+```
+
+```
+root@OpenWrt:~# uci set network.wan.proto='static'
+root@OpenWrt:~# uci set network.wan.ipaddr='192.168.57.103'
+root@OpenWrt:~# uci set network.wan.netmask='255.255.255.0'
+root@OpenWrt:~# uci commit
+root@OpenWrt:~# /etc/init.d/network reload
+```
+
+```
+root@OpenWrt:/etc/config# uci set firewall.@zone[1].input='ACCEPT'
+root@OpenWrt:/etc/config# uci set firewall.@zone[1].forward='ACCEPT'
+root@OpenWrt:~# uci commit
+root@OpenWrt:~# /etc/init.d/firewall reload
+```
+
+Connect the wan port to the gateway router, then:
+
+```
+pi@raspberrypi:~ $ ssh root@192.168.57.103
+```
+
+Add default route. I cannot add default route by using uci, so I eddited the following file manually.
+```
+config route
+	option target '0.0.0.0'	
+	option netmask '0.0.0.0'
+	option interface 'wan'
+	option gateway '192.168.57.1'
+```
+```
+root@OpenWrt:~# /etc/init.d/firewall reload
+```
+
+```
+root@OpenWrt:~# route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         192.168.57.1    0.0.0.0         UG    0      0        0 eth0.2
+192.168.1.0     *               255.255.255.0   U     0      0        0 br-lan
+192.168.57.0    *               255.255.255.0   U     0      0        0 eth0.2
+root@OpenWrt:~# ping 8.8.8.8 -c 1
+PING 8.8.8.8 (8.8.8.8): 56 data bytes
+64 bytes from 8.8.8.8: seq=0 ttl=56 time=6.253 ms
+
+--- 8.8.8.8 ping statistics ---
+1 packets transmitted, 1 packets received, 0% packet loss
+round-trip min/avg/max = 6.253/6.253/6.253 ms
+```
+
+```
+root@OpenWrt:~# opkg update
+root@OpenWrt:~# opkg install python-light
+root@OpenWrt:~# opkg install python-pip
+
+```
+
+Now, it is ready to use Ansible to configure the router. However, the kernel is too new, so some of packages I want are not avaiable on the public opkg repo...
 
 
 ## vCPE with USB over IP

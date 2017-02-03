@@ -2,4 +2,6 @@
 192.168.57.132 ansible_user=pi
 
 [openwrt]
+192.168.57.101 ansible_user=root
 192.168.57.102 ansible_user=root
+192.168.57.103 ansible_user=root
