@@ -4,9 +4,7 @@ Four years ago I started using OpenWrt to develop very cheap "whitebox" in the S
 
 This time I use OpenWrt as OS for IoT gateways.
 
-```
-Escape character is '^]'.
- === IMPORTANT ============================
+``` Escape character is '^]'.  === IMPORTANT ============================
   Use 'passwd' to set your login password
   this will disable telnet and enable SSH
  ------------------------------------------
@@ -119,13 +117,13 @@ openvswitch            70704  0
 
 A combination of Ansible and UCI is much easier to use than those products provided by tail-f (NetConf): ==> [ansible](https://github.com/araobp/blocks/ansible)
 
-## Building OpenWrt
+## Building OpenWrt and installing it onto my router Buffalo BHR-4GRV
 
-https://wiki.openwrt.org/doc/howto/buildroot.exigence
+First, refer to this page to build OpenWrt: https://wiki.openwrt.org/doc/howto/buildroot.exigence
 
 I have built OpenWrt with kernale namespaces enabled ([.config](./config)). 
 
-The image is under ~/openwrt/bin/ar71xx:
+I find the image under ~/openwrt/bin/ar71xx:
 
 ```
 arao@debian:~/openwrt/bin/ar71xx$ ls
@@ -146,6 +144,35 @@ openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-tftp.bin
 packages
 sha256sums
 uboot-ar71xx-nbg460n_550n_550nh
+```
+
+Now that the image is on Debian linux VM on VirtualBox and my DELL PC does not have Ethernet port, I need to scp the image to my Raspi:
+
+```
+[OpenWrt/BHR-4GRV]<--- tftp ---[RasPi]<--- scp ----[Debian/VirtualBox]
+```
+
+```
+arao@debian:~/openwrt/bin/ar71xx$ scp openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-tftp.bin pi@192.168.57.132:/tmp
+```
+
+Next, I register a route to the router:
+
+```
+pi@raspberrypi:~ $ sudo ip addr add 192.168.11.2/24 dev eth0
+pi@raspberrypi:~ $ ip route
+default via 192.168.57.1 dev wlan0 
+default via 192.168.57.1 dev wlan0  metric 303 
+192.168.11.0/24 dev eth0  proto kernel  scope link  src 192.168.11.2 
+192.168.57.0/24 dev wlan0  proto kernel  scope link  src 192.168.57.132  metric 303 
+```
+
+Since the router use this IP/MAC address "192.168.11.1/02:AA:BB:CC:DD:22" to accept new image from tftp, I need to add a arp table manually:
+```
+pi@raspberrypi:~ $ sudo arp -s 192.168.11.1 02:AA:BB:CC:DD:22
+pi@raspberrypi:~ $ arp -a
+? (192.168.57.130) at 98:54:1b:07:e6:71 [ether] on wlan0
+ntt.setup (192.168.57.1) at 00:3a:9d:89:0c:7e [ether] on wlan0
 ```
 
 Then I use tftp to put the image to my router via tftp.
