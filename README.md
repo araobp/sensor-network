@@ -73,7 +73,7 @@ IoT blocks with MQTT-UART(or "UART over IP"?) bridge:
 
 The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, Sigfox.
 
-(*) Note: I have not decided if MQTT is the right way or not. I have also studying other possibilities: "UART over IP", "USB over IP" or "Firmata". For WiFI, I use ESP8266.
+(*) Note: I have not decided if MQTT is the right way or not. I have also studying other possibilities: "UART over IP", "USB over IP" or "Firmata". For WiFI, I use ESP8266. This document is very interesting: http://ww1.microchip.com/downloads/en/DeviceDoc/50002230B.pdf
 
 ## PIC16F1 MCU models
 
