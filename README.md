@@ -3,11 +3,13 @@
 I have made IoT wagon with sensors and actuators
 ![blocks_with_raspi](./doc/toy1.png)
 
-IoT experiment in a hotel room, on a business trip to Okinawa (2017/2/2)
+I made IoT experiment in a hotel room, on a business trip to Okinawa (2017/2/2)
 ![okinawa](./doc/okinawa.png)
 
 Then I have just configured three of my small routers with Ansible(2017/2/4)
 ![openwrt_ansible](./doc/openwrt_ansible.png)
+
+=> [playbook log](./ansible/20170204.md)
 
 Next, I pursue harmony of UART and IP, since UART is a standard interface for things. Small routers are central to the harmony.
 
