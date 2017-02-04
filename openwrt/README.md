@@ -4,12 +4,7 @@ Four years ago I started using OpenWrt to develop very cheap "whitebox" in the S
 
 This time I use OpenWrt as OS for IoT gateways.
 
-``` Escape character is '^]'.  === IMPORTANT ============================
-  Use 'passwd' to set your login password
-  this will disable telnet and enable SSH
- ------------------------------------------
-
-
+```
 BusyBox v1.23.2 (2015-07-25 15:09:46 CEST) built-in shell (ash)
 
   _______                     ________        __
@@ -59,12 +54,14 @@ $ telnet 192.168.1.1
 
 From SSH via the WAN port:
 ```
-$ ssh root@192.168.57.102
+$ ssh root@192.168.57.101
 ```
 
 ## Adding default GW
 
-Things connected to the Internet via my home LAN:
+#### Network configuration
+
+My things(sensors/actuators) are connected to the Internet via my home LAN:
 ```
                                                 192.168.57.1/24             (          )
 [Blocks]---USB---[OpenWrt]---[L2 switch with WiFi]---[Home Gateway]--------(The Internet)
@@ -72,7 +69,9 @@ Things connected to the Internet via my home LAN:
           PCs/smartphones/tablets  TV/VideoRecorder/AppleTV
 ```
 
-Add default GW:
+#### Adding default GW
+
+OpenWrt is nothing more than Linux, so I use "route" command to add default gw:
 ```
 root@OpenWrt:~# route add default gw 192.168.57.1
 root@OpenWrt:~# route
@@ -82,6 +81,23 @@ default         192.168.57.1    0.0.0.0         UG    0      0        0 eth0.2
 192.168.1.0     *               255.255.255.0   U     0      0        0 br-lan
 192.168.57.0    *               255.255.255.0   U     0      0        0 eth0.2
 ```
+
+To make the setting permanent, I edit /etc/config/network to add the default route and reload a network startup script:
+
+/etc/config/network
+```
+config route
+	option target '0.0.0.0'
+	option netmask '0.0.0.0'
+	option interface 'wan'
+	option gateway '192.168.57.1'
+```
+
+reload a network startup script:
+```
+$ /etc/init.d/network reload
+```
+
 ## Installing USB serial drivers
 
 I have installed drivers for FTDI's USB-UART bridge.
@@ -121,9 +137,9 @@ A combination of Ansible and UCI is much easier to use than those products provi
 
 First, refer to this page to build OpenWrt: https://wiki.openwrt.org/doc/howto/buildroot.exigence
 
-I have built OpenWrt with kernale namespaces enabled ([.config](./config)). 
+I have built OpenWrt with kernale namespaces enabled ([.config](./config)), since I want to use netns.
 
-I find the image under ~/openwrt/bin/ar71xx:
+I find the image under ~/openwrt/bin/ar71xx after I have completed the build processes:
 
 ```
 arao@debian:~/openwrt/bin/ar71xx$ ls
@@ -161,10 +177,10 @@ Next, I assign IP address to eth0 of the router:
 ```
 pi@raspberrypi:~ $ sudo ip addr add 192.168.11.2/24 dev eth0
 pi@raspberrypi:~ $ ip route
-default via 192.168.57.1 dev wlan0 
-default via 192.168.57.1 dev wlan0  metric 303 
-192.168.11.0/24 dev eth0  proto kernel  scope link  src 192.168.11.2 
-192.168.57.0/24 dev wlan0  proto kernel  scope link  src 192.168.57.132  metric 303 
+default via 192.168.57.1 dev wlan0
+default via 192.168.57.1 dev wlan0  metric 303
+192.168.11.0/24 dev eth0  proto kernel  scope link  src 192.168.11.2
+192.168.57.0/24 dev wlan0  proto kernel  scope link  src 192.168.57.132  metric 303
 ```
 
 Since the router use this IP/MAC address "192.168.11.1/02:AA:BB:CC:DD:22" to accept new image from tftp, I need to add a arp table manually:
@@ -186,10 +202,11 @@ tftp> timeout 60
 tftp> put openwrt-ar71xx-generic-wzr-hp-g450h-squashfs-tftp.bin
 ```
 
-The timing to put the image: around 5 to 8 seconds after power on.
+The timing to put the image: around 5 to 8 seconds after power on, but the put operation with "rexmt 1" option does not need to worry about the timing.
 
 Wait until DIAG LED stops blinking.
 
+Delete 192.168.11.0/24 route:
 ```
 pi@raspberrypi:/tmp $ sudo ip route del 192.168.11.0/24 dev eth0
 pi@raspberrypi:/tmp $ sudo ip addr del 192.168.11.2/24 dev eth0
@@ -208,14 +225,16 @@ Password for root changed by root
 
 ```
 
+Add IP address to WAN port:
 ```
 root@OpenWrt:~# uci set network.wan.proto='static'
-root@OpenWrt:~# uci set network.wan.ipaddr='192.168.57.103'
+root@OpenWrt:~# uci set network.wan.ipaddr='192.168.57.101'
 root@OpenWrt:~# uci set network.wan.netmask='255.255.255.0'
 root@OpenWrt:~# uci commit
 root@OpenWrt:~# /etc/init.d/network reload
 ```
 
+Modify firewall setting to accept SSH login:
 ```
 root@OpenWrt:/etc/config# uci set firewall.@zone[1].input='ACCEPT'
 root@OpenWrt:/etc/config# uci set firewall.@zone[1].forward='ACCEPT'
@@ -223,7 +242,7 @@ root@OpenWrt:~# uci commit
 root@OpenWrt:~# /etc/init.d/firewall reload
 ```
 
-Connect the wan port to the gateway router, then:
+Connect the wan port to the gateway router with an Ethernet cable, then:
 
 ```
 pi@raspberrypi:~ $ ssh root@192.168.57.103
@@ -232,15 +251,18 @@ pi@raspberrypi:~ $ ssh root@192.168.57.103
 Add default route. I cannot add default route by using uci, so I eddited the following file manually.
 ```
 config route
-	option target '0.0.0.0'	
+	option target '0.0.0.0'
 	option netmask '0.0.0.0'
 	option interface 'wan'
 	option gateway '192.168.57.1'
 ```
+
+Reload the network config:
 ```
 root@OpenWrt:~# /etc/init.d/firewall reload
 ```
 
+Confirm that the router is
 ```
 root@OpenWrt:~# route
 Kernel IP routing table
@@ -257,6 +279,7 @@ PING 8.8.8.8 (8.8.8.8): 56 data bytes
 round-trip min/avg/max = 6.253/6.253/6.253 ms
 ```
 
+Install Python to allow Ansible to configure the router remotely:
 ```
 root@OpenWrt:~# opkg update
 root@OpenWrt:~# opkg install python-light
@@ -266,6 +289,10 @@ root@OpenWrt:~# opkg install python-pip
 
 Now, it is ready to use Ansible to configure the router. However, the kernel is too new, so some of packages I want are not avaiable on the public opkg repo...
 
+#### TODO
+
+- Build OpenWrt with python pre-installed
+- Kernel version: chaos calmer 15.05  
 
 ## vCPE with USB over IP
 
@@ -286,5 +313,3 @@ Refer to these pages:
 - https://wiki.openwrt.org/doc/howto/usb.iptunnel
 
 The "vCPE" approach seems clever than managing device drivers on remote routers (remote CPEs), but I am concerned with its latency.
-
-
