@@ -241,7 +241,9 @@ I run Node-RED on my RasPi 3:
 
 I am currently developing flows using the blocks: [node-red flows](./node-red).
 
-Note: Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys. I am not so interested in Node-RED.
+Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys. We definitely need sort of "Node-RED for networking".
+
+So I use Ansible for the time being for configuring network. But I also want some graphical and dynamic tool like Node-RED. In that sense, this tool is very interesting: [OpenNaEF](http://www.opennaef.io/).
 
 ## Ansible
 
