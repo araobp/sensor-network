@@ -19,7 +19,7 @@ Next, I pursue harmony of UART and IP, since UART is a standard interface for th
 
 GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces. I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB), so that I can realize IoT building blocks for very-easy IoT system integration. I use [Microchip PIC16F1 series 8bit MCU](www.microchip.com/design-centers/8-bit) to develop the gateway, since they are very cheap and small.
 
-Last year I saw eight-years-old kids working on robot programming with [LEGO Mindstorms](https://www.lego.com/en-gb/mindstorms). It was a bit surprising. I also had a chance to see [Microduino mCookie](https://www.microduino.cc/). They give me a hint. I also refer to [Grove](http://wiki.seeed.cc/Grove_Starter_Kit_Plus/).
+Last year I saw eight-years-old kids working on robot programming with [LEGO Mindstorms](https://www.lego.com/en-gb/mindstorms). It was a bit surprising. I also had a chance to see [Microduino mCookie](https://www.microduino.cc/). They give me a hint. I also refer to [GROVE](http://wiki.seeed.cc/Grove_Starter_Kit_Plus/),  [TINYDUINO](https://tinycircuits.com/collections/all) and [KOOV](https://www.koov.io/).
 
 ### White box switches
 
