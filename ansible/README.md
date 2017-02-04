@@ -6,6 +6,11 @@ I use Ansible for configuring RasPi and OpenWrt routers.
 
 Once I developed an Ansible-like took [neutron-lan](https://github.com/araobp/neutron-lan), but I don't use it this time.
 
+## Ansible modules for OpenWrt
+
+- [opkg](http://docs.ansible.com/ansible/opkg_module.html)
+- [command](http://docs.ansible.com/ansible/command_module.html)
+
 ## SSH key generation
 
 The normal key generation process is as follows:
