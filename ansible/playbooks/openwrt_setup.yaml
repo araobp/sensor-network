@@ -26,3 +26,14 @@
       - mosquitto
       - mosquitto-client
       - libmosquitto
+#     - kmod-usb-ohci
+#     - kmod-usbip
+#     - kmod-usbip-server
+#     - kmod-usbip-client
+#     - usbip
+#     - usbip-client
+#     - http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/packages/usbip_1.1.1-2_ar71xx.ipk
+#     - http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/packages/usbip-client_1.1.1-2_ar71xx.ipk
+#     - http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/packages/usbip-server_1.1.1-2_ar71xx.ipk
+      - udev
+      - usbutils
