@@ -4,14 +4,16 @@
   become: True 
   vars:
     default_gw: 192.168.57.1
+    dns_server: 8.8.8.8
   tasks:
   - name: add route to default gw permanently 
-#    command: route add default gw {{ default_gw }}
     command: "{{item}}"
     with_items:
       - uci set network.wan.gateway={{default_gw}}
+      - uci add_list dhcp.@dnsmasq[-1].server={{dns_server}}
       - uci commit
       - /etc/init.d/network reload
+      - /etc/init.d/dnsmasq reload
     failed_when: False
   - name: install packages 
     opkg: name={{item}} state=present update_cache=yes
