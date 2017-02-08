@@ -1,3 +1,4 @@
+
 [raspi]
 192.168.8.122 ansible_user=pi
 
