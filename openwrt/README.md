@@ -291,8 +291,11 @@ Now, it is ready to use Ansible to configure the router. However, the kernel is 
 
 #### TODO
 
-- Build OpenWrt with python pre-installed
-- Kernel version: chaos calmer 15.05  
+- Build OpenWrt with python pre-installed (Ansible requires Python)
+- Kernel version: Chaos Calmer 15.05
+- node.js: https://wiki.openwrt.org/doc/howto/nodejs
+- usb over ip
+- Support kernel namespaces (incl. netns to separate a sensor network from a production network)
 
 ## vCPE with USB over IP
 
