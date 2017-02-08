@@ -41,7 +41,7 @@ I initiate ansible-playbook in this folder to configure the routers.
 - [.ansinle.cfg](./.ansible.cfg)
 - [inventory](./inventory)
 - [playbooks](./playbooks)
-- [shell script for setting up OpenWrt routers](./openwrt_setup.sh)
+- [shell script for setting up testbed LAN](./testbed_setup.sh)
 
 
 ## Ping test

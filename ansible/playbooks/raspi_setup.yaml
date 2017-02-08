@@ -1,0 +1,16 @@
+# Playbook for Raspberry Pi 3 
+- name: setup RasPi
+  hosts: raspi 
+  become: False 
+  vars:
+    eth0_addr: 192.168.57.1/24
+    eth0_subnet: 192.168.57.0/24
+  tasks:
+  - name: setup RasPi 
+    command: "{{item}}"
+    with_items:
+     - sudo sysctl -w net.ipv4.ip_forward=1
+     - sudo ip addr add {{eth0_addr}} dev eth0
+     - sudo iptables -t nat -I POSTROUTING -s {{eth0_subnet}} -j MASQUERADE
+     - sudo iptables -I FORWARD -j ACCEPT
+    failed_when: False
