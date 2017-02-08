@@ -6,6 +6,10 @@ I use Ansible for configuring RasPi and OpenWrt routers.
 
 Once I developed an Ansible-like took [neutron-lan](https://github.com/araobp/neutron-lan), but I don't use it this time.
 
+## Testbed LAN
+
+![lan](https://docs.google.com/drawings/d/1zNuTBCUMr9O2U8A4oZ5Yg9mgKPmDFFEwM2ZbsiDVOCs/pub?w=960&h=720)
+
 ## Ansible modules for OpenWrt
 
 - [opkg](http://docs.ansible.com/ansible/opkg_module.html)

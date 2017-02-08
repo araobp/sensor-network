@@ -313,3 +313,10 @@ Refer to these pages:
 - https://wiki.openwrt.org/doc/howto/usb.iptunnel
 
 The "vCPE" approach seems clever than managing device drivers on remote routers (remote CPEs), but I am concerned with its latency.
+
+## USB over IP
+
+Reference:
+- https://www.patthoyts.tk/blog/remoting-usb-devices-with-linux-and-openwrt.html
+- https://wiki.openwrt.org/doc/howto/usb.iptunnel
+- http://d.hatena.ne.jp/indication/20111114/1321289195
