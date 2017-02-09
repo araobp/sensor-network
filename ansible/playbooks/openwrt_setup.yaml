@@ -5,6 +5,8 @@
   vars:
     default_gw: 192.168.57.1
     dns_server: 8.8.8.8
+    mqtt_server: 192.168.57.1
+    mqtt_port: 1883
   tasks:
   - name: add route to default gw permanently 
     command: "{{item}}"
@@ -39,3 +41,14 @@
 #     - http://downloads.openwrt.org/attitude_adjustment/12.09/ar71xx/generic/packages/usbip-server_1.1.1-2_ar71xx.ipk
       - udev
       - usbutils
+  - name: add pip modules 
+    command: pip install "{{item}}"
+    with_items:
+      - paho-mqtt
+      - pyyaml
+      - pyserial
+  - name: copy agent config 
+    template: src=agent/agent.j2 dest=/root/agent.yaml
+  - name: copy agent
+    copy: src=agent/agent.py dest=/root/agent.py owner=root mode=0700 
+
