@@ -1,6 +1,6 @@
 # Ansible
 
-I use Ansible for configuring RasPi and OpenWrt routers.
+I am examining if Ansible is useful for configuring RasPi, OpenWrt routers and IoT devices.
 
 (I never use NetConf)
 
@@ -38,7 +38,7 @@ $ cat .ssh/id_rsa.pub | ssh root@192.168.57.101 'cat > /etc/dropbear/authorized_
 
 I initiate ansible-playbook in this folder to configure the routers.
 
-- [.ansinle.cfg](./.ansible.cfg)
+- [ansinle.cfg](./ansible.cfg)
 - [inventory](./inventory)
 - [playbooks](./playbooks)
 - [shell script for setting up testbed LAN](./testbed_setup.sh)
@@ -77,3 +77,9 @@ The below is the output of ./openwrt_setup.sh:
 ```
 
 => [sample log](./20170204.md)
+
+## Next step
+
+Modify the firmware for IoT blocks (PIC16F1 8-bit MCU) to support full config automation via UART in a plug&play manner with Ansible.
+
+
