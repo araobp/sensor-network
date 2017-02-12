@@ -1,4 +1,5 @@
+cpe: openwrt1 
+location: okinawa
 mqtt:
- host: localhost 
- port: 1883 
-
+  host: localhost 
+  port: 1883 
