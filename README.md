@@ -266,40 +266,6 @@ If you want to learn IoT by doing, you had better have hamster. There are a lot 
 
 I buy hamster not for animal experimentation.
 
-## TTY setting
-
-TTY (Teletypewriter) is ancient and always bothersome.
-
-- TTY initialization
-
-  Before starting Node-RED, disable "\n to \r\n" translation:
-```
-$ stty -F /dev/serial/by-id/<device_id> -onlcr
-```
-
-- Recovering from broken TTY
-
-  Try this:
-```
-$ echo ^c^o > /dev/serial/by-id/<device_id>
-```
-
-- Showing the tty settings
-
-  ```
-$ stty -F /dev/serial/by-id/<device_id> -a
-speed 9600 baud; rows 0; columns 0; line = 0;
-intr = ^C; quit = ^\; erase = ^?; kill = ^U; eof = ^D; eol = <undef>;
-eol2 = <undef>; swtch = <undef>; start = ^Q; stop = ^S; susp = ^Z; rprnt = ^R;
-werase = ^W; lnext = ^V; flush = ^O; min = 1; time = 0;
--parenb -parodd -cmspar cs8 hupcl -cstopb cread clocal -crtscts
--ignbrk -brkint ignpar -parmrk -inpck -istrip -inlcr -igncr icrnl -ixon -ixoff
--iuclc -ixany -imaxbel -iutf8
--opost -olcuc -ocrnl -onlcr -onocr -onlret -ofill -ofdel nl0 cr0 tab0 bs0 vt0 ff0
--isig -icanon -iexten -echo -echoe -echok -echonl -noflsh -xcase -tostop -echoprt
--echoctl -echoke
-```
-
 ## Future work
 
 #### TTL serial JPEG camera
