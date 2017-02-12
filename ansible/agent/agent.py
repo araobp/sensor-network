@@ -18,6 +18,7 @@ if __name__ == '__main__':
     cpe = conf['cpe']
     location = conf['location']
     mqtt = conf['mqtt']
+    topic = mqtt['topic']
 
     client = client.Client()
     client.connect(host=mqtt['host'], port=mqtt['port'], keepalive=60)
@@ -39,5 +40,5 @@ if __name__ == '__main__':
             ser = dev[2]
             raw_data = ser.readline()[:-1]
             data = json.dumps(dict(cpe=cpe, location=location, usb=usb, data=raw_data))
-            client.publish(TOPIC, data)
+            client.publish(topic, data)
 
