@@ -165,7 +165,7 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 
 ## Sensor/actuator boards
 
-I have made these [boards](./boards/README.md) so far. They are connected to the base board.
+I have made these [boards](./doc/BOARD.md) so far. They are connected to the base board.
 
 ## Plug&play protocol
 

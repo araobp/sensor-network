@@ -2,6 +2,8 @@
 
 #### Acceleration sensor board (3.3V/5V)
 
+![accelerometer](./accelerometer.png)
+
 Board
 ```
 y
