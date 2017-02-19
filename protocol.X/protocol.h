@@ -13,6 +13,8 @@ extern "C" {
     #define SAV "SAV"
     #define STA "STA"
     #define STP "STP"
+    #define SET "SET"
+    #define GET "GET"
 
     /*
      * Functions

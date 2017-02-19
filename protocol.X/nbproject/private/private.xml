@@ -5,7 +5,9 @@
         <group>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/protocol.X/protocol.h</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/protocol.X/main.c</file>
-            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/protocol.X/mcc_generated_files/eusart.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/protocol.X/protocol.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/protocol.X/nbproject/Makefile-default.mk</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/protocol.X/nbproject/Makefile-impl.mk</file>
         </group>
     </open-files>
 </project-private>
