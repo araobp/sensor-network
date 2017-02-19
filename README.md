@@ -231,9 +231,12 @@ I like playing the piano, and I think of developing Internet of Pianos (IoP) wit
 
 MIDI is also a control protocol for projection mapping. In the IoT world, [Firmata](https://github.com/firmata/protocol) is based on MIDI.
 
-## Working with Juputer
+## Working with Juputer/IPython
 
-- [Actual measurement with the acceleration sensor board on a bus](./jupyter/bus.ipynb)
+I connected the acceleration sensor block to my laptop PC on which Node-RED was running. Then I performed actual measurement with the sensor on a bus. All the data was saved on MongoDB via Node-RED, and I dumped it on a file in CSV format.
+
+- [Data](./jupyter/accelerometer.csv)
+- [Jupyter notebook](./jupyter/bus.ipynb)
 
 ## Working with Node-RED
 
