@@ -231,7 +231,11 @@ I like playing the piano, and I think of developing Internet of Pianos (IoP) wit
 
 MIDI is also a control protocol for projection mapping. In the IoT world, [Firmata](https://github.com/firmata/protocol) is based on MIDI.
 
-## Node-RED for rapid IoT prototyping
+## Working with Juputer
+
+- [Actual measurement with the acceleration sensor board on a bus](./jupyter/bus.ipynb)
+
+## Working with Node-RED
 
 Node-RED is thought of as a good tool for rapid prototyping in IoT communities.
 
