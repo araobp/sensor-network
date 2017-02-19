@@ -191,6 +191,10 @@ I connected the acceleration sensor block to my laptop PC on which Node-RED was 
 - [Data](./jupyter/accelerometer.csv)
 - [Jupyter notebook](./jupyter/bus.ipynb)
 
+I notice that Physics is in the heart of IoT:
+- F = ma
+- v = v0 + at
+
 ## Working with Node-RED
 
 Node-RED is thought of as a good tool for rapid prototyping in IoT communities.
