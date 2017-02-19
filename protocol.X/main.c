@@ -1,45 +1,32 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
 #include <stdlib.h>
-#include <string.h>
 
-#define DEVICE_ID "test0"
+#define DEVICE_ID "sensor1"
+
+const char *device_id = DEVICE_ID;
+
+void start_handler(void) {
+    printf("start handler called\n");
+}
+
+void stop_handler(void) {
+    printf("stop handler called\n");
+}
+
+void set_handler(uint8_t value) {
+    printf("set handler called, value = %d\n", value);
+}
 
 void main(void)
 {
     SYSTEM_Initialize();
-
-    uint8_t c;
-    uint8_t cnt = 0;
-    uint8_t buf[16];
-    uint8_t interval;
-    uint8_t setting;
-
+    
+    PROTOCOL_Initialize(device_id, start_handler, stop_handler, set_handler);
+    
     while (1)
     {
-        do {
-            c = EUSART_Read();
-            buf[cnt++] = c;
-            if (c == '\n') {
-                buf[cnt] = '\0';
-                cnt = 0;
-                
-                if (!strncmp(WHO, buf, 3)) {
-                    printf("%s\n", DEVICE_ID);
-                } else if (!strncmp(INT, buf, 3)) {
-                    interval = atoi(&buf[4]);
-                    DATAEE_WriteByte(0, interval);
-                } else if (!strncmp(SAV, buf ,3)) {
-                    DATAEE_WriteByte(0, setting);
-                } else if (!strncmp(STA, buf, 3)) {
-                    // kick
-                } else if (!strncmp(STP, buf, 3)) {
-                    // kick
-                } else {
-                    setting = atoi(buf);
-                    // kick
-                }
-            }
-        } while (EUSART_DataReady);
+        PROTOCOL_Read();
     }
 }
+

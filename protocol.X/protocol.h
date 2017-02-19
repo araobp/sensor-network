@@ -4,16 +4,22 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+   
+    /*
+     * Commands
+     */
+    #define WHO "WHO"
+    #define INT "INT"
+    #define SAV "SAV"
+    #define STA "STA"
+    #define STP "STP"
 
-/*
- * Commands
- */
-#define WHO "WHO"
-#define INT "INT"
-#define SAV "SAV"
-#define STA "STA"
-#define STP "STP"
-
+    /*
+     * Functions
+     */
+    void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);
+    void PROTOCOL_Read();
+    
 #ifdef	__cplusplus
 }
 #endif
