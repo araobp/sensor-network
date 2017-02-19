@@ -184,6 +184,31 @@ For example, hub-and-spoke topo:
                   +----+
 ```
 
+## Working with Juputer/IPython
+
+I connected the acceleration sensor block to my laptop PC on which Node-RED was running. Then I performed actual measurement with the sensor on a bus. All the data was saved on MongoDB via Node-RED, and I dumped it on a file in CSV format.
+
+- [Data](./jupyter/accelerometer.csv)
+- [Jupyter notebook](./jupyter/bus.ipynb)
+
+## Working with Node-RED
+
+Node-RED is thought of as a good tool for rapid prototyping in IoT communities.
+
+All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
+
+I run Node-RED on my RasPi 3:
+
+![node-red-1](./doc/node-red-1.png)
+
+![node-red-2](./doc/node-red-2.png)
+
+I am currently developing flows using the blocks: [node-red flows](./node-red).
+
+Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys. We definitely need sort of "Node-RED for networking".
+
+So I use Ansible for the time being for configuring network. But I also want some graphical and dynamic tool like Node-RED. In that sense, this tool is very interesting: [OpenNaEF](http://www.opennaef.io/).
+
 ## Using the blocks with UNIX pipe
 
 It is pretty easy!
@@ -230,31 +255,6 @@ I like playing the piano, and I think of developing Internet of Pianos (IoP) wit
 ![toy6](./doc/toy6.png)
 
 MIDI is also a control protocol for projection mapping. In the IoT world, [Firmata](https://github.com/firmata/protocol) is based on MIDI.
-
-## Working with Juputer/IPython
-
-I connected the acceleration sensor block to my laptop PC on which Node-RED was running. Then I performed actual measurement with the sensor on a bus. All the data was saved on MongoDB via Node-RED, and I dumped it on a file in CSV format.
-
-- [Data](./jupyter/accelerometer.csv)
-- [Jupyter notebook](./jupyter/bus.ipynb)
-
-## Working with Node-RED
-
-Node-RED is thought of as a good tool for rapid prototyping in IoT communities.
-
-All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
-
-I run Node-RED on my RasPi 3:
-
-![node-red-1](./doc/node-red-1.png)
-
-![node-red-2](./doc/node-red-2.png)
-
-I am currently developing flows using the blocks: [node-red flows](./node-red).
-
-Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys. We definitely need sort of "Node-RED for networking".
-
-So I use Ansible for the time being for configuring network. But I also want some graphical and dynamic tool like Node-RED. In that sense, this tool is very interesting: [OpenNaEF](http://www.opennaef.io/).
 
 ## Ansible
 
