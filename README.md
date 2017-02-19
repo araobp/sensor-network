@@ -167,6 +167,10 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 
 I have made these [boards](./boards/README.md) so far. They are connected to the base board.
 
+## Plug&play protocol
+
+[PLUG AND PLAY PROTOCOL](./doc/PROTOCOL.md)
+
 ## Networking with the blocks
 
 I plan to develop "UART router" and "routing protocol over UART" supporting various networking topology.

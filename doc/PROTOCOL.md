@@ -33,3 +33,15 @@ The number is saved in PIC'S EEPROM.
    PIC                GW
     |<------STP--------|
 ```
+
+## SET (set the new setting to the device and also save the new setting onto EEPRON
+```
+   PIC                GW
+    |<----SET:<num>----|
+```
+
+## GET (return the current setting)
+```
+    PIC                GW
+     |<------GET--------|
+```
