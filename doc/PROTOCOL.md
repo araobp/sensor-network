@@ -14,7 +14,7 @@
     |<------SAV--------|
 ```
 
-The number is saved in PIC'S EEPROM.
+The current setting is saved in PIC'S EEPROM.
 
 ## STA (start sending data)
 ```

@@ -14,13 +14,7 @@ y
            o Vdd (2.5V - 5.25V)
 ```
 
-Output example
-```
-492,512,715
-493,513,715
-492,513,716
-     :
-```
+[Output example](https://github.com/araobp/blocks/blob/master/jupyter/accelerometer.csv)
 
 UART
 ```
