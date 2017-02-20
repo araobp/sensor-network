@@ -11,13 +11,13 @@ void (*PROTOCOL_Set_Handler)(uint8_t value) = 0;
 uint8_t c;
 uint8_t cnt = 0;
 uint8_t buf[16];
-uint8_t interval;
 uint8_t value;
 const char *device_id_;
 
 // initialization
 void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler) {
     device_id_ = device_id;
+    printf("%s\n", device_id);
     PROTOCOL_Start_Handler = start_handler;
     PROTOCOL_Stop_Handler = stop_handler;
     PROTOCOL_Set_Handler = set_handler;
@@ -33,18 +33,16 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
  * Call this function in a loop
  */
 void PROTOCOL_Read() {
-    do {
+    if (EUSART_DataReady) {
         c = EUSART_Read();
         buf[cnt++] = c;
         if (c == '\n') {
             buf[cnt] = '\0';
             cnt = 0;
+            //printf("%s\n", buf);
 
             if (!strncmp(WHO, buf, 3)) {  // who are you?
                 printf("%s\n", device_id_);
-            } else if (!strncmp(INT, buf, 3)) {  // set interval
-                interval = atoi(&buf[4]);
-                DATAEE_WriteByte(0, interval);
             } else if (!strncmp(SAV, buf ,3)) {  // save the current setting
                 DATAEE_WriteByte(0, value);
             } else if (!strncmp(STA, buf, 3)) {  // start measurement
@@ -54,10 +52,9 @@ void PROTOCOL_Read() {
             } else if (!strncmp(SET, buf, 3)) {  // set value
                 value = atoi(&buf[4]);
                 PROTOCOL_Set_Handler(value);
-                DATAEE_WriteByte(0, value);
             } else if (!strncmp(GET, buf, 3)) {  // get value
                 printf("VAL:%d\n", value);
             }
         }
-    } while (EUSART_DataReady);
+    };
 }

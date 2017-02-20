@@ -1,21 +1,23 @@
 /**
-  @Generated MPLAB(c) Code Configurator Header File
+  Generated Interrupt Manager Source File
 
   @Company:
     Microchip Technology Inc.
 
   @File Name:
-    mcc.h
+    interrupt_manager.c
 
   @Summary:
-    This is the mcc.h file generated using MPLAB(c) Code Configurator
+    This is the Interrupt Manager file generated using MPLAB(c) Code Configurator
 
   @Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
+    This header file provides implementations for global interrupt handling.
+    For individual peripheral handlers please see the peripheral driver for
+    all modules selected in the GUI.
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15
         Device            :  PIC16F1825
-        Version           :  1.02
+        Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
@@ -43,61 +45,29 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
-#include <xc.h>
-#include "pin_manager.h"
-#include <stdint.h>
-#include <stdbool.h>
 #include "interrupt_manager.h"
-#include "memory.h"
-#include "eusart.h"
-#include "tmr0.h"
+#include "mcc.h"
 
-#define _XTAL_FREQ  500000
-
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Initializes the device to the default states configured in the
- *                  MCC GUI
- * @Example
-    SYSTEM_Initialize(void);
- */
-void SYSTEM_Initialize(void);
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Initializes the oscillator to the default states configured in the
- *                  MCC GUI
- * @Example
-    OSCILLATOR_Initialize(void);
- */
-void OSCILLATOR_Initialize(void);
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Initializes the WDT module to the default states configured in the
- *                  MCC GUI
- * @Example
-    WDT_Initialize(void);
- */
-void WDT_Initialize(void);
-
-
-#endif	/* MCC_H */
+void interrupt INTERRUPT_InterruptManager (void)
+{
+    // interrupt handler
+    if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+    {
+        TMR0_ISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
+    {
+        EUSART_Transmit_ISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE1bits.RCIE == 1 && PIR1bits.RCIF == 1)
+    {
+        EUSART_Receive_ISR();
+    }
+    else
+    {
+        //Unhandled Interrupt
+    }
+}
 /**
  End of File
 */

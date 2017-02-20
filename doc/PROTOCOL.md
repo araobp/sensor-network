@@ -8,12 +8,6 @@
     |---<device_id>--->|
 ```
 
-## INT (set interval) for sensors
-```
-   PIC                GW
-    |<----INT:<num>----|
-```
-
 ## SAV (save the current setting onto EEPROM)
 ```
    PIC                GW
@@ -34,7 +28,7 @@ The number is saved in PIC'S EEPROM.
     |<------STP--------|
 ```
 
-## SET (set the new setting to the device and also save the new setting onto EEPRON
+## SET (set the new setting to the device)
 ```
    PIC                GW
     |<----SET:<num>----|
