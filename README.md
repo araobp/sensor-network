@@ -198,21 +198,13 @@ I notice that Physics is in the heart of IoT:
 
 ## Working with Node-RED
 
-Node-RED is thought of as a good tool for rapid prototyping in IoT communities.
+I have heavily used Node-RED in the path month, and I think I would use Node-RED just for testing my sensors quickly.
 
 All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
 
-I run Node-RED on my RasPi 3:
-
-![node-red-1](./doc/node-red-1.png)
-
-![node-red-2](./doc/node-red-2.png)
-
-I am currently developing flows using the blocks: [node-red flows](./node-red).
-
-Node-RED is not aware of underlying networking layers, ignoring IP subnets, VLANs, networking security etc. The tool is for IT guys, not for networking guys. We definitely need sort of "Node-RED for networking".
-
-So I use Ansible for the time being for configuring network. But I also want some graphical and dynamic tool like Node-RED. In that sense, this tool is very interesting: [OpenNaEF](http://www.opennaef.io/).
+I have run Node-RED on my RasPi 3:
+- [node-red-1](./doc/node-red-1.png)
+- [node-red-2](./doc/node-red-2.png)
 
 ## Using the blocks with UNIX pipe
 
