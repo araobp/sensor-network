@@ -226,14 +226,6 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 
 See this [usage](./doc/USAGE.md) page.
 
-## Working with Python Tornado and Apache Kafka
-
-I would use Python over Node.js/JavaScript.
-
-- include sys.stdin.readline in a Tornado event loop
-- redirect cat /dev/ttyUSB0 to a python process via stdin
-- try this: https://github.com/wglass/kiel
-
 ## Using the blocks with OpenWrt
 
 ==> [OpenWrt](./openwrt)
