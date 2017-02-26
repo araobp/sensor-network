@@ -88,14 +88,14 @@ It returns device_id.
                |---ID------------->|
 ```
 
-#### RED (read data)
+#### DAT (read data)
 
 It returns data in ASCII code: <data_0><data_1>...<data_n>'\n'
 
 ```
   PIC(1)      PIC(2)              PIC(GW)
    |<------READ(1:3~)--------------|
-   |-------ID--------------------->|
+   |-------DATA------------------->|
                |<--READ(2:3~)------|
-               |---ID------------->|
+               |---DATA----------->|
 ```
