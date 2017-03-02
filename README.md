@@ -34,7 +34,7 @@ I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
 
 All the blocks support USB/UART interface. I define two types of bridges to connect the blocks to the Internet.
 
-I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB*" device. On the other hand, Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually), then recognizes it as COM* device. In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
+I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device. On the other hand, Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually), then recognizes it as COM* device. In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
 
 IoT blocks with FTDI's USB-UART bridge(*1):
 ```
