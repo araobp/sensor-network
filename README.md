@@ -1,5 +1,7 @@
 # Blocks: pretty-easy IoT with PIC16F1
 
+![accelrerometer](./doc/accelerometer.png)
+
 ## Background and motivation
 
 GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces, so I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
@@ -8,7 +10,7 @@ I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are v
 
 ## IoT building blocks
 
-IoT is Internet of Things. Sensors/actuators communicate with other sensors/actuators or with human being. IoT is not a new concept at all. IoT is about opening up vertically-integrated legacy systems with IP (internet Protocol), as once I worked on Telephony and witnessed that plain-old Telephony systems dissapeared.
+IoT is Internet of Things. Sensors/actuators communicate with other sensors/actuators or with human being.
 
 Most of sensors/actuators require some sort of gateway to be able to speak IP. They call it IoT gateway.
 
@@ -59,8 +61,6 @@ IoT blocks with MQTT-UART(or "UART over IP"?) bridge:
 
 The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, Sigfox.
 
-(*) Note: I have not decided if MQTT is the right way or not. I have also studying other possibilities: "UART over IP", "USB over IP" or "Firmata". For WiFI, I use ESP8266. This document is very interesting: http://ww1.microchip.com/downloads/en/DeviceDoc/50002230B.pdf
-
 ## PIC16F1 MCU models
 
 |Model     |# of pins |Characteristics                 |
@@ -106,8 +106,6 @@ The following is schematic of the base board prototype #2:
 The blocks may use I2C for inter-block communications.  In that case, the master needs to hide all the details of low-level communications from the user.
 
 ![pico_i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=480&h=283)
-
-I am also thinking of something like UART-hub instead of I2C.
 
 ## Firmware implementation
 
@@ -164,7 +162,9 @@ For example, hub-and-spoke topo:
                   +----+
 ```
 
-## Working with Juputer/IPython
+## Use cases
+
+#### Working with Juputer/IPython
 
 I connected the acceleration sensor block to my laptop PC on which Node-RED was running. Then I performed actual measurement with the sensor on a bus. All the data was saved on MongoDB via Node-RED, and I dumped it on a file in CSV format.
 
@@ -175,7 +175,7 @@ I notice that Physics is in the heart of IoT:
 - F = ma
 - v = v0 + at
 
-## Working with Node-RED
+#### Working with Node-RED
 
 I have heavily used Node-RED in the path month, and I think I would use Node-RED just for testing my sensors quickly.
 
@@ -185,7 +185,7 @@ I have run Node-RED on my RasPi 3:
 - [node-red-1](./doc/node-red-1.png)
 - [node-red-2](./doc/node-red-2.png)
 
-## Using the blocks with UNIX pipe
+#### Using the blocks with UNIX pipe
 
 It is pretty easy!
 
@@ -205,7 +205,7 @@ $ echo <command> > /dev/serial/by-id/<device_id>
 
 See this [usage](./doc/USAGE.md) page.
 
-## Using the blocks with OpenWrt
+#### Using the blocks with OpenWrt
 
 ==> [OpenWrt](./openwrt)
 
@@ -221,18 +221,13 @@ OpenWrt is free OS for IoT gateways as well as for WiFi routers.
 
 For example, I connect the acceleration sensor block to my router, then I think that it may work as a distributed earthquake sensing system.
 
-![toy3](./doc/toy3.png)
+#### Internet of Hamsters
 
-![toy4](./doc/toy4.png)
+If you want to learn IoT by doing, you had better have hamster. There are a lot of "things" you want to work on with IoT.
 
-![toy5](./doc/toy5.png)
+==> [HAMSTER.md](./doc/HAMSTER.md)
 
-I like playing the piano, and I think of developing Internet of Pianos (IoP) with MIDI and the router:
-![toy6](./doc/toy6.png)
-
-MIDI is also a control protocol for projection mapping. In the IoT world, [Firmata](https://github.com/firmata/protocol) is based on MIDI.
-
-## Ansible
+## Managing the system with Ansible
 
 ==> [Ansible](./ansible)
 
@@ -242,20 +237,3 @@ I am going to use Ansible to manage the system:
 - Node-RED or other applications
 
 I tried out Ansible in the past (three years ago). It was not a good tool, but it seems to me that a lot of improvements have been made since then. So I use Ansible this time.
-
-## Internet of Hamsters (IoH)
-
-If you want to learn IoT by doing, you had better have hamster. There are a lot of "things" you want to work on with IoT.
-
-==> [HAMSTER.md](./doc/HAMSTER.md)
-
-![hamster_wheel1](doc/hamster_wheel1.png)
-
-I buy hamster not for animal experimentation.
-
-## Future work
-
-#### TTL serial JPEG camera
-
-I want to develop a block supporting video with this TTL serial camera:
-http://akizukidenshi.com/catalog/g/gM-11506/
