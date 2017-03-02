@@ -4,7 +4,7 @@
 
 GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces, so I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
 
-I use [Microchip PIC16F1 series 8bit MCU](www.microchip.com/design-centers/8-bit) to develop the gateway, since they are very cheap and small.
+I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are very cheap and small.
 
 ## IoT building blocks
 
