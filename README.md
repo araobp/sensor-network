@@ -1,29 +1,10 @@
 # Blocks: pretty-easy IoT with PIC16F1
 
-I have made IoT wagon with sensors and actuators
-![blocks_with_raspi](./doc/toy1.png)
-
-I made IoT experiment in a hotel room, on a business trip to Okinawa (2017/2/2)
-![okinawa](./doc/okinawa.png)
-
-Then I have just configured three of my small routers with Ansible(2017/2/4)
-![openwrt_ansible](./doc/openwrt_ansible.png)
-
-=> [playbook log](./ansible/20170204.md)
-
-Next, I pursue harmony of UART and IP, since UART is a standard interface for things. Small routers are central to the harmony.
-
 ## Background and motivation
 
-### IoT building blocks of sensors/actuators
+GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces, so I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
 
-GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces. I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB), so that I can realize IoT building blocks for very-easy IoT system integration. I use [Microchip PIC16F1 series 8bit MCU](www.microchip.com/design-centers/8-bit) to develop the gateway, since they are very cheap and small.
-
-Last year I saw eight-years-old kids working on robot programming with [LEGO Mindstorms](https://www.lego.com/en-gb/mindstorms). It was a bit surprising. I also had a chance to see [Microduino mCookie](https://www.microduino.cc/). They give me a hint. I also refer to [GROVE](http://wiki.seeed.cc/Grove_Starter_Kit_Plus/),  [TINYDUINO](https://tinycircuits.com/collections/all) and [KOOV](https://www.koov.io/).
-
-### White box switches
-
-Although I have been very interested in "NOS for white box" such as [Cumulus Linux](https://cumulusnetworks.com/) since several years ago, I have never had a chance to touch it -- I am just a poor Sunday programmer. So I have been running [OpenWrt](https://openwrt.org/) on my cheap small routers at home... OpenWrt is a tiny-version of white box NOS. I recently came up with sort of "Software-Defined Networking for IoT" with the building blocks, OpenWrt and Ansible.
+I use [Microchip PIC16F1 series 8bit MCU](www.microchip.com/design-centers/8-bit) to develop the gateway, since they are very cheap and small.
 
 ## IoT building blocks
 
@@ -48,8 +29,6 @@ actuator      MCU     Comm. module    IoT gateway
 *2 UART
 ```
 I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
-
-![toy2](./doc/toy2.png)
 
 ## USB/UART (i.e., serial) as universal interface for IoT blocks
 
