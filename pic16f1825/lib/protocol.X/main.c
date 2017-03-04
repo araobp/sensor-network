@@ -2,10 +2,8 @@
 #include "protocol.h"
 #include <stdlib.h>
 
-#define DEVICE_ID "sensor1"
 #define __XTAL_FREQ 500000
-
-const char *device_id = DEVICE_ID;
+#define DEVICE_ID "sensor1"
 
 uint8_t value;
 uint8_t period_10;
@@ -52,10 +50,6 @@ void main(void)
     TMR0_Initialize();
     TMR0_SetInterruptHandler(tmr0_handler);
 
-    PROTOCOL_Initialize(device_id, start_handler, stop_handler, set_handler);
-
-    while (1)
-    {
-        PROTOCOL_Read();
-    }
+    PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
+    PROTOCOL_Loop();
 }

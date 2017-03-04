@@ -15,12 +15,12 @@ extern "C" {
     #define STP "STP"
     #define SET "SET"
     #define GET "GET"
-
+    
     /*
      * Functions
      */
     void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);
-    void PROTOCOL_Read();
+    void PROTOCOL_Loop();
     
 #ifdef	__cplusplus
 }

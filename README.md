@@ -139,7 +139,7 @@ I have made these [boards](./doc/BOARD.md) so far. They are connected to the bas
 ## Plug&play protocol
 
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
-- [Implementation](./protocol.X)
+- [Implementation](./pic16f1825/lib/protocol.X)
 
 ## Networking with the blocks
 
