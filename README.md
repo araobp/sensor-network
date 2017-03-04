@@ -141,6 +141,12 @@ I have made these [boards](./doc/BOARD.md) so far. They are connected to the bas
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
 - [Implementation](./pic16f1825/lib/protocol.X)
 
+#### Including it as a library
+
+- [Step1: include the protocol library in your project](./doc/mcc_usart3.png)
+- [Step2: exclude mcc generated eusart libraries from your project](./doc/mcc_usart2.png)
+- [Step3: enable eusart interrupts](./doc/mcc_usart.png)
+
 ## Networking with the blocks
 
 I plan to develop "UART router" and "routing protocol over UART" supporting various networking topology.
