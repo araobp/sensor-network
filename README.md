@@ -103,34 +103,26 @@ The following is schematic of the base board prototype #2:
 |J1        |Enable LED   |Disable LED |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
-The blocks may use I2C for inter-block communications.  In that case, the master needs to hide all the details of low-level communications from the user.
-
-![pico_i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=480&h=283)
-
 ## Firmware implementation
 
 Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
-
-#### PIC16F1455
-
-- [I2C-USB bridge]
 
 #### PIC16F1825
 
 - [5V: Just red LED & tactile switch (Omron B3J-1000 or small one)]
 - [5V: Solenoid (SparkFun ROB11015)]
-- [5V: Distance sensor block (HC-SR04)](./distance.X)
+- [5V: Distance sensor block (HC-SR04)](./pic16f1825/distance.X)
  - [pin assignment](./doc/distance_pin.png)
-- [5V: Acceleration sensor block （KXR94-2050)](./acceleration.X)
+- [5V: Acceleration sensor block （KXR94-2050)](./pic16f1825/acceleration.X)
  - [pin assignment](./doc/acceleration_pin.png)
-- [5V: Speed sensor block (A1324LUA-T)](./rotation.X)
+- [5V: Speed sensor block (A1324LUA-T)](./pic16f1825/rotation.X)
  - [pin assignment](./doc/rotation_pin.png)
 
 #### PIC16F1829
 
-- [3.3V: Orientation sensor block (HMC5883L and L3GD20)](./orientation.X)
+- [3.3V: Orientation sensor block (HMC5883L and L3GD20)](./pic16f1829/orientation.X)
  - [pin assignment](./doc/orientation_pin.png)
-- [5V: Servo motor actuator block (TowerPro sg90)](./servomotor.X)
+- [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1829/servomotor.X)
  - [pin assignment](./doc/servomotor_pin.png)
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
