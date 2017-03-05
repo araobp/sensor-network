@@ -6,11 +6,9 @@
 
 GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces, so I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
 
-I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are very cheap and small.
+I use [Microchip PIC16F1 series 8bit MCUs](http://www.microchip.com/design-centers/8-bit/pic-mcus) to develop the gateway instead of A\*duino, since they are very cheap and small.
 
 ## IoT building blocks
-
-IoT is Internet of Things. Sensors/actuators communicate with other sensors/actuators or with human being.
 
 Most of sensors/actuators require some sort of gateway to be able to speak IP. They call it IoT gateway.
 
@@ -36,9 +34,9 @@ I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
 
 All the blocks support USB/UART interface. I define two types of bridges to connect the blocks to the Internet.
 
-I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device. On the other hand, Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually), then recognizes it as COM* device. In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
+I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device. On the other hand, Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually), then recognizes it as COM\* device. In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
 
-IoT blocks with FTDI's USB-UART bridge(*1):
+IoT blocks with FTDI's USB-UART bridge(\*1):
 ```
                                    +-----+                      
 [sensor block 1]-UART-[*1]---USB---|     |                    (        )
@@ -55,7 +53,7 @@ IoT blocks with MQTT-UART(or "UART over IP"?) bridge:
                    MQTT-UART bridge
                       +-------+                      (        )
 [sensor block 3]-UART-|Comm.  |---wireless access---( Internet )
-                      |module |                      (      )            
+                      |module |                      (        )            
                       +-------+
 ```
 
@@ -63,14 +61,14 @@ The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, 
 
 ## PIC16F1 MCU models
 
-|Model     |# of pins |Characteristics                 |
-|----------|-----|--------------------------------|
+|Model                                                                      |# of pins |Characteristics            |
+|---------------------------------------------------------------------------|-----|--------------------------------|
 |[PIC16F1455](http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf)|14   |Built-in USB                    |
 |[PIC16F1459](http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf)|20   |Built-in USB                    |
-|[PIC16F1508](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
-|[PIC16F1509](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
-|[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Variety of Serial communications|
-|[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Variety of Serial communications|
+|[PIC16F1508](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)   |20   |CLCs                            |
+|[PIC16F1509](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)   |20   |CLCs                            |
+|[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)   |14   |Variety of Serial communications|
+|[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)   |20   |Variety of Serial communications|
 
 ## Communication modules
 
@@ -83,7 +81,7 @@ The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, 
 
 #### Base board prototype #2
 
-This prototype uses PIC16F1825. It costs around $3, much cheaper than A*duino, but it requires one hour for soldering components onto the universal board. I have made three boards so far (it means I spent three hours to make them).
+This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, but it requires one hour for soldering components onto the universal board. I have made five boards so far (it means I spent five hours to make them).
 
 ![prototype2](./doc/prototype2.jpg)
 
@@ -98,14 +96,14 @@ The following is schematic of the base board prototype #2:
 
 ![pico](https://docs.google.com/drawings/d/1PItJDNvJnGcRv9vkCc_wwkTdFGRrPGMQLLfpC9JUxE8/pub?w=680&h=400)
 
-|Jumper pin|on           |off         |
-|----------|-------------|------------|
-|J1        |Enable LED   |Disable LED |
+|Jumper pin|on                        |off                             |
+|----------|--------------------------|--------------------------------|
+|J1        |Enable LED                |Disable LED                     |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
 ## Firmware implementation
 
-Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
+Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, timers etc.
 
 #### PIC16F1825
 
@@ -136,7 +134,9 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 
 I have made these [boards](./doc/BOARD.md) so far. They are connected to the base board.
 
-## Plug&play protocol
+## Plug&Play protocol
+
+I have developed Plug&Play protocol for IoT gateway to auto-detect device IDs of those blocks, and also to configure them via UART.
 
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
 - [Implementation](./pic16f1825/lib/protocol.X)
@@ -148,24 +148,21 @@ I have made these [boards](./doc/BOARD.md) so far. They are connected to the bas
 - [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
 - [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
 
-## Networking with the blocks
-
-I plan to develop "UART router" and "routing protocol over UART" supporting various networking topology.
-
-For example, hub-and-spoke topo:
-```             
-                  +----+
-[block]-- UART ---|    |
-                  |PIC |--- USB ---[host]
-[block]-- UART ---|    |
-                  +----+
-```
-
 ## Use cases
 
 #### Working with IoT gateway 
 
-This [IoT gateway implementation](./agent) automatically detects sensor devices attached to the box, and publish data from the devices to MQTT server such as Mosquitto. 
+This [IoT gateway implementation](./agent) automatically detects sensor blocks attached to the box, and publish data from the blocks to MQTT server such as Mosquitto. 
+
+#### Working with Node-RED
+
+I have heavily used Node-RED in the path month, and I think I use Node-RED just for visualizing data from my sensor blocks quickly.
+
+All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
+
+I have run Node-RED on my RasPi 3:
+- [node-red-1](./doc/node-red-1.png)
+- [node-red-2](./doc/node-red-2.png)
 
 #### Working with Juputer/IPython
 
@@ -177,16 +174,6 @@ I connected the acceleration sensor block to my laptop PC on which Node-RED was 
 I notice that Physics is in the heart of IoT:
 - F = ma
 - v = v0 + at
-
-#### Working with Node-RED
-
-I have heavily used Node-RED in the path month, and I think I would use Node-RED just for testing my sensors quickly.
-
-All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
-
-I have run Node-RED on my RasPi 3:
-- [node-red-1](./doc/node-red-1.png)
-- [node-red-2](./doc/node-red-2.png)
 
 #### Using the blocks with UNIX pipe
 
@@ -224,12 +211,6 @@ OpenWrt is free OS for IoT gateways as well as for WiFi routers.
 
 For example, I connect the acceleration sensor block to my router, then I think that it may work as a distributed earthquake sensing system.
 
-#### Internet of Hamsters
-
-If you want to learn IoT by doing, you had better have hamster. There are a lot of "things" you want to work on with IoT.
-
-==> [HAMSTER.md](./doc/HAMSTER.md)
-
 ## Managing the system with Ansible
 
 ==> [Ansible](./ansible)
@@ -240,3 +221,9 @@ I am going to use Ansible to manage the system:
 - Node-RED or other applications
 
 I tried out Ansible in the past (three years ago). It was not a good tool, but it seems to me that a lot of improvements have been made since then. So I use Ansible this time.
+
+#### Internet of Hamsters
+
+If you want to learn IoT by doing, you had better have hamster. There are a lot of "things" you want to work on with IoT.
+
+==> [HAMSTER.md](./doc/HAMSTER.md)
