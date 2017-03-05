@@ -4,6 +4,24 @@
 
 The IoT gateway implementation (agent.py) uses [my original Plug&Play protocol](../doc/PROTOCOL.md)  to detect devices attached to the box (i.e., WinPC, RasPi or OpenWrt router) with USB cables.
 
+snippet:
+```
+    for ftdi in ftdi_list:
+        path = '/dev/serial/by-id/{}'.format(ftdi)
+        tty = os.path.realpath(path)  # symbolic link
+        ser = serial.Serial(tty)
+
+        # Protocol operation
+        ser.write('STP\n')
+        ser.write('WHO\n')
+        device_id = ser.readline()[:-1]
+        ser.write('STA\n')
+        print('device detected: {}'.format(device_id))
+
+        usb = tty.split('/')[2]
+        dev_list.append((device_id, ftdi, usb, ser))
+```
+
 ## Python is the best language for IoT gateway prototyping
 
 Although I have used Node-RED for testing the sensor devices I have developed so far, I do not think Node.js is not the right choice for prototyping IoT gateway because of the following reasons: 
