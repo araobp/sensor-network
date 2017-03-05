@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import paho.mqtt.client as client
-from time import sleep
+from time import sleep, time
 import yaml
 import serial
 import os
@@ -47,6 +47,12 @@ if __name__ == '__main__':
             ser = dev[3]
             if ser.inWaiting() > 0:
                 raw_data = ser.readline()[:-1]
-                data = json.dumps(dict(device_id=device_id, cpe=cpe, location=location, usb=usb, data=raw_data))
+                timestamp = '{0:.2f}'.format(time())
+                data = json.dumps(dict(timestamp=timestamp,
+                                        device_id=device_id,
+                                        cpe=cpe,
+                                        location=location,
+                                        usb=usb,
+                                        data=raw_data))
                 client.publish(topic, data)
 
