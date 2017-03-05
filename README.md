@@ -163,6 +163,10 @@ For example, hub-and-spoke topo:
 
 ## Use cases
 
+#### Working with IoT gateway 
+
+This [IoT gateway implementation](./agent) automatically detects sensor devices attached to the box, and publish data from the devices to MQTT server such as Mosquitto. 
+
 #### Working with Juputer/IPython
 
 I connected the acceleration sensor block to my laptop PC on which Node-RED was running. Then I performed actual measurement with the sensor on a bus. All the data was saved on MongoDB via Node-RED, and I dumped it on a file in CSV format.
