@@ -1,0 +1,6 @@
+cpe: raspi001 
+location: tokyo 
+mqtt:
+  host: localhost 
+  port: 1883 
+  topic: sensor
