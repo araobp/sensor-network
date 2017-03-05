@@ -4,7 +4,7 @@
 #include "protocol.h"
 
 #define _XTAL_FREQ 500000
-#define DEVICE_ID "hc-sr04"
+#define DEVICE_ID "HC-SR04"
 
 uint8_t c;
 uint8_t cnt;

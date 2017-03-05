@@ -143,9 +143,10 @@ I have made these [boards](./doc/BOARD.md) so far. They are connected to the bas
 
 #### Including it as a library
 
-- [Step1: include the protocol library in your project](./doc/mcc_eusart3.png)
-- [Step2: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
-- [Step3: enable eusart interrupts](./doc/mcc_eusart.png)
+- [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
+- [Step2: include the protocol library in your project](./doc/mcc_eusart3.png)
+- [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
+- [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
 
 ## Networking with the blocks
 
