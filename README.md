@@ -203,6 +203,8 @@ For example, I connect the acceleration sensor block to my router, then I think 
 
 #### Internet of Hamsters
 
+See this [video](https://youtu.be/PpgvDuwcBxU) on YouTube.
+
 ==> [HAMSTER.md](./doc/HAMSTER.md)
 
 ## Managing the system with Ansible
