@@ -12,8 +12,6 @@ I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are v
 
 ## IoT building blocks
 
-IoT is Internet of Things. Sensors/actuators communicate with other sensors/actuators or with human being.
-
 Most of sensors/actuators require some sort of gateway to be able to speak IP. They call it IoT gateway.
 
 I focus on opening up sensors/actuators in a LEGO-block manner. In this project, I develop "open" sensors/actuators following the architecture below:
@@ -38,7 +36,11 @@ I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
 
 All the blocks support USB/UART interface. I define two types of bridges to connect the blocks to the Internet.
 
-I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridge. Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device. On the other hand, Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually), then recognizes it as COM* device. In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
+I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support VCP (Virtual COM Port) so that Windows PC recognizes them as COM ports:
+
+- Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device.
+- Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
+- In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
 
 IoT blocks with FTDI's USB-UART bridge(*1):
 ```
@@ -85,7 +87,7 @@ The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, 
 
 #### Base board prototype #2
 
-This prototype uses PIC16F1825. It costs around $3, much cheaper than A*duino, but it requires one hour for soldering components onto the universal board. I have made three boards so far (it means I spent three hours to make them).
+This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, but it requires one hour for soldering components onto the universal board.
 
 ![prototype2](./doc/prototype2.jpg)
 
@@ -150,20 +152,11 @@ I have made these [boards](./doc/BOARD.md) so far. They are connected to the bas
 - [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
 - [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
 
-## Networking with the blocks
-
-I plan to develop "UART router" and "routing protocol over UART" supporting various networking topology.
-
-For example, hub-and-spoke topo:
-```             
-                  +----+
-[block]-- UART ---|    |
-                  |PIC |--- USB ---[host]
-[block]-- UART ---|    |
-                  +----+
-```
-
 ## Use cases
+
+#### Working with Python
+
+=> [IoT gateway implementation](./agent)
 
 #### Working with Juputer/IPython
 
@@ -172,27 +165,17 @@ I connected the acceleration sensor block to my laptop PC on which Node-RED was 
 - [Data](./jupyter/accelerometer.csv)
 - [Jupyter notebook](./jupyter/bus.ipynb)
 
-I notice that Physics is in the heart of IoT:
+I noticed that Physics is in the heart of IoT:
 - F = ma
 - v = v0 + at
 
 #### Working with Node-RED
 
-I have heavily used Node-RED in the path month, and I think I would use Node-RED just for testing my sensors quickly.
-
-All the blocks just use USB as an interface to IoT gateway, so it is pretty easy to integrate these blocks with Node-RED.
-
-I have run Node-RED on my RasPi 3:
+It is pretty easy to integrate these blocks with Node-RED. I have run Node-RED on my RasPi 3 as well as on Windows PC:
 - [node-red-1](./doc/node-red-1.png)
 - [node-red-2](./doc/node-red-2.png)
 
 #### Using the blocks with UNIX pipe
-
-It is pretty easy!
-
-Things are recognized as "tty devices" on UNIX/Linux or as "COM ports" on Windows.
-
-Linux also supports "/dev/serial/by-id" that assigns an unique name to each thing.
 
 - Reading data from a sensor and feeding it to other UNIX commands via a pipe:
 ```
@@ -204,8 +187,6 @@ $ cat /dev/serial/by-id/<device_id> | command 1 | command 2 ...
 $ echo <command> > /dev/serial/by-id/<device_id>
 ```
 
-See this [usage](./doc/USAGE.md) page.
-
 #### Using the blocks with OpenWrt
 
 ==> [OpenWrt](./openwrt)
@@ -216,15 +197,11 @@ The router is also equipped with one USB port, thus my router works as IoT gatew
 
 ![bhr-4grv](./doc/bhr-4grv.png)
 
-So I don't need expensive IoT gateway products (Intel ATOM-based or ARM-based ones). I don't even want RasPi in most of cases.
-
 OpenWrt is free OS for IoT gateways as well as for WiFi routers.
 
 For example, I connect the acceleration sensor block to my router, then I think that it may work as a distributed earthquake sensing system.
 
 #### Internet of Hamsters
-
-If you want to learn IoT by doing, you had better have hamster. There are a lot of "things" you want to work on with IoT.
 
 ==> [HAMSTER.md](./doc/HAMSTER.md)
 
@@ -232,9 +209,6 @@ If you want to learn IoT by doing, you had better have hamster. There are a lot 
 
 ==> [Ansible](./ansible)
 
-I am going to use Ansible to manage the system:
+I have been using Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
-- Node-RED or other applications
-
-I tried out Ansible in the past (three years ago). It was not a good tool, but it seems to me that a lot of improvements have been made since then. So I use Ansible this time.
