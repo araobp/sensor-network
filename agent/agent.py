@@ -8,7 +8,7 @@ import os
 import json
 
 if __name__ == '__main__':
-
+    
     f = open('./agent.yaml', 'r')
 
     conf = yaml.load(f)
@@ -47,12 +47,11 @@ if __name__ == '__main__':
             ser = dev[3]
             if ser.inWaiting() > 0:
                 raw_data = ser.readline()[:-1]
-                timestamp = '{0:.2f}'.format(time())
-                data = json.dumps(dict(timestamp=timestamp,
-                                        device_id=device_id,
-                                        cpe=cpe,
-                                        location=location,
-                                        usb=usb,
-                                        data=raw_data))
-                client.publish(topic, data)
+                data = dict(timestamp='{0:.2f}'.format(time()),
+                            device_id=device_id,
+                            cpe=cpe,
+                            location=location,
+                            usb=usb,
+                            data=raw_data)
+                client.publish(topic, json.dumps(data))
 
