@@ -205,7 +205,7 @@ For example, I connect the acceleration sensor block to my router, then I think 
 
 See this [video](https://youtu.be/PpgvDuwcBxU) on YouTube.
 
-==> [HAMSTER.md](./doc/HAMSTER.md)
+I used [this small magnet for healthcare](http://www.elekiban.com/products/).
 
 ## Managing the system with Ansible
 
