@@ -8,7 +8,7 @@ import os
 import json
 
 PERIOD = 0.01
-MAX = 100
+MAX = 1000
 
 if __name__ == '__main__':
     
@@ -63,7 +63,7 @@ if __name__ == '__main__':
                 client.publish(topic, json.dumps(data))
             else:
                 if cnt > MAX:
-                    ser.write('STA\n')
+                    client.publish('trush', 'HELLO')
                     cnt = 0
                 else:
                     cnt += 1
