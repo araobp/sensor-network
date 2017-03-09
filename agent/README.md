@@ -24,7 +24,7 @@ snippet:
 
 ## Python is the best language for IoT gateway prototyping
 
-Although I have used Node-RED for testing the sensor devices I have developed so far, I do not think Node.js is not the right choice for prototyping IoT gateway because of the following reasons: 
+Although I have used Node-RED for testing the sensor devices I have developed so far, I do not think Node.js is not the right choice for prototyping IoT gateway because of the following reasons:
 
 - RasPi's main lang is Python.
 - OpenWrt supports Python.
@@ -65,3 +65,7 @@ pi@raspberrypi:~/blocks/agent $ python client.py
 {"location": "tokyo", "device_id": "HC-SR04", "data": "53", "cpe": "raspi001", "usb": "ttyUSB1"}
 {"location": "tokyo", "device_id": "A1324LUA-T", "data": "1", "cpe": "raspi001", "usb": "ttyUSB0"}
 ```
+
+## Issues
+
+- Broken pipe: https://github.com/raspberrypi/linux/issues/1187
