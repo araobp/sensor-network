@@ -31,11 +31,11 @@ if __name__ == '__main__':
         path = '/dev/serial/by-id/{}'.format(ftdi)
         tty = os.path.realpath(path)  # symbolic link
         ser = serial.Serial(tty)
-        ser.reset_input_buffer()
-        ser.reset_output_buffer()
 
         # Protocol operation
         ser.write('STP\n')
+        ser.reset_input_buffer()
+        ser.reset_output_buffer()
         ser.write('WHO\n')
         device_id = ser.readline()[:-1]
         ser.write('STA\n')
