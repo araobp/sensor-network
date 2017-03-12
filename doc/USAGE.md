@@ -1,23 +1,9 @@
-TODO: this doc requires update
+## Sensor blocks (compliant to the Plug&Play protocol)
 
-## Distance
-
-#### Changing the measurement cycle
-
-```
-Block <-- "10\n" --- Host
-```
-"10\n" corresponds to 100msec, and the range is from 10 to 255 (i.e., 100msec to 2.5sec).
-
-The value is stored onto EEPROM.
-
-#### Distance data in centimeter
-
-```
-Block --- "35\n" -----> Host
-```
-
-## Orientation
+|Sensor      |Device ID   |Set range  |Meaning             | Set actual value     |Data          |
+|------------|------------|-----------|--------------------|----------------------|--------------|
+|Distance    |HC-SR4      |10 ~ 255   |Measurement period  |0.1sec ~ 2.55sec      |Distance in cm|
+|Rotation    |A1324LUA-T  |1 ~ 255    |Measurement period  |1sec ~ 255sec         |rpm           |
 
 ## Servomotor
 
