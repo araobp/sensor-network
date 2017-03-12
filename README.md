@@ -42,7 +42,7 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support VCP (Virt
 - Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
 - In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
 
-IoT blocks with FTDI's USB-UART bridge(*1):
+IoT blocks with FTDI's USB-UART bridge(\*1):
 ```
                                    +-----+                      
 [sensor block 1]-UART-[*1]---USB---|     |                    (        )
@@ -131,14 +131,16 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
 
+#### Usage
+
+I have made these [boards](./doc/BOARD.md) so far. They are connected to the base board.
+
+=> [USAGE](./doc/USAGE.md)
+
 ## Non-PIC blocks
 
 - [USB video with OpenCV](./camera)
 - [Text-to-Speech for Japanese]
-
-## Sensor/actuator boards
-
-I have made these [boards](./doc/BOARD.md) so far. They are connected to the base board.
 
 ## Plug&play protocol
 
