@@ -4,3 +4,7 @@ mqtt:
   host: localhost 
   port: 1883 
   topic: sensor
+settings:
+  A1324LUA-T:
+    - SET:60
+    - SAV

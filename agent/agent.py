@@ -19,6 +19,7 @@ if __name__ == '__main__':
     location = conf['location']
     mqtt = conf['mqtt']
     topic = mqtt['topic']
+    settings = conf['settings']
 
     client = client.Client()
     client.connect(host=mqtt['host'], port=mqtt['port'], keepalive=60)
@@ -38,6 +39,9 @@ if __name__ == '__main__':
         ser.reset_output_buffer()
         ser.write('WHO\n')
         device_id = ser.readline()[:-1]
+        if device_id in settings:
+            for cmd in settings[device_id]:
+                ser.write(cmd+'\n')
         ser.write('STA\n')
         print('device detected: {}'.format(device_id))
 
