@@ -11,6 +11,14 @@
 
 uint8_t running = 1;
 
+uint16_t sum = 0;
+static uint16_t cnt = 0;
+bool on = false;
+
+uint8_t tmr_cnt = 0;
+uint8_t period = 0;
+uint16_t sec_cnt = 0;
+
 void start_handler(void) {
     running = 1;
 }
@@ -19,16 +27,17 @@ void stop_handler(void) {
     running = 0;
 }
 
-static uint16_t cnt = 0;
-uint16_t sum_out = 0;
-bool on = false;
-uint8_t led_cnt = 0;
+void set_handler(uint8_t value) {
+    period = value;
+    sum = 0;
+    cnt = 0;
+    tmr_cnt = 0;
+    sec_cnt = 0;
+}
 
-void tmr0_handler(void) {
-    if (LATCbits.LATC3 == 1 && ++led_cnt >= 10) {
-        LATCbits.LATC3 = 0;
-    }
-
+void tmr0_handler(void) {  // 5msec timer
+    if (LATCbits.LATC3 == 1) LATCbits.LATC3 = 0;
+        
     if (running) {
         // Out
         ADC_SelectChannel(channel_AN6);
@@ -49,10 +58,22 @@ void tmr0_handler(void) {
                 cnt = 0;
                 on = false;
                 LATCbits.LATC3 = 1;
-                printf("1\n");
+                if (period == 0) {
+                    printf("1\n");
+                } else {
+                    ++sum;
+                }
             }
         }
-    //printf("%d %d %d\n", v, cnt, on);
+
+        if (++tmr_cnt >= 200) {  // 5msec * 200 = 1sec
+            tmr_cnt = 0;
+            if (period > 0 && ++sec_cnt >= period) {
+                printf("%d\n", sum);
+                sum = 0;
+                sec_cnt = 0;
+            }
+        }
     }
 }
 
@@ -68,6 +89,6 @@ void main(void)
     TMR0_SetInterruptHandler(tmr0_handler);
     
     EUSART_Initialize();
-    PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, 0);
+    PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
     PROTOCOL_Loop();
 }
