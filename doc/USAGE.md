@@ -1,9 +1,11 @@
 ## Sensor blocks (compliant to the Plug&Play protocol)
 
-|Sensor      |Device ID   |Set range  |Meaning             | Set actual value     |Data          |
-|------------|------------|-----------|--------------------|----------------------|--------------|
-|Distance    |HC-SR4      |10 ~ 255   |Measurement period  |0.1sec ~ 2.55sec      |Distance in cm|
-|Rotation    |A1324LUA-T  |1 ~ 255    |Measurement period  |1sec ~ 255sec         |rpm           |
+|Sensor      |Device ID   |Set range         |Meaning             | Set actual value     |Data          |
+|------------|------------|------------------|--------------------|----------------------|--------------|
+|Distance    |HC-SR4      |10 ~ 255          |Measurement period  |0.1sec ~ 2.55sec      |Distance in cm|
+|Rotation    |A1324LUA-T  |0(\*1) or 1 ~ 255 |Measurement period  |0 or 1sec ~ 255sec    |rpm           |
+
+(\*1) In case of "0", it outputs "1" at every revolution.
 
 ## Servomotor
 
