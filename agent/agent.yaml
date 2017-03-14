@@ -7,4 +7,6 @@ mqtt:
 settings:
   A1324LUA-T:
     - SET:60
-    - SAV
+  HC-SR4:
+    - SET:50
+
