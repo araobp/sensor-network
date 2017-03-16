@@ -9,16 +9,17 @@ import json
 
 PERIOD = 0.01
 MAX = 1000
+AGENT_RUNNING = 'agent'
 
-dev_list = []
-ser_list = {} 
+dev_list = {} 
 
 def on_message(client, userdata, message):
+    global dev_list
     topic = message.topic
     payload = message.payload
     print(topic)
     print(payload)
-    print(ser_list[topic])
+    print(dev_list[topic])
 
 if __name__ == '__main__':
     
@@ -57,8 +58,7 @@ if __name__ == '__main__':
         print('device detected: {}'.format(device_id))
 
         usb = tty.split('/')[2]
-        dev_list.append((device_id, ftdi, usb, ser))
-        ser_list[device_id] = ser
+        dev_list[device_id] = dict(ftdi=ftdi, usb=usb, ser=ser)
 
     client.loop_start()
 
@@ -66,10 +66,9 @@ if __name__ == '__main__':
 
     while True:
         sleep(PERIOD)
-        for dev in dev_list:
-            device_id = dev[0]
-            usb = dev[2]
-            ser = dev[3]
+        for device_id, dev in dev_list.iteritems():
+            usb = dev['usb']
+            ser = dev['ser']
             if ser.in_waiting > 0:
                 raw_data = ser.readline()[:-1]
                 data = dict(timestamp='{0:.2f}'.format(time()),
@@ -81,7 +80,7 @@ if __name__ == '__main__':
                 client.publish(topic, json.dumps(data))
             else:
                 if cnt > MAX:
-                    client.publish('trush', 'HELLO')
+                    client.publish(AGENT_RUNNING, 'agent running')
                     cnt = 0
                 else:
                     cnt += 1
