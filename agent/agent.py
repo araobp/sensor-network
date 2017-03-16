@@ -10,6 +10,16 @@ import json
 PERIOD = 0.01
 MAX = 1000
 
+dev_list = []
+ser_list = {} 
+
+def on_message(client, userdata, message):
+    topic = message.topic
+    payload = message.payload
+    print(topic)
+    print(payload)
+    print(ser_list[topic])
+
 if __name__ == '__main__':
     
     f = open('./agent.yaml', 'r')
@@ -23,11 +33,11 @@ if __name__ == '__main__':
 
     client = client.Client()
     client.connect(host=mqtt['host'], port=mqtt['port'], keepalive=60)
+    client.on_message = on_message
 
     # FTDI driver
     ftdi_list = os.listdir('/dev/serial/by-id')
 
-    dev_list = []
     for ftdi in ftdi_list:
         path = '/dev/serial/by-id/{}'.format(ftdi)
         tty = os.path.realpath(path)  # symbolic link
@@ -42,11 +52,15 @@ if __name__ == '__main__':
         if device_id in settings:
             for cmd in settings[device_id]:
                 ser.write(cmd+'\n')
+            client.subscribe(device_id)
         ser.write('STA\n')
         print('device detected: {}'.format(device_id))
 
         usb = tty.split('/')[2]
         dev_list.append((device_id, ftdi, usb, ser))
+        ser_list[device_id] = ser
+
+    client.loop_start()
 
     cnt = 0
 

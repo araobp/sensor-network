@@ -1,8 +1,5 @@
 # IoT gateway implementation
 
-- [python version](./python)
-- [golang version](./go)
-
 ## Plug&Play protocol support
 
 The IoT gateway implementation (agent.py) uses [my original Plug&Play protocol](../doc/PROTOCOL.md)  to detect devices attached to the box (i.e., WinPC, RasPi or OpenWrt router) with USB cables.
