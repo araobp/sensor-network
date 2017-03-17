@@ -216,3 +216,9 @@ I used [this small magnet for healthcare](http://www.elekiban.com/products/).
 I have been using Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
+
+## Future works
+
+#### Integration with open standards for IoT gateways
+- [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
+- [WebUSB](https://wicg.github.io/webusb/)
