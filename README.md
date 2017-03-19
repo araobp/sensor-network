@@ -118,7 +118,7 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 - [5V: Distance sensor block (HC-SR04)](./pic16f1825/distance.X), [pin assignment](./doc/distance_pin.png)
 - [5V: Acceleration sensor block （KXR94-2050)](./pic16f1825/acceleration.X), [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./pic16f1825/rotation.X), [pin assignment](./doc/rotation_pin.png)
-- [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1825/servomotor.X), [pin assignment](./doc/servomotor_pin2.png)
+- [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1825/servomotor.X), [pin assignment](./doc/servomotor_pin2.png), [duty at 3%](./doc/duty@3.BMP), [duty at 12%](./doc/duty@12.BMP)
 
 #### PIC16F1829
 
