@@ -82,13 +82,14 @@ void main(void)
     SYSTEM_Initialize();
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
-    EUSART_Initialize();
+
     ADC_Initialize();
 
     TMR0_Initialize();
     TMR0_SetInterruptHandler(tmr0_handler);
     
     EUSART_Initialize();
+
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
     PROTOCOL_Loop();
 }
