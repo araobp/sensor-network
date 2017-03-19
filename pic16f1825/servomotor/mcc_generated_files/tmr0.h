@@ -63,7 +63,7 @@
   Section: Macro Declarations
 */
 
-#define TMR0_INTERRUPT_TICKER_FACTOR    4
+#define TMR0_INTERRUPT_TICKER_FACTOR    2
 
 /**
   Section: TMR0 APIs

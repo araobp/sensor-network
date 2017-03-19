@@ -59,6 +59,18 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
+// get/set RC2 procedures
+#define RC2_SetHigh()    do { LATCbits.LATC2 = 1; } while(0)
+#define RC2_SetLow()   do { LATCbits.LATC2 = 0; } while(0)
+#define RC2_Toggle()   do { LATCbits.LATC2 = ~LATCbits.LATC2; } while(0)
+#define RC2_GetValue()         PORTCbits.RC2
+#define RC2_SetDigitalInput()   do { TRISCbits.TRISC2 = 1; } while(0)
+#define RC2_SetDigitalOutput()  do { TRISCbits.TRISC2 = 0; } while(0)
+#define RC2_SetPullup()     do { WPUCbits.WPUC2 = 1; } while(0)
+#define RC2_ResetPullup()   do { WPUCbits.WPUC2 = 0; } while(0)
+#define RC2_SetAnalogMode() do { ANSELCbits.ANSC2 = 1; } while(0)
+#define RC2_SetDigitalMode()do { ANSELCbits.ANSC2 = 0; } while(0)
+
 // get/set IO_RC3 aliases
 #define IO_RC3_TRIS               TRISCbits.TRISC3
 #define IO_RC3_LAT                LATCbits.LATC3
@@ -75,6 +87,16 @@
 #define IO_RC3_ResetPullup()    do { WPUCbits.WPUC3 = 0; } while(0)
 #define IO_RC3_SetAnalogMode()  do { ANSELCbits.ANSC3 = 1; } while(0)
 #define IO_RC3_SetDigitalMode() do { ANSELCbits.ANSC3 = 0; } while(0)
+
+// get/set RC4 procedures
+#define RC4_SetHigh()    do { LATCbits.LATC4 = 1; } while(0)
+#define RC4_SetLow()   do { LATCbits.LATC4 = 0; } while(0)
+#define RC4_Toggle()   do { LATCbits.LATC4 = ~LATCbits.LATC4; } while(0)
+#define RC4_GetValue()         PORTCbits.RC4
+#define RC4_SetDigitalInput()   do { TRISCbits.TRISC4 = 1; } while(0)
+#define RC4_SetDigitalOutput()  do { TRISCbits.TRISC4 = 0; } while(0)
+#define RC4_SetPullup()     do { WPUCbits.WPUC4 = 1; } while(0)
+#define RC4_ResetPullup()   do { WPUCbits.WPUC4 = 0; } while(0)
 
 // get/set RC5 procedures
 #define RC5_SetHigh()    do { LATCbits.LATC5 = 1; } while(0)
