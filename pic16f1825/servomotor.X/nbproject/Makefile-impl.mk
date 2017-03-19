@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=servomotor
+PROJECTNAME=servomotor.X
 
 # Active Configuration
 DEFAULTCONF=default

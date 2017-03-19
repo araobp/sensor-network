@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/servomotor.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=servomotor.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=servomotor/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/servomotor.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=servomotor.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=servomotor.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/servomotor/bin
+makeDirectory ${TMPDIR}/servomotor.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/servomotor.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/servomotor.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/servomotor.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/servomotor.x.tar *
 checkReturnCode
 
 # Cleanup
