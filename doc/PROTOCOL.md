@@ -1,5 +1,7 @@
 # Plug&play protocol (UART)
 
+This is a very simple I/O link supporting Plug&Play. This protocol works over UART。
+
 #### WHO (who are you?)
 ```
    PIC                GW
@@ -39,3 +41,19 @@ The current setting is saved in PIC'S EEPROM.
   PIC                GW
    |<------GET--------|
 ```
+
+## Recommended link start-up sequence
+
+ Slave             master
+   |                  |
+   |<------STP--------|
+   |                  |
+   |<------WHO--------|
+   |----DEVICE_ID---->|
+   |                  |
+   |<----SET:<num>----|
+   |                  |
+   |<-----SAV---------|
+   |                  |
+   |<-----STA---------|
+   |                  |

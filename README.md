@@ -10,6 +10,18 @@ I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are v
 
 ![pic16f1](./doc/starting_project.png)
 
+## IoT in the real world
+
+#### Industry 4.0
+
+There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components. [A Plug&Play protocol](./doc/PROTOCOL.md) supported by sensor/actuator devices developed in this project is quite simple, and it works over UART/USB.
+
+#### IoT gateway software framework
+
+I heard that DELL is working on a project called "FUSE", and Google is workign on WebUSB:
+- [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
+- [WebUSB](https://wicg.github.io/webusb/)
+
 ## IoT building blocks
 
 Most of sensors/actuators require some sort of gateway to be able to speak IP. They call it IoT gateway.
@@ -212,9 +224,3 @@ I used [this small magnet for healthcare](http://www.elekiban.com/products/).
 I have been using Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
-
-## Future works
-
-#### Integration with open standards for IoT gateways
-- [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
-- [WebUSB](https://wicg.github.io/webusb/)
