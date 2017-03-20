@@ -45,7 +45,7 @@ The current setting is saved in PIC'S EEPROM.
 ## Recommended link start-up sequence
 
 ```
- Slave             master
+ slave             master
    |                  |
    |<------STP--------|
    |                  |
