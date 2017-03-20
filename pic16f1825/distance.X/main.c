@@ -1,4 +1,3 @@
-#include <pic16f1825.h>
 #include <stdlib.h>
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
@@ -9,8 +8,7 @@
 uint8_t c;
 uint8_t cnt;
 uint8_t buf[4];
-uint8_t period;
-uint8_t period_10;
+uint8_t period_10 = 0;
 uint8_t timer_cnt = 0;
 
 uint8_t running = 1;
@@ -59,7 +57,6 @@ void tmr0_handler(void) {
             }
         }
     }
-    CLRWDT();
 }
 
 void main(void)
@@ -67,12 +64,12 @@ void main(void)
     SYSTEM_Initialize();
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
-    period = DATAEE_ReadByte(0);
-    if (period < 10) period = 10;
-    period_10 = period/10;
+   
     TMR0_Initialize();
     TMR0_SetInterruptHandler(tmr0_handler);
+    
     TMR1_Initialize();
+    
     EUSART_Initialize();
 
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);

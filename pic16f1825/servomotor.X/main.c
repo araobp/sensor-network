@@ -6,6 +6,8 @@
 #define _XTAL_FREQ 500000
 #define DEVICE_ID "TOWER-PRO-SG90"
 
+uint8_t running = 1;
+
 // Duty value at 50Hz
 //  20: 3% (0.5msec)
 //  80: 12% (2.4msec))
@@ -13,19 +15,30 @@
 #define DUTY_0 16.0
 #define DUTY_180 78.0
 void set_handler(uint8_t angle) {
-    uint16_t value = DUTY_0 + (DUTY_180 - DUTY_0) * angle / 180.0;
-    EPWM1_LoadDutyValue(value);
+    if (running) {
+        uint16_t value = (uint16_t)(DUTY_0 + (DUTY_180 - DUTY_0) * angle / 180.0);
+        EPWM1_LoadDutyValue(value);
+    }
+}
+
+void start_handler(void) {
+    running = 1;
+}
+
+void stop_handler(void) {
+    running = 0;
 }
 
 void tmr0_handler(void) {
-    LATCbits.LATC3 ^= 1;
+    if (running) {
+        LATCbits.LATC3 ^= 1;
+    }
 }       
 void main(void)
 {
     SYSTEM_Initialize();
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
-    EUSART_Initialize();
 
     TMR0_Initialize();
     TMR0_SetInterruptHandler(tmr0_handler);
@@ -33,6 +46,7 @@ void main(void)
     EPWM1_Initialize();
     
     EUSART_Initialize();
-    PROTOCOL_Initialize(DEVICE_ID, 0, 0, set_handler);
+    
+    PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
     PROTOCOL_Loop();
 }

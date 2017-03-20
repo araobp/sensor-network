@@ -6,6 +6,16 @@
 #define OFFSET 512.0
 #define G 204.8  // 1024/5.0 = 204.8 (steps/volt)
 
+uint8_t running = 1;
+
+void start_handler(void) {
+    running = 1;
+}
+
+void stop_handler(void) {
+    running = 0;
+}
+
 /*
  * In case of Vdd = 5V, acceleration = measured voltage (1V = 1g).
  */
@@ -18,11 +28,13 @@ int16_t get_accel(adc_channel_t ch) {
 }
 
 void tmr0_handler(void) {
-    int16_t x = get_accel(channel_AN3);
-    int16_t y = get_accel(channel_AN2);
-    int16_t z = get_accel(channel_AN6);
-    LATCbits.LATC3 ^= 1;
-    printf("%d,%d,%d\n", x, y, z);  // outputs milli G
+    if (running) {
+        int16_t x = get_accel(channel_AN3);
+        int16_t y = get_accel(channel_AN2);
+        int16_t z = get_accel(channel_AN6);
+        LATCbits.LATC3 ^= 1;
+        printf("%d,%d,%d\n", x, y, z);  // outputs milli G
+    }
 }
 
 /*
@@ -34,13 +46,13 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    EUSART_Initialize();
-    
     ADC_Initialize();
 
     TMR0_Initialize();
     TMR0_SetInterruptHandler(tmr0_handler);
 
-    PROTOCOL_Initialize(DEVICE_ID, 0, 0, 0);
+    EUSART_Initialize();
+
+    PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, 0);
     PROTOCOL_Loop();
 }
