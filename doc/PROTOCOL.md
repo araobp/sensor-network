@@ -28,6 +28,8 @@ The current setting is saved in PIC'S EEPROM.
 ```
    PIC                GW
     |<------STP--------|
+    |                  |
+    |-------ACK------->|
 ```
 
 #### SET (set the new setting to the device)
@@ -47,15 +49,16 @@ The current setting is saved in PIC'S EEPROM.
 ```
  slave             master
    |                  |
-   |<------STP--------|
+   |<------STP--------|  Send STP(Stop) to the slave to stop sending data.
+   |-------ACK------->|  Confirm that ACK has been received on the master side.
+   |                  |  Clear the input buffer on the master side.
+   |<------WHO--------|  Send WHO(Who are you?) to get device ID of the block.
+   |----DEVICE_ID---->|  Keep the device ID on the master side.
    |                  |
-   |<------WHO--------|
-   |----DEVICE_ID---->|
+   |<----SET:<num>----|  Send SET to configure the device.
    |                  |
-   |<----SET:<num>----|
+   |<-----SAV---------|  Send SAV to save the config on the slave side.
    |                  |
-   |<-----SAV---------|
-   |                  |
-   |<-----STA---------|
+   |<-----STA---------|  Send STA(Start) to make the device start sending data.
    |                  |
 ```
