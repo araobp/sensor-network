@@ -48,6 +48,7 @@ void PROTOCOL_Loop() {
                     PROTOCOL_Start_Handler();
                 } else if (!strncmp(STP, buf, 3)) {  // stop measurement
                     PROTOCOL_Stop_Handler();
+                    printf("ACK\n");
                 } else if (!strncmp(SET, buf, 3)) {  // set value
                     value = atoi(&buf[4]);
                     PROTOCOL_Set_Handler(value);

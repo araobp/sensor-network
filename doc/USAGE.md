@@ -6,3 +6,26 @@
 |Rotation    |A1324LUA-T    |0 or 1 ~ 255      |Measurement period  |0 or 1sec ~ 255sec    |revolutions or "1" at every revolution(period=0)|
 |Acceleration|KXR94-2050    |NA                |NA                  |NA                    |Milli-G for X, Y and Z axis in CVS              |
 |Servomotor  |TOWER-PRO-SG90|0 ~ 180           |Angle in degrees    |0 ~ 180 degrees       |NA                                              |
+
+#### Distance block
+
+![HC-SR04](./HC-SR04.png)
+
+Output sample
+```
+ACK
+HC-SR04
+VAL:100
+4
+4
+3
+2
+-1
+3
+11
+19
+18
+18
+18
+ACK
+```

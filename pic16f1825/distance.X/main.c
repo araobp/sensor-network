@@ -50,7 +50,7 @@ void tmr0_handler(void) {
             uint16_t count = TMR1_ReadTimer();
             TMR1_WriteTimer(0);
             uint16_t d = (uint16_t)(count/58.82*2.0);
-            if (d >= 2 || d <= 400)  {
+            if (d >= 2 && d <= 400)  {
                 printf("%u\n", d);
             } else {
                 printf("-1\n");  // out of range
