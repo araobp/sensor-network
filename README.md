@@ -1,6 +1,6 @@
 # Blocks: pretty-easy IoT with PIC16F1
 
-![accelrerometer](./doc/A1324LUA-T.png)
+![accelrerometer](./doc/A1324LUA-T-small.png)
 
 ## Background and motivation
 
