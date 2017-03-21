@@ -17,15 +17,29 @@ ACK
 HC-SR04
 VAL:100
 4
-4
 3
 2
 -1
 3
 11
-19
 18
-18
-18
+ACK
+```
+
+#### Rotation blocks
+
+![A1324LUA-T](./A1324LUA-T.png)
+
+Output sample
+```
+ACK
+A1324LUA-T
+VAL:5
+7
+9
+8
+4
+3
+3
 ACK
 ```
