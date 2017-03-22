@@ -4,24 +4,22 @@ import paho.mqtt.client as client
 import yaml
 import json
 
-TOPIC = 'sensor'
-
-
 def on_message(client, userdata, msg):
     global csv_file
     print(str(msg.payload))
-    payload = json.loads(msg.payload)
-    timestamp = payload['timestamp']
-    device_id = payload['device_id']
-    data = payload['data']
-    cpe = payload['cpe']
-    location = payload['location']
-    csv_file.write('{},{},{},{},{}\n'.format(timestamp, location, cpe, device_id, data))
-    csv_file.flush()
-
+    try:
+        payload = json.loads(msg.payload)
+        timestamp = payload['timestamp']
+        device_id = payload['device_id']
+        data = payload['data']
+        cpe = payload['cpe']
+        location = payload['location']
+        csv_file.write('{},{},{},{},{}\n'.format(timestamp, location, cpe, device_id, data))
+        csv_file.flush()
+    except Exception as e:
+        print(e)
 
 if __name__ == '__main__':
-
 
     with open('./agent.yaml', 'r') as f:
         conf = yaml.load(f)

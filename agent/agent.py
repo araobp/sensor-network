@@ -9,7 +9,17 @@ import json
 
 PERIOD = 0.01
 MAX = 1000
-AGENT_RUNNING = 'agent'
+TOPIC_AGENT = 'agent'
+
+# Protocol commands
+WHO = "WHO"
+INT = "INT"
+SAV = "SAV"
+STA = "STA"
+STP = "STP"
+SET = "SET"
+GET = "GET"
+ACK = "ACK"
 
 dev_list = {} 
 
@@ -20,6 +30,9 @@ def on_message(client, userdata, message):
     print(topic)
     print(payload)
     print(dev_list[topic])
+
+def send(ser, cmd):
+    ser.write('{}\n'.format(cmd))
 
 if __name__ == '__main__':
     
@@ -45,16 +58,22 @@ if __name__ == '__main__':
         ser = serial.Serial(tty)
 
         # Protocol operation
-        ser.write('STP\n')
-        ser.reset_input_buffer()
+        send(ser, STP)
+        while True:
+            resp = ser.readline()[:-1]
+            if resp == ACK:
+                break
+            else:
+                send(ser, STP)
         ser.reset_output_buffer()
-        ser.write('WHO\n')
+        ser.reset_input_buffer()
+        send(ser, WHO)
         device_id = ser.readline()[:-1]
         if device_id in settings:
             for cmd in settings[device_id]:
-                ser.write(cmd+'\n')
+                send(ser, cmd)
             client.subscribe(device_id)
-        ser.write('STA\n')
+        send(ser, STA)
         print('device detected: {}'.format(device_id))
 
         usb = tty.split('/')[2]
@@ -80,7 +99,7 @@ if __name__ == '__main__':
                 client.publish(topic, json.dumps(data))
             else:
                 if cnt > MAX:
-                    client.publish(AGENT_RUNNING, 'agent running')
+                    client.publish(TOPIC_AGENT, 'agent running')
                     cnt = 0
                 else:
                     cnt += 1

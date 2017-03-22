@@ -4,7 +4,7 @@ import paho.mqtt.client as client
 import yaml
 import json
 
-TOPIC = 'trush'
+TOPIC_AGENT = 'agent'
 
 
 def on_message(client, userdata, msg):
@@ -19,6 +19,6 @@ if __name__ == '__main__':
 
         client = client.Client()
         client.connect(host=mqtt['host'], port=mqtt['port'], keepalive=60)
-        client.subscribe(TOPIC)
+        client.subscribe(TOPIC_AGENT)
         client.on_message = on_message
         client.loop_forever()
