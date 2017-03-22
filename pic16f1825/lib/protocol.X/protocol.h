@@ -15,6 +15,7 @@ extern "C" {
     #define STP "STP"
     #define SET "SET"
     #define GET "GET"
+    #define ACK "ACK"
     
     /*
      * Functions

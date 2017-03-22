@@ -38,7 +38,6 @@ void PROTOCOL_Loop() {
             if (c == '\n') {
                 buf[cnt] = '\0';
                 cnt = 0;
-                //printf("%s\n", buf);
 
                 if (!strncmp(WHO, buf, 3)) {  // who are you?
                     printf("%s\n", device_id_);
@@ -48,7 +47,7 @@ void PROTOCOL_Loop() {
                     PROTOCOL_Start_Handler();
                 } else if (!strncmp(STP, buf, 3)) {  // stop measurement
                     PROTOCOL_Stop_Handler();
-                    printf("ACK\n");
+                    printf("%s\n", ACK);
                 } else if (!strncmp(SET, buf, 3)) {  // set value
                     value = atoi(&buf[4]);
                     PROTOCOL_Set_Handler(value);
