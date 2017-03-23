@@ -26,7 +26,7 @@ VAL:100
 ACK
 ```
 
-#### Rotation blocks
+#### Rotation block
 
 ![A1324LUA-T](./A1324LUA-T.png)
 
@@ -41,5 +41,17 @@ VAL:5
 4
 3
 3
+ACK
+```
+
+#### Servo motor block
+
+![TOWER-PRO-SG90](./TOWER-PRO-SG90.png)
+
+Output sample
+```
+ACK
+TOWER-PRO-SG90
+VAL:100
 ACK
 ```
