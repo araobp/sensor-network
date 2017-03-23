@@ -7,7 +7,7 @@
 |Acceleration|KXR94-2050    |NA                |NA                  |NA                    |Milli-G for X, Y and Z axis in CVS              |
 |Servomotor  |TOWER-PRO-SG90|0 ~ 180           |Angle in degrees    |0 ~ 180 degrees       |NA                                              |
 
-#### Distance block
+### Distance block
 
 ![HC-SR04](./HC-SR04.png)
 
@@ -26,7 +26,7 @@ VAL:100
 ACK
 ```
 
-#### Rotation block
+### Rotation block
 
 ![A1324LUA-T](./A1324LUA-T.png)
 
@@ -44,7 +44,7 @@ VAL:5
 ACK
 ```
 
-#### Servo motor block
+### Servo motor block
 
 ![TOWER-PRO-SG90](./TOWER-PRO-SG90.png)
 
