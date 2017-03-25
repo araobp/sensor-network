@@ -64,14 +64,14 @@ void TMR0_Initialize(void)
 {
     // Set TMR0 to the options selected in the User Interface
 
-    // PSA not_assigned; PS 1:32; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
-    OPTION_REG = (OPTION_REG & 0xC0) | 0xDC & 0x3F; 
+    // PSA assigned; PS 1:256; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
+    OPTION_REG = (OPTION_REG & 0xC0) | 0xD7 & 0x3F; 
 
-    // TMR0 0; 
-    TMR0 = 0x00;
+    // TMR0 207; 
+    TMR0 = 0xCF;
 
     // Load the TMR value to reload variable
-    timer0ReloadVal= 0;
+    timer0ReloadVal= 207;
 
     // Clear Interrupt flag before enabling the interrupt
     INTCONbits.TMR0IF = 0;

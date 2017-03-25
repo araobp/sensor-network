@@ -22,6 +22,7 @@ extern "C" {
      */
     void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);
     void PROTOCOL_Loop();
+    void PROTOCOL_Set_Func(void *loop_func);
     
 #ifdef	__cplusplus
 }

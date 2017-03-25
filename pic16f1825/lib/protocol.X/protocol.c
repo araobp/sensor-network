@@ -7,6 +7,7 @@
 void (*PROTOCOL_Start_Handler)(void) = 0;
 void (*PROTOCOL_Stop_Handler)(void) = 0;
 void (*PROTOCOL_Set_Handler)(uint8_t value) = 0;
+void (*PROTOCOL_Loop_Func)(void) = 0;
 
 uint8_t c;
 uint8_t cnt = 0;
@@ -27,11 +28,16 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
 }
 
+void PROTOCOL_Set_Func(void *loop_func) {
+    PROTOCOL_Loop_Func = loop_func;
+}
+
 /*
  * USART Rx reader
  */
 void PROTOCOL_Loop() {
     while (1) {
+        if (PROTOCOL_Loop_Func) PROTOCOL_Loop_Func();
         if (EUSART_DataReady) {
             c = EUSART_Read();
             buf[cnt++] = c;
