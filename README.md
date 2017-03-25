@@ -16,10 +16,11 @@ I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are v
 
 There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components. [A Plug&Play protocol](./doc/PROTOCOL.md) supported by sensor/actuator devices developed in this project is quite simple, and it works over UART/USB.
 
-#### IoT gateway software framework
+#### IoT gateway frameworks
 
-I heard that DELL is working on a project called "FUSE", and Google is workign on WebUSB:
+- [OpenFog](https://www.openfogconsortium.org/)
 - [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
+- [OpenWrt](http://events.linuxfoundation.org/sites/events/files/slides/Intelligent%20IoT%20Gateway%20on%20OpenWrt.pdf#search=%27OpenWrt+IoT%27)
 - [WebUSB](https://wicg.github.io/webusb/)
 
 ## IoT building blocks
