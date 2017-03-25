@@ -58,6 +58,8 @@ ACK
 
 ### Acceleration block
 
+![KXR94-2050](./KXR94-2050.png)
+
 Output sample
 ```
 ACK
