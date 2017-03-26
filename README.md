@@ -14,7 +14,11 @@ I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are v
 
 #### Industry 4.0
 
-There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components. [A Plug&Play protocol](./doc/PROTOCOL.md) supported by sensor/actuator devices developed in this project is quite simple, and it works over UART/USB.
+There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components.
+
+#### Smart office
+
+- [Yanzi Networks](https://yanzi.se/index.jsp)
 
 #### IoT gateway frameworks
 
@@ -23,60 +27,17 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 - [OpenWrt](http://events.linuxfoundation.org/sites/events/files/slides/Intelligent%20IoT%20Gateway%20on%20OpenWrt.pdf#search=%27OpenWrt+IoT%27)
 - [WebUSB](https://wicg.github.io/webusb/)
 
-## IoT building blocks
-
-Most of sensors/actuators require some sort of gateway to be able to speak IP. They call it IoT gateway.
-
-I focus on opening up sensors/actuators in a LEGO-block manner. In this project, I develop "open" sensors/actuators following the architecture below:
-
-```
-
-<--- IoT low-level block ---->
-sensor
-actuator      MCU     Comm. module    IoT gateway
-  +---+      +---+      +---+         +--------+
-  |   |      |   |      |   |         | Win PC |           (         )
-  |   |--*1--|   |--*2--|   |---USB---| RasPi  |----------(The internet)
-  |   |      |   |      |   |         | OpenWrt|           (         )
-  +---+      +---+      +---+         +--------+
-
-*1 GPIO/I2C/SPI/UART
-*2 UART
-```
-I mainly use Microchip PIC16F1 series 14 pins MCU to develop the blocks.
-
 ## USB/UART (i.e., serial) as universal interface for IoT blocks
 
-All the blocks support USB/UART interface. I define two types of bridges to connect the blocks to the Internet.
+All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
+
+![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=480&h=360)
 
 I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support VCP (Virtual COM Port) so that Windows PC recognizes them as COM ports:
 
 - Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device.
 - Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
 - In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
-
-IoT blocks with FTDI's USB-UART bridge(\*1):
-```
-                                   +-----+                      
-[sensor block 1]-UART-[*1]---USB---|     |                    (        )
-[sensor block 2]-UART-[*1]---USB---| USB |---[IoT gateway]---( Internet )
-[actuator block 1]-UART-[*1]--USB--| hub |    such as RasPi   (        )
-[actuator block 2]-UART-[*1]--USB--|     |    or OpenWrt
-                                   +-----+
-```
-
-Note: In case of PIC16F1455/1459, USB-UART bridge is unnecessary.
-
-IoT blocks with MQTT-UART(or "UART over IP"?) bridge:
-```
-                   MQTT-UART bridge
-                      +-------+                      (        )
-[sensor block 3]-UART-|Comm.  |---wireless access---( Internet )
-                      |module |                      (      )            
-                      +-------+
-```
-
-The communication module supports one of these: WiFi, LTE, 5G, Wi-SUN, LoRaWAN, Sigfox.
 
 ## PIC16F1 MCU models
 
