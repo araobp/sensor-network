@@ -8,6 +8,8 @@ It is very common that networking equipment supports CLI over a console port or 
 
 This project is to see what happens if home/office equipment supported such "cheap" CLI.
 
+I assume that a networking gear such as a router works as a controller for the home/office. In that sense, I am becoming interested in Fog Computing.
+
 I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ![pic16f1](./doc/starting_project.png)
