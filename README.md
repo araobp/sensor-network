@@ -22,12 +22,12 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 
 - [Yanzi Networks](https://yanzi.se/index.jsp)
 
-#### IoT gateway frameworks
+#### IoT frameworks
 
 - [OpenFog](https://www.openfogconsortium.org/)
 - [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
 - [OpenWrt](http://events.linuxfoundation.org/sites/events/files/slides/Intelligent%20IoT%20Gateway%20on%20OpenWrt.pdf#search=%27OpenWrt+IoT%27)
-- [WebUSB](https://wicg.github.io/webusb/)
+- [Sakura IoT](https://iot.sakura.ad.jp/)
 
 ## USB/UART (i.e., serial) as universal interface
 
