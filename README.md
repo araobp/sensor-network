@@ -35,7 +35,7 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 
 ![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=640&h=480)
 
-I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support VCP (Virtual COM Port) so that Windows PC recognizes them as COM ports:
+I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Virtual COM Port)](http://www.ftdichip.com/Drivers/VCP.htm) so that Windows PC recognizes them as COM ports:
 
 - Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device.
 - Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
