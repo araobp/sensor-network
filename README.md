@@ -4,7 +4,7 @@
 
 ## Background and motivation
 
-It is very common that networking equipment supports CLI over a console port or SSH. I wonder if home equipment or office equipment supported CLI over serial interfaces at a minimal additional cost, so that any 8bit MCUs can support it.
+It is very common that networking equipment supports CLI over a console port or SSH. I wonder if any home equipment or any office equipment supported CLI over serial interfaces at a minimal cost, so that any MCUs including 8bit ones can support it.
 
 This project is to see what happens if home/office equipment supported such "cheap" CLI.
 
