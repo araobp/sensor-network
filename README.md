@@ -1,12 +1,14 @@
-# Blocks: pretty-easy IoT with PIC16F1
+# Building blocks for smart home and smart office
 
 ![accelrerometer](./doc/A1324LUA-T-small.png)
 
 ## Background and motivation
 
-GPIO, I2C, SPI and UART/USART are widely adopted by sensor/actuator components. However, IT guys are not familiar with those low-level interfaces, so I have decided to develop a gateway that works as a bridge between those low-level interfaces and serial (UART/USB).
+It is very common that networking equipment supports CLI over a console port or SSH. I wonder if home equipment or office equipment supported CLI over serial interfaces.
 
-I use Microchip PIC16F1 series 8bit MCU to develop the gateway, since they are very cheap and small.
+This project is to see what happens if home/office equipment supported such CLI.
+
+I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ![pic16f1](./doc/starting_project.png)
 
@@ -27,7 +29,7 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 - [OpenWrt](http://events.linuxfoundation.org/sites/events/files/slides/Intelligent%20IoT%20Gateway%20on%20OpenWrt.pdf#search=%27OpenWrt+IoT%27)
 - [WebUSB](https://wicg.github.io/webusb/)
 
-## USB/UART (i.e., serial) as universal interface for IoT blocks
+## USB/UART (i.e., serial) as universal interface
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
 
