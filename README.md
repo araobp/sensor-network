@@ -182,6 +182,7 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 
 - [DLNA](https://www.dlna.org/) and [DTCP-IP](https://en.wikipedia.org/wiki/Digital_Transmission_Content_Protection)
 - [ECHONET](https://echonet.jp/english/)
+- [Home controller(Panasonic)](http://www2.panasonic.biz/es/densetsu/ha/mansion_ha/syohin/pvjcontroller/)
 
 #### Smart office
 
@@ -189,7 +190,8 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 
 #### Controllers
 
-- [Home controller(Panasonic)](http://www2.panasonic.biz/es/densetsu/ha/mansion_ha/syohin/pvjcontroller/)
+- [Siemens SIMATIC IOT2020](http://w3.siemens.com/mcms/pc-based-automation/en/industrial-iot/pages/default.aspx)
+- [Phoenix RPI-BC](https://www.phoenixcontact.com/online/portal/gb?1dmy&urile=wcm:path:/gben/web/offcontext/insite_landing_pages/efd3ca11-79cd-4971-a56c-3c20e29139ad/efd3ca11-79cd-4971-a56c-3c20e29139ad)
 
 #### IoT frameworks
 
