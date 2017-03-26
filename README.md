@@ -1,12 +1,12 @@
-# Building blocks for smart home and smart office
+# Building blocks for smart home and smart office with 8bit MCUs
 
 ![accelrerometer](./doc/A1324LUA-T-small.png)
 
 ## Background and motivation
 
-It is very common that networking equipment supports CLI over a console port or SSH. I wonder if home equipment or office equipment supported CLI over serial interfaces.
+It is very common that networking equipment supports CLI over a console port or SSH. I wonder if home equipment or office equipment supported CLI over serial interfaces at a minimal additional cost, so that any 8bit MCUs can support it.
 
-This project is to see what happens if home/office equipment supported such CLI.
+This project is to see what happens if home/office equipment supported such "cheap" CLI.
 
 I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
@@ -20,7 +20,13 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 
 #### Smart office
 
+- [DLNA](https://www.dlna.org/) and [DTCP-IP](https://en.wikipedia.org/wiki/Digital_Transmission_Content_Protection)
+- [ECHONET](https://echonet.jp/english/)
 - [Yanzi Networks](https://yanzi.se/index.jsp)
+
+#### Controllers
+
+- [Home controller(Panasonic)](http://www2.panasonic.biz/es/densetsu/ha/mansion_ha/syohin/pvjcontroller/)
 
 #### IoT frameworks
 
