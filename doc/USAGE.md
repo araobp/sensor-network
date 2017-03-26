@@ -44,18 +44,6 @@ VAL:5
 ACK
 ```
 
-### Servo motor block
-
-![TOWER-PRO-SG90](./TOWER-PRO-SG90.png)
-
-Output sample
-```
-ACK
-TOWER-PRO-SG90
-VAL:100
-ACK
-```
-
 ### Acceleration block
 
 ![KXR94-2050](./KXR94-2050.png)
@@ -72,5 +60,17 @@ VAL:100
 -0.09,-0.29,0.88
 0.01,-0.48,0.96
 0.08,-0.35,0.91
+ACK
+```
+
+### Servo motor block
+
+![TOWER-PRO-SG90](./TOWER-PRO-SG90.png)
+
+Output sample
+```
+ACK
+TOWER-PRO-SG90
+VAL:100
 ACK
 ```
