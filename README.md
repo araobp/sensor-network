@@ -38,8 +38,8 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Virtual COM Port)](http://www.ftdichip.com/Drivers/VCP.htm) so that Windows PC recognizes them as COM ports:
 
 - Linux automatically load a driver for FTDI chip and recognizes it as "/dev/ttyUSB\*" device.
-- Windows PC automatically download the FTDI driver from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
-- In case of OpenWrt, you need to install the FTDI driver manually by using opkg package manager.
+- Windows PC automatically download [the FTDI driver for Windows](http://www.ftdichip.com/Drivers/VCP.htm) from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
+- In case of OpenWrt, you need to install [the FTDI driver for OpenWrt](https://wiki.openwrt.org/doc/hardware/port.serial) manually by using opkg package manager.
 
 ## PIC16F1 MCU models
 
