@@ -14,29 +14,6 @@ I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ![pic16f1](./doc/starting_project.png)
 
-## IoT in the real world
-
-#### Industry 4.0
-
-There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components.
-
-#### Smart office
-
-- [DLNA](https://www.dlna.org/) and [DTCP-IP](https://en.wikipedia.org/wiki/Digital_Transmission_Content_Protection)
-- [ECHONET](https://echonet.jp/english/)
-- [Yanzi Networks](https://yanzi.se/index.jsp)
-
-#### Controllers
-
-- [Home controller(Panasonic)](http://www2.panasonic.biz/es/densetsu/ha/mansion_ha/syohin/pvjcontroller/)
-
-#### IoT frameworks
-
-- [OpenFog](https://www.openfogconsortium.org/)
-- [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
-- [OpenWrt](http://events.linuxfoundation.org/sites/events/files/slides/Intelligent%20IoT%20Gateway%20on%20OpenWrt.pdf#search=%27OpenWrt+IoT%27)
-- [Sakura IoT](https://iot.sakura.ad.jp/)
-
 ## USB/UART (i.e., serial) as universal interface
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
@@ -194,3 +171,29 @@ I used [this small magnet for healthcare](http://www.elekiban.com/products/).
 I have been using Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
+
+## IoT in the real world
+
+#### Industry 4.0
+
+There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components.
+
+#### Smart home / HEMS
+
+- [DLNA](https://www.dlna.org/) and [DTCP-IP](https://en.wikipedia.org/wiki/Digital_Transmission_Content_Protection)
+- [ECHONET](https://echonet.jp/english/)
+
+#### Smart office
+
+- [Yanzi Networks](https://yanzi.se/index.jsp)
+
+#### Controllers
+
+- [Home controller(Panasonic)](http://www2.panasonic.biz/es/densetsu/ha/mansion_ha/syohin/pvjcontroller/)
+
+#### IoT frameworks
+
+- [OpenFog](https://www.openfogconsortium.org/)
+- [Fuse](https://medium.com/@gigastacey/dell-plans-an-open-source-iot-stack-3dde43f24feb#.ggg76e529)
+- [OpenWrt](http://events.linuxfoundation.org/sites/events/files/slides/Intelligent%20IoT%20Gateway%20on%20OpenWrt.pdf#search=%27OpenWrt+IoT%27)
+- [Sakura IoT](https://iot.sakura.ad.jp/)
