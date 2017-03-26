@@ -33,7 +33,7 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
 
-![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=480&h=360)
+![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=960&h=720)
 
 I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support VCP (Virtual COM Port) so that Windows PC recognizes them as COM ports:
 
