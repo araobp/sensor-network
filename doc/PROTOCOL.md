@@ -1,6 +1,6 @@
 # Plug&play protocol (UART)
 
-This is a very simple I/O link supporting Plug&Play. This protocol works over UART。
+This is a very simple I/O link supporting Plug&Play. This protocol works over UART at a minimal cost.
 
 #### WHO (who are you?)
 ```
