@@ -16,6 +16,8 @@ I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ## USB/UART (i.e., serial) as universal interface
 
+Even low-end 8bit MCUs support UART, so UART is the most common communication interface of MCUs. You can add brdiges/tranceivers(USB/Ethernet/RS485/LIN...) to MCUs to extend the maximum cable length of UART.
+
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
 
 ![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=640&h=480)
@@ -177,6 +179,10 @@ I have been using Ansible to manage the system:
 #### Industry 4.0
 
 There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components.
+
+#### In-vehicle networking
+
+- [LIN](https://en.wikipedia.org/wiki/Local_Interconnect_Network)
 
 #### Smart home / HEMS
 
