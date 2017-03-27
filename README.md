@@ -28,6 +28,8 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 - Windows PC automatically download [the FTDI driver for Windows](http://www.ftdichip.com/Drivers/VCP.htm) from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
 - In case of OpenWrt, you need to install [the FTDI driver for OpenWrt](https://wiki.openwrt.org/doc/hardware/port.serial) manually by using opkg package manager.
 
+I also plan to use UART-Ethernet bridge like [this](https://www.amazon.com/USRIOT-USR-TCP232-T2-Ethernet-Converter-Support/dp/B01GPMFXB2/ref=sr_1_2?ie=UTF8&qid=1490641230&sr=8-2&keywords=UART+Ethernet).
+
 ## PIC16F1 MCU models
 
 |Model     |# of pins |Characteristics                 |
