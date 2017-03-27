@@ -14,7 +14,7 @@ I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ![pic16f1](./doc/starting_project.png)
 
-## USB/UART (i.e., serial) as universal interface
+## UART (i.e., serial) as universal interface
 
 Even low-end 8bit MCUs support UART, so UART is the most common communication interface of MCUs. You can add brdiges/tranceivers(USB/Ethernet/RS485/LIN...) to MCUs to extend the maximum cable length of UART.
 
