@@ -177,7 +177,7 @@ I have been using Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
 
-## IoT in the real world
+## IoT building blocks in the real world
 
 #### Industry 4.0
 
