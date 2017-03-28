@@ -8,7 +8,7 @@ It is very common that networking equipment supports CLI over a console port or 
 
 This project is to see what happens if home/office equipment supported such "cheap" CLI.
 
-I assume that a networking gear such as a router works as a controller for the home/office. In that sense, I am becoming interested in Fog Computing.
+I assume that a networking gear such as a router (or vCPE) works as a controller for the home/office. In that sense, I am becoming interested in Fog Computing.
 
 I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
@@ -16,7 +16,7 @@ I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ## UART (i.e., serial) as universal interface
 
-Even low-end 8bit MCUs support UART, so UART is the most common communication interface of MCUs. You can add brdiges/tranceivers(USB/Ethernet/RS485/LIN...) to MCUs to extend the maximum cable length of UART.
+Even low-end 8bit MCUs support UART, so UART is the most common communication interface among MCUs. You can add brdiges/tranceivers(USB/Ethernet/RS485/LIN...) to MCUs to extend the maximum cable length of UART.
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
 
@@ -185,6 +185,7 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 
 #### In-vehicle networking
 
+LIN is designed to work with cheap 8bit MCUs:
 - [LIN](https://en.wikipedia.org/wiki/Local_Interconnect_Network)
 
 #### Smart home / HEMS
@@ -193,8 +194,9 @@ There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/wh
 - [ECHONET](https://echonet.jp/english/)
 - [Home controller(Panasonic)](http://www2.panasonic.biz/es/densetsu/ha/mansion_ha/syohin/pvjcontroller/)
 
-#### Smart office
+#### Smart office / BEMS
 
+- [BACnet](https://www.priceindustries.com/content/uploads/assets/literature/service-installation-manuals/section%20e1/bacnet_wiring_guidelines.pdf#search=%27BACNET+MS%2FTP%27)
 - [Yanzi Networks](https://yanzi.se/index.jsp)
 
 #### Controllers
