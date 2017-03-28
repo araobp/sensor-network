@@ -182,6 +182,10 @@ I have been using Ansible to manage the system:
 - sensor/actuator blocks
 - IoT gateways (RasPi/OpenWrt)
 
+## Security issues
+
+JTAG and UART...
+
 ## IoT building blocks in the real world
 
 #### Industry 4.0
