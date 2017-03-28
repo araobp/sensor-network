@@ -3,7 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/pic16f1829/orientation.X/main.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/pic16f1825/lib/i2c.X/i2c_util.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/pic16f1825/lib/i2c.X/main.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/pic16f1825/lib/i2c.X/i2c_util.h</file>
         </group>
     </open-files>
 </project-private>
