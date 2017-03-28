@@ -14,6 +14,11 @@ I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
 
 ![pic16f1](./doc/starting_project.png)
 
+## Why 8bit PIC?
+
+- 8bit PIC MCUs are used in real products (incl. home/office equipment and in-vehicle networking with LIN and CAN)
+- The most popular 8bit MCUs for hobby use in Japan (i.e., in Akihabara).
+
 ## UART (i.e., serial) as universal interface
 
 Even low-end 8bit MCUs support UART, so UART is the most common communication interface among MCUs. You can add brdiges/tranceivers(USB/Ethernet/RS485/LIN...) to MCUs to extend the maximum cable length of UART.
