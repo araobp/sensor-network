@@ -85,7 +85,7 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 
 - [5V: Just red LED & tactile switch (Omron B3J-1000 or small one)]
 - [5V: Solenoid (SparkFun ROB11015)]
-- [5V: Character LCD actuator block](./pic16f1825/lib/i2c_util.X), [pin assignment](./doc/lcd_pin.png)
+- [5V: Character LCD actuator block](./pic16f1825/character_lcd.X), [pin assignment](./doc/lcd_pin.png)
 - [5V: Distance sensor block (HC-SR04)](./pic16f1825/distance.X), [pin assignment](./doc/distance_pin.png)
 - [5V: Acceleration sensor block （KXR94-2050)](./pic16f1825/acceleration.X), [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./pic16f1825/rotation.X), [pin assignment](./doc/rotation_pin.png)

@@ -6,7 +6,7 @@ extern "C" {
 #endif
    
     /*
-     * Commands
+     * Basic commands
      */
     #define WHO "WHO"
     #define INT "INT"
@@ -23,6 +23,7 @@ extern "C" {
     void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);
     void PROTOCOL_Loop();
     void PROTOCOL_Set_Func(void *loop_func);
+    void PROTOCOL_Set_Extension_Handler(void *extension_handler);
     
 #ifdef	__cplusplus
 }

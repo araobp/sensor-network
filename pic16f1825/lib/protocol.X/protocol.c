@@ -8,10 +8,11 @@ void (*PROTOCOL_Start_Handler)(void) = 0;
 void (*PROTOCOL_Stop_Handler)(void) = 0;
 void (*PROTOCOL_Set_Handler)(uint8_t value) = 0;
 void (*PROTOCOL_Loop_Func)(void) = 0;
+void (*PROTOCOL_Extension_Handler)(uint8_t *buf) = 0;
 
 uint8_t c;
 uint8_t cnt = 0;
-uint8_t buf[16];
+uint8_t buf[48];
 uint8_t value;
 const char *device_id_;
 
@@ -30,6 +31,10 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
 
 void PROTOCOL_Set_Func(void *loop_func) {
     PROTOCOL_Loop_Func = loop_func;
+}
+
+void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
+    PROTOCOL_Extension_Handler = extension_handler;
 }
 
 /*
@@ -59,6 +64,8 @@ void PROTOCOL_Loop() {
                     PROTOCOL_Set_Handler(value);
                 } else if (!strncmp(GET, buf, 3)) {  // get value
                     printf("VAL:%d\n", value);
+                } else {
+                    PROTOCOL_Extension_Handler(buf);
                 }
             }
         };
