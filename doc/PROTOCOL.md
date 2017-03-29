@@ -76,7 +76,7 @@ PIC                GW
  |<------INI--------|
 ```
 
-### CMD (command)
+#### CMD (command)
 ```
 PIC                GW
  |<----CMD:<cmd>----|
@@ -84,20 +84,20 @@ PIC                GW
 
 <cmd> is one-byte command in hexadecimal.
 
-### DAT (data)
+#### DAT (data)
 ```
 PIC                GW
  |<---DAT:<data>----|
 ```
 <data> is one-byte data in hexadecimal.
 
-### CLR (clear)
+#### CLR (clear)
 ```
 PIC                GW
  |<------CLR--------|
 ```
 
-### STR (string)
+#### STR (string)
 ```
 PIC                GW
  |<--DAT:<string>---|
