@@ -51,6 +51,7 @@ The current setting is saved in PIC'S EEPROM.
    |                  |
    |<------STP--------|  Send STP(Stop) to the slave to stop sending data.
    |-------ACK------->|  Confirm that ACK has been received on the master side.
+   |                  |  Clear the output buffer on the master side.
    |                  |  Clear the input buffer on the master side.
    |<------WHO--------|  Send WHO(Who are you?) to get device ID of the block.
    |----DEVICE_ID---->|  Keep the device ID on the master side.
