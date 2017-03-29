@@ -2,6 +2,8 @@
 
 This is a very simple I/O link supporting Plug&Play. This protocol works over UART at a minimal cost.
 
+## Common operations among the blocks
+
 #### WHO (who are you?)
 ```
    PIC                GW
@@ -63,3 +65,41 @@ The current setting is saved in PIC'S EEPROM.
    |<-----STA---------|  Send STA(Start) to make the device start sending data.
    |                  |
 ```
+
+## Block-specific operations
+
+### Character LCD block
+
+#### INI (initialize LCD)
+```
+PIC                GW
+ |<------INI--------|
+```
+
+### CMD (command)
+```
+PIC                GW
+ |<----CMD:<cmd>----|
+```
+
+<cmd> is one-byte command in hexadecimal.
+
+### DAT (data)
+```
+PIC                GW
+ |<---DAT:<data>----|
+```
+<data> is one-byte data in hexadecimal.
+
+### CLR (clear)
+```
+PIC                GW
+ |<------CLR--------|
+```
+
+### STR (string)
+```
+PIC                GW
+ |<--DAT:<string>---|
+```
+<string> is string data in ASCII code.
