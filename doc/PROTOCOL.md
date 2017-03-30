@@ -99,6 +99,6 @@ PIC                GW
 #### STR (string)
 ```
 PIC                GW
- |<--DAT:<string>---|
+ |<--STR:<string>---|
 ```
 "string" is string data in ASCII code.
