@@ -81,14 +81,14 @@ PIC                GW
 PIC                GW
  |<----CMD:<cmd>----|
 ```
-"cmd" is one-byte command in hexadecimal.
+"cmd" is one-byte command in decimal.
 
 #### DAT (data)
 ```
 PIC                GW
  |<---DAT:<data>----|
 ```
-"data" is one-byte data in hexadecimal.
+"data" is one-byte data in decimal.
 
 #### CLR (clear)
 ```
