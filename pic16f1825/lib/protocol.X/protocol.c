@@ -47,7 +47,7 @@ void PROTOCOL_Loop() {
             c = EUSART_Read();
             buf[cnt++] = c;
             if (c == '\n') {
-                buf[cnt] = '\0';
+                buf[--cnt] = '\0';
                 cnt = 0;
 
                 if (!strncmp(WHO, buf, 3)) {  // who are you?
