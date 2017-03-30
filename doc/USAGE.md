@@ -6,6 +6,7 @@
 |Rotation    |A1324LUA-T    |0 or 1 ~ 255      |Measurement period  |0 or 1sec ~ 255sec    |revolutions or "1" at every revolution(period=0)|
 |Acceleration|KXR94-2050    |10 ~ 255          |Measurement period  |0.1sec ~ 2.55sec      |G for X, Y and Z axis in CVS format             |
 |Servomotor  |TOWER-PRO-SG90|0 ~ 180           |Angle in degrees    |0 ~ 180 degrees       |NA                                              |
+|Character LCD|AQM1602XA-RN-GBW|NA             |NA                  |NA                    |NA                              |
 
 ### Distance block
 
@@ -73,4 +74,16 @@ ACK
 TOWER-PRO-SG90
 VAL:100
 ACK
+```
+
+### Character LCD block
+
+![AQM1602XA-RN-GBW](./AQM1602XA-RN-GBW.png)
+
+Input example
+```
+CLR
+STR:Hello World!
+CUR
+STR:***
 ```
