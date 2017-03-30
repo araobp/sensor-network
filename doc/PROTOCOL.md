@@ -102,3 +102,15 @@ PIC                GW
  |<--STR:<string>---|
 ```
 "string" is string data in ASCII code.
+
+#### CUL (move cursur left)
+```
+PIC                GW
+ |<------CUL--------|
+```
+
+#### CUR (move cursor right)
+```
+PIC                GW
+ |<------CUR--------|
+```
