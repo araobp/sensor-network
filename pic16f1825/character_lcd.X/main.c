@@ -18,6 +18,8 @@
 #define STR "STR"
 #define CUL "CUL"
 #define CUR "CUR"
+#define NWL "NWL"
+#define HOM "HOM"
 
 void tmr0_handler(void) {
     LATCbits.LATC3 ^= 1;
@@ -80,6 +82,10 @@ void extension_handler(uint8_t *buf) {
         write_command(0x10);
     } else if (!strncmp(CUR, buf, 3)) {
         write_command(0x14);        
+    } else if (!strncmp(NWL, buf, 3)) {
+        write_command(0xC0);
+    } else if (!strncmp(HOM, buf, 3)) {
+        write_command(0x02);
     }
 }
 
