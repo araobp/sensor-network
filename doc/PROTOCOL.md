@@ -114,3 +114,16 @@ PIC                GW
 PIC                GW
  |<------CUR--------|
 ```
+
+#### NWL (new line)
+```
+PIC                GW
+ |<------NWL--------|
+```
+
+#### HOM (return home)
+```
+PIC                GW
+ |<------HOM--------|
+```
+
