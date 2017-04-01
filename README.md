@@ -1,4 +1,4 @@
-# Building blocks for smart home and smart office with 8bit MCUs
+# Building blocks for smart home/office with 8bit MCUs
 
 ![accelrerometer](./doc/A1324LUA-T-small.png)
 
@@ -48,10 +48,10 @@ I also plan to use UART-Ethernet bridge like [this](https://www.amazon.com/USRIO
 
 ## Communication modules
 
-- [USB-UART bridge with 5V supply]
-- [USB-UART bridge with 3.3V supply](./doc/STEP_DOWN.md)
-- [ESP8266(ESP-WROOM-02)]
-- [USB Micro B connector(for PIC16F1455/1459)](http://akizukidenshi.com/catalog/g/gK-06656/)
+- [UART-USB converter with 5V supply]
+- [UART-USB converter with 3.3V supply](./doc/STEP_DOWN.md)
+- [UART-WiFi with ESP8266(ESP-WROOM-02)]
+- [UART-RS232 converter](https://www.amazon.co.jp/NulSom-Inc-NS-RS232-02-H-%E6%A5%B5%E5%B0%8FRS232-TTL%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%BF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%EF%BC%A4%E3%82%B5%E3%83%96%EF%BC%99%E3%83%94%E3%83%B3%E3%82%AA%E3%82%B9%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%EF%BC%88%E3%82%B1%E3%83%BC%E3%82%B9%E3%82%AD%E3%83%83%E3%83%88%E4%BB%98%E3%81%8D%EF%BC%89/dp/B00OPWLXDW/ref=sr_1_8?ie=UTF8&qid=1491089182&sr=8-8&keywords=rs232+TTL)
 
 ## Base board prototyping for IoT building blocks
 
@@ -81,7 +81,7 @@ The following is schematic of the base board prototype #2:
 
 Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
 
-#### Plug&play protocol
+#### Plug&Play protocol
 
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
 - [Implementation](./pic16f1825/lib/protocol.X)
@@ -94,7 +94,7 @@ Including it as a library:
 
 #### Blocks with PIC16F1825
 
-All the blocks are compliant to the Plug&Plat protocok.
+All the blocks are compliant to the Plug&Play protocol.
 
 => [USAGE](./doc/USAGE.md)
 
