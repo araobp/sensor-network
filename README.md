@@ -77,11 +77,26 @@ The following is schematic of the base board prototype #2:
 |J1        |Enable LED   |Disable LED |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
-## Firmware implementation
+## Implementation
 
 Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
 
-#### PIC16F1825
+#### Plug&play protocol
+
+- [Plug&play protocol specification](./doc/PROTOCOL.md)
+- [Implementation](./pic16f1825/lib/protocol.X)
+
+Including it as a library:
+- [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
+- [Step2: include the protocol library in your project](./doc/mcc_eusart3.png)
+- [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
+- [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
+
+#### Blocks with PIC16F1825
+
+All the blocks are compliant to the Plug&Plat protocok.
+
+=> [USAGE](./doc/USAGE.md)
 
 - [5V: Just red LED & tactile switch (Omron B3J-1000 or small one)]
 - [5V: Solenoid (SparkFun ROB11015)]
@@ -91,33 +106,20 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 - [5V: Speed sensor block (A1324LUA-T)](./pic16f1825/rotation.X), [pin assignment](./doc/rotation_pin.png)
 - [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1825/servomotor.X), [pin assignment](./doc/servomotor_pin2.png), [duty at 3%](./doc/duty@3.BMP), [duty at 12%](./doc/duty@12.BMP)
 
-#### PIC16F1829
+#### Blocks with PIC16F1829
 
 - [3.3V: Orientation sensor block (HMC5883L and L3GD20)](./pic16f1829/orientation.X), [pin assignment](./doc/orientation_pin.png)
 - [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1829/servomotor.X), [pin assignment](./doc/servomotor_pin.png)
 
 Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
 
-#### Usage
+## Blocks with standard USB device classes
 
-=> [USAGE](./doc/USAGE.md)
+#### UVC (USB Video Class)
+- [USB video cam with OpenCV](./camera)
 
-## Non-PIC blocks
-
-- [USB video with OpenCV](./camera)
-- [Text-to-Speech for Japanese]
-
-## Plug&play protocol
-
-- [Plug&play protocol specification](./doc/PROTOCOL.md)
-- [Implementation](./pic16f1825/lib/protocol.X)
-
-#### Including it as a library
-
-- [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
-- [Step2: include the protocol library in your project](./doc/mcc_eusart3.png)
-- [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
-- [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
+#### HID (Human Interface Devices)
+- [Barcode scanner (OSOYOO 4209)] 
 
 ## Use cases
 
