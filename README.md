@@ -79,7 +79,7 @@ The following is schematic of the base board prototype #2:
 
 #### DIN-rail housing with bus connector
 
-The base board also supports I2C bus network topology for DIN-rail housing with a bus connector:
+The base board will also supports I2C bus network topology for DIN-rail housing with a bus connector:
 
 ![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=960&h=567)
 
@@ -91,6 +91,8 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
 - [Implementation](./pic16f1825/lib/protocol.X)
+
+I am also developing Plug&Play protocol for I2C bus.
 
 Including it as a library:
 - [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
