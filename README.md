@@ -35,6 +35,12 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 
 I also plan to use UART-Ethernet bridge like [this](https://www.amazon.com/USRIOT-USR-TCP232-T2-Ethernet-Converter-Support/dp/B01GPMFXB2/ref=sr_1_2?ie=UTF8&qid=1490641230&sr=8-2&keywords=UART+Ethernet).
 
+## I2C for bus connector
+
+I am also going to use DIN-rail housing with a bus connector for RasPi.
+
+![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
+
 ## PIC16F1 MCU models
 
 |Model     |# of pins |Characteristics                 |
