@@ -77,6 +77,12 @@ The following is schematic of the base board prototype #2:
 |J1        |Enable LED   |Disable LED |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
+#### DIN-rail housing with bus connector
+
+The base board also supports I2C bus network topology for DIN-rail housing with a bus connector:
+
+![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=960&h=567)
+
 ## Implementation
 
 Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
