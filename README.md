@@ -212,6 +212,8 @@ JTAG and UART...
 
 There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components.
 
+- [I/O-Link download site](http://www.io-link.com/en/Download/Download.php)
+
 #### In-vehicle networking
 
 LIN is designed to work with cheap 8bit MCUs:
