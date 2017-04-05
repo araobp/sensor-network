@@ -37,7 +37,7 @@ I also plan to use UART-Ethernet bridge like [this](https://www.amazon.com/USRIO
 
 ## I2C for bus connector
 
-I am also going to use DIN-rail housing with a bus connector for RasPi.
+I am also going to use DIN-rail housings with a bus connector for RasPi.
 
 ![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
 
@@ -83,9 +83,9 @@ The following is schematic of the base board prototype #2:
 |J1        |Enable LED   |Disable LED |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
-#### DIN-rail housing with bus connector
+#### DIN-rail housings with a bus connector
 
-The base board will also supports I2C bus network topology for DIN-rail housing with a bus connector:
+The base board will also supports I2C bus network topology for DIN-rail housings with a bus connector:
 
 ![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=680&h=382)
 
@@ -203,6 +203,10 @@ I have been using Ansible to manage the system:
 JTAG and UART...
 
 ## IoT building blocks in the real world
+
+#### DIN-rail housings
+
+- [Phoenix Contact BC moduler housings](https://www.phoenixcontact.com/online/portal/us?1dmy&urile=wcm:path:/usen/web/main/products/subcategory_pages/modular_housing_bc_p-01-04-03/3a371abc-34e5-438f-a723-d2ab8e20eaa1)
 
 #### Industry 4.0
 
