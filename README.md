@@ -51,6 +51,7 @@ I am also going to use DIN-rail housings with a bus connector for RasPi.
 |[PIC16F1509](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
 |[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Variety of Serial communications|
 |[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Variety of Serial communications|
+|[PIC16F1829LIN](http://www.microchip.com/wwwproducts/en/PIC16F1829LIN)|20|MCU + Vreg + LIN tranceiver (SiP)|
 
 ## Communication modules
 
@@ -133,7 +134,7 @@ Note: calibrating HMC5883L is a little hard. I read the data sheet that shows ho
 - [USB video cam with OpenCV](./camera)
 
 #### HID (Human Interface Devices)
-- [Barcode scanner (OSOYOO 4209)] 
+- [Barcode scanner (OSOYOO 4209)]
 
 ## Use cases
 
