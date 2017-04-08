@@ -1,49 +1,69 @@
-# Plug&play protocol (UART)
+# Plug&play protocol (UART/I2C)
 
-This is a very simple I/O link supporting Plug&Play. This protocol works over UART at a minimal cost.
+This is a very simple I/O link supporting Plug&Play. This protocol works over UART or I2C at a minimal cost. I am also considering to support it over LIN.
 
 ## Common operations among the blocks
 
-#### WHO (who are you?)
+#### WHO 0x01 (who are you?)
 ```
-   PIC                GW
+  slave              master
     |<------WHO--------|
     |                  |
     |---<device_id>--->|
 ```
 
-#### SAV (save the current setting onto EEPROM)
+#### SCN 0x02 (scan new device / I2C only)
+
+This request is sent as I2C General Call to all the slaves on the I2C bus.
 ```
-   PIC                GW
+  slave              master
+    |<------SCN--------|
+    |                  |
+    |---<device_id>--->|
+```
+
+#### SAV 0x03 (save the current setting onto EEPROM)
+```
+  slave              master
     |<------SAV--------|
 ```
 
 The current setting is saved in PIC'S EEPROM.
 
-#### STA (start sending data)
+#### STA (start sending data / UART only)
 ```
-   PIC                GW
+  slave              master
     |<------STA--------|
 ```
 
-#### STP (stop sending data)
+#### STP (stop sending data / UART only)
 ```
-   PIC                GW
+  slave              master
     |<------STP--------|
     |                  |
     |-------ACK------->|
 ```
 
-#### SET (set the new setting to the device)
+#### SEN 0x06 (request sensor data/ I2C only)
 ```
-   PIC                GW
+ slave              master
+   |<------SEN--------|
+   |                  |
+   |------<num>------>|
+```
+
+#### SET 0x07 (set the new setting to the device)
+```
+  slave              master
     |<----SET:<num>----|
 ```
 
-#### GET (return the current setting)
+#### GET 0x08 (return the current setting)
 ```
-  PIC                GW
+ slave              master
    |<------GET--------|
+   |                  |
+   |------<num>------>|
 ```
 
 ## Recommended link start-up sequence
@@ -70,60 +90,59 @@ The current setting is saved in PIC'S EEPROM.
 
 ### Character LCD block
 
-#### INI (initialize LCD)
+#### INI 0x20 (initialize LCD)
 ```
 PIC                GW
  |<------INI--------|
 ```
 
-#### CMD (command)
+#### CMD 0x21 (command)
 ```
 PIC                GW
  |<----CMD:<cmd>----|
 ```
 "cmd" is one-byte command in decimal.
 
-#### DAT (data)
+#### DAT 0x22 (data)
 ```
 PIC                GW
  |<---DAT:<data>----|
 ```
 "data" is one-byte data in decimal.
 
-#### CLR (clear)
+#### CLR 0x23 (clear)
 ```
 PIC                GW
  |<------CLR--------|
 ```
 
-#### STR (string)
+#### STR 0x24 (string)
 ```
 PIC                GW
  |<--STR:<string>---|
 ```
 "string" is string data in ASCII code.
 
-#### CUL (move cursur left)
+#### CUL 0x25 (move cursur left)
 ```
 PIC                GW
  |<------CUL--------|
 ```
 
-#### CUR (move cursor right)
+#### CUR 0x26 (move cursor right)
 ```
 PIC                GW
  |<------CUR--------|
 ```
 
-#### NWL (new line)
+#### NWL 0x27 (new line)
 ```
 PIC                GW
  |<------NWL--------|
 ```
 
-#### HOM (return home)
+#### HOM 0x28 (return home)
 ```
 PIC                GW
  |<------HOM--------|
 ```
-
