@@ -4,7 +4,7 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
 
 ## Common operations among the blocks
 
-#### WHO 0x01 (who are you?)
+#### WHO (R)0x01 (who are you?)
 ```
   slave              master
     |<------WHO--------|
@@ -12,7 +12,7 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
     |---<device_id>--->|
 ```
 
-#### SCN 0x02 (scan new device / I2C only)
+#### SCN (R)0x02 (scan new device / I2C only)
 
 This request is sent as I2C General Call to all the slaves on the I2C bus.
 ```
@@ -22,7 +22,7 @@ This request is sent as I2C General Call to all the slaves on the I2C bus.
     |---<device_id>--->|
 ```
 
-#### SAV 0x03 (save the current setting onto EEPROM)
+#### SAV (W)0x03 (save the current setting onto EEPROM)
 ```
   slave              master
     |<------SAV--------|
@@ -44,7 +44,7 @@ The current setting is saved in PIC'S EEPROM.
     |-------ACK------->|
 ```
 
-#### SEN 0x06 (request sensor data/ I2C only)
+#### SEN (R)0x06 (request sensor data/ I2C only)
 ```
  slave              master
    |<------SEN--------|
@@ -52,13 +52,13 @@ The current setting is saved in PIC'S EEPROM.
    |------<num>------>|
 ```
 
-#### SET 0x07 (set the new setting to the device)
+#### SET (W)0x07 (set the new setting to the device)
 ```
   slave              master
     |<----SET:<num>----|
 ```
 
-#### GET 0x08 (return the current setting)
+#### GET (R)0x08 (return the current setting)
 ```
  slave              master
    |<------GET--------|
@@ -90,58 +90,58 @@ The current setting is saved in PIC'S EEPROM.
 
 ### Character LCD block
 
-#### INI 0x20 (initialize LCD)
+#### INI (W)0x20 (initialize LCD)
 ```
 PIC                GW
  |<------INI--------|
 ```
 
-#### CMD 0x21 (command)
+#### CMD (W)0x21 (command)
 ```
 PIC                GW
  |<----CMD:<cmd>----|
 ```
 "cmd" is one-byte command in decimal.
 
-#### DAT 0x22 (data)
+#### DAT (W)0x22 (data)
 ```
 PIC                GW
  |<---DAT:<data>----|
 ```
 "data" is one-byte data in decimal.
 
-#### CLR 0x23 (clear)
+#### CLR (W)0x23 (clear)
 ```
 PIC                GW
  |<------CLR--------|
 ```
 
-#### STR 0x24 (string)
+#### STR (W)0x24 (string)
 ```
 PIC                GW
  |<--STR:<string>---|
 ```
 "string" is string data in ASCII code.
 
-#### CUL 0x25 (move cursur left)
+#### CUL (W)0x25 (move cursur left)
 ```
 PIC                GW
  |<------CUL--------|
 ```
 
-#### CUR 0x26 (move cursor right)
+#### CUR (W)0x26 (move cursor right)
 ```
 PIC                GW
  |<------CUR--------|
 ```
 
-#### NWL 0x27 (new line)
+#### NWL (W)0x27 (new line)
 ```
 PIC                GW
  |<------NWL--------|
 ```
 
-#### HOM 0x28 (return home)
+#### HOM (W)0x28 (return home)
 ```
 PIC                GW
  |<------HOM--------|
