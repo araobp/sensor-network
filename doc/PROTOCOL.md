@@ -69,7 +69,7 @@ The current setting is saved in PIC'S EEPROM.
 ## Recommended link start-up sequence
 
 ```
- slave             master
+ slave              master
    |                  |
    |<------STP--------|  Send STP(Stop) to the slave to stop sending data.
    |-------ACK------->|  Confirm that ACK has been received on the master side.
@@ -88,61 +88,78 @@ The current setting is saved in PIC'S EEPROM.
 
 ## Block-specific operations
 
+### Backplane Master (for debugging)
+
+#### I2R (I2C read)
+```
+ slave                                   master
+   |<---I2R:<dev_addr>,<reg_addr>----------|
+   |                                       |
+   |------------<num>--------------------->|
+```
+
+#### I2W (I2c write)
+```
+ slave                                   master
+   |<---I2W:<dev_addr>,<reg_addr>,<num>----|
+```
+
 ### Character LCD block
 
 #### INI (W)0x20 (initialize LCD)
 ```
-PIC                GW
- |<------INI--------|
+ slave              master
+   |<------INI--------|
 ```
 
 #### CMD (W)0x21 (command)
 ```
-PIC                GW
- |<----CMD:<cmd>----|
+ slave              master
+   |<----CMD:<cmd>----|
 ```
 "cmd" is one-byte command in decimal.
 
 #### DAT (W)0x22 (data)
 ```
-PIC                GW
- |<---DAT:<data>----|
+ slave              master
+   |<---DAT:<data>----|
 ```
 "data" is one-byte data in decimal.
 
 #### CLR (W)0x23 (clear)
 ```
-PIC                GW
- |<------CLR--------|
+ slave              master
+   |<------CLR--------|
 ```
 
 #### STR (W)0x24 (string)
 ```
-PIC                GW
- |<--STR:<string>---|
+ slave              master
+   |<--STR:<string>---|
 ```
 "string" is string data in ASCII code.
 
 #### CUL (W)0x25 (move cursur left)
 ```
-PIC                GW
- |<------CUL--------|
+ slave              master
+   |<------CUL--------|
 ```
 
 #### CUR (W)0x26 (move cursor right)
 ```
-PIC                GW
- |<------CUR--------|
+ slave              master
+   |<------CUR--------|
 ```
 
 #### NWL (W)0x27 (new line)
 ```
-PIC                GW
- |<------NWL--------|
+ slave              master
+   |<------NWL--------|
 ```
 
 #### HOM (W)0x28 (return home)
 ```
-PIC                GW
- |<------HOM--------|
+ slave              master
+   |<------HOM--------|
 ```
+
