@@ -22,6 +22,7 @@ extern "C" {
     uint8_t PROTOCOL_I2C_Who(void);
     uint8_t PROTOCOL_I2C_Scn(void);
     void PROTOCOL_I2C_Sav(void);
+    uint8_t PROTOCOL_I2C_Sen(uint8_t *data);
     
 #ifdef	__cplusplus
 }

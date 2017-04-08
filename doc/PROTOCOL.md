@@ -49,13 +49,13 @@ The current setting is saved in PIC'S EEPROM.
  slave              master
    |<------SEN--------|
    |                  |
-   |------<num>------>|
+   |-----<value>----->|
 ```
 
 #### SET (W)0x07 (set the new setting to the device)
 ```
   slave              master
-    |<----SET:<num>----|
+    |<---SET:<value>---|
 ```
 
 #### GET (R)0x08 (return the current setting)
@@ -63,7 +63,7 @@ The current setting is saved in PIC'S EEPROM.
  slave              master
    |<------GET--------|
    |                  |
-   |------<num>------>|
+   |-----<value>----->|
 ```
 
 ## Recommended link start-up sequence
@@ -78,7 +78,7 @@ The current setting is saved in PIC'S EEPROM.
    |<------WHO--------|  Send WHO(Who are you?) to get device ID of the block.
    |----DEVICE_ID---->|  Keep the device ID on the master side.
    |                  |
-   |<----SET:<num>----|  Send SET to configure the device.
+   |<---SET:<value>---|  Send SET to configure the device.
    |                  |
    |<-----SAV---------|  Send SAV to save the config on the slave side.
    |                  |
@@ -90,18 +90,30 @@ The current setting is saved in PIC'S EEPROM.
 
 ### Backplane Master (for debugging)
 
-#### I2R (I2C read)
+#### DEV (set device address)
 ```
- slave                                   master
-   |<---I2R:<dev_addr>,<reg_addr>----------|
-   |                                       |
-   |------------<num>--------------------->|
+ slave              master
+   |<----DEV:<dev>----|
 ```
 
-#### I2W (I2c write)
+#### REG (set register address)
 ```
- slave                                   master
-   |<---I2W:<dev_addr>,<reg_addr>,<num>----|
+slave              master
+|<----REG:<reg>----|
+```
+
+#### RED (read)
+```
+slave              master
+  |<------RED--------|
+  |                  |
+  |-----<value>----->|
+```
+
+#### WRT (write value)
+```
+ slave              master
+   |-------WRT------->|
 ```
 
 ### Character LCD block
@@ -162,4 +174,3 @@ The current setting is saved in PIC'S EEPROM.
  slave              master
    |<------HOM--------|
 ```
-

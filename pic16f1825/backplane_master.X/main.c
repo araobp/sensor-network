@@ -1,6 +1,8 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
 #include "i2c_util.h"
+#include <stdlib.h>
+#include <string.h>
 
 #define _XTAL_FREQ 500000
 #define DEVICE_ID "BACKPLANE_MASTER"
@@ -8,6 +10,11 @@
 #define TEST_ADDRESS 0x01
 #define TEST_REGISTER 0x02
 #define TEST_DATA 0x03
+
+#define DEV "DEV"
+#define REG "REG"
+#define RED "RED"
+#define WRT "WRT"
 
 uint8_t running = 1;
 uint8_t do_func = 0;
@@ -34,19 +41,30 @@ void tmr0_handler(void) {
  }
 
 void loop_func(void) {
-    float x, y, z;
     if (do_func) {
         uint8_t data;
-        i2c_read(TEST_ADDRESS, TEST_REGISTER, &data, 1);
-        printf("%d\n", data);
         LATCbits.LATC3 ^= 1;
         do_func = 0;
     }
 }
 
-/*
- * output max abs(measured value) in the period.
- */
+void extension_handler(uint8_t *buf) {
+    uint8_t dev_addr;
+    uint8_t reg_addr;
+    uint8_t value;
+    if (!strncmp(DEV, buf, 3)) {
+        dev_addr = atoi(&buf[4]);
+    } else if (!strncmp(REG, buf, 3)) {
+        reg_addr = atoi(&buf[4]);
+    } else if (!strncmp(RED, buf, 3)) {
+        i2c_read(dev_addr, reg_addr, &value, 1);
+        printf("%d\n", value);
+    } else if (!strncmp(WRT, buf, 3)) {
+        value = atoi(&buf[4]);
+        i2c_write(dev_addr, reg_addr, value);
+    }
+}
+
 void main(void)
 {
     SYSTEM_Initialize();
@@ -62,5 +80,6 @@ void main(void)
 
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
     PROTOCOL_Set_Func(loop_func);
+    PROTOCOL_Set_Extension_Handler(extension_handler);
     PROTOCOL_Loop();
 }

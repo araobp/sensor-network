@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=protocol_i2c
+PROJECTNAME=protocol_i2c.X
 
 # Active Configuration
 DEFAULTCONF=default
