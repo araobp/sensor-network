@@ -180,9 +180,6 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
     static uint8_t regAddr;
-    uint8_t data[16];
-    uint8_t len;
-    uint8_t i;
 
     switch (i2c_bus_state)
     {
@@ -225,14 +222,8 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                 case WHO2:
                     SSP1BUF = PROTOCOL_I2C_Who();
                     break;
-                case SCN2:
-                    SSP1BUF = PROTOCOL_I2C_Scn();
-                    break;
                 case SEN2:
-                    len = PROTOCOL_I2C_Sen(data);
-                    for (i=0;i<len;i++) {
-                        SSP1BUF = data[i];
-                    }
+                    SSP1BUF = PROTOCOL_I2C_Sen();
                     break;
             }
             break;

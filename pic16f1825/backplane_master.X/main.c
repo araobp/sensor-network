@@ -51,17 +51,17 @@ void loop_func(void) {
 void extension_handler(uint8_t *buf) {
     uint8_t dev_addr;
     uint8_t reg_addr;
-    uint8_t value;
+    uint8_t data;
     if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);
     } else if (!strncmp(REG, buf, 3)) {
         reg_addr = atoi(&buf[4]);
     } else if (!strncmp(RED, buf, 3)) {
-        i2c_read(dev_addr, reg_addr, &value, 1);
-        printf("%d\n", value);
+        i2c_read(dev_addr, reg_addr, &data, 1);
+        printf("%d\n", data);
     } else if (!strncmp(WRT, buf, 3)) {
-        value = atoi(&buf[4]);
-        i2c_write(dev_addr, reg_addr, value);
+        data = atoi(&buf[4]);
+        i2c_write(dev_addr, reg_addr, data);
     }
 }
 

@@ -12,16 +12,6 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
     |---<device_id>--->|
 ```
 
-#### SCN (R)0x02 (scan new device / I2C only)
-
-This request is sent as I2C General Call to all the slaves on the I2C bus.
-```
-  slave              master
-    |<------SCN--------|
-    |                  |
-    |---<device_id>--->|
-```
-
 #### SAV (W)0x03 (save the current setting onto EEPROM)
 ```
   slave              master
