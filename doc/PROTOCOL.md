@@ -12,6 +12,13 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
     |---<device_id>--->|
 ```
 
+#### PLG (G)0x02 (Plug / I2C only, General Call)
+```
+  slave              master
+    |<------PLG--------|
+    |----(I2C ACK)---->|
+```
+
 #### SAV (W)0x03 (save the current setting onto EEPROM)
 ```
   slave              master
@@ -54,6 +61,14 @@ The current setting is saved in PIC'S EEPROM.
    |<------GET--------|
    |                  |
    |-----<value>----->|
+```
+
+#### STS (R)0x09 (status check / I2C only)
+```
+slave              master
+  |<------STS--------|
+  |                  |
+  |----<status>----->|
 ```
 
 ## Recommended link start-up sequence
