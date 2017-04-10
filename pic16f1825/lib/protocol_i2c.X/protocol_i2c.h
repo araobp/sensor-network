@@ -4,7 +4,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-   
+       
     /*
      * Basic commands
      */
@@ -20,7 +20,8 @@ extern "C" {
     void PROTOCOL_I2C_Initialize(uint8_t device_id);
     uint8_t PROTOCOL_I2C_Who(void);
     void PROTOCOL_I2C_Sav(void);
-    uint8_t PROTOCOL_I2C_Sen();
+    void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+    uint8_t* PROTOCOL_I2C_Sen();
     
 #ifdef	__cplusplus
 }
