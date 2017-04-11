@@ -1,5 +1,6 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
+#include "protocol_definition.h"
 #include "i2c_util.h"
 #include <stdlib.h>
 #include <string.h>
@@ -14,6 +15,7 @@
 #define DEV "DEV"
 #define REG "REG"
 #define RED "RED"
+#define SEN "SEN"
 #define WRT "WRT"
 
 uint8_t running = 1;
@@ -52,6 +54,8 @@ void extension_handler(uint8_t *buf) {
     uint8_t dev_addr;
     uint8_t reg_addr;
     uint8_t data;
+    uint8_t read_buf[16];
+    uint8_t status;
     if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);
     } else if (!strncmp(REG, buf, 3)) {
@@ -59,6 +63,19 @@ void extension_handler(uint8_t *buf) {
     } else if (!strncmp(RED, buf, 3)) {
         i2c_read(dev_addr, reg_addr, &data, 1);
         printf("%d\n", data);
+    } else if (!strncmp(SEN, buf, 3)) {
+        status = i2c_read(dev_addr, SEN_I2C, &data, 1);
+        if (status == 0) printf("type: %d\n", data);
+        else printf("status: %d\n", status);
+        status = i2c_read(dev_addr, SEN_I2C, &data, 1);
+        if (status == 0) printf("length: %d\n", data);
+        else printf("status: %d\n", status);
+        status = i2c_read(dev_addr, SEN_I2C, &read_buf[0], data);
+        if (status == 0) {
+            for (int i=0; i<data; i++) printf("value[%d]: %d\n", i, read_buf[i]);        
+        } else {
+            printf("status: %d\n", status);
+        }
     } else if (!strncmp(WRT, buf, 3)) {
         data = atoi(&buf[4]);
         i2c_write(dev_addr, reg_addr, data);

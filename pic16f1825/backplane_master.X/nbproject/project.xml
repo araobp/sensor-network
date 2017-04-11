@@ -14,6 +14,7 @@
             <make-dep-projects>
                 <make-dep-project>../lib/i2c_util.X</make-dep-project>
                 <make-dep-project>../lib/protocol.X</make-dep-project>
+                <make-dep-project>../lib/protocol_definition.X</make-dep-project>
             </make-dep-projects>
         </data>
     </configuration>

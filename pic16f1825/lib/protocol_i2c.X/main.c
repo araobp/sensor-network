@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #define __XTAL_FREQ 500000
-#define DEVICE_ID 0x01
+#define DEVICE_ID 0x12
 
 void main(void)
 {

@@ -4,16 +4,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-       
-    /*
-     * Basic commands
-     */
-    #define WHO2 0x01
-    #define SAV2 0x03
-    #define SEN2 0x06
-    #define SET2 0x07
-    #define GET2 0x08
-    
+         
     /*
      * Functions
      */

@@ -46,6 +46,7 @@
 
 #include "i2c.h"
 #include "../protocol_i2c.h"
+#include "protocol_definition.h"
 
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F
@@ -220,12 +221,12 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
             
             switch (regAddr)
             {
-                case WHO2:
+                case WHO_I2C:
                     SSP1BUF = PROTOCOL_I2C_Who();
                     break;
-                case SEN2:
+                case SEN_I2C:
                     pdata = PROTOCOL_I2C_Sen();
-                    if (pdata != NULL) {
+                    if (pdata) {
                         SSP1BUF = *pdata;
                     } else {
                         SSP1BUF = 0;

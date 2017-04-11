@@ -4,11 +4,11 @@
 #include "protocol.h"
 
 // function pointers (event handlers)
-void (*PROTOCOL_Start_Handler)(void) = 0;
-void (*PROTOCOL_Stop_Handler)(void) = 0;
-void (*PROTOCOL_Set_Handler)(uint8_t value) = 0;
-void (*PROTOCOL_Loop_Func)(void) = 0;
-void (*PROTOCOL_Extension_Handler)(uint8_t *buf) = 0;
+void (*PROTOCOL_Start_Handler)(void) = NULL;
+void (*PROTOCOL_Stop_Handler)(void) = NULL;
+void (*PROTOCOL_Set_Handler)(uint8_t value) = NULL;
+void (*PROTOCOL_Loop_Func)(void) = NULL;
+void (*PROTOCOL_Extension_Handler)(uint8_t *buf) = NULL;
 
 uint8_t c;
 uint8_t cnt = 0;

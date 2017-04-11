@@ -3,17 +3,15 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>protocol_i2c</name>
-            <creation-uuid>32e03a7d-5420-4322-9bc9-2c3f8fd30dfa</creation-uuid>
+            <name>protocol_definition</name>
+            <creation-uuid>2ef1a87d-e4a2-4f10-a105-44ca537efb52</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
-            <header-extensions>h</header-extensions>
+            <header-extensions/>
             <asminc-extensions/>
-            <sourceEncoding>ISO-8859-1</sourceEncoding>
-            <make-dep-projects>
-                <make-dep-project>../protocol_definition.X</make-dep-project>
-            </make-dep-projects>
+            <sourceEncoding>US-ASCII</sourceEncoding>
+            <make-dep-projects/>
         </data>
     </configuration>
 </project>
