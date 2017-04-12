@@ -16,6 +16,14 @@ extern "C" {
     #define SET "SET"
     #define GET "GET"
     #define ACK "ACK"
+    #define WDI "WDI"
+    #define RDI "RDI"
+
+    /*
+     * EEPROM area
+     */
+    #define DEVICE_ID_I2C_ADDRESS 0
+    #define DEVICE_SETTING_ADDRESS 1
     
     /*
      * Functions
@@ -24,6 +32,8 @@ extern "C" {
     void PROTOCOL_Loop();
     void PROTOCOL_Set_Func(void *loop_func);
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+    void PROTOCOL_Write_Device_Id_I2C(uint8_t device_id_i2c);
+    uint8_t PROTOCOL_Read_Device_Id_I2C();
     
 #ifdef	__cplusplus
 }

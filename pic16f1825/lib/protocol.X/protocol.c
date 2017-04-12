@@ -24,7 +24,7 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     PROTOCOL_Set_Handler = set_handler;
     
     if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
-    value = DATAEE_ReadByte(0);  // read value from EEPROM
+    value = DATAEE_ReadByte(DEVICE_SETTING_ADDRESS);  // read value from EEPROM
     if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
     if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
 }
@@ -37,10 +37,19 @@ void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
     PROTOCOL_Extension_Handler = extension_handler;
 }
 
+void PROTOCOL_Write_Device_Id_I2C(uint8_t device_id_i2c) {
+    DATAEE_WriteByte(DEVICE_ID_I2C_ADDRESS, device_id_i2c);
+}
+
+uint8_t PROTOCOL_Read_Device_Id_I2C() {
+    return DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);
+}
+
 /*
  * USART Rx reader
  */
 void PROTOCOL_Loop() {
+    uint8_t device_id_i2c;
     while (1) {
         if (PROTOCOL_Loop_Func) PROTOCOL_Loop_Func();
         if (EUSART_DataReady) {
@@ -53,7 +62,7 @@ void PROTOCOL_Loop() {
                 if (!strncmp(WHO, buf, 3)) {  // who are you?
                     printf("%s\n", device_id_);
                 } else if (!strncmp(SAV, buf ,3)) {  // save the current setting
-                    DATAEE_WriteByte(0, value);
+                    DATAEE_WriteByte(DEVICE_SETTING_ADDRESS, value);
                 } else if (!strncmp(STA, buf, 3)) {  // start measurement
                     PROTOCOL_Start_Handler();
                 } else if (!strncmp(STP, buf, 3)) {  // stop measurement
@@ -64,7 +73,14 @@ void PROTOCOL_Loop() {
                     PROTOCOL_Set_Handler(value);
                 } else if (!strncmp(GET, buf, 3)) {  // get value
                     printf("VAL:%d\n", value);
-                } else {
+                } else if (!strncmp(WDI, buf, 3)) {
+                    device_id_i2c = atoi(&buf[4]);
+                    PROTOCOL_Write_Device_Id_I2C(device_id_i2c);
+                } else if (!strncmp(RDI, buf, 3)) {
+                    device_id_i2c = PROTOCOL_Read_Device_Id_I2c();
+                    printf("I2C:%d\n", device_id_i2c);
+                }
+                else {
                     PROTOCOL_Extension_Handler(buf);
                 }
             }

@@ -46,7 +46,7 @@
 
 #include "i2c.h"
 #include "../protocol_i2c.h"
-#include "protocol_definition.h"
+#include "protocol_i2c_definition.h"
 
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F

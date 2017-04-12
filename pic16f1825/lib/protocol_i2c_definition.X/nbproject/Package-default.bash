@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/protocol_definition.X.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=protocol_definition.X.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=protocoldefinition.X/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/protocol_i2c_definition.X.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=protocol_i2c_definition.X.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=protocoli2cdefinition.X/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/protocoldefinition.X/bin
-copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
+makeDirectory ${TMPDIR}/protocoli2cdefinition.X/lib
+copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}" 0644
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/protocoldefinition.X.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/protocoli2cdefinition.X.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/protocoldefinition.X.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/protocoli2cdefinition.X.tar *
 checkReturnCode
 
 # Cleanup

@@ -71,6 +71,20 @@ slave              master
   |----<status>----->|
 ```
 
+#### WDI (Write I2C slave Device ID / UART only)
+```
+slave              master
+  |<----WDI:<id>-----|
+```
+
+#### RDI (Read I2C slave Device ID / UART only)
+```
+slave              master
+  |<------RDI--------|
+  |                  |
+  |-------<id>------>|
+```
+
 ## Recommended link start-up sequence
 
 ```
@@ -179,3 +193,10 @@ slave              master
  slave              master
    |<------HOM--------|
 ```
+
+## EEPROM area
+
+|Address|Usage                 |
+|-------|----------------------|
+|0      |Device ID             |
+|1      |Device setting        |
