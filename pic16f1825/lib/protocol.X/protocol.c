@@ -45,6 +45,14 @@ uint8_t PROTOCOL_Read_Device_Address() {
     return DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);
 }
 
+void PROTOCOL_Call_Start_Handler(void) {
+    PROTOCOL_Start_Handler();
+}
+
+void PROTOCOL_Call_Stop_Handler(void) {
+    PROTOCOL_Stop_Handler();
+}
+
 /*
  * USART Rx reader
  */
@@ -59,7 +67,7 @@ void PROTOCOL_Loop() {
                 buf[--cnt] = '\0';
                 cnt = 0;
 
-                if (SLAVE_ADDRESS) {  // Handled by backplane master?
+                if (CLI_SLAVE_ADDRESS) {  // Handled by backplane master?
                     PROTOCOL_Extension_Handler(buf);                    
                 } else if (!strncmp(WHO, buf, 3)) {  // who are you?
                     printf("%s\n", device_id_);

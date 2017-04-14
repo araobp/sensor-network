@@ -24,6 +24,7 @@ uint8_t running = 1;
 uint8_t do_func = 0;
 uint8_t period_10 = 0;
 uint8_t timer_cnt = 0;
+uint8_t general_call_timer = 0;
 
 void start_handler(void) {
     running = 1;
@@ -38,6 +39,14 @@ void set_handler(uint8_t value) {
 }
 
 void tmr0_handler(void) {
+    uint8_t status;
+    if (++general_call_timer >= T_PLG) {
+        general_call_timer = 0;
+        status = i2c_write_no_data(GENERAL_CALL_ADDRESS, PLG_I2C);
+        if (status == 0) {
+            // Start WHO seaquence here
+        }
+    }
      if (++timer_cnt >= period_10) {
         timer_cnt = 0;
         if (running) do_func = 1;
@@ -60,36 +69,36 @@ void extension_handler(uint8_t *buf) {
     uint8_t read_buf[16];
     uint8_t status;
     if (!strncmp(I2C, buf, 3)) {
-        SLAVE_ADDRESS = atoi(&buf[4]);
+        CLI_SLAVE_ADDRESS = atoi(&buf[4]);
     } else if (!strncmp(WHO, buf, 3)) {
-        status = i2c_read(SLAVE_ADDRESS, WHO_I2C, &data, 1);
+        status = i2c_read(CLI_SLAVE_ADDRESS, WHO_I2C, &data, 1);
         if (status == 0) printf("%d\n", data);
         else printf("!\n");
     } else if (!strncmp(SAV, buf, 3)) {
-        status = i2c_write_no_data(SLAVE_ADDRESS, SAV_I2C);
+        status = i2c_write_no_data(CLI_SLAVE_ADDRESS, SAV_I2C);
     } else if (!strncmp(STA, buf, 3)) {
-        status = i2c_write_no_data(SLAVE_ADDRESS, STA_I2C);
+        status = i2c_write_no_data(CLI_SLAVE_ADDRESS, STA_I2C);
     } else if (!strncmp(STP, buf, 3)) {
-        status = i2c_write_no_data(SLAVE_ADDRESS, STP_I2C);
+        status = i2c_write_no_data(CLI_SLAVE_ADDRESS, STP_I2C);
         if (status == 0) printf("ACK\n");
         else printf("NACK\n");
     } else if (!strncmp(SET, buf, 3)) {
         data = atoi(&buf[4]);
-        i2c_write(SLAVE_ADDRESS, SET_I2C, data);
+        i2c_write(CLI_SLAVE_ADDRESS, SET_I2C, data);
     } else if (!strncmp(GET, buf, 3)) {
-        i2c_read(SLAVE_ADDRESS, GET_I2C, &data, 1);
+        i2c_read(CLI_SLAVE_ADDRESS, GET_I2C, &data, 1);
         printf("%d\n", data);
     } else if (!strncmp(STS, buf, 3)) {
-        i2c_read(SLAVE_ADDRESS, STS_I2C, &data, 1);
-        if (data) {
+        i2c_read(CLI_SLAVE_ADDRESS, STS_I2C, &data, 1);
+        if (data = STS_SEN_READY) {
             printf("sts: %d\n", data);
-            status = i2c_read(SLAVE_ADDRESS, SEN_I2C, &type, 1);
+            status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &type, 1);
             if (status == 0) {
                 printf("type: %d\n", type);
-                status = i2c_read(SLAVE_ADDRESS, SEN_I2C, &length, 1);
+                status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &length, 1);
                 if (status == 0) {
                     printf("length: %d\n", length);
-                    status = i2c_read(SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
+                    status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
                     if (status == 0) {
                         for (int i=0; i<data; i++) printf("value[%d]: %d\n", i, read_buf[i]);        
                     }                    

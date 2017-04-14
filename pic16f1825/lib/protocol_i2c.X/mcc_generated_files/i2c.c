@@ -47,6 +47,7 @@
 #include "i2c.h"
 #include "../protocol_i2c.h"
 #include "protocol_i2c_definition.h"
+#include "protocol.h"
 
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F
@@ -181,7 +182,6 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
     static uint8_t regAddr;
-    static bool just_plugged = false;
     uint8_t *pdata;
 
     switch (i2c_bus_state)
@@ -206,9 +206,7 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
                 case SLAVE_GENERAL_CALL:
                     regAddr = I2C_slaveWriteData;
-                    if (I2C_slaveWriteData == PLG_I2C && !just_plugged) {
-                        just_plugged = true;
-                    }
+                    if (I2C_slaveWriteData == PLG_I2C) SSP1CON2bits.GCEN = 0;  // Disable General Call reception
                     break;
 
                 case SLAVE_NORMAL_DATA:
@@ -229,8 +227,14 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                     SSP1BUF = PROTOCOL_I2C_Who();
                     break;
                 case STS_I2C:
-                    if (just_plugged) SSP1BUF = STS_JUST_PLUGGED;
-                    else if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
+                    if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
+                    break;
+                case STA_I2C:
+                    PROTOCOL_Call_Start_Handler();
+                    break;
+                case STP_I2C:
+                    PROTOCOL_Call_Stop_Handler();
+                    break;
                 case SEN_I2C:
                     pdata = PROTOCOL_I2C_Sen();
                     if (pdata) {

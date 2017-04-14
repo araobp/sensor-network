@@ -21,9 +21,18 @@ extern "C" {
 /*
  * I2C backplane slave status
  */
-#define STS_JUST_PLUGGED 0x01
-#define STS_SEN_READY 0x02
- 
+#define STS_SEN_READY 0x01
+
+/*
+ * I2C backplane general call address
+ */
+#define GENERAL_CALL_ADDRESS 0x00
+
+/*
+ * Timers
+ */
+#define T_PLG 255  // Plug check timer : 255 * 10msec = 2.55sec
+    
 /*
  * Device IDs
  */

@@ -80,6 +80,23 @@
                             DD="dist/default/debug/protocol_i2c_definition.X.lpp">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../protocol.X"
+                            CT="3"
+                            CN="default"
+                            AC="true"
+                            BL="true"
+                            WD="../protocol.X"
+                            BC="${MAKE}  -f Makefile CONF=default"
+                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
+                            OP="dist/default/production/protocol.X.lpp"
+                            DOP="dist/default/debug/protocol.X.lpp"
+                            FL="dist/default/production/protocol.X.lpp"
+                            PD="dist/default/production/protocol.X.lpp"
+                            DD="dist/default/debug/protocol.X.lpp">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>

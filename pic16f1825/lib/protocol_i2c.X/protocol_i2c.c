@@ -23,18 +23,18 @@ typedef struct {
 READBUF readbuf;
 READBUF_STATUS readbuf_status;
 
-uint8_t device_id_;
+uint8_t slave_address;
 
 uint8_t *data;
         
 // initialization
 void PROTOCOL_I2C_Initialize(uint8_t device_id) {
-    device_id_ = device_id;
+    slave_address = device_id;
     SSP1ADD = (device_id << 1);
 }
 
 uint8_t PROTOCOL_I2C_Who(void) {
-    return device_id_;
+    return slave_address;
 }
 
 void PROTOCOL_I2C_Sav(void) {

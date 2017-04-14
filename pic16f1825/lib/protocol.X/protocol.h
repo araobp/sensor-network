@@ -28,7 +28,7 @@ extern "C" {
     /*
      * I2C backplane slave address
      */
-    uint8_t SLAVE_ADDRESS = 0x00;
+    uint8_t CLI_SLAVE_ADDRESS = 0x00;
     
     /*
      * Functions
@@ -38,7 +38,9 @@ extern "C" {
     void PROTOCOL_Set_Func(void *loop_func);
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
     void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
-    uint8_t PROTOCOL_Read_Device_Address();
+    uint8_t PROTOCOL_Read_Device_Address(void);
+    void PROTOCOL_Call_Start_Handler(void);
+    void PROTOCOL_Call_Stop_Handler(void);
     
 #ifdef	__cplusplus
 }
