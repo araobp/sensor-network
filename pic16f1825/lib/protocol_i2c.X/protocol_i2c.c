@@ -49,7 +49,13 @@ void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
     readbuf.buf_cnt = 0;
 }
 
-uint8_t* PROTOCOL_I2C_Sen() {
+bool PROTOCOL_I2C_TLV_Status(void) {
+    if (readbuf.status == TLV_SET) {
+        return true;
+    } else return false;
+}
+
+uint8_t* PROTOCOL_I2C_Sen(void) {
     uint8_t *pdata;
     switch(readbuf.status) {
         case TLV_SET:

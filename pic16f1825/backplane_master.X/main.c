@@ -46,7 +46,6 @@ void tmr0_handler(void) {
 
 void loop_func(void) {
     if (do_func) {
-        uint8_t data;
         LATCbits.LATC3 ^= 1;
         do_func = 0;
     }
@@ -56,6 +55,8 @@ void extension_handler(uint8_t *buf) {
     static uint8_t dev_addr;
     static uint8_t reg_addr;
     uint8_t data;
+    uint8_t type;
+    uint8_t length;
     uint8_t read_buf[16];
     uint8_t status;
     if (!strncmp(I2C, buf, 3)) {
@@ -80,7 +81,21 @@ void extension_handler(uint8_t *buf) {
         printf("%d\n", data);
     } else if (!strncmp(STS, buf, 3)) {
         i2c_read(SLAVE_ADDRESS, STS_I2C, &data, 1);
-        printf("%d\n", data);
+        if (data) {
+            printf("sts: %d\n", data);
+            status = i2c_read(SLAVE_ADDRESS, SEN_I2C, &type, 1);
+            if (status == 0) {
+                printf("type: %d\n", type);
+                status = i2c_read(SLAVE_ADDRESS, SEN_I2C, &length, 1);
+                if (status == 0) {
+                    printf("length: %d\n", length);
+                    status = i2c_read(SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
+                    if (status == 0) {
+                        for (int i=0; i<data; i++) printf("value[%d]: %d\n", i, read_buf[i]);        
+                    }                    
+                }
+            }
+        }
     } else if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);
     } else if (!strncmp(REG, buf, 3)) {

@@ -9,13 +9,20 @@ extern "C" {
  * Common operations
  */
 #define WHO_I2C 0x01
-#define SAV_I2C 0x02
+#define PLG_I2C 0x02
+#define SAV_I2C 0x03
 #define STA_I2C 0x04
 #define STP_I2C 0x05
 #define SEN_I2C 0x06
 #define SET_I2C 0x07
 #define GET_I2C 0x08
-#define STS_I2C 0x09    
+#define STS_I2C 0x09
+    
+/*
+ * I2C backplane slave status
+ */
+#define STS_JUST_PLUGGED 0x01
+#define STS_SEN_READY 0x02
  
 /*
  * Device IDs

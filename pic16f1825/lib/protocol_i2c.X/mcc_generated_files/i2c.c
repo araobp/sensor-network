@@ -181,7 +181,7 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
     static uint8_t regAddr;
-    static just_plugged = true;
+    static bool just_plugged = false;
     uint8_t *pdata;
 
     switch (i2c_bus_state)
@@ -206,9 +206,8 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
                 case SLAVE_GENERAL_CALL:
                     regAddr = I2C_slaveWriteData;
-                    if (write_data == PLG_I2C && just_plugged) {
-                        // ... return ACK here ... //
-                        just_plugged = false;
+                    if (I2C_slaveWriteData == PLG_I2C && !just_plugged) {
+                        just_plugged = true;
                     }
                     break;
 
@@ -229,6 +228,9 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                 case WHO_I2C:
                     SSP1BUF = PROTOCOL_I2C_Who();
                     break;
+                case STS_I2C:
+                    if (just_plugged) SSP1BUF = STS_JUST_PLUGGED;
+                    else if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
                 case SEN_I2C:
                     pdata = PROTOCOL_I2C_Sen();
                     if (pdata) {

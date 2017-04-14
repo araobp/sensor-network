@@ -12,6 +12,7 @@ extern "C" {
     uint8_t PROTOCOL_I2C_Who(void);
     void PROTOCOL_I2C_Sav(void);
     void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+    bool PROTOCOL_I2C_TLV_Status(void);
     uint8_t* PROTOCOL_I2C_Sen();
     
 #ifdef	__cplusplus
