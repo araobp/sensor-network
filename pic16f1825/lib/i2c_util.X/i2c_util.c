@@ -42,3 +42,19 @@ uint8_t i2c_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len
     return read_status;
 }
 
+// I2C write w/o data
+uint8_t i2c_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
+
+    uint8_t buf[1];
+    I2C_MESSAGE_STATUS status;
+    uint8_t write_status;
+    buf[0] = reg_addr;
+    I2C_MasterWrite(buf, 1, dev_addr, &status);
+    while (status == I2C_MESSAGE_PENDING);
+    if (status == I2C_MESSAGE_COMPLETE) {
+        write_status = 0;
+    } else {
+        write_status = 1;
+    }
+    return write_status;
+}

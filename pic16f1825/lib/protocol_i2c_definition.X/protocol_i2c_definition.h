@@ -10,9 +10,12 @@ extern "C" {
  */
 #define WHO_I2C 0x01
 #define SAV_I2C 0x02
+#define STA_I2C 0x04
+#define STP_I2C 0x05
 #define SEN_I2C 0x06
 #define SET_I2C 0x07
 #define GET_I2C 0x08
+#define STS_I2C 0x09    
  
 /*
  * Device IDs

@@ -12,9 +12,11 @@
 #define TEST_REGISTER 0x02
 #define TEST_DATA 0x03
 
+#define I2C "I2C"
 #define DEV "DEV"
 #define REG "REG"
 #define RED "RED"
+#define STS "STS"
 #define SEN "SEN"
 #define WRT "WRT"
 
@@ -51,12 +53,35 @@ void loop_func(void) {
 }
 
 void extension_handler(uint8_t *buf) {
-    uint8_t dev_addr;
-    uint8_t reg_addr;
+    static uint8_t dev_addr;
+    static uint8_t reg_addr;
     uint8_t data;
     uint8_t read_buf[16];
     uint8_t status;
-    if (!strncmp(DEV, buf, 3)) {
+    if (!strncmp(I2C, buf, 3)) {
+        SLAVE_ADDRESS = atoi(&buf[4]);
+    } else if (!strncmp(WHO, buf, 3)) {
+        status = i2c_read(SLAVE_ADDRESS, WHO_I2C, &data, 1);
+        if (status == 0) printf("%d\n", data);
+        else printf("!\n");
+    } else if (!strncmp(SAV, buf, 3)) {
+        status = i2c_write_no_data(SLAVE_ADDRESS, SAV_I2C);
+    } else if (!strncmp(STA, buf, 3)) {
+        status = i2c_write_no_data(SLAVE_ADDRESS, STA_I2C);
+    } else if (!strncmp(STP, buf, 3)) {
+        status = i2c_write_no_data(SLAVE_ADDRESS, STP_I2C);
+        if (status == 0) printf("ACK\n");
+        else printf("NACK\n");
+    } else if (!strncmp(SET, buf, 3)) {
+        data = atoi(&buf[4]);
+        i2c_write(SLAVE_ADDRESS, SET_I2C, data);
+    } else if (!strncmp(GET, buf, 3)) {
+        i2c_read(SLAVE_ADDRESS, GET_I2C, &data, 1);
+        printf("%d\n", data);
+    } else if (!strncmp(STS, buf, 3)) {
+        i2c_read(SLAVE_ADDRESS, STS_I2C, &data, 1);
+        printf("%d\n", data);
+    } else if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);
     } else if (!strncmp(REG, buf, 3)) {
         reg_addr = atoi(&buf[4]);

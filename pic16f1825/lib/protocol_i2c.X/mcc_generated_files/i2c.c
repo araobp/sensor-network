@@ -181,6 +181,7 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
     static uint8_t regAddr;
+    static just_plugged = true;
     uint8_t *pdata;
 
     switch (i2c_bus_state)
@@ -204,7 +205,11 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                     break;
 
                 case SLAVE_GENERAL_CALL:
-                    // process general call data here
+                    regAddr = I2C_slaveWriteData;
+                    if (write_data == PLG_I2C && just_plugged) {
+                        // ... return ACK here ... //
+                        just_plugged = false;
+                    }
                     break;
 
                 case SLAVE_NORMAL_DATA:

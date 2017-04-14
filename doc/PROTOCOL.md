@@ -4,6 +4,15 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
 
 ## Common operations among the blocks
 
+#### I2C (set I2C backplane slave address)
+
+Note: address = 0 means I2C backplane Master.
+
+```
+  slave              master
+    |<--I2C:<address>--|
+```
+
 #### WHO (R)0x01 (who are you?)
 ```
   slave              master
@@ -71,16 +80,16 @@ slave              master
   |----<status>----->|
 ```
 
-#### WDI (Write I2C slave Device ID / UART only)
+#### WDA (Write I2C slave device address / UART only)
 ```
 slave              master
-  |<----WDI:<id>-----|
+  |<----WDA:<id>-----|
 ```
 
-#### RDI (Read I2C slave Device ID / UART only)
+#### RDA (Read I2C slave device address / UART only)
 ```
 slave              master
-  |<------RDI--------|
+  |<------RDA--------|
   |                  |
   |-------<id>------>|
 ```

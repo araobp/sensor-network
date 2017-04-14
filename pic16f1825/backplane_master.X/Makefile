@@ -4,7 +4,7 @@
 #  before and after some main targets. They are: 
 #
 #     .build-pre:              called before 'build' target
-#     .build-post:             called after 'build' target
+#     .build-post:             called after 'build' targetPROTO
 #     .clean-pre:              called before 'clean' target
 #     .clean-post:             called after 'clean' target
 #     .clobber-pre:            called before 'clobber' target
