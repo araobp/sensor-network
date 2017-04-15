@@ -12,6 +12,7 @@
             <asminc-extensions/>
             <sourceEncoding>US-ASCII</sourceEncoding>
             <make-dep-projects>
+                <make-dep-project>../lib/protocol_i2c.X</make-dep-project>
                 <make-dep-project>../lib/protocol.X</make-dep-project>
             </make-dep-projects>
         </data>

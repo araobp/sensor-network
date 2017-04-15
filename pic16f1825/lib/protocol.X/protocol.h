@@ -26,11 +26,6 @@ extern "C" {
     #define DEVICE_SETTING_ADDRESS 1
     
     /*
-     * I2C backplane slave address
-     */
-    uint8_t CLI_SLAVE_ADDRESS = 0x00;
-    
-    /*
      * Functions
      */
     void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);
@@ -83,12 +78,14 @@ extern "C" {
     /*
      * Backplane slave I2C addresses
      */
-    #define HC_SR04_I2C 0x10
-    #define A1324LUA_T_I2C 0x11
-    #define KXR94_2050_I2C 0x12
-    #define TOWER_PRO_SG90_I2C 0x13
-    #define AQM1602XA_RN_GBW_I2C 0x14
-    #define HDC1000_I2C 0x15
+    #define CLI_SLAVE_ADDRESS 0x00  // means backplane master 
+    #define TEMPLATE_I2C 0x10
+    #define HC_SR04_I2C 0x11
+    #define A1324LUA_T_I2C 0x12
+    #define KXR94_2050_I2C 0x13
+    #define TOWER_PRO_SG90_I2C 0x14
+    #define AQM1602XA_RN_GBW_I2C 0x15
+    #define HDC1000_I2C 0x16
 
 #ifdef	__cplusplus
 }

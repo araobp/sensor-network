@@ -11,9 +11,9 @@
         <itemPath>mcc_generated_files/mcc.h</itemPath>
         <itemPath>mcc_generated_files/eusart.h</itemPath>
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
-        <itemPath>mcc_generated_files/adc.h</itemPath>
         <itemPath>mcc_generated_files/tmr0.h</itemPath>
         <itemPath>mcc_generated_files/memory.h</itemPath>
+        <itemPath>mcc_generated_files/i2c.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -30,9 +30,9 @@
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/eusart.c</itemPath>
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
-        <itemPath>mcc_generated_files/adc.c</itemPath>
         <itemPath>mcc_generated_files/memory.c</itemPath>
         <itemPath>mcc_generated_files/tmr0.c</itemPath>
+        <itemPath>mcc_generated_files/i2c.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -76,6 +76,23 @@
                             DD="dist/default/debug/protocol.X.lpp">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../lib/protocol_i2c.X"
+                            CT="3"
+                            CN="default"
+                            AC="true"
+                            BL="true"
+                            WD="../lib/protocol_i2c.X"
+                            BC="${MAKE}  -f Makefile CONF=default"
+                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
+                            OP="dist/default/production/protocol_i2c.X.lpp"
+                            DOP="dist/default/debug/protocol_i2c.X.lpp"
+                            FL="dist/default/production/protocol_i2c.X.lpp"
+                            PD="dist/default/production/protocol_i2c.X.lpp"
+                            DD="dist/default/debug/protocol_i2c.X.lpp">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -101,7 +118,8 @@
         <property key="asmlist" value="true"/>
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
-        <property key="extra-include-directories" value="..\lib\protocol.X"/>
+        <property key="extra-include-directories"
+                  value="..\lib\protocol.X;..\lib\protocol_i2c.X"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="identifier-length" value="255"/>
         <property key="local-generation" value="false"/>
@@ -172,7 +190,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -230,6 +247,10 @@
         </HI-TECH-LINK>
         <XC8-config-global>
         </XC8-config-global>
+      </item>
+      <item path="mcc_generated_files/i2c.c" ex="true" overriding="false">
+      </item>
+      <item path="mcc_generated_files/i2c.h" ex="true" overriding="false">
       </item>
     </conf>
   </confs>
