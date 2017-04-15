@@ -73,10 +73,6 @@ This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, 
 - The green jumper pin is to enable/disable the LED blinking.
 - The tactile switch is a reset button: shorts MCLR pin to GND.
 
-I am going to use PIC16F1829 for DIN rail housing:
-
-![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
-
 #### Schematic of the base board
 
 The following is schematic of the base board prototype #2:
@@ -87,6 +83,10 @@ The following is schematic of the base board prototype #2:
 |----------|-------------|------------|
 |J1        |Enable LED   |Disable LED |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
+
+I am going to use PIC16F1829 for DIN rail housing:
+
+![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
 #### DIN-rail housings with a bus connector
 
