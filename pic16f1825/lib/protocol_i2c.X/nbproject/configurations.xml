@@ -35,7 +35,6 @@
         <itemPath>mcc_generated_files/i2c.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
-      <itemPath>protocol_i2c.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

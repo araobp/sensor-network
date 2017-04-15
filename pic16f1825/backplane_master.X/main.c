@@ -89,7 +89,7 @@ void extension_handler(uint8_t *buf) {
         printf("%d\n", data);
     } else if (!strncmp(STS, buf, 3)) {
         i2c_read(CLI_SLAVE_ADDRESS, STS_I2C, &data, 1);
-        if (data = STS_SEN_READY) {
+        if (data == STS_SEN_READY) {
             printf("sts: %d\n", data);
             status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &type, 1);
             if (status == 0) {

@@ -1,5 +1,4 @@
 #include "mcc_generated_files/mcc.h"
-#include "protocol_i2c.h"
 #include "protocol.h"
 #include <stdlib.h>
 

@@ -45,7 +45,6 @@
 */
 
 #include "i2c.h"
-#include "../protocol_i2c.h"
 #include "protocol.h"
 
 #define I2C_SLAVE_ADDRESS 0x01 
@@ -180,7 +179,7 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 {
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
-    static uint8_t regAddr;
+    static uint8_t prevData = 0xff;
     uint8_t *pdata;
 
     switch (i2c_bus_state)
@@ -200,11 +199,25 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
             switch(slaveWriteType)
             {
                 case SLAVE_DATA_ADDRESS:
-                    regAddr = I2C_slaveWriteData;
+                    if (prevData == SET_I2C) {
+                        PROTOCOL_SET(I2C_slaveWriteData);
+                    } else {
+                        switch(I2C_slaveWriteData) {
+                            case STA_I2C:
+                                PROTOCOL_STA();
+                                break;
+                            case STP_I2C:
+                                PROTOCOL_STP();
+                                break;
+                            case SAV_I2C:
+                                PROTOCOL_SAV();
+                                break;
+                        }
+                    }
+                    prevData = I2C_slaveWriteData;
                     break;
 
                 case SLAVE_GENERAL_CALL:
-                    regAddr = I2C_slaveWriteData;
                     if (I2C_slaveWriteData == PLG_I2C) SSP1CON2bits.GCEN = 0;  // Disable General Call reception
                     break;
 
@@ -220,19 +233,13 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
 
         case I2C_SLAVE_READ_REQUEST:
             
-            switch (regAddr)
+            switch (I2C_slaveWriteData)
             {
                 case WHO_I2C:
-                    SSP1BUF = PROTOCOL_I2C_Who();
+                    SSP1BUF = PROTOCOL_I2C_WHO();
                     break;
                 case STS_I2C:
                     if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
-                    break;
-                case STA_I2C:
-                    PROTOCOL_Call_Start_Handler();
-                    break;
-                case STP_I2C:
-                    PROTOCOL_Call_Stop_Handler();
                     break;
                 case SEN_I2C:
                     pdata = PROTOCOL_I2C_Sen();

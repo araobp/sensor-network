@@ -45,12 +45,21 @@ uint8_t PROTOCOL_Read_Device_Address() {
     return DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);
 }
 
-void PROTOCOL_Call_Start_Handler(void) {
+void PROTOCOL_STA(void) {
     PROTOCOL_Start_Handler();
 }
 
-void PROTOCOL_Call_Stop_Handler(void) {
+void PROTOCOL_STP(void) {
     PROTOCOL_Stop_Handler();
+}
+
+void PROTOCOL_SAV() {
+    DATAEE_WriteByte(DEVICE_SETTING_ADDRESS, value);
+}
+
+void PROTOCOL_SET(uint8_t value_) {
+    value = value_;
+    PROTOCOL_Set_Handler(value);
 }
 
 /*
@@ -72,15 +81,14 @@ void PROTOCOL_Loop() {
                 } else if (!strncmp(WHO, buf, 3)) {  // who are you?
                     printf("%s\n", device_id_);
                 } else if (!strncmp(SAV, buf ,3)) {  // save the current setting
-                    DATAEE_WriteByte(DEVICE_SETTING_ADDRESS, value);
+                    PROTOCOL_SAV();
                 } else if (!strncmp(STA, buf, 3)) {  // start measurement
-                    PROTOCOL_Start_Handler();
+                    PROTOCOL_STA();
                 } else if (!strncmp(STP, buf, 3)) {  // stop measurement
-                    PROTOCOL_Stop_Handler();
+                    PROTOCOL_STP();
                     printf("%s\n", ACK);
                 } else if (!strncmp(SET, buf, 3)) {  // set value
-                    value = atoi(&buf[4]);
-                    PROTOCOL_Set_Handler(value);
+                    PROTOCOL_SET(atoi(&buf[4]));
                 } else if (!strncmp(GET, buf, 3)) {  // get value
                     printf("VAL:%d\n", value);
                 } else if (!strncmp(WDA, buf, 3)) {
@@ -96,4 +104,84 @@ void PROTOCOL_Loop() {
             }
         };
     }
+}
+
+/************************************************************/
+/* Backplane I2C slave                                      */
+/************************************************************/
+
+typedef enum {
+    TLV_SET,
+    TYPE_SENT,
+    LENGTH_SENT,
+    COMPLETE,
+    ILLEGAL
+} READBUF_STATUS;
+
+typedef struct {
+    uint8_t type;
+    uint8_t length;
+    uint8_t *pbuffer;
+    READBUF_STATUS status;
+    uint8_t buf_cnt;
+} READBUF;
+
+READBUF readbuf;
+READBUF_STATUS readbuf_status;
+
+uint8_t slave_address;
+
+uint8_t *data;
+        
+// initialization
+void PROTOCOL_I2C_Initialize(uint8_t device_id) {
+    slave_address = device_id;
+    SSP1ADD = (device_id << 1);
+}
+
+uint8_t PROTOCOL_I2C_WHO(void) {
+    return slave_address;
+}
+
+uint8_t PROTOCOL_I2C_GET(void) {
+    return value;
+}
+
+void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
+    readbuf.type = type;
+    readbuf.length = length;
+    readbuf.pbuffer = pbuffer;
+    readbuf.status = TLV_SET;
+    readbuf.buf_cnt = 0;
+}
+
+bool PROTOCOL_I2C_TLV_Status(void) {
+    if (readbuf.status == TLV_SET) {
+        return true;
+    } else return false;
+}
+
+uint8_t* PROTOCOL_I2C_Sen(void) {
+    uint8_t *pdata;
+    switch(readbuf.status) {
+        case TLV_SET:
+            pdata = &readbuf.type;
+            readbuf.status = TYPE_SENT;
+            break;
+        case TYPE_SENT:
+            pdata = &readbuf.length;
+            readbuf.status = LENGTH_SENT;
+            break;
+        case LENGTH_SENT:
+            if (readbuf.buf_cnt < readbuf.length) {
+                pdata = &readbuf.pbuffer[readbuf.buf_cnt++];
+            }
+            if (readbuf.buf_cnt == readbuf.length) readbuf.status = COMPLETE;
+            break;
+        default:
+            readbuf.status = ILLEGAL;       
+            pdata = NULL;
+            break;
+    }
+    return pdata;
 }
