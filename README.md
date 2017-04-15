@@ -84,15 +84,13 @@ The following is schematic of the base board prototype #2:
 |J1        |Enable LED   |Disable LED |
 |J2        |Tactile SW as reset button|Tactile SW as general purpose SW|
 
+The base board will also supports I2C bus network topology:
+
+![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=680&h=382)
+
 I am going to use PIC16F1829 for DIN rail housing:
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
-
-#### DIN-rail housings with a bus connector
-
-The base board will also supports I2C bus network topology for DIN-rail housings with a bus connector:
-
-![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=680&h=382)
 
 ## Implementation
 
