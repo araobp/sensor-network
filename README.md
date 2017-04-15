@@ -62,7 +62,7 @@ I am also going to use DIN-rail housings with a bus connector for RasPi.
 
 ## Base board prototyping for IoT building blocks
 
-#### Base board prototype #2
+#### Base board prototype
 
 This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, but it requires one hour for soldering components onto the universal board.
 
@@ -72,6 +72,10 @@ This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, 
 - The 5P pin socket is for PICkit3.
 - The green jumper pin is to enable/disable the LED blinking.
 - The tactile switch is a reset button: shorts MCLR pin to GND.
+
+I am going to use PIC16F1829 for DIN rail housing:
+
+![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
 #### Schematic of the base board
 
@@ -89,10 +93,6 @@ The following is schematic of the base board prototype #2:
 The base board will also supports I2C bus network topology for DIN-rail housings with a bus connector:
 
 ![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=680&h=382)
-
-I am going to use PIC16F1829 for the construct:
-
-![pico2]https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400
 
 ## Implementation
 
