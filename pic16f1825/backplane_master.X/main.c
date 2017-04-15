@@ -1,6 +1,5 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
-#include "protocol_i2c_definition.h"
 #include "i2c_util.h"
 #include <stdlib.h>
 #include <string.h>

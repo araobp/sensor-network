@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "protocol_i2c.h"
-#include "protocol_i2c_definition.h"
 
 typedef enum {
     TLV_SET,

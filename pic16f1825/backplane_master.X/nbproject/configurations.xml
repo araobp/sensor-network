@@ -93,23 +93,6 @@
                             DD="dist/default/debug/i2c_util.X.lpp">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../lib/protocol_i2c_definition.X"
-                            CT="3"
-                            CN="default"
-                            AC="true"
-                            BL="true"
-                            WD="../lib/protocol_i2c_definition.X"
-                            BC="${MAKE}  -f Makefile CONF=default"
-                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
-                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
-                            OP="dist/default/production/protocol_i2c_definition.X.lpp"
-                            DOP="dist/default/debug/protocol_i2c_definition.X.lpp"
-                            FL="dist/default/production/protocol_i2c_definition.X.lpp"
-                            PD="dist/default/production/protocol_i2c_definition.X.lpp"
-                            DD="dist/default/debug/protocol_i2c_definition.X.lpp">
-              </makeArtifact>
-            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -136,7 +119,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
         <property key="extra-include-directories"
-                  value="..\lib\protocol.X;..\lib\i2c_util.X;..\lib\protocol_i2c_definition.X"/>
+                  value="..\lib\protocol.X;..\lib\i2c_util.X"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="identifier-length" value="255"/>
         <property key="local-generation" value="false"/>
