@@ -69,6 +69,11 @@ slave              master
   |<------STS--------|
   |                  |
   |----<status>----->|
+  |                  | if status = "data exits", then...
+  |<------SEN--------|
+  |                  |
+  |-----<value>----->|
+  
 ```
 
 #### WDA (Write I2C slave device address / UART only)
