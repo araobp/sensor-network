@@ -102,7 +102,7 @@ void main(void)
     EUSART_Initialize();
 
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
-    PROTOCOL_I2C_Initialize(TEMPLATE_I2C);
+    PROTOCOL_I2C_Initialize(PROTOCOL_Read_Device_Address());
     PROTOCOL_Set_Func(loop_func);
     PROTOCOL_Loop();
 }
