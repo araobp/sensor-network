@@ -105,6 +105,29 @@ slave              master
    |                  |
 ```
 
+## TLV format of SEN response payload
+
+I2C backplane master sends SEN to I2C backplane slave to fetch sensor data. The data follows this format:
+
+```
++------+------+-------------------+
+|Type  |Length|Value              |
+|8bit  |8bit  |8bit * length      |
++------+------+-------------------+
+```
+
+Type is one of the following data types:
+- uint8_t
+- int8_t
+- uint16_t
+- int16_t
+- (int16_t)(float * 100)
+
+In case of uint16_t, int16_t and float, Value contains data in this form:
+```
+[MSB][LSB][MSB][LSB]...
+```
+
 ## Block-specific operations
 
 ### Backplane master
