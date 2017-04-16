@@ -108,7 +108,7 @@ extern "C" {
     #define TYPE_UINT16_T 0x02
     #define TYPE_INT8_T 0x03
     #define TYPE_INT16_T 0x04
-    #define TYPE_FLOAT 0x05
+    #define TYPE_FLOAT_T 0x05
     
 #ifdef	__cplusplus
 }
