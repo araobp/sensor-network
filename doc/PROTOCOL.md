@@ -138,12 +138,21 @@ In case of uint16_t, int16_t and float, Value contains data in this form:
 ### Backplane master
 
 #### I2C (set I2C backplane slave address)
-
 Note: address = 0 means I2C backplane Master.
 
 ```
   slave              master
+(backplane master)
     |<--I2C:<address>--|
+```
+
+#### MAP (show device map)
+```
+  slave              master
+(backplane master)
+    |<-------MAP--------|
+    |                   |
+    |------<cvs>------->|
 ```
 
 ### Backplane Master (for debugging)
