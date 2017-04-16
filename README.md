@@ -114,6 +114,10 @@ Including it as a library:
 #### HID (Human Interface Devices)
 - [Barcode scanner (OSOYOO 4209)]
 
+## Test
+
+==>[TEST](./doc/TEST.md)
+
 ## Use cases
 
 #### Working with Python
