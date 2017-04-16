@@ -10,6 +10,8 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 
 #### "CLI over UART"
 
+This construct targets a small router (or CPE) supporting PLC capabilities:
+
 ![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=640&h=480)
 
 I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Virtual COM Port)](http://www.ftdichip.com/Drivers/VCP.htm) so that Windows PC recognizes them as COM ports:
@@ -20,7 +22,7 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 
 #### "CLI over UART" proxy for I2C backplane
 
-This construct for [DIN housing for RasPi](https://www.phoenixcontact.com/online/portal/gb?1dmy&urile=wcm:path:/gben/web/offcontext/insite_landing_pages/efd3ca11-79cd-4971-a56c-3c20e29139ad/efd3ca11-79cd-4971-a56c-3c20e29139ad) and DIN rail.
+This construct is for [DIN housing for RasPi](https://www.phoenixcontact.com/online/portal/gb?1dmy&urile=wcm:path:/gben/web/offcontext/insite_landing_pages/efd3ca11-79cd-4971-a56c-3c20e29139ad/efd3ca11-79cd-4971-a56c-3c20e29139ad) and DIN rail.
 
 ![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
 
