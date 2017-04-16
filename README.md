@@ -1,29 +1,14 @@
-# Building blocks for smart home/office with 8bit MCUs
-
-![accelrerometer](./doc/A1324LUA-T-small.png)
-
-## Background and motivation
-
-It is very common that networking equipment supports CLI over a console port or SSH. I wonder if any home equipment or any office equipment supported CLI over serial interfaces at a minimal cost, so that any MCUs including 8bit ones can support it.
-
-This project is to see what happens if home/office equipment supported such "cheap" CLI.
-
-I assume that a networking gear such as a router (or vCPE) works as a controller for the home/office. In that sense, I am becoming interested in Fog Computing.
-
-I use Microchip PIC16F1 series 8bit MCU to develop prototypes in this project.
+# Mini PLC for smart home and smart office
 
 ![pic16f1](./doc/starting_project.png)
 
-## Why 8bit PIC?
+## Interfaces among building blocks
 
-- 8bit PIC MCUs are used in real products (incl. home/office equipment and in-vehicle networking with LIN and CAN)
-- The most popular 8bit MCUs for hobby use in Japan (i.e., in Akihabara).
+All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md):
+- "CLI over UART"
+- "CLI over UART" proxy for I2C backplane
 
-## UART (i.e., serial) as universal interface
-
-Even low-end 8bit MCUs support UART, so UART is the most common communication interface among MCUs. You can add brdiges/tranceivers(USB/Ethernet/RS485/LIN...) to MCUs to extend the maximum cable length of UART.
-
-All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that is "CLI over UART" as open APIs targeting home/office equipment.
+#### "CLI over UART"
 
 ![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=640&h=480)
 
@@ -33,27 +18,21 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 - Windows PC automatically download [the FTDI driver for Windows](http://www.ftdichip.com/Drivers/VCP.htm) from the Internet (or you need to install it manually) for the first time, then recognizes it as COM\* device.
 - In case of OpenWrt, you need to install [the FTDI driver for OpenWrt](https://wiki.openwrt.org/doc/hardware/port.serial) manually by using opkg package manager.
 
-I also plan to use UART-Ethernet bridge like [this](https://www.amazon.com/USRIOT-USR-TCP232-T2-Ethernet-Converter-Support/dp/B01GPMFXB2/ref=sr_1_2?ie=UTF8&qid=1490641230&sr=8-2&keywords=UART+Ethernet).
+#### "CLI over UART" proxy for I2C backplane
 
-## I2C for bus connector
-
-I am also going to use DIN-rail housings with a bus connector for RasPi.
-
-![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
+TBD
 
 ## PIC16F1 MCU models
 
+The following MCUs are used in this project:
+
 |Model     |# of pins |Characteristics                 |
 |----------|-----|--------------------------------|
-|[PIC16F1455](http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf)|14   |Built-in USB                    |
-|[PIC16F1459](http://ww1.microchip.com/downloads/en/DeviceDoc/40001639B.pdf)|20   |Built-in USB                    |
-|[PIC16F1508](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
-|[PIC16F1509](http://ww1.microchip.com/downloads/en/DeviceDoc/41609A.pdf)|20   |CLCs                            |
 |[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Variety of Serial communications|
 |[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Variety of Serial communications|
 |[PIC16F1829LIN](http://www.microchip.com/wwwproducts/en/PIC16F1829LIN)|20|MCU + Vreg + LIN tranceiver (SiP)|
 
-## Communication modules
+## Communication modules for UART
 
 - [UART-USB converter with 5V supply]
 - [UART-USB converter with 3.3V supply](./doc/STEP_DOWN.md)
@@ -62,9 +41,9 @@ I am also going to use DIN-rail housings with a bus connector for RasPi.
 
 ## Base board prototyping for IoT building blocks
 
-#### Base board prototype
+#### PIC16F1825
 
-This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, but it requires one hour for soldering components onto the universal board.
+The base board board described here is used as USB/UART devices.
 
 ![prototype2](./doc/prototype2.jpg)
 
@@ -72,8 +51,6 @@ This prototype uses PIC16F1825. It costs around $3, much cheaper than A\*duino, 
 - The 5P pin socket is for PICkit3.
 - The green jumper pin is to enable/disable the LED blinking.
 - The tactile switch is a reset button: shorts MCLR pin to GND.
-
-#### Schematic of the base board
 
 The following is schematic of the base board prototype #2:
 
@@ -88,7 +65,9 @@ The base board will also supports I2C bus network topology:
 
 ![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=680&h=382)
 
-I am going to use PIC16F1829 or PIC16F1829LIN for DIN rail housing (or curtain rail housing...):
+#### PIC16F1829/PIC16F1829LIN
+
+The base board board described here is used as building blocks of mini PLC.
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
@@ -101,17 +80,13 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
 - [Implementation](./pic16f1825/lib/protocol.X)
 
-I am also developing Plug&Play protocol for I2C bus.
-
 Including it as a library:
 - [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
 - [Step2: include the protocol library in your project](./doc/mcc_eusart3.png)
 - [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
 - [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
 
-#### Blocks with PIC16F1825
-
-All the blocks are compliant to the Plug&Play protocol.
+#### USB/UART devices with PIC16F1825
 
 => [USAGE](./doc/USAGE.md)
 
@@ -122,15 +97,6 @@ All the blocks are compliant to the Plug&Play protocol.
 - [5V: Acceleration sensor block （KXR94-2050)](./pic16f1825/acceleration.X), [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./pic16f1825/rotation.X), [pin assignment](./doc/rotation_pin.png)
 - [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1825/servomotor.X), [pin assignment](./doc/servomotor_pin2.png), [duty at 3%](./doc/duty@3.BMP), [duty at 12%](./doc/duty@12.BMP)
-
-#### Blocks with PIC16F1829
-
-- [3.3V: Orientation sensor block (HMC5883L and L3GD20)](./pic16f1829/orientation.X), [pin assignment](./doc/orientation_pin.png)
-- [5V: Servo motor actuator block (TowerPro sg90)](./pic16f1829/servomotor.X), [pin assignment](./doc/servomotor_pin.png)
-
-Note: calibrating HMC5883L is a little hard. I read the data sheet that shows how to calibrate it.
-
-## Blocks with standard USB device classes
 
 #### UVC (USB Video Class)
 - [USB video cam with OpenCV](./camera)
@@ -151,27 +117,11 @@ I connected the acceleration sensor block to my laptop PC on which Node-RED was 
 - [Data](./jupyter/accelerometer.csv)
 - [Jupyter notebook](./jupyter/bus.ipynb)
 
-I noticed that Physics is in the heart of IoT:
-- F = ma
-- v = v0 + at
-
 #### Working with Node-RED
 
 It is pretty easy to integrate these blocks with Node-RED. I have run Node-RED on my RasPi 3 as well as on Windows PC:
 - [node-red-1](./doc/node-red-1.png)
 - [node-red-2](./doc/node-red-2.png)
-
-#### Using the blocks with UNIX pipe
-
-- Reading data from a sensor and feeding it to other UNIX commands via a pipe:
-```
-$ cat /dev/serial/by-id/<device_id> | command 1 | command 2 ...
-```
-
-- Sending data to a sensor/actuator:
-```
-$ echo <command> > /dev/serial/by-id/<device_id>
-```
 
 #### Using the blocks with OpenWrt
 
@@ -182,10 +132,6 @@ I run OpenWrt on my router (Buffalo BHR-4GRV) that I bought in Akihabara, Tokyo.
 The router is also equipped with one USB port, thus my router works as IoT gateway for the blocks developed in this project.
 
 ![bhr-4grv](./doc/bhr-4grv.png)
-
-OpenWrt is free OS for IoT gateways as well as for WiFi routers.
-
-For example, I connect the acceleration sensor block to my router, then I think that it may work as a distributed earthquake sensing system.
 
 #### Internet of Hamsters
 
