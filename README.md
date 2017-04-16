@@ -164,7 +164,7 @@ JTAG and UART...
 
 - [Phoenix Contact BC moduler housings](https://www.phoenixcontact.com/online/portal/us?1dmy&urile=wcm:path:/usen/web/main/products/subcategory_pages/modular_housing_bc_p-01-04-03/3a371abc-34e5-438f-a723-d2ab8e20eaa1)
 
-### EnOcean
+#### EnOcean modules
 
 - [EnOcean modules for Japanese market](https://www.enocean.com/jp/enocean_modules_928mhz/)
 
