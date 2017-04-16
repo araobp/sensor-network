@@ -20,6 +20,8 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 
 #### "CLI over UART" proxy for I2C backplane
 
+This construct for [DIN housing for RasPi](https://www.phoenixcontact.com/online/portal/gb?1dmy&urile=wcm:path:/gben/web/offcontext/insite_landing_pages/efd3ca11-79cd-4971-a56c-3c20e29139ad/efd3ca11-79cd-4971-a56c-3c20e29139ad) and DIN rail.
+
 ![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
 
 ## PIC16F1 MCU models
