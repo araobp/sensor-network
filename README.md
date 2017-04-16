@@ -20,7 +20,7 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 
 #### "CLI over UART" proxy for I2C backplane
 
-TBD
+![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
 
 ## PIC16F1 MCU models
 
