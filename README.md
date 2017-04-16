@@ -88,7 +88,7 @@ The base board will also supports I2C bus network topology:
 
 ![i2c](https://docs.google.com/drawings/d/1LMcj8u0Y6h_CqZZ0nOh6kb68Wq6j4hkFFoqb6wR4EJw/pub?w=680&h=382)
 
-I am going to use PIC16F1829 or PIC16F1829LIN for DIN rail housing:
+I am going to use PIC16F1829 or PIC16F1829LIN for DIN rail housing (or curtain rail housing...):
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
