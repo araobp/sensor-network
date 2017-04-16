@@ -42,7 +42,7 @@ void loop_func(void) {
     static uint8_t turn = TYPE_UINT8_T;
     int16_t float100;
     if (do_func) {
-        printf("Hello World!\n");
+        //printf("Hello World!\n");
         LATCbits.LATC3 ^= 1;
         switch(turn) {
             case TYPE_UINT8_T:
