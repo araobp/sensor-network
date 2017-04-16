@@ -1,6 +1,6 @@
 # Mini PLC for smart home and smart office
 
-![pic16f1](./doc/starting_project.png)
+This is a project to archive building blocks for mini PLC.
 
 ## Interfaces among building blocks
 
@@ -31,6 +31,8 @@ The following MCUs are used in this project:
 |[PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|14   |Variety of Serial communications|
 |[PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf)|20   |Variety of Serial communications|
 |[PIC16F1829LIN](http://www.microchip.com/wwwproducts/en/PIC16F1829LIN)|20|MCU + Vreg + LIN tranceiver (SiP)|
+
+![pic16f1](./doc/starting_project.png)
 
 ## Communication modules for UART
 
