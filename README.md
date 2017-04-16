@@ -44,6 +44,7 @@ The following MCUs are used in this project:
 - [UART-USB converter with 3.3V supply](./doc/STEP_DOWN.md)
 - [UART-WiFi with ESP8266(ESP-WROOM-02)]
 - [UART-RS232 converter](https://www.amazon.co.jp/NulSom-Inc-NS-RS232-02-H-%E6%A5%B5%E5%B0%8FRS232-TTL%E3%82%B3%E3%83%B3%E3%83%90%E3%83%BC%E3%82%BF%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB-%EF%BC%A4%E3%82%B5%E3%83%96%EF%BC%99%E3%83%94%E3%83%B3%E3%82%AA%E3%82%B9%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%BF%EF%BC%88%E3%82%B1%E3%83%BC%E3%82%B9%E3%82%AD%E3%83%83%E3%83%88%E4%BB%98%E3%81%8D%EF%BC%89/dp/B00OPWLXDW/ref=sr_1_8?ie=UTF8&qid=1491089182&sr=8-8&keywords=rs232+TTL)
+- [EnOcean tranceiver](https://www.enocean.com/jp/enocean_modules_928mhz/tcm-410j/)
 
 ## Base boards
 
@@ -162,6 +163,10 @@ JTAG and UART...
 #### DIN-rail housings
 
 - [Phoenix Contact BC moduler housings](https://www.phoenixcontact.com/online/portal/us?1dmy&urile=wcm:path:/usen/web/main/products/subcategory_pages/modular_housing_bc_p-01-04-03/3a371abc-34e5-438f-a723-d2ab8e20eaa1)
+
+### EnOcean
+
+- [EnOcean modules for Japanese market](https://www.enocean.com/jp/enocean_modules_928mhz/)
 
 #### Industry 4.0
 
