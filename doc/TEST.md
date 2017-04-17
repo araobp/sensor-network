@@ -41,7 +41,7 @@ S2: I2C:17
 ```
 ```
 H: WHO
-M: BACKUP_MASTER
+M: BACKPLANE_MASTER
 H: MAP
 M: 0,0,3,0,0,0
 ```
