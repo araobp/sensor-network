@@ -15,7 +15,7 @@ H: WHO
 S1: TEMPLATE_DEVICE
 H: WDA:17
 H: RDA
-S1: 17
+S1: I2C:17
 ```
 
 ## Test
