@@ -34,21 +34,32 @@ extern "C" {
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
     void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
     uint8_t PROTOCOL_Read_Device_Address(void);
-
-    // backplane-slave may call these functions
     void PROTOCOL_STA(void);
     void PROTOCOL_STP(void);
     void PROTOCOL_SET(uint8_t value);
-    uint8_t PROTOCOL_GET(void);
     void PROTOCOL_SAV(void);
-
-    // backplane-slave-specific functions
+    
+    /*
+     * I2C backplane slave specific functions
+     */
     void PROTOCOL_I2C_Initialize(uint8_t device_id);
-    uint8_t PROTOCOL_I2C_WHO(void);
     void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
     bool PROTOCOL_I2C_TLV_Status(void);
-    uint8_t* PROTOCOL_I2C_Sen();
+    // the following functions are type-dependent version of PROTOCOL_I2C_Set_TLV
+    void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+    void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+    void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+    void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+    void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
 
+    /*
+     * I2C backplane slave specific functions 
+     * i2c.c of "protocol_i2c.c" calls these functions
+     */
+    uint8_t PROTOCOL_I2C_WHO(void);
+    uint8_t PROTOCOL_I2C_GET(void);
+    uint8_t* PROTOCOL_I2C_SEN();  // retrive data from send buffer
+    
     /*
      * Common operations
      */
@@ -65,6 +76,7 @@ extern "C" {
     /*
      * I2C backplane slave status
      */
+    #define STS_NO_DATA 0x00
     #define STS_SEN_READY 0x01
 
     /*
@@ -105,10 +117,10 @@ extern "C" {
      * Note: TYPE_FLOAT data contains (int16_t)(float data * 100)
      */
     #define TYPE_UINT8_T 0x01
-    #define TYPE_UINT16_T 0x02
-    #define TYPE_INT8_T 0x03
+    #define TYPE_INT8_T 0x02
+    #define TYPE_UINT16_T 0x03
     #define TYPE_INT16_T 0x04
-    #define TYPE_FLOAT_T 0x05
+    #define TYPE_FLOAT 0x05
     
 #ifdef	__cplusplus
 }

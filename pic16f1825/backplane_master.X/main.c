@@ -162,7 +162,7 @@ void extension_handler(uint8_t *buf) {
         else printf("status: %d\n", status);
         status = i2c_read(dev_addr, SEN_I2C, &read_buf[0], data);
         if (status == 0) {
-            for (int i=0; i<data; i++) printf("value[%d]: %d\n", i, read_buf[i]);        
+            for (i=0; i<data; i++) printf("value[%d]: %d\n", i, read_buf[i]);        
         } else {
             printf("status: %d\n", status);
         }

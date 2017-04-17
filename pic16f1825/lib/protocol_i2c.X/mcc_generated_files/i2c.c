@@ -240,9 +240,10 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                     break;
                 case STS_I2C:
                     if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
+                    else SSP1BUF = STS_NO_DATA;
                     break;
                 case SEN_I2C:
-                    pdata = PROTOCOL_I2C_Sen();
+                    pdata = PROTOCOL_I2C_SEN();
                     if (pdata) {
                         SSP1BUF = *pdata;
                     } else {

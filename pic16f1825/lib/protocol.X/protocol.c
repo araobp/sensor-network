@@ -129,12 +129,17 @@ typedef struct {
 READBUF readbuf;
 READBUF_STATUS readbuf_status;
 
+bool backplane_slave_enabled = false;
 uint8_t slave_address;
-
+uint8_t sendbuf[16];
+uint8_t i, j;
+int16_t float100;
+        
 uint8_t *data;
         
 // initialization
 void PROTOCOL_I2C_Initialize(uint8_t device_id) {
+    backplane_slave_enabled = true;
     slave_address = device_id;
     SSP1ADD = (device_id << 1);
 }
@@ -161,7 +166,56 @@ bool PROTOCOL_I2C_TLV_Status(void) {
     } else return false;
 }
 
-uint8_t* PROTOCOL_I2C_Sen(void) {
+void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer) {
+    if (backplane_slave_enabled) {
+        PROTOCOL_I2C_Set_TLV(TYPE_UINT8_T, length, &pbuffer[0]);
+    }
+}
+
+void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer) {
+    if (backplane_slave_enabled) {
+        for (i=0; i<length; i++) {
+            sendbuf[i] = (uint8_t)pbuffer[i];
+        }
+        PROTOCOL_I2C_Set_TLV(TYPE_INT8_T, length, &sendbuf[0]);
+    }
+}
+
+void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer) {
+    if (backplane_slave_enabled) {
+        j = 0;
+        for (i=0; i<length; i++) {
+            sendbuf[j] = (uint8_t)(pbuffer[i] & 0x00ff);
+            sendbuf[++j] = (uint8_t)(pbuffer[i] >> 8);
+        }
+        PROTOCOL_I2C_Set_TLV(TYPE_UINT16_T, length, &sendbuf[0]);
+    }
+}
+
+void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer) {
+    if (backplane_slave_enabled) {
+        j = 0;
+        for (i=0; i<length; i++) {
+            sendbuf[j] = (uint8_t)(pbuffer[i] & 0x00ff);
+            sendbuf[++j] = (uint8_t)(pbuffer[i] >> 8 & 0x00ff);
+        }
+        PROTOCOL_I2C_Set_TLV(TYPE_INT16_T, length, &sendbuf[0]);
+    }
+}
+
+void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
+    if (backplane_slave_enabled) {
+        j = 0;
+        for (i=0; i<length; i++) {
+            float100 = (int16_t)(pbuffer[i] * 100);
+            sendbuf[j] = (uint8_t)(float100 & 0x00ff);
+            sendbuf[++j] = (uint8_t)(float100 >> 8 & 0x00ff);
+        }
+        PROTOCOL_I2C_Set_TLV(TYPE_FLOAT, length, &sendbuf[0]);
+    }   
+}
+
+uint8_t* PROTOCOL_I2C_SEN(void) {
     uint8_t *pdata;
     switch(readbuf.status) {
         case TLV_SET:
