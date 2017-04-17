@@ -6,16 +6,31 @@ Date: 2017/04/17
 ```
    ---+-------+-------+-- I2C
       |       |       |
-     [S1]    [S2]    [M]
+     [S2]    [S1]    [M]
+　　　　　       |
+      　　　　　　+--UART/USB--[H]
+```
+```
+H: WHO
+S1: TEMPLATE_DEVICE
+H: WDA:16
+H: RDA
+S1: I2C:16
+```
+
+```
+   ---+-------+-------+-- I2C
+      |       |       |
+     [S2]    [S1]    [M]
       |
       +--UART/USB--[H]
 ```
 ```
 H: WHO
-S1: TEMPLATE_DEVICE
+S2: TEMPLATE_DEVICE
 H: WDA:17
 H: RDA
-S1: I2C:17
+S2: I2C:17
 ```
 
 ## Test
