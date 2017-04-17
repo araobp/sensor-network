@@ -134,17 +134,22 @@ void extension_handler(uint8_t *buf) {
         i2c_read(CLI_SLAVE_ADDRESS, STS_I2C, &data, 1);
         printf("%d\n", data);
     } else if (!strncmp(SEN, buf, 3)) {
-        status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &type, 1);
-        if (status == 0) {
-            status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &length, 1);
+        i2c_read(CLI_SLAVE_ADDRESS, STS_I2C, &data, 1);
+        if (data == STS_SEN_READY) {
+            status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &type, 1);
             if (status == 0) {
-                status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
+                status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &length, 1);
                 if (status == 0) {
-                    printf("%d,%d,", type, length);
-                    if (length > 1) for (i=0; i < length - 1; i++) printf("%d,", read_buf[i]);
-                    printf("%d\n", read_buf[i]);
+                    status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
+                    if (status == 0) {
+                        printf("%d,%d,", type, length);
+                        if (length > 1) for (i=0; i < length - 1; i++) printf("%d,", read_buf[i]);
+                        printf("%d\n", read_buf[i]);
+                    }
                 }                    
             }
+        } else {
+            printf("!:NO DATA\n");
         }
     } else if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);

@@ -181,7 +181,7 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
     static uint8_t prevData = 0xff;
     uint8_t *pdata;
-
+    
     switch (i2c_bus_state)
     {
         case I2C_SLAVE_WRITE_REQUEST:
@@ -244,10 +244,10 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                     break;
                 case SEN_I2C:
                     pdata = PROTOCOL_I2C_SEN();
-                    if (pdata) {
+                    if (pdata != NULL) {
                         SSP1BUF = *pdata;
                     } else {
-                        SSP1BUF = 0;
+                        SSP1BUF = 0xff;
                     }
                     break;
             }

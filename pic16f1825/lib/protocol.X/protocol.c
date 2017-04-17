@@ -153,11 +153,13 @@ uint8_t PROTOCOL_I2C_GET(void) {
 }
 
 void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
-    readbuf.type = type;
-    readbuf.length = length;
-    readbuf.pbuffer = pbuffer;
-    readbuf.status = TLV_SET;
-    readbuf.buf_cnt = 0;
+    if (readbuf.status == TLV_SET || readbuf.status == COMPLETE || readbuf.status == ILLEGAL) {
+        readbuf.type = type;
+        readbuf.length = length;
+        readbuf.pbuffer = pbuffer;
+        readbuf.status = TLV_SET;
+        readbuf.buf_cnt = 0;
+    }
 }
 
 bool PROTOCOL_I2C_TLV_Status(void) {
@@ -230,7 +232,10 @@ uint8_t* PROTOCOL_I2C_SEN(void) {
             if (readbuf.buf_cnt < readbuf.length) {
                 pdata = &readbuf.pbuffer[readbuf.buf_cnt++];
             }
-            if (readbuf.buf_cnt == readbuf.length) readbuf.status = COMPLETE;
+            if (readbuf.buf_cnt == readbuf.length) {
+                readbuf.status = COMPLETE;
+                readbuf.buf_cnt = 0;
+            }
             break;
         default:
             readbuf.status = ILLEGAL;       
