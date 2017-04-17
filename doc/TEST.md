@@ -37,7 +37,7 @@ S2: I2C:17
 ```
    ---+-------+-------+-- I2C
       |       |       |
-     [S1]    [S2]    [M]--UART/USB--[H]
+     [S2]    [S1]    [M]--UART/USB--[H]
 ```
 ```
 H: WHO
@@ -48,31 +48,33 @@ M: 0,0,3,0,0,0
 ```
 H: I2C:17
 H: WHO
-S1: 17
+S2: 17
 H: STS
-S1: 1
+S2: 1
 H: SEN
-S1: 2,4,52,18,120,86
+S2: 2,4,52,18,120,86
 H: SEN
-S1: 3,3,246,0,10
+S2: 3,3,246,0,10
 ```
 ```
 H: I2C:16
 H: WHO
-S2: 16
+S1: 16
 H: STS
-S2: 1
+S1: 1
 H: SEN
-S2: 4,4,24,252,232,3
+S1: 4,4,24,252,232,3
 H: STP
-S2: ACK
-(S2 stops blinking LED)
+S1: ACK
+(S1 stops blinking LED)
+H: STA
+(S1 starts blinking LED)
 
 --- NG ---
 H: STS
-S2: 1
+S1: 1
 H: SEN
-S2: (no response)
+S1: (no response)
 H: STA
-S2: (no response)
+S1: (no response)
 ```
