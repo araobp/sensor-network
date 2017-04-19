@@ -102,7 +102,8 @@ extern "C" {
     /*
      * Backplane slave I2C addresses
      */
-    uint8_t CLI_SLAVE_ADDRESS = 0x00;  // means backplane master 
+    #define BACKPLANE_MASTER_I2C 0x01
+    uint8_t BACKPLANE_SLAVE_ADDRESS = BACKPLANE_MASTER_I2C ;  // means backplane master 
     #define TEMPLATE_I2C 0x10
     #define HC_SR04_I2C 0x11
     #define A1324LUA_T_I2C 0x12

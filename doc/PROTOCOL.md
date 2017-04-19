@@ -73,7 +73,7 @@ slave              master
   |<------SEN--------|
   |                  |
   |-----<value>----->|
-  
+
 ```
 
 #### WDA (Write I2C slave device address / UART only)
@@ -138,21 +138,33 @@ In case of uint16_t, int16_t and float, Value contains data in this form:
 ### Backplane master
 
 #### I2C (set I2C backplane slave address)
-Note: address = 0 means I2C backplane Master.
+address = 1 means I2C backplane Master.
 
 ```
-  slave              master
+  slave                        master
 (backplane master)
-    |<--I2C:<address>--|
+    |<--I2C:<address in decimal>--|
 ```
 
 #### MAP (show device map)
 ```
-  slave              master
+  slave                     master
 (backplane master)
-    |<-------MAP--------|
-    |                   |
-    |------<cvs>------->|
+    |<-------MAP---------------|
+    |                          |
+    |------<cvs in hex>------->|
+```
+
+#### % (sensor data)
+```
+slave                               master
+(backplane master)
+  |---%<address>:<data in decimal>---->|
+```
+
+Example:
+```
+%10:0.09,-0.13,+1.06
 ```
 
 ### Backplane Master (for debugging)

@@ -109,38 +109,38 @@ void extension_handler(uint8_t *buf) {
     uint8_t i, status;
         
     if (!strncmp(I2C, buf, 3)) {
-        CLI_SLAVE_ADDRESS = atoi(&buf[4]);
+        BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
     } else if (!strncmp(WHO, buf, 3)) {
-        status = i2c_read(CLI_SLAVE_ADDRESS, WHO_I2C, &data, 1);
+        status = i2c_read(BACKPLANE_SLAVE_ADDRESS, WHO_I2C, &data, 1);
         if (status == 0) printf("%d\n", data);
         else printf("!\n");
     } else if (!strncmp(MAP, buf, 3)) {
         print_dev_map();
     } else if (!strncmp(SAV, buf, 3)) {
-        status = i2c_write_no_data(CLI_SLAVE_ADDRESS, SAV_I2C);
+        status = i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, SAV_I2C);
     } else if (!strncmp(STA, buf, 3)) {
-        status = i2c_write_no_data(CLI_SLAVE_ADDRESS, STA_I2C);
+        status = i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, STA_I2C);
     } else if (!strncmp(STP, buf, 3)) {
-        status = i2c_write_no_data(CLI_SLAVE_ADDRESS, STP_I2C);
+        status = i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, STP_I2C);
         if (status == 0) printf("ACK\n");
         else printf("NACK\n");
     } else if (!strncmp(SET, buf, 3)) {
         data = atoi(&buf[4]);
-        i2c_write(CLI_SLAVE_ADDRESS, SET_I2C, data);
+        i2c_write(BACKPLANE_SLAVE_ADDRESS, SET_I2C, data);
     } else if (!strncmp(GET, buf, 3)) {
-        i2c_read(CLI_SLAVE_ADDRESS, GET_I2C, &data, 1);
+        i2c_read(BACKPLANE_SLAVE_ADDRESS, GET_I2C, &data, 1);
         printf("%d\n", data);
     } else if (!strncmp(STS, buf, 3)) {
-        i2c_read(CLI_SLAVE_ADDRESS, STS_I2C, &data, 1);
+        i2c_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
         printf("%d\n", data);
     } else if (!strncmp(SEN, buf, 3)) {
-        i2c_read(CLI_SLAVE_ADDRESS, STS_I2C, &data, 1);
+        i2c_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
         if (data == STS_SEN_READY) {
-            status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &type, 1);
+            status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &type, 1);
             if (status == 0) {
-                status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &length, 1);
+                status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &length, 1);
                 if (status == 0) {
-                    status = i2c_read(CLI_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
+                    status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
                     if (status == 0) {
                         printf("%d,%d,", type, length);
                         if (length > 1) for (i=0; i < length - 1; i++) printf("%d,", read_buf[i]);

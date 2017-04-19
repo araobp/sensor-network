@@ -76,7 +76,7 @@ void PROTOCOL_Loop() {
                 buf[--cnt] = '\0';
                 cnt = 0;
 
-                if (CLI_SLAVE_ADDRESS) {  // Handled by backplane master?
+                if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {  // Handled by backplane master?
                     PROTOCOL_Extension_Handler(buf);                    
                 } else if (!strncmp(WHO, buf, 3)) {  // who are you?
                     printf("%s\n", device_id_);
