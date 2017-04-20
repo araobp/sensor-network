@@ -1,4 +1,4 @@
-# Mini PLC for smart home and smart office
+# Mini PLC with PIC16F1
 
 This is a project to archive building blocks for mini PLC.
 
