@@ -184,13 +184,16 @@ JTAG and UART...
 - [EtherCAT](https://www.ethercat.org/)
 - [I/O-Link download site](http://www.io-link.com/en/Download/Download.php)
 
-#### Building Management
+#### Building management
 
 - [Delta](http://www.deltaba.com.au/)
 
+#### Vehicle automation
+
+- [Lecip](http://www.lecip.com/)
+
 #### In-vehicle networking
 
-LIN is designed to work with cheap 8bit MCUs:
 - [LIN](https://en.wikipedia.org/wiki/Local_Interconnect_Network)
 
 #### Smart home / HEMS
