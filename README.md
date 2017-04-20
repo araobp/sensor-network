@@ -167,6 +167,10 @@ JTAG and UART...
 
 ## IoT building blocks in the real world
 
+#### Software PLC
+
+- [CODESYS](https://www.codesys.com/)
+
 #### DIN-rail housings
 
 - [Phoenix Contact BC moduler housings](https://www.phoenixcontact.com/online/portal/us?1dmy&urile=wcm:path:/usen/web/main/products/subcategory_pages/modular_housing_bc_p-01-04-03/3a371abc-34e5-438f-a723-d2ab8e20eaa1)
@@ -177,9 +181,12 @@ JTAG and UART...
 
 #### Industry 4.0
 
-There is a standard protocol ["IO-Link"](http://www.io-link.com/en/Technology/what_is_IO-Link.php?thisID=73) standardized by IEC. The goal of IO-Link is similar to my goal, except that my project targets RasPi and small routers/OpenWrt as a PLC-like controller for hobby-use sensor/actuator components.
-
+- [EtherCAT](https://www.ethercat.org/)
 - [I/O-Link download site](http://www.io-link.com/en/Download/Download.php)
+
+#### Building Management
+
+- [Delta](http://www.deltaba.com.au/)
 
 #### In-vehicle networking
 
@@ -199,8 +206,8 @@ LIN is designed to work with cheap 8bit MCUs:
 
 #### Controllers
 
+- [Beckoff](http://www.beckhoff.com)
 - [Siemens SIMATIC IOT2020](http://w3.siemens.com/mcms/pc-based-automation/en/industrial-iot/pages/default.aspx)
-- [Phoenix RPI-BC](https://www.phoenixcontact.com/online/portal/gb?1dmy&urile=wcm:path:/gben/web/offcontext/insite_landing_pages/efd3ca11-79cd-4971-a56c-3c20e29139ad/efd3ca11-79cd-4971-a56c-3c20e29139ad)
 
 #### IoT frameworks
 
