@@ -79,24 +79,24 @@ void PROTOCOL_Loop() {
                 if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {  // Handled by backplane master?
                     PROTOCOL_Extension_Handler(buf);                    
                 } else if (!strncmp(WHO, buf, 3)) {  // who are you?
-                    printf("%s\n", device_id_);
+                    printf("$:WHO:%s\n", device_id_);
                 } else if (!strncmp(SAV, buf ,3)) {  // save the current setting
                     PROTOCOL_SAV();
                 } else if (!strncmp(STA, buf, 3)) {  // start measurement
                     PROTOCOL_STA();
                 } else if (!strncmp(STP, buf, 3)) {  // stop measurement
                     PROTOCOL_STP();
-                    printf("%s\n", ACK);
+                    printf("*:STP:%s\n", ACK);
                 } else if (!strncmp(SET, buf, 3)) {  // set value
                     PROTOCOL_SET(atoi(&buf[4]));
                 } else if (!strncmp(GET, buf, 3)) {  // get value
-                    printf("VAL:%d\n", value);
+                    printf("$:GET:%d\n", value);
                 } else if (!strncmp(WDA, buf, 3)) {
                     device_address = atoi(&buf[4]);
                     PROTOCOL_Write_Device_Address(device_address);
                 } else if (!strncmp(RDA, buf, 3)) {
                     device_address = PROTOCOL_Read_Device_Address();
-                    printf("I2C:%d\n", device_address);
+                    printf("$:RDA:%d\n", device_address);
                 }
                 else {
                     PROTOCOL_Extension_Handler(buf);

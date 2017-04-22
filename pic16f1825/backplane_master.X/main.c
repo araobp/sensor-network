@@ -110,7 +110,7 @@ void print_dev_map(void) {
     uint8_t i;
     uint8_t len = numbers_of_dev() - 1;
     if (len > 0) {
-        printf("MAP:");
+        printf("$:MAP:");
         for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
         printf("%d\n", dev_map_iterator());
     } else {
@@ -263,7 +263,7 @@ void extension_handler(uint8_t *buf) {
         BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
     } else if (!strncmp(WHO, buf, 3)) {
         status = i2c_read(BACKPLANE_SLAVE_ADDRESS, WHO_I2C, &data, 1);
-        if (status == 0) printf("%d\n", data);
+        if (status == 0) printf("$:WHO:%d\n", data);
         else printf("!\n");
     } else if (!strncmp(MAP, buf, 3)) {
         print_dev_map();
@@ -273,18 +273,18 @@ void extension_handler(uint8_t *buf) {
         status = i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, STA_I2C);
     } else if (!strncmp(STP, buf, 3)) {
         status = i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, STP_I2C);
-        if (status == 0) printf("ACK\n");
-        else printf("NACK\n");
+        if (status == 0) printf("*:STP:ACK\n");
+        else printf("!:STP:NACK\n");
     } else if (!strncmp(SET, buf, 3)) {
         data = atoi(&buf[4]);
         i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, SET_I2C);
         i2c_write_no_data(BACKPLANE_SLAVE_ADDRESS, data);        
     } else if (!strncmp(GET, buf, 3)) {
         i2c_read(BACKPLANE_SLAVE_ADDRESS, GET_I2C, &data, 1);
-        printf("%d\n", data);
+        printf("$:GET:%d\n", data);
     } else if (!strncmp(STS, buf, 3)) {
         i2c_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
-        printf("%d\n", data);
+        printf("$:STS:%d\n", data);
     
     /***** Debug commands *****/
     } else if (!strncmp(DEV, buf, 3)) {
@@ -300,7 +300,7 @@ void extension_handler(uint8_t *buf) {
         i2c_write_no_data(dev_addr, data);
     } else if (!strncmp(SEN, buf, 3)) {
         if (sen(BACKPLANE_SLAVE_ADDRESS) > 0) {
-            printf("!:%%%d:DATA NOT READY\n", dev_addr);
+            printf("DATA NOT READY\n", dev_addr);
         }
     /******/
     }
