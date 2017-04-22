@@ -250,6 +250,9 @@ void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
                         SSP1BUF = 0xff;
                     }
                     break;
+                case GET_I2C:
+                    SSP1BUF = PROTOCOL_I2C_GET();
+                    break;
             }
             break;
 
