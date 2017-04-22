@@ -122,11 +122,11 @@ I2C backplane master sends SEN to I2C backplane slave to fetch sensor data. The 
 ```
 
 Type is one of the following data types:
-- uint8_t
-- int8_t
-- uint16_t
-- int16_t
-- (int16_t)(float * 100)
+- uint8_t: 0 ~ 255
+- int8_t: -128 ~ 127
+- uint16_t: 0 ~ 65535
+- int16_t: -32768 ~ 32767
+- (int16_t)(float * 100): -327.68 ~ 327.67
 
 In case of uint16_t, int16_t and float, Value contains data in this form:
 ```
