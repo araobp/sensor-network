@@ -43,38 +43,24 @@ S2: I2C:17
 H: WHO
 M: BACKPLANE_MASTER
 H: MAP
-M: 0,0,3,0,0,0
+M: MAP:16,17
+H: STP
+M: ACK
 ```
 ```
 H: I2C:17
 H: WHO
-S2: 17
-H: STS
-S2: 1
-H: SEN
-S2: 2,4,52,18,120,86
-H: SEN
-S2: 3,3,246,0,10
-```
-```
-H: I2C:16
-H: WHO
-S1: 16
-H: STS
-S1: 1
-H: SEN
-S1: 4,4,24,252,232,3
+M: 17
+H: STA
+M: %17:0,1,2,3,255
+   %17:-128,-10,0,10,127
+   %17:65535,3840,256,255,1
+   %17:-32768,-1000,0,1000,32767
+   %17:-327.68,-1.99,-1.01,0.00,1.01,1.99,327.67
 H: STP
-S1: ACK
-(S1 stops blinking LED)
-H: STA
-(S1 starts blinking LED)
+N: ACK
+H: SET:100
+H: GET
+M: GET:100
 
---- NG ---
-H: STS
-S1: 1
-H: SEN
-S1: (no response)
-H: STA
-S1: (no response)
 ```
