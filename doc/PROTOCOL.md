@@ -130,7 +130,9 @@ Type is one of the following data types:
 
 In case of uint16_t, int16_t and float, Value contains data in this form:
 ```
-[MSB][LSB][MSB][LSB]...
++------+------+----------+----------+----+
+|Type  |Length|[MSB][LSB]|[MSB][LSB]|... |
++------+------+----------+----------+----+
 ```
 
 ## Block-specific operations
