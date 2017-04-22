@@ -34,35 +34,34 @@ void tmr0_handler(void) {
 
 void loop_func(void) {
     uint8_t pbuf[6];
-    uint8_t pbuf_uint8_t[3] = {0x01, 0x02, 0x03};
-    int8_t pbuf_int8_t[3] = {-10, 0, 10};
-    uint16_t pbuf_uint16_t[2] = {0x1234, 0x5678};
-    int16_t pbuf_int16_t[2] = {-1000, 1000};
-    float pbuf_float[3] = {-1.23, 1.23, 4.56};
+    uint8_t pbuf_uint8_t[5] = {0, 1, 2, 3, 255};
+    int8_t pbuf_int8_t[5] = {-128, -10, 0, 10, 127};
+    uint16_t pbuf_uint16_t[5] = {0xffff, 0x0f00, 0x0100, 0x00ff, 0x0001};
+    int16_t pbuf_int16_t[5] = {-32768, -1000, 0, 1000, 32767};
+    float pbuf_float[7] = {-327.68, -1.99, -1.01, 0.00, 1.01, 1.99, 327.67};
     static uint8_t turn = TYPE_UINT8_T;
     int16_t float100;
     if (do_func) {
-        //printf("Hello World!\n");
         LATCbits.LATC3 ^= 1;
         switch(turn) {
             case TYPE_UINT8_T:
-                PROTOCOL_I2C_Send_uint8_t(3, &pbuf_uint8_t[0]);
+                PROTOCOL_I2C_Send_uint8_t(5, &pbuf_uint8_t[0]);
                 turn = TYPE_INT8_T;
                 break;
             case TYPE_INT8_T:
-                PROTOCOL_I2C_Send_int8_t(3, &pbuf_int8_t[0]);
+                PROTOCOL_I2C_Send_int8_t(5, &pbuf_int8_t[0]);
                 turn = TYPE_UINT16_T;
                 break;
             case TYPE_UINT16_T:
-                PROTOCOL_I2C_Send_uint16_t(2, &pbuf_uint16_t[0]);
+                PROTOCOL_I2C_Send_uint16_t(5, &pbuf_uint16_t[0]);
                 turn = TYPE_INT16_T;
                 break;
             case TYPE_INT16_T:
-                PROTOCOL_I2C_Send_int16_t(2, &pbuf_int16_t[0]);
+                PROTOCOL_I2C_Send_int16_t(5, &pbuf_int16_t[0]);
                 turn = TYPE_FLOAT;
                 break;
             case TYPE_FLOAT:
-                PROTOCOL_I2C_Send_float(3, &pbuf_float[0]);
+                PROTOCOL_I2C_Send_float(7, &pbuf_float[0]);
                 turn = TYPE_UINT8_T;
                 break;                
         }

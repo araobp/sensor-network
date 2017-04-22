@@ -186,11 +186,11 @@ void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer) {
 void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer) {
     if (backplane_slave_enabled) {
         j = 0;
-        for (i=0; i<length; i++) {
-            sendbuf[j] = (uint8_t)(pbuffer[i] & 0x00ff);
-            sendbuf[++j] = (uint8_t)(pbuffer[i] >> 8);
+        for(i=0; i<length; i++) {
+            sendbuf[j++] = (uint8_t)((pbuffer[i] >> 8) & 0x00ff);
+            sendbuf[j++] = (uint8_t)(pbuffer[i] & 0x00ff);
         }
-        PROTOCOL_I2C_Set_TLV(TYPE_UINT16_T, length, &sendbuf[0]);
+        PROTOCOL_I2C_Set_TLV(TYPE_UINT16_T, length*2, &sendbuf[0]);
     }
 }
 
@@ -198,10 +198,10 @@ void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer) {
     if (backplane_slave_enabled) {
         j = 0;
         for (i=0; i<length; i++) {
-            sendbuf[j] = (uint8_t)(pbuffer[i] & 0x00ff);
-            sendbuf[++j] = (uint8_t)(pbuffer[i] >> 8 & 0x00ff);
+            sendbuf[j++] = (uint8_t)((pbuffer[i] >> 8) & 0x00ff);
+            sendbuf[j++] = (uint8_t)(pbuffer[i] & 0x00ff);
         }
-        PROTOCOL_I2C_Set_TLV(TYPE_INT16_T, length, &sendbuf[0]);
+        PROTOCOL_I2C_Set_TLV(TYPE_INT16_T, length*2, &sendbuf[0]);
     }
 }
 
@@ -210,10 +210,10 @@ void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
         j = 0;
         for (i=0; i<length; i++) {
             float100 = (int16_t)(pbuffer[i] * 100);
-            sendbuf[j] = (uint8_t)(float100 & 0x00ff);
-            sendbuf[++j] = (uint8_t)(float100 >> 8 & 0x00ff);
+            sendbuf[j++] = (uint8_t)((float100 >> 8) & 0x00ff);
+            sendbuf[j++] = (uint8_t)(float100 & 0x00ff);
         }
-        PROTOCOL_I2C_Set_TLV(TYPE_FLOAT, length, &sendbuf[0]);
+        PROTOCOL_I2C_Set_TLV(TYPE_FLOAT, length*2, &sendbuf[0]);
     }   
 }
 

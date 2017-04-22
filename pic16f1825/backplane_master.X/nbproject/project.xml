@@ -10,7 +10,7 @@
             <cpp-extensions/>
             <header-extensions>h</header-extensions>
             <asminc-extensions/>
-            <sourceEncoding>US-ASCII</sourceEncoding>
+            <sourceEncoding>UTF-8</sourceEncoding>
             <make-dep-projects>
                 <make-dep-project>../lib/i2c_util.X</make-dep-project>
                 <make-dep-project>../lib/protocol.X</make-dep-project>

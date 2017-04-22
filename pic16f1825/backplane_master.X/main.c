@@ -77,7 +77,7 @@ void print_dev_map(void) {
 }
 
 uint16_t concat(uint8_t msb, uint8_t lsb) {
-    return (uint16_t)msb << 8 & (uint16_t)lsb;    
+    return (uint16_t)msb * 256 + (uint16_t)lsb;    
 }
 
 void print_tlv(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer) {
@@ -88,8 +88,8 @@ void print_tlv(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer)
     switch(type) {
         case TYPE_UINT8_T:
             len = length - 1;
-            for (i=0; i<len; i++) printf("%d,", pbuffer[i]);
-            printf("%d\n", pbuffer[i]);
+            for (i=0; i<len; i++) printf("%u,", pbuffer[i]);
+            printf("%u\n", pbuffer[i]);
             break;
         case TYPE_INT8_T:
             len = length - 1;
@@ -98,22 +98,26 @@ void print_tlv(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer)
             break;
         case TYPE_UINT16_T:
             len = length - 2;
-            for (i=0; i<len; i++) printf("%d,", concat(pbuffer[i], pbuffer[++i]));
-            printf("%d\n", concat(pbuffer[i], pbuffer[++i]));                        
+            i = 0;
+            for(i=0; i<len; i=i+2) printf("%u,", concat(pbuffer[i], pbuffer[i+1]));
+            printf("%u\n", concat(pbuffer[i], pbuffer[i+1]));
             break;
         case TYPE_INT16_T:
             len = length - 2;
-            for (i=0; i<len; i++) printf("%d,", (int16_t)(concat(pbuffer[i], pbuffer[++i])));
-            printf("%d\n", (int16_t)(concat(pbuffer[i], pbuffer[++i])));                        
+            for(i=0; i<len; i=i+2) printf("%d,", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
+            printf("%d\n", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));                        
             break;
         case TYPE_FLOAT:
             len = length - 2;
-            for (i=0; i<len; i++) {
-                v = (int16_t)(concat(pbuffer[i], pbuffer[++i]));
-                printf("%d.%d,", v/100, v%100);
+            for (i=0; i<len; i=i+2) {
+                v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
+                printf("%d.%02d,", v/100, abs(v%100));
             }
-            v = (int16_t)(concat(pbuffer[i], pbuffer[++i]));
-            printf("%d.%d,", v/100, v%100);
+            v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
+            printf("%d.%02d\n", v/100, abs(v%100));
+            break;
+        default:
+            printf("!:%%%d:TYPE UNIDENTIFIED\n", dev_addr);
             break;
     }
 }
@@ -169,7 +173,7 @@ uint8_t sen(uint8_t dev_addr) {
             }                    
         }   
     } else {
-        printf("!:%%%d:DATA NOT READY\n", dev_addr);
+        //printf("!:%%%d:DATA NOT READY\n", dev_addr);
     }
     return status;
 }
