@@ -7,9 +7,9 @@
 #define _XTAL_FREQ 500000
 #define DEVICE_ID "BACKPLANE_MASTER"
 
-#define TEST_ADDRESS 0x01
-#define TEST_REGISTER 0x02
-#define TEST_DATA 0x03
+//#define TEST_ADDRESS 0x01
+//#define TEST_REGISTER 0x02
+//#define TEST_DATA 0x03
 
 #define I2C "I2C"
 #define MAP "MAP"
@@ -22,31 +22,37 @@
 
 #define MAX_DEV_ADDR 48  // it must be larger than 16 and multipels of 8
 
-uint8_t running = 1;
-uint8_t do_func = 0;
-uint8_t period_10 = T_PLG;
-uint8_t timer_cnt = 0;
+bool running = true;
+bool do_func_plg = false;
+bool do_func_sts = false;
+uint8_t timer_cnt_plg = 0;
+uint8_t timer_cnt_sts = 0;
+uint8_t t_sts = T_STS;
 
 void start_handler(void) {
-    running = 1;
+    running = true;
 }
 
 void stop_handler(void) {
-    running = 0;
+    running = false;
 }
 
 void set_handler(uint8_t value) {
-    period_10 = value/10;
+    t_sts = value/10;
 }
 
 void tmr0_handler(void) {
-     if (++timer_cnt >= period_10) {
-        timer_cnt = 0;
-        if (running) do_func = 1;
+     if (++timer_cnt_plg >= T_PLG) {
+        timer_cnt_plg = 0;
+        do_func_plg = true;
+     }
+     if (++timer_cnt_sts >= t_sts) {
+        timer_cnt_sts = 0;
+        do_func_sts = true;
      }
  }
 
-uint8_t dev_map[MAX_DEV_ADDR/8];
+uint8_t dev_map[MAX_DEV_ADDR/8];  // I2C slave device map
 uint8_t x, y;
 
 void clear_dev_map(void) {
@@ -77,11 +83,70 @@ void print_dev_map(void) {
     printf("%x\n", dev_map[y]);
 }
 
+uint8_t dev_map_iterator() {
+    static uint8_t x = 0;
+    static uint8_t y = 0;
+    static const uint8_t yy = MAX_DEV_ADDR/8 - 1;
+    static bool start = true;
+    static const uint8_t mask = 0b00000001;
+    bool exist = false;
+    uint8_t x_loc;
+    uint8_t dev_addr;
+    do {
+        if (x > 7) {
+            x = 0;
+            ++y;
+        }
+        if (y >= yy) {
+            x = 0;
+            y = 0;
+            break;
+        }
+        x_loc = mask << x;
+        if (x_loc & dev_map[y]) {
+            dev_addr = y * 8 + x;
+            exist = true;
+        }
+        ++x;
+    } while (!exist);
+    if (exist) {
+        exist = false;
+        return dev_addr;
+    } else {
+        return 0;
+    }
+}
+
+uint8_t sen(uint8_t dev_addr) {
+    uint8_t status;
+    uint8_t type;
+    uint8_t read_buf[16];
+    uint8_t length ,data, i;
+    status = i2c_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
+    if (data == STS_SEN_READY) {
+        status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &type, 1);
+        if (status == 0) {
+            status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &length, 1);
+            if (status == 0) {
+                status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
+                if (status == 0) {
+                    printf("%%%d:%d,%d,", dev_addr, type, length);
+                    if (length > 1) for (i=0; i < length - 1; i++) printf("%d,", read_buf[i]);
+                    printf("%d\n", read_buf[i]);
+                }
+            }                    
+        }   
+    } else {
+        printf("!:%%%d:DATA NOT READY\n", dev_addr);
+    }
+    return status;
+}
+
 void loop_func(void) {
     uint8_t dev_addr;
     uint8_t read_buf[16];
-    if (do_func) {
-        LATCbits.LATC3 ^= 1;
+    bool blink_led = false;
+    if (do_func_plg) {
         //printf("general call\n");
         uint8_t status = i2c_write_no_data(GENERAL_CALL_ADDRESS, PLG_I2C);
         //printf("%d\n", status);
@@ -95,7 +160,19 @@ void loop_func(void) {
                 }
             }
         }
-        do_func = 0;
+        do_func_plg = false;
+        blink_led = true;
+    }
+    if (do_func_sts) {
+        dev_addr = 0;
+        for (dev_addr = dev_map_iterator(); dev_addr > 0 ; dev_addr = dev_map_iterator()) {
+            uint8_t status = sen(dev_addr);
+            if (status > 0) del_dev(dev_addr);
+        }
+    }
+    if (blink_led) {
+        LATCbits.LATC3 ^= 1;
+        blink_led = false;
     }
 }
 
@@ -134,23 +211,7 @@ void extension_handler(uint8_t *buf) {
         i2c_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
         printf("%d\n", data);
     } else if (!strncmp(SEN, buf, 3)) {
-        i2c_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
-        if (data == STS_SEN_READY) {
-            status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &type, 1);
-            if (status == 0) {
-                status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &length, 1);
-                if (status == 0) {
-                    status = i2c_read(BACKPLANE_SLAVE_ADDRESS, SEN_I2C, &read_buf[0], length);
-                    if (status == 0) {
-                        printf("%d,%d,", type, length);
-                        if (length > 1) for (i=0; i < length - 1; i++) printf("%d,", read_buf[i]);
-                        printf("%d\n", read_buf[i]);
-                    }
-                }                    
-            }
-        } else {
-            printf("!:NO DATA\n");
-        }
+        sen(BACKPLANE_SLAVE_ADDRESS);
     } else if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);
     } else if (!strncmp(REG, buf, 3)) {

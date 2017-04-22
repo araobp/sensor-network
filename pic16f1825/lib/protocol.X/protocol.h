@@ -87,8 +87,9 @@ extern "C" {
     /*
      * Timers
      */
-    #define T_PLG 255  // Plug check timer : 255 * 10msec = 2.55sec
-
+    #define T_PLG 100  // Plug in check timer : 100 * 10msec = 1sec
+    #define T_STS 1    // Status check timer : 1 * 10msec = 10msec
+    
     /*
      * Device IDs
      */
