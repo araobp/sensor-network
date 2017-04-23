@@ -22,7 +22,7 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 
 #### "CLI over UART" proxy for I2C backplane
 
-This construct is for [DIN housing for RasPi](https://www.phoenixcontact.com/online/portal/gb?1dmy&urile=wcm:path:/gben/web/offcontext/insite_landing_pages/efd3ca11-79cd-4971-a56c-3c20e29139ad/efd3ca11-79cd-4971-a56c-3c20e29139ad) and DIN rail.
+This construct is to make legacy M2M gateway work as mini PLC with I/O unitis and sensor/actuator units. The gateway and all the units are mounted on DIN rail with I2C bus backplane.
 
 ![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
 
