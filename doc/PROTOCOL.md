@@ -93,21 +93,21 @@ slave              master
 ## Recommended link start-up sequence
 
 ```
- slave              master
-   |                  |
-   |<------STP--------|  Send STP(Stop) to the slave to stop sending data.
-   |-------ACK------->|  Confirm that ACK has been received on the master side.
-   |                  |  Clear the output buffer on the master side.
-   |                  |  Clear the input buffer on the master side.
-   |<------WHO--------|  Send WHO(Who are you?) to get device ID of the block.
-   |----DEVICE_ID---->|  Keep the device ID on the master side.
-   |                  |
-   |<---SET:<value>---|  Send SET to configure the device.
-   |                  |
-   |<-----SAV---------|  Send SAV to save the config on the slave side.
-   |                  |
-   |<-----STA---------|  Send STA(Start) to make the device start sending data.
-   |                  |
+ slave                master
+   |                    |
+   |<-------STP---------|  Send STP(Stop) to the slave to stop sending data.
+   |-----*:STP:ACK----->|  Confirm that ACK has been received on the master side.
+   |                    |  Clear the output buffer on the master side.
+   |                    |  Clear the input buffer on the master side.
+   |<------WHO----------|  Send WHO(Who are you?) to get device ID of the block.
+   |-$:WHO:<device ID>->|  Keep the device ID on the master side.
+   |                    |
+   |<----SET:<value>----|  Send SET to configure the device.
+   |                    |
+   |<------SAV----------|  Send SAV to save the config on the slave side.
+   |                    |
+   |<------STA----------|  Send STA(Start) to make the device start sending data.
+   |                    |
 ```
 
 ## TLV format of SEN response payload
@@ -138,6 +138,21 @@ In case of uint16_t, int16_t and float, Value contains data in this form:
 ## Block-specific operations
 
 ### Backplane master
+
+#### PLG (detect I2C backplane slave plug-in)
+
+This operation is performed in background at every T_PLG timer interval.
+```
+new backplane slave            backplane master
+(dev addr 0x0n)
+    |<----General Call PLG------------|
+    |-----(I2C ACK bit on)----------->|
+    |                                 | start device scan process
+      |<----WHO to dev addr 0x01------|
+        |<----WHO to dev addr 0x02----|
+    |<----WHO to dev addr 0x0n--------|
+    |-----<device ID>---------------->| detect new backplane slave
+```
 
 #### I2C (set I2C backplane slave address)
 address = 1 means I2C backplane Master.
