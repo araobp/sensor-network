@@ -10,7 +10,7 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 
 #### "CLI over UART"
 
-This construct targets a small router (or CPE) supporting PLC capabilities:
+This construct targets a small router with OpenWrt, RasPi or Windows PC.
 
 ![arch](https://docs.google.com/drawings/d/16cHL6QpvqUBJZJr4kIXCOJ5CkqHTnKV7QXeDOKtFB80/pub?w=640&h=480)
 
@@ -22,7 +22,7 @@ I use [FTDI](http://www.ftdichip.com/)'s USB-UART bridges that support [VCP (Vir
 
 #### "CLI over UART" proxy for I2C backplane
 
-This construct is to make legacy M2M gateway work as mini PLC with I/O unitis and sensor/actuator units. The gateway and all the units are mounted on DIN rail with I2C bus backplane.
+This construct is to make legacy M2M gateway work as mini PLC with I/O units and sensor/actuator units. The gateway and all the units are mounted on DIN rail with I2C bus backplane.
 
 ![arch2](https://docs.google.com/drawings/d/1PbKogx1trD3deEXCsBjhFhOSxsouPb-ITNwMbOb6nc0/pub?w=640&h=480)
 
