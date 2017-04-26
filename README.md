@@ -81,6 +81,10 @@ The base board board described here is used as building blocks of mini PLC.
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
+Microchip provides the following tranceiver/contoller from LIN/CAN:
+- LIN tranceiver (UART) [PIC16F1829LIN](http://ww1.microchip.com/downloads/en/DeviceDoc/20002230G.pdf)
+- CAN standalone controller (SPI) [MCP2525](http://ww1.microchip.com/downloads/en/DeviceDoc/21801e.pdf)
+
 ## Implementation
 
 Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
