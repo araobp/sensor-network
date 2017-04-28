@@ -75,6 +75,10 @@ The base board will also supports I2C bus network topology:
 
 ![backplane_test](./doc/backplane_test.png)
 
+And the base board prototype #3 for bus network toplogy:
+
+![prototype 3](https://docs.google.com/drawings/d/1kddpwlZoLBkjjd_dzJM9_Pzs25Pw7g_14gZa-d0LF34/pub?w=680&h=400)
+
 #### PIC16F1829/PIC16F1829LIN
 
 The base board board described here is used as building blocks of mini PLC.
