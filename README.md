@@ -75,17 +75,15 @@ The base board will also supports I2C bus network topology:
 
 ![backplane_test](./doc/backplane_test.png)
 
-And the base board prototype #3 for bus network toplogy:
-
-![prototype 3](https://docs.google.com/drawings/d/1kddpwlZoLBkjjd_dzJM9_Pzs25Pw7g_14gZa-d0LF34/pub?w=680&h=400)
-
-#### PIC16F1829/PIC16F1829LIN
+#### PIC16F1829
 
 The base board board described here is used as building blocks of mini PLC.
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
-Microchip provides the following tranceiver/contoller from LIN/CAN:
+This base board can support SPI and 1 wire as well, with jumper cables.
+
+To extend the distance of bus signal reachability, use the following tranceiver/contoller for LIN/CAN:
 - LIN tranceiver (UART) [PIC16F1829LIN](http://ww1.microchip.com/downloads/en/DeviceDoc/20002230G.pdf)
 - CAN standalone controller (SPI) [MCP2525](http://ww1.microchip.com/downloads/en/DeviceDoc/21801e.pdf)
 
