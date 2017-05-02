@@ -42,8 +42,7 @@ void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
 }
 
 uint8_t PROTOCOL_Read_Device_Address() {
-    // return DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);
-    return 0x12;
+    return DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);
 }
 
 void PROTOCOL_STA(void) {

@@ -1,5 +1,5 @@
 #include "i2c1.h"
-#include "../protocol.h"
+#include "protocol.h"
 
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F

@@ -4,7 +4,7 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-   
+
     /*
      * Basic commands
      */
@@ -128,5 +128,5 @@ extern "C" {
 }
 #endif
 
-#endif
+#endif	/* PROTOCOL_H */
 
