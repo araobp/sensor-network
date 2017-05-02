@@ -38,7 +38,13 @@ extern "C" {
     void PROTOCOL_STP(void);
     void PROTOCOL_SET(uint8_t value);
     void PROTOCOL_SAV(void);
+    void PROTOCOL_EXT(uint8_t *pbuffer);
     
+    /**
+     * printf for TLV
+     */
+    void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+        
     /*
      * I2C backplane slave specific functions
      */
@@ -72,7 +78,7 @@ extern "C" {
     #define SET_I2C 0x07
     #define GET_I2C 0x08
     #define STS_I2C 0x09
-
+    #define EXT_I2C 0x0a
     /*
      * I2C backplane slave status
      */

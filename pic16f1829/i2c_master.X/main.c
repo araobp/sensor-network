@@ -118,52 +118,6 @@ void print_dev_map(void) {
     }
 }
 
-uint16_t concat(uint8_t msb, uint8_t lsb) {
-    return (uint16_t)msb * 256 + (uint16_t)lsb;    
-}
-
-void print_tlv(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer) {
-    uint8_t i;
-    uint8_t len;
-    int16_t v;
-    printf("%%%d:", dev_addr);
-    switch(type) {
-        case TYPE_UINT8_T:
-            len = length - 1;
-            for (i=0; i<len; i++) printf("%u,", pbuffer[i]);
-            printf("%u\n", pbuffer[i]);
-            break;
-        case TYPE_INT8_T:
-            len = length - 1;
-            for (i=0; i<len; i++) printf("%d,", (int8_t)pbuffer[i]);
-            printf("%d\n", (int8_t)pbuffer[i]);            
-            break;
-        case TYPE_UINT16_T:
-            len = length - 2;
-            i = 0;
-            for(i=0; i<len; i=i+2) printf("%u,", concat(pbuffer[i], pbuffer[i+1]));
-            printf("%u\n", concat(pbuffer[i], pbuffer[i+1]));
-            break;
-        case TYPE_INT16_T:
-            len = length - 2;
-            for(i=0; i<len; i=i+2) printf("%d,", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
-            printf("%d\n", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));                        
-            break;
-        case TYPE_FLOAT:
-            len = length - 2;
-            for (i=0; i<len; i=i+2) {
-                v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
-                printf("%d.%02d,", v/100, abs(v%100));
-            }
-            v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
-            printf("%d.%02d\n", v/100, abs(v%100));
-            break;
-        default:
-            printf("!:%%%d:TYPE UNIDENTIFIED\n", dev_addr);
-            break;
-    }
-}
-
 /**
  * @fn device map iterator
  * @return device address
@@ -214,7 +168,7 @@ uint8_t sen(uint8_t dev_addr) {
             if (status == 0) {
                 status = i2c1_read(dev_addr, SEN_I2C, &read_buf[0], length);
                 if (status == 0) {
-                    print_tlv(dev_addr, type, length, &read_buf[0]);
+                    PROTOCOL_Print_TLV(dev_addr, type, length, &read_buf[0]);
                     LATCbits.LATC3 ^= 1;  // blink LED
                 }
             }                    
@@ -284,8 +238,7 @@ void extension_handler(uint8_t *buf) {
         printf("$:GET:%d\n", data);
     } else if (!strncmp(STS, buf, 3)) {
         i2c1_read(BACKPLANE_SLAVE_ADDRESS, STS_I2C, &data, 1);
-        printf("$:STS:%d\n", data);
-    
+        printf("$:STS:%d\n", data);    
     /***** Debug commands *****/
     } else if (!strncmp(DEV, buf, 3)) {
         dev_addr = atoi(&buf[4]);
@@ -300,9 +253,18 @@ void extension_handler(uint8_t *buf) {
         i2c1_write_no_data(dev_addr, data);
     } else if (!strncmp(SEN, buf, 3)) {
         if (sen(BACKPLANE_SLAVE_ADDRESS) > 0) {
-            printf("DATA NOT READY\n", dev_addr);
+            printf("!:SEN:DATA NOT READY\n");
         }
     /******/
+    } else {
+        length = 0;
+        do {
+        } while (buf[length++] == '\0');
+        i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, EXT_I2C);
+        i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, length);
+        for (i=0; i<length; i++) {
+            status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, buf[i]);                 
+        }
     }
 }
 
