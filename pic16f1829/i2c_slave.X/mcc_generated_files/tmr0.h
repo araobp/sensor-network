@@ -13,7 +13,7 @@
   @Description
     This header file provides APIs for TMR0.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC16F1829
         Driver Version    :  2.00
     The generated drivers are tested against the following:

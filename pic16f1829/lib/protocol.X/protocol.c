@@ -220,7 +220,7 @@ void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer) {
         PROTOCOL_I2C_Set_TLV(TYPE_UINT8_T, length, &pbuffer[0]);
     }
     length--;
-    for(i=0; i<length; i++) printf(",%d", pbuffer[i]);
+    for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
     printf("%d\n", pbuffer[i]);
 }
 

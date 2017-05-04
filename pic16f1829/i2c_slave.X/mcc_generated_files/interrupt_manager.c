@@ -15,7 +15,7 @@
     For individual peripheral handlers please see the peripheral driver for
     all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC16F1829
         Driver Version    :  1.02
     The generated drivers are tested against the following:
@@ -66,10 +66,6 @@ void interrupt INTERRUPT_InterruptManager (void)
     else if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
     {
         TMR0_ISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE4bits.BCL2IE == 1 && PIR4bits.BCL2IF == 1)
-    {
-        I2C2_BusCollisionISR();
     }
     else if(INTCONbits.PEIE == 1 && PIE4bits.SSP2IE == 1 && PIR4bits.SSP2IF == 1)
     {

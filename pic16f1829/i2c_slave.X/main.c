@@ -73,7 +73,7 @@ void loop_func(void) {
     }
 }
 
-void blink_led(uint8_t times) {
+void blink(uint8_t times) {
     uint8_t i;
     for(i=0;i<times;i++) {
         LATCbits.LATC7 = 0;
@@ -86,10 +86,10 @@ void blink_led(uint8_t times) {
 void extension_handler(uint8_t *buf) {
     uint8_t value;
     if (!strncmp(AAA, buf, 3)) {
-        blink_led(1);
+        blink(1);
     } else if (!strncmp(BBB, buf, 3)) {
         value = atoi(&buf[4]);
-        blink_led(value);
+        blink(value);
     }
 }
 /*
@@ -102,13 +102,15 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
 
     TMR0_Initialize();
-    TMR0_SetInterruptHandler(tmr0_handler);
-
-    EUSART_Initialize();
 
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
     PROTOCOL_Set_Extension_Handler(extension_handler);
     PROTOCOL_I2C_Initialize(PROTOCOL_Read_Device_Address());
     PROTOCOL_Set_Func(loop_func);
+
+    EUSART_Initialize();
+    I2C1_Initialize();
+    TMR0_SetInterruptHandler(tmr0_handler);
+
     PROTOCOL_Loop();
 }

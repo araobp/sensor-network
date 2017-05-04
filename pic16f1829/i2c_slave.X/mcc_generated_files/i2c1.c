@@ -1,6 +1,8 @@
 #include "i2c1.h"
 #include "protocol.h"
 
+#define _XTAL_FREQ 500000
+
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F
 
@@ -42,9 +44,21 @@ void I2C1_Initialize(void)
 
 }
 
+void blink_led(uint8_t times) {
+    uint8_t i;
+    for(i=0; i<times; i++) {
+        __delay_ms(50);
+        LATCbits.LATC7 = 0;
+       __delay_ms(50);
+       LATCbits.LATC7 = 1;
+    }
+}
+
 void I2C1_ISR ( void )
 {
     uint8_t     i2c_data                = 0x55;
+
+    blink_led(20);
 
     // NOTE: The slave driver will always acknowledge
     //       any address match.
@@ -118,6 +132,7 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
             switch(slaveWriteType)
             {
                 case SLAVE_DATA_ADDRESS:
+                    blink_led(10);
                     if (ext_state != EXT_OFF) {
                         switch(ext_state) {
                             case EXT_LEN:
@@ -173,11 +188,14 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
             switch (I2C_slaveWriteData)
             {
                 case WHO_I2C:
-                    SSP1BUF = PROTOCOL_I2C_WHO();
+                     LATCbits.LATC7 = 1;
+                     SSP1BUF = PROTOCOL_I2C_WHO();
+                     blink_led(3);
                     break;
                 case STS_I2C:
                     if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
                     else SSP1BUF = STS_NO_DATA;
+                    blink_led(5);
                     break;
                 case SEN_I2C:
                     pdata = PROTOCOL_I2C_SEN();
@@ -186,6 +204,7 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                     } else {
                         SSP1BUF = 0xff;
                     }
+                    blink_led(7);
                     break;
                 case GET_I2C:
                     SSP1BUF = PROTOCOL_I2C_GET();
