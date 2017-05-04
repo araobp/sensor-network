@@ -2,6 +2,8 @@
 
 This is a project to archive building blocks for mini PLC.
 
+![prototype3](./doc/prototype3.png)
+
 ## Interfaces among building blocks
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md):
