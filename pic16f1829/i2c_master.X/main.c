@@ -108,8 +108,9 @@ void del_dev(uint8_t dev_addr) {
 
 void print_dev_map(void) {
     uint8_t i;
-    uint8_t len = numbers_of_dev() - 1;
+    uint8_t len = numbers_of_dev();
     if (len > 0) {
+        len--;
         printf("$:MAP:");
         for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
         printf("%d\n", dev_map_iterator());
