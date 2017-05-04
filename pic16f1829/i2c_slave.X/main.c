@@ -1,8 +1,13 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
+#include <stdlib.h>
+#include <string.h>
 
 #define _XTAL_FREQ 500000
 #define DEVICE_ID "TEMPLATE_PIC16F1829"
+
+#define AAA "AAA"
+#define BBB "BBB"
 
 bool running = true;
 uint8_t do_func = 0;
@@ -31,6 +36,29 @@ void tmr0_handler(void) {
      }
  }
 
+void blink(uint8_t times) {
+    uint8_t i;
+    for(i=0;i<times;i++) {
+        LATCbits.LATC7 = 0;
+        __delay_ms(50);
+        LATCbits.LATC7 = 1;   
+        __delay_ms(50);
+    }
+}
+
+char *test = NULL;
+
+void extension_handler(char *char_buf) {
+    uint8_t value;
+    test = char_buf;
+    if (!strncmp(AAA, char_buf, 3)) {
+        blink(1);
+    } else if (!strncmp(BBB, char_buf, 3)) {
+        value = atoi(&char_buf[4]);
+        blink(value);
+    }
+}
+
 void loop_func(void) {
     uint8_t pbuf[6];
     uint8_t pbuf_uint8_t[5] = {0, 1, 2, 3, 255};
@@ -40,6 +68,10 @@ void loop_func(void) {
     float pbuf_float[7] = {-327.68, -1.99, -1.01, 0.00, 1.01, 1.99, 327.67};
     static uint8_t turn = TYPE_UINT8_T;
     int16_t float100;
+    if (test != NULL) {
+        printf("%s\n", test);
+        test = NULL;
+    }
     if (do_func) {
         LATCbits.LATC7 ^= 1;
         switch(turn) {
@@ -79,6 +111,7 @@ void main(void)
     WDT_Initialize();
     
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
+    PROTOCOL_Set_Extension_Handler(extension_handler);
     PROTOCOL_Set_Func(loop_func);
 
     EUSART_Initialize();

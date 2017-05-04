@@ -260,12 +260,15 @@ void extension_handler(uint8_t *buf) {
     } else {
         length = 0;
         do {
-        } while (buf[length++] == '\0');
+        } while (buf[length++] != '\0');
+        printf("Extended command, length: %s, %d\n", buf, length);
         i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, EXT_I2C);
         i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, length);
         for (i=0; i<length; i++) {
-            status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, buf[i]);                 
+            printf("%c", buf[i]);
+            status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, (uint8_t)buf[i]);                 
         }
+        printf("\n");
     }
 }
 

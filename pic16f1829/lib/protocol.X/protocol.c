@@ -18,6 +18,7 @@ void (*PROTOCOL_Extension_Handler)(uint8_t *buf) = NULL;
 uint8_t c;
 uint8_t cnt = 0;
 uint8_t buf[48];
+char char_buf[32];
 uint8_t value;
 const char *device_id_;
 
@@ -69,8 +70,8 @@ void PROTOCOL_SET(uint8_t value_) {
     PROTOCOL_Set_Handler(value);
 }
 
-void PROTOCOL_EXT(uint8_t *pbuffer) {
-    PROTOCOL_Extension_Handler(pbuffer);
+void PROTOCOL_EXT(char *char_buf) {
+    PROTOCOL_Extension_Handler(char_buf);
 }
 
 /*

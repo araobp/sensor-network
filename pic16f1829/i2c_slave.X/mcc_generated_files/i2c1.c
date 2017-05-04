@@ -4,6 +4,11 @@
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F
 
+#define DEFAULT    0x00
+#define SET_VALUE  0x01
+#define EXT_LENGTH 0x02
+#define EXT_VALUE  0x03
+
 typedef enum
 {
     SLAVE_NORMAL_DATA,
@@ -96,12 +101,14 @@ void I2C1_ISR ( void )
 
 }
 
-
 void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
 {
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
-    static uint8_t prevData = 0xff;
+    static uint8_t next = DEFAULT;
+    static uint8_t ext_len = 0;
+    static uint8_t ext_cnt = 0;
+    static char ext_buf[32];
     uint8_t *pdata;
     switch (i2c_bus_state)
     {
@@ -119,22 +126,42 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
             switch(slaveWriteType)
             {
                 case SLAVE_DATA_ADDRESS:
-                    if (prevData == SET_I2C) {
-                        PROTOCOL_SET(I2C_slaveWriteData);
-                    } else {
-                        switch(I2C_slaveWriteData) {
-                            case STA_I2C:
-                                PROTOCOL_STA();
-                                break;
-                            case STP_I2C:
-                                PROTOCOL_STP();
-                                break;
-                            case SAV_I2C:
-                                PROTOCOL_SAV();
-                                break;
-                        }
+                    switch(next) {
+                        case SET_VALUE:
+                            PROTOCOL_SET(I2C_slaveWriteData);
+                            next = DEFAULT;
+                            break;
+                        case EXT_LENGTH:
+                            ext_len = I2C_slaveWriteData;
+                            ext_cnt = 0;
+                            next = EXT_VALUE;
+                            break;
+                        case EXT_VALUE:
+                            ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
+                            if (ext_cnt >= ext_len) {
+                                PROTOCOL_EXT(&ext_buf[0]);
+                                next = DEFAULT;
+                            }
+                            break;
+                        case DEFAULT:
+                            switch(I2C_slaveWriteData) {
+                                case STA_I2C:
+                                    PROTOCOL_STA();
+                                    break;
+                                case STP_I2C:
+                                    PROTOCOL_STP();
+                                    break;
+                                case SAV_I2C:
+                                    PROTOCOL_SAV();
+                                    break;
+                                case SET_I2C:
+                                    next = SET_VALUE;
+                                    break;
+                                case EXT_I2C:
+                                    next = EXT_LENGTH;
+                                    break;
+                            }
                     }
-                    prevData = I2C_slaveWriteData;
                     break;
 
                 case SLAVE_GENERAL_CALL:
