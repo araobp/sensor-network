@@ -1,13 +1,8 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
-#include <stdlib.h>
-#include <string.h>
 
 #define _XTAL_FREQ 500000
 #define DEVICE_ID "TEMPLATE_PIC16F1829"
-
-#define AAA "AAA"
-#define BBB "BBB"
 
 bool running = true;
 uint8_t do_func = 0;
@@ -73,44 +68,27 @@ void loop_func(void) {
     }
 }
 
-void blink(uint8_t times) {
-    uint8_t i;
-    for(i=0;i<times;i++) {
-        LATCbits.LATC7 = 0;
-        __delay_ms(50);
-        LATCbits.LATC7 = 1;   
-        __delay_ms(50);
-    }
-}
-
-void extension_handler(uint8_t *buf) {
-    uint8_t value;
-    if (!strncmp(AAA, buf, 3)) {
-        blink(1);
-    } else if (!strncmp(BBB, buf, 3)) {
-        value = atoi(&buf[4]);
-        blink(value);
-    }
-}
 /*
  * output max abs(measured value) in the period.
  */
 void main(void)
 {
-    SYSTEM_Initialize();
-    INTERRUPT_GlobalInterruptEnable();
-    INTERRUPT_PeripheralInterruptEnable();
-
-    TMR0_Initialize();
-
+    //SYSTEM_Initialize();
+    PIN_MANAGER_Initialize();
+    OSCILLATOR_Initialize();
+    WDT_Initialize();
+    
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
-    PROTOCOL_Set_Extension_Handler(extension_handler);
-    PROTOCOL_I2C_Initialize(PROTOCOL_Read_Device_Address());
     PROTOCOL_Set_Func(loop_func);
 
     EUSART_Initialize();
-    I2C1_Initialize();
+    TMR0_Initialize();
     TMR0_SetInterruptHandler(tmr0_handler);
+    
+    INTERRUPT_GlobalInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
+
+    I2C1_Initialize();
 
     PROTOCOL_Loop();
 }

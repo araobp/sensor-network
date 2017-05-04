@@ -3,6 +3,11 @@
 #include <string.h>
 #include "protocol.h"
 
+#define _XTAL_FREQ 500000
+
+#define I2C_SLAVE_MASK    0x7F
+uint8_t slave_address;
+
 // function pointers (event handlers)
 void (*PROTOCOL_Start_Handler)(void) = NULL;
 void (*PROTOCOL_Stop_Handler)(void) = NULL;
@@ -27,6 +32,7 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     value = DATAEE_ReadByte(DEVICE_SETTING_ADDRESS);  // read value from EEPROM
     if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
     if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
+    slave_address = DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);  // read slave_address from EEPROM
 }
 
 void PROTOCOL_Set_Func(void *loop_func) {
@@ -39,10 +45,11 @@ void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
 
 void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
     DATAEE_WriteByte(DEVICE_ID_I2C_ADDRESS, device_id_i2c);
+    slave_address = device_id_i2c;
 }
 
 uint8_t PROTOCOL_Read_Device_Address() {
-    return DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);
+    return slave_address;
 }
 
 void PROTOCOL_STA(void) {
@@ -115,6 +122,7 @@ void PROTOCOL_Loop() {
 /************************************************************/
 
 typedef enum {
+    NO_DATA,
     TLV_SET,
     TYPE_SENT,
     LENGTH_SENT,
@@ -134,7 +142,6 @@ READBUF readbuf;
 READBUF_STATUS readbuf_status;
 
 bool backplane_slave_enabled = false;
-uint8_t slave_address;
 uint8_t sendbuf[16];
 uint8_t i, j;
 int16_t float100;
@@ -142,10 +149,9 @@ int16_t float100;
 uint8_t *data;
         
 // initialization
-void PROTOCOL_I2C_Initialize(uint8_t device_id) {
+void PROTOCOL_I2C_Initialize() {
+    readbuf.status = NO_DATA;
     backplane_slave_enabled = true;
-    slave_address = device_id;
-    SSP1ADD = (device_id << 1);
 }
 
 uint8_t PROTOCOL_I2C_WHO(void) {
@@ -200,7 +206,9 @@ void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t 
 }
 
 void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
-    if (readbuf.status == TLV_SET || readbuf.status == COMPLETE || readbuf.status == ILLEGAL) {
+    READBUF_STATUS status = readbuf.status;
+    // if (readbuf.status == TLV_SET || readbuf.status == COMPLETE || readbuf.status == ILLEGAL) {
+    if (status == NO_DATA || status == COMPLETE || status == ILLEGAL) {
         readbuf.type = type;
         readbuf.length = length;
         readbuf.pbuffer = pbuffer;
@@ -219,9 +227,11 @@ void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer) {
     if (backplane_slave_enabled) {
         PROTOCOL_I2C_Set_TLV(TYPE_UINT8_T, length, &pbuffer[0]);
     }
+    /*
     length--;
     for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
     printf("%d\n", pbuffer[i]);
+    */
 }
 
 void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer) {
@@ -231,9 +241,11 @@ void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer) {
         }
         PROTOCOL_I2C_Set_TLV(TYPE_INT8_T, length, &sendbuf[0]);
     }
+    /*
     length--;
     for (i=0; i<length; i++) printf("%d,", (int8_t)pbuffer[i]);
-    printf("%d\n", (int8_t)pbuffer[i]);            
+    printf("%d\n", (int8_t)pbuffer[i]);           
+    */ 
 }
 
 void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer) {
@@ -245,9 +257,11 @@ void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer) {
         }
         PROTOCOL_I2C_Set_TLV(TYPE_UINT16_T, length*2, &sendbuf[0]);
     }
+    /*
     length--;
     for(i=0; i<length; i++) printf("%u,", pbuffer[i]);
     printf("%u\n", pbuffer[i]);
+    */
 }
 
 void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer) {
@@ -259,9 +273,11 @@ void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer) {
         }
         PROTOCOL_I2C_Set_TLV(TYPE_INT16_T, length*2, &sendbuf[0]);
     }
+    /*
     length--;
     for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
     printf("%d\n", pbuffer[i]);                        
+    */
 }
 
 void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
@@ -274,7 +290,8 @@ void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
             sendbuf[j++] = (uint8_t)(float100 & 0x00ff);
         }
         PROTOCOL_I2C_Set_TLV(TYPE_FLOAT, length*2, &sendbuf[0]);
-    }   
+    }
+    /*
     length--;
     for (i=0; i<length; i++) {
         v = (int16_t)(pbuffer[i] * 100);
@@ -282,6 +299,7 @@ void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
     }
     v = (int16_t)(pbuffer[i] * 100);
     printf("%d.%02d\n", v/100, abs(v%100));
+    */
 }
 
 uint8_t* PROTOCOL_I2C_SEN(void) {
@@ -300,12 +318,40 @@ uint8_t* PROTOCOL_I2C_SEN(void) {
                 pdata = &readbuf.pbuffer[readbuf.buf_cnt++];
             }
             if (readbuf.buf_cnt == readbuf.length) {
-                readbuf.status = COMPLETE;
                 readbuf.buf_cnt = 0;
+                readbuf.status = COMPLETE;
             }
+            /*
+            LATCbits.LATC7 ^= 0;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 1;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 0;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 1;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 0;
+            */
+            break;
+        case NO_DATA:
+            pdata = NULL;
+            /*
+            LATCbits.LATC7 ^= 0;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 1;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 0;
+            */
             break;
         default:
-            readbuf.status = ILLEGAL;       
+            readbuf.status = ILLEGAL;
+            /*
+            LATCbits.LATC7 ^= 0;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 1;
+            __delay_ms(50);
+            LATCbits.LATC7 ^= 0;
+            */
             pdata = NULL;
             break;
     }

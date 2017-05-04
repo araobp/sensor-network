@@ -48,7 +48,7 @@ extern "C" {
     /*
      * I2C backplane slave specific functions
      */
-    void PROTOCOL_I2C_Initialize(uint8_t device_id);
+    void PROTOCOL_I2C_Initialize();
     void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
     bool PROTOCOL_I2C_TLV_Status(void);
     // the following functions are type-dependent version of PROTOCOL_I2C_Set_TLV

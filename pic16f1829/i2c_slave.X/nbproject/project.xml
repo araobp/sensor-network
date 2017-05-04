@@ -4,7 +4,7 @@
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
             <name>i2c_slave</name>
-            <creation-uuid>6fb0153a-2135-496c-936d-0376d7aa0de9</creation-uuid>
+            <creation-uuid>5ea02eee-5620-4d0a-9016-b53adb9273df</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>

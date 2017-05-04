@@ -1,14 +1,8 @@
 #include "i2c1.h"
 #include "protocol.h"
 
-#define _XTAL_FREQ 500000
-
 #define I2C_SLAVE_ADDRESS 0x01 
 #define I2C_SLAVE_MASK    0x7F
-
-#define EXT_OFF 0x00
-#define EXT_LEN 0x01
-#define EXT_VAL 0x02
 
 typedef enum
 {
@@ -17,8 +11,15 @@ typedef enum
     SLAVE_GENERAL_CALL,
 } SLAVE_WRITE_DATA_TYPE;
 
+/**
+ Section: Global Variables
+*/
+
 volatile uint8_t    I2C_slaveWriteData      = 0x55;
 
+/**
+ Section: Local Functions
+*/
 void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state);
 
 void I2C1_Initialize(void)
@@ -35,30 +36,20 @@ void I2C1_Initialize(void)
     // SSPMSK 127; 
     SSP1MSK = (I2C_SLAVE_MASK << 1);  // adjust UI mask for R/nW bit            
     // SSPADD 8; 
-    SSP1ADD = (I2C_SLAVE_ADDRESS << 1);  // adjust UI address for R/nW bit
+    SSP1ADD = (PROTOCOL_Read_Device_Address() << 1);  // adjust UI address for R/nW bit
 
     // clear the slave interrupt flag
     PIR1bits.SSP1IF = 0;
     // enable the master interrupt
     PIE1bits.SSP1IE = 1;
+    
+    PROTOCOL_I2C_Initialize();
 
-}
-
-void blink_led(uint8_t times) {
-    uint8_t i;
-    for(i=0; i<times; i++) {
-        __delay_ms(50);
-        LATCbits.LATC7 = 0;
-       __delay_ms(50);
-       LATCbits.LATC7 = 1;
-    }
 }
 
 void I2C1_ISR ( void )
 {
     uint8_t     i2c_data                = 0x55;
-
-    blink_led(20);
 
     // NOTE: The slave driver will always acknowledge
     //       any address match.
@@ -105,20 +96,16 @@ void I2C1_ISR ( void )
 
 }
 
+
 void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
 {
 
     static uint8_t slaveWriteType   = SLAVE_NORMAL_DATA;
     static uint8_t prevData = 0xff;
-    static uint8_t ext_state = EXT_OFF;
-    static uint8_t ext_len = 0;
-    static uint8_t ext_cnt = 0;
-    static uint8_t ext_buf[16];
     uint8_t *pdata;
     switch (i2c_bus_state)
     {
         case I2C1_SLAVE_WRITE_REQUEST:
-            // the master will be sending the eeprom address next
             slaveWriteType  = SLAVE_DATA_ADDRESS;
             break;
 
@@ -132,38 +119,19 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
             switch(slaveWriteType)
             {
                 case SLAVE_DATA_ADDRESS:
-                    blink_led(10);
-                    if (ext_state != EXT_OFF) {
-                        switch(ext_state) {
-                            case EXT_LEN:
-                                ext_len = I2C_slaveWriteData;
-                                ext_state = EXT_VAL;
-                                ext_cnt = 0;
-                                break;
-                            case EXT_VAL:
-                                ext_buf[ext_cnt++] = I2C_slaveWriteData;
-                                if (ext_cnt >= ext_len) ext_state = EXT_OFF;
-                                PROTOCOL_EXT(&ext_buf[0]);
-                                break;
-                        }
+                    if (prevData == SET_I2C) {
+                        PROTOCOL_SET(I2C_slaveWriteData);
                     } else {
-                        if (prevData == EXT_I2C) {
-                            ext_state = EXT_LEN;
-                        }
-                        else if (prevData == SET_I2C) {
-                            PROTOCOL_SET(I2C_slaveWriteData);
-                        } else {
-                            switch(I2C_slaveWriteData) {
-                                case STA_I2C:
-                                    PROTOCOL_STA();
-                                    break;
-                                case STP_I2C:
-                                    PROTOCOL_STP();
-                                    break;
-                               case SAV_I2C:
-                                    PROTOCOL_SAV();
-                                    break;
-                            }
+                        switch(I2C_slaveWriteData) {
+                            case STA_I2C:
+                                PROTOCOL_STA();
+                                break;
+                            case STP_I2C:
+                                PROTOCOL_STP();
+                                break;
+                            case SAV_I2C:
+                                PROTOCOL_SAV();
+                                break;
                         }
                     }
                     prevData = I2C_slaveWriteData;
@@ -184,18 +152,14 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
             break;
 
         case I2C1_SLAVE_READ_REQUEST:
-            
             switch (I2C_slaveWriteData)
             {
                 case WHO_I2C:
-                     LATCbits.LATC7 = 1;
-                     SSP1BUF = PROTOCOL_I2C_WHO();
-                     blink_led(3);
+                    SSP1BUF = PROTOCOL_I2C_WHO();
                     break;
                 case STS_I2C:
                     if (PROTOCOL_I2C_TLV_Status()) SSP1BUF = STS_SEN_READY;
                     else SSP1BUF = STS_NO_DATA;
-                    blink_led(5);
                     break;
                 case SEN_I2C:
                     pdata = PROTOCOL_I2C_SEN();
@@ -204,7 +168,6 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                     } else {
                         SSP1BUF = 0xff;
                     }
-                    blink_led(7);
                     break;
                 case GET_I2C:
                     SSP1BUF = PROTOCOL_I2C_GET();
@@ -216,5 +179,6 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
             break;
         default:
             break;
+
     }
 }

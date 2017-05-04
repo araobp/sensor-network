@@ -67,10 +67,6 @@ void interrupt INTERRUPT_InterruptManager (void)
     {
         TMR0_ISR();
     }
-    else if(INTCONbits.PEIE == 1 && PIE4bits.SSP2IE == 1 && PIR4bits.SSP2IF == 1)
-    {
-        I2C2_ISR();
-    }
     else
     {
         //Unhandled Interrupt

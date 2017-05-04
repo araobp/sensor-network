@@ -68,13 +68,13 @@ void PIN_MANAGER_Initialize(void)
     ANSELx registers
     */   
     ANSELC = 0x4F;
-    ANSELB = 0x00;
+    ANSELB = 0x20;
     ANSELA = 0x17;
 
     /**
     WPUx registers
     */ 
-    WPUB = 0x00;
+    WPUB = 0xA0;
     WPUA = 0x3F;
     WPUC = 0xFF;
     OPTION_REGbits.nWPUEN = 0;
