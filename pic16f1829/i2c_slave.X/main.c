@@ -13,6 +13,8 @@ bool running = true;
 uint8_t do_func = 0;
 uint8_t period_10 = 0;
 uint8_t timer_cnt = 0;
+char *ext_buf = NULL;
+uint8_t blink_times = 0;
 
 void start_handler(void) {
     running = true;
@@ -46,16 +48,17 @@ void blink(uint8_t times) {
     }
 }
 
-char *test = NULL;
-
+/*
+ * Note: this function must complete its task in a short time.
+ */
 void extension_handler(char *char_buf) {
     uint8_t value;
-    test = char_buf;
+    ext_buf = char_buf;
     if (!strncmp(AAA, char_buf, 3)) {
-        blink(1);
+        blink_times = 1;
     } else if (!strncmp(BBB, char_buf, 3)) {
         value = atoi(&char_buf[4]);
-        blink(value);
+        blink_times = value;
     }
 }
 
@@ -68,9 +71,13 @@ void loop_func(void) {
     float pbuf_float[7] = {-327.68, -1.99, -1.01, 0.00, 1.01, 1.99, 327.67};
     static uint8_t turn = TYPE_UINT8_T;
     int16_t float100;
-    if (test != NULL) {
-        printf("%s\n", test);
-        test = NULL;
+    if (ext_buf != NULL) {
+        printf("%s\n", ext_buf);
+        ext_buf = NULL;
+    }
+    if (blink_times > 0) {
+        blink(blink_times);
+        blink_times = 0;
     }
     if (do_func) {
         LATCbits.LATC7 ^= 1;

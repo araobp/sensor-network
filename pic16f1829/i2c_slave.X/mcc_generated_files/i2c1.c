@@ -9,6 +9,8 @@
 #define EXT_LENGTH 0x02
 #define EXT_VALUE  0x03
 
+// #define _XTAL_FREQ 500000
+
 typedef enum
 {
     SLAVE_NORMAL_DATA,
@@ -101,6 +103,18 @@ void I2C1_ISR ( void )
 
 }
 
+/*
+void blink_led(uint8_t times) {
+    uint8_t i;
+    for(i=0;i<times;i++) {
+        LATCbits.LATC7 = 0;
+        __delay_ms(50);
+        LATCbits.LATC7 = 1;   
+        __delay_ms(50);
+    }
+}
+*/
+
 void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
 {
 
@@ -161,6 +175,7 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                                     next = EXT_LENGTH;
                                     break;
                             }
+                            break;
                     }
                     break;
 

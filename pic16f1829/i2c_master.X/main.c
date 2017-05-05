@@ -194,6 +194,7 @@ void loop_func(void) {
         uint8_t status = i2c1_write_no_data(GENERAL_CALL_ADDRESS, PLG_I2C);
         if (status == 0) scan_dev();
         do_func_plg = false;
+        LATCbits.LATC7 ^= 1;
     }
     if (do_func_sts) {
         dev_addr = 0;
@@ -256,19 +257,20 @@ void extension_handler(uint8_t *buf) {
         if (sen(BACKPLANE_SLAVE_ADDRESS) > 0) {
             printf("!:SEN:DATA NOT READY\n");
         }
-    /******/
+    /* Extended commands */
     } else {
         length = 0;
         do {
         } while (buf[length++] != '\0');
-        printf("Extended command, length: %s, %d\n", buf, length);
+        // printf("Extended command, length: %s, %d\n", buf, length);
         i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, EXT_I2C);
         i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, length);
+        
         for (i=0; i<length; i++) {
-            printf("%c", buf[i]);
+            // printf("%c", buf[i]);
             status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, (uint8_t)buf[i]);                 
         }
-        printf("\n");
+        // printf("\n");
     }
 }
 
