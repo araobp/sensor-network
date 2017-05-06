@@ -120,7 +120,6 @@ I2C backplane master sends SEN to I2C backplane slave to fetch sensor data. The 
 |8bit  |8bit  |8bit * length      |
 +------+------+-------------------+
 ```
-
 Type is one of the following data types:
 - uint8_t: 0 ~ 255
 - int8_t: -128 ~ 127
@@ -134,6 +133,19 @@ In case of uint16_t, int16_t and float, Value contains data in this form:
 |Type  |Length|[MSB][LSB]|[MSB][LSB]|... |
 +------+------+----------+----------+----+
 ```
+
+## TLV format of EXT_I2C payload
+
+I2C backplane master sends EXT_I2C to I2C backplane slave to send a char array of extended command. The message follows this format:
+
+```
++-------+------+---------------------------+
+|Type   |Length|Value                      |
+|EXT_I2C|8bit  |Char array ending with '\0'|
++-------+------+---------------------------+
+```
+
+Note that Length includes '\0'.
 
 ## Block-specific operations
 
