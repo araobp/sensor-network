@@ -4,6 +4,8 @@ Date: 2017/04/17
 
 ## Preparation
 
+![daisy_chain](./daisy_chain.png)
+
 #### Write I2C slave address to Slave 1 to 3
 ```
   --+------+-------+-------+-- I2C

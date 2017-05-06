@@ -2,7 +2,7 @@
 
 This is a project to archive building blocks for mini PLC.
 
-![prototype3](./doc/prototype3.png)
+![daisy_chain](./doc/daisy_chain.png)
 
 ## Interfaces among building blocks
 
@@ -81,9 +81,11 @@ The base board will also supports I2C bus network topology:
 
 The base board board described here is used as building blocks of mini PLC.
 
-![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
+![prototype3](./doc/prototype3.png)
 
 This base board can support SPI and 1 wire as well, with jumper cables.
+
+![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
 To extend the distance of bus signal reachability, use the following tranceiver/contoller for LIN/CAN:
 - LIN tranceiver (UART) [PIC16F1829LIN](http://ww1.microchip.com/downloads/en/DeviceDoc/20002230G.pdf)
