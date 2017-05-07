@@ -2,7 +2,7 @@
 #include "i2c2_util.h"
 
 // I2C write
-uint8_t i2c_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data) {
+uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data) {
 
     uint8_t buf[2];
     I2C2_MESSAGE_STATUS status;
@@ -20,7 +20,7 @@ uint8_t i2c_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data) {
 }
 
 // I2C read
-uint8_t i2c_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len) {
+uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len) {
 
     uint8_t reg[1];
     I2C2_MESSAGE_STATUS status;
@@ -43,7 +43,7 @@ uint8_t i2c_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len
 }
 
 // I2C write w/o data
-uint8_t i2c_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
+uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
 
     uint8_t buf[1];
     I2C2_MESSAGE_STATUS status;
@@ -58,4 +58,3 @@ uint8_t i2c_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
     }
     return write_status;
 }
-

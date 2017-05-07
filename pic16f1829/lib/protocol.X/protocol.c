@@ -21,6 +21,7 @@ uint8_t buf[48];
 char char_buf[32];
 uint8_t value;
 const char *device_id_;
+bool locked = false;
 
 // initialization
 void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler) {
@@ -54,11 +55,11 @@ uint8_t PROTOCOL_Read_Device_Address() {
 }
 
 void PROTOCOL_STA(void) {
-    PROTOCOL_Start_Handler();
+    if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
 }
 
 void PROTOCOL_STP(void) {
-    PROTOCOL_Stop_Handler();
+    if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
 }
 
 void PROTOCOL_SAV() {
@@ -67,11 +68,19 @@ void PROTOCOL_SAV() {
 
 void PROTOCOL_SET(uint8_t value_) {
     value = value_;
-    PROTOCOL_Set_Handler(value);
+    if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
 }
 
 void PROTOCOL_EXT(char *char_buf) {
-    PROTOCOL_Extension_Handler(char_buf);
+    if (PROTOCOL_Extension_Handler) PROTOCOL_Extension_Handler(char_buf);
+}
+
+void PROTOCOL_Set_Lock(bool lock) {
+    locked = lock;
+}
+
+bool PROTOCOL_Read_Lock(void) {
+    return locked;
 }
 
 /*
@@ -111,7 +120,7 @@ void PROTOCOL_Loop() {
                     printf("$:RDA:%d\n", device_address);
                 }
                 else {
-                    PROTOCOL_Extension_Handler(buf);
+                    PROTOCOL_EXT(buf);
                 }
             }
         };

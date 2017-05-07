@@ -9,7 +9,7 @@
 #define EXT_LENGTH 0x02
 #define EXT_VALUE  0x03
 
-// #define _XTAL_FREQ 500000
+//#define _XTAL_FREQ 500000
 
 typedef enum
 {
@@ -104,7 +104,7 @@ void I2C1_ISR ( void )
 }
 
 /*
-void blink_led(uint8_t times) {
+void blink_red(uint8_t times) {
     uint8_t i;
     for(i=0;i<times;i++) {
         LATCbits.LATC7 = 0;
@@ -153,7 +153,7 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                         case EXT_VALUE:
                             ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
                             if (ext_cnt >= ext_len) {
-                               if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
+                                if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
                                 next = DEFAULT;
                             }
                             break;

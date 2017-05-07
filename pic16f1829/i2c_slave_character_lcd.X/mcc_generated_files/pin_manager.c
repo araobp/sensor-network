@@ -62,19 +62,19 @@ void PIN_MANAGER_Initialize(void)
     */    
     TRISA = 0x3F;
     TRISB = 0xF0;
-    TRISC = 0xFF;
+    TRISC = 0x7F;
 
     /**
     ANSELx registers
     */   
-    ANSELC = 0xCF;
+    ANSELC = 0x4F;
     ANSELB = 0x00;
     ANSELA = 0x17;
 
     /**
     WPUx registers
     */ 
-    WPUB = 0xF0;
+    WPUB = 0x00;
     WPUA = 0x3F;
     WPUC = 0xFF;
     OPTION_REGbits.nWPUEN = 0;

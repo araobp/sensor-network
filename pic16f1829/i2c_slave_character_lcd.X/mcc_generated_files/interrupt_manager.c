@@ -1,11 +1,11 @@
 /**
-  Generated Interrupt Manager Header File
+  Generated Interrupt Manager Source File
 
   @Company:
     Microchip Technology Inc.
 
   @File Name:
-    interrupt_manager.h
+    interrupt_manager.c
 
   @Summary:
     This is the Interrupt Manager file generated using MPLAB(c) Code Configurator
@@ -17,7 +17,7 @@
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC16F1829
-        Driver Version    :  2.00
+        Driver Version    :  1.02
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
@@ -45,72 +45,41 @@
     TERMS.
 */
 
-#ifndef INTERRUPT_MANAGER_H
-#define INTERRUPT_MANAGER_H
+#include "interrupt_manager.h"
+#include "mcc.h"
 
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    This macro will enable global interrupts.
- * @Example
-    INTERRUPT_GlobalInterruptEnable();
- */
-#define INTERRUPT_GlobalInterruptEnable() (INTCONbits.GIE = 1)
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    This macro will disable global interrupts.
- * @Example
-    INTERRUPT_GlobalInterruptDisable();
- */
-#define INTERRUPT_GlobalInterruptDisable() (INTCONbits.GIE = 0)
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    This macro will enable peripheral interrupts.
- * @Example
-    INTERRUPT_PeripheralInterruptEnable();
- */
-#define INTERRUPT_PeripheralInterruptEnable() (INTCONbits.PEIE = 1)
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    This macro will disable peripheral interrupts.
- * @Example
-    INTERRUPT_PeripheralInterruptDisable();
- */
-#define INTERRUPT_PeripheralInterruptDisable() (INTCONbits.PEIE = 0)
-
-/**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Main interrupt service routine. Calls module interrupt handlers.
- * @Example
-    INTERRUPT_InterruptManager();
- */
-void interrupt INTERRUPT_InterruptManager(void);
-
-
-#endif  // INTERRUPT_MANAGER_H
+void interrupt INTERRUPT_InterruptManager (void)
+{
+    // interrupt handler
+    if(INTCONbits.PEIE == 1 && PIE4bits.BCL2IE == 1 && PIR4bits.BCL2IF == 1)
+    {
+        I2C2_BusCollisionISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE4bits.SSP2IE == 1 && PIR4bits.SSP2IF == 1)
+    {
+        I2C2_ISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
+    {
+        I2C1_ISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE1bits.RCIE == 1 && PIR1bits.RCIF == 1)
+    {
+        EUSART_Receive_ISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
+    {
+        EUSART_Transmit_ISR();
+    }
+    else if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
+    {
+        TMR0_ISR();
+    }
+    else
+    {
+        //Unhandled Interrupt
+    }
+}
 /**
  End of File
 */

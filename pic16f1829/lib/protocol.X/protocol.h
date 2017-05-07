@@ -39,6 +39,8 @@ extern "C" {
     void PROTOCOL_SET(uint8_t value);
     void PROTOCOL_SAV(void);
     void PROTOCOL_EXT(uint8_t *pbuffer);
+    void PROTOCOL_Set_Lock(bool lock);
+    bool PROTOCOL_Read_Lock(void);
     
     /**
      * printf for TLV
