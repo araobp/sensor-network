@@ -93,7 +93,7 @@ This base board can support SPI and 1 wire as well, with jumper cables.
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
-###### Construct examples
+##### Construct examples
 
 One I2C master and three I2C slaves are connected with each other via backplane bus:
 
