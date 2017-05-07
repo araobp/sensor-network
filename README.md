@@ -1,4 +1,4 @@
-# Mini PLC with PIC16F1
+# Mini PLC with Microchip PIC16F1
 
 This is a project to develop mini PLC in a building-block manner.
 
