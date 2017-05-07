@@ -51,15 +51,7 @@
 void interrupt INTERRUPT_InterruptManager (void)
 {
     // interrupt handler
-    if(INTCONbits.PEIE == 1 && PIE4bits.BCL2IE == 1 && PIR4bits.BCL2IF == 1)
-    {
-        I2C2_BusCollisionISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE4bits.SSP2IE == 1 && PIR4bits.SSP2IF == 1)
-    {
-        I2C2_ISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
+    if(INTCONbits.PEIE == 1 && PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
     {
         I2C1_ISR();
     }
@@ -70,6 +62,14 @@ void interrupt INTERRUPT_InterruptManager (void)
     else if(INTCONbits.PEIE == 1 && PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
     {
         EUSART_Transmit_ISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE4bits.BCL2IE == 1 && PIR4bits.BCL2IF == 1)
+    {
+        I2C2_BusCollisionISR();
+    }
+    else if(INTCONbits.PEIE == 1 && PIE4bits.SSP2IE == 1 && PIR4bits.SSP2IF == 1)
+    {
+        I2C2_ISR();
     }
     else if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
     {

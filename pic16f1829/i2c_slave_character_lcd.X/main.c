@@ -10,9 +10,16 @@
 #define _XTAL_FREQ 500000
 #define DEVICE_ID "AQM1602XA-RN-GBW"
 
-#define LCD_ADDRESS 0x3e  // AQM1602XA-RN-GBW
-#define COMMAND 0x00
-#define DATA 0x40
+
+/* Here I dare use macro to reduce the program stack level
+ * #define LCD_ADDRESS 0x3e  // AQM1602XA-RN-GBW
+ * #define COMMAND 0x00
+ * #define DATA 0x40
+ */
+#define write_command(command)     i2c2_write(0x3e, 0x00, command);\
+                                   __delay_ms(1);
+#define write_data(data)           i2c2_write(0x3e, 0x40, data);\
+                                   __delay_ms(1);
 
 #define INI "INI"
 #define CMD "CMD"
@@ -25,16 +32,6 @@
 #define HOM "HOM"
 
 #define PERIOD_10 100
-
-void write_command(uint8_t command) {
-    i2c2_write(LCD_ADDRESS, COMMAND, command);
-    __delay_ms(1);
-}
-
-void write_data(uint8_t data) {
-    i2c2_write(LCD_ADDRESS, DATA, data);
-    __delay_ms(1);
-}
 
 bool running = true;
 uint8_t do_func = 0;
@@ -76,6 +73,7 @@ void lcd_arao(void) {
 
 bool lock = false;
 
+/*
 void blink_led(uint8_t times) {
     uint8_t i;
     for(i=0;i<times;i++) {
@@ -85,6 +83,7 @@ void blink_led(uint8_t times) {
         __delay_ms(50);
     }
 }
+*/
 
 void extension_handler(char *buf) {
     uint8_t value;
@@ -106,7 +105,7 @@ void set_handler(uint8_t value) {
 void loop_func(void) {
     uint8_t value;
     if(PROTOCOL_Read_Lock()) {
-        printf("%s\n", pbuf);
+        //printf("%s\n", pbuf);
         if (!strncmp(INI, pbuf, 3)) {
             lcd_init();
         } else if (!strncmp(CMD, pbuf, 3)) {
@@ -130,7 +129,8 @@ void loop_func(void) {
             write_command(0xC0);
         } else if (!strncmp(HOM, pbuf, 3)) {
             write_command(0x02);
-        }        
+        }
+        pbuf = NULL;
         PROTOCOL_Set_Lock(false);
     }
 }
@@ -156,9 +156,9 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    I2C1_Initialize();
     I2C2_Initialize();
-    
+    I2C1_Initialize();
+       
     lcd_init();
     lcd_arao();
         

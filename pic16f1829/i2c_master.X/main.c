@@ -193,6 +193,7 @@ void loop_func(void) {
     if (do_func_plg) {
         uint8_t status = i2c1_write_no_data(GENERAL_CALL_ADDRESS, PLG_I2C);
         if (status == 0) scan_dev();
+        scan_dev();
         do_func_plg = false;
         LATCbits.LATC7 ^= 1;
     }
