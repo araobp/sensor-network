@@ -1,8 +1,14 @@
 # Mini PLC with PIC16F1
 
-This is a project to archive building blocks for mini PLC.
+This is a project to develop mini PLC in a building-block manner.
 
-![daisy_chain](./doc/daisy_chain.png)
+![compact2](./doc/compact2.png)
+
+Two types of networking topologies are supported:
+- Hub-and-spoke
+- Bus (or daisy chain)
+
+Plug&Play protocol are supported for a master board to recognize capabilities of all its slaves in a plug&play manner.
 
 ## Interfaces among building blocks
 
@@ -86,6 +92,16 @@ The base board board described here is used as building blocks of mini PLC.
 This base board can support SPI and 1 wire as well, with jumper cables.
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
+
+###### Construct examples
+
+One I2C master and three I2C slaves are connected with each other via backplane bus:
+
+![compact](./doc/compact.png)
+
+A similar construct to the above, but all the boards are connected with each other via daisy-chain:
+
+![daisy_chain](./doc/daisy_chain.png)
 
 To extend the distance of bus signal reachability, use the following tranceiver/contoller for LIN/CAN:
 - LIN tranceiver (UART) [PIC16F1829LIN](http://ww1.microchip.com/downloads/en/DeviceDoc/20002230G.pdf)
