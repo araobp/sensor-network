@@ -289,3 +289,10 @@ slave              master
 |-------|----------------------|
 |0      |Device ID             |
 |1      |Device setting        |
+
+## I2C address registry
+
+|Address |Device ID              |Capability           |
+|--------|-----------------------|---------------------|
+|0x01(01)|BACKPLANE_MASTER       |I2C master           |
+|0x10(16)|AQM1602XA-RN-GBW       |Character LCD        |
