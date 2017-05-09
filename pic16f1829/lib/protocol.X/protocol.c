@@ -301,6 +301,36 @@ void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
     printf("%d.%02d\n", v/100, abs(v%100));
 }
 
+void PROTOCOL_Send_uint8_t(uint8_t value) {
+    uint8_t pbuf[1];
+    pbuf[0] = value;
+    PROTOCOL_I2C_Send_uint8_t(1, pbuf);
+}
+
+void PROTOCOL_Send_int8_t(int8_t value) {
+    int8_t pbuf[1];
+    pbuf[0] = value;
+    PROTOCOL_I2C_Send_int8_t(1, pbuf);
+}
+
+void PROTOCOL_Send_uint16_t(uint16_t value) {
+    uint16_t pbuf[1];
+    pbuf[0] = value;
+    PROTOCOL_I2C_Send_uint16_t(1, pbuf);
+}
+
+void PROTOCOL_Send_int16_t(int16_t value) {
+    int16_t pbuf[1];
+    pbuf[0] = value;
+    PROTOCOL_I2C_Send_int16_t(1, pbuf);
+}
+
+void PROTOCOL_Send_float(float value) {
+    float pbuf[1];
+    pbuf[0] = value;
+    PROTOCOL_I2C_Send_float(1, pbuf);
+}
+
 uint8_t* PROTOCOL_I2C_SEN(void) {
     uint8_t *pdata;
     switch(readbuf.status) {

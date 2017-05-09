@@ -59,6 +59,11 @@ extern "C" {
     void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
     void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
     void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+    void PROTOCOL_Send_uint8_t(uint8_t value);
+    void PROTOCOL_Send_int8_t(int8_t value);
+    void PROTOCOL_Send_uint16_t(uint16_t value);
+    void PROTOCOL_Send_int16_t(int16_t value);
+    void PROTOCOL_Send_float(float value);
 
     /*
      * I2C backplane slave specific functions 
