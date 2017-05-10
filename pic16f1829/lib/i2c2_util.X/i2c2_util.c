@@ -58,3 +58,18 @@ uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
     }
     return write_status;
 }
+
+// I2C read w/o reg_addr
+uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len) {
+
+    I2C2_MESSAGE_STATUS status;
+    uint8_t read_status;
+    I2C2_MasterRead(pbuf, len, dev_addr, &status); 
+    while (status == I2C2_MESSAGE_PENDING);
+    if (status == I2C2_MESSAGE_COMPLETE) {
+        read_status = 0;
+    } else {
+        read_status = 2;
+    }
+    return read_status;
+}
