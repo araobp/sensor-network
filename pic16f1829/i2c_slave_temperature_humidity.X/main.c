@@ -31,11 +31,17 @@ void set_handler(uint8_t value) {
     period_10 = value;
 }
 
+
 void tmr0_handler(void) {
      if (++timer_cnt >= period_10) {
         timer_cnt = 0;
         if (running) do_func = true;
      }
+}
+
+void init(void) {
+    __delay_ms(15);  // wait for 15msec
+    i2c2_write(HDC1000_ADDR, CONFIGURATION, CONFIG_DATA);
 }
 
 void loop_func(void) {
@@ -44,34 +50,27 @@ void loop_func(void) {
     int32_t t;
 
     if (do_func) {
-        PROTOCOL_Set_Lock(true);
 
+         LATCbits.LATC7 ^= 1;
+        
         i2c2_write_no_data(HDC1000_ADDR, TEMPERATURE);
-        __delay_ms(10);
-        i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[0], 2);
-
-        __delay_ms(10);
+        while(LATCbits.LATC6 == 1);
+        i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[0], 2);  // MSB, LSB
         
         i2c2_write_no_data(HDC1000_ADDR, HUMIDITY);
-        __delay_ms(10);
-        i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[2], 2);
+        while(LATCbits.LATC6 == 1);
+        i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[2], 2);  // MSB, LSB
         
         t = (int32_t)((uint16_t)measure[0] * 256 + (uint16_t)measure[1]);
-        data[0] = (int8_t)(t * 165 / 65536 - 40);
+        data[0] = (int8_t)(t * 165 / 65536 - 40);  // temperature
 
         t = (int32_t)((uint16_t)measure[2] * 256 + (uint16_t)measure[3]);
-        data[1] = (int8_t)(t * 100 /65536);
-        
+        data[1] = (int8_t)(t * 100 /65536);  // humidity
+            
         PROTOCOL_I2C_Send_int8_t(2, data);
         
-        PROTOCOL_Set_Lock(false);
         do_func = false;
     }
-}
-
-void init(void) {
-    __delay_ms(30);  // wait for more than 15msec
-    i2c2_write(HDC1000_ADDR, CONFIGURATION, CONFIG_DATA);
 }
 
 /*
