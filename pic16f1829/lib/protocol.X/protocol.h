@@ -52,6 +52,7 @@ extern "C" {
      */
     void PROTOCOL_I2C_Initialize();
     void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+    void PROTOCOL_I2C_Reset_TLV(void);
     bool PROTOCOL_I2C_TLV_Status(void);
     // the following functions are type-dependent version of PROTOCOL_I2C_Set_TLV
     void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
@@ -86,6 +87,7 @@ extern "C" {
     #define GET_I2C 0x08
     #define STS_I2C 0x09
     #define EXT_I2C 0x0a
+    
     /*
      * I2C backplane slave status
      */

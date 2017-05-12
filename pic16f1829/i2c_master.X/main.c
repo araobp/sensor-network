@@ -170,7 +170,6 @@ uint8_t sen(uint8_t dev_addr) {
                 status = i2c1_read(dev_addr, SEN_I2C, &read_buf[0], length);
                 if (status == 0) {
                     PROTOCOL_Print_TLV(dev_addr, type, length, &read_buf[0]);
-                    LATCbits.LATC3 ^= 1;  // blink LED
                 }
             }                    
         }   

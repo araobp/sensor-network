@@ -221,8 +221,15 @@ void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
         readbuf.type = type;
         readbuf.length = length;
         readbuf.pbuffer = pbuffer;
-        readbuf.status = TLV_SET;
         readbuf.buf_cnt = 0;
+        readbuf.status = TLV_SET;
+    }
+}
+
+void PROTOCOL_I2C_Reset_TLV(void) {
+    if (readbuf.status != TLV_SET) {
+        readbuf.buf_cnt = 0;
+        readbuf.status = COMPLETE;
     }
 }
 
