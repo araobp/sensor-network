@@ -123,23 +123,6 @@
 #define RC5_SetPullup()     do { WPUCbits.WPUC5 = 1; } while(0)
 #define RC5_ResetPullup()   do { WPUCbits.WPUC5 = 0; } while(0)
 
-// get/set IO_RC6 aliases
-#define IO_RC6_TRIS               TRISCbits.TRISC6
-#define IO_RC6_LAT                LATCbits.LATC6
-#define IO_RC6_PORT               PORTCbits.RC6
-#define IO_RC6_WPU                WPUCbits.WPUC6
-#define IO_RC6_ANS                ANSELCbits.ANSC6
-#define IO_RC6_SetHigh()            do { LATCbits.LATC6 = 1; } while(0)
-#define IO_RC6_SetLow()             do { LATCbits.LATC6 = 0; } while(0)
-#define IO_RC6_Toggle()             do { LATCbits.LATC6 = ~LATCbits.LATC6; } while(0)
-#define IO_RC6_GetValue()           PORTCbits.RC6
-#define IO_RC6_SetDigitalInput()    do { TRISCbits.TRISC6 = 1; } while(0)
-#define IO_RC6_SetDigitalOutput()   do { TRISCbits.TRISC6 = 0; } while(0)
-#define IO_RC6_SetPullup()      do { WPUCbits.WPUC6 = 1; } while(0)
-#define IO_RC6_ResetPullup()    do { WPUCbits.WPUC6 = 0; } while(0)
-#define IO_RC6_SetAnalogMode()  do { ANSELCbits.ANSC6 = 1; } while(0)
-#define IO_RC6_SetDigitalMode() do { ANSELCbits.ANSC6 = 0; } while(0)
-
 // get/set IO_RC7 aliases
 #define IO_RC7_TRIS               TRISCbits.TRISC7
 #define IO_RC7_LAT                LATCbits.LATC7

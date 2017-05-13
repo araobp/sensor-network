@@ -23,6 +23,13 @@ char char_buf[32];
 uint8_t value;
 const char *device_id_;
 bool locked = false;
+bool running = true;
+bool invoked = false;
+bool usb_mode = true;
+uint8_t sec_cnt = 0;
+uint8_t tmr_cnt = 0;
+uint8_t tmr_scaler = 1;
+bool tmr_overflow = false;
 
 // initialization
 void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler) {
@@ -36,6 +43,7 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
     if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
     slave_address = DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);  // read slave_address from EEPROM
+    TMR0_Initialize();
 }
 
 void PROTOCOL_Set_Func(void *loop_func) {
@@ -46,8 +54,9 @@ void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
     PROTOCOL_Extension_Handler = extension_handler;
 }
 
-void PROTOCOL_Set_Inv_Handler(void *inv_handler) {
+void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler) {
     PROTOCOL_Inv_Handler = inv_handler;
+    tmr_scaler = scaler;
 }
 
 void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
@@ -61,14 +70,16 @@ uint8_t PROTOCOL_Read_Device_Address() {
 
 void PROTOCOL_STA(void) {
     if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
+    running = true;
 }
 
 void PROTOCOL_STP(void) {
     if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
+    running = false;
 }
 
 void PROTOCOL_INV(void) {
-    if (PROTOCOL_Inv_Handler) PROTOCOL_Inv_Handler();
+    invoked = true;
 }
 
 void PROTOCOL_SAV() {
@@ -92,12 +103,30 @@ bool PROTOCOL_Read_Lock(void) {
     return locked;
 }
 
+void PROTOCOL_Set_Mode(bool mode) {
+    usb_mode = mode;
+}
 /*
- * USART Rx reader
+ * Loop for device invocation and USART Rx reader
  */
 void PROTOCOL_Loop() {
     uint8_t device_address;
     while (1) {
+        tmr_overflow = TMR0_HasOverflowOccured();  // 50 msec
+        if (usb_mode && PROTOCOL_Inv_Handler && tmr_overflow) {
+            TMR0IF = 0;
+            if (++tmr_cnt >= value) {
+                tmr_cnt = 0;
+                if (++sec_cnt >= tmr_scaler) {  // every 1 sec
+                    invoked = true;
+                    sec_cnt = 0;
+                }
+            }
+        }
+        if (invoked && PROTOCOL_Inv_Handler) {
+            PROTOCOL_Inv_Handler();
+            invoked = false;
+        }
         if (PROTOCOL_Loop_Func) PROTOCOL_Loop_Func();
         if (EUSART_DataReady) {
             c = EUSART_Read();
@@ -169,6 +198,7 @@ uint8_t *data;
 void PROTOCOL_I2C_Initialize() {
     readbuf.status = COMPLETE;
     backplane_slave_enabled = true;
+    SSP1CON2bits.GCEN = 1;  // Enable I2C General Call
 }
 
 uint8_t PROTOCOL_I2C_WHO(void) {
@@ -185,29 +215,34 @@ uint16_t concat(uint8_t msb, uint8_t lsb) {
 
 void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer) {
     int16_t v;
-    if (dev_addr != 0 ) printf("%%%d:", dev_addr);
+    if (dev_addr != 0) printf("%%%d:", dev_addr);
     switch(type) {
         case TYPE_UINT8_T:
             length--;
+            printf("UINT8_T:");
             for (i=0; i<length; i++) printf("%u,", pbuffer[i]);
             printf("%u\n", pbuffer[i]);
             break;
         case TYPE_INT8_T:
             length--;
+            printf("INT8_T:");
             for (i=0; i<length; i++) printf("%d,", (int8_t)pbuffer[i]);
             printf("%d\n", (int8_t)pbuffer[i]);            
             break;
         case TYPE_UINT16_T:
+            printf("UINT16_T:");
             length = length - 2;
             for(i=0; i<length; i=i+2) printf("%u,", concat(pbuffer[i], pbuffer[i+1]));
             printf("%u\n", concat(pbuffer[i], pbuffer[i+1]));
             break;
         case TYPE_INT16_T:
+            printf("INT16_T:");
             length = length - 2;
             for(i=0; i<length; i=i+2) printf("%d,", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
             printf("%d\n", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));                        
             break;
         case TYPE_FLOAT:
+            printf("FLOAT:");
             length = length - 2;
             for (i=0; i<length; i=i+2) {
                 v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
@@ -217,7 +252,7 @@ void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t 
             printf("%d.%02d\n", v/100, abs(v%100));
             break;
         default:
-            printf("!:%%%d:TYPE UNIDENTIFIED\n", dev_addr);
+            printf("NO_DATA\n");
             break;
     }
 }

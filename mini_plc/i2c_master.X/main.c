@@ -60,34 +60,6 @@ void stop_handler(void) {
 void set_handler(uint8_t value) {
 }
 
-uint8_t schedule[4] = {S_PLG, S_ADT, S_INV, S_SEN};
-uint8_t current[2];
-        
-void tmr0_handler(void) {
-    static uint8_t position = 0;
-    if (++timer_cnt > 50 && !do_func) {  // 50msec time slot
-        timer_cnt = 0;
-        switch(schedule[position++]) {
-            case S_PLG:
-                current[0] = S_PLG;
-                break;
-            case S_ADT:
-                current[0] = S_ADT;
-                break;
-            case S_INV:
-                current[0] = S_INV;
-                current[1] = 0x12;
-                break;
-            case S_SEN:
-                current[0] = S_SEN;
-                current[1] = 0x12;
-                break;
-        }
-        if (position > 3) position = 0;
-        do_func = true;
-    }
- }
-
 void clear_dev_map(void) {
     uint8_t y;
     for (y=0; y<MAX_Y; y++) {
@@ -180,13 +152,16 @@ uint8_t sen(uint8_t dev_addr) {
     uint8_t type;
     uint8_t length ,data, i;
     status = i2c1_read(dev_addr, SEN_I2C, &type, 1);
-    printf("...%d\n", type);
-    if (status == 0 && type != TYPE_NO_DATA) {
-        status = i2c1_read(dev_addr, SEN_I2C, &length, 1);
-        if (status == 0) {
-            status = i2c1_read(dev_addr, SEN_I2C, &read_buf[0], length);
+    if (status == 0) {
+        if (type == TYPE_NO_DATA) {
+                PROTOCOL_Print_TLV(dev_addr, TYPE_NO_DATA, 0, NULL);            
+        } else {
+            status = i2c1_read(dev_addr, SEN_I2C, &length, 1);
             if (status == 0) {
-                PROTOCOL_Print_TLV(dev_addr, type, length, &read_buf[0]);
+                status = i2c1_read(dev_addr, SEN_I2C, &read_buf[0], length);
+                if (status == 0) {
+                    PROTOCOL_Print_TLV(dev_addr, type, length, &read_buf[0]);
+                }
             }
         }                    
     }   
@@ -204,29 +179,36 @@ void scan_dev(void) {
     }  
 }
 
-void loop_func(void) {
-    uint8_t dev_addr;
-    uint8_t status;
-    if (do_func) {
-        switch(current[0]) {
-            case S_PLG:           
-                status = i2c1_write_no_data(GENERAL_CALL_ADDRESS, PLG_I2C);
-                if (status == 0) scan_dev();
-                break;
-            case S_ADT:
-                break;
-            case S_INV:
-                dev_addr = current[1];
-                i2c1_write_no_data(dev_addr, INV_I2C);
-                break;
-            case S_SEN:
-                dev_addr = current[1];
-                status = sen(dev_addr);
-                if (status > 0) del_dev(dev_addr);
-                break;
-        }
-        do_func = false;
+uint8_t schedule[4][2] = {
+    {S_PLG, 0},
+    {S_ADT, 0},
+    {S_INV, 0x12},
+    {S_SEN, 0x12}
+};
+uint8_t current[2];
+        
+void inv_handler(void) {
+    static uint8_t position = 0;
+    uint8_t dev_addr, status;
+    switch(schedule[position][0]) {
+        case S_PLG:
+            status = i2c1_write_no_data(GENERAL_CALL_ADDRESS, PLG_I2C);
+            if (status == 0) scan_dev();
+            break;
+        case S_ADT:
+            current[0] = S_ADT;
+            break;
+        case S_INV:
+            dev_addr = schedule[position][1];
+            i2c1_write_no_data(dev_addr, INV_I2C);
+            break;
+        case S_SEN:
+            dev_addr = schedule[position][1];
+            status = sen(dev_addr);
+            if (status > 0) del_dev(dev_addr);
+           break;
     }
+    if (++position > 3) position = 0;
 }
 
 void extension_handler(uint8_t *buf) {
@@ -303,19 +285,15 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    TMR0_Initialize();
-    TMR0_SetInterruptHandler(tmr0_handler);
-
     I2C1_Initialize();
     
     EUSART_Initialize();
 
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, set_handler);
-    PROTOCOL_Set_Func(loop_func);
+    PROTOCOL_Set_Inv_Handler(inv_handler, 1);
     PROTOCOL_Set_Extension_Handler(extension_handler);
     
     scan_dev();
-    print_dev_map();
 
     PROTOCOL_Loop();
 }

@@ -32,7 +32,8 @@ extern "C" {
     void PROTOCOL_Loop();
     void PROTOCOL_Set_Func(void *loop_func);
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
-    void PROTOCOL_Set_Inv_Handler(void *inv_handler);
+    void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+    void PROTOCOL_Set_Mode(bool mode);
     void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
     uint8_t PROTOCOL_Read_Device_Address(void);
     void PROTOCOL_STA(void);
@@ -75,7 +76,7 @@ extern "C" {
     uint8_t PROTOCOL_I2C_WHO(void);
     uint8_t PROTOCOL_I2C_GET(void);
     uint8_t* PROTOCOL_I2C_SEN();  // retrive data from send buffer
-    
+        
     /*
      * Common operations
      */
@@ -88,26 +89,14 @@ extern "C" {
     #define SEN_I2C 0x07
     #define SET_I2C 0x08
     #define GET_I2C 0x09
-//  #define STS_I2C 0x09
     #define EXT_I2C 0x0a
     #define ADT_I2C 0x0b
     
-    /*
-     * I2C backplane slave status
-     */
-//  #define STS_NO_DATA 0x00
-//  #define STS_SEN_READY 0x01
 
     /*
      * I2C backplane general call address
      */
     #define GENERAL_CALL_ADDRESS 0x00
-
-    /*
-     * Timers
-     */
-    #define T_PLG 100  // Plug in check timer : 100 * 10msec = 1sec
-//  #define T_STS 1    // Status check timer : 1 * 10msec = 10msec
     
     /*
      * Device IDs

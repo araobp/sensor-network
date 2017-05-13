@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=i2c_slave_temperature_humidity.X
+PROJECTNAME=i2c_slave_temp.X
 
 # Active Configuration
 DEFAULTCONF=default

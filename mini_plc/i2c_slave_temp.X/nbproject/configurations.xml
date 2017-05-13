@@ -7,11 +7,13 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
-        <itemPath>mcc_generated_files/mcc.h</itemPath>
-        <itemPath>mcc_generated_files/pin_manager.h</itemPath>
+        <itemPath>mcc_generated_files/tmr0.h</itemPath>
         <itemPath>mcc_generated_files/i2c1.h</itemPath>
+        <itemPath>mcc_generated_files/i2c2.h</itemPath>
+        <itemPath>mcc_generated_files/mcc.h</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.h</itemPath>
         <itemPath>mcc_generated_files/eusart.h</itemPath>
+        <itemPath>mcc_generated_files/pin_manager.h</itemPath>
         <itemPath>mcc_generated_files/memory.h</itemPath>
       </logicalFolder>
     </logicalFolder>
@@ -25,12 +27,14 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
+        <itemPath>mcc_generated_files/tmr0.c</itemPath>
         <itemPath>mcc_generated_files/i2c1.c</itemPath>
-        <itemPath>mcc_generated_files/memory.c</itemPath>
+        <itemPath>mcc_generated_files/i2c2.c</itemPath>
+        <itemPath>mcc_generated_files/mcc.c</itemPath>
+        <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
         <itemPath>mcc_generated_files/eusart.c</itemPath>
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
-        <itemPath>mcc_generated_files/interrupt_manager.c</itemPath>
-        <itemPath>mcc_generated_files/mcc.c</itemPath>
+        <itemPath>mcc_generated_files/memory.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
     </logicalFolder>
@@ -40,8 +44,6 @@
       <itemPath>Makefile</itemPath>
       <itemPath>MyConfig.mc3</itemPath>
     </logicalFolder>
-    <itemPath>i2c1_util.c</itemPath>
-    <itemPath>i2c1_util.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -76,6 +78,23 @@
                             DD="dist/default/debug/protocol.X.lpp">
               </makeArtifact>
             </linkerLibProjectItem>
+            <linkerLibProjectItem>
+              <makeArtifact PL="../lib/i2c2_util.X"
+                            CT="3"
+                            CN="default"
+                            AC="true"
+                            BL="true"
+                            WD="../lib/i2c2_util.X"
+                            BC="${MAKE}  -f Makefile CONF=default"
+                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
+                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
+                            OP="dist/default/production/i2c2_util.X.lpp"
+                            DOP="dist/default/debug/i2c2_util.X.lpp"
+                            FL="dist/default/production/i2c2_util.X.lpp"
+                            PD="dist/default/production/i2c2_util.X.lpp"
+                            DD="dist/default/debug/i2c2_util.X.lpp">
+              </makeArtifact>
+            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -101,7 +120,8 @@
         <property key="asmlist" value="true"/>
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
-        <property key="extra-include-directories" value="..\lib\protocol.X"/>
+        <property key="extra-include-directories"
+                  value="..\lib\protocol.X;..\lib\i2c2_util.X"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="identifier-length" value="255"/>
         <property key="local-generation" value="false"/>

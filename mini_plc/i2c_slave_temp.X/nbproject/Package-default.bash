@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/i2c_slave_temperature_humidity.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=i2c_slave_temperature_humidity.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=i2cslavetemperaturehumidity.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/i2c_slave_temp.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=i2c_slave_temp.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=i2cslavetemp.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/i2cslavetemperaturehumidity.x/bin
+makeDirectory ${TMPDIR}/i2cslavetemp.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/i2cslavetemperaturehumidity.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/i2cslavetemp.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/i2cslavetemperaturehumidity.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/i2cslavetemp.x.tar *
 checkReturnCode
 
 # Cleanup

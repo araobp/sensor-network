@@ -12,6 +12,7 @@
         <itemPath>mcc_generated_files/eusart.h</itemPath>
         <itemPath>mcc_generated_files/pin_manager.h</itemPath>
         <itemPath>mcc_generated_files/memory.h</itemPath>
+        <itemPath>mcc_generated_files/tmr0.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -29,6 +30,7 @@
         <itemPath>mcc_generated_files/eusart.c</itemPath>
         <itemPath>mcc_generated_files/pin_manager.c</itemPath>
         <itemPath>mcc_generated_files/memory.c</itemPath>
+        <itemPath>mcc_generated_files/tmr0.c</itemPath>
       </logicalFolder>
       <itemPath>protocol.h</itemPath>
       <itemPath>protocol.c</itemPath>

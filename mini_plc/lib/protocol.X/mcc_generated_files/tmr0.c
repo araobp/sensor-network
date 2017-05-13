@@ -1,23 +1,21 @@
 /**
-  Generated Interrupt Manager Source File
+  TMR0 Generated Driver File
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    interrupt_manager.c
+  @File Name
+    tmr0.c
 
-  @Summary:
-    This is the Interrupt Manager file generated using MPLAB(c) Code Configurator
+  @Summary
+    This is the generated driver implementation file for the TMR0 driver using MPLAB(c) Code Configurator
 
-  @Description:
-    This header file provides implementations for global interrupt handling.
-    For individual peripheral handlers please see the peripheral driver for
-    all modules selected in the GUI.
+  @Description
+    This source file provides APIs for TMR0.
     Generation Information :
         Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
         Device            :  PIC16F1829
-        Driver Version    :  1.02
+        Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
@@ -45,41 +43,67 @@
     TERMS.
 */
 
-#include "interrupt_manager.h"
-#include "mcc.h"
+/**
+  Section: Included Files
+*/
 
-void interrupt INTERRUPT_InterruptManager (void)
+#include <xc.h>
+#include "tmr0.h"
+
+/**
+  Section: Global Variables Definitions
+*/
+
+volatile uint8_t timer0ReloadVal;
+void (*TMR0_InterruptHandler)(void);
+/**
+  Section: TMR0 APIs
+*/
+
+void TMR0_Initialize(void)
 {
-    // interrupt handler
-    if(INTCONbits.PEIE == 1 && PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
-    {
-        I2C1_ISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE1bits.RCIE == 1 && PIR1bits.RCIF == 1)
-    {
-        EUSART_Receive_ISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
-    {
-        EUSART_Transmit_ISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE4bits.BCL2IE == 1 && PIR4bits.BCL2IF == 1)
-    {
-        I2C2_BusCollisionISR();
-    }
-    else if(INTCONbits.PEIE == 1 && PIE4bits.SSP2IE == 1 && PIR4bits.SSP2IF == 1)
-    {
-        I2C2_ISR();
-    }
-    else if(INTCONbits.TMR0IE == 1 && INTCONbits.TMR0IF == 1)
-    {
-        TMR0_ISR();
-    }
-    else
-    {
-        //Unhandled Interrupt
-    }
+    // Set TMR0 to the options selected in the User Interface
+
+    // PSA assigned; PS 1:32; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
+    OPTION_REG = (OPTION_REG & 0xC0) | 0xD4 & 0x3F; 
+
+    // TMR0 61; 
+    TMR0 = 0x3D;
+
+    // Load the TMR value to reload variable
+    timer0ReloadVal= 61;
+
+    // Clearing IF flag
+    INTCONbits.TMR0IF = 0;
+}
+
+
+uint8_t TMR0_ReadTimer(void)
+{
+    uint8_t readVal;
+
+    readVal = TMR0;
+
+    return readVal;
+}
+
+void TMR0_WriteTimer(uint8_t timerVal)
+{
+    // Write to the Timer0 register
+    TMR0 = timerVal;
+}
+
+void TMR0_Reload(void)
+{
+    // Write to the Timer0 register
+    TMR0 = timer0ReloadVal;
+}
+
+bool TMR0_HasOverflowOccured(void)
+{
+    // check if  overflow has occurred by checking the TMRIF bit
+    return(INTCONbits.TMR0IF);
 }
 /**
- End of File
+  End of File
 */

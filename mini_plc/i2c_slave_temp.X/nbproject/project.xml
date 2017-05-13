@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>i2c_slave_temperature_humidity</name>
-            <creation-uuid>5ea02eee-5620-4d0a-9016-b53adb9273df</creation-uuid>
+            <name>i2c_slave_temp</name>
+            <creation-uuid>90e463f7-3a73-4e6c-94db-7570d6d15135</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
