@@ -18,8 +18,7 @@ void (*PROTOCOL_Inv_Handler)(void) = NULL;
 
 uint8_t c;
 uint8_t cnt = 0;
-uint8_t buf[48];
-char char_buf[32];
+uint8_t buf[BUF_SIZE];
 uint8_t value;
 const char *device_id_;
 bool locked = false;

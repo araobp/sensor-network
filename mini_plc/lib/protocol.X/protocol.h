@@ -26,6 +26,11 @@ extern "C" {
     #define DEVICE_SETTING_ADDRESS 1
     
     /*
+     * Command buffer size
+     */
+    #define BUF_SIZE 32
+    
+    /*
      * Functions
      */
     void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);

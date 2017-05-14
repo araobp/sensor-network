@@ -37,6 +37,7 @@ uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];  // I2C slave device map
 
 uint8_t dev_map_iterator(void);
+void exec_remote_cmd(uint8_t idx);
 
 void start_handler(void) {
     uint8_t dev_addr, status;
@@ -188,31 +189,31 @@ void scan_dev(void) {
 }
 
 uint8_t schedule[20][2] = {
-    {S_PLG, 0},
-    {S_ADT, 0},
-    {S_CMD, NULL},
-    {S_INV, 0x12},
-    {S_SEN, 0},
-    {S_INV, 0},
-    {S_SEN, 0},
-    {S_INV, 0},
-    {S_SEN, 0},
-    {S_INV, 0},
-    {S_SEN, 0},
-    {S_CMD, NULL},
-    {S_INV, 0},
-    {S_SEN, 0x12},
-    {S_INV, 0},
-    {S_SEN, 0},
-    {S_INV, 0},
-    {S_SEN, 0},    
-    {S_INV, 0},
-    {S_SEN, 0}
+    {S_PLG, 0},     // 0
+    {S_ADT, 0},     // 1
+    {S_CMD, 0},     // 2
+    {S_INV, 0x12},  // 3
+    {S_SEN, 0},     // 4
+    {S_INV, 0},     // 5
+    {S_SEN, 0},     // 6
+    {S_INV, 0},     // 7
+    {S_SEN, 0},     // 8
+    {S_INV, 0},     // 9
+    {S_SEN, 0},     // 10
+    {S_CMD, 0},     // 11
+    {S_INV, 0},     // 12
+    {S_SEN, 0x12},  // 13
+    {S_INV, 0},     // 14
+    {S_SEN, 0},     // 15
+    {S_INV, 0},     // 16
+    {S_SEN, 0},     // 17
+    {S_INV, 0},     // 18
+    {S_SEN, 0}      // 19
 };
 uint8_t current[2];
-        
+uint8_t position = 0;
+
 void inv_handler(void) {
-    static uint8_t position = 0;
     uint8_t dev_addr, status;
     switch(schedule[position][0]) {
         case S_PLG:
@@ -222,6 +223,10 @@ void inv_handler(void) {
         case S_ADT:
             break;
         case S_CMD:
+            if (schedule[position][1] == 1) {
+                exec_remote_cmd((position == 2) ? 0 : 1);
+                schedule[position][1] = 0;
+            }
             break;
         case S_INV:
             dev_addr = schedule[position][1];
@@ -242,7 +247,33 @@ void inv_handler(void) {
     if (++position > 20) position = 0;
 }
 
+char cmd_buf[2][BUF_SIZE];
+uint8_t idx = 0;
+
+void put_cmd(uint8_t *buf) {
+    strcpy(cmd_buf[idx], buf);
+    switch(idx) {
+        case 0:
+            schedule[2][1] = 1;
+            break;
+        case 1:
+            schedule[11][1] = 1;
+            break;
+    }       
+    if (++idx > 1) idx = 0;
+}
+
 void extension_handler(uint8_t *buf) {
+    if (!strncmp(I2C, buf, 3)) {
+        BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
+    } else if (!strncmp(MAP, buf, 3)) {
+        print_dev_map();
+    } else {
+        put_cmd(buf);
+    }
+}
+
+void exec_remote_cmd(uint8_t idx) {
     uint8_t data;
     uint8_t type;
     uint8_t length;
@@ -252,14 +283,12 @@ void extension_handler(uint8_t *buf) {
     static uint8_t dev_addr;
     static uint8_t reg_addr;
 
-    if (!strncmp(I2C, buf, 3)) {
-        BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
-    } else if (!strncmp(WHO, buf, 3)) {
+    char *buf = cmd_buf[idx];
+    
+    if (!strncmp(WHO, buf, 3)) {
         status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, WHO_I2C, &data, 1);
         if (status == 0) printf("$:WHO:%d\n", data);
-        else printf("!\n");
-    } else if (!strncmp(MAP, buf, 3)) {
-        print_dev_map();
+        else printf("!\n");        
     } else if (!strncmp(SAV, buf, 3)) {
         status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, SAV_I2C);
     } else if (!strncmp(STA, buf, 3)) {

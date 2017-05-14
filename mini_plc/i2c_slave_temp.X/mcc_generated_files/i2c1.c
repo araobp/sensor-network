@@ -120,7 +120,7 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
     static uint8_t next = DEFAULT;
     static uint8_t ext_len = 0;
     static uint8_t ext_cnt = 0;
-    static char ext_buf[32];
+    static char ext_buf[BUF_SIZE];
     uint8_t *pdata;
     switch (i2c_bus_state)
     {
