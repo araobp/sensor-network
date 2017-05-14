@@ -26,6 +26,7 @@
 #define S_ADT 0x01
 #define S_INV 0x02
 #define S_SEN 0x03
+#define S_CMD 0x04
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
@@ -186,11 +187,27 @@ void scan_dev(void) {
     }  
 }
 
-uint8_t schedule[4][2] = {
+uint8_t schedule[20][2] = {
     {S_PLG, 0},
     {S_ADT, 0},
+    {S_CMD, NULL},
     {S_INV, 0x12},
-    {S_SEN, 0x12}
+    {S_SEN, 0},
+    {S_INV, 0},
+    {S_SEN, 0},
+    {S_INV, 0},
+    {S_SEN, 0},
+    {S_INV, 0},
+    {S_SEN, 0},
+    {S_CMD, NULL},
+    {S_INV, 0},
+    {S_SEN, 0x12},
+    {S_INV, 0},
+    {S_SEN, 0},
+    {S_INV, 0},
+    {S_SEN, 0},    
+    {S_INV, 0},
+    {S_SEN, 0}
 };
 uint8_t current[2];
         
@@ -203,23 +220,26 @@ void inv_handler(void) {
             if (status == 0) scan_dev();
             break;
         case S_ADT:
-            current[0] = S_ADT;
+            break;
+        case S_CMD:
             break;
         case S_INV:
             dev_addr = schedule[position][1];
-            i2c1_write_no_data(dev_addr, INV_I2C);
+            if (dev_addr) i2c1_write_no_data(dev_addr, INV_I2C);
             break;
         case S_SEN:
             dev_addr = schedule[position][1];
-            status = sen(dev_addr);
-            // if (status > 0) del_dev(dev_addr);
-            if (status > 0) {
-                printf("!:%%%d:NETWORK_ERROR\n");
-                i2c1_write_no_data(dev_addr, RST_I2C);
-            }   
+            if (dev_addr) {
+                status = sen(dev_addr);
+                // if (status > 0) del_dev(dev_addr);
+                if (status > 0) {
+                    printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
+                    i2c1_write_no_data(dev_addr, RST_I2C);
+                }   
+            }
             break;
     }
-    if (++position > 3) position = 0;
+    if (++position > 20) position = 0;
 }
 
 void extension_handler(uint8_t *buf) {
