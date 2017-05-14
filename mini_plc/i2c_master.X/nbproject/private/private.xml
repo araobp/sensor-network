@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/i2c_master.X/mcc_generated_files/interrupt_manager.c</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/i2c_master.X/main.c</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/i2c_master.X/mcc_generated_files/mcc.c</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/i2c_master.X/mcc_generated_files/mcc.h</file>
-            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/i2c_master.X/mcc_generated_files/interrupt_manager.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/i2c_master.X/i2c1_util.c</file>
         </group>
     </open-files>
 </project-private>

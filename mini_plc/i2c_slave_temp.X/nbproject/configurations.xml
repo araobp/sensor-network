@@ -7,7 +7,6 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <itemPath>mcc_generated_files/tmr0.h</itemPath>
         <itemPath>mcc_generated_files/i2c1.h</itemPath>
         <itemPath>mcc_generated_files/i2c2.h</itemPath>
         <itemPath>mcc_generated_files/mcc.h</itemPath>
@@ -27,7 +26,6 @@
       <logicalFolder name="MCC Generated Files"
                      displayName="MCC Generated Files"
                      projectFiles="true">
-        <itemPath>mcc_generated_files/tmr0.c</itemPath>
         <itemPath>mcc_generated_files/i2c1.c</itemPath>
         <itemPath>mcc_generated_files/i2c2.c</itemPath>
         <itemPath>mcc_generated_files/mcc.c</itemPath>

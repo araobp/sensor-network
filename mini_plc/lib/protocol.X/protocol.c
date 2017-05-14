@@ -23,9 +23,8 @@ char char_buf[32];
 uint8_t value;
 const char *device_id_;
 bool locked = false;
-bool running = true;
+bool running = false;
 bool invoked = false;
-bool usb_mode = true;
 uint8_t sec_cnt = 0;
 uint8_t tmr_cnt = 0;
 uint8_t tmr_scaler = 1;
@@ -41,7 +40,7 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
     value = DATAEE_ReadByte(DEVICE_SETTING_ADDRESS);  // read value from EEPROM
     if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
-    if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
+    //if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
     slave_address = DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);  // read slave_address from EEPROM
     TMR0_Initialize();
 }
@@ -103,9 +102,6 @@ bool PROTOCOL_Read_Lock(void) {
     return locked;
 }
 
-void PROTOCOL_Set_Mode(bool mode) {
-    usb_mode = mode;
-}
 /*
  * Loop for device invocation and USART Rx reader
  */
@@ -113,12 +109,12 @@ void PROTOCOL_Loop() {
     uint8_t device_address;
     while (1) {
         tmr_overflow = TMR0_HasOverflowOccured();  // 50 msec
-        if (usb_mode && PROTOCOL_Inv_Handler && tmr_overflow) {
+        if (PROTOCOL_Inv_Handler && tmr_overflow) {
             TMR0IF = 0;
             if (++tmr_cnt >= value) {
                 tmr_cnt = 0;
                 if (++sec_cnt >= tmr_scaler) {  // every 1 sec
-                    invoked = true;
+                    if (running) invoked = true;
                     sec_cnt = 0;
                 }
             }
@@ -193,7 +189,11 @@ uint8_t i, j;
 int16_t float100;
         
 uint8_t *data;
-        
+
+uint16_t concat(uint8_t msb, uint8_t lsb) {
+    return (uint16_t)msb * 256 + (uint16_t)lsb;    
+}
+
 // initialization
 void PROTOCOL_I2C_Initialize() {
     readbuf.status = COMPLETE;
@@ -209,8 +209,15 @@ uint8_t PROTOCOL_I2C_GET(void) {
     return value;
 }
 
-uint16_t concat(uint8_t msb, uint8_t lsb) {
-    return (uint16_t)msb * 256 + (uint16_t)lsb;    
+void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
+    READBUF_STATUS status = readbuf.status;
+    if (status == COMPLETE) {
+        readbuf.type = type;
+        readbuf.length = length;
+        readbuf.pbuffer = pbuffer;
+        readbuf.buf_cnt = 0;
+        readbuf.status = TLV_SET;
+    }
 }
 
 void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer) {
@@ -257,28 +264,17 @@ void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t 
     }
 }
 
-void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
-    READBUF_STATUS status = readbuf.status;
-    if (status == COMPLETE) {
-        readbuf.type = type;
-        readbuf.length = length;
-        readbuf.pbuffer = pbuffer;
-        readbuf.buf_cnt = 0;
-        readbuf.status = TLV_SET;
-    }
-}
-
-void PROTOCOL_I2C_Reset_TLV(void) {
-    if (readbuf.status != TLV_SET) {
-        readbuf.buf_cnt = 0;
-        readbuf.status = COMPLETE;
-    }
-}
-
 bool PROTOCOL_I2C_TLV_Status(void) {
     if (readbuf.status == TLV_SET) {
         return true;
     } else return false;
+}
+
+void PROTOCOL_RST(void) {
+    if (readbuf.status != TLV_SET) {
+        readbuf.buf_cnt = 0;
+        readbuf.status = COMPLETE;
+    }
 }
 
 void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer) {

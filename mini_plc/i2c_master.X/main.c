@@ -39,21 +39,27 @@ uint8_t dev_map_iterator(void);
 
 void start_handler(void) {
     uint8_t dev_addr, status;
+    /* Note: Since the introduction of time-slot-based scheduler, the following
+     * code has been unnecessary.
     for (dev_addr = dev_map_iterator(); dev_addr > 0 ; dev_addr = dev_map_iterator()) {
         if (i2c1_write_no_data(dev_addr, STA_I2C) > 0) {
             printf("!:%%%d:START FAILED\n", dev_addr);
         }        
     }
+    */
     running = true;
 }
 
 void stop_handler(void) {
     uint8_t dev_addr, status;
+    /* Note: Since the introduction of time-slot-based scheduler, the following
+     * code has been unnecessary.    
     for (dev_addr = dev_map_iterator(); dev_addr > 0 ; dev_addr = dev_map_iterator()) {
         if (i2c1_write_no_data(dev_addr, STP_I2C) > 0) {
             printf("!:%%%d:STOP FAILED\n", dev_addr);
         }        
     }
+    */
     running = false;
 }
 
@@ -151,6 +157,7 @@ uint8_t sen(uint8_t dev_addr) {
     uint8_t status;
     uint8_t type;
     uint8_t length ,data, i;
+    LATCbits.LATC7 ^= 1;
     status = i2c1_read(dev_addr, SEN_I2C, &type, 1);
     if (status == 0) {
         if (type == TYPE_NO_DATA) {
@@ -205,8 +212,12 @@ void inv_handler(void) {
         case S_SEN:
             dev_addr = schedule[position][1];
             status = sen(dev_addr);
-            if (status > 0) del_dev(dev_addr);
-           break;
+            // if (status > 0) del_dev(dev_addr);
+            if (status > 0) {
+                printf("!:%%%d:NETWORK_ERROR\n");
+                i2c1_write_no_data(dev_addr, RST_I2C);
+            }   
+            break;
     }
     if (++position > 3) position = 0;
 }

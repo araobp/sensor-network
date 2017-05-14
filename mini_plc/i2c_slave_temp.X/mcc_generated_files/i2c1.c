@@ -167,8 +167,10 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                                     PROTOCOL_SAV();
                                     break;
                                 case INV_I2C:
-                                    //blink_red(3);
                                     PROTOCOL_INV();
+                                    break;
+                                case RST_I2C:
+                                    PROTOCOL_RST();
                                     break;
                                 case SET_I2C:
                                     next = SET_VALUE;

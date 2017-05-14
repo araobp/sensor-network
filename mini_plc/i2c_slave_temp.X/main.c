@@ -1,25 +1,18 @@
 #include "mcc_generated_files/mcc.h"
 #include "protocol.h"
 #include "i2c2_util.h"
-#include <stdlib.h>
-#include <string.h>
 
 #define _XTAL_FREQ 500000
+
+/* TEXAS INSTRUMENTS HDC1000
+ * http://www.ti.com/lit/ds/symlink/hdc1000.pdf#search=%27HDC1000+datasheet%27
+ */
 #define DEVICE_ID "HDC1000"
 #define HDC1000_ADDR 0x0040
-
 #define TEMPERATURE 0x00
 #define HUMIDITY 0x01
 #define CONFIGURATION 0x02
-
 #define CONFIG_DATA 0x00
-
-bool running = true;
-bool do_func = false;
-uint8_t timer_cnt = 0;
-uint8_t period_10;
-
-bool invoked = false;
 
 void init(void) {
     __delay_ms(30);  // wait for 15msec
@@ -59,31 +52,29 @@ void inv_handler(void) {
 void main(void)
 {    
     //SYSTEM_Initialize();
-    SSP1CON2bits.GCEN = 0;  // Disable I2C General Call
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     WDT_Initialize();
     
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL);
-    PROTOCOL_Set_Inv_Handler(inv_handler, 20);
-
-    EUSART_Initialize();
-    
+    // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    // Slave initialization
+    // Protocol initialization
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL);
+    PROTOCOL_Set_Inv_Handler(inv_handler, 20);
+
+    // Device initialization
     I2C2_Initialize();
     init();
 
+    // USART initialization
+    EUSART_Initialize();
+    
+    // I2C backplane initialization
     SSP1CON2bits.GCEN = 1;  // Enable I2C General Call
     I2C1_Initialize();  // Enable I2C backplane
     
-    __delay_ms(2000);  // Wait for GCEN to become zero
-    
-    if (SSP1CON2bits.GCEN == 0) {  // I2C backplane mode
-        PROTOCOL_Set_Mode(false);
-    }
-    
+    // Infinite loop
     PROTOCOL_Loop();
 }

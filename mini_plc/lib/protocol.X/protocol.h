@@ -33,19 +33,18 @@ extern "C" {
     void PROTOCOL_Set_Func(void *loop_func);
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
     void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
-    void PROTOCOL_Set_Mode(bool mode);
     void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
     uint8_t PROTOCOL_Read_Device_Address(void);
+
     void PROTOCOL_STA(void);
     void PROTOCOL_STP(void);
     void PROTOCOL_SET(uint8_t value);
     void PROTOCOL_SAV(void);
     void PROTOCOL_INV(void);
+    void PROTOCOL_RST(void);
     void PROTOCOL_EXT(uint8_t *pbuffer);
-    void PROTOCOL_Set_Lock(bool lock);
-    bool PROTOCOL_Read_Lock(void);
     
-    /**
+    /*
      * printf for TLV
      */
     void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
@@ -68,17 +67,19 @@ extern "C" {
     void PROTOCOL_Send_uint16_t(uint16_t value);
     void PROTOCOL_Send_int16_t(int16_t value);
     void PROTOCOL_Send_float(float value);
-
+   
     /*
-     * I2C backplane slave specific functions 
-     * i2c.c of "protocol_i2c.c" calls these functions
+     * I2C slave code "i2c1.c" calls these APIs
      */
     uint8_t PROTOCOL_I2C_WHO(void);
     uint8_t PROTOCOL_I2C_GET(void);
     uint8_t* PROTOCOL_I2C_SEN();  // retrive data from send buffer
+    
+    void PROTOCOL_Set_Lock(bool lock);
+    bool PROTOCOL_Read_Lock(void);
         
     /*
-     * Common operations
+     * I2C backplane common operations
      */
     #define WHO_I2C 0x01
     #define PLG_I2C 0x02
@@ -91,13 +92,15 @@ extern "C" {
     #define GET_I2C 0x09
     #define EXT_I2C 0x0a
     #define ADT_I2C 0x0b
-    
+    #define RST_I2C 0x0c
 
     /*
      * I2C backplane general call address
      */
     #define GENERAL_CALL_ADDRESS 0x00
     
+    /***** DEVICE REGISTRY ****************************************************/
+
     /*
      * Device IDs
      */
