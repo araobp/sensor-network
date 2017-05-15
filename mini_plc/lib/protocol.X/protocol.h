@@ -33,7 +33,7 @@ extern "C" {
     /*
      * Functions
      */
-    void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler);
+    void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
     void PROTOCOL_Loop();
     void PROTOCOL_Set_Func(void *loop_func);
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
@@ -57,7 +57,6 @@ extern "C" {
     /*
      * I2C backplane slave specific functions
      */
-    void PROTOCOL_I2C_Initialize();
     void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
     void PROTOCOL_I2C_Reset_TLV(void);
     bool PROTOCOL_I2C_TLV_Status(void);
@@ -76,6 +75,7 @@ extern "C" {
     /*
      * I2C slave code "i2c1.c" calls these APIs
      */
+    void PROTOCOL_Backplane_Slave_Enabled(void);
     uint8_t PROTOCOL_I2C_WHO(void);
     uint8_t PROTOCOL_I2C_GET(void);
     uint8_t* PROTOCOL_I2C_SEN();  // retrive data from send buffer
@@ -121,13 +121,10 @@ extern "C" {
      */
     #define BACKPLANE_MASTER_I2C 0x01
     uint8_t BACKPLANE_SLAVE_ADDRESS = BACKPLANE_MASTER_I2C ;  // means backplane master 
-    #define TEMPLATE_I2C 0x10
-    #define HC_SR04_I2C 0x11
-    #define A1324LUA_T_I2C 0x12
-    #define KXR94_2050_I2C 0x13
-    #define TOWER_PRO_SG90_I2C 0x14
-    #define AQM1602XA_RN_GBW_I2C 0x15
-    #define HDC1000_I2C 0x16
+    #define AQM1602XA_RN_GBW_I2C 0x10  // Character LCD
+    #define A1324LUA_T_I2C 0x11  // Hall sensor
+    #define HDC1000_I2C 0x12  // Temperature and humidity sensor
+    #define KXR94_2050_I2C 0x13  // 3-axis accelerometer 
  
     /*
      * TLV
