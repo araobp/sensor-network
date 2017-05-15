@@ -45,12 +45,12 @@ void I2C1_Initialize(void)
     // SSPADD 8; 
     SSP1ADD = (PROTOCOL_Read_Device_Address() << 1);  // adjust UI address for R/nW bit
 
+    SSP1CON2bits.GCEN = 1;  // Enable I2C General Call
+
     // clear the slave interrupt flag
     PIR1bits.SSP1IF = 0;
     // enable the master interrupt
     PIE1bits.SSP1IE = 1;
-    
-    PROTOCOL_I2C_Initialize();
 
 }
 
@@ -184,7 +184,10 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                     break;
 
                 case SLAVE_GENERAL_CALL:
-                    if (I2C_slaveWriteData == PLG_I2C) SSP1CON2bits.GCEN = 0;  // Disable General Call reception
+                    if (I2C_slaveWriteData == PLG_I2C) {
+                        SSP1CON2bits.GCEN = 0;  // Disable General Call reception
+                        PROTOCOL_Backplane_Slave_Enabled();
+                    }
                     break;
 
                 case SLAVE_NORMAL_DATA:

@@ -29,8 +29,33 @@ uint8_t tmr_cnt = 0;
 uint8_t tmr_scaler = 1;
 bool tmr_overflow = false;
 
+// I2C backplane
+typedef enum {
+    TLV_SET,
+    TYPE_SENT,
+    LENGTH_SENT,
+    COMPLETE
+} READBUF_STATUS;
+
+typedef struct {
+    uint8_t type;
+    uint8_t length;
+    uint8_t *pbuffer;
+    READBUF_STATUS status;
+    uint8_t buf_cnt;
+} READBUF;
+
+READBUF readbuf;
+READBUF_STATUS readbuf_status;
+
+bool backplane_slave_enabled = false;
+uint8_t sendbuf[16];
+uint8_t i, j;
+int16_t float100;        
+uint8_t *data;
+
 // initialization
-void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler) {
+void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler, void *inv_handler, uint8_t scaler) {
     device_id_ = device_id;
     PROTOCOL_Start_Handler = start_handler;
     PROTOCOL_Stop_Handler = stop_handler;
@@ -41,6 +66,13 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
     //if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
     slave_address = DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);  // read slave_address from EEPROM
+
+    // I2C backplane initalization
+    readbuf.status = COMPLETE;
+    SSP1CON2bits.GCEN = 1;  // Enable I2C General Call
+    PROTOCOL_Inv_Handler = inv_handler;
+    tmr_scaler = scaler;
+
     TMR0_Initialize();
 }
 
@@ -50,11 +82,6 @@ void PROTOCOL_Set_Func(void *loop_func) {
 
 void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
     PROTOCOL_Extension_Handler = extension_handler;
-}
-
-void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler) {
-    PROTOCOL_Inv_Handler = inv_handler;
-    tmr_scaler = scaler;
 }
 
 void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
@@ -164,40 +191,12 @@ void PROTOCOL_Loop() {
 /* Backplane I2C slave                                      */
 /************************************************************/
 
-typedef enum {
-    TLV_SET,
-    TYPE_SENT,
-    LENGTH_SENT,
-    COMPLETE
-} READBUF_STATUS;
-
-typedef struct {
-    uint8_t type;
-    uint8_t length;
-    uint8_t *pbuffer;
-    READBUF_STATUS status;
-    uint8_t buf_cnt;
-} READBUF;
-
-READBUF readbuf;
-READBUF_STATUS readbuf_status;
-
-bool backplane_slave_enabled = false;
-uint8_t sendbuf[16];
-uint8_t i, j;
-int16_t float100;
-        
-uint8_t *data;
-
 uint16_t concat(uint8_t msb, uint8_t lsb) {
     return (uint16_t)msb * 256 + (uint16_t)lsb;    
 }
 
-// initialization
-void PROTOCOL_I2C_Initialize() {
-    readbuf.status = COMPLETE;
+void PROTOCOL_Backplane_Slave_Enabled(void) {
     backplane_slave_enabled = true;
-    SSP1CON2bits.GCEN = 1;  // Enable I2C General Call
 }
 
 uint8_t PROTOCOL_I2C_WHO(void) {

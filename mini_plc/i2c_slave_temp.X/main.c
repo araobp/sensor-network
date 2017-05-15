@@ -27,28 +27,26 @@ void inv_handler(void) {
     
     LATCbits.LATC7 ^= 1;
 
+    // Temperature measurement
     status = i2c2_write_no_data(HDC1000_ADDR, TEMPERATURE);
-    //while(LATCbits.LATC6 == 1);  // RDY pin is high
     __delay_ms(10);
     status = i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[0], 2);  // MSB, LSB
-    __delay_ms(5);
-    status = i2c2_write_no_data(HDC1000_ADDR, HUMIDITY);
-    //while(LATCbits.LATC6 == 1);  // RDY pin is high
-    __delay_ms(10);
-    status = i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[2], 2);  // MSB, LSB 
-
     t = (int32_t)((uint16_t)measure[0] * 256 + (uint16_t)measure[1]);
     data[0] = (int8_t)(t * 165 / 65536 - 40);  // temperature
 
+    __delay_ms(5);
+
+    // Humidity measurement
+    status = i2c2_write_no_data(HDC1000_ADDR, HUMIDITY);
+    __delay_ms(10);
+    status = i2c2_read_no_reg_addr(HDC1000_ADDR, &measure[2], 2);  // MSB, LSB 
     t = (int32_t)((uint16_t)measure[2] * 256 + (uint16_t)measure[3]);
     data[1] = (int8_t)(t * 100 /65536);  // humidity
 
+    // output the result
     PROTOCOL_I2C_Send_int8_t(2, data);
 }
 
-/*
- * output max abs(measured value) in the period.
- */
 void main(void)
 {    
     //SYSTEM_Initialize();
@@ -61,8 +59,7 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
 
     // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL);
-    PROTOCOL_Set_Inv_Handler(inv_handler, 20);
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 20);
 
     // Device initialization
     I2C2_Initialize();
@@ -72,7 +69,6 @@ void main(void)
     EUSART_Initialize();
     
     // I2C backplane initialization
-    SSP1CON2bits.GCEN = 1;  // Enable I2C General Call
     I2C1_Initialize();  // Enable I2C backplane
     
     // Infinite loop
