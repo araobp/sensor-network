@@ -48,29 +48,29 @@ void inv_handler(void) {
 }
 
 void main(void)
-{    
+{            
     //SYSTEM_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     WDT_Initialize();
+
+    // Protocol initialization
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 20);
     
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 20);
+    // USART initialization
+    EUSART_Initialize();
 
     // Device initialization
     I2C2_Initialize();
     init();
 
-    // USART initialization
-    EUSART_Initialize();
-    
     // I2C backplane initialization
     I2C1_Initialize();  // Enable I2C backplane
-    
+
     // Infinite loop
     PROTOCOL_Loop();
 }

@@ -30,6 +30,8 @@ extern "C" {
      */
     #define BUF_SIZE 32
     
+    void blink_red(uint8_t times);
+    
     /*
      * Functions
      */
@@ -137,7 +139,7 @@ extern "C" {
     #define TYPE_INT16_T 0x04
     #define TYPE_FLOAT 0x05
     #define TYPE_NO_DATA 0x06
-    
+   
 #ifdef	__cplusplus
 }
 #endif

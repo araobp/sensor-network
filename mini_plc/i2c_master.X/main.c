@@ -83,19 +83,6 @@ void del_dev(uint8_t dev_addr) {
     }
 }
 
-void print_dev_map(void) {
-    uint8_t i;
-    uint8_t len = numbers_of_dev();
-    if (len > 0) {
-        len--;
-        printf("$:MAP:");
-        for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
-        printf("%d\n", dev_map_iterator());
-    } else {
-        printf("!:NO SLAVE FOUND\n");
-    }
-}
-
 /**
  * @fn device map iterator
  * @return device address
@@ -134,6 +121,30 @@ uint8_t dev_map_iterator() {
     }
 }
 
+void scan_dev(void) {
+    uint8_t dev_addr, status;
+    for (dev_addr=1; dev_addr<=MAX_DEV_ADDR; dev_addr++) {
+        status = i2c1_read(dev_addr, WHO_I2C, &read_buf[0], 1);
+        // printf("%d %d\n", dev_addr, status);
+        if (status == 0) {
+            add_dev(read_buf[0]);
+        }
+    }  
+}
+
+void print_dev_map(void) {
+    uint8_t i;
+    uint8_t len = numbers_of_dev();
+    if (len > 0) {
+        len--;
+        printf("$:MAP:");
+        for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
+        printf("%d\n", dev_map_iterator());
+    } else {
+        printf("!:NO SLAVE FOUND\n");
+    }
+}
+
 uint8_t sen(uint8_t dev_addr) {
     uint8_t status;
     uint8_t type;
@@ -156,32 +167,15 @@ uint8_t sen(uint8_t dev_addr) {
     return status;
 }
 
-void scan_dev(void) {
-    uint8_t dev_addr, status;
-    for (dev_addr=1; dev_addr<=MAX_DEV_ADDR; dev_addr++) {
-        status = i2c1_read(dev_addr, WHO_I2C, &read_buf[0], 1);
-        // printf("%d %d\n", dev_addr, status);
-        if (status == 0) {
-            add_dev(read_buf[0]);
-        }
-    }  
-}
-
-    #define AQM1602XA_RN_GBW_I2C 0x10  // Character LCD
-    #define A1324LUA_T_I2C 0x11  // Hall sensor
-    #define HDC1000_I2C 0x12  // Temperature and humidity sensor
-    #define KXR94_2050_I2C 0x13  // 3-axis accelerometer 
-
 uint8_t schedule[20][2] = {
     {S_PLG, 0},               // 0
     {S_ADT, 0},               // 1
     {S_CMD, 0},               // 2
     {S_INV, HDC1000_I2C},     // 3
-    {S_SEN, 0},                // 4
-    /* {S_INV, KXR94_2050_I2C},  // 5 */
-    {S_INV, 0},               // 5
+    {S_SEN, 0},               // 4
+    {S_INV, A1324LUA_T_I2C},  // 5
     {S_SEN, 0},               // 6
-    /* {S_INV, KXR94_2050_I2C},  // 7 */
+//    {S_INV, KXR94_2050_I2C},  // 7
     {S_INV, 0},               // 7
     {S_SEN, 0},               // 8
     {S_INV, 0},               // 9
@@ -190,14 +184,14 @@ uint8_t schedule[20][2] = {
     {S_INV, 0},               // 12
     {S_SEN, HDC1000_I2C},     // 13
     {S_INV, 0},               // 14
-    /* {S_SEN, KXR94_2050_I2C},  // 15 */
-    {S_SEN, 0},               // 15
+    {S_SEN, A1324LUA_T_I2C},  // 15
     {S_INV, 0},               // 16
-    /* {S_SEN, KXR94_2050_I2C},  // 17 */
+//    {S_SEN, KXR94_2050_I2C},  // 17
     {S_SEN, 0},               // 17
     {S_INV, 0},               // 18
     {S_SEN, 0}                // 19
 };
+
 uint8_t current[2];
 uint8_t position = 0;
 
