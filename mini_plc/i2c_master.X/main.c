@@ -174,9 +174,8 @@ uint8_t schedule[20][2] = {
     {S_INV, HDC1000_I2C},     // 3
     {S_SEN, 0},               // 4
     {S_INV, A1324LUA_T_I2C},  // 5
-    {S_SEN, 0},               // 6
-//    {S_INV, KXR94_2050_I2C},  // 7
-    {S_INV, 0},               // 7
+    {S_SEN, KXR94_2050_I2C},  // 6
+    {S_INV, KXR94_2050_I2C},  // 7
     {S_SEN, 0},               // 8
     {S_INV, 0},               // 9
     {S_SEN, 0},               // 10
@@ -186,9 +185,8 @@ uint8_t schedule[20][2] = {
     {S_INV, 0},               // 14
     {S_SEN, A1324LUA_T_I2C},  // 15
     {S_INV, 0},               // 16
-//    {S_SEN, KXR94_2050_I2C},  // 17
-    {S_SEN, 0},               // 17
-    {S_INV, 0},               // 18
+    {S_SEN, KXR94_2050_I2C},  // 17
+    {S_INV, KXR94_2050_I2C},  // 18
     {S_SEN, 0}                // 19
 };
 

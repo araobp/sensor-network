@@ -24,11 +24,16 @@
 #define DAT "DAT"
 #define CLR "CLR"
 #define STR "STR"
+#define HST "HST"
 #define CUL "CUL"
 #define CUR "CUR"
 #define NWL "NWL"
 #define HOM "HOM"
 #define CNT "CNT"
+#define LED "LED"
+
+#define ON "ON"
+#define OFF "OFF"
 
 char *pbuf = NULL;
 
@@ -37,8 +42,8 @@ void lcd_init(void) {
     write_command(0x38);
     write_command(0x39);
     write_command(0x14);
-    write_command(0x7C);  // Contrast: C3=1 C2=1 C1=0 C0=0
-    write_command(0x50);  // Contrast: C5=0 C4=0
+    write_command(0x73);  // Contrast: C3=0 C2=0 C1=1 C0=1
+    write_command(0x52);  // Contrast: C5=1 C4=0
     write_command(0x6c);
     __delay_ms(250);
     write_command(0x38);
@@ -49,6 +54,13 @@ void lcd_init(void) {
 
 void lcd_clear(void) {
     write_command(0x01);
+}
+
+void lcd_string(void) {
+    uint8_t i = 4;
+    while (pbuf[i] != '\0') {
+        write_data(pbuf[i++]);
+    }
 }
 
 /*
@@ -96,6 +108,7 @@ void extension_handler(char *buf) {
     }
 }
 
+
 void loop_func(void) {
     uint8_t value;
     if(PROTOCOL_Read_Lock()) {
@@ -111,10 +124,10 @@ void loop_func(void) {
         } else if (!strncmp(CLR, pbuf, 3)) {
             lcd_clear();
         } else if (!strncmp(STR, pbuf, 3)) {
-            uint8_t i = 4;
-            while (pbuf[i] != '\0') {
-                write_data(pbuf[i++]);
-            }
+            lcd_string();
+        } else if (!strncmp(HST, pbuf, 3)) {
+            write_command(0x02);
+            lcd_string();            
         } else if (!strncmp(CUL, pbuf, 3)) {
             write_command(0x10);
         } else if (!strncmp(CUR, pbuf, 3)) {
@@ -126,6 +139,12 @@ void loop_func(void) {
         } else if (!strncmp(CNT, pbuf, 3)) {
             value = atoi(&pbuf[4]);
             lcd_contrast(value);
+        } else if (!strncmp(LED, pbuf, 3)) {
+            if (!strncmp(ON, &pbuf[4], 2)) {
+                LATCbits.LATC7 = 0;
+            } else if (!strncmp(OFF, &pbuf[4], 3)) {
+                LATCbits.LATC7 = 1;                
+            }
         }
         pbuf = NULL;
         PROTOCOL_Set_Lock(false);
@@ -153,6 +172,7 @@ void main(void)
     lcd_init();
     //lcd_arao();
     lcd_test();
+    LATCbits.LATC7 = 1;
     
     // USART initialization
     EUSART_Initialize();
