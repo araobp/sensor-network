@@ -25,6 +25,7 @@
 #define CLR "CLR"
 #define STR "STR"
 #define HST "HST"
+#define DSP "DSP"
 #define CUL "CUL"
 #define CUR "CUR"
 #define NWL "NWL"
@@ -60,6 +61,19 @@ void lcd_string(void) {
     uint8_t i = 4;
     while (pbuf[i] != '\0') {
         write_data(pbuf[i++]);
+    }
+}
+
+/*
+ * String format
+ * 1st line: 16 characters
+ * 2nd line: 16 characters
+ */
+void lcd_string_2lines(void) {
+    uint8_t i = 4;
+    while (pbuf[i] != '\0') {
+        write_data(pbuf[i++]);
+        if (i == 20) write_command(0xc0); // new line
     }
 }
 
@@ -126,14 +140,17 @@ void loop_func(void) {
         } else if (!strncmp(STR, pbuf, 3)) {
             lcd_string();
         } else if (!strncmp(HST, pbuf, 3)) {
-            write_command(0x02);
-            lcd_string();            
+            write_command(0x02);  // return home
+            lcd_string();   
+        } else if (!strncmp(DSP, pbuf, 3)) {
+            write_command(0x02);  // return home
+            lcd_string_2lines();
         } else if (!strncmp(CUL, pbuf, 3)) {
             write_command(0x10);
         } else if (!strncmp(CUR, pbuf, 3)) {
             write_command(0x14);        
         } else if (!strncmp(NWL, pbuf, 3)) {
-            write_command(0xC0);
+            write_command(0xc0);
         } else if (!strncmp(HOM, pbuf, 3)) {
             write_command(0x02);
         } else if (!strncmp(CNT, pbuf, 3)) {

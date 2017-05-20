@@ -30,13 +30,12 @@
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
-bool running = true;
+bool running = false;
 uint8_t timer_cnt = 0;
 bool do_func = false;
 uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];  // I2C slave device map
 
-uint8_t dev_map_iterator(void);
 void exec_remote_cmd(uint8_t idx);
 
 void start_handler(void) {
@@ -54,71 +53,63 @@ void clear_dev_map(void) {
     }
 }
 
-uint8_t numbers_of_dev(void) {
-    uint8_t num = 0;
-    uint8_t x, y;
-    for (y=0; y<MAX_Y; y++) {
-        for (x=0; x<8; x++) {
-            if ((dev_map[y] & (0b00000001 << x)) > 0) ++num;
-        }
-    }  
-    return num;
-}
-
+uint8_t devs = 0;
+        
 void add_dev(uint8_t dev_addr) {
     uint8_t x, y;
+    uint8_t new_map, old_map;
     if (dev_addr >= 1 && dev_addr <= MAX_DEV_ADDR) {
         y = dev_addr / 8;
         x = dev_addr % 8;
-        dev_map[y] = dev_map[y] | (0x01 << x);
+        old_map = dev_map[y];
+        new_map = dev_map[y] | (0x01 << x);
+        if (old_map != new_map) {
+            dev_map[y] = new_map;
+            devs++;
+        }
     }
 }
 
 void del_dev(uint8_t dev_addr) {
     uint8_t x, y;
+    uint8_t new_map, old_map;
     if (dev_addr >= 1 && dev_addr <= MAX_DEV_ADDR) {
         y = dev_addr / 8;
         x = dev_addr % 8;
-        dev_map[y] = dev_map[y] & ~(0x01 << x);
-    }
+        old_map = dev_map[y];
+        new_map = dev_map[y] & ~(0x01 << x);
+        if (old_map != new_map) {
+            dev_map[y] = new_map;
+            devs--;
+        }
+   }
 }
 
-/**
- * @fn device map iterator
- * @return device address
- */
 uint8_t dev_map_iterator() {
     static uint8_t xx = 0;
     static uint8_t yy = 0;
     static bool start = true;
     bool exist = false;
     uint8_t dev_addr;
-    uint8_t test;
-    
-    do {
-        if (xx > 7) {
-            xx = 0;
-            ++yy;
+
+    if (devs) {
+        while(1) {
+            if (xx > 7) {
+                xx = 0;
+                yy++;
+            }
+            if (yy >= MAX_Y) {
+                xx = 0;
+                yy = 0;
+            }
+            if ((MASK << xx) & dev_map[yy]) {
+                dev_addr = yy * 8 + xx++;
+                break;
+            }
+            xx++;
         }
-        if (yy >= MAX_Y) {
-            xx = 0;
-            yy = 0;
-            break;
-        }
-        test = (MASK << xx) & dev_map[yy];
-        if (test) {
-            dev_addr = yy * 8 + xx;
-            exist = true;
-        }
-        ++xx;
-    } while (!exist);
-    
-    if (exist) {
-        exist = false;
-        return dev_addr;
-    } else {
-        return 0;
     }
+    return dev_addr;
 }
 
 void scan_dev(void) {
@@ -134,7 +125,7 @@ void scan_dev(void) {
 
 void print_dev_map(void) {
     uint8_t i;
-    uint8_t len = numbers_of_dev();
+    uint8_t len = devs;
     if (len > 0) {
         len--;
         printf("$:MAP:");
