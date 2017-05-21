@@ -52,7 +52,7 @@
   Section: Macro Declarations
 */
 #define EUSART_TX_BUFFER_SIZE 8
-#define EUSART_RX_BUFFER_SIZE 8
+#define EUSART_RX_BUFFER_SIZE 64
 
 /**
   Section: Global Variables

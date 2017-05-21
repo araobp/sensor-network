@@ -155,7 +155,7 @@ void PROTOCOL_Loop() {
             if (c == '\n') {
                 buf[--cnt] = '\0';
                 cnt = 0;
-
+                printf("#%s\n", buf);
                 if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {  // Handled by backplane master?
                     PROTOCOL_Extension_Handler(buf);                    
                 } else if (!strncmp(WHO, buf, 3)) {  // who are you?
@@ -182,7 +182,7 @@ void PROTOCOL_Loop() {
                     PROTOCOL_EXT(buf);
                 }
             }
-        };
+        }
     }
 }
 

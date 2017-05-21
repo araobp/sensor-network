@@ -28,7 +28,7 @@ extern "C" {
     /*
      * Command buffer size
      */
-    #define BUF_SIZE 32
+    #define BUF_SIZE 48
     
     void blink_red(uint8_t times);
     
