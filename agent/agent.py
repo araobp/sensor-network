@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 #
 # Python agent for mini PLC
 #
@@ -18,6 +17,7 @@ import re
 # Constants
 SLEEP_PERIOD = 0.01  # to sleep for 1msec in the infinit loop
 DISP_PERIOD = 8  # period for showing speed on LCD
+SKIP_PERIOD = 4  # period for skipping LCD process
 RECV_TIMEOUT = 10  # 10 times
 MAX = 1000  # send agent running message to TOPIC_AGENT 
 TOPIC_AGENT = 'agent'  # to check if this agent is running
@@ -39,9 +39,12 @@ NO_DATA = "NO_DATA"
 txBuf = []
 in_loop = False
 
+# Command preemption
+skip = 0
+
 # display meter string
 def meter(speed, temp):
-    return 'DSP:SPEED: {0:2.1f}km/h  TEMP: {1:2d}C     '.format(speed, temp)
+    return 'DSP:SPEED: {0:2.1f} km/h TEMP: {1:2d} deg C'.format(speed, temp)
 
 # (Physical) container
 HID = '/dev/hidraw0' # 1D barcode scanner as HID device
@@ -62,23 +65,23 @@ def pulse2speed(pulse):
 
 # receive MQTT message
 def on_message(client, userdata, message):
-    global logger
+    global ser, logger, skip
     topic = message.topic
     payload = message.payload
-    logger.debug('NodeRED==>topic:{}, message:{}'.format(topic, payload))
+    logger.info('NodeRED==>topic:{}, message:{}'.format(topic, payload))
     data = json.loads(payload)
     thing_name = data['thing_name']
     device_name = data['device_name']
     msg = data['command']
+    logging.info('thing_name: {}, device_name: {}, message: {}'.format(thing_name, device_name, msg))
     if topic == thing_name:
         if device_name == 'lcd':
-            send(ser, 'I2C:16')
-            send(ser, 'DSP:{}{}'.format(msg[0], msg[1]))
-            send(ser, 'I2C:1')
+            s = 'DSP:{0:16s}{1:16s}'.format(msg[0], msg[1]) 
+            skip = SKIP_PERIOD
+            send(ser, s)
         elif device_name == 'led':
-            send(ser, 'I2C:16')
-            send(ser, 'LED:{}'.format(msg))
-            send(ser, 'I2C:1')
+            s = 'LED:{}'.format(msg)
+            send(ser, s)
 
 # insert delay for PIC16F1 to read EUSART Rx buffer (1 byte length)
 def _send(ser, cmd):
@@ -173,6 +176,7 @@ if __name__ == '__main__':
         topic = mqtt['topic']
         device_id = conf['device_id']
         ftdi_vdp = conf['ftdi_vdp']
+        lcd_conf = conf['lcd']
 
     lcd = device_id['lcd']
     led = device_id['led']
@@ -242,8 +246,11 @@ if __name__ == '__main__':
     temp_ps = 0
     humid_ps = 0
 
+    # device initial config
     if ser:
+        # Character LCD
         send(ser, 'I2C:16')
+        send(ser, 'CNT:{}'.format(lcd_conf['contrast']))
 
     logger.info('Agent started')
 
@@ -286,9 +293,12 @@ if __name__ == '__main__':
 
             cnt_disp = cnt_disp + 1
             if cnt_disp >= DISP_PERIOD:
-                send(ser, meter(speed_ph, temp_ps))
                 cnt_disp = 0
-                logger.info('Speed:{0:2.1f}km/h, Temp:{1:2d}C, Humid:{2:3d}%'.format(speed_ph, temp_ps, humid_ps))
+                if skip > 0:
+                    skip -= 1
+                else:
+                    send(ser, meter(speed_ph, temp_ps))
+                    logger.info('Speed:{0:2.1f}km/h, Temp:{1:2d}C, Humid:{2:3d}%'.format(speed_ph, temp_ps, humid_ps))
 
         if ser_gps and ser_gps.in_waiting > 0: 
             raw_data = recv_gps(ser_gps)

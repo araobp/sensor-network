@@ -44,7 +44,7 @@ void lcd_init(void) {
     write_command(0x39);
     write_command(0x14);
     write_command(0x73);  // Contrast: C3=0 C2=0 C1=1 C0=1
-    write_command(0x52);  // Contrast: C5=1 C4=0
+    write_command(0x52);  // Contrast: BON=0 C5=1 C4=0
     write_command(0x6c);
     __delay_ms(250);
     write_command(0x38);
@@ -86,7 +86,7 @@ void lcd_string_2lines(void) {
 void lcd_contrast(uint8_t contrast) {
     write_command(0x39);
     write_command(0x70 | (contrast & 0b00001111));  // C3 C2 C1 C0
-    write_command(0x50 | (contrast >> 4));  // C5 C4
+    write_command(0x50 | ((contrast >> 4) & 0b00000111));  // BON C5 C4
     write_command(0x38);
 }
 

@@ -25,3 +25,8 @@ ftdi_vdp:
   master: usb-FTDI_FT230X_Basic_UART_DJ00LTN7-if00-port0
   gps: usb-FTDI_FT230X_Basic_UART_DJ00LSO2-if00-port0
 
+##### Character LCD contrast
+lcd:
+#  contrast: 63  # 5.0V
+   contrast: 80  # 4.5V
+
