@@ -22,11 +22,13 @@
 #define MAX_DEV_ADDR 48  // it must be larger than 16 and multipels of 8
 #define MASK 0x01
 
-#define S_PLG 0x00
-#define S_ADT 0x01
-#define S_INV 0x02
-#define S_SEN 0x03
-#define S_CMD 0x04
+// Time slots
+#define S_PLG 0x00  // detect new device ([pl]u[g]-in) 
+#define S_ADT 0x01  // periodic [a]u[d]i[t] (preserved)
+#define S_INV 0x02  // [inv]oke device to execute command
+#define S_SEN 0x03  // fetch [sen]sor data from device
+#define S_CMD 0x04  // execute [c]o[m]man[d]
+#define S_ACP 0x05  // [ac]ce[p]t command
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
@@ -123,6 +125,16 @@ void scan_dev(void) {
     }  
 }
 
+bool detected(uint8_t dev_addr) {
+    uint8_t y = dev_addr / 8;
+    uint8_t x = dev_addr % 8;
+    bool exist = false;
+    if ((dev_map[y] & (0x01 << x)) > 0) {
+        exist = true;
+    }
+    return exist;
+}
+
 void print_dev_map(void) {
     uint8_t i;
     uint8_t len = devs;
@@ -160,7 +172,7 @@ uint8_t sen(uint8_t dev_addr) {
 
 uint8_t schedule[20][2] = {
     {S_PLG, 0},               // 0
-    {S_ADT, 0},               // 1
+    {S_ACP, 0},               // 1
     {S_CMD, 0},               // 2
     {S_INV, HDC1000_I2C},     // 3
     {S_SEN, 0},               // 4
@@ -168,8 +180,8 @@ uint8_t schedule[20][2] = {
     {S_SEN, KXR94_2050_I2C},  // 6
     {S_INV, KXR94_2050_I2C},  // 7
     {S_SEN, 0},               // 8
-    {S_INV, 0},               // 9
-    {S_SEN, 0},               // 10
+    {S_ADT, 0},               // 9
+    {S_ACP, 0},               // 10
     {S_CMD, 0},               // 11
     {S_INV, 0},               // 12
     {S_SEN, HDC1000_I2C},     // 13
@@ -201,11 +213,13 @@ void inv_handler(void) {
             break;
         case S_INV:
             dev_addr = schedule[position][1];
-            if (dev_addr) i2c1_write_no_data(dev_addr, INV_I2C);
+            if (dev_addr && detected(dev_addr)) {
+                i2c1_write_no_data(dev_addr, INV_I2C);
+            }
             break;
         case S_SEN:
             dev_addr = schedule[position][1];
-            if (dev_addr) {
+            if (dev_addr && detected(dev_addr)) {
                 status = sen(dev_addr);
                 // if (status > 0) del_dev(dev_addr);
                 if (status > 0) {
@@ -213,6 +227,9 @@ void inv_handler(void) {
                     i2c1_write_no_data(dev_addr, RST_I2C);
                 }   
             }
+            break;
+        case S_ACP:
+            printf("*\n");
             break;
     }
     if (++position > 20) position = 0;
