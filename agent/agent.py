@@ -13,9 +13,11 @@ import sys
 import logging
 import math
 import re
+import argparse
 
 # Constants
-SLEEP_PERIOD = 0.01  # to sleep for 1msec in the infinit loop
+SLEEP_PERIOD = 0.001  # to sleep for 1msec in the infinit loop
+SLEEP_CMD = 0.001  # to sleep for 1msec in the infinit loop
 DISP_PERIOD = 8  # period for showing speed on LCD
 SKIP_PERIOD = 4  # period for skipping LCD process
 RECV_TIMEOUT = 10  # 10 times
@@ -62,26 +64,6 @@ CIRCUMFERENCE = 2 * math.pi * WHEEL_RADIUS
 
 def pulse2speed(pulse):
     return CIRCUMFERENCE * float(pulse) * 60.0 / PULSE_PERIOD * 60.0
-
-# receive MQTT message
-def on_message(client, userdata, message):
-    global ser, logger, skip
-    topic = message.topic
-    payload = message.payload
-    logger.info('NodeRED==>topic:{}, message:{}'.format(topic, payload))
-    data = json.loads(payload)
-    thing_name = data['thing_name']
-    device_name = data['device_name']
-    msg = data['command']
-    logging.info('thing_name: {}, device_name: {}, message: {}'.format(thing_name, device_name, msg))
-    if topic == thing_name:
-        if device_name == 'lcd':
-            s = 'DSP:{0:16s}{1:16s}'.format(msg[0], msg[1]) 
-            skip = SKIP_PERIOD
-            send(ser, s)
-        elif device_name == 'led':
-            s = 'LED:{}'.format(msg)
-            send(ser, s)
 
 # insert delay for PIC16F1 to read EUSART Rx buffer (1 byte length)
 def _send(ser, cmd):
@@ -162,12 +144,36 @@ def recv_scanner(ser):
             break
     return ''.join(buf)
 
+# receive MQTT message
+def on_message(client, userdata, message):
+    global ser, logger, skip
+    topic = message.topic
+    payload = message.payload
+    logger.info('NodeRED==>topic:{}, message:{}'.format(topic, payload))
+    data = json.loads(payload)
+    thing_name = data['thing_name']
+    device_name = data['device_name']
+    msg = data['command']
+    if topic == thing_name:
+        if device_name == 'lcd':
+            s = 'DSP:{0:16s}{1:16s}'.format(msg[0], msg[1]) 
+            skip = SKIP_PERIOD
+            send(ser, s)
+        elif device_name == 'led':
+            s = 'LED:{}'.format(msg)
+            send(ser, s)
+
 
 # main
 if __name__ == '__main__':
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--conf", help="config file name", type=str,
+            default="agent.yaml")
+    args = parser.parse_args()
+
     # read config from agent.yaml
-    with open('./agent.yaml', 'r') as f:
+    with open('./{}'.format(args.conf), 'r') as f:
         conf = yaml.load(f)
         thing_name = conf['thing_name']
         mode = conf['mode']
@@ -258,38 +264,45 @@ if __name__ == '__main__':
     while True:
         sleep(SLEEP_PERIOD)
         published = False
-        if len(txBuf) > 0:
-            ser.write(txBuf.pop(0))
         if ser and ser.in_waiting > 0: 
             raw_data = recv(ser)
-            data = raw_data.split(':')
-            try:
-                device_id = int(data[0][1:])
-                type_ = data[1]
-            except:
-                type_ = NO_DATA
-            if type_ != NO_DATA:
-                sensor_data = data[2]
-                l = sensor_data.split(',')
-                if device_id == speed:
-                    device_name = "speed"
-                    data = pulse2speed(l[0]) 
-                    speed_ph = data
-                elif device_id == temp:
-                    device_name = "temp"
-                    data = [int(l) for l in l]
-                    temp_ps = data[0]
-                    humid_ps = data[1]
-                elif device_id == accel:
-                    device_name = "accel"
-                    data = [float(l) for l in l]
-                payload = dict(timestamp=int(time()),
-                               thing_name=thing_name,
-                               device_id=device_id,
-                               device_name=device_name,
-                               data=data)
-                client.publish(topic, json.dumps(payload))
-                published = True
+            if raw_data == '*':
+                while True:
+                    if len(txBuf) == 0:
+                        break
+                    else:
+                        char = txBuf.pop(0)
+                        ser.write(char)
+                        sleep(SLEEP_CMD)
+            else:
+                data = raw_data.split(':')
+                try:
+                    device_id = int(data[0][1:])
+                    type_ = data[1]
+                except:
+                    type_ = NO_DATA
+                if type_ != NO_DATA:
+                    sensor_data = data[2]
+                    l = sensor_data.split(',')
+                    if device_id == speed:
+                        device_name = "speed"
+                        data = pulse2speed(l[0]) 
+                        speed_ph = data
+                    elif device_id == temp:
+                        device_name = "temp"
+                        data = [int(l) for l in l]
+                        temp_ps = data[0]
+                        humid_ps = data[1]
+                    elif device_id == accel:
+                        device_name = "accel"
+                        data = [float(l) for l in l]
+                    payload = dict(timestamp=int(time()),
+                                   thing_name=thing_name,
+                                   device_id=device_id,
+                                   device_name=device_name,
+                                   data=data)
+                    client.publish(topic, json.dumps(payload))
+                    published = True
 
             cnt_disp = cnt_disp + 1
             if cnt_disp >= DISP_PERIOD:
@@ -298,7 +311,7 @@ if __name__ == '__main__':
                     skip -= 1
                 else:
                     send(ser, meter(speed_ph, temp_ps))
-                    logger.info('Speed:{0:2.1f}km/h, Temp:{1:2d}C, Humid:{2:3d}%'.format(speed_ph, temp_ps, humid_ps))
+                    logger.debug('Speed:{0:2.1f}km/h, Temp:{1:2d}C, Humid:{2:3d}%'.format(speed_ph, temp_ps, humid_ps))
 
         if ser_gps and ser_gps.in_waiting > 0: 
             raw_data = recv_gps(ser_gps)

@@ -5,12 +5,18 @@ from time import sleep, time
 import yaml
 import json
 import logging
+import argparse
 
 # main
 if __name__ == '__main__':
 
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-c", "--conf", help="config file name", type=str,
+            default="agent.yaml")
+    args = parser.parse_args()
+
     # read config from agent.yaml
-    with open('./agent.yaml', 'r') as f:
+    with open('./{}'.format(args.conf), 'r') as f:
         conf = yaml.load(f)
         thing_name = conf['thing_name']
         mode = conf['mode']
