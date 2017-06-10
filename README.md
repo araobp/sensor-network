@@ -1,6 +1,6 @@
 # Mini PLC with Microchip PIC16F1
 
-This is a project to develop mini PLC in a building-block manner.
+This is a project to develop mini PLC (Programmable Logic Controller) in a building-block manner.
 
 ![compact2](./doc/compact2.png)
 
