@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/lib/protocol.X/protocol.h</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/lib/protocol.X/protocol.c</file>
+            <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/lib/protocol.X/main.c</file>
             <file>file:/C:/Users/shiny/MPLABXProjects/blocks/mini_plc/lib/protocol.X/mcc_generated_files/eusart.c</file>
         </group>
     </open-files>
