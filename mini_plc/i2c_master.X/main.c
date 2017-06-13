@@ -316,11 +316,14 @@ void exec_remote_cmd(uint8_t idx) {
         // printf("Extended command, length: %s, %d\n", buf, length);
         i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, EXT_I2C);
         i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, length);
-        
+
+        /*
         for (i=0; i<length; i++) {
             // printf("%c", buf[i]);
             status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, (uint8_t)buf[i]);                 
         }
+        */
+        i2c1_write(BACKPLANE_SLAVE_ADDRESS, buf, length);
         // printf("\n");
     }
 }
