@@ -10,7 +10,20 @@ Plug&Play protocol are supported for a master board to recognize capabilities of
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that runs on UART.
 
+```
+                    USB hub
+                     +---+
+[block A]--UART/USB--|   |
+[block B]--UART/USB--|   |--[PC or small router]
+[block C]--UART/USB--|   |
+                     +---+
+```
+
 It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx).
+
+```
+[block A]---[block B]---[block C]---[Scheduler]--UART/USB--[PC or small router]
+```
 
 ## PIC16F1 MCU models
 
