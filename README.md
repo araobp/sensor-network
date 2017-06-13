@@ -17,12 +17,16 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 [block B]--UART/USB--|   |--[PC or small router]
 [block C]--UART/USB--|   |
                      +---+
+                     
+               hub&spoke topology
 ```
 
 It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx).
 
 ```
 [block A]---[block B]---[block C]---[Scheduler]--UART/USB--[PC or small router]
+
+               bus topology (daisy-chain)
 ```
 
 ## PIC16F1 MCU models
