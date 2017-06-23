@@ -142,10 +142,10 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                             break;
                         case EXT_VALUE:
                             ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
-                            if (ext_cnt >= ext_len) {
+                            if (ext_len == 1) {
                                 if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
                                 next = DEFAULT;
-                            }
+                            }                            
                             break;
                         case DEFAULT:
                             switch(I2C_slaveWriteData) {
@@ -183,6 +183,13 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                     break;
 
                 case SLAVE_NORMAL_DATA:
+                    if (next == EXT_VALUE) {
+                        ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
+                        if (ext_cnt >= ext_len) {
+                            if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
+                            next = DEFAULT;
+                        }
+                    }
                     break;
                 default:
                     break;
