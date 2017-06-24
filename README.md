@@ -104,4 +104,4 @@ Including it as a library:
 - [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./mini_plc/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
 - [5V: Acceleration sensor block （KXR94-2050)](./mini_plc/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./mini_plc/i2c_slave_speed.X), [pin assignment](./doc/rotation_pin.png)
-- [5V: Temperature and humidity sensor block (HDC1000)](./mini_plc/i2c_temp.X)
+- [5V: Temperature and humidity sensor block (HDC1000)](./mini_plc/i2c_slave_temp.X)
