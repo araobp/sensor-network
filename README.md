@@ -15,7 +15,11 @@ This is a project to develop a networking protocol and building blocks for local
 
 ![daisy_chain](./doc/daisy_chain.png)
 
-## Interfaces among building blocks
+## Network architecture
+
+The network is composed of multiple blocks and one scheduler.
+
+#### Interfaces among building blocks
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that runs on UART.
 
@@ -23,7 +27,7 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
                     USB hub
                      +---+
 [block A]--UART/USB--|   |
-[block B]--UART/USB--|   |--[mini PLC]
+[block B]--UART/USB--|   |--USB--[IoT GW]
 [block C]--UART/USB--|   |
                      +---+
                      
@@ -33,25 +37,27 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx).
 
 ```
-        <- - - - I2C backplane - - - ->
-[block A]---[block B]---[block C]---[Scheduler]--UART/USB--[mini PLC]
+      <- - - - - I2C backplane - - - - ->
+[block A]---[block B]---[block C]---[Scheduler]--UART/USB--[IoT GW]
 
             bus topology (daisy-chain)
 ```
 
-## 8bit MCU
+#### 8bit MCU as core of block
 
-I have concluded that [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) is the best choice for this project.
+I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements.
 
 ![pic16f1](./doc/starting_project.png)
 
-## Base board prototype
+#### Base board prototype
+
+The base board below is a common hardware part of the blocks:
 
 ![prototype3](./doc/prototype3.png)
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
-##### Construct examples
+## Networking examples
 
 One I2C master and three I2C slaves are connected with each other via backplane bus:
 
