@@ -2,12 +2,12 @@
 
 ## Background and motivation
 
-I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require open wired sensor networking technologies that satisfiy the requirements below:
+I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require a communication protocol for wired sensor networking, satisfiying the requirements below:
 
 - low power consumption and lower voltage (5V or 3.3V)
 - bus topology rather than hub and spoke
 - two-wire
-- cheap (~$1) and open
+- cheap (~$1 per node) and open
 - small software footprint
 
 There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling management (BACnet) or factory automation (PROFINET), but none of them satisfies the requirements above.
@@ -18,7 +18,18 @@ This is a project to develop a networking protocol and building blocks for local
 
 ## Network architecture
 
-The network is composed of multiple blocks and one scheduler.
+The network is composed of multiple nodes(blocks) and one scheduler.
+
+```
+     -----+---------------------+---------------------------+-------- bus
+          |                     |                           |
+   +------|-----+        +------|-----+              +------|-----+
+   |   [node]   |        |   [node]   |              |   [node]   |
+   |      |     |        |      |     |              |      |     |                  (         )
+   |  [sensor]  |        |  [sensor]  |              |      +------------[IoT GW]---(   Cloud   )
+   +------------+        +------------+    . . .     +------------+                  (         )
+       block                 block                     scheduler
+```
 
 #### Interfaces among building blocks
 
