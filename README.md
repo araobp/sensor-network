@@ -1,4 +1,4 @@
-# Building blocks for wired sensor network
+# Local wired sensor network
 
 ## Background and motivation
 
@@ -11,11 +11,9 @@ I have developed a lot of IoT prototypes so far, then I have observed that most 
 
 There are a lot of such technologies for in-vehicle network, buidling management or factory automation, but none of them satisfies the requirements above.
 
-This is a project to develop a light-weight protocol and building-blocks for wired sensor network.
+This is a project to develop a networking protocol and building blocks for local wired sensor network.
 
-![compact2](./doc/compact2.png)
-
-Plug&Play protocol are supported for a master board to recognize capabilities of all its slaves in a plug&play manner.
+![daisy_chain](./doc/daisy_chain.png)
 
 ## Interfaces among building blocks
 
@@ -62,8 +60,6 @@ One I2C master and three I2C slaves are connected with each other via backplane 
 A similar construct to the above, but all the boards are connected with each other via daisy-chain:
 
 ![daisy_chain](./doc/daisy_chain.png)
-
-To extend the distance of bus signal reachability, use CAN standalone controller (SPI): [MCP2525](http://ww1.microchip.com/downloads/en/DeviceDoc/21801e.pdf).
 
 ## Implementation
 
