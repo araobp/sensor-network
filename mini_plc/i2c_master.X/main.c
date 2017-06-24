@@ -264,14 +264,15 @@ void extension_handler(uint8_t *buf) {
 void exec_remote_cmd(uint8_t idx) {
     uint8_t data;
     uint8_t type;
-    uint8_t length;
-    uint8_t i, status;
+    uint8_t i, j;
+    uint8_t status;
 
     /***** For debug commands *****/
     static uint8_t dev_addr;
     static uint8_t reg_addr;
 
     char *buf = cmd_buf[idx];
+    uint8_t send_buf[BUF_SIZE + 2];
     
     if (!strncmp(WHO, buf, 3)) {
         status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, WHO_I2C, &data, 1);
@@ -310,20 +311,15 @@ void exec_remote_cmd(uint8_t idx) {
         }
     /* Extended commands */
     } else {
-        length = 0;
+        i = 0;
+        j = 2;
         do {
-        } while (buf[length++] != '\0');
-        // printf("Extended command, length: %s, %d\n", buf, length);
-        i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, EXT_I2C);
-        i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, length);
-
-        /*
-        for (i=0; i<length; i++) {
-            // printf("%c", buf[i]);
-            status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, (uint8_t)buf[i]);                 
-        }
-        */
-        i2c1_write(BACKPLANE_SLAVE_ADDRESS, buf, length);
+            send_buf[j++] = (uint8_t)buf[i];
+        } while (buf[i++] != '\0');
+        send_buf[0] = EXT_I2C;
+        send_buf[1] = i;
+        status = i2c1_write(BACKPLANE_SLAVE_ADDRESS, send_buf, j);
+        if (status != 0) printf("!:NO ACK FROM I2C SLAVE\n");
         // printf("\n");
     }
 }

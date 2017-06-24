@@ -40,8 +40,8 @@ void I2C1_Initialize(void)
     SSP1STAT = 0x80;
     // SSPEN enabled; WCOL no_collision; CKP disabled; SSPM 7 Bit Polling; SSPOV no_overflow; 
     SSP1CON1 = 0x26;
-    // ACKEN disabled; GCEN enabled; PEN disabled; ACKDT acknowledge; RSEN disabled; RCEN disabled; ACKSTAT received; SEN disabled; 
-    SSP1CON2 = 0x80;
+    // ACKEN disabled; GCEN enabled; PEN disabled; ACKDT acknowledge; RSEN disabled; RCEN disabled; ACKSTAT received; SEN enabled; 
+    SSP1CON2 = 0x81;
     // ACKTIM ackseq; SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 
     SSP1CON3 = 0x00;
     // SSPMSK 127; 
@@ -135,18 +135,6 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                             PROTOCOL_SET(I2C_slaveWriteData);
                             next = DEFAULT;
                             break;
-                        case EXT_LENGTH:
-                            ext_len = I2C_slaveWriteData;
-                            ext_cnt = 0;
-                            next = EXT_VALUE;
-                            break;
-                        case EXT_VALUE:
-                            ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
-                            if (ext_len == 1) {
-                                if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
-                                next = DEFAULT;
-                            }                            
-                            break;
                         case DEFAULT:
                             switch(I2C_slaveWriteData) {
                                 case STA_I2C:
@@ -183,12 +171,19 @@ void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
                     break;
 
                 case SLAVE_NORMAL_DATA:
-                    if (next == EXT_VALUE) {
-                        ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
-                        if (ext_cnt >= ext_len) {
-                            if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
-                            next = DEFAULT;
-                        }
+                    switch(next) {
+                        case EXT_LENGTH:
+                            ext_len = I2C_slaveWriteData;
+                            ext_cnt = 0;
+                            next = EXT_VALUE;
+                            break;
+                        case EXT_VALUE:
+                            ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
+                            if (ext_cnt >= ext_len) {
+                                if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
+                                next = DEFAULT;
+                            }
+                            break;
                     }
                     break;
                 default:

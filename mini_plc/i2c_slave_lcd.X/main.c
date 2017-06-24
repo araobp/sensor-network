@@ -112,8 +112,6 @@ void lcd_test(void) {
     write_data(0x29);  // )
 }
 
-bool lock = false;
-
 void extension_handler(char *buf) {
     uint8_t value;
     if (!PROTOCOL_Read_Lock()) {
@@ -121,7 +119,6 @@ void extension_handler(char *buf) {
         PROTOCOL_Set_Lock(true);
     }
 }
-
 
 void loop_func(void) {
     uint8_t value;
@@ -189,6 +186,8 @@ void main(void)
     lcd_init();
     //lcd_arao();
     lcd_test();
+    
+    // turn LED off
     LATCbits.LATC7 = 1;
     
     // USART initialization
