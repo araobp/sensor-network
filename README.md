@@ -1,6 +1,17 @@
-# Mini PLC with Microchip PIC16F1
+# Building blocks for wired sensor network
 
-This is a project to develop mini PLC (Programmable Logic Controller) in a building-block manner.　In this project, I use Android smart phone, PC or small router as mini PLC.
+## Background and motivation
+
+I have developed a lot of IoT prototypes both at work and as my hobby, then I have observed that most of my IoT projects require open wired sensor networking technologies that satisfiy the requirements as follows:
+
+- low power consumption
+- bus topology rather than hub and spoke
+- cheap and open
+- compact and small footprint
+
+There are a lot of such technologies for in-vehicle network, buidling management or factory automation, but none of them satisfies the requirements above.
+
+This is a project to develop a light-weight protocol and building-blocks for wired sensor network.
 
 ![compact2](./doc/compact2.png)
 
