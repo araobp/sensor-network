@@ -6,7 +6,7 @@ I have developed a lot of IoT prototypes so far, then I have observed that most 
 
 - low power consumption
 - bus topology rather than hub and spoke
-- cheap and open
+- cheap (~$1) and open
 - compact and small footprint
 
 There are a lot of such technologies for in-vehicle network, buidling management or factory automation, but none of them satisfies the requirements above.
