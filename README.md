@@ -9,7 +9,7 @@ I have developed a lot of IoT prototypes so far, then I have observed that most 
 - cheap (~$1) and open
 - compact and small footprint
 
-There are a lot of such technologies for in-vehicle network, buidling management or factory automation, but none of them satisfies the requirements above.
+There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling management (BACnet) or factory automation (PROFINET), but none of them satisfies the requirements above.
 
 This is a project to develop a networking protocol and building blocks for local wired sensor network.
 
