@@ -27,7 +27,7 @@ I use [Node-RED](https://nodered.org/) quite often to visualize sensor data. Nod
 The network is composed of multiple nodes(blocks) and one scheduler.
 
 ```
-     -----+---------------------+---------------------------+-------- bus
+     -----+---------------------+---------------------------+-------- I2C bus
           |                     |                           |
    +------|-----+        +------|-----+              +------|-----+
    |   [node]   |        |   [node]   |              |   [node]   |
@@ -37,6 +37,8 @@ The network is composed of multiple nodes(blocks) and one scheduler.
        block                 block                     scheduler
       (slave)               (slave)                    (master)
 ```
+
+Note: I am going to support CAN bus as well.
 
 #### Interfaces among blocks
 
