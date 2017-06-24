@@ -69,14 +69,9 @@ Including it as a library:
 - [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
 - [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
 
-#### Devices
+#### Blocks
 
-=> [USAGE](./doc/USAGE.md)
-
-- [5V: Just red LED & tactile switch (Omron B3J-1000 or small one)]
-- [5V: Solenoid (SparkFun ROB11015)]
-- [5V: Character LCD actuator block](./mini_plc/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
-- [5V: Distance sensor block (HC-SR04)], [pin assignment](./doc/distance_pin.png)
+- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./mini_plc/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
 - [5V: Acceleration sensor block （KXR94-2050)](./mini_plc/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./mini_plc/i2c_slave_speed.X), [pin assignment](./doc/rotation_pin.png)
-- [5V: Servo motor actuator block (TowerPro sg90)], [pin assignment](./doc/servomotor_pin2.png), [duty at 3%](./doc/duty@3.BMP), [duty at 12%](./doc/duty@12.BMP)
+- [5V: Temperature and humidity sensor block (HDC1000)](./mini_plc/i2c_temp.X)
