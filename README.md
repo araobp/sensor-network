@@ -2,6 +2,8 @@
 
 ## Background and motivation
 
+#### Problems
+
 I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require a communication protocol for wired sensor networking, satisfiying the requirements below:
 
 - low power consumption and lower voltage (5V or 3.3V)
@@ -15,6 +17,10 @@ There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling 
 This is a project to develop a networking protocol and building blocks for local wired sensor network.
 
 ![daisy_chain](./doc/daisy_chain.png)
+
+#### Hardware-version of Node-RED
+
+I use [Node-RED](https://nodered.org/) quite often to visualize sensor data. Nodes on Node-RED are connected with each other via wires. I imagined something like hardware-version of flow-based programming.
 
 ## Network architecture
 
