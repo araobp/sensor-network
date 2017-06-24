@@ -2,7 +2,7 @@
 
 ## Background and motivation
 
-#### Problems
+### Problems
 
 I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require a communication protocol for wired sensor networking, satisfiying the requirements below:
 
@@ -18,7 +18,7 @@ This is a project to develop a networking protocol and building blocks for local
 
 ![daisy_chain](./doc/daisy_chain.png)
 
-#### Hardware-version of Node-RED
+### Hardware-version of Node-RED
 
 I use [Node-RED](https://nodered.org/) quite often to visualize sensor data. Nodes on Node-RED are connected with each other via wires. I imagined something like hardware-version of flow-based programming.
 
@@ -40,7 +40,7 @@ The network is composed of multiple nodes(blocks) and one scheduler.
 
 Note: I am going to support CAN bus as well.
 
-#### Interfaces among blocks
+### Interfaces among blocks
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that runs on UART.
 
@@ -64,11 +64,11 @@ It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx
             bus topology (daisy-chain)
 ```
 
-#### 8bit MCU as core of node
+### 8bit MCU as core of node
 
 I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements.
 
-#### Node prototype
+### Node prototype
 
 The base board below is a common hardware part of node:
 
@@ -90,7 +90,7 @@ A similar construct to the above, but all the boards are connected with each oth
 
 Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
 
-#### Plug&Play protocol
+### Plug&Play protocol
 
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
 - [Implementation](./mini_plc/lib/protocol.X)
@@ -101,7 +101,7 @@ Including it as a library:
 - [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
 - [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
 
-#### Blocks
+### Blocks
 
 - [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./mini_plc/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
 - [5V: Acceleration sensor block （KXR94-2050)](./mini_plc/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
