@@ -2,7 +2,7 @@
 
 ## Background and motivation
 
-I have developed a lot of IoT prototypes both at work and as my hobby, then I have observed that most of my IoT projects require open wired sensor networking technologies that satisfiy the requirements below:
+I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require open wired sensor networking technologies that satisfiy the requirements below:
 
 - low power consumption
 - bus topology rather than hub and spoke
