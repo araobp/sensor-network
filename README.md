@@ -4,10 +4,11 @@
 
 I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require open wired sensor networking technologies that satisfiy the requirements below:
 
-- low power consumption
+- low power consumption and lower voltage (5V or 3.3V)
 - bus topology rather than hub and spoke
+- two-wire
 - cheap (~$1) and open
-- compact and small footprint
+- small software footprint
 
 There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling management (BACnet) or factory automation (PROFINET), but none of them satisfies the requirements above.
 
