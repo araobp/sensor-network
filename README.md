@@ -76,11 +76,11 @@ The base board below is a common hardware part of node:
 
 ## Networking examples
 
-One I2C master and three I2C slaves are connected with each other via backplane bus:
+One I2C master and three I2C slaves are connected with each other via backplane bus on the back of base board
 
 ![compact](./doc/compact.png)
 
-A similar construct to the above, but all the boards are connected with each other via daisy-chain:
+A similar construct to the above, but all the boards are connected with each other in a daisy-chain manner:
 
 ![daisy_chain](./doc/daisy_chain.png)
 
