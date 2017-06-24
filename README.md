@@ -29,9 +29,10 @@ The network is composed of multiple nodes(blocks) and one scheduler.
    |  [sensor]  |        |  [sensor]  |              |      +------------[IoT GW]---(   Cloud   )
    +------------+        +------------+    . . .     +------------+                  (         )
        block                 block                     scheduler
+      (slave)               (slave)                    (master)
 ```
 
-#### Interfaces among building blocks
+#### Interfaces among blocks
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that runs on UART.
 
@@ -55,15 +56,15 @@ It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx
             bus topology (daisy-chain)
 ```
 
-#### 8bit MCU as core of block
+#### 8bit MCU as core of node
 
 I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements.
 
 ![pic16f1](./doc/starting_project.png)
 
-#### Base board prototype
+#### Node prototype
 
-The base board below is a common hardware part of the blocks:
+The base board below is a common hardware part of node:
 
 ![prototype3](./doc/prototype3.png)
 
