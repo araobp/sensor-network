@@ -1,5 +1,6 @@
 #include "mcc_generated_files/mcc.h"
 #include "i2c1_util.h"
+#include "protocol.h"
 
 // I2C write
 uint8_t i2c1_write(uint16_t dev_addr, uint8_t *pbuf, uint8_t len) {
