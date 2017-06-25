@@ -24,7 +24,7 @@ I use [Node-RED](https://nodered.org/) quite often to visualize sensor data. Nod
 
 ### Physical wiring
 
-In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html#proimage).
+In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html).
 
 ## Network architecture
 
