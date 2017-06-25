@@ -1,6 +1,0 @@
-
-[raspi]
-192.168.8.122 ansible_user=pi
-
-[openwrt]
-192.168.57.10[1:3] ansible_user=root

@@ -57,7 +57,7 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
 [block B]--UART/USB--|   |--USB--[IoT GW]
 [block C]--UART/USB--|   |
                      +---+
-                     
+
                hub&spoke topology
 ```
 
@@ -99,7 +99,7 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 ### Plug&Play protocol
 
 - [Plug&play protocol specification](./doc/PROTOCOL.md)
-- [Implementation](./mini_plc/lib/protocol.X)
+- [Implementation](./blocks/lib/protocol.X)
 
 Including it as a library:
 - [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
@@ -109,7 +109,7 @@ Including it as a library:
 
 ### Blocks
 
-- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./mini_plc/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
-- [5V: Acceleration sensor block （KXR94-2050)](./mini_plc/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
-- [5V: Speed sensor block (A1324LUA-T)](./mini_plc/i2c_slave_speed.X), [pin assignment](./doc/rotation_pin.png)
-- [5V: Temperature and humidity sensor block (HDC1000)](./mini_plc/i2c_slave_temp.X)
+- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./blocks/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
+- [5V: Acceleration sensor block （KXR94-2050)](./blocks/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
+- [5V: Speed sensor block (A1324LUA-T)](./blocks/i2c_slave_speed.X), [pin assignment](./doc/rotation_pin.png)
+- [5V: Temperature and humidity sensor block (HDC1000)](./blocks/i2c_slave_temp.X)
