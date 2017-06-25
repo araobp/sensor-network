@@ -44,6 +44,8 @@ Note: I am going to support CAN bus as well.
 
 In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires among nodes: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html). Telephone line makes physical wirling very easy.
 
+6P4C telephone line is suitable for I2C with power line: SDA, SCL, 5V, GND.
+
 ### Interfaces among blocks
 
 All the blocks developed in this project support [Plug&Play protocol](./doc/PROTOCOL.md) that runs on UART.
