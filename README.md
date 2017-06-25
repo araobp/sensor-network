@@ -22,6 +22,10 @@ This is a project to develop a networking protocol and building blocks for local
 
 I use [Node-RED](https://nodered.org/) quite often to visualize sensor data. Nodes on Node-RED are connected with each other via wires. I imagined something like hardware-version of flow-based programming.
 
+### Physical wiring
+
+In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html#proimage).
+
 ## Network architecture
 
 The network is composed of multiple nodes(blocks) and one scheduler.
