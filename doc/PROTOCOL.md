@@ -1,8 +1,15 @@
 # Plug&play protocol (UART/I2C)
 
-This is a very simple I/O link supporting Plug&Play. This protocol works over UART or I2C at a minimal cost. I am also considering to support it over LIN.
+Update: 2017-JUN-28
+
+This is a very simple I/O link supporting Plug&Play. This protocol works over UART and I2C at a minimal cost. I am also considering to support it over CAN.
 
 ## Common operations among the blocks
+
+Legend
+W: I2C Write
+R: I2C Read
+G: I2C General Call
 
 #### WHO (R)0x01 (who are you?)
 ```
@@ -27,13 +34,13 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
 
 The current setting is saved in PIC'S EEPROM.
 
-#### STA (start sending data / UART only)
+#### STA (W)0x04 (start sending data / UART only)
 ```
   slave              master
     |<------STA--------|
 ```
 
-#### STP (stop sending data / UART only)
+#### STP (W)0x05 (stop sending data / UART only)
 ```
   slave              master
     |<------STP--------|
@@ -41,7 +48,13 @@ The current setting is saved in PIC'S EEPROM.
     |-------ACK------->|
 ```
 
-#### SEN (R)0x06 (request sensor data/ I2C only)
+#### INV (W)0x06 (invoke sensor data collection / I2C only)
+```
+  slave              master
+    |<------INV--------|
+```
+
+#### SEN (R)0x07 (request sensor data/ I2C only)
 ```
  slave              master
    |<------SEN--------|
@@ -49,7 +62,7 @@ The current setting is saved in PIC'S EEPROM.
    |-----<value>----->|
 ```
 
-#### SET (W)0x07 (set the new setting to the device)
+#### SET (W)0x08 (set the new setting to the device)
 ```
   slave              master
     |<---SET:<value>---|
@@ -63,20 +76,13 @@ The current setting is saved in PIC'S EEPROM.
    |-----<value>----->|
 ```
 
-#### STS (R)0x09 (status check / I2C only)
+#### WDA (Write I2C slave device address / UART only)
 ```
 slave              master
-  |<------STS--------|
-  |                  |
-  |----<status>----->|
-  |                  | if status = "data exits", then...
-  |<------SEN--------|
-  |                  |
-  |-----<value>----->|
-
+  |<------EXT--------|
 ```
 
-#### WDA (Write I2C slave device address / UART only)
+#### EXT (W)0x10 (send extended command / I2C only)
 ```
 slave              master
   |<----WDA:<id>-----|
@@ -112,7 +118,7 @@ slave              master
 
 ## TLV format of SEN response payload
 
-I2C backplane master sends SEN to I2C backplane slave to fetch sensor data. The data follows this format:
+I2C backplane master sends SEN to I2C backplane slave to fetch sensor data. The data follows this format, and MSB is sent before LSB:
 
 ```
 +------+------+-------------------+
@@ -145,11 +151,11 @@ I2C backplane master sends EXT_I2C to I2C backplane slave to send a char array o
 +-------+------+---------------------------+
 ```
 
-Note that Length includes '\0'.
+Note that Length is the number of characters including '\0'.
 
 ## Block-specific operations
 
-### Backplane master
+### Backplane master (scheduler)
 
 #### PLG (detect I2C backplane slave plug-in)
 
@@ -177,107 +183,81 @@ address = 1 means I2C backplane Master.
 
 #### MAP (show device map)
 ```
-  slave                     master
+  slave                                      master
 (backplane master)
-    |<-------MAP---------------|
-    |                          |
-    |------<cvs in hex>------->|
+    |<-----------------MAP---------------------|
+    |                                          |
+    |--$:MAP:<list of slave addresses in CSV-->|
+    
+    *1  $:MAP:<list of slave addresses in CSV>
 ```
 
 #### % (sensor data)
 ```
-slave                               master
+slave                                        master
 (backplane master)
-  |---%<address>:<data in decimal>---->|
+  |---%<address>:<type:<data array in CSV>---->|
 ```
 
 Example:
 ```
-%10:0.09,-0.13,+1.06
-```
-
-### Backplane Master (for debugging)
-
-#### DEV (set device address)
-```
- slave              master
-   |<----DEV:<dev>----|
-```
-
-#### REG (set register address)
-```
-slave              master
-|<----REG:<reg>----|
-```
-
-#### RED (read)
-```
-slave              master
-  |<------RED--------|
-  |                  |
-  |-----<value>----->|
-```
-
-#### WRT (write value)
-```
- slave              master
-   |-------WRT------->|
+%10:FLOAT:0.09,-0.13,+1.06
 ```
 
 ### Character LCD block
 
-#### INI (W)0x20 (initialize LCD)
+#### INI (initialize LCD)
 ```
  slave              master
    |<------INI--------|
 ```
 
-#### CMD (W)0x21 (command)
+#### CMD (command)
 ```
  slave              master
    |<----CMD:<cmd>----|
 ```
 "cmd" is one-byte command in decimal.
 
-#### DAT (W)0x22 (data)
+#### DAT (data)
 ```
  slave              master
    |<---DAT:<data>----|
 ```
 "data" is one-byte data in decimal.
 
-#### CLR (W)0x23 (clear)
+#### CLR (clear)
 ```
  slave              master
    |<------CLR--------|
 ```
 
-#### STR (W)0x24 (string)
+#### STR (string)
 ```
  slave              master
    |<--STR:<string>---|
 ```
 "string" is string data in ASCII code.
 
-#### CUL (W)0x25 (move cursur left)
+#### CUL (move cursur left)
 ```
  slave              master
    |<------CUL--------|
 ```
 
-#### CUR (W)0x26 (move cursor right)
+#### CUR (move cursor right)
 ```
  slave              master
    |<------CUR--------|
 ```
 
-#### NWL (W)0x27 (new line)
+#### NWL (new line)
 ```
  slave              master
    |<------NWL--------|
 ```
 
-#### HOM (W)0x28 (return home)
+#### HOM (return home)
 ```
  slave              master
    |<------HOM--------|
@@ -292,7 +272,12 @@ slave              master
 
 ## I2C address registry
 
-|Address |Device ID              |Capability           |
-|--------|-----------------------|---------------------|
-|0x01(01)|BACKPLANE_MASTER       |I2C master           |
-|0x10(16)|AQM1602XA-RN-GBW       |Character LCD        |
+|Address |Device ID              |Capability                     |
+|--------|-----------------------|-------------------------------|
+|0x01(01)|BACKPLANE_MASTER       |I2C master                     |
+|0x10(16)|AQM1602XA-RN-GBW       |Character LCD                  |
+|0x11(17)|A1324LUA_T             |Hall sensor                    |
+|0x12(18)|HDC1000                |Temperature and humidity sensor|
+|0x13(19)|KXR94_2050             |Three-axis accelerometer       |
+
+
