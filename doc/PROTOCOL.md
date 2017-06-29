@@ -274,10 +274,10 @@ Example:
 
 |Address |Device ID              |Capability                     |
 |--------|-----------------------|-------------------------------|
-|0x01(01)|BACKPLANE_MASTER       |I2C master                     |
+|0x01(01)|BACKPLANE-MASTER       |I2C master                     |
 |0x10(16)|AQM1602XA-RN-GBW       |Character LCD                  |
-|0x11(17)|A1324LUA_T             |Hall sensor                    |
+|0x11(17)|A1324LUA-T             |Hall sensor                    |
 |0x12(18)|HDC1000                |Temperature and humidity sensor|
-|0x13(19)|KXR94_2050             |Three-axis accelerometer       |
+|0x13(19)|KXR94-2050             |Three-axis accelerometer       |
 
 
