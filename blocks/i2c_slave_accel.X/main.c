@@ -36,7 +36,7 @@ void main(void)
     ADC_Initialize();
 
     // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 10);
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 50);
 
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();

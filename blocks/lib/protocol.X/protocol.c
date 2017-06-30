@@ -133,12 +133,12 @@ bool PROTOCOL_Read_Lock(void) {
 void PROTOCOL_Loop() {
     uint8_t device_address;
     while (1) {
-        tmr_overflow = TMR0_HasOverflowOccured();  // 50 msec
-        if (PROTOCOL_Inv_Handler && tmr_overflow) {
+        tmr_overflow = TMR0_HasOverflowOccured();
+        if (tmr_overflow) {
             TMR0IF = 0;
-            if (++tmr_cnt >= value) {
+            if (PROTOCOL_Inv_Handler && (++tmr_cnt >= value)) {
                 tmr_cnt = 0;
-                if (++sec_cnt >= tmr_scaler) {  // every 1 sec
+                if (++sec_cnt >= tmr_scaler) {
                     if (running) invoked = true;
                     sec_cnt = 0;
                 }

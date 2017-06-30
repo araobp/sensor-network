@@ -13,7 +13,7 @@
   @Description
     This source file provides APIs for TMR0.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.3
         Device            :  PIC16F1829
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -55,7 +55,6 @@
 */
 
 volatile uint8_t timer0ReloadVal;
-void (*TMR0_InterruptHandler)(void);
 /**
   Section: TMR0 APIs
 */
@@ -64,14 +63,14 @@ void TMR0_Initialize(void)
 {
     // Set TMR0 to the options selected in the User Interface
 
-    // PSA assigned; PS 1:32; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
-    OPTION_REG = (OPTION_REG & 0xC0) | 0xD4 & 0x3F; 
+    // PSA assigned; PS 1:8; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
+    OPTION_REG = (OPTION_REG & 0xC0) | 0xD2 & 0x3F; 
 
-    // TMR0 61; 
-    TMR0 = 0x3D;
+    // TMR0 100; 
+    TMR0 = 0x64;
 
     // Load the TMR value to reload variable
-    timer0ReloadVal= 61;
+    timer0ReloadVal= 100;
 
     // Clearing IF flag
     INTCONbits.TMR0IF = 0;

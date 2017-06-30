@@ -5,7 +5,7 @@
 #include <string.h>
 
 #define _XTAL_FREQ 500000
-#define DEVICE_ID "BACKPLANE_MASTER"
+#define DEVICE_ID "BACKPLANE-MASTER"
 
 // Backplane-master-specific commands
 #define I2C "I2C"

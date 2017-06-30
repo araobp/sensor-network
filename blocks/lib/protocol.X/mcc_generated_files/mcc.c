@@ -13,7 +13,7 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.3
         Device            :  PIC16F1829
         Driver Version    :  1.02
     The generated drivers are tested against the following:
@@ -72,6 +72,7 @@ void SYSTEM_Initialize(void)
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     WDT_Initialize();
+    TMR0_Initialize();
     EUSART_Initialize();
 }
 
@@ -81,8 +82,6 @@ void OSCILLATOR_Initialize(void)
     OSCCON = 0x38;
     // TUN 0; 
     OSCTUNE = 0x00;
-    // Set the secondary oscillator
-    
 }
 
 void WDT_Initialize(void)
