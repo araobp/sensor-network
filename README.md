@@ -74,6 +74,10 @@ It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx
 
 I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements.
 
+Clock speed:
+- 500kHz typical
+- 32MHz (8MHz w/ PLL) for an accelerometer requiring high sampling rate.
+
 ### Node prototype
 
 The base board below is a common hardware part of node:
