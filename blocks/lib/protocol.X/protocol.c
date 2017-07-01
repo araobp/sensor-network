@@ -28,6 +28,7 @@ uint8_t sec_cnt = 0;
 uint8_t tmr_cnt = 0;
 uint8_t tmr_scaler = 1;
 bool tmr_overflow = false;
+uint8_t type_no_data = TYPE_NO_DATA;
 
 // I2C backplane
 typedef enum {
@@ -402,7 +403,7 @@ uint8_t* PROTOCOL_I2C_SEN(void) {
             }
             break;
         case COMPLETE:
-            pdata = TYPE_NO_DATA;
+            pdata = &type_no_data;
             break;
     }
     return pdata;

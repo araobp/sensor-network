@@ -25,10 +25,12 @@
 // Time slots
 #define S_PLG 0x00  // detect new device ([pl]u[g]-in) 
 #define S_ADT 0x01  // periodic [a]u[d]i[t] (preserved)
-#define S_INV 0x02  // [inv]oke device to execute command
-#define S_SEN 0x03  // fetch [sen]sor data from device
+#define S_INV 0x02  // [inv]oke device to execute command and fetch sensor data
+#define S_NOP 0x03  // No operation
 #define S_CMD 0x04  // execute [c]o[m]man[d]
 #define S_ACP 0x05  // [ac]ce[p]t command
+
+#define INV_SEN_DELAY 3  // INV -> SEN delay
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
@@ -175,22 +177,22 @@ uint8_t schedule[20][2] = {
     {S_ACP, 0},               // 1
     {S_CMD, 0},               // 2
     {S_INV, HDC1000_I2C},     // 3
-    {S_SEN, 0},               // 4
+    {S_ADT, 0},               // 4
     {S_INV, A1324LUA_T_I2C},  // 5
-    {S_SEN, KXR94_2050_I2C},  // 6
+    {S_NOP, 0},               // 6
     {S_INV, KXR94_2050_I2C},  // 7
-    {S_SEN, 0},               // 8
-    {S_ADT, 0},               // 9
+    {S_NOP, 0},               // 8
+    {S_NOP, 0},               // 9
     {S_ACP, 0},               // 10
     {S_CMD, 0},               // 11
-    {S_INV, 0},               // 12
-    {S_SEN, HDC1000_I2C},     // 13
-    {S_INV, 0},               // 14
-    {S_SEN, A1324LUA_T_I2C},  // 15
-    {S_INV, 0},               // 16
-    {S_SEN, KXR94_2050_I2C},  // 17
-    {S_INV, KXR94_2050_I2C},  // 18
-    {S_SEN, 0}                // 19
+    {S_NOP, 0},               // 12
+    {S_NOP, 0},               // 13
+    {S_NOP, 0},               // 14
+    {S_NOP, 0},               // 15
+    {S_NOP, 0},               // 16
+    {S_INV, KXR94_2050_I2C},  // 17
+    {S_NOP, 0},               // 18
+    {S_NOP, 0}                // 19
 };
 
 uint8_t current[2];
@@ -215,11 +217,7 @@ void inv_handler(void) {
             dev_addr = schedule[position][1];
             if (dev_addr && detected(dev_addr)) {
                 i2c1_write_no_data(dev_addr, INV_I2C);
-            }
-            break;
-        case S_SEN:
-            dev_addr = schedule[position][1];
-            if (dev_addr && detected(dev_addr)) {
+                __delay_ms(INV_SEN_DELAY);
                 status = sen(dev_addr);
                 // if (status > 0) del_dev(dev_addr);
                 if (status > 0) {
@@ -256,7 +254,7 @@ void extension_handler(uint8_t *buf) {
         BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
     } else if (!strncmp(MAP, buf, 3)) {
         print_dev_map();
-    } else {
+    } else if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {
         put_cmd(buf);
     }
 }
@@ -293,18 +291,6 @@ void exec_remote_cmd(uint8_t idx) {
     } else if (!strncmp(GET, buf, 3)) {
         i2c1_read(BACKPLANE_SLAVE_ADDRESS, GET_I2C, &data, 1);
         printf("$:GET:%d\n", data);
-    /***** Debug commands *****/
-    } else if (!strncmp(DEV, buf, 3)) {
-        dev_addr = atoi(&buf[4]);
-    } else if (!strncmp(REG, buf, 3)) {
-        reg_addr = atoi(&buf[4]);
-    } else if (!strncmp(RED, buf, 3)) {
-        i2c1_read(dev_addr, reg_addr, &data, 1);
-        printf("%d\n", data);
-    } else if (!strncmp(WRT, buf, 3)) {
-        data = atoi(&buf[4]);
-        i2c1_write_no_data(dev_addr, reg_addr);
-        i2c1_write_no_data(dev_addr, data);
     } else if (!strncmp(SEN, buf, 3)) {
         if (sen(BACKPLANE_SLAVE_ADDRESS) > 0) {
             printf("!:SEN:DATA NOT READY\n");

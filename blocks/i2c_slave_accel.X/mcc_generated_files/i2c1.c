@@ -9,7 +9,7 @@
 #define EXT_LENGTH 0x02
 #define EXT_VALUE  0x03
 
-#define _XTAL_FREQ 500000
+#define _XTAL_FREQ 32000000
 
 typedef enum
 {
