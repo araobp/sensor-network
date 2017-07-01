@@ -1,21 +1,21 @@
 /**
-  @Generated MPLAB(c) Code Configurator Header File
+  TMR0 Generated Driver File
 
-  @Company:
+  @Company
     Microchip Technology Inc.
 
-  @File Name:
-    mcc.h
+  @File Name
+    tmr0.c
 
-  @Summary:
-    This is the mcc.h file generated using MPLAB(c) Code Configurator
+  @Summary
+    This is the generated driver implementation file for the TMR0 driver using MPLAB(c) Code Configurator
 
-  @Description:
-    This header file provides implementations for driver APIs for all modules selected in the GUI.
+  @Description
+    This source file provides APIs for TMR0.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.3
         Device            :  PIC16F1829
-        Version           :  1.02
+        Driver Version    :  2.00
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.35
         MPLAB             :  MPLAB X 3.40
@@ -43,62 +43,66 @@
     TERMS.
 */
 
-#ifndef MCC_H
-#define	MCC_H
+/**
+  Section: Included Files
+*/
+
 #include <xc.h>
-#include "pin_manager.h"
-#include <stdint.h>
-#include <stdbool.h>
-#include "interrupt_manager.h"
-#include "i2c1.h"
-#include "eusart.h"
-#include "memory.h"
-#include "adc.h"
-
-#define _XTAL_FREQ  32000000
-
+#include "tmr0.h"
 
 /**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Initializes the device to the default states configured in the
- *                  MCC GUI
- * @Example
-    SYSTEM_Initialize(void);
- */
-void SYSTEM_Initialize(void);
+  Section: Global Variables Definitions
+*/
 
+volatile uint8_t timer0ReloadVal;
 /**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Initializes the oscillator to the default states configured in the
- *                  MCC GUI
- * @Example
-    OSCILLATOR_Initialize(void);
- */
-void OSCILLATOR_Initialize(void);
+  Section: TMR0 APIs
+*/
 
+void TMR0_Initialize(void)
+{
+    // Set TMR0 to the options selected in the User Interface
+
+    // PSA assigned; PS 1:8; TMRSE Increment_hi_lo; mask the nWPUEN and INTEDG bits
+    OPTION_REG = (OPTION_REG & 0xC0) | 0xD2 & 0x3F; 
+
+    // TMR0 0; 
+    TMR0 = 0x00;
+
+    // Load the TMR value to reload variable
+    timer0ReloadVal= 0;
+
+    // Clearing IF flag
+    INTCONbits.TMR0IF = 0;
+}
+
+
+uint8_t TMR0_ReadTimer(void)
+{
+    uint8_t readVal;
+
+    readVal = TMR0;
+
+    return readVal;
+}
+
+void TMR0_WriteTimer(uint8_t timerVal)
+{
+    // Write to the Timer0 register
+    TMR0 = timerVal;
+}
+
+void TMR0_Reload(void)
+{
+    // Write to the Timer0 register
+    TMR0 = timer0ReloadVal;
+}
+
+bool TMR0_HasOverflowOccured(void)
+{
+    // check if  overflow has occurred by checking the TMRIF bit
+    return(INTCONbits.TMR0IF);
+}
 /**
- * @Param
-    none
- * @Returns
-    none
- * @Description
-    Initializes the WDT module to the default states configured in the
- *                  MCC GUI
- * @Example
-    WDT_Initialize(void);
- */
-void WDT_Initialize(void);
-
-
-#endif	/* MCC_H */
-/**
- End of File
+  End of File
 */

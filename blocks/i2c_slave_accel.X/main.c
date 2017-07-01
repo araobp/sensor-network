@@ -2,8 +2,6 @@
 #include "protocol.h"
 #include <stdlib.h>
 
-#define _XTAL_FREQ 500000
-
 #define DEVICE_ID "KXR94-2050"
 
 #define OFFSET 512.0
@@ -18,13 +16,17 @@ float get_accel(adc_channel_t ch) {
 }
 
 float values[3];
+uint8_t i = 0;
 
 void inv_handler(void) {
     LATCbits.LATC7 ^= 1;
+    for (i = 0; i <= 100; i++) {
     values[0] = get_accel(channel_AN3);  // x-axis
     values[1] = get_accel(channel_AN7);  // y-axis
-    values[2] = get_accel(channel_AN8);  // z-axis    
-    PROTOCOL_I2C_Send_float(3, values);
+    values[2] = get_accel(channel_AN8);  // z-axis
+    }
+    printf("Done!\n");
+    // PROTOCOL_I2C_Send_float(3, values);
 }
 
 void main(void)
@@ -36,7 +38,7 @@ void main(void)
     ADC_Initialize();
 
     // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 50);
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 1);
 
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
