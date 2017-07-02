@@ -5,9 +5,12 @@
 
 #define _XTAL_FREQ 500000
 
-#define I2C_SLAVE_MASK    0x7F
-uint8_t slave_address;
+#define I2C_SLAVE_MASK 0x7F
 
+#define parse(cmd_name, buf) !strncmp((cmd_name), (buf), 3)
+
+uint8_t slave_address;
+        
 // function pointers (event handlers)
 void (*PROTOCOL_Start_Handler)(void) = NULL;
 void (*PROTOCOL_Stop_Handler)(void) = NULL;
@@ -159,23 +162,23 @@ void PROTOCOL_Loop() {
                 printf("#%s\n", buf);
                 if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {  // Handled by backplane master?
                     PROTOCOL_Extension_Handler(buf);                    
-                } else if (!strncmp(WHO, buf, 3)) {  // who are you?
+                } else if (parse(WHO, buf)) {  // who are you?
                     printf("$:WHO:%s\n", device_id_);
-                } else if (!strncmp(SAV, buf ,3)) {  // save the current setting
+                } else if (parse(SAV, buf)) {  // save the current setting
                     PROTOCOL_SAV();
-                } else if (!strncmp(STA, buf, 3)) {  // start measurement
+                } else if (parse(STA, buf)) {  // start measurement
                     PROTOCOL_STA();
-                } else if (!strncmp(STP, buf, 3)) {  // stop measurement
+                } else if (parse(STP, buf)) {  // stop measurement
                     PROTOCOL_STP();
                     printf("*:STP:%s\n", ACK);
-                } else if (!strncmp(SET, buf, 3)) {  // set value
+                } else if (parse(SET, buf)) {  // set value
                     PROTOCOL_SET(atoi(&buf[4]));
-                } else if (!strncmp(GET, buf, 3)) {  // get value
+                } else if (parse(GET, buf)) {  // get value
                     printf("$:GET:%d\n", value);
-                } else if (!strncmp(WDA, buf, 3)) {
+                } else if (parse(WDA, buf)) {
                     device_address = atoi(&buf[4]);
                     PROTOCOL_Write_Device_Address(device_address);
-                } else if (!strncmp(RDA, buf, 3)) {
+                } else if (parse(RDA, buf)) {
                     device_address = PROTOCOL_Read_Device_Address();
                     printf("$:RDA:%d\n", device_address);
                 }
@@ -251,10 +254,18 @@ void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t 
             length = length - 2;
             for (i=0; i<length; i=i+2) {
                 v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
-                printf("%d.%02d,", v/100, abs(v%100));
+                if (v <= -100 || v >= 0) {
+                    printf("%d.%02d,", v/100, abs(v%100));
+                } else {
+                    printf("-%d.%02d,", v/100, abs(v%100));                    
+                }
             }
             v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
-            printf("%d.%02d\n", v/100, abs(v%100));
+            if (v <= -100 || v >= 0) {
+                printf("%d.%02d\n", v/100, abs(v%100));
+            } else {
+                printf("-%d.%02d\n", v/100, abs(v%100));                
+            }
             break;
         case TYPE_NO_DATA:
             printf("NO_DATA\n");
@@ -345,10 +356,18 @@ void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
         length--;
         for (i=0; i<length; i++) {
             v = (int16_t)(pbuffer[i] * 100);
-            printf("%d.%02d,", v/100, abs(v%100));
+            if (v <= -100 || v >= 0) {
+                printf("%d.%02d,", v/100, abs(v%100));
+            } else {
+                printf("-%d.%02d,", v/100, abs(v%100));                
+            }
         }
         v = (int16_t)(pbuffer[i] * 100);
-        printf("%d.%02d\n", v/100, abs(v%100));
+        if (v <= -100 || v >= 0) {
+            printf("%d.%02d\n", v/100, abs(v%100));
+        } else {
+            printf("-%d.%02d\n", v/100, abs(v%100));            
+        }
     }
 }
 
@@ -408,15 +427,3 @@ uint8_t* PROTOCOL_I2C_SEN(void) {
     }
     return pdata;
 }
-
-void blink_red(uint8_t times) {
-    uint8_t i;
-    for(i=0;i<times;i++) {
-        LATCbits.LATC7 = 0;
-        __delay_ms(20);
-        LATCbits.LATC7 = 1;   
-        __delay_ms(20);
-    }
-}
-
-

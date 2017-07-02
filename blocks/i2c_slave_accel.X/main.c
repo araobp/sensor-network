@@ -8,10 +8,11 @@
 #define G 204.8  // 1024/5.0 = 204.8 (steps/volt)
 
 float get_accel(adc_channel_t ch) {
+    float steps;
     ADC_SelectChannel(ch);
     ADC_StartConversion();
     while(!ADC_IsConversionDone());
-    adc_result_t steps = ADC_GetConversionResult();
+    steps = (float)ADC_GetConversionResult();
     return (steps - OFFSET)/G;
 }
 
