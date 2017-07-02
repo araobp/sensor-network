@@ -13,7 +13,7 @@
   @Description
     This header file provides implementations for driver APIs for EUSART.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.3
         Device            :  PIC16F1829
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -51,21 +51,21 @@
 /**
   Section: Macro Declarations
 */
-#define EUSART_TX_BUFFER_SIZE 8
-#define EUSART_RX_BUFFER_SIZE 8
+#define EUSART_TX_BUFFER_SIZE 64
+#define EUSART_RX_BUFFER_SIZE 64
 
 /**
   Section: Global Variables
 */
 
-static uint8_t eusartTxHead = 0;
-static uint8_t eusartTxTail = 0;
-static uint8_t eusartTxBuffer[EUSART_TX_BUFFER_SIZE];
+volatile uint8_t eusartTxHead = 0;
+volatile uint8_t eusartTxTail = 0;
+volatile uint8_t eusartTxBuffer[EUSART_TX_BUFFER_SIZE];
 volatile uint8_t eusartTxBufferRemaining;
 
-static uint8_t eusartRxHead = 0;
-static uint8_t eusartRxTail = 0;
-static uint8_t eusartRxBuffer[EUSART_RX_BUFFER_SIZE];
+volatile uint8_t eusartRxHead = 0;
+volatile uint8_t eusartRxTail = 0;
+volatile uint8_t eusartRxBuffer[EUSART_RX_BUFFER_SIZE];
 volatile uint8_t eusartRxCount;
 
 /**
@@ -89,11 +89,11 @@ void EUSART_Initialize(void)
     // TX9 8-bit; TX9D 0; SENDB sync_break_complete; TXEN enabled; SYNC asynchronous; BRGH hi_speed; CSRC slave; 
     TXSTA = 0x24;
 
-    // Baud Rate = 9600; SPBRGL 12; 
-    SPBRGL = 0x0C;
+    // Baud Rate = 9600; SPBRGL 64; 
+    SPBRGL = 0x40;
 
-    // Baud Rate = 9600; SPBRGH 0; 
-    SPBRGH = 0x00;
+    // Baud Rate = 9600; SPBRGH 3; 
+    SPBRGH = 0x03;
 
 
     // initializing the driver state

@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define _XTAL_FREQ 500000
 #define DEVICE_ID "BACKPLANE-MASTER"
 
 // Backplane-master-specific commands

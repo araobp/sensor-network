@@ -13,7 +13,7 @@
   @Description
     This header file provides APIs for driver for I2C1.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.3
         Device            :  PIC16F1829
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -210,8 +210,8 @@ void I2C1_Initialize(void)
     SSP1CON1 = 0x28;
     // ACKTIM ackseq; SBCDE disabled; BOEN disabled; SCIE disabled; PCIE disabled; DHEN disabled; SDAHT 100ns; AHEN disabled; 
     SSP1CON3 = 0x00;
-    // Baud Rate Generator Value: SSPADD 3;   
-    SSP1ADD = 0x03;
+    // Baud Rate Generator Value: SSPADD 79;   
+    SSP1ADD = 0x4F;
 
    
     // clear the master interrupt flag
