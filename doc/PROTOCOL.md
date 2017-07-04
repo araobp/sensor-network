@@ -188,7 +188,7 @@ address = 1 means I2C backplane Master.
     |<-----------------MAP---------------------|
     |                                          |
     |--$:MAP:<list of slave addresses in CSV-->|
-    
+
     *1  $:MAP:<list of slave addresses in CSV>
 ```
 
@@ -272,12 +272,10 @@ Example:
 
 ## I2C address registry
 
-|Address |Device ID              |Capability                     |
-|--------|-----------------------|-------------------------------|
-|0x01(01)|BACKPLANE-MASTER       |I2C master                     |
-|0x10(16)|AQM1602XA-RN-GBW       |Character LCD                  |
-|0x11(17)|A1324LUA-T             |Hall sensor                    |
-|0x12(18)|HDC1000                |Temperature and humidity sensor|
-|0x13(19)|KXR94-2050             |Three-axis accelerometer       |
-
-
+|Address |Device ID              |Capability                     |FOSC  |UART baud rate|
+|--------|-----------------------|-------------------------------|------|--------------|
+|0x01(01)|BACKPLANE-MASTER       |I2C master (w/ 8msec timer)    |32MHz |115200        |
+|0x10(16)|AQM1602XA-RN-GBW       |Character LCD                  |      |9600          |
+|0x11(17)|A1324LUA-T             |Hall sensor                    |      |9600          |
+|0x12(18)|HDC1000                |Temperature and humidity sensor|      |9600          |
+|0x13(19)|KXR94-2050             |Three-axis accelerometer       |32MHz |9600          |

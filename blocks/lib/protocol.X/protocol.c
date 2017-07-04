@@ -3,8 +3,6 @@
 #include <string.h>
 #include "protocol.h"
 
-#define _XTAL_FREQ 500000
-
 #define I2C_SLAVE_MASK 0x7F
 
 #define parse(cmd_name, buf) !strncmp((cmd_name), (buf), 3)
@@ -68,15 +66,12 @@ void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_
     if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
     value = DATAEE_ReadByte(DEVICE_SETTING_ADDRESS);  // read value from EEPROM
     if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
-    //if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
     slave_address = DATAEE_ReadByte(DEVICE_ID_I2C_ADDRESS);  // read slave_address from EEPROM
 
     // I2C backplane initalization
     readbuf.status = COMPLETE;
     PROTOCOL_Inv_Handler = inv_handler;
     tmr_scaler = scaler;
-
-    TMR0_Initialize();
 }
 
 void PROTOCOL_Set_Func(void *loop_func) {
