@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define _XTAL_FREQ 500000
-
 #define DEVICE_ID "AQM1602XA-RN-GBW"
 
 /* Here I dare use macro to reduce the program stack level

@@ -1,4 +1,4 @@
-#include "i2c1.h"
+#include "mcc.h"
 #include "protocol.h"
 
 #define I2C_SLAVE_ADDRESS 0x01 
@@ -8,8 +8,6 @@
 #define SET_VALUE  0x01
 #define EXT_LENGTH 0x02
 #define EXT_VALUE  0x03
-
-#define _XTAL_FREQ 32000000
 
 typedef enum
 {
