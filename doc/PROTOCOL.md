@@ -11,7 +11,7 @@ W: I2C Write
 R: I2C Read
 G: I2C General Call
 
-#### WHO (R)0x01 (who are you?)
+#### WHO (who are you?)
 ```
   slave              master
     |<------WHO--------|
@@ -19,14 +19,14 @@ G: I2C General Call
     |---<device_id>--->|
 ```
 
-#### PLG (G)0x02 (Plug / I2C only, General Call)
+#### PLG (Plug / I2C only, General Call)
 ```
   slave              master
     |<------PLG--------|
     |----(I2C ACK)---->|
 ```
 
-#### SAV (W)0x03 (save the current setting onto EEPROM)
+#### SAV (save the current setting onto EEPROM)
 ```
   slave              master
     |<------SAV--------|
@@ -34,13 +34,13 @@ G: I2C General Call
 
 The current setting is saved in PIC'S EEPROM.
 
-#### STA (W)0x04 (start sending data / UART only)
+#### STA (start sending data / UART only)
 ```
   slave              master
     |<------STA--------|
 ```
 
-#### STP (W)0x05 (stop sending data / UART only)
+#### STP (stop sending data / UART only)
 ```
   slave              master
     |<------STP--------|
@@ -48,13 +48,13 @@ The current setting is saved in PIC'S EEPROM.
     |-------ACK------->|
 ```
 
-#### INV (W)0x06 (invoke sensor data collection / I2C only)
+#### INV (invoke sensor data collection / I2C only)
 ```
   slave              master
     |<------INV--------|
 ```
 
-#### SEN (R)0x07 (request sensor data/ I2C only)
+#### SEN (request sensor data/ I2C only)
 ```
  slave              master
    |<------SEN--------|
@@ -62,13 +62,13 @@ The current setting is saved in PIC'S EEPROM.
    |-----<value>----->|
 ```
 
-#### SET (W)0x08 (set the new setting to the device)
+#### SET (set the new setting to the device)
 ```
   slave              master
     |<---SET:<value>---|
 ```
 
-#### GET (R)0x08 (return the current setting)
+#### GET (return the current setting)
 ```
  slave              master
    |<------GET--------|
@@ -76,19 +76,19 @@ The current setting is saved in PIC'S EEPROM.
    |-----<value>----->|
 ```
 
-#### WDA (Write I2C slave device address / UART only)
+#### EXT (send extended command / I2C only)
 ```
 slave              master
   |<------EXT--------|
 ```
 
-#### EXT (W)0x10 (send extended command / I2C only)
+#### WDA (write I2C slave device address / UART only)
 ```
 slave              master
   |<----WDA:<id>-----|
 ```
 
-#### RDA (Read I2C slave device address / UART only)
+#### RDA (read I2C slave device address / UART only)
 ```
 slave              master
   |<------RDA--------|
@@ -172,6 +172,17 @@ new backplane slave            backplane master
     |-----<device ID>---------------->| detect new backplane slave
 ```
 
+#### SCN (force device scan)
+
+```
+backplane slave                backplane master
+    |                                 | start device scan process
+      |<----WHO to dev addr 0x01------|
+        |<----WHO to dev addr 0x02----|
+    |<----WHO to dev addr 0x0n--------|
+    |-----<device ID>---------------->| detect new backplane slave
+```
+
 #### I2C (set I2C backplane slave address)
 address = 1 means I2C backplane Master.
 
@@ -190,6 +201,35 @@ address = 1 means I2C backplane Master.
     |--$:MAP:<list of slave addresses in CSV-->|
 
     *1  $:MAP:<list of slave addresses in CSV>
+```
+
+#### CSC (clear schedule)
+```
+slave              master
+  |<------CSC--------|
+```
+
+#### POS (set write schedule position)
+```
+slave              master
+  |<-POS:<position>--|
+```
+
+#### WSC (write I2C slave address on schedule)
+```
+slave              master
+  |<---WSC:<value>---|
+```
+
+#### RSC (read schedule)
+```
+slave              master
+  |<------RSC--------|
+  |                  |
+  |------<*1>------->|
+  
+(*1) example output
+$:RSC:0,0,0,0,0,0,0,0,0,0,0,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ```
 
 #### % (sensor data)
