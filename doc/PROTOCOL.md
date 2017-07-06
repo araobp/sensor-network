@@ -303,12 +303,23 @@ Example:
    |<------HOM--------|
 ```
 
-## EEPROM area
+## EEPROM area (PIC16F1829's built-in EEPROM)
 
-|Address|Usage                 |
-|-------|----------------------|
-|0      |Device ID             |
-|1      |Device setting        |
+|Address|Usage                 |Node                  |
+|-------|----------------------|----------------------|
+|0      |Device ID             |                      |
+|1      |Device setting        |                      |
+|2~30   |Schedule              |Backplane-master only |
+
+## Scheduler
+
+- [schedule 0] every 8msec
+- [schedule 1] every 16 msec (8msec * 2)
+- [schedule 2] every 48 msec (8msec * 6): ~50msec
+- [schedule 3] every 96 msec (8msec * 12): ~100msec
+- [schedule 4] every 496 msec (8msec * 62): ~500msec
+- [schedule 5] every 1sec (8msec * 125)
+- [schedule 6] every 5sec (8msec * 625)
 
 ## I2C address registry
 
