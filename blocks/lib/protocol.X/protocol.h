@@ -20,6 +20,11 @@ extern "C" {
     #define RDA "RDA"
 
     /*
+     * Command parser
+     */
+    #define parse(cmd_name, buf) !strncmp((cmd_name), (buf), 3)
+
+    /*
      * EEPROM area
      */
     #define DEVICE_ID_I2C_ADDRESS 0
