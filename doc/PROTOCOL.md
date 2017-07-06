@@ -6,11 +6,6 @@ This is a very simple I/O link supporting Plug&Play. This protocol works over UA
 
 ## Common operations among the blocks
 
-Legend
-W: I2C Write
-R: I2C Read
-G: I2C General Call
-
 #### WHO (who are you?)
 ```
   slave              master
