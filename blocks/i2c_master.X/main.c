@@ -15,7 +15,11 @@
 #define RSC "RSC"
 #define CSC "CSC"
 
-#define MAX_DEV_ADDR 48  // it should be larger than 16 and multipels of 8
+// I2C slave device address range handled by backplane master
+// These constants should be larger than 16 and multipels of 8
+#define MIN_DEV_ADDR 0x10
+#define MAX_DEV_ADDR 0x20
+
 #define MASK 0x01
 
 #define INV_SEN_DELAY 3  // INV -> SEN delay
@@ -53,13 +57,8 @@ void stop_handler(void) {
 
 void exec_remote_cmd(uint8_t idx) {
     uint8_t data;
-    uint8_t type;
     uint8_t i, j;
     uint8_t status;
-
-    /***** For debug commands *****/
-    static uint8_t dev_addr;
-    static uint8_t reg_addr;
 
     uint8_t send_buf[BUF_SIZE + 2];
 
@@ -187,11 +186,13 @@ uint8_t dev_map_iterator() {
  */
 void scan_dev(void) {
     uint8_t dev_addr, status;
-    for (dev_addr=1; dev_addr<=MAX_DEV_ADDR; dev_addr++) {
+    for (dev_addr=MIN_DEV_ADDR; dev_addr<=MAX_DEV_ADDR; dev_addr++) {
         status = i2c1_read(dev_addr, WHO_I2C, &read_buf[0], 1);
         // printf("%d %d\n", dev_addr, status);
-        if (status == 0) {
-            add_dev(read_buf[0]);
+        if (status == 0 && dev_addr == read_buf[0]) {
+            add_dev(dev_addr);
+        } else {
+            del_dev(dev_addr);
         }
     }  
 }
@@ -226,7 +227,7 @@ void print_dev_map(void) {
         for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
         printf("%d\n", dev_map_iterator());
     } else {
-        printf("!:NO SLAVE FOUND\n");
+        printf("!:MAP:NO SLAVE FOUND\n");
     }
 }
 

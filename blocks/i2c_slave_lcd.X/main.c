@@ -122,40 +122,40 @@ void loop_func(void) {
     uint8_t value;
     if(PROTOCOL_Read_Lock()) {
         //printf("%s\n", pbuf);
-        if (!strncmp(INI, pbuf, 3)) {
+        if (parse(INI, pbuf)) {
             lcd_init();
-        } else if (!strncmp(CMD, pbuf, 3)) {
+        } else if (parse(CMD, pbuf)) {
             value = atoi(&pbuf[4]);
             write_command(value);
-        } else if (!strncmp(DAT, pbuf, 3)) {
+        } else if (parse(DAT, pbuf)) {
             value = atoi(&pbuf[4]);
             write_data(value);
-        } else if (!strncmp(CLR, pbuf, 3)) {
+        } else if (parse(CLR, pbuf)) {
             lcd_clear();
-        } else if (!strncmp(STR, pbuf, 3)) {
+        } else if (parse(STR, pbuf)) {
             lcd_string();
-        } else if (!strncmp(HST, pbuf, 3)) {
+        } else if (parse(HST, pbuf)) {
             write_command(0x02);  // return home
             lcd_string();   
-        } else if (!strncmp(DSP, pbuf, 3)) {
+        } else if (parse(DSP, pbuf)) {
             write_command(0x02);  // return home
             lcd_string_2lines();
-        } else if (!strncmp(CUL, pbuf, 3)) {
+        } else if (parse(CUL, pbuf)) {
             write_command(0x10);
-        } else if (!strncmp(CUR, pbuf, 3)) {
+        } else if (parse(CUR, pbuf)) {
             write_command(0x14);        
-        } else if (!strncmp(NWL, pbuf, 3)) {
+        } else if (parse(NWL, pbuf)) {
             write_command(0xc0);
-        } else if (!strncmp(HOM, pbuf, 3)) {
+        } else if (parse(HOM, pbuf)) {
             write_command(0x02);
-        } else if (!strncmp(CNT, pbuf, 3)) {
+        } else if (parse(CNT, pbuf)) {
             value = atoi(&pbuf[4]);
             lcd_contrast(value);
-        } else if (!strncmp(LED, pbuf, 3)) {
+        } else if (parse(LED, pbuf)) {
             if (!strncmp(ON, &pbuf[4], 2)) {
-                LATCbits.LATC7 = 0;
+                LATCbits.LATC7 = 0;  // turn LED on
             } else if (!strncmp(OFF, &pbuf[4], 3)) {
-                LATCbits.LATC7 = 1;                
+                LATCbits.LATC7 = 1;  // turn LED off     
             }
         }
         pbuf = NULL;
@@ -165,6 +165,11 @@ void loop_func(void) {
 
 void main(void)
 {    
+    // Protocol initialization
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, NULL, 20);
+    PROTOCOL_Set_Extension_Handler(extension_handler);
+    PROTOCOL_Set_Func(loop_func);
+
     //SYSTEM_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
@@ -173,11 +178,6 @@ void main(void)
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
-
-    // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, NULL, 20);
-    PROTOCOL_Set_Extension_Handler(extension_handler);
-    PROTOCOL_Set_Func(loop_func);
 
     // Device initialization
     I2C2_Initialize();

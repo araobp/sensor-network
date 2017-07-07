@@ -17,7 +17,6 @@ void (*PROTOCOL_Loop_Func)(void) = NULL;
 void (*PROTOCOL_Extension_Handler)(char*) = NULL;
 void (*PROTOCOL_Inv_Handler)(void) = NULL;
 
-uint8_t c;
 uint8_t cnt = 0;
 uint8_t buf[BUF_SIZE];
 uint8_t value;
@@ -131,6 +130,7 @@ bool PROTOCOL_Read_Lock(void) {
  */
 void PROTOCOL_Loop() {
     uint8_t device_address;
+    uint8_t c;
     while (1) {
         tmr_overflow = TMR0_HasOverflowOccured();
         if (tmr_overflow) {

@@ -9,7 +9,6 @@ extern "C" {
     uint8_t i2c1_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
     uint8_t i2c1_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
 
-
 #ifdef	__cplusplus
 }
 #endif
