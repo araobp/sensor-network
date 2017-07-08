@@ -61,7 +61,7 @@ All the blocks developed in this project support [Plug&Play protocol](./doc/PROT
                hub&spoke topology
 ```
 
-It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx).
+It also runs on I2C.
 
 ```
       <- - - - - I2C backplane - - - - ->
@@ -72,11 +72,11 @@ It also runs on I2C: [I2C backplane specification](./doc/I2C_BACKPLANE_SPEC.pptx
 
 ### 8bit MCU as core of node
 
-I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements.
+I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements of this project.
 
 Clock speed:
-- 500kHz typical
-- 32MHz (8MHz w/ PLL) for an accelerometer requiring high sampling rate.
+- 4MHz typical
+- 32MHz (8MHz w/ PLL) for high sampling rate
 
 ### Node prototype
 
