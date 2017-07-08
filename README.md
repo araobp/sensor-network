@@ -9,7 +9,7 @@
 I have developed a lot of IoT prototypes so far, then I have observed that most of my IoT projects require a communication protocol for wired sensor networking, satisfiying the requirements below:
 
 - low power consumption and lower voltage (5V or 3.3V)
-- bus topology rather than hub and spoke
+- bus topology (daisy-chain) rather than hub and spoke (star)
 - two-wire
 - cheap (~$1 per node) and open
 - small software footprint
