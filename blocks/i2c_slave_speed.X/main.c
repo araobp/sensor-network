@@ -3,14 +3,11 @@
 #include "i2c2_util.h"
 #include <stdlib.h>
 
-#define _XTAL_FREQ 500000
-
 #define DEVICE_ID "A1324LUA_T"
 
-#define THRESHOLD 8
+#define THRESHOLD 20
 #define MIDDLE 511
 #define CONTINUITY 3
-#define INTERVAL 10
 
 bool on = false;
 uint16_t sum = 0;
@@ -18,25 +15,12 @@ uint16_t count = 0;
 uint8_t threshold = THRESHOLD;
 uint8_t continuity = CONTINUITY;
 
-/*
- *     5bit      3bit 
- * |threshold|continuity|
- * 
- * threshold: 0 ~ 31
- * continuity: 0 ~ 7
- */
-void set_handler(uint8_t value) {
-    threshold = value / 8;
-    continuity = value % 8;
-}
-
 void inv_handler(void) {
     PROTOCOL_Send_uint16_t(sum);
     sum = 0;
 }
     
 void loop_func(void) {
-    __delay_ms(INTERVAL);
     ADC_SelectChannel(channel_AN8);
     ADC_StartConversion();
     while(!ADC_IsConversionDone());
@@ -61,10 +45,10 @@ void loop_func(void) {
     switch (on) {
         case false:
             
-            if (v >= threshold) count++;
+            if (v >= THRESHOLD) count++;
             else count = 0;
             
-            if (count >= continuity) {
+            if (count >= CONTINUITY) {
                 count = 0;
                 on = true;
             }
@@ -73,10 +57,10 @@ void loop_func(void) {
 
         case true:
             
-            if (v < threshold) count++;
+            if (v < THRESHOLD) count++;
             else count = 0;
             
-            if (count >= continuity) {
+            if (count >= CONTINUITY) {
                 count = 0;
                 on = false;
             LATCbits.LATC7 = 0;
@@ -87,21 +71,22 @@ void loop_func(void) {
             
             break;
     }
-    //printf("out:%d, v:%d, on:%d, count:%d\n", out, v, on, count);
+    // printf("out:%d, v:%d, on:%d, sum:%d\n", out, v, on, sum);
 }
 
 void main(void)
-{    
+{
+    // Protocol initialization
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 125);
+    PROTOCOL_Set_Func(loop_func);
+        
     //SYSTEM_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     WDT_Initialize();
     ADC_Initialize();
+    TMR0_Initialize();
 
-    // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, set_handler, inv_handler, 1);
-    PROTOCOL_Set_Func(loop_func);
-    
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();

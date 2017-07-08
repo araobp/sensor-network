@@ -22,7 +22,8 @@
 
 #define MASK 0x01
 
-#define INV_SEN_DELAY 3  // INV -> SEN delay
+#define INV_DELAY 100 // INV delay (micro sec)
+#define SEN_DELAY 1   // INV -> SEN delay (mili sec)
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
@@ -35,9 +36,9 @@ char cmd_buf[2][BUF_SIZE];
  * 1: every 16 msec (8 * 2)
  * 2: every 48 msec (8 * 6): ~50msec
  * 3: every 96 msec (8 * 12): ~100msec
- * 4: every 496 msec (8 * 62): ~500msec
- * 5: every 1sec (8 * 125)
- * 6: every 5sec (8 * 625)
+ * 4: every 480 msec (8 * 60): ~500msec
+ * 5: every 960 msec (8 * 120): ~1sec
+ * 6: every 4800 msec (8 * 600): ~5sec
  */
 uint8_t schedule[7][4];
 
@@ -269,8 +270,9 @@ void fetch(uint8_t *sch) {
             break;
         } else if (detected(dev_addr)) {
             // INV
+            __delay_us(INV_DELAY);
             i2c1_write_no_data(dev_addr, INV_I2C);
-            __delay_ms(INV_SEN_DELAY);
+            __delay_ms(SEN_DELAY);
             // SEN
             status = sen(dev_addr);
             if (status > 0) {
@@ -297,23 +299,25 @@ void inv_handler(void) {
     if (t % 6 == 0) fetch(schedule[2]);
     /*** 96msec (~100msec)***/
     if (t % 12 == 0) fetch(schedule[3]);
-    /*** 496msec (~500msec) ***/
-    if (t % 62 == 0) {
+    /*** 480msec (~500msec) ***/
+    if (t % 60 == 0) {
         fetch(schedule[4]);
         cmd_next = (cmd_next == 0) ? 1 : 0;
         exec_remote_cmd(cmd_next);        
     }
-    /*** 1sec ***/
-    if (t % 125 == 0) {
+    /*** 960msec (~1sec) ***/
+    if (t % 120 == 0) {
         fetch(schedule[5]);
         check_plg();
     }
-    /*** 5sec ***/
-    if (t == 625) {
+    /*** 4800msec (~5sec) ***/
+    if (t % 600 == 0) {
         fetch(schedule[6]);
         scan_dev();
-        t = 0;
-    } else t++;
+        t = 1;
+    }
+    /*** count up schedule timer */
+    t++;
 }
 
 /*
@@ -339,18 +343,26 @@ void extension_handler(uint8_t *buf) {
     } else if (parse(SCN, buf)) {
         scan_dev();
     } else if (parse(POS, buf)) {
-        if (pos < 28) pos = atoi(&buf[4]);
-        else printf("!:POS:LARGER THAN 27\n");
+        pos = atoi(&buf[4]);
+        if (pos > 27) printf("!:POS:POS LARGER THAN 27\n");
     } else if (parse(WSC, buf)) {
-        dev_addr = atoi(&buf[4]);
-        DATAEE_WriteByte(DEVICE_SETTING_ADDRESS + pos + 1, dev_addr); // read value from EEPROM
-        schedule[pos/4][pos%4] = dev_addr;
+        if (pos <= 27) {
+            dev_addr = atoi(&buf[4]);
+            DATAEE_WriteByte(DEVICE_SETTING_ADDRESS + pos + 1, dev_addr); // read value from EEPROM
+            schedule[pos/4][pos%4] = dev_addr;
+        } else {
+            printf("!:WSC:POS LARGER THAN 27\n");
+        }
     } else if (parse(RSC, buf)) {
         printf("$:RSC:");
-        for (i=1; i<28; i++) {
-            printf("%d,", schedule[i/4][i%4]);
+        for (i=0; i<27; i++) {
+            if ((i+1) % 4 == 0) {
+                printf("%d|", schedule[i/4][i%4]);
+            } else {
+                printf("%d,", schedule[i/4][i%4]);
+            }
         }
-        printf("%d\n", schedule[6][3]);  
+        printf("%d\n", schedule[6][3]);
     } else if (parse(CSC, buf)) {
         for (i=0; i<28; i++) {
             DATAEE_WriteByte(DEVICE_SETTING_ADDRESS+i+1, 0);

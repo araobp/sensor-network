@@ -166,7 +166,7 @@ void loop_func(void) {
 void main(void)
 {    
     // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, NULL, 20);
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, NULL, 250);
     PROTOCOL_Set_Extension_Handler(extension_handler);
     PROTOCOL_Set_Func(loop_func);
 
@@ -174,6 +174,7 @@ void main(void)
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     WDT_Initialize();
+    TMR0_Initialize();
     
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();

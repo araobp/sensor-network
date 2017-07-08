@@ -2,8 +2,6 @@
 #include "protocol.h"
 #include "i2c2_util.h"
 
-#define _XTAL_FREQ 500000
-
 /* TEXAS INSTRUMENTS HDC1000
  * http://www.ti.com/lit/ds/symlink/hdc1000.pdf#search=%27HDC1000+datasheet%27
  */
@@ -48,14 +46,15 @@ void inv_handler(void) {
 }
 
 void main(void)
-{            
+{
+    // Protocol initialization
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 250);
+
     //SYSTEM_Initialize();
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
     WDT_Initialize();
-
-    // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 20);
+    TMR0_Initialize();
     
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
