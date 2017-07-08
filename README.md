@@ -117,3 +117,63 @@ Including it as a library:
 - [5V: Acceleration sensor block （KXR94-2050)](./blocks/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
 - [5V: Speed sensor block (A1324LUA-T)](./blocks/i2c_slave_speed.X), [pin assignment](./doc/rotation_pin.png)
 - [5V: Temperature and humidity sensor block (HDC1000)](./blocks/i2c_slave_temp.X)
+
+### CLI example
+
+```
+#WHO
+$:WHO:BACKPLANE-MASTER
+#SCN
+#MAP
+$:MAP:16,17,19
+$:RSC:0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|17,0,0,0|0,0,0,0
+#POS:12
+#WSC:19
+#RSC
+$:RSC:0,0,0,0|0,0,0,0|0,0,0,0|19,0,0,0|0,0,0,0|17,0,0,0|0,0,0,0
+#STA
+%19:FLOAT:0.60,1.21,-0.09
+%19:FLOAT:0.61,1.22,-0.08
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.61,1.21,-0.09
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.61,1.20,-0.08
+%19:FLOAT:0.60,1.21,-0.08
+%17:UINT16_T:0
+%19:FLOAT:0.61,1.21,-0.09
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.61,1.20,-0.09
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.61,1.21,-0.08
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.61,1.21,-0.08
+%19:FLOAT:0.59,1.21,-0.08
+%19:FLOAT:0.61,1.21,-0.08
+%19:FLOAT:0.60,1.21,-0.08
+%17:UINT16_T:0
+%19:FLOAT:0.61,1.21,-0.08
+%19:FLOAT:0.59,1.21,-0.08
+%19:FLOAT:0.61,1.20,-0.08
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.60,1.20,-0.09
+%19:FLOAT:0.60,1.21,-0.08
+%19:FLOAT:0.61,1.20,-0.08
+%19:FLOAT:0.61,1.20,-0.08
+%19:FLOAT:0.61,1.21,-0.08
+%19:FLOAT:0.59,1.21,-0.07
+%17:UINT16_T:0
+%19:FLOAT:0.61,1.20,-0.08
+            :
+#I2C:16
+$:WHO:16
+#CLR
+#LED:ON
+#LED:OFF
+#STR:Hello World!
+#NWL
+#STR:Guten Tag!
+#I2C:1
+            :
+#STP
+*:STP:ACK
+```
