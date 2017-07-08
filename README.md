@@ -92,21 +92,34 @@ Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab
 
 ### Plug&Play protocol
 
-- [Plug&play protocol specification](./doc/PROTOCOL.md)
-- [Implementation](./blocks/lib/protocol.X)
+[Plug&play protocol specification](./doc/PROTOCOL.md)
 
-Including it as a library:
+#### Implementation: common part among all nodes
+
+All nodes need to import this [protocol library](./blocks/lib/protocol.X):
 - [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
 - [Step2: include the protocol library in your project](./doc/mcc_eusart3.png)
-- [Step3: exclude mcc generated eusart libraries from your project](./doc/mcc_eusart2.png)
-- [Step4: enable eusart interrupts](./doc/mcc_eusart.png)
+
+#### Implementation: I2C-slave-specific part
+
+I2C slaves also require I2C-slave-specific code -- I modified MCC-generated I2C slave code (i2c1.c) to support the protocol on I2C slave side. See this modifed code: [i2c1.c](./blocks/i2c_slave_lcd.X/mcc_generated_files/i2c1.c).
 
 ### Blocks
 
-- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./blocks/i2c_slave_lcd.X), [pin assignment](./doc/lcd_pin.png)
-- [5V: Acceleration sensor block （KXR94-2050)](./blocks/i2c_slave_accel.X), [pin assignment](./doc/acceleration_pin.png)
-- [5V: Speed sensor block (A1324LUA-T)](./blocks/i2c_slave_speed.X), [pin assignment](./doc/rotation_pin.png)
+- [5V: Scheduler (BACKPLANE-MASTER)](./blocks/i2c_master.X)
+- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./blocks/i2c_slave_lcd.X)
+- [5V: Acceleration sensor block （KXR94-2050)](./blocks/i2c_slave_accel.X)
+- [5V: Speed sensor block (A1324LUA-T)](./blocks/i2c_slave_speed.X)
 - [5V: Temperature and humidity sensor block (HDC1000)](./blocks/i2c_slave_temp.X)
+
+#### Initial config
+
+Write I2C slave address on the blocks. For exmaple, if the address is 16 in decimal, then:
+```
+#WDA:16
+#RDA
+$:RDA:16
+```
 
 ### CLI example
 
