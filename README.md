@@ -88,7 +88,7 @@ A similar construct to the above, but all the boards are connected with each oth
 
 ## Implementation
 
-Note: I use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to generate code for USART, I2C, PWM, Timer etc.
+I use Microchip's MPLAB-X IDE. I also use [MPLAB Code Configurator (MCC)](http://www.microchip.com/mplab/mplab-code-configurator) to automatically generate code for EUSART, I2C(master/slave), ADC, Timer etc. I modify the generated I2C slave code to support Plug&Play protocol.
 
 ### Plug&Play protocol
 
