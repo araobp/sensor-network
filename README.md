@@ -18,10 +18,6 @@ There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling 
 
 This is a project to develop a networking protocol and building blocks for local wired sensor network.
 
-### Hardware-version of Node-RED
-
-I use [Node-RED](https://nodered.org/) quite often to visualize sensor data. Nodes on Node-RED are connected with each other via wires. I imagined something like hardware-version of flow-based programming.
-
 ## Network architecture
 
 The network is composed of multiple nodes(blocks) and one scheduler.
@@ -39,12 +35,6 @@ The network is composed of multiple nodes(blocks) and one scheduler.
 ```
 
 Note: I am going to support CAN bus as well.
-
-### Physical wiring
-
-In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires among nodes: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html). Telephone line makes physical wirling very easy.
-
-6P4C telephone line is suitable for I2C with power line: SDA, SCL, 5V, GND.
 
 ### Interfaces among blocks
 
@@ -177,3 +167,10 @@ $:WHO:16
 #STP
 *:STP:ACK
 ```
+
+### Physical wiring
+
+In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires among nodes: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html). Telephone line makes physical wirling very easy.
+
+6P4C telephone line is suitable for I2C with power line: SDA, SCL, 5V, GND.
+
