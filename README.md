@@ -1,5 +1,7 @@
 # Local wired sensor network
 
+![sensor_networ](./doc/sensor_network.png)
+
 ## Background and motivation
 
 ### Problems
@@ -15,8 +17,6 @@ I have developed a lot of IoT prototypes so far, then I have observed that most 
 There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling management (BACnet) or factory automation (PROFINET), but none of them satisfies the requirements above.
 
 This is a project to develop a networking protocol and building blocks for local wired sensor network.
-
-![sensor_networ](./doc/sensor_network.png)
 
 ### Hardware-version of Node-RED
 
