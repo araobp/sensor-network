@@ -16,7 +16,7 @@ There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling 
 
 This is a project to develop a networking protocol and building blocks for local wired sensor network.
 
-![daisy_chain](./doc/daisy_chain.png)
+![sensor_networ](./doc/sensor_network.png)
 
 ### Hardware-version of Node-RED
 
