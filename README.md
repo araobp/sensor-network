@@ -90,7 +90,7 @@ The base board below is a common hardware part of node:
 
 One I2C master and three I2C slaves are connected with each other via backplane bus on the back of base board
 
-![compact](./doc/compact.png)
+![compact2](./doc/compact2.png)
 
 A similar construct to the above, but all the boards are connected with each other in a daisy-chain manner:
 
