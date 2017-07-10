@@ -12,10 +12,7 @@
 #define CONFIGURATION 0x02
 #define CONFIG_DATA 0x00
 
-void init(void) {
-    __delay_ms(30);  // wait for 15msec
-    i2c2_write(HDC1000_ADDR, CONFIGURATION, CONFIG_DATA);
-}
+bool initialized = false;
 
 void inv_handler(void) {
     uint8_t measure[4];  // temperature MSB/LSB, humidity MSB/LSB
@@ -25,6 +22,11 @@ void inv_handler(void) {
     
     LATCbits.LATC7 ^= 1;
 
+    if (!initialized) {
+        i2c2_write(HDC1000_ADDR, CONFIGURATION, CONFIG_DATA);
+        initialized = true;
+    }
+    
     // Temperature measurement
     status = i2c2_write_no_data(HDC1000_ADDR, TEMPERATURE);
     __delay_ms(10);
@@ -65,7 +67,6 @@ void main(void)
 
     // Device initialization
     I2C2_Initialize();
-    init();
 
     // I2C backplane initialization
     I2C1_Initialize();  // Enable I2C backplane
