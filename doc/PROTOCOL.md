@@ -222,7 +222,7 @@ slave              master
   |<------RSC--------|
   |                  |
   |------<*1>------->|
-  
+
 (*1) example output
 $:RSC:0,0,0,0,0,0,0,0,0,0,0,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ```
@@ -308,13 +308,13 @@ Example:
 
 ## Scheduler
 
-- [schedule 0] every 8msec
-- [schedule 1] every 16 msec (8msec * 2)
-- [schedule 2] every 48 msec (8msec * 6): ~50msec
-- [schedule 3] every 96 msec (8msec * 12): ~100msec
-- [schedule 4] every 496 msec (8msec * 62): ~500msec
-- [schedule 5] every 1sec (8msec * 125)
-- [schedule 6] every 5sec (8msec * 625)
+* 0: every 8msec
+* 1: every 16 msec (8 * 2)
+* 2: every 48 msec (8 * 6): ~50msec
+* 3: every 96 msec (8 * 12): ~100msec
+* 4: every 480 msec (8 * 60): ~500msec
+* 5: every 960 msec (8 * 120): ~1sec
+* 6: every 4800 msec (8 * 600): ~5sec
 
 ## I2C address registry
 
