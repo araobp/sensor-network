@@ -50,9 +50,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "interrupt_manager.h"
+#include "adc.h"
 #include "memory.h"
 #include "eusart.h"
-#include "adc.h"
 #include "tmr0.h"
 #include "i2c1.h"
 

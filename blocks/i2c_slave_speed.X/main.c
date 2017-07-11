@@ -5,9 +5,10 @@
 
 #define DEVICE_ID "A1324LUA_T"
 
-#define THRESHOLD 20
+#define THRESHOLD 50
 #define MIDDLE 511
 #define CONTINUITY 3
+#define SLEEP_IN_LOOP 500  // in micro sec
 
 bool on = false;
 uint16_t sum = 0;
@@ -25,8 +26,7 @@ void loop_func(void) {
     ADC_StartConversion();
     while(!ADC_IsConversionDone());
     adc_result_t out = ADC_GetConversionResult();
-    uint16_t v = abs(out - MIDDLE);
-    
+    uint16_t v = abs(out - MIDDLE);    
     /*
      *  Count condition
      *  "^": satisfied
@@ -72,6 +72,7 @@ void loop_func(void) {
             break;
     }
     // printf("out:%d, v:%d, on:%d, sum:%d\n", out, v, on, sum);
+    __delay_us(SLEEP_IN_LOOP);
 }
 
 void main(void)

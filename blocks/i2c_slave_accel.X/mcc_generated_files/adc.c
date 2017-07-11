@@ -13,7 +13,7 @@
   @Description
     This source file provides implementations for driver APIs for ADC.
     Generation Information :
-        Product Revision  :  MPLAB(c) Code Configurator - 4.15.1
+        Product Revision  :  MPLAB(c) Code Configurator - 4.15.3
         Device            :  PIC16F1829
         Driver Version    :  2.00
     The generated drivers are tested against the following:
@@ -68,7 +68,7 @@ void ADC_Initialize(void)
     // GO_nDONE stop; ADON enabled; CHS AN0; 
     ADCON0 = 0x01;
     
-    // ADFM right; ADNREF VSS; ADPREF VDD; ADCS FRC; 
+    // ADFM right; ADNREF VSS; ADPREF VDD; ADCS Frc; 
     ADCON1 = 0xF0;
     
     // ADRESL 0; 

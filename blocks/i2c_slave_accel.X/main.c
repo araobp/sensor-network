@@ -5,7 +5,7 @@
 #define DEVICE_ID "KXR94-2050"
 
 #define OFFSET 512.0
-#define G 204.8  // 1024/5.0 = 204.8 (steps/volt)
+#define G 204.8  // 1024/5 = 204.8 (steps/volt)
 
 /*
  * get acceleration data from acceclerometer and convert it into G-unit value
