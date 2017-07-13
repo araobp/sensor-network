@@ -3,6 +3,7 @@
 #include "i2c1_util.h"
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #define DEVICE_ID "BACKPLANE-MASTER"
 
@@ -14,6 +15,10 @@
 #define WSC "WSC"
 #define RSC "RSC"
 #define CSC "CSC"
+#define EDG "EDG"
+
+// Edge computing feature name
+#define MTR "MTR"
 
 // I2C slave device address range handled by backplane master
 // These constants should be larger than 16 and multipels of 8
@@ -23,13 +28,19 @@
 #define MASK 0x01
 
 #define INV_DELAY 100 // INV delay (micro sec)
-#define SEN_DELAY 1   // INV -> SEN delay (mili sec)
+#define INV_SEN_DELAY 1000  // INV->SEN delay (mili sec))
+#define SEN_DELAY 100   // SEN delay (mili sec)
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
-char cmd_buf[2][BUF_SIZE];
+char cmd_buf[4][BUF_SIZE];
 
-/*
+void (*edge_func)(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuf) = NULL;
+
+const float WHEEL_RADIUS = 6.0 / 100.0 / 1000.0;  // 6cm
+const float CIRCUMFERENCE = 2.0 * M_PI * WHEEL_RADIUS;
+
+ /*
  * Schedule with I2C slave addresses
  * 
  * 0: every 8msec
@@ -110,8 +121,7 @@ void init(void) {
     }
 
     // clear cmd buf
-    cmd_buf[0][0] = '\0';
-    cmd_buf[1][0] = '\0';
+    for (i=0; i<4; i++) cmd_buf[i][0] = '\0';    
 
     // initialize schedule
     for (i=0; i<28; i++) {
@@ -232,6 +242,7 @@ void print_dev_map(void) {
     }
 }
 
+
 /*
  * retrice sensor data from I2C slave device
  */
@@ -240,16 +251,26 @@ uint8_t sen(uint8_t dev_addr) {
     uint8_t type;
     uint8_t length ,data, i;
     LATCbits.LATC7 ^= 1;
+    // INV
+    __delay_us(INV_DELAY);
+    i2c1_write_no_data(dev_addr, INV_I2C);
+    // SEN
+    __delay_us(INV_SEN_DELAY);
     status = i2c1_read(dev_addr, SEN_I2C, &type, 1);
+    __delay_us(SEN_DELAY);
     if (status == 0) {
         if (type == TYPE_NO_DATA) {
                 PROTOCOL_Print_TLV(dev_addr, TYPE_NO_DATA, 0, NULL);            
         } else {
             status = i2c1_read(dev_addr, SEN_I2C, &length, 1);
+            __delay_us(SEN_DELAY);
             if (status == 0) {
-                status = i2c1_read(dev_addr, SEN_I2C, &read_buf[0], length);
+                status = i2c1_read(dev_addr, SEN_I2C, read_buf, length);
+                __delay_us(SEN_DELAY);
                 if (status == 0) {
-                    PROTOCOL_Print_TLV(dev_addr, type, length, &read_buf[0]);
+                    PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
+                    // Edge computing
+                    if (edge_func) edge_func(dev_addr, type, length, read_buf);
                 }
             }
         }                    
@@ -269,11 +290,6 @@ void fetch(uint8_t *sch) {
         if (dev_addr == 0 || dev_addr > MAX_DEV_ADDR) {
             break;
         } else if (detected(dev_addr)) {
-            // INV
-            __delay_us(INV_DELAY);
-            i2c1_write_no_data(dev_addr, INV_I2C);
-            __delay_ms(SEN_DELAY);
-            // SEN
             status = sen(dev_addr);
             if (status > 0) {
                 printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
@@ -289,7 +305,7 @@ void fetch(uint8_t *sch) {
 void inv_handler(void) {
     uint8_t dev_addr, status;
     static uint16_t t = 0;
-    static uint8_t cmd_next = 0;
+    static int8_t cmd_next = -1;
     
     /*** 8msec ***/
     fetch(schedule[0]);
@@ -298,17 +314,18 @@ void inv_handler(void) {
     /*** 48msec (~50msec) ***/
     if (t % 6 == 0) fetch(schedule[2]);
     /*** 96msec (~100msec)***/
-    if (t % 12 == 0) fetch(schedule[3]);
-    /*** 480msec (~500msec) ***/
-    if (t % 60 == 0) {
-        fetch(schedule[4]);
-        cmd_next = (cmd_next == 0) ? 1 : 0;
-        exec_remote_cmd(cmd_next);        
+    if (t % 12 == 0) {
+        fetch(schedule[3]);
+        if (++cmd_next > 3) cmd_next = 0;
+        exec_remote_cmd(cmd_next);
     }
+    /*** 480msec (~500msec) ***/
+    if (t % 60 == 0) fetch(schedule[4]);
     /*** 960msec (~1sec) ***/
     if (t % 120 == 0) {
         fetch(schedule[5]);
         check_plg();
+        if (edge_func) edge_func(BACKPLANE_MASTER_I2C, 0, 0, NULL); // 1sec clock for edge func
     }
     /*** 4800msec (~5sec) ***/
     if (t % 600 == 0) {
@@ -324,15 +341,64 @@ void inv_handler(void) {
  * put command into buffer to execute it on I2C slave device
  */
 void put_cmd(uint8_t *buf) {
-    static uint8_t idx = 0;
-    strcpy(cmd_buf[idx], buf);
-    if (++idx > 1) idx = 0;
+    static int8_t idx = -1;
+    if (++idx > 3) idx = 0;
+    if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
+}
+
+void command_handler(uint8_t *buf);
+
+/*
+ * Edge computing: meter control
+ */
+void edge_meter(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuf) {
+    static uint8_t pulses = 0;
+    static uint8_t sec = 0;
+    static bool initialized = false;
+    uint16_t speed10 = 0;
+    uint16_t rpm = 0;
+    double rms10 = 0;
+    uint16_t x, y, z;
+    char buf[BUF_SIZE];
+    if (!initialized) {
+        sprintf(buf, "I2C:%d\0", AQM1602XA_RN_GBW_I2C);
+        command_handler(buf);
+        sprintf(buf, "CLR\0");
+        command_handler(buf);
+        sprintf(buf, "HST:STARTING...\0");
+        command_handler(buf);
+        initialized = true;
+    }
+    switch(dev_addr) {
+        case BACKPLANE_MASTER_I2C:
+            if (++sec >= 5) {
+                rpm = pulses * 12;
+                speed10 = (uint16_t)(CIRCUMFERENCE * pulses * 12.0 * 60.0 * 10.0);
+                sprintf(buf, "HST:%2d.%dkm/h,%4drpm\0", speed10 / 10, speed10 % 10, rpm);
+                command_handler(buf);
+                sprintf(buf, "NWL\0");
+                command_handler(buf);
+                sprintf(buf, "STR:%1d.%1dG, %1d.%1dG, %1d.%1dG \0", x/10, x%10, y/10, y%10, z/10, z%10);                
+                command_handler(buf);
+                sec = 0;
+                pulses = 0;
+            }
+            break;
+        case A1324LUA_T_I2C:
+            pulses = pulses + pbuf[0] * 256 + pbuf[1];
+            break;
+        case KXR94_2050_I2C:
+            x = abs(pbuf[0] * 256+ pbuf[1])/10;
+            y = abs(pbuf[2] * 256+ pbuf[3])/10;
+            z = abs(pbuf[4] * 256+ pbuf[5])/10;
+            break;
+    }
 }
 
 /*
  * Backplane-master-specific commands
  */
-void extension_handler(uint8_t *buf) {
+void command_handler(uint8_t *buf) {
     static uint8_t pos = 0;
     uint8_t i;
     uint8_t dev_addr;
@@ -341,7 +407,7 @@ void extension_handler(uint8_t *buf) {
     } else if (parse(MAP, buf)) {
         print_dev_map();
     } else if (parse(SCN, buf)) {
-        scan_dev();
+        check_plg();
     } else if (parse(POS, buf)) {
         pos = atoi(&buf[4]);
         if (pos > 27) printf("!:POS:POS LARGER THAN 27\n");
@@ -368,6 +434,12 @@ void extension_handler(uint8_t *buf) {
             DATAEE_WriteByte(DEVICE_SETTING_ADDRESS+i+1, 0);
             schedule[i/4][i%4] = 0;
         }
+    } else if (parse(EDG, buf)) {
+        if (!strncmp(MTR, &buf[4], 3)) {
+            edge_func = edge_meter;
+        } else {
+            printf("!:EDG:UNRECOGNIZED EDGE FUNC\n");
+        }
     } else if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {
         put_cmd(buf);
     }
@@ -382,6 +454,6 @@ void main(void)
     INTERRUPT_PeripheralInterruptEnable();
 
     PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, NULL, inv_handler, 1);
-    PROTOCOL_Set_Extension_Handler(extension_handler);
+    PROTOCOL_Set_Extension_Handler(command_handler);
     PROTOCOL_Loop();
 }
