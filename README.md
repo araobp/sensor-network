@@ -202,7 +202,7 @@ Use the CLI to control the scheduler or stream sensor data to the cloud.
 - Node.js: [serialport](https://www.npmjs.com/package/serialport)
 
 #### via D2XX driver
-- Java/Android: [http://www.ftdichip.com/Android.htm]
+- Java/Android: [D2XX driver](http://www.ftdichip.com/Android.htm)
 
 ### Physical wiring among blocks
 
