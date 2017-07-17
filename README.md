@@ -193,7 +193,18 @@ $:WHO:16
 *:STP:ACK
 ```
 
-### Physical wiring
+### Interface to the scheduler
+
+Use the CLI to control the scheduler or stream sensor data to the cloud.
+
+#### via VCP over ttyUSBX(Linux)/COM port(Windows)
+- Python: [pySerial](https://pythonhosted.org/pyserial/)
+- Node.js: [serialport](https://www.npmjs.com/package/serialport)
+
+#### via D2XX driver
+- Java/Android: [http://www.ftdichip.com/Android.htm]
+
+### Physical wiring among blocks
 
 In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires among nodes: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html). Telephone line makes physical wirling very easy.
 
