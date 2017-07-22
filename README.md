@@ -1,6 +1,6 @@
 # Local wired sensor network
 
-![sensor_networ](./doc/sensor_network.png)
+![sensor_networ](./doc/sensor_network.jpg)
 
 ## Background and motivation
 
