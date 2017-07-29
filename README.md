@@ -10,8 +10,8 @@ I have developed a lot of IoT prototypes so far, then I have observed that most 
 
 - low power consumption and lower voltage (5V or 3.3V)
 - bus topology (daisy-chain) rather than hub and spoke (star)
-- two-wire
-- cheap (~$1 per node) and open
+- two-wire or one-wire
+- cheap (<$10 per node on average) and open
 - small software footprint
 
 There are a lot of such technologies for in-vehicle network (CAN/LIN), buidling management (BACnet) or factory automation (PROFINET), but none of them satisfies all the requirements above.
