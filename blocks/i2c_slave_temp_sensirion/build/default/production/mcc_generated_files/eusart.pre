@@ -1,5 +1,5 @@
 
-# 1 "i2c2_util.c"
+# 1 "mcc_generated_files/eusart.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3925,11 +3925,8 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 94 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-
-# 106
-void PIN_MANAGER_IOC(void);
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
+typedef unsigned char bool;
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
 typedef signed char int8_t;
@@ -4021,181 +4018,226 @@ typedef int16_t intptr_t;
 
 typedef uint16_t uintptr_t;
 
-# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdbool.h"
-typedef unsigned char bool;
-
-# 110 "mcc_generated_files/interrupt_manager.h"
-void interrupt INTERRUPT_InterruptManager(void);
-
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stddef.h"
-typedef int ptrdiff_t;
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
+typedef void * va_list[1];
 
-# 83 "mcc_generated_files/i2c2.h"
-typedef enum
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
+struct __prbuf
 {
-I2C2_MESSAGE_COMPLETE,
-I2C2_MESSAGE_FAIL,
-I2C2_MESSAGE_PENDING,
-I2C2_STUCK_START,
-I2C2_MESSAGE_ADDRESS_NO_ACK,
-I2C2_DATA_NO_ACK,
-I2C2_LOST_STATE
-} I2C2_MESSAGE_STATUS;
+char * ptr;
+void (* func)(char);
+};
 
-# 108
-typedef struct
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 77 "mcc_generated_files/eusart.h"
+extern volatile uint8_t eusartTxBufferRemaining;
+extern volatile uint8_t eusartRxCount;
+
+# 106
+void EUSART_Initialize(void);
+
+# 155
+uint8_t EUSART_Read(void);
+
+# 180
+void EUSART_Write(uint8_t txData);
+
+# 201
+void EUSART_Transmit_ISR(void);
+
+# 222
+void EUSART_Receive_ISR(void);
+
+# 61 "mcc_generated_files/eusart.c"
+volatile uint8_t eusartTxHead = 0;
+volatile uint8_t eusartTxTail = 0;
+volatile uint8_t eusartTxBuffer[8];
+volatile uint8_t eusartTxBufferRemaining;
+
+volatile uint8_t eusartRxHead = 0;
+volatile uint8_t eusartRxTail = 0;
+volatile uint8_t eusartRxBuffer[8];
+volatile uint8_t eusartRxCount;
+
+# 75
+void EUSART_Initialize(void)
 {
-uint16_t address;
+
+PIE1bits.RCIE = 0;
+PIE1bits.TXIE = 0;
 
 
-uint8_t length;
-uint8_t *pbuffer;
-} I2C2_TRANSACTION_REQUEST_BLOCK;
 
-# 220
-void I2C2_Initialize(void);
 
-# 259
-void I2C2_MasterWrite(
-uint8_t *pdata,
-uint8_t length,
-uint16_t address,
-I2C2_MESSAGE_STATUS *pstatus);
+BAUDCON = 0x08;
 
-# 406
-void I2C2_MasterRead(
-uint8_t *pdata,
-uint8_t length,
-uint16_t address,
-I2C2_MESSAGE_STATUS *pstatus);
 
-# 516
-void I2C2_MasterTRBInsert(
-uint8_t count,
-I2C2_TRANSACTION_REQUEST_BLOCK *ptrb_list,
-I2C2_MESSAGE_STATUS *pflag);
+RCSTA = 0x90;
 
-# 560
-void I2C2_MasterReadTRBBuild(
-I2C2_TRANSACTION_REQUEST_BLOCK *ptrb,
-uint8_t *pdata,
-uint8_t length,
-uint16_t address);
 
-# 605
-void I2C2_MasterWriteTRBBuild(
-I2C2_TRANSACTION_REQUEST_BLOCK *ptrb,
-uint8_t *pdata,
-uint8_t length,
-uint16_t address);
+TXSTA = 0x24;
 
-# 647
-bool I2C2_MasterQueueIsEmpty(void);
 
-# 685
-bool I2C2_MasterQueueIsFull(void);
-void I2C2_BusCollisionISR( void );
-void I2C2_ISR ( void );
+SPBRGL = 0x67;
 
-# 69 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
 
-# 82
-void OSCILLATOR_Initialize(void);
+SPBRGH = 0x00;
 
-# 95
-void WDT_Initialize(void);
 
-# 8 "i2c2_util.h"
-uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data);
-uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
-uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
-uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len);
 
-# 13 "i2c2_util.c"
-uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data) {
+eusartTxHead = 0;
+eusartTxTail = 0;
+eusartTxBufferRemaining = sizeof(eusartTxBuffer);
 
-uint8_t buf[2];
-I2C2_MESSAGE_STATUS status;
-uint8_t write_status;
-buf[0] = reg_addr;
-buf[1] = data;
-I2C2_MasterWrite(buf, 2, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-write_status = 0;
-} else {
-write_status = 1;
-}
-return write_status;
+eusartRxHead = 0;
+eusartRxTail = 0;
+eusartRxCount = 0;
+
+
+PIE1bits.RCIE = 1;
 }
 
+uint8_t EUSART_Read(void)
+{
+uint8_t readValue = 0;
 
-uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len) {
-
-uint8_t reg[1];
-I2C2_MESSAGE_STATUS status;
-uint8_t read_status;
-reg[0] = reg_addr;
-I2C2_MasterWrite(reg, 1, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-I2C2_MasterRead(pbuf, len, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-read_status = 0;
-} else {
-read_status = 2;
-}
-} else {
-read_status = 1;
-}
-return read_status;
+while(0 == eusartRxCount)
+{
 }
 
+readValue = eusartRxBuffer[eusartRxTail++];
+if(sizeof(eusartRxBuffer) <= eusartRxTail)
+{
+eusartRxTail = 0;
+}
+PIE1bits.RCIE = 0;
+eusartRxCount--;
+PIE1bits.RCIE = 1;
 
-uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
+return readValue;
+}
 
-uint8_t buf[1];
-I2C2_MESSAGE_STATUS status;
-uint8_t write_status = 2;
-buf[0] = reg_addr;
-uint8_t timeout = 1;
-while (status != I2C2_MESSAGE_FAIL) {
-I2C2_MasterWrite(buf, 1, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-write_status = 0;
-break;
+void EUSART_Write(uint8_t txData)
+{
+while(0 == eusartTxBufferRemaining)
+{
 }
-if (--timeout == 0) {
-write_status = 1;
-break;
+
+if(0 == PIE1bits.TXIE)
+{
+TXREG = txData;
+}
+else
+{
+PIE1bits.TXIE = 0;
+eusartTxBuffer[eusartTxHead++] = txData;
+if(sizeof(eusartTxBuffer) <= eusartTxHead)
+{
+eusartTxHead = 0;
+}
+eusartTxBufferRemaining--;
+}
+PIE1bits.TXIE = 1;
+}
+
+char getch(void)
+{
+return EUSART_Read();
+}
+
+void putch(char txData)
+{
+EUSART_Write(txData);
+}
+
+void EUSART_Transmit_ISR(void)
+{
+
+
+if(sizeof(eusartTxBuffer) > eusartTxBufferRemaining)
+{
+TXREG = eusartTxBuffer[eusartTxTail++];
+if(sizeof(eusartTxBuffer) <= eusartTxTail)
+{
+eusartTxTail = 0;
+}
+eusartTxBufferRemaining++;
+}
+else
+{
+PIE1bits.TXIE = 0;
 }
 }
-return write_status;
+
+void EUSART_Receive_ISR(void)
+{
+
+if(1 == RCSTAbits.OERR)
+{
+
+
+RCSTAbits.CREN = 0;
+RCSTAbits.CREN = 1;
 }
 
 
-uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len) {
+eusartRxBuffer[eusartRxHead++] = RCREG;
+if(sizeof(eusartRxBuffer) <= eusartRxHead)
+{
+eusartRxHead = 0;
+}
+eusartRxCount++;
+}
 
-I2C2_MESSAGE_STATUS status;
-uint8_t read_status = 2;
-uint8_t timeout = 1;
-while (status != I2C2_MESSAGE_FAIL) {
-I2C2_MasterRead(pbuf, len, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-read_status = 0;
-break;
-}
-if (--timeout == 0) {
-read_status = 1;
-break;
-}
-}
-return read_status;
-}

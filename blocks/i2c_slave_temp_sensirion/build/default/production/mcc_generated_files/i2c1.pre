@@ -1,5 +1,5 @@
 
-# 1 "i2c2_util.c"
+# 1 "mcc_generated_files/i2c1.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -3925,10 +3925,10 @@ extern unsigned char __resetbits;
 extern __bit __powerdown;
 extern __bit __timeout;
 
-# 94 "mcc_generated_files/pin_manager.h"
+# 153 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
 
-# 106
+# 165
 void PIN_MANAGER_IOC(void);
 
 # 13 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdint.h"
@@ -4027,6 +4027,24 @@ typedef unsigned char bool;
 # 110 "mcc_generated_files/interrupt_manager.h"
 void interrupt INTERRUPT_InterruptManager(void);
 
+# 98 "mcc_generated_files/memory.h"
+uint16_t FLASH_ReadWord(uint16_t flashAddr);
+
+# 127
+void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+
+# 163
+int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+
+# 188
+void FLASH_EraseBlock(uint16_t startAddr);
+
+# 219
+void DATAEE_WriteByte(uint8_t bAdd, uint8_t bData);
+
+# 245
+uint8_t DATAEE_ReadByte(uint8_t bAdd);
+
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
@@ -4100,102 +4118,378 @@ bool I2C2_MasterQueueIsFull(void);
 void I2C2_BusCollisionISR( void );
 void I2C2_ISR ( void );
 
-# 69 "mcc_generated_files/mcc.h"
+# 97 "mcc_generated_files/tmr0.h"
+void TMR0_Initialize(void);
+
+# 130
+uint8_t TMR0_ReadTimer(void);
+
+# 169
+void TMR0_WriteTimer(uint8_t timerVal);
+
+# 205
+void TMR0_Reload(void);
+
+# 243
+bool TMR0_HasOverflowOccured(void);
+
+# 78 "mcc_generated_files/i2c1.h"
+typedef enum
+{
+I2C1_SLAVE_WRITE_REQUEST,
+I2C1_SLAVE_READ_REQUEST,
+I2C1_SLAVE_WRITE_COMPLETED,
+I2C1_SLAVE_READ_COMPLETED,
+I2C1_SLAVE_GENERAL_CALL_REQUEST,
+} I2C1_SLAVE_DRIVER_STATUS;
+
+# 114
+void I2C1_Initialize(void);
+
+# 134
+void I2C1_ISR ( void );
+
+# 141
+extern volatile uint8_t I2C1_slaveWriteData;
+
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 43 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 29 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\errno.h"
+extern int errno;
+
+# 12 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\conio.h"
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 23
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 88 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 180
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 77 "mcc_generated_files/eusart.h"
+extern volatile uint8_t eusartTxBufferRemaining;
+extern volatile uint8_t eusartRxCount;
+
+# 106
+void EUSART_Initialize(void);
+
+# 155
+uint8_t EUSART_Read(void);
+
+# 180
+void EUSART_Write(uint8_t txData);
+
+# 201
+void EUSART_Transmit_ISR(void);
+
+# 222
+void EUSART_Receive_ISR(void);
+
+# 73 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 82
+# 86
 void OSCILLATOR_Initialize(void);
 
-# 95
+# 99
 void WDT_Initialize(void);
 
-# 8 "i2c2_util.h"
-uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data);
-uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
-uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
-uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len);
+# 38 "../lib/protocol.X\protocol.h"
+void blink_red(uint8_t times);
 
-# 13 "i2c2_util.c"
-uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data) {
+# 43
+void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+void PROTOCOL_Loop();
+void PROTOCOL_Set_Func(void *loop_func);
+void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+uint8_t PROTOCOL_Read_Device_Address(void);
 
-uint8_t buf[2];
-I2C2_MESSAGE_STATUS status;
-uint8_t write_status;
-buf[0] = reg_addr;
-buf[1] = data;
-I2C2_MasterWrite(buf, 2, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-write_status = 0;
-} else {
-write_status = 1;
+void PROTOCOL_STA(void);
+void PROTOCOL_STP(void);
+void PROTOCOL_SET(uint8_t value);
+void PROTOCOL_SAV(void);
+void PROTOCOL_INV(void);
+void PROTOCOL_RST(void);
+void PROTOCOL_EXT(uint8_t *pbuffer);
+
+# 62
+void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+
+# 67
+void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+void PROTOCOL_I2C_Reset_TLV(void);
+bool PROTOCOL_I2C_TLV_Status(void);
+
+void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+void PROTOCOL_Send_uint8_t(uint8_t value);
+void PROTOCOL_Send_int8_t(int8_t value);
+void PROTOCOL_Send_uint16_t(uint16_t value);
+void PROTOCOL_Send_int16_t(int16_t value);
+void PROTOCOL_Send_float(float value);
+
+# 85
+void PROTOCOL_Backplane_Slave_Enabled(void);
+uint8_t PROTOCOL_I2C_WHO(void);
+uint8_t PROTOCOL_I2C_GET(void);
+uint8_t* PROTOCOL_I2C_SEN();
+
+void PROTOCOL_Set_Lock(bool lock);
+bool PROTOCOL_Read_Lock(void);
+
+# 130
+uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+
+# 12 "mcc_generated_files/i2c1.c"
+typedef enum
+{
+SLAVE_NORMAL_DATA,
+SLAVE_DATA_ADDRESS,
+SLAVE_GENERAL_CALL,
+} SLAVE_WRITE_DATA_TYPE;
+
+# 23
+volatile uint8_t I2C_slaveWriteData = 0x55;
+
+# 28
+void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state);
+
+void I2C1_Initialize(void)
+{
+
+
+_delay((unsigned long)((2000)*(4000000/4000.0)));
+
+
+
+SSP1STAT = 0x80;
+
+SSP1CON1 = 0x26;
+
+SSP1CON2 = 0x81;
+
+SSP1CON3 = 0x00;
+
+SSP1MSK = (0x7F << 1);
+
+SSP1ADD = (PROTOCOL_Read_Device_Address() << 1);
+
+
+PIR1bits.SSP1IF = 0;
+
+PIE1bits.SSP1IE = 1;
+
 }
-return write_status;
+
+void I2C1_ISR ( void )
+{
+uint8_t i2c_data = 0x55;
+
+
+
+
+PIR1bits.SSP1IF = 0;
+i2c_data = SSP1BUF;
+if(1 == SSP1STATbits.R_nW)
+{
+if((1 == SSP1STATbits.D_nA) && (1 == SSP1CON2bits.ACKSTAT))
+{
+
+I2C1_StatusCallback(I2C1_SLAVE_READ_COMPLETED);
+}
+else
+{
+
+I2C1_StatusCallback(I2C1_SLAVE_READ_REQUEST);
+}
+}
+else if(0 == SSP1STATbits.D_nA)
+{
+
+
+if(0x00 == i2c_data)
+{
+
+I2C1_StatusCallback(I2C1_SLAVE_GENERAL_CALL_REQUEST);
+}
+else
+{
+
+I2C1_StatusCallback(I2C1_SLAVE_WRITE_REQUEST);
+}
+}
+else
+{
+I2C_slaveWriteData = i2c_data;
+
+
+I2C1_StatusCallback(I2C1_SLAVE_WRITE_COMPLETED);
 }
 
+SSP1CON1bits.CKP = 1;
 
-uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len) {
-
-uint8_t reg[1];
-I2C2_MESSAGE_STATUS status;
-uint8_t read_status;
-reg[0] = reg_addr;
-I2C2_MasterWrite(reg, 1, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-I2C2_MasterRead(pbuf, len, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-read_status = 0;
-} else {
-read_status = 2;
-}
-} else {
-read_status = 1;
-}
-return read_status;
 }
 
+void I2C1_StatusCallback(I2C1_SLAVE_DRIVER_STATUS i2c_bus_state)
+{
 
-uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
+static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
+static uint8_t next = 0x00;
+static uint8_t ext_len = 0;
+static uint8_t ext_cnt = 0;
+static char ext_buf[48];
+uint8_t *pdata;
+switch (i2c_bus_state)
+{
+case I2C1_SLAVE_WRITE_REQUEST:
+slaveWriteType = SLAVE_DATA_ADDRESS;
+break;
 
-uint8_t buf[1];
-I2C2_MESSAGE_STATUS status;
-uint8_t write_status = 2;
-buf[0] = reg_addr;
-uint8_t timeout = 1;
-while (status != I2C2_MESSAGE_FAIL) {
-I2C2_MasterWrite(buf, 1, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-write_status = 0;
+case I2C1_SLAVE_GENERAL_CALL_REQUEST:
+
+slaveWriteType = SLAVE_GENERAL_CALL;
+break;
+
+case I2C1_SLAVE_WRITE_COMPLETED:
+
+switch(slaveWriteType)
+{
+case SLAVE_DATA_ADDRESS:
+switch(next) {
+case 0x01:
+PROTOCOL_SET(I2C_slaveWriteData);
+next = 0x00;
+break;
+case 0x00:
+switch(I2C_slaveWriteData) {
+case 0x04:
+PROTOCOL_STA();
+break;
+case 0x05:
+PROTOCOL_STP();
+break;
+case 0x03:
+PROTOCOL_SAV();
+break;
+case 0x06:
+PROTOCOL_INV();
+break;
+case 0x0c:
+PROTOCOL_RST();
+break;
+case 0x08:
+next = 0x01;
+break;
+case 0x0a:
+next = 0x02;
 break;
 }
-if (--timeout == 0) {
-write_status = 1;
 break;
 }
+break;
+
+case SLAVE_GENERAL_CALL:
+if (I2C_slaveWriteData == 0x02) {
+SSP1CON2bits.GCEN = 0;
+PROTOCOL_Backplane_Slave_Enabled();
 }
-return write_status;
+break;
+
+case SLAVE_NORMAL_DATA:
+switch(next) {
+case 0x02:
+ext_len = I2C_slaveWriteData;
+ext_cnt = 0;
+next = 0x03;
+break;
+case 0x03:
+ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
+if (ext_cnt >= ext_len) {
+if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
+next = 0x00;
 }
-
-
-uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len) {
-
-I2C2_MESSAGE_STATUS status;
-uint8_t read_status = 2;
-uint8_t timeout = 1;
-while (status != I2C2_MESSAGE_FAIL) {
-I2C2_MasterRead(pbuf, len, dev_addr, &status);
-while (status == I2C2_MESSAGE_PENDING);
-if (status == I2C2_MESSAGE_COMPLETE) {
-read_status = 0;
 break;
 }
-if (--timeout == 0) {
-read_status = 1;
+break;
+default:
+break;
+
+}
+
+slaveWriteType = SLAVE_NORMAL_DATA;
+break;
+
+case I2C1_SLAVE_READ_REQUEST:
+switch (I2C_slaveWriteData)
+{
+case 0x01:
+SSP1BUF = PROTOCOL_I2C_WHO();
+break;
+case 0x07:
+pdata = PROTOCOL_I2C_SEN();
+SSP1BUF = *pdata;
+break;
+case 0x09:
+SSP1BUF = PROTOCOL_I2C_GET();
 break;
 }
+break;
+
+case I2C1_SLAVE_READ_COMPLETED:
+break;
+default:
+break;
+
 }
-return read_status;
 }

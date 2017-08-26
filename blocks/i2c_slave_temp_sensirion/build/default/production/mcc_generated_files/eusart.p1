@@ -1,11 +1,34 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"16 i2c2_util.c
-[c E2979 0 1 2 3 4 5 6 .. ]
-[n E2979 . I2C2_MESSAGE_COMPLETE I2C2_MESSAGE_FAIL I2C2_MESSAGE_PENDING I2C2_STUCK_START I2C2_MESSAGE_ADDRESS_NO_ACK I2C2_DATA_NO_ACK I2C2_LOST_STATE  ]
-"259 mcc_generated_files/i2c2.h
-[v _I2C2_MasterWrite `(v ~T0 @X0 0 ef4`*uc`uc`ui`*E2979 ]
-"406
-[v _I2C2_MasterRead `(v ~T0 @X0 0 ef4`*uc`uc`ui`*E2979 ]
+"1304 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1829.h
+[s S74 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S74 . TMR1IE TMR2IE CCP1IE SSP1IE TXIE RCIE ADIE TMR1GIE ]
+"1303
+[u S73 `S74 1 ]
+[n S73 . . ]
+"1315
+[v _PIE1bits `VS73 ~T0 @X0 0 e@145 ]
+"3410
+[v _BAUDCON `Vuc ~T0 @X0 0 e@415 ]
+"3288
+[v _RCSTA `Vuc ~T0 @X0 0 e@413 ]
+"3349
+[v _TXSTA `Vuc ~T0 @X0 0 e@414 ]
+"3250
+[v _SPBRGL `Vuc ~T0 @X0 0 e@411 ]
+"3269
+[v _SPBRGH `Vuc ~T0 @X0 0 e@412 ]
+"3225
+[v _TXREG `Vuc ~T0 @X0 0 e@410 ]
+"3294
+[s S178 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S178 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
+"3293
+[u S177 `S178 1 ]
+[n S177 . . ]
+"3305
+[v _RCSTAbits `VS177 ~T0 @X0 0 e@413 ]
+"3206
+[v _RCREG `Vuc ~T0 @X0 0 e@409 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2905,8 +2928,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic.h: 192: extern unsigned char __resetbits;
 [; ;pic.h: 193: extern __bit __powerdown;
 [; ;pic.h: 194: extern __bit __timeout;
-[; ;pin_manager.h: 94: void PIN_MANAGER_Initialize (void);
-[; ;pin_manager.h: 106: void PIN_MANAGER_IOC(void);
+[; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;stdint.h: 13: typedef signed char int8_t;
 [; ;stdint.h: 20: typedef signed int int16_t;
 [; ;stdint.h: 28: typedef signed short long int int24_t;
@@ -2935,369 +2957,401 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 205: typedef uint32_t uintmax_t;
 [; ;stdint.h: 210: typedef int16_t intptr_t;
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
-[; ;stdbool.h: 12: typedef unsigned char bool;
-[; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c2.h: 83: typedef enum
-[; ;i2c2.h: 84: {
-[; ;i2c2.h: 85: I2C2_MESSAGE_COMPLETE,
-[; ;i2c2.h: 86: I2C2_MESSAGE_FAIL,
-[; ;i2c2.h: 87: I2C2_MESSAGE_PENDING,
-[; ;i2c2.h: 88: I2C2_STUCK_START,
-[; ;i2c2.h: 89: I2C2_MESSAGE_ADDRESS_NO_ACK,
-[; ;i2c2.h: 90: I2C2_DATA_NO_ACK,
-[; ;i2c2.h: 91: I2C2_LOST_STATE
-[; ;i2c2.h: 92: } I2C2_MESSAGE_STATUS;
-[; ;i2c2.h: 108: typedef struct
-[; ;i2c2.h: 109: {
-[; ;i2c2.h: 110: uint16_t address;
-[; ;i2c2.h: 113: uint8_t length;
-[; ;i2c2.h: 114: uint8_t *pbuffer;
-[; ;i2c2.h: 115: } I2C2_TRANSACTION_REQUEST_BLOCK;
-[; ;i2c2.h: 220: void I2C2_Initialize(void);
-[; ;i2c2.h: 259: void I2C2_MasterWrite(
-[; ;i2c2.h: 260: uint8_t *pdata,
-[; ;i2c2.h: 261: uint8_t length,
-[; ;i2c2.h: 262: uint16_t address,
-[; ;i2c2.h: 263: I2C2_MESSAGE_STATUS *pstatus);
-[; ;i2c2.h: 406: void I2C2_MasterRead(
-[; ;i2c2.h: 407: uint8_t *pdata,
-[; ;i2c2.h: 408: uint8_t length,
-[; ;i2c2.h: 409: uint16_t address,
-[; ;i2c2.h: 410: I2C2_MESSAGE_STATUS *pstatus);
-[; ;i2c2.h: 516: void I2C2_MasterTRBInsert(
-[; ;i2c2.h: 517: uint8_t count,
-[; ;i2c2.h: 518: I2C2_TRANSACTION_REQUEST_BLOCK *ptrb_list,
-[; ;i2c2.h: 519: I2C2_MESSAGE_STATUS *pflag);
-[; ;i2c2.h: 560: void I2C2_MasterReadTRBBuild(
-[; ;i2c2.h: 561: I2C2_TRANSACTION_REQUEST_BLOCK *ptrb,
-[; ;i2c2.h: 562: uint8_t *pdata,
-[; ;i2c2.h: 563: uint8_t length,
-[; ;i2c2.h: 564: uint16_t address);
-[; ;i2c2.h: 605: void I2C2_MasterWriteTRBBuild(
-[; ;i2c2.h: 606: I2C2_TRANSACTION_REQUEST_BLOCK *ptrb,
-[; ;i2c2.h: 607: uint8_t *pdata,
-[; ;i2c2.h: 608: uint8_t length,
-[; ;i2c2.h: 609: uint16_t address);
-[; ;i2c2.h: 647: bool I2C2_MasterQueueIsEmpty(void);
-[; ;i2c2.h: 685: bool I2C2_MasterQueueIsFull(void);
-[; ;i2c2.h: 686: void I2C2_BusCollisionISR( void );
-[; ;i2c2.h: 687: void I2C2_ISR ( void );
-[; ;mcc.h: 69: void SYSTEM_Initialize(void);
-[; ;mcc.h: 82: void OSCILLATOR_Initialize(void);
-[; ;mcc.h: 95: void WDT_Initialize(void);
-[; ;i2c2_util.h: 8: uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data);
-[; ;i2c2_util.h: 9: uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
-[; ;i2c2_util.h: 10: uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
-[; ;i2c2_util.h: 11: uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len);
-"13 i2c2_util.c
-[v _i2c2_write `(uc ~T0 @X0 1 ef3`ui`uc`uc ]
+[; ;stdarg.h: 7: typedef void * va_list[1];
+[; ;stdarg.h: 10: extern void * __va_start(void);
+[; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
+[; ;stdio.h: 43: struct __prbuf
+[; ;stdio.h: 44: {
+[; ;stdio.h: 45: char * ptr;
+[; ;stdio.h: 46: void (* func)(char);
+[; ;stdio.h: 47: };
+[; ;errno.h: 29: extern int errno;
+[; ;conio.h: 12: extern void init_uart(void);
+[; ;conio.h: 14: extern char getch(void);
+[; ;conio.h: 15: extern char getche(void);
+[; ;conio.h: 16: extern void putch(char);
+[; ;conio.h: 17: extern void ungetch(char);
+[; ;conio.h: 19: extern __bit kbhit(void);
+[; ;conio.h: 23: extern char * cgets(char *);
+[; ;conio.h: 24: extern void cputs(const char *);
+[; ;stdio.h: 88: extern int cprintf(char *, ...);
+[; ;stdio.h: 93: extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+[; ;stdio.h: 183: extern char * gets(char *);
+[; ;stdio.h: 184: extern int puts(const char *);
+[; ;stdio.h: 185: extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+[; ;stdio.h: 186: extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+[; ;stdio.h: 187: extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+[; ;stdio.h: 188: extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+[; ;stdio.h: 189: extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+[; ;stdio.h: 190: extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+[; ;stdio.h: 194: extern int sprintf(char *, const char *, ...);
+[; ;stdio.h: 195: extern int printf(const char *, ...);
+[; ;eusart.h: 77: extern volatile uint8_t eusartTxBufferRemaining;
+[; ;eusart.h: 78: extern volatile uint8_t eusartRxCount;
+[; ;eusart.h: 106: void EUSART_Initialize(void);
+[; ;eusart.h: 155: uint8_t EUSART_Read(void);
+[; ;eusart.h: 180: void EUSART_Write(uint8_t txData);
+[; ;eusart.h: 201: void EUSART_Transmit_ISR(void);
+[; ;eusart.h: 222: void EUSART_Receive_ISR(void);
+"61 mcc_generated_files/eusart.c
+[v _eusartTxHead `Vuc ~T0 @X0 1 e ]
+[i _eusartTxHead
+-> -> 0 `i `uc
+]
+[; ;eusart.c: 61: volatile uint8_t eusartTxHead = 0;
+"62
+[v _eusartTxTail `Vuc ~T0 @X0 1 e ]
+[i _eusartTxTail
+-> -> 0 `i `uc
+]
+[; ;eusart.c: 62: volatile uint8_t eusartTxTail = 0;
+"63
+[v _eusartTxBuffer `Vuc ~T0 @X0 -> 8 `i e ]
+[; ;eusart.c: 63: volatile uint8_t eusartTxBuffer[8];
+"64
+[v _eusartTxBufferRemaining `Vuc ~T0 @X0 1 e ]
+[; ;eusart.c: 64: volatile uint8_t eusartTxBufferRemaining;
+"66
+[v _eusartRxHead `Vuc ~T0 @X0 1 e ]
+[i _eusartRxHead
+-> -> 0 `i `uc
+]
+[; ;eusart.c: 66: volatile uint8_t eusartRxHead = 0;
+"67
+[v _eusartRxTail `Vuc ~T0 @X0 1 e ]
+[i _eusartRxTail
+-> -> 0 `i `uc
+]
+[; ;eusart.c: 67: volatile uint8_t eusartRxTail = 0;
+"68
+[v _eusartRxBuffer `Vuc ~T0 @X0 -> 8 `i e ]
+[; ;eusart.c: 68: volatile uint8_t eusartRxBuffer[8];
+"69
+[v _eusartRxCount `Vuc ~T0 @X0 1 e ]
+[; ;eusart.c: 69: volatile uint8_t eusartRxCount;
+"75
+[v _EUSART_Initialize `(v ~T0 @X0 1 ef ]
+"76
 {
-[; ;i2c2_util.c: 13: uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data) {
-[e :U _i2c2_write ]
-[v _dev_addr `ui ~T0 @X0 1 r1 ]
-[v _reg_addr `uc ~T0 @X0 1 r2 ]
-[v _data `uc ~T0 @X0 1 r3 ]
+[; ;eusart.c: 75: void EUSART_Initialize(void)
+[; ;eusart.c: 76: {
+[e :U _EUSART_Initialize ]
 [f ]
-"15
-[v _buf `uc ~T0 @X0 -> 2 `i a ]
-"16
-[v _status `E2979 ~T0 @X0 1 a ]
-"17
-[v _write_status `uc ~T0 @X0 1 a ]
-[; ;i2c2_util.c: 15: uint8_t buf[2];
-[; ;i2c2_util.c: 16: I2C2_MESSAGE_STATUS status;
-[; ;i2c2_util.c: 17: uint8_t write_status;
-[; ;i2c2_util.c: 18: buf[0] = reg_addr;
-"18
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux _reg_addr ]
-[; ;i2c2_util.c: 19: buf[1] = data;
-"19
-[e = *U + &U _buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _buf `ui `ux _data ]
-[; ;i2c2_util.c: 20: I2C2_MasterWrite(buf, 2, dev_addr, &status);
-"20
-[e ( _I2C2_MasterWrite (4 , , , &U _buf -> -> 2 `i `uc _dev_addr &U _status ]
-[; ;i2c2_util.c: 21: while (status == I2C2_MESSAGE_PENDING);
-"21
-[e $U 369  ]
-[e :U 370 ]
-[e :U 369 ]
-[e $ == -> _status `i -> . `E2979 2 `i 370  ]
-[e :U 371 ]
-[; ;i2c2_util.c: 22: if (status == I2C2_MESSAGE_COMPLETE) {
-"22
-[e $ ! == -> _status `i -> . `E2979 0 `i 372  ]
-{
-[; ;i2c2_util.c: 23: write_status = 0;
-"23
-[e = _write_status -> -> 0 `i `uc ]
-"24
-}
-[; ;i2c2_util.c: 24: } else {
-[e $U 373  ]
-[e :U 372 ]
-{
-[; ;i2c2_util.c: 25: write_status = 1;
-"25
-[e = _write_status -> -> 1 `i `uc ]
-"26
-}
-[e :U 373 ]
-[; ;i2c2_util.c: 26: }
-[; ;i2c2_util.c: 27: return write_status;
-"27
-[e ) _write_status ]
-[e $UE 368  ]
-[; ;i2c2_util.c: 28: }
-"28
+[; ;eusart.c: 78: PIE1bits.RCIE = 0;
+"78
+[e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
+[; ;eusart.c: 79: PIE1bits.TXIE = 0;
+"79
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+[; ;eusart.c: 84: BAUDCON = 0x08;
+"84
+[e = _BAUDCON -> -> 8 `i `uc ]
+[; ;eusart.c: 87: RCSTA = 0x90;
+"87
+[e = _RCSTA -> -> 144 `i `uc ]
+[; ;eusart.c: 90: TXSTA = 0x24;
+"90
+[e = _TXSTA -> -> 36 `i `uc ]
+[; ;eusart.c: 93: SPBRGL = 0x67;
+"93
+[e = _SPBRGL -> -> 103 `i `uc ]
+[; ;eusart.c: 96: SPBRGH = 0x00;
+"96
+[e = _SPBRGH -> -> 0 `i `uc ]
+[; ;eusart.c: 100: eusartTxHead = 0;
+"100
+[e = _eusartTxHead -> -> 0 `i `uc ]
+[; ;eusart.c: 101: eusartTxTail = 0;
+"101
+[e = _eusartTxTail -> -> 0 `i `uc ]
+[; ;eusart.c: 102: eusartTxBufferRemaining = sizeof(eusartTxBuffer);
+"102
+[e = _eusartTxBufferRemaining -> -> # _eusartTxBuffer `ui `uc ]
+[; ;eusart.c: 104: eusartRxHead = 0;
+"104
+[e = _eusartRxHead -> -> 0 `i `uc ]
+[; ;eusart.c: 105: eusartRxTail = 0;
+"105
+[e = _eusartRxTail -> -> 0 `i `uc ]
+[; ;eusart.c: 106: eusartRxCount = 0;
+"106
+[e = _eusartRxCount -> -> 0 `i `uc ]
+[; ;eusart.c: 109: PIE1bits.RCIE = 1;
+"109
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
+[; ;eusart.c: 110: }
+"110
 [e :UE 368 ]
 }
-"31
-[v _i2c2_read `(uc ~T0 @X0 1 ef4`ui`uc`*uc`uc ]
+"112
+[v _EUSART_Read `(uc ~T0 @X0 1 ef ]
+"113
 {
-[; ;i2c2_util.c: 31: uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len) {
-[e :U _i2c2_read ]
-[v _dev_addr `ui ~T0 @X0 1 r1 ]
-[v _reg_addr `uc ~T0 @X0 1 r2 ]
-[v _pbuf `*uc ~T0 @X0 1 r3 ]
-[v _len `uc ~T0 @X0 1 r4 ]
+[; ;eusart.c: 112: uint8_t EUSART_Read(void)
+[; ;eusart.c: 113: {
+[e :U _EUSART_Read ]
 [f ]
-"33
-[v _reg `uc ~T0 @X0 -> -> 1 `i `ux a ]
-"34
-[v _status `E2979 ~T0 @X0 1 a ]
-"35
-[v _read_status `uc ~T0 @X0 1 a ]
-[; ;i2c2_util.c: 33: uint8_t reg[1];
-[; ;i2c2_util.c: 34: I2C2_MESSAGE_STATUS status;
-[; ;i2c2_util.c: 35: uint8_t read_status;
-[; ;i2c2_util.c: 36: reg[0] = reg_addr;
-"36
-[e = *U + &U _reg * -> -> -> 0 `i `ui `ux -> -> # *U &U _reg `ui `ux _reg_addr ]
-[; ;i2c2_util.c: 37: I2C2_MasterWrite(reg, 1, dev_addr, &status);
-"37
-[e ( _I2C2_MasterWrite (4 , , , &U _reg -> -> 1 `i `uc _dev_addr &U _status ]
-[; ;i2c2_util.c: 38: while (status == I2C2_MESSAGE_PENDING);
-"38
+"114
+[v _readValue `uc ~T0 @X0 1 a ]
+[; ;eusart.c: 114: uint8_t readValue = 0;
+[e = _readValue -> -> 0 `i `uc ]
+[; ;eusart.c: 116: while(0 == eusartRxCount)
+"116
+[e $U 370  ]
+[e :U 371 ]
+[; ;eusart.c: 117: {
+"117
+{
+"118
+}
+[e :U 370 ]
+"116
+[e $ == -> 0 `i -> _eusartRxCount `i 371  ]
+[e :U 372 ]
+[; ;eusart.c: 118: }
+[; ;eusart.c: 120: readValue = eusartRxBuffer[eusartRxTail++];
+"120
+[e = _readValue *U + &U _eusartRxBuffer * -> ++ _eusartRxTail -> -> 1 `i `uc `ux -> -> # *U &U _eusartRxBuffer `ui `ux ]
+[; ;eusart.c: 121: if(sizeof(eusartRxBuffer) <= eusartRxTail)
+"121
+[e $ ! <= -> # _eusartRxBuffer `ui -> _eusartRxTail `ui 373  ]
+[; ;eusart.c: 122: {
+"122
+{
+[; ;eusart.c: 123: eusartRxTail = 0;
+"123
+[e = _eusartRxTail -> -> 0 `i `uc ]
+"124
+}
+[e :U 373 ]
+[; ;eusart.c: 124: }
+[; ;eusart.c: 125: PIE1bits.RCIE = 0;
+"125
+[e = . . _PIE1bits 0 5 -> -> 0 `i `uc ]
+[; ;eusart.c: 126: eusartRxCount--;
+"126
+[e -- _eusartRxCount -> -> 1 `i `uc ]
+[; ;eusart.c: 127: PIE1bits.RCIE = 1;
+"127
+[e = . . _PIE1bits 0 5 -> -> 1 `i `uc ]
+[; ;eusart.c: 129: return readValue;
+"129
+[e ) _readValue ]
+[e $UE 369  ]
+[; ;eusart.c: 130: }
+"130
+[e :UE 369 ]
+}
+"132
+[v _EUSART_Write `(v ~T0 @X0 1 ef1`uc ]
+"133
+{
+[; ;eusart.c: 132: void EUSART_Write(uint8_t txData)
+[; ;eusart.c: 133: {
+[e :U _EUSART_Write ]
+"132
+[v _txData `uc ~T0 @X0 1 r1 ]
+"133
+[f ]
+[; ;eusart.c: 134: while(0 == eusartTxBufferRemaining)
+"134
 [e $U 375  ]
 [e :U 376 ]
+[; ;eusart.c: 135: {
+"135
+{
+"136
+}
 [e :U 375 ]
-[e $ == -> _status `i -> . `E2979 2 `i 376  ]
+"134
+[e $ == -> 0 `i -> _eusartTxBufferRemaining `i 376  ]
 [e :U 377 ]
-[; ;i2c2_util.c: 39: if (status == I2C2_MESSAGE_COMPLETE) {
-"39
-[e $ ! == -> _status `i -> . `E2979 0 `i 378  ]
+[; ;eusart.c: 136: }
+[; ;eusart.c: 138: if(0 == PIE1bits.TXIE)
+"138
+[e $ ! == -> 0 `i -> . . _PIE1bits 0 4 `i 378  ]
+[; ;eusart.c: 139: {
+"139
 {
-[; ;i2c2_util.c: 40: I2C2_MasterRead(pbuf, len, dev_addr, &status);
-"40
-[e ( _I2C2_MasterRead (4 , , , _pbuf _len _dev_addr &U _status ]
-[; ;i2c2_util.c: 41: while (status == I2C2_MESSAGE_PENDING);
-"41
+[; ;eusart.c: 140: TXREG = txData;
+"140
+[e = _TXREG _txData ]
+"141
+}
+[; ;eusart.c: 141: }
 [e $U 379  ]
-[e :U 380 ]
-[e :U 379 ]
-[e $ == -> _status `i -> . `E2979 2 `i 380  ]
-[e :U 381 ]
-[; ;i2c2_util.c: 42: if (status == I2C2_MESSAGE_COMPLETE) {
-"42
-[e $ ! == -> _status `i -> . `E2979 0 `i 382  ]
-{
-[; ;i2c2_util.c: 43: read_status = 0;
-"43
-[e = _read_status -> -> 0 `i `uc ]
-"44
-}
-[; ;i2c2_util.c: 44: } else {
-[e $U 383  ]
-[e :U 382 ]
-{
-[; ;i2c2_util.c: 45: read_status = 2;
-"45
-[e = _read_status -> -> 2 `i `uc ]
-"46
-}
-[e :U 383 ]
-"47
-}
-[; ;i2c2_util.c: 46: }
-[; ;i2c2_util.c: 47: } else {
-[e $U 384  ]
+"142
 [e :U 378 ]
+[; ;eusart.c: 142: else
+[; ;eusart.c: 143: {
+"143
 {
-[; ;i2c2_util.c: 48: read_status = 1;
-"48
-[e = _read_status -> -> 1 `i `uc ]
-"49
+[; ;eusart.c: 144: PIE1bits.TXIE = 0;
+"144
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+[; ;eusart.c: 145: eusartTxBuffer[eusartTxHead++] = txData;
+"145
+[e = *U + &U _eusartTxBuffer * -> ++ _eusartTxHead -> -> 1 `i `uc `ux -> -> # *U &U _eusartTxBuffer `ui `ux _txData ]
+[; ;eusart.c: 146: if(sizeof(eusartTxBuffer) <= eusartTxHead)
+"146
+[e $ ! <= -> # _eusartTxBuffer `ui -> _eusartTxHead `ui 380  ]
+[; ;eusart.c: 147: {
+"147
+{
+[; ;eusart.c: 148: eusartTxHead = 0;
+"148
+[e = _eusartTxHead -> -> 0 `i `uc ]
+"149
 }
-[e :U 384 ]
-[; ;i2c2_util.c: 49: }
-[; ;i2c2_util.c: 50: return read_status;
-"50
-[e ) _read_status ]
-[e $UE 374  ]
-[; ;i2c2_util.c: 51: }
-"51
+[e :U 380 ]
+[; ;eusart.c: 149: }
+[; ;eusart.c: 150: eusartTxBufferRemaining--;
+"150
+[e -- _eusartTxBufferRemaining -> -> 1 `i `uc ]
+"151
+}
+[e :U 379 ]
+[; ;eusart.c: 151: }
+[; ;eusart.c: 152: PIE1bits.TXIE = 1;
+"152
+[e = . . _PIE1bits 0 4 -> -> 1 `i `uc ]
+[; ;eusart.c: 153: }
+"153
 [e :UE 374 ]
 }
-"54
-[v _i2c2_write_no_data `(uc ~T0 @X0 1 ef2`ui`uc ]
+"155
+[v _getch `(uc ~T0 @X0 1 ef ]
+"156
 {
-[; ;i2c2_util.c: 54: uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr) {
-[e :U _i2c2_write_no_data ]
-[v _dev_addr `ui ~T0 @X0 1 r1 ]
-[v _reg_addr `uc ~T0 @X0 1 r2 ]
+[; ;eusart.c: 155: char getch(void)
+[; ;eusart.c: 156: {
+[e :U _getch ]
 [f ]
-"56
-[v _buf `uc ~T0 @X0 -> -> 1 `i `ux a ]
-"57
-[v _status `E2979 ~T0 @X0 1 a ]
-"58
-[v _write_status `uc ~T0 @X0 1 a ]
-[; ;i2c2_util.c: 56: uint8_t buf[1];
-[; ;i2c2_util.c: 57: I2C2_MESSAGE_STATUS status;
-[; ;i2c2_util.c: 58: uint8_t write_status = 2;
-[e = _write_status -> -> 2 `i `uc ]
-[; ;i2c2_util.c: 59: buf[0] = reg_addr;
-"59
-[e = *U + &U _buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _buf `ui `ux _reg_addr ]
-"60
-[v _timeout `uc ~T0 @X0 1 a ]
-[; ;i2c2_util.c: 60: uint8_t timeout = 1;
-[e = _timeout -> -> 1 `i `uc ]
-[; ;i2c2_util.c: 61: while (status != I2C2_MESSAGE_FAIL) {
-"61
+[; ;eusart.c: 157: return EUSART_Read();
+"157
+[e ) ( _EUSART_Read ..  ]
+[e $UE 381  ]
+[; ;eusart.c: 158: }
+"158
+[e :UE 381 ]
+}
+"160
+[v _putch `(v ~T0 @X0 1 ef1`uc ]
+"161
+{
+[; ;eusart.c: 160: void putch(char txData)
+[; ;eusart.c: 161: {
+[e :U _putch ]
+"160
+[v _txData `uc ~T0 @X0 1 r1 ]
+"161
+[f ]
+[; ;eusart.c: 162: EUSART_Write(txData);
+"162
+[e ( _EUSART_Write (1 _txData ]
+[; ;eusart.c: 163: }
+"163
+[e :UE 382 ]
+}
+"165
+[v _EUSART_Transmit_ISR `(v ~T0 @X0 1 ef ]
+"166
+{
+[; ;eusart.c: 165: void EUSART_Transmit_ISR(void)
+[; ;eusart.c: 166: {
+[e :U _EUSART_Transmit_ISR ]
+[f ]
+[; ;eusart.c: 169: if(sizeof(eusartTxBuffer) > eusartTxBufferRemaining)
+"169
+[e $ ! > -> # _eusartTxBuffer `ui -> _eusartTxBufferRemaining `ui 384  ]
+[; ;eusart.c: 170: {
+"170
+{
+[; ;eusart.c: 171: TXREG = eusartTxBuffer[eusartTxTail++];
+"171
+[e = _TXREG *U + &U _eusartTxBuffer * -> ++ _eusartTxTail -> -> 1 `i `uc `ux -> -> # *U &U _eusartTxBuffer `ui `ux ]
+[; ;eusart.c: 172: if(sizeof(eusartTxBuffer) <= eusartTxTail)
+"172
+[e $ ! <= -> # _eusartTxBuffer `ui -> _eusartTxTail `ui 385  ]
+[; ;eusart.c: 173: {
+"173
+{
+[; ;eusart.c: 174: eusartTxTail = 0;
+"174
+[e = _eusartTxTail -> -> 0 `i `uc ]
+"175
+}
+[e :U 385 ]
+[; ;eusart.c: 175: }
+[; ;eusart.c: 176: eusartTxBufferRemaining++;
+"176
+[e ++ _eusartTxBufferRemaining -> -> 1 `i `uc ]
+"177
+}
+[; ;eusart.c: 177: }
 [e $U 386  ]
-[e :U 387 ]
+"178
+[e :U 384 ]
+[; ;eusart.c: 178: else
+[; ;eusart.c: 179: {
+"179
 {
-[; ;i2c2_util.c: 62: I2C2_MasterWrite(buf, 1, dev_addr, &status);
-"62
-[e ( _I2C2_MasterWrite (4 , , , &U _buf -> -> 1 `i `uc _dev_addr &U _status ]
-[; ;i2c2_util.c: 63: while (status == I2C2_MESSAGE_PENDING);
-"63
-[e $U 389  ]
-[e :U 390 ]
-[e :U 389 ]
-[e $ == -> _status `i -> . `E2979 2 `i 390  ]
-[e :U 391 ]
-[; ;i2c2_util.c: 64: if (status == I2C2_MESSAGE_COMPLETE) {
-"64
-[e $ ! == -> _status `i -> . `E2979 0 `i 392  ]
-{
-[; ;i2c2_util.c: 65: write_status = 0;
-"65
-[e = _write_status -> -> 0 `i `uc ]
-[; ;i2c2_util.c: 66: break;
-"66
-[e $U 388  ]
-"67
-}
-[e :U 392 ]
-[; ;i2c2_util.c: 67: }
-[; ;i2c2_util.c: 68: if (--timeout == 0) {
-"68
-[e $ ! == -> =- _timeout -> -> 1 `i `uc `i -> 0 `i 393  ]
-{
-[; ;i2c2_util.c: 69: write_status = 1;
-"69
-[e = _write_status -> -> 1 `i `uc ]
-[; ;i2c2_util.c: 70: break;
-"70
-[e $U 388  ]
-"71
-}
-[e :U 393 ]
-"72
+[; ;eusart.c: 180: PIE1bits.TXIE = 0;
+"180
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"181
 }
 [e :U 386 ]
-"61
-[e $ != -> _status `i -> . `E2979 1 `i 387  ]
-[e :U 388 ]
-[; ;i2c2_util.c: 71: }
-[; ;i2c2_util.c: 72: }
-[; ;i2c2_util.c: 73: return write_status;
-"73
-[e ) _write_status ]
-[e $UE 385  ]
-[; ;i2c2_util.c: 74: }
-"74
-[e :UE 385 ]
+[; ;eusart.c: 181: }
+[; ;eusart.c: 182: }
+"182
+[e :UE 383 ]
 }
-"77
-[v _i2c2_read_no_reg_addr `(uc ~T0 @X0 1 ef3`ui`*uc`uc ]
+"184
+[v _EUSART_Receive_ISR `(v ~T0 @X0 1 ef ]
+"185
 {
-[; ;i2c2_util.c: 77: uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len) {
-[e :U _i2c2_read_no_reg_addr ]
-[v _dev_addr `ui ~T0 @X0 1 r1 ]
-[v _pbuf `*uc ~T0 @X0 1 r2 ]
-[v _len `uc ~T0 @X0 1 r3 ]
+[; ;eusart.c: 184: void EUSART_Receive_ISR(void)
+[; ;eusart.c: 185: {
+[e :U _EUSART_Receive_ISR ]
 [f ]
-"79
-[v _status `E2979 ~T0 @X0 1 a ]
-"80
-[v _read_status `uc ~T0 @X0 1 a ]
-[; ;i2c2_util.c: 79: I2C2_MESSAGE_STATUS status;
-[; ;i2c2_util.c: 80: uint8_t read_status = 2;
-[e = _read_status -> -> 2 `i `uc ]
-"81
-[v _timeout `uc ~T0 @X0 1 a ]
-[; ;i2c2_util.c: 81: uint8_t timeout = 1;
-[e = _timeout -> -> 1 `i `uc ]
-[; ;i2c2_util.c: 82: while (status != I2C2_MESSAGE_FAIL) {
-"82
-[e $U 395  ]
-[e :U 396 ]
+[; ;eusart.c: 187: if(1 == RCSTAbits.OERR)
+"187
+[e $ ! == -> 1 `i -> . . _RCSTAbits 0 1 `i 388  ]
+[; ;eusart.c: 188: {
+"188
 {
-[; ;i2c2_util.c: 83: I2C2_MasterRead(pbuf, len, dev_addr, &status);
-"83
-[e ( _I2C2_MasterRead (4 , , , _pbuf _len _dev_addr &U _status ]
-[; ;i2c2_util.c: 84: while (status == I2C2_MESSAGE_PENDING);
-"84
-[e $U 398  ]
-[e :U 399 ]
-[e :U 398 ]
-[e $ == -> _status `i -> . `E2979 2 `i 399  ]
-[e :U 400 ]
-[; ;i2c2_util.c: 85: if (status == I2C2_MESSAGE_COMPLETE) {
-"85
-[e $ ! == -> _status `i -> . `E2979 0 `i 401  ]
+[; ;eusart.c: 191: RCSTAbits.CREN = 0;
+"191
+[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
+[; ;eusart.c: 192: RCSTAbits.CREN = 1;
+"192
+[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
+"193
+}
+[e :U 388 ]
+[; ;eusart.c: 193: }
+[; ;eusart.c: 196: eusartRxBuffer[eusartRxHead++] = RCREG;
+"196
+[e = *U + &U _eusartRxBuffer * -> ++ _eusartRxHead -> -> 1 `i `uc `ux -> -> # *U &U _eusartRxBuffer `ui `ux _RCREG ]
+[; ;eusart.c: 197: if(sizeof(eusartRxBuffer) <= eusartRxHead)
+"197
+[e $ ! <= -> # _eusartRxBuffer `ui -> _eusartRxHead `ui 389  ]
+[; ;eusart.c: 198: {
+"198
 {
-[; ;i2c2_util.c: 86: read_status = 0;
-"86
-[e = _read_status -> -> 0 `i `uc ]
-[; ;i2c2_util.c: 87: break;
-"87
-[e $U 397  ]
-"88
+[; ;eusart.c: 199: eusartRxHead = 0;
+"199
+[e = _eusartRxHead -> -> 0 `i `uc ]
+"200
 }
-[e :U 401 ]
-[; ;i2c2_util.c: 88: }
-[; ;i2c2_util.c: 89: if (--timeout == 0) {
-"89
-[e $ ! == -> =- _timeout -> -> 1 `i `uc `i -> 0 `i 402  ]
-{
-[; ;i2c2_util.c: 90: read_status = 1;
-"90
-[e = _read_status -> -> 1 `i `uc ]
-[; ;i2c2_util.c: 91: break;
-"91
-[e $U 397  ]
-"92
-}
-[e :U 402 ]
-"93
-}
-[e :U 395 ]
-"82
-[e $ != -> _status `i -> . `E2979 1 `i 396  ]
-[e :U 397 ]
-[; ;i2c2_util.c: 92: }
-[; ;i2c2_util.c: 93: }
-[; ;i2c2_util.c: 94: return read_status;
-"94
-[e ) _read_status ]
-[e $UE 394  ]
-[; ;i2c2_util.c: 95: }
-"95
-[e :UE 394 ]
+[e :U 389 ]
+[; ;eusart.c: 200: }
+[; ;eusart.c: 201: eusartRxCount++;
+"201
+[e ++ _eusartRxCount -> -> 1 `i `uc ]
+[; ;eusart.c: 202: }
+"202
+[e :UE 387 ]
 }
