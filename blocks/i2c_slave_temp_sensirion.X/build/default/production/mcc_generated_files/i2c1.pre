@@ -4288,7 +4288,7 @@ uint8_t* PROTOCOL_I2C_SEN();
 void PROTOCOL_Set_Lock(bool lock);
 bool PROTOCOL_Read_Lock(void);
 
-# 130
+# 131
 uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 
 # 12 "mcc_generated_files/i2c1.c"

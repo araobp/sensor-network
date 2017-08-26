@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.41 build -162212810 
-                                                                                               Sat Aug 26 14:03:29 2017
+                                                                                               Sun Aug 27 06:38:46 2017
 
 Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250102
      1                           	processor	16F1829
@@ -2073,7 +2073,7 @@ Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250
   2059  0728  3454               	retlw	84	;'T'
   2060  0729  3433               	retlw	51	;'3'
   2061  072A  3431               	retlw	49	;'1'
-  2062  072B  342D               	retlw	45	;'-'
+  2062  072B  345F               	retlw	95	;'_'
   2063  072C  3444               	retlw	68	;'D'
   2064  072D  3449               	retlw	73	;'I'
   2065  072E  3453               	retlw	83	;'S'
@@ -3276,7 +3276,7 @@ Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250
   3257                           ;psect for function _main
   3258  0D70                     _main:	
   3259                           
-  3260                           ;main.c: 40: PROTOCOL_Initialize("SHT31-DIS", (0), (0), (0), inv_handler, 125);
+  3260                           ;main.c: 40: PROTOCOL_Initialize("SHT31_DIS", (0), (0), (0), inv_handler, 125);
   3261                           
   3262                           ;incstack = 0
   3263                           ; Regs used in _main: [wreg-fsr1h+status,2+status,0+pclath+cstack]
@@ -12030,7 +12030,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.41 build -162212810 
-Symbol Table                                                                                   Sat Aug 26 14:03:29 2017
+Symbol Table                                                                                   Sun Aug 27 06:38:46 2017
 
                                          _i 0065                                           _j 00B9  
                                          pc 0002                 i2c2_read_no_reg_addr@status 0037  

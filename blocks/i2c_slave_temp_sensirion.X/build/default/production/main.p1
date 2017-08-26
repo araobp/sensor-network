@@ -3117,12 +3117,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;protocol.X\protocol.h: 88: uint8_t* PROTOCOL_I2C_SEN();
 [; ;protocol.X\protocol.h: 90: void PROTOCOL_Set_Lock(bool lock);
 [; ;protocol.X\protocol.h: 91: bool PROTOCOL_Read_Lock(void);
-"130 ../lib/protocol.X\protocol.h
+"131 ../lib/protocol.X\protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS `uc ~T0 @X0 1 e ]
 [i _BACKPLANE_SLAVE_ADDRESS
 -> -> 1 `i `uc
 ]
-[; ;protocol.X\protocol.h: 130: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.X\protocol.h: 131: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 [; ;i2c2_util.X\i2c2_util.h: 8: uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data);
 [; ;i2c2_util.X\i2c2_util.h: 9: uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
 [; ;i2c2_util.X\i2c2_util.h: 10: uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
@@ -3190,7 +3190,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 38: {
 [e :U _main ]
 [f ]
-[; ;main.c: 40: PROTOCOL_Initialize("SHT31-DIS", (0), (0), (0), inv_handler, 125);
+[; ;main.c: 40: PROTOCOL_Initialize("SHT31_DIS", (0), (0), (0), inv_handler, 125);
 "40
 [e ( _PROTOCOL_Initialize (4 , , , , , :s 1C -> -> 0 `i `*v -> -> 0 `i `*v -> -> 0 `i `*v -> &U _inv_handler `*v -> -> 125 `i `uc ]
 [; ;main.c: 43: PIN_MANAGER_Initialize();
@@ -3227,5 +3227,5 @@ Version 3.2 HI-TECH Software Intermediate Code
 "63
 [e :UE 370 ]
 }
-[a 1C 83 72 84 51 49 45 68 73 83 0 ]
+[a 1C 83 72 84 51 49 95 68 73 83 0 ]
 

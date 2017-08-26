@@ -5,7 +5,7 @@
 /* Sensirion SHT31-DIS
  * https://www.sensirion.com/fileadmin/user_upload/customers/sensirion/Dokumente/2_Humidity_Sensors/Sensirion_Humidity_Sensors_SHT3x_Datasheet_digital.pdf
  */
-#define DEVICE_ID "SHT31-DIS"
+
 #define SHT31_DIS_ADDR 0x0045
 #define CMD_MSB 0x2c
 #define CMD_LSB 0x06
@@ -37,7 +37,7 @@ void inv_handler(void) {
 void main(void)
 {
     // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 125);
+    PROTOCOL_Initialize(SHT31_DIS, NULL, NULL, NULL, inv_handler, 125);
 
     //SYSTEM_Initialize();
     PIN_MANAGER_Initialize();

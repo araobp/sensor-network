@@ -122,6 +122,7 @@ extern "C" {
     #define TOWER_PRO_SG90 "TOWER-PRO-SG90"
     #define AQM1602XA_RN_GBW "AQM1602XA-RN-GBW"
     #define HDC1000 "HDC1000"
+    #define SHT31_DIS "SHT31_DIS"
 
     /*
      * Backplane slave I2C addresses
@@ -132,7 +133,7 @@ extern "C" {
     #define A1324LUA_T_I2C 0x11  // Hall sensor
     #define HDC1000_I2C 0x12  // Temperature and humidity sensor
     #define KXR94_2050_I2C 0x13  // 3-axis accelerometer 
-    #define SHT31_DIS 0x14 // Temperature and humidity sensor
+    #define SHT31_DIS_I2C 0x14 // Temperature and humidity sensor
  
     /*
      * TLV
