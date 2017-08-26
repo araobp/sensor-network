@@ -3144,15 +3144,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 "17
 [v _data `c ~T0 @X0 -> 2 `i a ]
 "18
-[v _s_t `ui ~T0 @X0 1 a ]
+[v _s_t `l ~T0 @X0 1 a ]
 "19
-[v _s_rh `ui ~T0 @X0 1 a ]
+[v _s_rh `l ~T0 @X0 1 a ]
 "20
 [v _status `uc ~T0 @X0 1 a ]
 [; ;main.c: 16: uint8_t measure[6];
 [; ;main.c: 17: int8_t data[2];
-[; ;main.c: 18: uint16_t s_t;
-[; ;main.c: 19: uint16_t s_rh;
+[; ;main.c: 18: int32_t s_t;
+[; ;main.c: 19: int32_t s_rh;
 [; ;main.c: 20: uint8_t status;
 [; ;main.c: 22: LATCbits.LATC7 ^= 1;
 "22
@@ -3163,18 +3163,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 26: status = i2c2_read_no_reg_addr(0x0045, measure, 6);
 "26
 [e = _status ( _i2c2_read_no_reg_addr (3 , , -> -> 69 `i `ui &U _measure -> -> 6 `i `uc ]
-[; ;main.c: 27: s_t = (uint16_t)measure[0] * 256 + (uint16_t)measure[1];
+[; ;main.c: 27: s_t = (int32_t)((uint16_t)measure[0] * 256 + (uint16_t)measure[1]);
 "27
-[e = _s_t + * -> *U + &U _measure * -> -> -> 0 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui -> -> 256 `i `ui -> *U + &U _measure * -> -> -> 1 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui ]
-[; ;main.c: 28: s_rh = (uint16_t)measure[3] * 256 + (uint16_t)measure[4];
+[e = _s_t -> + * -> *U + &U _measure * -> -> -> 0 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui -> -> 256 `i `ui -> *U + &U _measure * -> -> -> 1 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui `l ]
+[; ;main.c: 28: s_rh = (int32_t)((uint16_t)measure[3] * 256 + (uint16_t)measure[4]);
 "28
-[e = _s_rh + * -> *U + &U _measure * -> -> -> 3 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui -> -> 256 `i `ui -> *U + &U _measure * -> -> -> 4 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui ]
+[e = _s_rh -> + * -> *U + &U _measure * -> -> -> 3 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui -> -> 256 `i `ui -> *U + &U _measure * -> -> -> 4 `i `ui `ux -> -> # *U &U _measure `ui `ux `ui `l ]
 [; ;main.c: 30: data[0] = (int8_t)(s_t * 175 / RESOLUTION - 45);
 "30
-[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> - / * _s_t -> -> 175 `i `ui _RESOLUTION -> -> 45 `i `ui `c ]
+[e = *U + &U _data * -> -> -> 0 `i `ui `ux -> -> # *U &U _data `ui `ux -> - / * _s_t -> -> 175 `i `l -> _RESOLUTION `l -> -> 45 `i `l `c ]
 [; ;main.c: 31: data[1] = (int8_t)(s_rh * 100 / RESOLUTION);
 "31
-[e = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux -> / * _s_rh -> -> 100 `i `ui _RESOLUTION `c ]
+[e = *U + &U _data * -> -> -> 1 `i `ui `ux -> -> # *U &U _data `ui `ux -> / * _s_rh -> -> 100 `i `l -> _RESOLUTION `l `c ]
 [; ;main.c: 34: PROTOCOL_I2C_Send_int8_t(2, data);
 "34
 [e ( _PROTOCOL_I2C_Send_int8_t (2 , -> -> 2 `i `uc &U _data ]
@@ -3190,9 +3190,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 38: {
 [e :U _main ]
 [f ]
-[; ;main.c: 40: PROTOCOL_Initialize("SHT31-DIS", (0), (0), (0), inv_handler, 250);
+[; ;main.c: 40: PROTOCOL_Initialize("SHT31-DIS", (0), (0), (0), inv_handler, 125);
 "40
-[e ( _PROTOCOL_Initialize (4 , , , , , :s 1C -> -> 0 `i `*v -> -> 0 `i `*v -> -> 0 `i `*v -> &U _inv_handler `*v -> -> 250 `i `uc ]
+[e ( _PROTOCOL_Initialize (4 , , , , , :s 1C -> -> 0 `i `*v -> -> 0 `i `*v -> -> 0 `i `*v -> &U _inv_handler `*v -> -> 125 `i `uc ]
 [; ;main.c: 43: PIN_MANAGER_Initialize();
 "43
 [e ( _PIN_MANAGER_Initialize ..  ]

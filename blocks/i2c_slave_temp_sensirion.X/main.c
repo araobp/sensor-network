@@ -15,8 +15,8 @@ const uint16_t RESOLUTION = 65535;
 void inv_handler(void) {
     uint8_t measure[6];  // temperature MSB/LSB & CRC, humidity MSB/LSB & CRC
     int8_t data[2];
-    uint16_t s_t;
-    uint16_t s_rh;
+    int32_t s_t;
+    int32_t s_rh;
     uint8_t status;
     
     LATCbits.LATC7 ^= 1;
@@ -24,8 +24,8 @@ void inv_handler(void) {
     // Temperature measurement
     status = i2c2_write(SHT31_DIS_ADDR, CMD_MSB, CMD_LSB);
     status = i2c2_read_no_reg_addr(SHT31_DIS_ADDR, measure, 6);
-    s_t = (uint16_t)measure[0] * 256 + (uint16_t)measure[1];  // msb and lsb
-    s_rh = (uint16_t)measure[3] * 256 + (uint16_t)measure[4]; // msb and lsb
+    s_t = (int32_t)((uint16_t)measure[0] * 256 + (uint16_t)measure[1]);  // msb and lsb
+    s_rh = (int32_t)((uint16_t)measure[3] * 256 + (uint16_t)measure[4]); // msb and lsb
     
     data[0] = (int8_t)(s_t * 175 / RESOLUTION - 45);  // temperature
     data[1] = (int8_t)(s_rh * 100 / RESOLUTION);  // relative humidty
@@ -37,7 +37,7 @@ void inv_handler(void) {
 void main(void)
 {
     // Protocol initialization
-    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 250);
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 125);
 
     //SYSTEM_Initialize();
     PIN_MANAGER_Initialize();

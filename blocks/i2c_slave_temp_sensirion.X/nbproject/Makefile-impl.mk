@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=i2c_slave_temp_sensirion
+PROJECTNAME=i2c_slave_temp_sensirion.X
 
 # Active Configuration
 DEFAULTCONF=default
