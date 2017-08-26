@@ -326,3 +326,5 @@ Example:
 |0x12(18)|HDC1000                |Temperature and humidity sensor|4MHz  |9600          |
 |0x13(19)|KXR94-2050             |Three-axis accelerometer       |32MHz |9600          |
 |0x14(20)|SHT31-DIS              |Temperature and humidity sensor|4MHz  |9600          |
+
+Note: TI does not recommed using HDC1000 in a new design (http://www.ti.com/product/HDC1000/description), so I use SHT31-DIS from now on.
