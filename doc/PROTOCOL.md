@@ -4,6 +4,10 @@ Update: 2017-JUL-7
 
 This is a very simple I/O link supporting Plug&Play. This protocol works over UART and I2C at a minimal cost. I am also considering to support it over CAN.
 
+## Device initial configuration
+
+An I2C slave address must be set to the device with WDA command.
+
 ## Common operations among the blocks
 
 #### WHO (who are you?)
