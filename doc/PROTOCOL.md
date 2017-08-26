@@ -298,6 +298,14 @@ Example:
    |<------HOM--------|
 ```
 
+#### DSP (display)
+```
+ slave                      master
+   |<--DSP:<<line1><line2>>---|
+```
+
+line1 and line2 are string data in ASCII code. Both line1 and line2 MUST be 16 characters in length (totally 32 characters).
+
 ## EEPROM area (PIC16F1829's built-in EEPROM)
 
 |Address|Usage                 |Node                  |
