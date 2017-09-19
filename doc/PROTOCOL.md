@@ -243,6 +243,21 @@ Example:
 %10:FLOAT:0.09,-0.13,+1.06
 ```
 
+#### SEN (send sensor data)
+```
+slave                      master
+  |<------SEN:<device>--------|
+  |------<sensor data>------->|
+```
+
+Example:
+```
+#SEN:19
+%19:FLOAT:0.20,0.17,-0.97
+#SEN:20
+%SEN:208_T:26,72
+```
+
 ### Character LCD block
 
 #### INI (initialize LCD)
