@@ -4456,7 +4456,7 @@ buf[--cnt] = '\0';
 cnt = 0;
 printf("#%s\n", buf);
 if (BACKPLANE_SLAVE_ADDRESS != 0x01) {
-PROTOCOL_Extension_Handler(buf);
+PROTOCOL_EXT(buf);
 } else if (!strncmp(("WHO"), (buf), 3)) {
 printf("$:WHO:%s\n", device_id_);
 } else if (!strncmp(("SAV"), (buf), 3)) {
@@ -4476,8 +4476,7 @@ PROTOCOL_Write_Device_Address(device_address);
 } else if (!strncmp(("RDA"), (buf), 3)) {
 device_address = PROTOCOL_Read_Device_Address();
 printf("$:RDA:%d\n", device_address);
-}
-else {
+} else {
 PROTOCOL_EXT(buf);
 }
 }
@@ -4485,7 +4484,7 @@ PROTOCOL_EXT(buf);
 }
 }
 
-# 192
+# 191
 uint16_t concat(uint8_t msb, uint8_t lsb) {
 return (uint16_t)msb * 256 + (uint16_t)lsb;
 }

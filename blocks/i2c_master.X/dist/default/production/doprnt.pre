@@ -270,9 +270,10 @@ const static unsigned int dpowers[] = {1, 10, 100, 1000, 10000,
 # 455
 int
 
-
-_doprnt(struct __prbuf * pb, register const char * f, register va_list ap)
+# 464
+printf(const char * f, ...)
 {
+va_list ap;
 
 # 499
 signed char c;
@@ -296,13 +297,16 @@ unsigned int val;
 unsigned len;
 const char * cp;
 
-# 536
+
+*ap = __va_start();
+
+
 while(c = *f++) {
 
 if(c != '%')
 
 {
-if(pb->func) (pb->func(c)); else ((*pb->ptr++ = c));
+(putch(c) );
 continue;
 }
 
@@ -373,10 +377,10 @@ width = 0;
 
 # 764
 while(width--)
-if(pb->func) (pb->func(' ')); else ((*pb->ptr++ = ' '));
+(putch(' ') );
 
 while(len--)
-if(pb->func) (pb->func(*cp++)); else ((*pb->ptr++ = *cp++));
+(putch(*cp++) );
 
 # 774
 continue;
@@ -445,12 +449,12 @@ if(flag & 0x04) {
 
 
 if(flag & 0x03)
-if(pb->func) (pb->func('-')); else ((*pb->ptr++ = '-'));
+(putch('-') );
 
 # 1415
 if(width)
 do
-if(pb->func) (pb->func('0')); else ((*pb->ptr++ = '0'));
+(putch('0') );
 while(--width);
 
 } else
@@ -462,12 +466,12 @@ if(width
 # 1428
 )
 do
-if(pb->func) (pb->func(' ')); else ((*pb->ptr++ = ' '));
+(putch(' ') );
 while(--width);
 
 # 1438
 if(flag & 0x03)
-if(pb->func) (pb->func('-')); else ((*pb->ptr++ = '-'));
+(putch('-') );
 
 # 1469
 }
@@ -485,7 +489,7 @@ c = (val / dpowers[prec]) % 10 + '0';
 
 # 1523
 }
-if(pb->func) (pb->func(c)); else ((*pb->ptr++ = c));
+(putch(c) );
 }
 
 # 1533

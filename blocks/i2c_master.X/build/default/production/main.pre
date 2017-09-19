@@ -4411,17 +4411,12 @@ extern double fmod(double, double);
 extern double trunc(double);
 extern double round(double);
 
-# 34 "main.c"
+# 32 "main.c"
 const uint8_t MAX_Y = 0x20/8;
 
 char cmd_buf[4][48];
 
-void (*edge_func)(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuf) = (0);
-
-const float WHEEL_RADIUS = 6.0 / 100.0 / 1000.0;
-const float CIRCUMFERENCE = 2.0 * 3.14159265358979323846 * WHEEL_RADIUS;
-
-# 54
+# 47
 uint8_t schedule[7][4];
 
 bool running = 0;
@@ -4533,7 +4528,7 @@ devs--;
 }
 }
 
-# 168
+# 161
 uint8_t dev_map_iterator() {
 static uint8_t xx = 0;
 static uint8_t yy = 0;
@@ -4561,7 +4556,7 @@ xx++;
 return dev_addr;
 }
 
-# 198
+# 191
 void scan_dev(void) {
 uint8_t dev_addr, status;
 for (dev_addr=0x10; dev_addr<=0x20; dev_addr++) {
@@ -4575,13 +4570,13 @@ del_dev(dev_addr);
 }
 }
 
-# 214
+# 207
 void check_plg(void) {
 uint8_t status = i2c1_write_no_data(0x00, 0x02);
 if (status == 0) scan_dev();
 }
 
-# 222
+# 215
 bool detected(uint8_t dev_addr) {
 uint8_t y = dev_addr / 8;
 uint8_t x = dev_addr % 8;
@@ -4605,7 +4600,7 @@ printf("!:MAP:NO SLAVE FOUND\n");
 }
 }
 
-# 249
+# 242
 uint8_t sen(uint8_t dev_addr) {
 uint8_t status;
 uint8_t type;
@@ -4615,7 +4610,7 @@ LATCbits.LATC7 ^= 1;
 _delay((unsigned long)((100)*(32000000/4000000.0)));
 i2c1_write_no_data(dev_addr, 0x06);
 
-_delay((unsigned long)((1000)*(32000000/4000000.0)));
+_delay((unsigned long)((1500)*(32000000/4000000.0)));
 status = i2c1_read(dev_addr, 0x07, &type, 1);
 _delay((unsigned long)((100)*(32000000/4000000.0)));
 if (status == 0) {
@@ -4629,8 +4624,6 @@ status = i2c1_read(dev_addr, 0x07, read_buf, length);
 _delay((unsigned long)((100)*(32000000/4000000.0)));
 if (status == 0) {
 PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
-
-if (edge_func) edge_func(dev_addr, type, length, read_buf);
 }
 }
 }
@@ -4638,7 +4631,20 @@ if (edge_func) edge_func(dev_addr, type, length, read_buf);
 return status;
 }
 
-# 284
+# 275
+void one_shot_sen(uint8_t dev_addr) {
+if (!detected(dev_addr)) {
+printf("!:%%%d:UNDETECTED_DEVICE\n", dev_addr);
+} else {
+uint8_t status = sen(dev_addr);
+if (status > 0) {
+printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
+i2c1_write_no_data(dev_addr, 0x0c);
+}
+}
+}
+
+# 290
 void fetch(uint8_t *sch) {
 uint8_t pos;
 uint8_t dev_addr;
@@ -4657,7 +4663,7 @@ i2c1_write_no_data(dev_addr, 0x0c);
 }
 }
 
-# 305
+# 311
 void inv_handler(void) {
 uint8_t dev_addr, status;
 static uint16_t t = 0;
@@ -4681,7 +4687,6 @@ if (t % 60 == 0) fetch(schedule[4]);
 if (t % 120 == 0) {
 fetch(schedule[5]);
 check_plg();
-if (edge_func) edge_func(0x01, 0, 0, (0));
 }
 
 if (t % 600 == 0) {
@@ -4693,7 +4698,7 @@ t = 1;
 t++;
 }
 
-# 343
+# 348
 void put_cmd(uint8_t *buf) {
 static int8_t idx = -1;
 if (++idx > 3) idx = 0;
@@ -4702,52 +4707,7 @@ if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
 
 void command_handler(uint8_t *buf);
 
-# 354
-void edge_meter(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuf) {
-static uint8_t pulses = 0;
-static uint8_t sec = 0;
-static bool initialized = 0;
-uint16_t speed10 = 0;
-uint16_t rpm = 0;
-double rms10 = 0;
-uint16_t x, y, z;
-char buf[48];
-if (!initialized) {
-sprintf(buf, "I2C:%d\0", 0x10);
-command_handler(buf);
-sprintf(buf, "CLR\0");
-command_handler(buf);
-sprintf(buf, "HST:STARTING...\0");
-command_handler(buf);
-initialized = 1;
-}
-switch(dev_addr) {
-case 0x01:
-if (++sec >= 5) {
-rpm = pulses * 12;
-speed10 = (uint16_t)(CIRCUMFERENCE * pulses * 12.0 * 60.0 * 10.0);
-sprintf(buf, "HST:%2d.%dkm/h,%4drpm\0", speed10 / 10, speed10 % 10, rpm);
-command_handler(buf);
-sprintf(buf, "NWL\0");
-command_handler(buf);
-sprintf(buf, "STR:%1d.%1dG, %1d.%1dG, %1d.%1dG \0", x/10, x%10, y/10, y%10, z/10, z%10);
-command_handler(buf);
-sec = 0;
-pulses = 0;
-}
-break;
-case 0x11:
-pulses = pulses + pbuf[0] * 256 + pbuf[1];
-break;
-case 0x13:
-x = abs(pbuf[0] * 256+ pbuf[1])/10;
-y = abs(pbuf[2] * 256+ pbuf[3])/10;
-z = abs(pbuf[4] * 256+ pbuf[5])/10;
-break;
-}
-}
-
-# 401
+# 359
 void command_handler(uint8_t *buf) {
 static uint8_t pos = 0;
 uint8_t i;
@@ -4784,12 +4744,9 @@ for (i=0; i<28; i++) {
 DATAEE_WriteByte(1+i+1, 0);
 schedule[i/4][i%4] = 0;
 }
-} else if (!strncmp(("EDG"), (buf), 3)) {
-if (!strncmp("MTR", &buf[4], 3)) {
-edge_func = edge_meter;
-} else {
-printf("!:EDG:UNRECOGNIZED EDGE FUNC\n");
-}
+} else if (!strncmp(("SEN"), (buf), 3)) {
+dev_addr = atoi(&buf[4]);
+one_shot_sen(dev_addr);
 } else if (BACKPLANE_SLAVE_ADDRESS != 0x01) {
 put_cmd(buf);
 }

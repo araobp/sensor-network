@@ -16,9 +16,7 @@
 #define RSC "RSC"
 #define CSC "CSC"
 #define EDG "EDG"
-
-// Edge computing feature name
-#define MTR "MTR"
+#define SEN "SEN"
 
 // I2C slave device address range handled by backplane master
 // These constants should be larger than 16 and multipels of 8
@@ -28,17 +26,12 @@
 #define MASK 0x01
 
 #define INV_DELAY 100 // INV delay (micro sec)
-#define INV_SEN_DELAY 1000  // INV->SEN delay (mili sec))
-#define SEN_DELAY 100   // SEN delay (mili sec)
+#define INV_SEN_DELAY 1500  // INV->SEN delay (micro sec))
+#define SEN_DELAY 100   // SEN delay (micro sec)
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
 
 char cmd_buf[4][BUF_SIZE];
-
-void (*edge_func)(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuf) = NULL;
-
-const float WHEEL_RADIUS = 6.0 / 100.0 / 1000.0;  // 6cm
-const float CIRCUMFERENCE = 2.0 * M_PI * WHEEL_RADIUS;
 
  /*
  * Schedule with I2C slave addresses
@@ -269,8 +262,6 @@ uint8_t sen(uint8_t dev_addr) {
                 __delay_us(SEN_DELAY);
                 if (status == 0) {
                     PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
-                    // Edge computing
-                    if (edge_func) edge_func(dev_addr, type, length, read_buf);
                 }
             }
         }                    
@@ -278,6 +269,21 @@ uint8_t sen(uint8_t dev_addr) {
     return status;
 }
 
+/*
+ * one-shot INV/SEN
+ */
+void one_shot_sen(uint8_t dev_addr) {
+    if (!detected(dev_addr)) {
+        printf("!:%%%d:UNDETECTED_DEVICE\n", dev_addr);
+    } else {
+        uint8_t status = sen(dev_addr);
+        if (status > 0) {
+            printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
+            i2c1_write_no_data(dev_addr, RST_I2C); 
+        }
+    }
+}
+        
 /*
  * invoke and retrive sensor data
  */
@@ -325,7 +331,6 @@ void inv_handler(void) {
     if (t % 120 == 0) {
         fetch(schedule[5]);
         check_plg();
-        if (edge_func) edge_func(BACKPLANE_MASTER_I2C, 0, 0, NULL); // 1sec clock for edge func
     }
     /*** 4800msec (~5sec) ***/
     if (t % 600 == 0) {
@@ -347,53 +352,6 @@ void put_cmd(uint8_t *buf) {
 }
 
 void command_handler(uint8_t *buf);
-
-/*
- * Edge computing: meter control
- */
-void edge_meter(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuf) {
-    static uint8_t pulses = 0;
-    static uint8_t sec = 0;
-    static bool initialized = false;
-    uint16_t speed10 = 0;
-    uint16_t rpm = 0;
-    double rms10 = 0;
-    uint16_t x, y, z;
-    char buf[BUF_SIZE];
-    if (!initialized) {
-        sprintf(buf, "I2C:%d\0", AQM1602XA_RN_GBW_I2C);
-        command_handler(buf);
-        sprintf(buf, "CLR\0");
-        command_handler(buf);
-        sprintf(buf, "HST:STARTING...\0");
-        command_handler(buf);
-        initialized = true;
-    }
-    switch(dev_addr) {
-        case BACKPLANE_MASTER_I2C:
-            if (++sec >= 5) {
-                rpm = pulses * 12;
-                speed10 = (uint16_t)(CIRCUMFERENCE * pulses * 12.0 * 60.0 * 10.0);
-                sprintf(buf, "HST:%2d.%dkm/h,%4drpm\0", speed10 / 10, speed10 % 10, rpm);
-                command_handler(buf);
-                sprintf(buf, "NWL\0");
-                command_handler(buf);
-                sprintf(buf, "STR:%1d.%1dG, %1d.%1dG, %1d.%1dG \0", x/10, x%10, y/10, y%10, z/10, z%10);                
-                command_handler(buf);
-                sec = 0;
-                pulses = 0;
-            }
-            break;
-        case A1324LUA_T_I2C:
-            pulses = pulses + pbuf[0] * 256 + pbuf[1];
-            break;
-        case KXR94_2050_I2C:
-            x = abs(pbuf[0] * 256+ pbuf[1])/10;
-            y = abs(pbuf[2] * 256+ pbuf[3])/10;
-            z = abs(pbuf[4] * 256+ pbuf[5])/10;
-            break;
-    }
-}
 
 /*
  * Backplane-master-specific commands
@@ -434,12 +392,9 @@ void command_handler(uint8_t *buf) {
             DATAEE_WriteByte(DEVICE_SETTING_ADDRESS+i+1, 0);
             schedule[i/4][i%4] = 0;
         }
-    } else if (parse(EDG, buf)) {
-        if (!strncmp(MTR, &buf[4], 3)) {
-            edge_func = edge_meter;
-        } else {
-            printf("!:EDG:UNRECOGNIZED EDGE FUNC\n");
-        }
+    } else if (parse(SEN, buf)) {
+        dev_addr = atoi(&buf[4]);
+        one_shot_sen(dev_addr);
     } else if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {
         put_cmd(buf);
     }

@@ -156,7 +156,7 @@ void PROTOCOL_Loop() {
                 cnt = 0;
                 printf("#%s\n", buf);
                 if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {  // Handled by backplane master?
-                    PROTOCOL_Extension_Handler(buf);                    
+                    PROTOCOL_EXT(buf);                    
                 } else if (parse(WHO, buf)) {  // who are you?
                     printf("$:WHO:%s\n", device_id_);
                 } else if (parse(SAV, buf)) {  // save the current setting
@@ -176,8 +176,7 @@ void PROTOCOL_Loop() {
                 } else if (parse(RDA, buf)) {
                     device_address = PROTOCOL_Read_Device_Address();
                     printf("$:RDA:%d\n", device_address);
-                }
-                else {
+                } else {
                     PROTOCOL_EXT(buf);
                 }
             }
