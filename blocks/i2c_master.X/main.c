@@ -243,7 +243,7 @@ uint8_t sen(uint8_t dev_addr) {
     uint8_t status;
     uint8_t type;
     uint8_t length ,data, i;
-    LATCbits.LATC7 ^= 1;
+    LED_RED ^= 1;
     // INV
     __delay_us(INV_DELAY);
     i2c1_write_no_data(dev_addr, INV_I2C);

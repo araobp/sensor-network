@@ -21,7 +21,7 @@ float get_accel(adc_channel_t ch) {
 
 void inv_handler(void) {
     float values[3];
-    LATCbits.LATC7 ^= 1;
+    LED_RED ^= 1;
     values[0] = get_accel(channel_AN3);  // x-axis
     values[1] = get_accel(channel_AN7);  // y-axis
     values[2] = get_accel(channel_AN8);  // z-axis

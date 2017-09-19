@@ -5,6 +5,8 @@
 extern "C" {
 #endif
    
+    #define LED_RED LATCbits.LATC7
+    
     /*
      * Basic commands
      */

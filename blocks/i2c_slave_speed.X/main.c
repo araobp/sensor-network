@@ -63,9 +63,9 @@ void loop_func(void) {
             if (count >= CONTINUITY) {
                 count = 0;
                 on = false;
-            LATCbits.LATC7 = 0;
+            LED_RED = 0;
             __delay_ms(3);
-            LATCbits.LATC7 = 1;
+            LED_RED = 1;
             sum++;
             }
             

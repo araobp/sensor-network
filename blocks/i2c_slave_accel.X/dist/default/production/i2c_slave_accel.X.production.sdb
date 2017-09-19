@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F1829 ]
 [d frameptr 6 ]
-"71 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
+"71 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
 [e E3101 . `uc
 I2C1_SLAVE_WRITE_REQUEST 0
 I2C1_SLAVE_READ_REQUEST 1
@@ -17,7 +17,7 @@ SLAVE_NORMAL_DATA 0
 SLAVE_DATA_ADDRESS 1
 SLAVE_GENERAL_CALL 2
 ]
-"83 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
+"83 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
 [e E2975 . `uc
 channel_AN3 3
 channel_AN7 7
@@ -26,7 +26,7 @@ channel_Temp 29
 channel_DAC 30
 channel_FVR 31
 ]
-"13 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\main.c
+"13 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\main.c
 [e E2982 . `uc
 channel_AN3 3
 channel_AN7 7
@@ -80,13 +80,13 @@ COMPLETE 3
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"13 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\main.c
+"13 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\main.c
 [v _get_accel get_accel `(f  1 e 3 0 ]
 "22
 [v _inv_handler inv_handler `(v  1 e 1 0 ]
 "31
 [v _main main `(v  1 e 1 0 ]
-"64 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
+"64 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
 "82
 [v _ADC_SelectChannel ADC_SelectChannel `(v  1 e 1 0 ]
@@ -96,7 +96,7 @@ COMPLETE 3
 [v _ADC_IsConversionDone ADC_IsConversionDone `(uc  1 e 1 0 ]
 "103
 [v _ADC_GetConversionResult ADC_GetConversionResult `(ui  1 e 2 0 ]
-"75 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
+"75 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 "112
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
@@ -108,19 +108,19 @@ COMPLETE 3
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
 "184
 [v _EUSART_Receive_ISR EUSART_Receive_ISR `(v  1 e 1 0 ]
-"30 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
+"30 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 "57
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
 "106
 [v _I2C1_StatusCallback I2C1_StatusCallback `(v  1 e 1 0 ]
-"51 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/interrupt_manager.c
+"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"81 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/mcc.c
+"81 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "93
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
-"57 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
+"57 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
 "94
 [v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
@@ -131,9 +131,9 @@ COMPLETE 3
 [v i1_DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
 "204
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
-"51 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/pin_manager.c
+"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"62 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
+"62 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "101
 [v _TMR0_HasOverflowOccured TMR0_HasOverflowOccured `(uc  1 e 1 0 ]
@@ -164,29 +164,29 @@ COMPLETE 3
 [v _PROTOCOL_Read_Lock PROTOCOL_Read_Lock `(uc  1 e 1 0 ]
 "131
 [v _PROTOCOL_Loop PROTOCOL_Loop `(v  1 e 1 0 ]
-"192
+"191
 [v _concat concat `(ui  1 e 2 0 ]
-"196
+"195
 [v _PROTOCOL_Backplane_Slave_Enabled PROTOCOL_Backplane_Slave_Enabled `(v  1 e 1 0 ]
-"200
+"199
 [v _PROTOCOL_I2C_WHO PROTOCOL_I2C_WHO `(uc  1 e 1 0 ]
-"204
+"203
 [v _PROTOCOL_I2C_GET PROTOCOL_I2C_GET `(uc  1 e 1 0 ]
-"208
+"207
 [v _PROTOCOL_I2C_Set_TLV PROTOCOL_I2C_Set_TLV `(v  1 e 1 0 ]
-"280
+"279
 [v _PROTOCOL_RST PROTOCOL_RST `(v  1 e 1 0 ]
-"287
+"286
 [v _PROTOCOL_I2C_Send_uint8_t PROTOCOL_I2C_Send_uint8_t `(v  1 e 1 0 ]
-"297
+"296
 [v _PROTOCOL_I2C_Send_int8_t PROTOCOL_I2C_Send_int8_t `(v  1 e 1 0 ]
-"310
+"309
 [v _PROTOCOL_I2C_Send_uint16_t PROTOCOL_I2C_Send_uint16_t `(v  1 e 1 0 ]
-"325
+"324
 [v _PROTOCOL_I2C_Send_int16_t PROTOCOL_I2C_Send_int16_t `(v  1 e 1 0 ]
-"340
+"339
 [v _PROTOCOL_I2C_Send_float PROTOCOL_I2C_Send_float `(v  1 e 1 0 ]
-"399
+"398
 [v _PROTOCOL_I2C_SEN PROTOCOL_I2C_SEN `(*.4uc  1 e 1 0 ]
 [s S297 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -428,7 +428,7 @@ COMPLETE 3
 [v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
-"61 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
+"61 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
 [v _eusartTxHead eusartTxHead `VEuc  1 e 1 0 ]
 "62
 [v _eusartTxTail eusartTxTail `VEuc  1 e 1 0 ]
@@ -444,9 +444,9 @@ COMPLETE 3
 [v _eusartRxBuffer eusartRxBuffer `VE[8]uc  1 e 8 0 ]
 "69
 [v _eusartRxCount eusartRxCount `VEuc  1 e 1 0 ]
-"23 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
+"23 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
 [v _I2C_slaveWriteData I2C_slaveWriteData `VEuc  1 e 1 0 ]
-"57 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
+"57 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
 [v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
 "10 protocol.c
 [v _slave_address slave_address `uc  1 e 1 0 ]
@@ -498,19 +498,19 @@ COMPLETE 3
 [v _j j `uc  1 e 1 0 ]
 "55
 [v _float100 float100 `i  1 e 2 0 ]
-"130 protocol.h
+"133 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS BACKPLANE_SLAVE_ADDRESS `uc  1 e 1 0 ]
-"31 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\main.c
+"31 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
 "52
 } 0
-"93 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/mcc.c
+"93 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/mcc.c
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 {
 "97
 } 0
-"62 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
+"62 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
 "77
@@ -522,7 +522,7 @@ COMPLETE 3
 [v PROTOCOL_Loop@device_address device_address `uc  1 a 1 58 ]
 "133
 [v PROTOCOL_Loop@c c `uc  1 a 1 57 ]
-"186
+"185
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
 [v _strncmp strncmp `(i  1 e 2 0 ]
@@ -532,7 +532,7 @@ COMPLETE 3
 [v strncmp@len len `ui  1 p 2 3 ]
 "14
 } 0
-"22 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\main.c
+"22 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\main.c
 [v _inv_handler inv_handler `(v  1 e 1 0 ]
 {
 "23
@@ -583,7 +583,7 @@ COMPLETE 3
 [v ___ftadd@f2 f2 `f  1 p 3 11 ]
 "148
 } 0
-"90 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
+"90 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
 [v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
 {
 "94
@@ -607,18 +607,18 @@ COMPLETE 3
 {
 "107
 } 0
-"340 protocol.c
+"339 protocol.c
 [v _PROTOCOL_I2C_Send_float PROTOCOL_I2C_Send_float `(v  1 e 1 0 ]
 {
 [v PROTOCOL_I2C_Send_float@length length `uc  1 a 1 wreg ]
-"341
-[v PROTOCOL_I2C_Send_float@v v `i  1 a 2 42 ]
 "340
+[v PROTOCOL_I2C_Send_float@v v `i  1 a 2 42 ]
+"339
 [v PROTOCOL_I2C_Send_float@length length `uc  1 a 1 wreg ]
 [v PROTOCOL_I2C_Send_float@pbuffer pbuffer `*.4f  1 p 1 38 ]
-"342
+"341
 [v PROTOCOL_I2C_Send_float@length length `uc  1 a 1 41 ]
-"367
+"366
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -643,7 +643,7 @@ COMPLETE 3
 [v printf@f f `*.25DCCuc  1 p 2 14 ]
 "1541
 } 0
-"160 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
+"160 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
 [v _putch putch `(v  1 e 1 0 ]
 {
 [v putch@txData txData `uc  1 a 1 wreg ]
@@ -759,18 +759,18 @@ COMPLETE 3
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
 } 0
-"208 protocol.c
+"207 protocol.c
 [v _PROTOCOL_I2C_Set_TLV PROTOCOL_I2C_Set_TLV `(v  1 e 1 0 ]
 {
 [v PROTOCOL_I2C_Set_TLV@type type `uc  1 a 1 wreg ]
-"209
-[v PROTOCOL_I2C_Set_TLV@status status `E3406  1 a 1 4 ]
 "208
+[v PROTOCOL_I2C_Set_TLV@status status `E3406  1 a 1 4 ]
+"207
 [v PROTOCOL_I2C_Set_TLV@type type `uc  1 a 1 wreg ]
 [v PROTOCOL_I2C_Set_TLV@length length `uc  1 p 1 0 ]
 [v PROTOCOL_I2C_Set_TLV@pbuffer pbuffer `*.4uc  1 p 1 1 ]
 [v PROTOCOL_I2C_Set_TLV@type type `uc  1 a 1 3 ]
-"217
+"216
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
 [v _atoi atoi `(i  1 e 2 0 ]
@@ -804,7 +804,7 @@ COMPLETE 3
 [v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
 "53
 } 0
-"101 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
+"101 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/tmr0.c
 [v _TMR0_HasOverflowOccured TMR0_HasOverflowOccured `(uc  1 e 1 0 ]
 {
 "105
@@ -840,7 +840,7 @@ COMPLETE 3
 {
 "109
 } 0
-"180 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
+"180 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
 [v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
 {
 [v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
@@ -860,7 +860,7 @@ COMPLETE 3
 [v PROTOCOL_EXT@char_buf char_buf `*.5uc  1 a 1 wreg ]
 "118
 } 0
-"112 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
+"112 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
 {
 "114
@@ -878,7 +878,7 @@ COMPLETE 3
 [v PROTOCOL_Initialize@scaler scaler `uc  1 p 1 8 ]
 "74
 } 0
-"204 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
+"204 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
 {
 [v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
@@ -887,17 +887,17 @@ COMPLETE 3
 [v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 0 ]
 "214
 } 0
-"51 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/pin_manager.c
+"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "92
 } 0
-"81 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/mcc.c
+"81 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
 "91
 } 0
-"30 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
+"30 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
 [v _I2C1_Initialize I2C1_Initialize `(v  1 e 1 0 ]
 {
 "55
@@ -907,22 +907,22 @@ COMPLETE 3
 {
 "91
 } 0
-"75 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
+"75 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
 {
 "110
 } 0
-"64 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
+"64 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
 {
 "80
 } 0
-"51 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/interrupt_manager.c
+"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
 "70
 } 0
-"57 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
+"57 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/i2c1.c
 [v _I2C1_ISR I2C1_ISR `(v  1 e 1 0 ]
 {
 "59
@@ -974,7 +974,7 @@ COMPLETE 3
 {
 "109
 } 0
-"180 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
+"180 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/memory.c
 [v i1_DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
 {
 [v i1DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
@@ -995,39 +995,39 @@ COMPLETE 3
 {
 "126
 } 0
-"280
+"279
 [v _PROTOCOL_RST PROTOCOL_RST `(v  1 e 1 0 ]
 {
-"285
+"284
 } 0
 "103
 [v _PROTOCOL_INV PROTOCOL_INV `(v  1 e 1 0 ]
 {
 "105
 } 0
-"200
+"199
 [v _PROTOCOL_I2C_WHO PROTOCOL_I2C_WHO `(uc  1 e 1 0 ]
 {
-"202
+"201
 } 0
-"399
+"398
 [v _PROTOCOL_I2C_SEN PROTOCOL_I2C_SEN `(*.4uc  1 e 1 0 ]
 {
-"400
+"399
 [v PROTOCOL_I2C_SEN@pdata pdata `*.4uc  1 a 1 1 ]
-"424
+"423
 } 0
-"204
+"203
 [v _PROTOCOL_I2C_GET PROTOCOL_I2C_GET `(uc  1 e 1 0 ]
 {
-"206
+"205
 } 0
-"196
+"195
 [v _PROTOCOL_Backplane_Slave_Enabled PROTOCOL_Backplane_Slave_Enabled `(v  1 e 1 0 ]
 {
-"198
+"197
 } 0
-"165 C:\Users\shiny\MPLABXProjects\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
+"165 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_accel.X\mcc_generated_files/eusart.c
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
 {
 "182

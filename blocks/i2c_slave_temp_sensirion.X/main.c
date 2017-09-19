@@ -19,7 +19,7 @@ void inv_handler(void) {
     int32_t s_rh;
     uint8_t status;
     
-    LATCbits.LATC7 ^= 1;
+    LED_RED ^= 1;
     
     // Temperature measurement
     status = i2c2_write(SHT31_DIS_ADDR, CMD_MSB, CMD_LSB);

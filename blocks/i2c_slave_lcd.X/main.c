@@ -153,9 +153,9 @@ void loop_func(void) {
             lcd_contrast(value);
         } else if (parse(LED, pbuf)) {
             if (!strncmp(ON, &pbuf[4], 2)) {
-                LATCbits.LATC7 = 0;  // turn LED on
+                LED_RED = 0;  // turn LED on
             } else if (!strncmp(OFF, &pbuf[4], 3)) {
-                LATCbits.LATC7 = 1;  // turn LED off     
+                LED_RED = 1;  // turn LED off     
             }
         }
         pbuf = NULL;
@@ -187,7 +187,7 @@ void main(void)
     lcd_test();
     
     // turn LED off
-    LATCbits.LATC7 = 1;
+    LED_RED = 1;
     
     // USART initialization
     EUSART_Initialize();

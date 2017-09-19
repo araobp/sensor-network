@@ -20,7 +20,7 @@ void inv_handler(void) {
     int32_t t;
     uint8_t status;
     
-    LATCbits.LATC7 ^= 1;
+    LED_RED ^= 1;
 
     if (!initialized) {
         i2c2_write(HDC1000_ADDR, CONFIGURATION, CONFIG_DATA);

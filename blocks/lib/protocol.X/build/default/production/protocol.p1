@@ -3090,47 +3090,47 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 56: extern char * strichr(const char *, int);
 [; ;string.h: 57: extern char * strrchr(const char *, int);
 [; ;string.h: 58: extern char * strrichr(const char *, int);
-[; ;protocol.h: 38: void blink_red(uint8_t times);
-[; ;protocol.h: 43: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
-[; ;protocol.h: 44: void PROTOCOL_Loop();
-[; ;protocol.h: 45: void PROTOCOL_Set_Func(void *loop_func);
-[; ;protocol.h: 46: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
-[; ;protocol.h: 47: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
-[; ;protocol.h: 48: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
-[; ;protocol.h: 49: uint8_t PROTOCOL_Read_Device_Address(void);
-[; ;protocol.h: 51: void PROTOCOL_STA(void);
-[; ;protocol.h: 52: void PROTOCOL_STP(void);
-[; ;protocol.h: 53: void PROTOCOL_SET(uint8_t value);
-[; ;protocol.h: 54: void PROTOCOL_SAV(void);
-[; ;protocol.h: 55: void PROTOCOL_INV(void);
-[; ;protocol.h: 56: void PROTOCOL_RST(void);
-[; ;protocol.h: 57: void PROTOCOL_EXT(uint8_t *pbuffer);
-[; ;protocol.h: 62: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.h: 67: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.h: 68: void PROTOCOL_I2C_Reset_TLV(void);
-[; ;protocol.h: 69: bool PROTOCOL_I2C_TLV_Status(void);
-[; ;protocol.h: 71: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
-[; ;protocol.h: 72: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
-[; ;protocol.h: 73: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
-[; ;protocol.h: 74: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
-[; ;protocol.h: 75: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
-[; ;protocol.h: 76: void PROTOCOL_Send_uint8_t(uint8_t value);
-[; ;protocol.h: 77: void PROTOCOL_Send_int8_t(int8_t value);
-[; ;protocol.h: 78: void PROTOCOL_Send_uint16_t(uint16_t value);
-[; ;protocol.h: 79: void PROTOCOL_Send_int16_t(int16_t value);
-[; ;protocol.h: 80: void PROTOCOL_Send_float(float value);
-[; ;protocol.h: 85: void PROTOCOL_Backplane_Slave_Enabled(void);
-[; ;protocol.h: 86: uint8_t PROTOCOL_I2C_WHO(void);
-[; ;protocol.h: 87: uint8_t PROTOCOL_I2C_GET(void);
-[; ;protocol.h: 88: uint8_t* PROTOCOL_I2C_SEN();
-[; ;protocol.h: 90: void PROTOCOL_Set_Lock(bool lock);
-[; ;protocol.h: 91: bool PROTOCOL_Read_Lock(void);
-"131 protocol.h
+[; ;protocol.h: 40: void blink_red(uint8_t times);
+[; ;protocol.h: 45: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+[; ;protocol.h: 46: void PROTOCOL_Loop();
+[; ;protocol.h: 47: void PROTOCOL_Set_Func(void *loop_func);
+[; ;protocol.h: 48: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+[; ;protocol.h: 49: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+[; ;protocol.h: 50: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+[; ;protocol.h: 51: uint8_t PROTOCOL_Read_Device_Address(void);
+[; ;protocol.h: 53: void PROTOCOL_STA(void);
+[; ;protocol.h: 54: void PROTOCOL_STP(void);
+[; ;protocol.h: 55: void PROTOCOL_SET(uint8_t value);
+[; ;protocol.h: 56: void PROTOCOL_SAV(void);
+[; ;protocol.h: 57: void PROTOCOL_INV(void);
+[; ;protocol.h: 58: void PROTOCOL_RST(void);
+[; ;protocol.h: 59: void PROTOCOL_EXT(uint8_t *pbuffer);
+[; ;protocol.h: 64: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.h: 69: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.h: 70: void PROTOCOL_I2C_Reset_TLV(void);
+[; ;protocol.h: 71: bool PROTOCOL_I2C_TLV_Status(void);
+[; ;protocol.h: 73: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+[; ;protocol.h: 74: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+[; ;protocol.h: 75: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+[; ;protocol.h: 76: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+[; ;protocol.h: 77: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+[; ;protocol.h: 78: void PROTOCOL_Send_uint8_t(uint8_t value);
+[; ;protocol.h: 79: void PROTOCOL_Send_int8_t(int8_t value);
+[; ;protocol.h: 80: void PROTOCOL_Send_uint16_t(uint16_t value);
+[; ;protocol.h: 81: void PROTOCOL_Send_int16_t(int16_t value);
+[; ;protocol.h: 82: void PROTOCOL_Send_float(float value);
+[; ;protocol.h: 87: void PROTOCOL_Backplane_Slave_Enabled(void);
+[; ;protocol.h: 88: uint8_t PROTOCOL_I2C_WHO(void);
+[; ;protocol.h: 89: uint8_t PROTOCOL_I2C_GET(void);
+[; ;protocol.h: 90: uint8_t* PROTOCOL_I2C_SEN();
+[; ;protocol.h: 92: void PROTOCOL_Set_Lock(bool lock);
+[; ;protocol.h: 93: bool PROTOCOL_Read_Lock(void);
+"133 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS `uc ~T0 @X0 1 e ]
 [i _BACKPLANE_SLAVE_ADDRESS
 -> -> 1 `i `uc
 ]
-[; ;protocol.h: 131: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.h: 133: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 "10 protocol.c
 [v _slave_address `uc ~T0 @X0 1 e ]
 [; ;protocol.c: 10: uint8_t slave_address;

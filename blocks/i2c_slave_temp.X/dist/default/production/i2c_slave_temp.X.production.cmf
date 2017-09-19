@@ -1,0 +1,1888 @@
+%CMF
+# %PSECTS Section
+# For each object file, details of its psects are enumerated here.
+# The begining of the section is indicated by %PSECTS.  The first
+# line indicates the name of the first object file, e.g.
+#    $foo.obj
+# Each line that follows describes a psect in that object file, until
+# the next object file.  The lines that describe a psect have the
+# format:
+#    <psect name> <class name> <space> <link address> <load addresses> <length> <delta>
+# All addresses and the length are given in unqualified hexadecimal
+# in delta units.  Any other numeric values are decimal.
+%PSECTS
+$C:\Users\shiny\AppData\Local\Temp\seis.obj
+reset_vec CODE 0 0 0 2 2
+end_init CODE 0 48 48 2 2
+config CONFIG 0 8007 8007 2 2
+$dist/default/production\i2c_slave_temp.X.production.obj
+cinit CODE 0 4A 4A 37 2
+text1 CODE 0 7FC 7FC 4 2
+text2 CODE 0 A2A A2A F 2
+text3 CODE 0 256 256 191 2
+text4 CODE 0 DD9 DD9 42 2
+text5 CODE 0 526 526 106 2
+text6 CODE 0 D18 D18 2E 2
+text7 CODE 0 BFA BFA 26 2
+text8 CODE 0 C97 C97 28 2
+text9 CODE 0 B50 B50 20 2
+text10 CODE 0 CBF CBF 2C 2
+text11 CODE 0 C6F C6F 28 2
+text12 CODE 0 7B7 7B7 45 2
+text13 CODE 0 C47 C47 28 2
+text14 CODE 0 D74 D74 30 2
+text15 CODE 0 F7E F7E 82 2
+text16 CODE 0 EAF EAF 5E 2
+text17 CODE 0 81 81 1D5 2
+text18 CODE 0 9D8 9D8 6 2
+text19 CODE 0 BD6 BD6 24 2
+text20 CODE 0 CEB CEB 2D 2
+text21 CODE 0 DA4 DA4 35 2
+text22 CODE 0 B91 B91 22 2
+text23 CODE 0 F0D F0D 71 2
+text24 CODE 0 A1B A1B F 2
+text25 CODE 0 ADA ADA 1C 2
+text26 CODE 0 9CF 9CF 4 2
+text27 CODE 0 A39 A39 10 2
+text28 CODE 0 9B9 9B9 3 2
+text29 CODE 0 9CB 9CB 4 2
+text30 CODE 0 9EB 9EB 7 2
+text31 CODE 0 9FB 9FB 9 2
+text32 CODE 0 BB3 BB3 23 2
+text33 CODE 0 2 2 1 2
+text34 CODE 0 B31 B31 1F 2
+text35 CODE 0 E5E E5E 51 2
+text36 CODE 0 A0E A0E D 2
+text37 CODE 0 B13 B13 1E 2
+text38 CODE 0 9D3 9D3 5 2
+text39 CODE 0 A72 A72 18 2
+text40 CODE 0 B70 B70 21 2
+text41 CODE 0 9B6 9B6 3 2
+text42 CODE 0 A8A A8A 1A 2
+text44 CODE 0 3E7 3E7 13F 2
+text45 CODE 0 A5A A5A 18 2
+text46 CODE 0 A49 A49 11 2
+text47 CODE 0 9A9 9A9 1 2
+text48 CODE 0 C20 C20 27 2
+text49 CODE 0 62C 62C CA 2
+text50 CODE 0 9B3 9B3 3 2
+text51 CODE 0 9C7 9C7 4 2
+text52 CODE 0 9E4 9E4 7 2
+text53 CODE 0 9F2 9F2 9 2
+text54 CODE 0 AF6 AF6 1D 2
+text55 CODE 0 9A8 9A8 1 2
+text56 CODE 0 9B0 9B0 3 2
+text57 CODE 0 A04 A04 A 2
+text58 CODE 0 9C3 9C3 4 2
+text59 CODE 0 9AD 9AD 3 2
+text60 CODE 0 E1B E1B 43 2
+text61 CODE 0 9AA 9AA 3 2
+text62 CODE 0 9BF 9BF 4 2
+text63 CODE 0 ABF ABF 1B 2
+text64 CODE 0 AA4 AA4 1B 2
+nvBANK1 BANK1 1 E2 E2 8 1
+idataCOMMON CODE 0 3 3 1 2
+maintext CODE 0 D46 D46 2E 2
+cstackCOMMON COMMON 1 70 70 A 1
+cstackBANK0 BANK0 1 20 20 3A 1
+cstackBANK1 BANK1 1 ED ED 2 1
+intentry CODE 0 4 4 44 2
+bssBANK0 BANK0 1 5A 5A 15 1
+bssBANK1 BANK1 1 A0 A0 42 1
+bssBANK2 BANK2 1 120 120 40 1
+bssBANK3 BANK3 1 1A0 1A0 30 1
+stringtext STRCODE 0 6F6 6F6 C1 2
+idataBANK1 CODE 0 9BC 9BC 3 2
+swtext1 CONST 0 800 800 18 2
+swtext2 CONST 0 818 818 A 2
+dataBANK1 BANK1 1 EA EA 3 1
+dataCOMMON COMMON 1 7D 7D 1 1
+clrtext CODE 0 9DE 9DE 6 2
+bssCOMMON COMMON 1 7A 7A 3 1
+# %UNUSED Section
+# This section enumerates the unused ranges of each CLASS. Each entry
+# is described on a single line as follows:
+#    <class name> <range> <delta>
+# Addresses given in the range are in hexadecimal and units of delta.
+%UNUSED
+RAM 6F-6F 1
+RAM EF-EF 1
+RAM 160-16F 1
+RAM 1D0-1EF 1
+RAM 220-26F 1
+RAM 2A0-2EF 1
+RAM 320-36F 1
+RAM 3A0-3EF 1
+RAM 420-46F 1
+RAM 4A0-4EF 1
+RAM 520-56F 1
+RAM 5A0-5EF 1
+RAM 620-64F 1
+BANK0 6F-6F 1
+BANK1 EF-EF 1
+BANK2 160-16F 1
+BANK3 1D0-1EF 1
+BANK4 220-26F 1
+BANK5 2A0-2EF 1
+BANK6 320-36F 1
+BANK7 3A0-3EF 1
+BANK8 420-46F 1
+BANK9 4A0-4EF 1
+CONST 822-9A7 2
+CONST 1000-1FFF 2
+ENTRY 822-9A7 2
+ENTRY 1000-1FFF 2
+IDLOC 8000-8003 2
+SFR10 500-51F 1
+SFR11 580-59F 1
+SFR12 600-61F 1
+SFR13 680-6EF 1
+SFR14 700-76F 1
+SFR15 780-7EF 1
+SFR16 800-86F 1
+SFR17 880-8EF 1
+SFR18 900-96F 1
+SFR19 980-9EF 1
+SFR20 A00-A6F 1
+SFR21 A80-AEF 1
+SFR22 B00-B6F 1
+SFR23 B80-BEF 1
+SFR24 C00-C6F 1
+SFR25 C80-CEF 1
+SFR26 D00-D6F 1
+SFR27 D80-DEF 1
+SFR28 E00-E6F 1
+SFR29 E80-EEF 1
+SFR30 F00-F6F 1
+SFR31 F80-FEF 1
+STACK 2120-23EF 1
+CODE 822-9A7 2
+CODE 1000-1FFF 2
+SFR0 0-1F 1
+SFR1 80-9F 1
+SFR2 100-11F 1
+SFR3 180-19F 1
+SFR4 200-21F 1
+SFR5 280-29F 1
+SFR6 300-31F 1
+SFR7 380-39F 1
+SFR8 400-41F 1
+SFR9 480-49F 1
+BANK10 520-56F 1
+BANK11 5A0-5EF 1
+BANK12 620-64F 1
+BIGRAM 2000-23EF 1
+EEDATA F000-F0FF 2
+STRCODE 822-9A7 2
+STRCODE 1000-1FFF 2
+STRING 822-9A7 2
+STRING 1000-1FFF 2
+# %LINETAB Section
+# This section enumerates the file/line to address mappings.
+# The beginning of the section is indicated by %LINETAB.
+# The first line indicates the name of the first object file, e.g.
+#   $foo.obj
+# Each line that follows describes a single mapping until the next
+# object file.  Mappings have the following format:
+#    <address> <psect name> <class name> ><line number>:<file name>
+# The address is absolute and given given in unqualified hex 
+# in delta units of the psect. All mappings within an object file
+# are in ascending order of addresses.
+# All other numeric values are in decimal.
+%LINETAB
+$dist/default/production\i2c_slave_temp.X.production.obj
+4A cinit CODE >4270:C:\Users\shiny\AppData\Local\Temp\seis.
+4A cinit CODE >4273:C:\Users\shiny\AppData\Local\Temp\seis.
+4A cinit CODE >4481:C:\Users\shiny\AppData\Local\Temp\seis.
+4D cinit CODE >4482:C:\Users\shiny\AppData\Local\Temp\seis.
+4E cinit CODE >4486:C:\Users\shiny\AppData\Local\Temp\seis.
+4F cinit CODE >4487:C:\Users\shiny\AppData\Local\Temp\seis.
+52 cinit CODE >4488:C:\Users\shiny\AppData\Local\Temp\seis.
+53 cinit CODE >4489:C:\Users\shiny\AppData\Local\Temp\seis.
+56 cinit CODE >4490:C:\Users\shiny\AppData\Local\Temp\seis.
+57 cinit CODE >4491:C:\Users\shiny\AppData\Local\Temp\seis.
+5A cinit CODE >4492:C:\Users\shiny\AppData\Local\Temp\seis.
+5B cinit CODE >4509:C:\Users\shiny\AppData\Local\Temp\seis.
+5C cinit CODE >4510:C:\Users\shiny\AppData\Local\Temp\seis.
+5D cinit CODE >4511:C:\Users\shiny\AppData\Local\Temp\seis.
+5E cinit CODE >4515:C:\Users\shiny\AppData\Local\Temp\seis.
+5F cinit CODE >4516:C:\Users\shiny\AppData\Local\Temp\seis.
+60 cinit CODE >4517:C:\Users\shiny\AppData\Local\Temp\seis.
+61 cinit CODE >4518:C:\Users\shiny\AppData\Local\Temp\seis.
+62 cinit CODE >4519:C:\Users\shiny\AppData\Local\Temp\seis.
+63 cinit CODE >4520:C:\Users\shiny\AppData\Local\Temp\seis.
+66 cinit CODE >4524:C:\Users\shiny\AppData\Local\Temp\seis.
+67 cinit CODE >4525:C:\Users\shiny\AppData\Local\Temp\seis.
+68 cinit CODE >4526:C:\Users\shiny\AppData\Local\Temp\seis.
+69 cinit CODE >4527:C:\Users\shiny\AppData\Local\Temp\seis.
+6A cinit CODE >4528:C:\Users\shiny\AppData\Local\Temp\seis.
+6B cinit CODE >4529:C:\Users\shiny\AppData\Local\Temp\seis.
+6E cinit CODE >4533:C:\Users\shiny\AppData\Local\Temp\seis.
+6F cinit CODE >4534:C:\Users\shiny\AppData\Local\Temp\seis.
+70 cinit CODE >4535:C:\Users\shiny\AppData\Local\Temp\seis.
+71 cinit CODE >4536:C:\Users\shiny\AppData\Local\Temp\seis.
+72 cinit CODE >4537:C:\Users\shiny\AppData\Local\Temp\seis.
+73 cinit CODE >4538:C:\Users\shiny\AppData\Local\Temp\seis.
+76 cinit CODE >4542:C:\Users\shiny\AppData\Local\Temp\seis.
+77 cinit CODE >4543:C:\Users\shiny\AppData\Local\Temp\seis.
+78 cinit CODE >4544:C:\Users\shiny\AppData\Local\Temp\seis.
+79 cinit CODE >4545:C:\Users\shiny\AppData\Local\Temp\seis.
+7A cinit CODE >4546:C:\Users\shiny\AppData\Local\Temp\seis.
+7B cinit CODE >4547:C:\Users\shiny\AppData\Local\Temp\seis.
+7D cinit CODE >4553:C:\Users\shiny\AppData\Local\Temp\seis.
+7D cinit CODE >4555:C:\Users\shiny\AppData\Local\Temp\seis.
+7E cinit CODE >4556:C:\Users\shiny\AppData\Local\Temp\seis.
+7F cinit CODE >4557:C:\Users\shiny\AppData\Local\Temp\seis.
+4 intentry CODE >51:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+9 intentry CODE >54:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+11 intentry CODE >56:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+14 intentry CODE >57:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+15 intentry CODE >58:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+1D intentry CODE >60:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+20 intentry CODE >61:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+21 intentry CODE >62:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+29 intentry CODE >64:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+2C intentry CODE >65:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+2D intentry CODE >66:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+35 intentry CODE >68:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+38 intentry CODE >69:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+39 intentry CODE >70:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+41 intentry CODE >72:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+43 intentry CODE >78:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/interrupt_manager.c
+AA4 text64 CODE >184:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA4 text64 CODE >187:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA7 text64 CODE >191:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA8 text64 CODE >192:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA9 text64 CODE >196:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AB6 text64 CODE >197:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AB9 text64 CODE >199:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+ABA text64 CODE >201:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+ABE text64 CODE >202:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+ABF text63 CODE >165:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+ABF text63 CODE >169:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AC3 text63 CODE >171:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+ACE text63 CODE >172:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AD1 text63 CODE >174:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AD2 text63 CODE >176:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AD6 text63 CODE >177:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AD7 text63 CODE >178:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AD7 text63 CODE >180:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+9BF text62 CODE >195:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9BF text62 CODE >196:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9C2 text62 CODE >197:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9AA text61 CODE >203:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9AA text61 CODE >204:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E1B text60 CODE >398:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E1B text60 CODE >400:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E1C text60 CODE >402:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E20 text60 CODE >403:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E23 text60 CODE >404:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E24 text60 CODE >406:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E28 text60 CODE >407:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E2A text60 CODE >410:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E2E text60 CODE >411:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E3B text60 CODE >413:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E3F text60 CODE >414:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E40 text60 CODE >415:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E44 text60 CODE >417:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E45 text60 CODE >419:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E49 text60 CODE >421:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E4A text60 CODE >400:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E59 text60 CODE >422:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9AD text59 CODE >199:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9AD text59 CODE >200:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9C3 text58 CODE >103:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9C3 text58 CODE >104:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9C6 text58 CODE >105:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A04 text57 CODE >279:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A04 text57 CODE >280:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A08 text57 CODE >281:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A09 text57 CODE >282:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B0 text56 CODE >124:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B0 text56 CODE >125:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9A8 text55 CODE >116:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9A8 text55 CODE >117:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+AF6 text54 CODE >180:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+AF7 text54 CODE >182:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+AF8 text54 CODE >184:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+AFB text54 CODE >185:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+AFD text54 CODE >186:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+AFE text54 CODE >187:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+AFF text54 CODE >188:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B00 text54 CODE >190:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B04 text54 CODE >191:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B05 text54 CODE >192:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B07 text54 CODE >193:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B09 text54 CODE >194:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B0A text54 CODE >196:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B0A text54 CODE >198:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B0C text54 CODE >200:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B0D text54 CODE >201:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+B12 text54 CODE >202:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+9F2 text53 CODE >107:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9F2 text53 CODE >108:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9FA text53 CODE >109:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9E4 text52 CODE >111:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9E5 text52 CODE >112:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9EA text52 CODE >113:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9C7 text51 CODE >93:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9C7 text51 CODE >95:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9CA text51 CODE >96:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B3 text50 CODE >98:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B3 text50 CODE >100:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B5 text50 CODE >101:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+818 swtext2 CONST >115:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+62C text49 CODE >106:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+62D text49 CODE >115:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+62E text49 CODE >117:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+62E text49 CODE >118:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+631 text49 CODE >119:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+632 text49 CODE >123:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+637 text49 CODE >124:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+638 text49 CODE >133:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+63D text49 CODE >139:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+640 text49 CODE >140:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+641 text49 CODE >142:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+644 text49 CODE >143:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+645 text49 CODE >145:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+648 text49 CODE >146:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+649 text49 CODE >148:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+64C text49 CODE >149:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+64D text49 CODE >151:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+650 text49 CODE >152:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+651 text49 CODE >153:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+651 text49 CODE >154:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+653 text49 CODE >155:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+654 text49 CODE >157:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+656 text49 CODE >137:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+66D text49 CODE >161:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+66E text49 CODE >131:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+677 text49 CODE >162:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+678 text49 CODE >165:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+67C text49 CODE >166:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+67E text49 CODE >167:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+681 text49 CODE >169:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+682 text49 CODE >174:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+687 text49 CODE >175:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+689 text49 CODE >176:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+68D text49 CODE >177:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+68E text49 CODE >179:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+69B text49 CODE >180:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6A1 text49 CODE >181:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6AB text49 CODE >182:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6AD text49 CODE >185:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6AE text49 CODE >172:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6B7 text49 CODE >190:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6B8 text49 CODE >128:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6C4 text49 CODE >192:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6C6 text49 CODE >193:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6C7 text49 CODE >199:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6CB text49 CODE >200:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6CC text49 CODE >202:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6D2 text49 CODE >203:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6D9 text49 CODE >204:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6DA text49 CODE >206:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6DE text49 CODE >208:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6DF text49 CODE >196:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6EA text49 CODE >216:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6EB text49 CODE >115:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+6F5 text49 CODE >217:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C20 text48 CODE >57:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C20 text48 CODE >59:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C24 text48 CODE >64:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C26 text48 CODE >65:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C2B text48 CODE >66:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C2D text48 CODE >68:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C30 text48 CODE >71:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C32 text48 CODE >76:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C34 text48 CODE >79:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C36 text48 CODE >83:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C39 text48 CODE >86:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C3B text48 CODE >91:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C3D text48 CODE >96:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C41 text48 CODE >99:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C44 text48 CODE >102:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+C46 text48 CODE >104:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+9A9 text47 CODE >728:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+9A9 text47 CODE >731:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A49 text46 CODE >563:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A49 text46 CODE >567:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A4E text46 CODE >570:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A52 text46 CODE >572:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A56 text46 CODE >573:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A57 text46 CODE >574:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A57 text46 CODE >576:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A5A text45 CODE >581:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A5B text45 CODE >584:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A5D text45 CODE >587:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A65 text45 CODE >590:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A70 text45 CODE >594:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A71 text45 CODE >596:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+800 swtext1 CONST >259:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3E7 text44 CODE >233:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3E7 text44 CODE >241:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3E9 text44 CODE >245:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3EC text44 CODE >248:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3ED text44 CODE >249:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3EF text44 CODE >250:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3F8 text44 CODE >253:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3F9 text44 CODE >255:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3FA text44 CODE >261:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3FA text44 CODE >263:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+3FC text44 CODE >266:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+400 text44 CODE >267:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+407 text44 CODE >268:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+40C text44 CODE >270:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+410 text44 CODE >273:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+414 text44 CODE >276:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+418 text44 CODE >281:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+419 text44 CODE >284:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+41C text44 CODE >287:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+41D text44 CODE >291:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+41F text44 CODE >294:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+424 text44 CODE >297:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+425 text44 CODE >299:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+425 text44 CODE >304:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+427 text44 CODE >307:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+42C text44 CODE >309:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+42D text44 CODE >311:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+42D text44 CODE >313:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+430 text44 CODE >315:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+435 text44 CODE >316:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+438 text44 CODE >317:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+439 text44 CODE >321:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+443 text44 CODE >324:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+446 text44 CODE >328:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+44A text44 CODE >329:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+44B text44 CODE >333:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+44F text44 CODE >337:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+450 text44 CODE >339:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+450 text44 CODE >341:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+453 text44 CODE >343:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+458 text44 CODE >344:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+45B text44 CODE >345:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+45C text44 CODE >346:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+45C text44 CODE >350:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+45D text44 CODE >354:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+471 text44 CODE >357:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+472 text44 CODE >360:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+474 text44 CODE >363:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+478 text44 CODE >366:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+479 text44 CODE >381:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+47C text44 CODE >384:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+483 text44 CODE >385:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+488 text44 CODE >386:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+48D text44 CODE >412:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+490 text44 CODE >413:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+493 text44 CODE >416:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+497 text44 CODE >417:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+498 text44 CODE >421:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+49C text44 CODE >424:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+49D text44 CODE >426:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+49D text44 CODE >429:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4A0 text44 CODE >432:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4A5 text44 CODE >435:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4A7 text44 CODE >438:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4AA text44 CODE >440:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4AB text44 CODE >444:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4B1 text44 CODE >449:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4B5 text44 CODE >452:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4B9 text44 CODE >454:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4BC text44 CODE >455:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4BD text44 CODE >456:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4BD text44 CODE >464:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4BF text44 CODE >467:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4C4 text44 CODE >470:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4C5 text44 CODE >474:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4D0 text44 CODE >477:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4D1 text44 CODE >479:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4D1 text44 CODE >482:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4D4 text44 CODE >486:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4D9 text44 CODE >489:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4DC text44 CODE >492:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4DE text44 CODE >493:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4DF text44 CODE >494:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4DF text44 CODE >496:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4E0 text44 CODE >497:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4E5 text44 CODE >499:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4E6 text44 CODE >506:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4EA text44 CODE >509:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4EC text44 CODE >511:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4ED text44 CODE >516:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4FA text44 CODE >519:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+4FE text44 CODE >526:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+500 text44 CODE >529:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+505 text44 CODE >530:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+506 text44 CODE >531:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+506 text44 CODE >536:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+508 text44 CODE >538:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+50A text44 CODE >542:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+50C text44 CODE >543:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+50D text44 CODE >549:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+510 text44 CODE >550:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+511 text44 CODE >556:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+516 text44 CODE >557:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+519 text44 CODE >560:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+51A text44 CODE >259:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+525 text44 CODE >561:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A8A text42 CODE >75:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A8A text42 CODE >78:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A8C text42 CODE >79:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A8D text42 CODE >84:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A90 text42 CODE >87:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A92 text42 CODE >90:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A94 text42 CODE >93:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A96 text42 CODE >96:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A97 text42 CODE >100:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A98 text42 CODE >101:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A99 text42 CODE >102:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A9E text42 CODE >104:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+A9F text42 CODE >105:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA0 text42 CODE >106:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA1 text42 CODE >109:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+AA3 text42 CODE >110:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+9B6 text41 CODE >89:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B6 text41 CODE >90:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+B70 text40 CODE >30:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B70 text40 CODE >34:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B7D text40 CODE >38:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B80 text40 CODE >40:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B82 text40 CODE >42:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B84 text40 CODE >44:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B85 text40 CODE >46:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B87 text40 CODE >48:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B8C text40 CODE >51:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B8E text40 CODE >53:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+B90 text40 CODE >55:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c1.c
+A72 text39 CODE >198:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A72 text39 CODE >200:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A77 text39 CODE >201:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A7B text39 CODE >202:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A7C text39 CODE >203:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A7D text39 CODE >205:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A7E text39 CODE >208:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A80 text39 CODE >210:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A82 text39 CODE >212:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A83 text39 CODE >214:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A85 text39 CODE >218:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A87 text39 CODE >220:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+A89 text39 CODE >222:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+9D3 text38 CODE >81:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+9D3 text38 CODE >84:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+9D6 text38 CODE >86:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+9D7 text38 CODE >87:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+B13 text37 CODE >51:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B13 text37 CODE >56:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B15 text37 CODE >57:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B16 text37 CODE >58:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B17 text37 CODE >63:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B1A text37 CODE >64:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B1C text37 CODE >65:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B1E text37 CODE >70:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B21 text37 CODE >71:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B22 text37 CODE >72:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B24 text37 CODE >77:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B26 text37 CODE >78:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B28 text37 CODE >79:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B2A text37 CODE >80:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B2C text37 CODE >86:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B2E text37 CODE >87:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+B30 text37 CODE >92:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/pin_manager.c
+A0E text36 CODE >204:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A10 text36 CODE >206:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A13 text36 CODE >207:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A14 text36 CODE >208:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A15 text36 CODE >209:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A16 text36 CODE >210:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A17 text36 CODE >211:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+A18 text36 CODE >213:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+E5E text35 CODE >59:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E5E text35 CODE >60:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E66 text35 CODE >61:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E72 text35 CODE >62:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E7E text35 CODE >63:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E8A text35 CODE >66:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E92 text35 CODE >68:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+E9A text35 CODE >71:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EA0 text35 CODE >72:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EA8 text35 CODE >73:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EAE text35 CODE >74:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+B31 text34 CODE >112:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B31 text34 CODE >114:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B33 text34 CODE >116:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B36 text34 CODE >120:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B42 text34 CODE >121:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B45 text34 CODE >123:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B46 text34 CODE >125:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B48 text34 CODE >126:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B4B text34 CODE >127:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+B4D text34 CODE >129:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+2 text33 CODE >116:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2 text33 CODE >117:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+BB3 text32 CODE >180:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BB5 text32 CODE >182:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BB6 text32 CODE >184:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BB9 text32 CODE >185:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BBD text32 CODE >186:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BBE text32 CODE >187:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BBF text32 CODE >188:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BC0 text32 CODE >190:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BC5 text32 CODE >191:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BC6 text32 CODE >192:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BC9 text32 CODE >193:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BCB text32 CODE >194:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BCC text32 CODE >196:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BCC text32 CODE >198:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BCE text32 CODE >200:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BCF text32 CODE >201:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+BD5 text32 CODE >202:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/memory.c
+9FB text31 CODE >107:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9FB text31 CODE >108:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A03 text31 CODE >109:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9EB text30 CODE >111:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9ED text30 CODE >112:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9F1 text30 CODE >113:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9CB text29 CODE >93:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9CB text29 CODE >95:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9CE text29 CODE >96:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B9 text28 CODE >98:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9B9 text28 CODE >100:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9BB text28 CODE >101:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A39 text27 CODE >84:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A3B text27 CODE >85:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A42 text27 CODE >86:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A48 text27 CODE >87:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+9CF text26 CODE >101:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+9CF text26 CODE >104:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+ADA text25 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+ADA text25 CODE >43:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+ADD text25 CODE >45:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+ADF text25 CODE >46:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+AE3 text25 CODE >47:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+AE8 text25 CODE >48:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+AED text25 CODE >49:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+AF1 text25 CODE >52:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul16.c
+A1B text24 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\isdigit.c
+A1D text24 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\isdigit.c
+F0D text23 CODE >5:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F0F text23 CODE >10:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F17 text23 CODE >11:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F1B text23 CODE >10:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F24 text23 CODE >12:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F26 text23 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F27 text23 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F2F text23 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F34 text23 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F3C text23 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F40 text23 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F4A text23 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F68 text23 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F69 text23 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F6D text23 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+F79 text23 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
+B91 text22 CODE >207:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+B93 text22 CODE >208:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+B99 text22 CODE >209:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+B9D text22 CODE >210:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+BA2 text22 CODE >211:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+BA8 text22 CODE >212:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+BB0 text22 CODE >213:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+BB1 text22 CODE >214:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+DA4 text21 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DA4 text21 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DA7 text21 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DAB text21 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DAD text21 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DAF text21 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DB4 text21 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DB8 text21 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DB9 text21 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DBE text21 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DC6 text21 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DCA text21 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DCB text21 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DD0 text21 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+DD4 text21 CODE >30:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwdiv.c
+CEB text20 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CEB text20 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CF0 text20 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CF2 text20 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CF4 text20 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CF9 text20 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CFD text20 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+CFE text20 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+D06 text20 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+D0A text20 CODE >22:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+D0F text20 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+D13 text20 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\lwmod.c
+BD6 text19 CODE >132:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BD8 text19 CODE >134:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BDB text19 CODE >138:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BDE text19 CODE >140:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BE2 text19 CODE >141:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BE3 text19 CODE >142:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BE3 text19 CODE >144:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BE4 text19 CODE >145:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BF1 text19 CODE >146:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BF4 text19 CODE >148:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BF5 text19 CODE >150:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BF7 text19 CODE >152:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+BF9 text19 CODE >153:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+9D8 text18 CODE >160:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+9DA text18 CODE >162:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+9DD text18 CODE >163:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/eusart.c
+81 text17 CODE >464:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+81 text17 CODE >533:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+86 text17 CODE >536:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+99 text17 CODE >538:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+9D text17 CODE >541:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A1 text17 CODE >542:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A2 text17 CODE >546:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A5 text17 CODE >548:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A6 text17 CODE >551:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A7 text17 CODE >579:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A7 text17 CODE >580:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+A8 text17 CODE >581:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+AC text17 CODE >551:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+B5 text17 CODE >597:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+BF text17 CODE >598:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+C2 text17 CODE >600:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+D3 text17 CODE >601:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+E6 text17 CODE >602:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+F1 text17 CODE >734:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+FD text17 CODE >740:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+101 text17 CODE >741:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+105 text17 CODE >745:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+107 text17 CODE >746:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+110 text17 CODE >747:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+114 text17 CODE >746:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+115 text17 CODE >757:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+11D text17 CODE >758:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+122 text17 CODE >760:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+124 text17 CODE >764:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+12E text17 CODE >765:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+132 text17 CODE >764:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+133 text17 CODE >768:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+140 text17 CODE >767:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+14B text17 CODE >805:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+14F text17 CODE >806:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+153 text17 CODE >807:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+154 text17 CODE >817:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+154 text17 CODE >818:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+155 text17 CODE >822:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+156 text17 CODE >635:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+174 text17 CODE >822:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+174 text17 CODE >1251:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+177 text17 CODE >1259:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+182 text17 CODE >1261:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+184 text17 CODE >1262:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+188 text17 CODE >1263:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+18D text17 CODE >1266:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+18E text17 CODE >1286:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+199 text17 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+19F text17 CODE >1306:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1B6 text17 CODE >1305:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1BE text17 CODE >1345:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1C6 text17 CODE >1346:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1CA text17 CODE >1381:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1DB text17 CODE >1382:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1E6 text17 CODE >1384:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1E9 text17 CODE >1387:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1EB text17 CODE >1392:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1EF text17 CODE >1393:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1F3 text17 CODE >1415:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1F8 text17 CODE >1417:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+1FC text17 CODE >1418:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+202 text17 CODE >1428:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+206 text17 CODE >1430:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+20A text17 CODE >1431:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+213 text17 CODE >1438:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+217 text17 CODE >1439:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+21B text17 CODE >1472:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+220 text17 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+228 text17 CODE >1489:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+250 text17 CODE >1524:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+254 text17 CODE >1474:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+255 text17 CODE >1541:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
+EAF text16 CODE >296:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EB1 text16 CODE >297:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EB5 text16 CODE >298:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EBB text16 CODE >299:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+ECA text16 CODE >298:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+ECF text16 CODE >301:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EDA text16 CODE >302:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EDB text16 CODE >303:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EDE text16 CODE >304:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+EFB text16 CODE >305:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+F7E text15 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F7E text15 CODE >14:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F80 text15 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F82 text15 CODE >16:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F8D text15 CODE >17:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F8F text15 CODE >18:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F8F text15 CODE >19:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F91 text15 CODE >20:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+F9C text15 CODE >21:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FA0 text15 CODE >23:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FA8 text15 CODE >24:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FAE text15 CODE >25:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FB0 text15 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FB2 text15 CODE >27:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FB9 text15 CODE >28:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FBD text15 CODE >26:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FBE text15 CODE >31:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FC5 text15 CODE >32:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FD5 text15 CODE >33:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FDD text15 CODE >34:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FDE text15 CODE >36:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FE5 text15 CODE >37:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FE9 text15 CODE >39:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FEC text15 CODE >40:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+FF7 text15 CODE >41:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\aldiv.c
+D74 text14 CODE >15:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D74 text14 CODE >119:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D7D text14 CODE >121:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D7F text14 CODE >122:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D87 text14 CODE >123:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D8E text14 CODE >124:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D95 text14 CODE >125:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+D9B text14 CODE >128:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\Umul32.c
+C47 text13 CODE >694:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C47 text13 CODE >695:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C49 text13 CODE >700:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C56 text13 CODE >702:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C5E text13 CODE >703:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C66 text13 CODE >704:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C6E text13 CODE >705:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7B7 text12 CODE >641:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7B7 text12 CODE >642:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7B9 text12 CODE >648:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7BB text12 CODE >650:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7C2 text12 CODE >652:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7C9 text12 CODE >653:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7D0 text12 CODE >654:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7D8 text12 CODE >655:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7DC text12 CODE >658:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7E0 text12 CODE >661:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7E4 text12 CODE >666:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7E5 text12 CODE >669:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7E9 text12 CODE >672:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7EA text12 CODE >675:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7EB text12 CODE >678:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7F0 text12 CODE >682:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7F7 text12 CODE >684:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+7FA text12 CODE >688:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C6F text11 CODE >619:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C6F text11 CODE >620:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C71 text11 CODE >629:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C73 text11 CODE >631:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C83 text11 CODE >632:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C8F text11 CODE >633:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C90 text11 CODE >636:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+CBF text10 CODE >77:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CBF text10 CODE >80:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CC4 text10 CODE >81:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CC6 text10 CODE >82:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CC9 text10 CODE >83:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CD9 text10 CODE >84:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CDE text10 CODE >85:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CE1 text10 CODE >86:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CE2 text10 CODE >87:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CE3 text10 CODE >89:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CE7 text10 CODE >90:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+CE9 text10 CODE >94:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+B50 text9 CODE >707:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+B50 text9 CODE >708:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+B52 text9 CODE >713:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+B5F text9 CODE >714:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+B67 text9 CODE >715:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+B6F text9 CODE >716:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C97 text8 CODE >598:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C97 text8 CODE >599:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C99 text8 CODE >607:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+C9B text8 CODE >609:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+CAB text8 CODE >610:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+CB7 text8 CODE >611:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+CB8 text8 CODE >614:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/i2c2.c
+BFA text7 CODE >13:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+BFA text7 CODE >18:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+BFF text7 CODE >19:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+C03 text7 CODE >20:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+C13 text7 CODE >21:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+C18 text7 CODE >22:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+C1B text7 CODE >23:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+C1C text7 CODE >24:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+C1D text7 CODE >25:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D18 text6 CODE >54:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D18 text6 CODE >58:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D1D text6 CODE >59:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D21 text6 CODE >60:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D23 text6 CODE >61:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D26 text6 CODE >62:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D34 text6 CODE >63:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D39 text6 CODE >64:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D3C text6 CODE >65:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D3D text6 CODE >66:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D3E text6 CODE >68:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D42 text6 CODE >69:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+D44 text6 CODE >73:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\i2c2_util.c
+526 text5 CODE >17:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+526 text5 CODE >23:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+538 text5 CODE >25:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+53C text5 CODE >26:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+549 text5 CODE >27:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+54C text5 CODE >28:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+54C text5 CODE >31:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+559 text5 CODE >32:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+562 text5 CODE >33:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+576 text5 CODE >34:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+587 text5 CODE >35:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+5B4 text5 CODE >37:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+5BC text5 CODE >40:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+5CA text5 CODE >41:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+5D3 text5 CODE >42:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+5E7 text5 CODE >43:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+5F8 text5 CODE >44:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+624 text5 CODE >47:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+62B text5 CODE >48:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+DD9 text4 CODE >4:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+DD9 text4 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+DE3 text4 CODE >7:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+DF7 text4 CODE >8:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+E0F text4 CODE >10:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+E13 text4 CODE >11:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+E17 text4 CODE >6:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+E18 text4 CODE >13:C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
+256 text3 CODE >131:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+256 text3 CODE >134:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+256 text3 CODE >135:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+25E text3 CODE >136:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+261 text3 CODE >137:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+262 text3 CODE >138:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+272 text3 CODE >139:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+273 text3 CODE >140:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+27D text3 CODE >141:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+282 text3 CODE >142:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+283 text3 CODE >146:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+28A text3 CODE >147:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+28F text3 CODE >148:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+291 text3 CODE >151:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+295 text3 CODE >152:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+29D text3 CODE >153:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2AE text3 CODE >154:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2B2 text3 CODE >155:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2BA text3 CODE >156:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2BB text3 CODE >157:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2C7 text3 CODE >158:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2CB text3 CODE >159:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2CF text3 CODE >160:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2E5 text3 CODE >161:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+2F4 text3 CODE >162:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+30A text3 CODE >163:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+30D text3 CODE >164:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+323 text3 CODE >165:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+326 text3 CODE >166:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+33C text3 CODE >167:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+33F text3 CODE >168:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+34B text3 CODE >169:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+361 text3 CODE >170:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+36A text3 CODE >171:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+380 text3 CODE >172:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+38E text3 CODE >173:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3A4 text3 CODE >174:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3AE text3 CODE >175:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3B2 text3 CODE >176:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3C8 text3 CODE >177:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3D0 text3 CODE >178:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3E1 text3 CODE >179:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3E2 text3 CODE >180:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+3E6 text3 CODE >134:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\protocol.c
+A2A text2 CODE >62:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+A2A text2 CODE >67:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+A2F text2 CODE >70:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+A32 text2 CODE >73:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+A37 text2 CODE >76:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+A38 text2 CODE >77:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/tmr0.c
+7FC text1 CODE >89:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+7FC text1 CODE >92:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+7FF text1 CODE >93:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\mcc_generated_files/mcc.c
+D46 maintext CODE >50:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D46 maintext CODE >53:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D59 maintext CODE >56:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D5C maintext CODE >57:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D5F maintext CODE >58:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D62 maintext CODE >59:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D65 maintext CODE >62:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D66 maintext CODE >63:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D67 maintext CODE >66:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D6A maintext CODE >69:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D6D maintext CODE >72:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D70 maintext CODE >75:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+D72 maintext CODE >76:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_temp.X\main.c
+9DE clrtext CODE >4498:C:\Users\shiny\AppData\Local\Temp\seis.
+9DE clrtext CODE >4499:C:\Users\shiny\AppData\Local\Temp\seis.
+9DF clrtext CODE >4500:C:\Users\shiny\AppData\Local\Temp\seis.
+9DF clrtext CODE >4501:C:\Users\shiny\AppData\Local\Temp\seis.
+9E0 clrtext CODE >4502:C:\Users\shiny\AppData\Local\Temp\seis.
+9E1 clrtext CODE >4503:C:\Users\shiny\AppData\Local\Temp\seis.
+9E2 clrtext CODE >4504:C:\Users\shiny\AppData\Local\Temp\seis.
+9E3 clrtext CODE >4505:C:\Users\shiny\AppData\Local\Temp\seis.
+# %SYMTAB Section
+# An enumeration of all symbols in the program.
+# The beginning of the section is indicated by %SYMTAB.
+# Each line describes a single symbol as follows:
+#    <label> <value> [-]<load-adj> <class> <space> <psect> <file-name>
+# The value and load-adj are both in unqualified hexadecimal.
+# All other numeric values are in decimal.  The load-adj is the
+# quantity one needs to add to the symbol value in order to obtain the load
+# address of the symbol.  This value may be signed. If the symbol
+# was defined in a psect then <psect> will be "-". File-name
+# is the name of the object file in which the symbol was defined.
+%SYMTAB
+_i 5F 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+___latbits 2 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_EUSART_Read 1662 0 CODE 0 text34 dist/default/production\i2c_slave_temp.X.production.obj
+___lwmod@counter 2E 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__LdataBANK1 0 0 ABS 0 dataBANK1 -
+_I2C1_Initialize 16E0 0 CODE 0 text40 dist/default/production\i2c_slave_temp.X.production.obj
+__Hspace_0 8009 0 ABS 0 - -
+__Hspace_1 1D0 0 ABS 0 - -
+__Hspace_2 0 0 ABS 0 - -
+__Hspace_3 0 0 ABS 0 - -
+__HidataBANK1 0 0 ABS 0 idataBANK1 -
+I2C1_StatusCallback@pdata 75 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1STATbits 214 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+strncmp@s1 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+strncmp@s2 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Heeprom_data 0 0 EEDATA 3 eeprom_data -
+I2C2_MasterWrite@trBlock D2 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_SET@value_ 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_MCLRE$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_BusCollisionISR 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_I2C1_StatusCallback C58 0 CODE 0 text49 dist/default/production\i2c_slave_temp.X.production.obj
+__Lstringtext 0 0 ABS 0 stringtext -
+__end_of_WDT_Initialize 1000 0 CODE 0 text1 dist/default/production\i2c_slave_temp.X.production.obj
+__Hstrings 0 0 ABS 0 strings -
+_LATA 10C 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_LATB 10D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_LATC 10E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TMR0 15 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_WPUA 20C 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_WPUB 20D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_WPUC 20E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___sp 0 0 STACK 2 stack C:\Users\shiny\AppData\Local\Temp\seis.obj
+_atoi 1E1A 0 CODE 0 text23 dist/default/production\i2c_slave_temp.X.production.obj
+_main 1A8C 0 CODE 0 maintext dist/default/production\i2c_slave_temp.X.production.obj
+btemp 7E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_tmr_cnt BD 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+start 90 0 CODE 0 init C:\Users\shiny\AppData\Local\Temp\seis.obj
+_EUSART_Write 17AC 0 CODE 0 text19 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of___aldiv 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_atoi 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_main 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of___lwdiv 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of___lwmod 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_ISR@pi2c_buf_ptr 66 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__HbssCOMMON 0 0 ABS 0 bssCOMMON -
+__size_of_I2C1_ISR 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_ISR 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+?___lmul 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+?___wmul 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_Initialize 1514 0 CODE 0 text39 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_i2c2_read_no_reg_addr 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_I2C_Send_int8_t 1D5E 0 CODE 0 text16 dist/default/production\i2c_slave_temp.X.production.obj
+_OPTION_REGbits 95 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_BusCollisionISR 1354 0 CODE 0 text47 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_i2c2_write_no_data 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_Set_TLV@pbuffer 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__LidataBANK1 0 0 ABS 0 idataBANK1 -
+__end_of_EUSART_Initialize 1548 0 CODE 0 text42 dist/default/production\i2c_slave_temp.X.production.obj
+__Hpowerup 0 0 CODE 0 powerup -
+__end_ofi1_DATAEE_WriteByte 1626 0 CODE 0 text54 dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_MasterWriteTRBBuild 16A0 0 CODE 0 text9 dist/default/production\i2c_slave_temp.X.production.obj
+printf@c 42 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+printf@f 2F 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_FunctionComplete 14B4 0 CODE 0 text46 dist/default/production\i2c_slave_temp.X.production.obj
+_i2c2_state 6A 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterReadTRBBuild@length 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_i2c2_write 17F4 0 CODE 0 text7 dist/default/production\i2c_slave_temp.X.production.obj
+i1DATAEE_WriteByte@bData 70 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+__HdataCOMMON 0 0 ABS 0 dataCOMMON -
+intlevel0 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\seis.obj
+intlevel1 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\seis.obj
+intlevel2 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\seis.obj
+intlevel3 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\seis.obj
+intlevel4 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\seis.obj
+intlevel5 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\seis.obj
+__LbssCOMMON 0 0 ABS 0 bssCOMMON -
+_PROTOCOL_Read_Device_Address 136C 0 CODE 0 text41 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_MasterWrite 197E 0 CODE 0 text8 dist/default/production\i2c_slave_temp.X.production.obj
+___aldiv@divisor 2D 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+wtemp0 7E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Hfunctab 0 0 CODE 0 functab -
+_PROTOCOL_EXT 4 0 CODE 0 text33 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_INV 1386 0 CODE 0 text58 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_RST 1408 0 CODE 0 text57 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_SAV 13F6 0 CODE 0 text31 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_SET 13D6 0 CODE 0 text30 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_STA 1396 0 CODE 0 text29 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_STP 1372 0 CODE 0 text28 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_EUSART_Write 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___aldiv@sign 37 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_EUSART_Transmit_ISR 15B4 0 CODE 0 text63 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_MasterWrite 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_FunctionComplete 1492 0 CODE 0 text46 dist/default/production\i2c_slave_temp.X.production.obj
+__Hclrtext 0 0 ABS 0 clrtext -
+__size_of_inv_handler 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterRead@trBlock CE 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Initialize@scaler 29 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__pidataCOMMON 6 0 CODE 0 idataCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_eusartTxBuffer A8 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+___wmul@multiplicand 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+printf@flag 3F 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+printf@prec 37 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i1_DATAEE_WriteByte 15EC 0 CODE 0 text54 dist/default/production\i2c_slave_temp.X.production.obj
+__size_ofi1_PROTOCOL_EXT 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_ofi1_PROTOCOL_SAV 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_ofi1_PROTOCOL_SET 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_ofi1_PROTOCOL_STA 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_ofi1_PROTOCOL_STP 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterReadTRBBuild@ptrb 27 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_ANSELA 18C 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_ANSELB 18D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_ANSELC 18E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+DATAEE_WriteByte@GIEBitValue 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write_no_data@write_status 35 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C1_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_Initialize 14E4 0 CODE 0 text39 dist/default/production\i2c_slave_temp.X.production.obj
+printf@width 40 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_I2C1_ISR 1840 0 CODE 0 text48 dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_ISR 7CE 0 CODE 0 text44 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWrite@address 29 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWrite@pdata 2E 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWrite@pflag 2B 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__LdataCOMMON 0 0 ABS 0 dataCOMMON -
+_EECON1bits 195 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_INTERRUPT_InterruptManager 90 0 CODE 0 intentry dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write_no_data@status 36 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of___lmul 1B48 0 CODE 0 text14 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of___wmul 15EC 0 CODE 0 text25 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_Send_int8_t@length 46 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_EUSART_Write 17F4 0 CODE 0 text19 dist/default/production\i2c_slave_temp.X.production.obj
+_EEADRH 192 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_EEADRL 191 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_EECON2 196 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_EEDATH 194 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_EEDATL 193 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Backplane_Slave_Enabled 137E 0 CODE 0 text62 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C1_ISR 188E 0 CODE 0 text48 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_ISR A4C 0 CODE 0 text44 dist/default/production\i2c_slave_temp.X.production.obj
+__Lmaintext 0 0 ABS 0 maintext -
+__end_of_I2C1_StatusCallback DEC 0 CODE 0 text49 dist/default/production\i2c_slave_temp.X.production.obj
+?_printf 2F 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__LnvBANK1 0 0 ABS 0 nvBANK1 -
+__end_of_i2c2_write 1840 0 CODE 0 text7 dist/default/production\i2c_slave_temp.X.production.obj
+___lwmod@divisor 29 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of___aldiv 2000 0 CODE 0 text15 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Loop 4AC 0 CODE 0 text3 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_EXT 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_INV 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_RST 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_SAV 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_SET 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_STA 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_STP 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of___lwdiv 1BB2 0 CODE 0 text21 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of___lwmod 1A30 0 CODE 0 text20 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_isdigit 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Write_Device_Address 1472 0 CODE 0 text27 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_read_no_reg_addr@read_status 36 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterRead@length 28 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_DATAEE_ReadByte 1436 0 CODE 0 text36 dist/default/production\i2c_slave_temp.X.production.obj
+_initialized C4 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write_no_data@timeout 33 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Send_uint8_t@pbuf E1 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write@write_status 35 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_OPTION_REG 95 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_strncmp 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_dpowers DEC 0 STRCODE 0 stringtext dist/default/production\i2c_slave_temp.X.production.obj
+_EUSART_Initialize 1514 0 CODE 0 text42 dist/default/production\i2c_slave_temp.X.production.obj
+___lwdiv@quotient 27 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__LidataCOMMON 0 0 ABS 0 idataCOMMON -
+__size_of_putch 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___lwmod@dividend 2B 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_PIN_MANAGER_Initialize 1626 0 CODE 0 text37 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWriteTRBBuild@ptrb 27 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Loop_Func B6 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2CON1bits 21D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+start_initialization 94 0 CODE 0 cinit dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2CON2bits 21E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_EXT 6 0 CODE 0 text33 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_INV 138E 0 CODE 0 text58 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_RST 141C 0 CODE 0 text57 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_SAV 1408 0 CODE 0 text31 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_SET 13E4 0 CODE 0 text30 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_STA 139E 0 CODE 0 text29 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_STP 1378 0 CODE 0 text28 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_I2C_Send_int8_t 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_OSCCON 99 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_p_i2c2_trb_current 68 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+___aldiv@quotient 38 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_eusartRxBuffer A0 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterRead@address 29 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_I2C_GET 1354 0 CODE 0 text61 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_I2C_SEN 1C36 0 CODE 0 text60 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_I2C_WHO 135A 0 CODE 0 text59 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_MasterWriteTRBBuild 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write@buf 36 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWriteTRBBuild@pdata 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_DATAEE_WriteByte 1766 0 CODE 0 text32 dist/default/production\i2c_slave_temp.X.production.obj
+_device_id_ E2 0 BANK1 1 nvBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write@data 32 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+clear_ram0 13BC 0 CODE 0 clrtext dist/default/production\i2c_slave_temp.X.production.obj
+_SPBRGH 19C 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SPBRGL 19B 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__pcstackBANK1 ED 0 BANK1 1 cstackBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_I2C_slaveWriteData 7D 0 COMMON 1 dataCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterTRBInsert@count 24 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_TMR0IF 5A 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterTRBInsert@ptrb_list 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterTRBInsert@pflag 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write@status 38 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_DATAEE_ReadByte 141C 0 CODE 0 text36 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_printf 4AC 0 CODE 0 text17 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_SEN@pdata 72 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_readbuf C8 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWriteTRBBuild@length 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_read_no_reg_addr@dev_addr 2F 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_WDTCON 97 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterReadTRBBuild@pdata 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+___int_sp 0 0 STACK 2 stack C:\Users\shiny\AppData\Local\Temp\seis.obj
+__end_of_EUSART_Read 16A0 0 CODE 0 text34 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_read_no_reg_addr@timeout 35 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Hbank0 0 0 ABS 0 bank0 -
+__Hbank1 0 0 ABS 0 bank1 -
+__Hbank2 0 0 ABS 0 bank2 -
+__Hbank3 0 0 ABS 0 bank3 -
+__Hbank4 0 0 ABS 0 bank4 -
+__Hbank5 0 0 ABS 0 bank5 -
+__Hbank6 0 0 ABS 0 bank6 -
+__Hbank7 0 0 ABS 0 bank7 -
+__Hbank8 0 0 ABS 0 bank8 -
+__Hbank9 0 0 ABS 0 bank9 -
+__Hcinit 102 0 CODE 0 cinit -
+__Hidloc 0 0 IDLOC 0 idloc -
+__size_of_I2C2_MasterReadTRBBuild 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_OSCILLATOR_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Hsfr10 0 0 ABS 0 sfr10 -
+__Hsfr11 0 0 ABS 0 sfr11 -
+__Hsfr12 0 0 ABS 0 sfr12 -
+__Hsfr13 0 0 ABS 0 sfr13 -
+__Hsfr14 0 0 ABS 0 sfr14 -
+__Hsfr15 0 0 ABS 0 sfr15 -
+__Hsfr16 0 0 ABS 0 sfr16 -
+__Hsfr17 0 0 ABS 0 sfr17 -
+__Hsfr18 0 0 ABS 0 sfr18 -
+__Hsfr19 0 0 ABS 0 sfr19 -
+__Hsfr20 0 0 ABS 0 sfr20 -
+__Hsfr21 0 0 ABS 0 sfr21 -
+__Hsfr22 0 0 ABS 0 sfr22 -
+__Hsfr23 0 0 ABS 0 sfr23 -
+__Hsfr24 0 0 ABS 0 sfr24 -
+__Hsfr25 0 0 ABS 0 sfr25 -
+__Hsfr26 0 0 ABS 0 sfr26 -
+__Hsfr27 0 0 ABS 0 sfr27 -
+__Hsfr28 0 0 ABS 0 sfr28 -
+__Hsfr29 0 0 ABS 0 sfr29 -
+__Hsfr30 0 0 ABS 0 sfr30 -
+__Hsfr31 0 0 ABS 0 sfr31 -
+__Hstack 0 0 STACK 2 stack -
+__end_of_PROTOCOL_Read_Lock 1366 0 CODE 0 text56 dist/default/production\i2c_slave_temp.X.production.obj
+___lwdiv@counter 26 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Hbank10 0 0 ABS 0 bank10 -
+__Hbank11 0 0 ABS 0 bank11 -
+__Hbank12 0 0 ABS 0 bank12 -
+__Hbank13 0 0 BANK13 1 bank13 -
+__Hbank14 0 0 BANK14 1 bank14 -
+__Hbank15 0 0 BANK15 1 bank15 -
+__Hbank16 0 0 BANK16 1 bank16 -
+__Hbank17 0 0 BANK17 1 bank17 -
+__Hbank18 0 0 BANK18 1 bank18 -
+__Hbank19 0 0 BANK19 1 bank19 -
+__Hbank20 0 0 BANK20 1 bank20 -
+__Hbank21 0 0 BANK21 1 bank21 -
+__Hbank22 0 0 BANK22 1 bank22 -
+__Hbank23 0 0 BANK23 1 bank23 -
+__Hbank24 0 0 BANK24 1 bank24 -
+__Hbank25 0 0 BANK25 1 bank25 -
+__Hbank26 0 0 BANK26 1 bank26 -
+__Hbank27 0 0 BANK27 1 bank27 -
+__Hbank28 0 0 BANK28 1 bank28 -
+__Hbank29 0 0 BANK29 1 bank29 -
+__Hbank30 0 0 BANK30 1 bank30 -
+__Hbank31 0 0 BANK31 1 bank31 -
+__Hbigram 0 0 ABS 0 bigram -
+__Hmaintext 0 0 ABS 0 maintext -
+inv_handler@data 51 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_MasterRead 192E 0 CODE 0 text11 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_FOSC$INTOSC 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Hcommon 0 0 ABS 0 common -
+__Hconfig 10012 0 CONFIG 0 config -
+__size_of_PROTOCOL_Read_Device_Address 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWriteTRBBuild@address 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_TMR0_HasOverflowOccured 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Lbank0 0 0 ABS 0 bank0 -
+__Lbank1 0 0 ABS 0 bank1 -
+__Lbank2 0 0 ABS 0 bank2 -
+__Lbank3 0 0 ABS 0 bank3 -
+__Lbank4 0 0 ABS 0 bank4 -
+__Lbank5 0 0 ABS 0 bank5 -
+__Lbank6 0 0 ABS 0 bank6 -
+__Lbank7 0 0 ABS 0 bank7 -
+__Lbank8 0 0 ABS 0 bank8 -
+__Lbank9 0 0 ABS 0 bank9 -
+__end_of_isdigit 1454 0 CODE 0 text24 dist/default/production\i2c_slave_temp.X.production.obj
+__Lcinit 94 0 CODE 0 cinit -
+__Lidloc 0 0 IDLOC 0 idloc -
+__Lsfr10 0 0 ABS 0 sfr10 -
+__Lsfr11 0 0 ABS 0 sfr11 -
+__Lsfr12 0 0 ABS 0 sfr12 -
+__Lsfr13 0 0 ABS 0 sfr13 -
+__Lsfr14 0 0 ABS 0 sfr14 -
+__Lsfr15 0 0 ABS 0 sfr15 -
+__Lsfr16 0 0 ABS 0 sfr16 -
+__Lsfr17 0 0 ABS 0 sfr17 -
+__Lsfr18 0 0 ABS 0 sfr18 -
+__Lsfr19 0 0 ABS 0 sfr19 -
+__Lsfr20 0 0 ABS 0 sfr20 -
+__Lsfr21 0 0 ABS 0 sfr21 -
+__Lsfr22 0 0 ABS 0 sfr22 -
+__Lsfr23 0 0 ABS 0 sfr23 -
+__Lsfr24 0 0 ABS 0 sfr24 -
+__Lsfr25 0 0 ABS 0 sfr25 -
+__Lsfr26 0 0 ABS 0 sfr26 -
+__Lsfr27 0 0 ABS 0 sfr27 -
+__Lsfr28 0 0 ABS 0 sfr28 -
+__Lsfr29 0 0 ABS 0 sfr29 -
+__Lsfr30 0 0 ABS 0 sfr30 -
+__Lsfr31 0 0 ABS 0 sfr31 -
+__Lstack 0 0 STACK 2 stack -
+_APFCON0 11D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_APFCON1 11E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_Loop 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_Read_Device_Address 1372 0 CODE 0 text41 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_strncmp 1C36 0 CODE 0 text4 dist/default/production\i2c_slave_temp.X.production.obj
+_INTCONbits B 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Habs1 0 0 ABS 0 abs1 -
+__Hcode 0 0 ABS 0 code -
+__Hinit 90 0 CODE 0 init -
+__Hsfr0 0 0 ABS 0 sfr0 -
+__Hsfr1 0 0 ABS 0 sfr1 -
+__Hsfr2 0 0 ABS 0 sfr2 -
+__Hsfr3 0 0 ABS 0 sfr3 -
+__Hsfr4 0 0 ABS 0 sfr4 -
+__Hsfr5 0 0 ABS 0 sfr5 -
+__Hsfr6 0 0 ABS 0 sfr6 -
+__Hsfr7 0 0 ABS 0 sfr7 -
+__Hsfr8 0 0 ABS 0 sfr8 -
+__Hsfr9 0 0 ABS 0 sfr9 -
+__Htext 0 0 ABS 0 text -
+__Labs1 0 0 ABS 0 abs1 -
+__Lcode 0 0 ABS 0 code -
+__Linit 90 0 CODE 0 init -
+__Lsfr0 0 0 ABS 0 sfr0 -
+__Lsfr1 0 0 ABS 0 sfr1 -
+__Lsfr2 0 0 ABS 0 sfr2 -
+__Lsfr3 0 0 ABS 0 sfr3 -
+__Lsfr4 0 0 ABS 0 sfr4 -
+__Lsfr5 0 0 ABS 0 sfr5 -
+__Lsfr6 0 0 ABS 0 sfr6 -
+__Lsfr7 0 0 ABS 0 sfr7 -
+__Lsfr8 0 0 ABS 0 sfr8 -
+__Lsfr9 0 0 ABS 0 sfr9 -
+__Ltext 0 0 ABS 0 text -
+__pnvBANK1 E2 0 BANK1 1 nvBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1CON1 215 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1CON2 216 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1CON3 217 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1STAT 214 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2CON1 21D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2CON3 21F 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2STAT 21C 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___lmul 1AE8 0 CODE 0 text14 dist/default/production\i2c_slave_temp.X.production.obj
+___wmul 15B4 0 CODE 0 text25 dist/default/production\i2c_slave_temp.X.production.obj
+_slave_address C3 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__LcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__LcstackBANK1 0 0 ABS 0 cstackBANK1 -
+i2c2_read_no_reg_addr@pbuf 31 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+int$flags 7E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Stop_Handler E6 0 BANK1 1 nvBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+__size_of_INTERRUPT_InterruptManager 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_Set_TLV@type 25 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_WDT_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_I2C_Set_TLV 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__S0 8009 0 ABS 0 - -
+__S1 1D0 0 ABS 0 - -
+__S2 0 0 ABS 0 - -
+__S3 0 0 ABS 0 - -
+_buf 120 0 BANK2 1 bssBANK2 dist/default/production\i2c_slave_temp.X.production.obj
+_cnt C2 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+atoi@sign 2B 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Read_Lock 1360 0 CODE 0 text56 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_I2C_Send_int8_t 1E1A 0 CODE 0 text16 dist/default/production\i2c_slave_temp.X.production.obj
+_inv_handler A4C 0 CODE 0 text5 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Initialize@stop_handler 25 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_PLLEN$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_MasterTRBInsert 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_BusCollisionISR 1352 0 CODE 0 text47 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_I2C_GET 135A 0 CODE 0 text61 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_I2C_SEN 1CBC 0 CODE 0 text60 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_I2C_WHO 1360 0 CODE 0 text59 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_MasterWriteTRBBuild 16E0 0 CODE 0 text9 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_DATAEE_WriteByte 17AC 0 CODE 0 text32 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_EUSART_Receive_ISR 157E 0 CODE 0 text64 dist/default/production\i2c_slave_temp.X.production.obj
+__HidataCOMMON 0 0 ABS 0 idataCOMMON -
+i1PROTOCOL_SET@value_ 71 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_Loop 7CE 0 CODE 0 text3 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_I2C_Set_TLV 1766 0 CODE 0 text22 dist/default/production\i2c_slave_temp.X.production.obj
+_running C0 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Write_Device_Address@device_id_i2c 25 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_I2C_GET 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_I2C_SEN 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_I2C_WHO 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_MasterRead 18DE 0 CODE 0 text11 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterReadTRBBuild@address 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_p_i2c2_current 67 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_StatusCallback@next 6C 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_BOREN$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_DATAEE_WriteByte 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_ofi1_DATAEE_WriteByte 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__HnvBANK1 0 0 ABS 0 nvBANK1 -
+__Lintentry 8 0 CODE 0 intentry -
+__end_of_I2C2_MasterTRBInsert FF8 0 CODE 0 text12 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_Send_int8_t@pbuffer 43 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_read_no_reg_addr@len 32 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_i2c2_write 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\shiny\AppData\Local\Temp\seis.obj
+EUSART_Read@readValue 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_DATAEE_ReadByte 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__pdataBANK1 EA 0 BANK1 1 dataBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of___lmul 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of___wmul 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
+__LbssBANK1 0 0 ABS 0 bssBANK1 -
+__LbssBANK2 0 0 ABS 0 bssBANK2 -
+__LbssBANK3 0 0 ABS 0 bssBANK3 -
+__size_of_I2C2_FunctionComplete 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_FCMEN$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_BACKPLANE_SLAVE_ADDRESS EB 0 BANK1 1 dataBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_INTERRUPT_InterruptManager 8 0 CODE 0 intentry dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Loop@device_address EE 0 BANK1 1 cstackBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_RCSTAbits 19D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_locked C1 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_PIE1bits 91 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PIE4bits 94 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_type_no_data EC 0 BANK1 1 dataBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext10 197E 0 CODE 0 text10 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext11 18DE 0 CODE 0 text11 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext12 F6E 0 CODE 0 text12 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext13 188E 0 CODE 0 text13 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext14 1AE8 0 CODE 0 text14 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext15 1EFC 0 CODE 0 text15 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext16 1D5E 0 CODE 0 text16 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext17 102 0 CODE 0 text17 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext18 13B0 0 CODE 0 text18 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext19 17AC 0 CODE 0 text19 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext20 19D6 0 CODE 0 text20 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext21 1B48 0 CODE 0 text21 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext22 1722 0 CODE 0 text22 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext23 1E1A 0 CODE 0 text23 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext24 1436 0 CODE 0 text24 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext25 15B4 0 CODE 0 text25 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext26 139E 0 CODE 0 text26 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext27 1472 0 CODE 0 text27 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext28 1372 0 CODE 0 text28 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext29 1396 0 CODE 0 text29 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext30 13D6 0 CODE 0 text30 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext31 13F6 0 CODE 0 text31 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext32 1766 0 CODE 0 text32 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext33 4 0 CODE 0 text33 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext34 1662 0 CODE 0 text34 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext35 1CBC 0 CODE 0 text35 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext36 141C 0 CODE 0 text36 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext37 1626 0 CODE 0 text37 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext38 13A6 0 CODE 0 text38 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext39 14E4 0 CODE 0 text39 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext40 16E0 0 CODE 0 text40 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext41 136C 0 CODE 0 text41 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext42 1514 0 CODE 0 text42 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext44 7CE 0 CODE 0 text44 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext45 14B4 0 CODE 0 text45 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext46 1492 0 CODE 0 text46 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext47 1352 0 CODE 0 text47 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext48 1840 0 CODE 0 text48 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext49 C58 0 CODE 0 text49 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext50 1366 0 CODE 0 text50 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext51 138E 0 CODE 0 text51 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext52 13C8 0 CODE 0 text52 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext53 13E4 0 CODE 0 text53 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext54 15EC 0 CODE 0 text54 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext55 1350 0 CODE 0 text55 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext56 1360 0 CODE 0 text56 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext57 1408 0 CODE 0 text57 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext58 1386 0 CODE 0 text58 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext59 135A 0 CODE 0 text59 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext60 1C36 0 CODE 0 text60 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext61 1354 0 CODE 0 text61 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext62 137E 0 CODE 0 text62 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext63 157E 0 CODE 0 text63 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext64 1548 0 CODE 0 text64 dist/default/production\i2c_slave_temp.X.production.obj
+_EUSART_Receive_ISR 1548 0 CODE 0 text64 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PIN_MANAGER_Initialize 1662 0 CODE 0 text37 dist/default/production\i2c_slave_temp.X.production.obj
+___aldiv 1EFC 0 CODE 0 text15 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_TMR0_Initialize 1472 0 CODE 0 text2 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_Write_Device_Address 1492 0 CODE 0 text27 dist/default/production\i2c_slave_temp.X.production.obj
+_BAUDCON 19F 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___lwdiv 1B48 0 CODE 0 text21 dist/default/production\i2c_slave_temp.X.production.obj
+___lwmod 19D6 0 CODE 0 text20 dist/default/production\i2c_slave_temp.X.production.obj
+__Lbank10 0 0 ABS 0 bank10 -
+__Lbank11 0 0 ABS 0 bank11 -
+__Lbank12 0 0 ABS 0 bank12 -
+__Lbank13 0 0 BANK13 1 bank13 -
+__Lbank14 0 0 BANK14 1 bank14 -
+__Lbank15 0 0 BANK15 1 bank15 -
+__Lbank16 0 0 BANK16 1 bank16 -
+__Lbank17 0 0 BANK17 1 bank17 -
+__Lbank18 0 0 BANK18 1 bank18 -
+__Lbank19 0 0 BANK19 1 bank19 -
+__Lbank20 0 0 BANK20 1 bank20 -
+__Lbank21 0 0 BANK21 1 bank21 -
+__Lbank22 0 0 BANK22 1 bank22 -
+__Lbank23 0 0 BANK23 1 bank23 -
+__Lbank24 0 0 BANK24 1 bank24 -
+__Lbank25 0 0 BANK25 1 bank25 -
+__Lbank26 0 0 BANK26 1 bank26 -
+__Lbank27 0 0 BANK27 1 bank27 -
+__Lbank28 0 0 BANK28 1 bank28 -
+__Lbank29 0 0 BANK29 1 bank29 -
+__Lbank30 0 0 BANK30 1 bank30 -
+__Lbank31 0 0 BANK31 1 bank31 -
+__end_of_i2c2_read_no_reg_addr 19D6 0 CODE 0 text10 dist/default/production\i2c_slave_temp.X.production.obj
+__pmaintext 1A8C 0 CODE 0 maintext dist/default/production\i2c_slave_temp.X.production.obj
+__Lbigram 0 0 ABS 0 bigram -
+__CFG_BORV$LO 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___lmul@multiplier 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+?_atoi 27 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Lcommon 0 0 ABS 0 common -
+__Lconfig 1000E 0 CONFIG 0 config -
+_printf 102 0 CODE 0 text17 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_CP$OFF 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_IESO$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_WDTE$OFF 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___wmul@multiplier 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Initialize 1CBC 0 CODE 0 text35 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Initialize@inv_handler 27 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_LATCbits 10E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_Stop 14E4 0 CODE 0 text45 dist/default/production\i2c_slave_temp.X.production.obj
+i1_PROTOCOL_EXT 1350 0 CODE 0 text55 dist/default/production\i2c_slave_temp.X.production.obj
+i1_PROTOCOL_SAV 13E4 0 CODE 0 text53 dist/default/production\i2c_slave_temp.X.production.obj
+i1_PROTOCOL_SET 13C8 0 CODE 0 text52 dist/default/production\i2c_slave_temp.X.production.obj
+i1_PROTOCOL_STA 138E 0 CODE 0 text51 dist/default/production\i2c_slave_temp.X.production.obj
+i1_PROTOCOL_STP 1366 0 CODE 0 text50 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_i2c2_write_no_data 1A8C 0 CODE 0 text6 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_Stop 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___lwdiv@divisor 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write@reg_addr 31 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_Set_TLV@length 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i1DATAEE_WriteByte@bAdd 71 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_EUSART_Read 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_i2c2_read_no_reg_addr 197E 0 CODE 0 text10 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_ISR@i2c_address 6D 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+stackhi 23EF 0 ABS 0 - C:\Users\shiny\AppData\Local\Temp\seis.obj
+stacklo 2120 0 ABS 0 - C:\Users\shiny\AppData\Local\Temp\seis.obj
+_sec_cnt BE 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_OSCTUNE 98 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_sendbuf 150 0 BANK2 1 bssBANK2 dist/default/production\i2c_slave_temp.X.production.obj
+_tmr_scaler EA 0 BANK1 1 dataBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Initialize@start_handler 24 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_Backplane_Slave_Enabled 1386 0 CODE 0 text62 dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_Stop 14B4 0 CODE 0 text45 dist/default/production\i2c_slave_temp.X.production.obj
+__Lspace_0 0 0 ABS 0 - -
+__Lspace_1 0 0 ABS 0 - -
+__Lspace_2 0 0 ABS 0 - -
+__Lspace_3 0 0 ABS 0 - -
+__size_of_PROTOCOL_Backplane_Slave_Enabled 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__pbssCOMMON 7A 0 COMMON 1 bssCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write_no_data@reg_addr 31 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__HcstackBANK0 0 0 ABS 0 cstackBANK0 -
+__HcstackBANK1 0 0 ABS 0 cstackBANK1 -
+_PIR1bits 11 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PIR4bits 14 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Lend_init 90 0 CODE 0 end_init -
+_PROTOCOL_Start_Handler E8 0 BANK1 1 nvBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_LVP$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+printf@ap 3A 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+printf@cp 38 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+end_of_initialization FA 0 CODE 0 cinit dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_I2C_Set_TLV@status 26 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C2_MasterRead 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TMR0_Initialize 1454 0 CODE 0 text2 dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_ISR@i2c_data 79 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_i2c2_write_no_data 1A30 0 CODE 0 text6 dist/default/production\i2c_slave_temp.X.production.obj
+__Hintentry 90 0 CODE 0 intentry -
+__CFG_STVREN$ON 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_printf 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Lstrings 0 0 ABS 0 strings -
+_tmr_overflow BC 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+?___aldiv 2D 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Loop@c ED 0 BANK1 1 cstackBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+___lwdiv@dividend 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+?___lwdiv 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+?___lwmod 29 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_backplane_slave_enabled BA 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__Hreset_vec 4 0 CODE 0 reset_vec -
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+__HbssBANK1 0 0 ABS 0 bssBANK1 -
+__HbssBANK2 0 0 ABS 0 bssBANK2 -
+__HbssBANK3 0 0 ABS 0 bssBANK3 -
+__end_ofi1_PROTOCOL_EXT 1352 0 CODE 0 text55 dist/default/production\i2c_slave_temp.X.production.obj
+__end_ofi1_PROTOCOL_SAV 13F6 0 CODE 0 text53 dist/default/production\i2c_slave_temp.X.production.obj
+__end_ofi1_PROTOCOL_SET 13D6 0 CODE 0 text52 dist/default/production\i2c_slave_temp.X.production.obj
+__end_ofi1_PROTOCOL_STA 1396 0 CODE 0 text51 dist/default/production\i2c_slave_temp.X.production.obj
+__end_ofi1_PROTOCOL_STP 136C 0 CODE 0 text50 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Inv_Handler B2 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+_invoked BF 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_EXT@char_buf 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterWrite@length 28 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext1 FF8 0 CODE 0 text1 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext2 1454 0 CODE 0 text2 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext3 4AC 0 CODE 0 text3 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext4 1BB2 0 CODE 0 text4 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext5 A4C 0 CODE 0 text5 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext6 1A30 0 CODE 0 text6 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext7 17F4 0 CODE 0 text7 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext8 192E 0 CODE 0 text8 dist/default/production\i2c_slave_temp.X.production.obj
+__ptext9 16A0 0 CODE 0 text9 dist/default/production\i2c_slave_temp.X.production.obj
+_eusartTxBufferRemaining 7A 0 COMMON 1 bssCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+DATAEE_WriteByte@bAdd 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+inv_handler@measure 4D 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+___aldiv@dividend 31 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_read_no_reg_addr@status 37 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_i2c2_object 5A 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Lpowerup 0 0 CODE 0 powerup -
+PROTOCOL_Initialize@set_handler 26 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Leeprom_data 0 0 EEDATA 3 eeprom_data -
+__pstringtext DEC 0 STRCODE 0 stringtext dist/default/production\i2c_slave_temp.X.production.obj
+_isdigit 1436 0 CODE 0 text24 dist/default/production\i2c_slave_temp.X.production.obj
+inv_handler@status 4C 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Lreset_vec 0 0 CODE 0 reset_vec -
+_i2c2_trb_count 69 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_strncmp 1BB2 0 CODE 0 text4 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_CLKOUTEN$OFF 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write_no_data@buf 34 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+?_PROTOCOL_I2C_SEN 70 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+EUSART_Write@txData 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of__initialization FA 0 CODE 0 cinit dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_PROTOCOL_Initialize 1D5E 0 CODE 0 text35 dist/default/production\i2c_slave_temp.X.production.obj
+DATAEE_ReadByte@bAdd 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+strncmp@len 24 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__Lfunctab 0 0 CODE 0 functab -
+inv_handler@t 53 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+i1DATAEE_WriteByte@GIEBitValue 72 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_timer0ReloadVal C5 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_StatusCallback@ext_buf 1A0 0 BANK3 1 bssBANK3 dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_StatusCallback@ext_cnt 6B 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_StatusCallback@ext_len C6 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__pidataBANK1 1378 0 CODE 0 idataBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_Read_Lock 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_eusartRxCount 61 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_EUSART_Transmit_ISR 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Lclrtext 0 0 ABS 0 clrtext -
+_SSP1CON1bits 215 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1CON2bits 216 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+___lmul@product 29 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_EUSART_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+i2c2_write@dev_addr 2F 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+___lmul@multiplicand 25 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_ISR@i2c_10bit_address_restart 64 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+DATAEE_WriteByte@bData 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PROTOCOL_Write_Device_Address 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_StatusCallback@slaveWriteType C7 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C1_Initialize 1722 0 CODE 0 text40 dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1ADD 212 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1BUF 211 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP1MSK 213 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2ADD 21A 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_SSP2BUF 219 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__Hend_init 94 0 CODE 0 end_init -
+___aldiv@counter 36 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_inv_handler C58 0 CODE 0 text5 dist/default/production\i2c_slave_temp.X.production.obj
+putch@txData 23 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_atoi 1EFC 0 CODE 0 text23 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_main 1AE8 0 CODE 0 maintext dist/default/production\i2c_slave_temp.X.production.obj
+isdigit@c 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+printf@len 3D 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+printf@val 3B 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_dpowers E00 0 STRCODE 0 stringtext dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_MasterReadTRBBuild 188E 0 CODE 0 text13 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterRead@pdata 2E 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_MasterRead@pflag 2B 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_isdigit$1484 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_RCREG 199 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_RCSTA 19D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TRISA 8C 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TRISB 8D 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TRISC 8E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TXREG 19A 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_TXSTA 19E 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_putch 13BC 0 CODE 0 text18 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_TMR0_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Set_Handler E4 0 BANK1 1 nvBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__Hram 0 0 ABS 0 ram -
+__Lram 0 0 ABS 0 ram -
+i2c2_write_no_data@dev_addr 2F 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Initialize@device_id 22 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_putch 13B0 0 CODE 0 text18 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_CPD$OFF 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_value 60 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_I2C2_MasterReadTRBBuild 18DE 0 CODE 0 text13 dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_Extension_Handler B4 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_PIN_MANAGER_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_WDT_Initialize FF8 0 CODE 0 text1 dist/default/production\i2c_slave_temp.X.production.obj
+__pintentry 8 0 CODE 0 intentry dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_I2C1_StatusCallback 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+__HdataBANK1 0 0 ABS 0 dataBANK1 -
+__end_of_OSCILLATOR_Initialize 13B0 0 CODE 0 text38 dist/default/production\i2c_slave_temp.X.production.obj
+atoi@a 2C 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+atoi@s 2E 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_TMR0_HasOverflowOccured 139E 0 CODE 0 text26 dist/default/production\i2c_slave_temp.X.production.obj
+?_strncmp 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__initialization 94 0 CODE 0 cinit dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_PWRTE$OFF 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_PROTOCOL_I2C_Set_TLV 1722 0 CODE 0 text22 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_ISR@i2c_bytes_left 65 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__pbssBANK0 5A 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__pbssBANK1 A0 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+__pbssBANK2 120 0 BANK2 1 bssBANK2 dist/default/production\i2c_slave_temp.X.production.obj
+__pbssBANK3 1A0 0 BANK3 1 bssBANK3 dist/default/production\i2c_slave_temp.X.production.obj
+__pdataCOMMON 7D 0 COMMON 1 dataCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+__end_of_TMR0_HasOverflowOccured 13A6 0 CODE 0 text26 dist/default/production\i2c_slave_temp.X.production.obj
+__Hstringtext 0 0 ABS 0 stringtext -
+_EUSART_Transmit_ISR 157E 0 CODE 0 text63 dist/default/production\i2c_slave_temp.X.production.obj
+__CFG_WRT$OFF 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_eusartRxHead 63 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_eusartRxTail 62 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_MasterWrite 192E 0 CODE 0 text8 dist/default/production\i2c_slave_temp.X.production.obj
+___wmul@product 25 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_temp.X.production.obj
+__size_of_EUSART_Receive_ISR 0 0 ABS 0 - dist/default/production\i2c_slave_temp.X.production.obj
+_i2c2_tr_queue D9 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+PROTOCOL_Send_int8_t@pbuf E0 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_temp.X.production.obj
+I2C2_Stop@completion_code 71 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_eusartTxHead 7C 0 COMMON 1 bssCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_eusartTxTail 7B 0 COMMON 1 bssCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+_I2C2_MasterTRBInsert F6E 0 CODE 0 text12 dist/default/production\i2c_slave_temp.X.production.obj
+I2C1_StatusCallback@i2c_bus_state 77 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_temp.X.production.obj
+__pswtext1 1000 0 CONST 0 swtext1 dist/default/production\i2c_slave_temp.X.production.obj
+__pswtext2 1030 0 CONST 0 swtext2 dist/default/production\i2c_slave_temp.X.production.obj
+_OSCILLATOR_Initialize 13A6 0 CODE 0 text38 dist/default/production\i2c_slave_temp.X.production.obj
+# %SPLITSTAB Section
+# This section enumerates all the psect splits performed by the assembler.
+# The beginning of the section is indicated by %SPLITSTAB.
+# Each line is a record a particular split, where the parent psect is on
+# the left and the child on the right.  Note that a child psect is always
+# split form the top of the parent psect. All splits from a given parent
+# are listed in the order in which they occurred.
+%SPLITSTAB
+# %DABS Section
+# This section contains a table of all usuage of the assember
+# directive DABS in the program. Each line has the following format:
+#   <name> <space> <address> <size>
+# If the DABS was originally labelled then that shall be <name>,
+# otherwise name will be "-".  The <space> number is in decimal.
+# <address> and <size> are in byte units as unqaulified hexadecimal
+%DABS
+- 1 7E 2
+# %SEGMENTS Section
+# This sections enumerates the segments of the program.  Each segment
+# is described on a single line as follows:
+#    <name> <space> <link address> <file address> <size> <delta>
+# Addresses and size are in unqualified hexadecimal.  The link address
+# and size are in units of delta. The file address is in units of bytes.
+# All other numeric quantities are in decimal.
+%SEGMENTS
+text2 0 A2A 1454 F 2
+text4 0 DD9 1BB2 42 2
+text6 0 D18 1A30 2E 2
+text7 0 BFA 17F4 26 2
+text8 0 C97 192E 28 2
+text9 0 B50 16A0 20 2
+text10 0 CBF 197E 2C 2
+text11 0 C6F 18DE 28 2
+text12 0 7B7 F6E 49 2
+text13 0 C47 188E 28 2
+text14 0 D74 1AE8 30 2
+text15 0 F7E 1EFC 82 2
+text16 0 EAF 1D5E 5E 2
+text18 0 9D8 13B0 6 2
+text19 0 BD6 17AC 24 2
+text20 0 CEB 19D6 2D 2
+text21 0 DA4 1B48 35 2
+text22 0 B91 1722 22 2
+text23 0 F0D 1E1A 71 2
+text24 0 A1B 1436 F 2
+text25 0 ADA 15B4 1C 2
+text26 0 9CF 139E 4 2
+text27 0 A39 1472 10 2
+text28 0 9B9 1372 3 2
+text29 0 9CB 1396 4 2
+text30 0 9EB 13D6 7 2
+text31 0 9FB 13F6 9 2
+text32 0 BB3 1766 23 2
+text34 0 B31 1662 1F 2
+text35 0 E5E 1CBC 51 2
+text36 0 A0E 141C D 2
+text37 0 B13 1626 1E 2
+text38 0 9D3 13A6 5 2
+text39 0 A72 14E4 18 2
+text40 0 B70 16E0 21 2
+text41 0 9B6 136C 3 2
+text42 0 A8A 1514 1A 2
+text45 0 A5A 14B4 18 2
+text46 0 A49 1492 11 2
+text47 0 9A9 1352 1 2
+text48 0 C20 1840 27 2
+text50 0 9B3 1366 3 2
+text51 0 9C7 138E 4 2
+text52 0 9E4 13C8 7 2
+text53 0 9F2 13E4 9 2
+text54 0 AF6 15EC 1D 2
+text55 0 9A8 1350 1 2
+text56 0 9B0 1360 3 2
+text57 0 A04 1408 A 2
+text58 0 9C3 1386 4 2
+text59 0 9AD 135A 3 2
+text60 0 E1B 1C36 43 2
+text61 0 9AA 1354 3 2
+text62 0 9BF 137E 4 2
+text63 0 ABF 157E 1B 2
+text64 0 AA4 1548 1B 2
+idataCOMMON 0 3 6 1 2
+maintext 0 D46 1A8C 2E 2
+cstackCOMMON 1 70 70 E 1
+cstackBANK0 1 20 20 4F 1
+intentry 0 4 8 6F2 2
+reset_vec 0 0 0 3 2
+bssBANK1 1 A0 A0 4F 1
+bssBANK2 1 120 120 40 1
+bssBANK3 1 1A0 1A0 30 1
+stringtext 0 6F6 DEC C1 2
+idataBANK1 0 9BC 1378 3 2
+swtext1 0 800 1000 22 2
+clrtext 0 9DE 13BC 6 2
+config 0 8007 1000E 2 2
