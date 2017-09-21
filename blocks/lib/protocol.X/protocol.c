@@ -16,6 +16,7 @@ void (*PROTOCOL_Set_Handler)(uint8_t value) = NULL;
 void (*PROTOCOL_Loop_Func)(void) = NULL;
 void (*PROTOCOL_Extension_Handler)(char*) = NULL;
 void (*PROTOCOL_Inv_Handler)(void) = NULL;
+void (*PROTOCOL_Tick_Handler)(void) = NULL;
 
 uint8_t cnt = 0;
 uint8_t buf[BUF_SIZE];
@@ -81,6 +82,10 @@ void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
     PROTOCOL_Extension_Handler = extension_handler;
 }
 
+void PROTOCOL_Set_Tick_Handler(void *tick_handler) {
+    PROTOCOL_Tick_Handler = tick_handler;
+}
+
 void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
     DATAEE_WriteByte(DEVICE_ID_I2C_ADDRESS, device_id_i2c);
     slave_address = device_id_i2c;
@@ -135,6 +140,7 @@ void PROTOCOL_Loop() {
         tmr_overflow = TMR0_HasOverflowOccured();
         if (tmr_overflow) {
             TMR0IF = 0;
+            if (PROTOCOL_Tick_Handler) PROTOCOL_Tick_Handler();
             if (PROTOCOL_Inv_Handler && (++tmr_cnt >= value)) {
                 tmr_cnt = 0;
                 if (++sec_cnt >= tmr_scaler) {

@@ -47,6 +47,7 @@ extern "C" {
     void PROTOCOL_Set_Func(void *loop_func);
     void PROTOCOL_Set_Extension_Handler(void *extension_handler);
     void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+    void PROTOCOL_Set_Tick_Handler(void *tick_handler);
     void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
     uint8_t PROTOCOL_Read_Device_Address(void);
 

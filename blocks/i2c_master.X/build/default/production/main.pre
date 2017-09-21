@@ -4230,6 +4230,7 @@ void PROTOCOL_Loop();
 void PROTOCOL_Set_Func(void *loop_func);
 void PROTOCOL_Set_Extension_Handler(void *extension_handler);
 void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+void PROTOCOL_Set_Tick_Handler(void *tick_handler);
 void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
 uint8_t PROTOCOL_Read_Device_Address(void);
 
@@ -4241,10 +4242,10 @@ void PROTOCOL_INV(void);
 void PROTOCOL_RST(void);
 void PROTOCOL_EXT(uint8_t *pbuffer);
 
-# 64
+# 65
 void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
 
-# 69
+# 70
 void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
 void PROTOCOL_I2C_Reset_TLV(void);
 bool PROTOCOL_I2C_TLV_Status(void);
@@ -4260,7 +4261,7 @@ void PROTOCOL_Send_uint16_t(uint16_t value);
 void PROTOCOL_Send_int16_t(int16_t value);
 void PROTOCOL_Send_float(float value);
 
-# 87
+# 88
 void PROTOCOL_Backplane_Slave_Enabled(void);
 uint8_t PROTOCOL_I2C_WHO(void);
 uint8_t PROTOCOL_I2C_GET(void);
@@ -4269,7 +4270,7 @@ uint8_t* PROTOCOL_I2C_SEN();
 void PROTOCOL_Set_Lock(bool lock);
 bool PROTOCOL_Read_Lock(void);
 
-# 133
+# 134
 uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 
 # 8 "i2c1_util.h"
@@ -4411,27 +4412,18 @@ extern double fmod(double, double);
 extern double trunc(double);
 extern double round(double);
 
-# 32 "main.c"
+# 31 "main.c"
 const uint8_t MAX_Y = 0x20/8;
 
 char cmd_buf[4][48];
 
-# 47
+# 46
 uint8_t schedule[7][4];
 
-bool running = 0;
 uint8_t timer_cnt = 0;
 bool do_func = 0;
 uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];
-
-void start_handler(void) {
-running = 1;
-}
-
-void stop_handler(void) {
-running = 0;
-}
 
 void exec_remote_cmd(uint8_t idx) {
 uint8_t data;
@@ -4528,7 +4520,7 @@ devs--;
 }
 }
 
-# 161
+# 151
 uint8_t dev_map_iterator() {
 static uint8_t xx = 0;
 static uint8_t yy = 0;
@@ -4556,7 +4548,7 @@ xx++;
 return dev_addr;
 }
 
-# 191
+# 181
 void scan_dev(void) {
 uint8_t dev_addr, status;
 for (dev_addr=0x10; dev_addr<=0x20; dev_addr++) {
@@ -4570,13 +4562,13 @@ del_dev(dev_addr);
 }
 }
 
-# 207
+# 197
 void check_plg(void) {
 uint8_t status = i2c1_write_no_data(0x00, 0x02);
 if (status == 0) scan_dev();
 }
 
-# 215
+# 205
 bool detected(uint8_t dev_addr) {
 uint8_t y = dev_addr / 8;
 uint8_t x = dev_addr % 8;
@@ -4600,17 +4592,17 @@ printf("!:MAP:NO SLAVE FOUND\n");
 }
 }
 
-# 242
+# 232
 uint8_t sen(uint8_t dev_addr) {
 uint8_t status;
 uint8_t type;
 uint8_t length ,data, i;
 LATCbits.LATC7 ^= 1;
 
-_delay((unsigned long)((100)*(32000000/4000000.0)));
+_delay((unsigned long)((200)*(32000000/4000000.0)));
 i2c1_write_no_data(dev_addr, 0x06);
 
-_delay((unsigned long)((1500)*(32000000/4000000.0)));
+_delay((unsigned long)((1000)*(32000000/4000000.0)));
 status = i2c1_read(dev_addr, 0x07, &type, 1);
 _delay((unsigned long)((100)*(32000000/4000000.0)));
 if (status == 0) {
@@ -4631,7 +4623,7 @@ PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
 return status;
 }
 
-# 275
+# 265
 void one_shot_sen(uint8_t dev_addr) {
 if (!detected(dev_addr)) {
 printf("!:%%%d:UNDETECTED_DEVICE\n", dev_addr);
@@ -4644,7 +4636,7 @@ i2c1_write_no_data(dev_addr, 0x0c);
 }
 }
 
-# 290
+# 280
 void fetch(uint8_t *sch) {
 uint8_t pos;
 uint8_t dev_addr;
@@ -4663,11 +4655,26 @@ i2c1_write_no_data(dev_addr, 0x0c);
 }
 }
 
-# 311
+# 306
+void tick_handler(void) {
+static uint16_t t = 0;
+static int8_t cmd_next = 0;
+t++;
+if (t % 60 == 0) {
+check_plg();
+if (cmd_next > 3) cmd_next = 0;
+exec_remote_cmd(cmd_next);
+cmd_next++;
+} else if (t % 600 == 0) {
+scan_dev();
+t = 0;
+}
+}
+
+# 324
 void inv_handler(void) {
 uint8_t dev_addr, status;
 static uint16_t t = 0;
-static int8_t cmd_next = -1;
 
 
 fetch(schedule[0]);
@@ -4676,38 +4683,28 @@ if (t % 2 == 0) fetch(schedule[1]);
 
 if (t % 6 == 0) fetch(schedule[2]);
 
-if (t % 12 == 0) {
-fetch(schedule[3]);
-if (++cmd_next > 3) cmd_next = 0;
-exec_remote_cmd(cmd_next);
-}
+if (t % 12 == 0) fetch(schedule[3]);
 
 if (t % 60 == 0) fetch(schedule[4]);
 
-if (t % 120 == 0) {
-fetch(schedule[5]);
-check_plg();
-}
+if (t % 120 == 0) fetch(schedule[5]);
 
 if (t % 600 == 0) {
 fetch(schedule[6]);
-scan_dev();
 t = 1;
 }
 
 t++;
 }
 
-# 348
+# 352
 void put_cmd(uint8_t *buf) {
 static int8_t idx = -1;
 if (++idx > 3) idx = 0;
 if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
 }
 
-void command_handler(uint8_t *buf);
-
-# 359
+# 361
 void command_handler(uint8_t *buf) {
 static uint8_t pos = 0;
 uint8_t i;
@@ -4716,8 +4713,6 @@ if (!strncmp(("I2C"), (buf), 3)) {
 BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
 } else if (!strncmp(("MAP"), (buf), 3)) {
 print_dev_map();
-} else if (!strncmp(("SCN"), (buf), 3)) {
-check_plg();
 } else if (!strncmp(("POS"), (buf), 3)) {
 pos = atoi(&buf[4]);
 if (pos > 27) printf("!:POS:POS LARGER THAN 27\n");
@@ -4760,7 +4755,8 @@ SYSTEM_Initialize();
 (INTCONbits.GIE = 1);
 (INTCONbits.PEIE = 1);
 
-PROTOCOL_Initialize("BACKPLANE-MASTER", start_handler, stop_handler, (0), inv_handler, 1);
+PROTOCOL_Initialize("BACKPLANE-MASTER", (0), (0), (0), inv_handler, 1);
 PROTOCOL_Set_Extension_Handler(command_handler);
+PROTOCOL_Set_Tick_Handler(tick_handler);
 PROTOCOL_Loop();
 }

@@ -38,8 +38,8 @@ I2C1_MESSAGE_ADDRESS_NO_ACK 4
 I2C1_DATA_NO_ACK 5
 I2C1_LOST_STATE 6
 ]
-"49 protocol.c
-[e E3406 . `uc
+"50 protocol.c
+[e E3411 . `uc
 TLV_SET 0
 TYPE_SENT 1
 LENGTH_SENT 2
@@ -87,39 +87,37 @@ COMPLETE 3
 [v _i2c1_read i2c1_read `(uc  1 e 1 0 ]
 "49
 [v _i2c1_write_no_data i2c1_write_no_data `(uc  1 e 1 0 ]
-"55 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
-[v _start_handler start_handler `(v  1 e 1 0 ]
-"59
-[v _stop_handler stop_handler `(v  1 e 1 0 ]
-"63
+"53 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _exec_remote_cmd exec_remote_cmd `(v  1 e 1 0 ]
-"108
+"98
 [v _init init `(v  1 e 1 0 ]
-"128
+"118
 [v _add_dev add_dev `(v  1 e 1 0 ]
-"143
+"133
 [v _del_dev del_dev `(v  1 e 1 0 ]
-"161
+"151
 [v _dev_map_iterator dev_map_iterator `(uc  1 e 1 0 ]
-"191
+"181
 [v _scan_dev scan_dev `(v  1 e 1 0 ]
-"207
+"197
 [v _check_plg check_plg `(v  1 e 1 0 ]
-"215
+"205
 [v _detected detected `(uc  1 e 1 0 ]
-"225
+"215
 [v _print_dev_map print_dev_map `(v  1 e 1 0 ]
-"242
+"232
 [v _sen sen `(uc  1 e 1 0 ]
-"275
+"265
 [v _one_shot_sen one_shot_sen `(v  1 e 1 0 ]
-"290
+"280
 [v _fetch fetch `(v  1 e 1 0 ]
-"311
+"306
+[v _tick_handler tick_handler `(v  1 e 1 0 ]
+"324
 [v _inv_handler inv_handler `(v  1 e 1 0 ]
-"348
+"352
 [v _put_cmd put_cmd `(v  1 e 1 0 ]
-"359
+"361
 [v _command_handler command_handler `(v  1 e 1 0 ]
 "403
 [v _main main `(v  1 e 1 0 ]
@@ -179,41 +177,43 @@ COMPLETE 3
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "101
 [v _TMR0_HasOverflowOccured TMR0_HasOverflowOccured `(uc  1 e 1 0 ]
-"59 protocol.c
+"60 protocol.c
 [v _PROTOCOL_Initialize PROTOCOL_Initialize `(v  1 e 1 0 ]
-"80
+"81
 [v _PROTOCOL_Set_Extension_Handler PROTOCOL_Set_Extension_Handler `(v  1 e 1 0 ]
-"84
-[v _PROTOCOL_Write_Device_Address PROTOCOL_Write_Device_Address `(v  1 e 1 0 ]
+"85
+[v _PROTOCOL_Set_Tick_Handler PROTOCOL_Set_Tick_Handler `(v  1 e 1 0 ]
 "89
+[v _PROTOCOL_Write_Device_Address PROTOCOL_Write_Device_Address `(v  1 e 1 0 ]
+"94
 [v _PROTOCOL_Read_Device_Address PROTOCOL_Read_Device_Address `(uc  1 e 1 0 ]
-"93
-[v _PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
 "98
+[v _PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
+"103
 [v _PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
-"107
+"112
 [v _PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
-"111
-[v _PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
 "116
+[v _PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
+"121
 [v _PROTOCOL_EXT PROTOCOL_EXT `(v  1 e 1 0 ]
-"131
+"136
 [v _PROTOCOL_Loop PROTOCOL_Loop `(v  1 e 1 0 ]
-"191
+"197
 [v _concat concat `(ui  1 e 2 0 ]
-"207
+"213
 [v _PROTOCOL_I2C_Set_TLV PROTOCOL_I2C_Set_TLV `(v  1 e 1 0 ]
-"218
+"224
 [v _PROTOCOL_Print_TLV PROTOCOL_Print_TLV `(v  1 e 1 0 ]
-"286
+"292
 [v _PROTOCOL_I2C_Send_uint8_t PROTOCOL_I2C_Send_uint8_t `(v  1 e 1 0 ]
-"296
+"302
 [v _PROTOCOL_I2C_Send_int8_t PROTOCOL_I2C_Send_int8_t `(v  1 e 1 0 ]
-"309
+"315
 [v _PROTOCOL_I2C_Send_uint16_t PROTOCOL_I2C_Send_uint16_t `(v  1 e 1 0 ]
-"324
+"330
 [v _PROTOCOL_I2C_Send_int16_t PROTOCOL_I2C_Send_int16_t `(v  1 e 1 0 ]
-"339
+"345
 [v _PROTOCOL_I2C_Send_float PROTOCOL_I2C_Send_float `(v  1 e 1 0 ]
 [s S306 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
@@ -435,17 +435,17 @@ COMPLETE 3
 [v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
-"32 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+"31 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _MAX_Y MAX_Y `DCCuc  1 e 1 0 ]
-"34
+"33
 [v _cmd_buf cmd_buf `[4][48]uc  1 e 192 @9008 ]
-"47
+"46
 [v _schedule schedule `[7][4]uc  1 e 28 0 ]
-"52
+"50
 [v _read_buf read_buf `[16]uc  1 e 16 0 ]
-"53
+"51
 [v _dev_map dev_map `[4]uc  1 e 4 0 ]
-"126
+"116
 [v _devs devs `uc  1 e 1 0 ]
 "61 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/eusart.c
 [v _eusartTxHead eusartTxHead `VEuc  1 e 1 0 ]
@@ -499,46 +499,48 @@ COMPLETE 3
 [v _PROTOCOL_Extension_Handler PROTOCOL_Extension_Handler `*.37(v  1 e 2 0 ]
 "18
 [v _PROTOCOL_Inv_Handler PROTOCOL_Inv_Handler `*.37(v  1 e 2 0 ]
-"20
-[v _cnt cnt `uc  1 e 1 0 ]
+"19
+[v _PROTOCOL_Tick_Handler PROTOCOL_Tick_Handler `*.37(v  1 e 2 0 ]
 "21
-[v _buf buf `[48]uc  1 e 48 0 ]
+[v _cnt cnt `uc  1 e 1 0 ]
 "22
-[v _value value `uc  1 e 1 0 ]
+[v _buf buf `[48]uc  1 e 48 0 ]
 "23
+[v _value value `uc  1 e 1 0 ]
+"24
 [v _device_id_ device_id_ `*.25DCCuc  1 e 2 0 ]
-"25
-[v _running running `uc  1 e 1 0 ]
 "26
-[v _invoked invoked `uc  1 e 1 0 ]
+[v _running running `uc  1 e 1 0 ]
 "27
-[v _sec_cnt sec_cnt `uc  1 e 1 0 ]
+[v _invoked invoked `uc  1 e 1 0 ]
 "28
-[v _tmr_cnt tmr_cnt `uc  1 e 1 0 ]
+[v _sec_cnt sec_cnt `uc  1 e 1 0 ]
 "29
-[v _tmr_scaler tmr_scaler `uc  1 e 1 0 ]
+[v _tmr_cnt tmr_cnt `uc  1 e 1 0 ]
 "30
+[v _tmr_scaler tmr_scaler `uc  1 e 1 0 ]
+"31
 [v _tmr_overflow tmr_overflow `uc  1 e 1 0 ]
-[s S1048 . 6 `uc 1 type 1 0 `uc 1 length 1 1 `*.39uc 1 pbuffer 2 2 `E3406 1 status 1 4 `uc 1 buf_cnt 1 5 ]
-"49
-[v _readbuf readbuf `S1048  1 e 6 0 ]
-"54
+[s S1052 . 6 `uc 1 type 1 0 `uc 1 length 1 1 `*.39uc 1 pbuffer 2 2 `E3411 1 status 1 4 `uc 1 buf_cnt 1 5 ]
+"50
+[v _readbuf readbuf `S1052  1 e 6 0 ]
+"55
 [v _i i `uc  1 e 1 0 ]
-"133 protocol.h
+"134 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS BACKPLANE_SLAVE_ADDRESS `uc  1 e 1 0 ]
 "403 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"414
+"415
 } 0
-"108
+"98
 [v _init init `(v  1 e 1 0 ]
 {
-"109
+"99
 [v init@i i `uc  1 a 1 17 ]
 [v init@y y `uc  1 a 1 16 ]
 [v init@dev_addr dev_addr `uc  1 a 1 15 ]
-"124
+"114
 } 0
 "69 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
@@ -575,66 +577,56 @@ COMPLETE 3
 {
 "110
 } 0
-"80 protocol.c
+"85 protocol.c
+[v _PROTOCOL_Set_Tick_Handler PROTOCOL_Set_Tick_Handler `(v  1 e 1 0 ]
+{
+[v PROTOCOL_Set_Tick_Handler@tick_handler tick_handler `*.37v  1 p 2 0 ]
+"87
+} 0
+"81
 [v _PROTOCOL_Set_Extension_Handler PROTOCOL_Set_Extension_Handler `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Set_Extension_Handler@extension_handler extension_handler `*.37v  1 p 2 0 ]
-"82
+"83
 } 0
-"131
+"136
 [v _PROTOCOL_Loop PROTOCOL_Loop `(v  1 e 1 0 ]
 {
-"132
+"137
 [v PROTOCOL_Loop@device_address device_address `uc  1 a 1 74 ]
-"133
+"138
 [v PROTOCOL_Loop@c c `uc  1 a 1 73 ]
-"185
+"191
 } 0
-"311 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
-[v _inv_handler inv_handler `(v  1 e 1 0 ]
+"306 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+[v _tick_handler tick_handler `(v  1 e 1 0 ]
 {
-"313
-[v inv_handler@t t `ui  1 s 2 t ]
-"314
-[v inv_handler@cmd_next cmd_next `c  1 s 1 cmd_next ]
-"343
+"307
+[v tick_handler@t t `ui  1 s 2 t ]
+"308
+[v tick_handler@cmd_next cmd_next `c  1 s 1 cmd_next ]
+"319
 } 0
-"290
-[v _fetch fetch `(v  1 e 1 0 ]
-{
-[v fetch@sch sch `*.5uc  1 a 1 wreg ]
-"292
-[v fetch@dev_addr dev_addr `uc  1 a 1 60 ]
-"291
-[v fetch@pos pos `uc  1 a 1 59 ]
-"293
-[v fetch@status status `uc  1 a 1 57 ]
-"290
-[v fetch@sch sch `*.5uc  1 a 1 wreg ]
-"294
-[v fetch@sch sch `*.5uc  1 a 1 58 ]
-"306
-} 0
-"63
+"53
 [v _exec_remote_cmd exec_remote_cmd `(v  1 e 1 0 ]
 {
 [v exec_remote_cmd@idx idx `uc  1 a 1 wreg ]
-"68
+"58
 [v exec_remote_cmd@send_buf send_buf `[50]uc  1 a 50 0 ]
-"70
+"60
 [v exec_remote_cmd@buf buf `*.39uc  1 a 2 55 ]
-"64
+"54
 [v exec_remote_cmd@data data `uc  1 a 1 54 ]
-"66
+"56
 [v exec_remote_cmd@status status `uc  1 a 1 53 ]
-"65
+"55
 [v exec_remote_cmd@i i `uc  1 a 1 52 ]
 [v exec_remote_cmd@j j `uc  1 a 1 51 ]
-"63
+"53
 [v exec_remote_cmd@idx idx `uc  1 a 1 wreg ]
-"70
+"60
 [v exec_remote_cmd@idx idx `uc  1 a 1 50 ]
-"106
+"96
 } 0
 "8 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\i2c1_util.c
 [v _i2c1_write i2c1_write `(uc  1 e 1 0 ]
@@ -649,70 +641,137 @@ COMPLETE 3
 [v i2c1_write@len len `uc  1 p 1 17 ]
 "21
 } 0
+"197 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+[v _check_plg check_plg `(v  1 e 1 0 ]
+{
+"198
+[v check_plg@status status `uc  1 a 1 34 ]
+"200
+} 0
+"181
+[v _scan_dev scan_dev `(v  1 e 1 0 ]
+{
+"182
+[v scan_dev@dev_addr dev_addr `uc  1 a 1 31 ]
+[v scan_dev@status status `uc  1 a 1 30 ]
+"192
+} 0
+"133
+[v _del_dev del_dev `(v  1 e 1 0 ]
+{
+[v del_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
+"134
+[v del_dev@y y `uc  1 a 1 15 ]
+"135
+[v del_dev@new_map new_map `uc  1 a 1 14 ]
+[v del_dev@old_map old_map `uc  1 a 1 13 ]
+"134
+[v del_dev@x x `uc  1 a 1 12 ]
+"133
+[v del_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
+"136
+[v del_dev@dev_addr dev_addr `uc  1 a 1 16 ]
+"146
+} 0
+"118
+[v _add_dev add_dev `(v  1 e 1 0 ]
+{
+[v add_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
+"119
+[v add_dev@y y `uc  1 a 1 15 ]
+"120
+[v add_dev@new_map new_map `uc  1 a 1 14 ]
+[v add_dev@old_map old_map `uc  1 a 1 13 ]
+"119
+[v add_dev@x x `uc  1 a 1 12 ]
+"118
+[v add_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
+"121
+[v add_dev@dev_addr dev_addr `uc  1 a 1 16 ]
+"131
+} 0
+"324
+[v _inv_handler inv_handler `(v  1 e 1 0 ]
+{
+"326
+[v inv_handler@t t `ui  1 s 2 t ]
+"347
+} 0
+"280
+[v _fetch fetch `(v  1 e 1 0 ]
+{
+[v fetch@sch sch `*.5uc  1 a 1 wreg ]
+"282
+[v fetch@dev_addr dev_addr `uc  1 a 1 60 ]
+"281
+[v fetch@pos pos `uc  1 a 1 59 ]
+"283
+[v fetch@status status `uc  1 a 1 57 ]
+"280
+[v fetch@sch sch `*.5uc  1 a 1 wreg ]
+"284
+[v fetch@sch sch `*.5uc  1 a 1 58 ]
+"296
+} 0
 "101 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/tmr0.c
 [v _TMR0_HasOverflowOccured TMR0_HasOverflowOccured `(uc  1 e 1 0 ]
 {
 "105
 } 0
-"84 protocol.c
+"89 protocol.c
 [v _PROTOCOL_Write_Device_Address PROTOCOL_Write_Device_Address `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Write_Device_Address@device_id_i2c device_id_i2c `uc  1 a 1 wreg ]
 [v PROTOCOL_Write_Device_Address@device_id_i2c device_id_i2c `uc  1 a 1 wreg ]
 [v PROTOCOL_Write_Device_Address@device_id_i2c device_id_i2c `uc  1 a 1 4 ]
-"87
+"92
+} 0
+"103
+[v _PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
+{
+"106
 } 0
 "98
-[v _PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
+[v _PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
 {
 "101
 } 0
-"93
-[v _PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
-{
-"96
-} 0
-"55 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
-[v _start_handler start_handler `(v  1 e 1 0 ]
-{
-"57
-} 0
-"111 protocol.c
+"116
 [v _PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
 {
 [v PROTOCOL_SET@value_ value_ `uc  1 a 1 wreg ]
 [v PROTOCOL_SET@value_ value_ `uc  1 a 1 wreg ]
 [v PROTOCOL_SET@value_ value_ `uc  1 a 1 1 ]
-"114
+"119
 } 0
-"107
+"112
 [v _PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
 {
-"109
+"114
 } 0
-"89
+"94
 [v _PROTOCOL_Read_Device_Address PROTOCOL_Read_Device_Address `(uc  1 e 1 0 ]
 {
-"91
+"96
 } 0
-"116
+"121
 [v _PROTOCOL_EXT PROTOCOL_EXT `(v  1 e 1 0 ]
 {
 [v PROTOCOL_EXT@char_buf char_buf `*.6uc  1 a 1 wreg ]
 [v PROTOCOL_EXT@char_buf char_buf `*.6uc  1 a 1 wreg ]
 [v PROTOCOL_EXT@char_buf char_buf `*.6uc  1 a 1 70 ]
-"118
+"123
 } 0
-"359 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+"361 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _command_handler command_handler `(v  1 e 1 0 ]
 {
-"361
+"363
 [v command_handler@i i `uc  1 a 1 68 ]
-"362
+"364
 [v command_handler@dev_addr dev_addr `uc  1 a 1 67 ]
-"359
+"361
 [v command_handler@buf buf `*.6uc  1 p 1 59 ]
-"360
+"362
 [v command_handler@pos pos `uc  1 s 1 pos ]
 "401
 } 0
@@ -724,15 +783,15 @@ COMPLETE 3
 [v strncmp@len len `ui  1 p 2 4 ]
 "14
 } 0
-"348 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+"352 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _put_cmd put_cmd `(v  1 e 1 0 ]
 {
 [v put_cmd@buf buf `*.6uc  1 a 1 wreg ]
 [v put_cmd@buf buf `*.6uc  1 a 1 wreg ]
-"349
+"353
 [v put_cmd@idx idx `c  1 s 1 idx ]
 [v put_cmd@buf buf `*.6uc  1 a 1 17 ]
-"352
+"356
 } 0
 "8 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strcpy.c
 [v _strcpy strcpy `(*.39uc  1 e 1 0 ]
@@ -744,69 +803,185 @@ COMPLETE 3
 [v strcpy@from from `*.6DCCuc  1 p 1 8 ]
 "24
 } 0
-"225 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+"215 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _print_dev_map print_dev_map `(v  1 e 1 0 ]
 {
-"227
+"217
 [v print_dev_map@len len `uc  1 a 1 39 ]
-"226
+"216
 [v print_dev_map@i i `uc  1 a 1 38 ]
-"236
+"226
 } 0
-"161
+"151
 [v _dev_map_iterator dev_map_iterator `(uc  1 e 1 0 ]
 {
-"166
+"156
 [v dev_map_iterator@dev_addr dev_addr `uc  1 a 1 7 ]
-"165
+"155
 [v dev_map_iterator@exist exist `uc  1 a 1 6 ]
-"162
+"152
 [v dev_map_iterator@xx xx `uc  1 s 1 xx ]
-"163
+"153
 [v dev_map_iterator@yy yy `uc  1 s 1 yy ]
-"186
+"176
 } 0
-"275
+"265
 [v _one_shot_sen one_shot_sen `(v  1 e 1 0 ]
 {
 [v one_shot_sen@dev_addr dev_addr `uc  1 a 1 wreg ]
-"279
+"269
 [v one_shot_sen@status status `uc  1 a 1 57 ]
-"275
+"265
 [v one_shot_sen@dev_addr dev_addr `uc  1 a 1 wreg ]
 [v one_shot_sen@dev_addr dev_addr `uc  1 a 1 58 ]
-"285
+"275
 } 0
-"242
+"232
 [v _sen sen `(uc  1 e 1 0 ]
 {
 [v sen@dev_addr dev_addr `uc  1 a 1 wreg ]
-"243
+"233
 [v sen@status status `uc  1 a 1 52 ]
-"245
+"235
 [v sen@length length `uc  1 a 1 51 ]
-"244
+"234
 [v sen@type type `uc  1 a 1 50 ]
-"242
+"232
 [v sen@dev_addr dev_addr `uc  1 a 1 wreg ]
-"246
+"236
 [v sen@dev_addr dev_addr `uc  1 a 1 53 ]
-"270
+"260
 } 0
-"218 protocol.c
+"49 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\i2c1_util.c
+[v _i2c1_write_no_data i2c1_write_no_data `(uc  1 e 1 0 ]
+{
+"52
+[v i2c1_write_no_data@status status `E3078  1 a 1 20 ]
+"51
+[v i2c1_write_no_data@buf buf `[1]uc  1 a 1 19 ]
+"53
+[v i2c1_write_no_data@write_status write_status `uc  1 a 1 18 ]
+"49
+[v i2c1_write_no_data@dev_addr dev_addr `ui  1 p 2 14 ]
+[v i2c1_write_no_data@reg_addr reg_addr `uc  1 p 1 16 ]
+"64
+} 0
+"24
+[v _i2c1_read i2c1_read `(uc  1 e 1 0 ]
+{
+"27
+[v i2c1_read@status status `E3078  1 a 1 26 ]
+"26
+[v i2c1_read@reg reg `[1]uc  1 a 1 25 ]
+"28
+[v i2c1_read@read_status read_status `uc  1 a 1 24 ]
+"24
+[v i2c1_read@dev_addr dev_addr `ui  1 p 2 16 ]
+[v i2c1_read@reg_addr reg_addr `uc  1 p 1 18 ]
+[v i2c1_read@pbuf pbuf `*.39uc  1 p 2 19 ]
+[v i2c1_read@len len `uc  1 p 1 21 ]
+"46
+} 0
+"598 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/i2c1.c
+[v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
+{
+"599
+[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
+[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
+"600
+[v I2C1_MasterWrite@length length `uc  1 p 1 7 ]
+"601
+[v I2C1_MasterWrite@address address `ui  1 p 2 8 ]
+"602
+[v I2C1_MasterWrite@pflag pflag `*.4E2972  1 p 1 10 ]
+[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"604
+[v I2C1_MasterWrite@trBlock trBlock `S19  1 s 5 trBlock ]
+"607
+[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 13 ]
+"617
+} 0
+"707
+[v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
+{
+[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"708
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
+"709
+[v I2C1_MasterWriteTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
+"710
+[v I2C1_MasterWriteTRBBuild@length length `uc  1 p 1 1 ]
+"711
+[v I2C1_MasterWriteTRBBuild@address address `ui  1 p 2 2 ]
+"713
+"708
+[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S19  1 a 1 6 ]
+"716
+} 0
+"619
+[v _I2C1_MasterRead I2C1_MasterRead `(v  1 e 1 0 ]
+{
+"620
+[v I2C1_MasterRead@pdata pdata `*.39uc  1 p 2 8 ]
+"621
+[v I2C1_MasterRead@length length `uc  1 p 1 10 ]
+"622
+[v I2C1_MasterRead@address address `ui  1 p 2 11 ]
+"623
+[v I2C1_MasterRead@pflag pflag `*.4E2972  1 p 1 13 ]
+[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"625
+[v I2C1_MasterRead@trBlock trBlock `S19  1 s 5 trBlock ]
+"639
+} 0
+"641
+[v _I2C1_MasterTRBInsert I2C1_MasterTRBInsert `(v  1 e 1 0 ]
+{
+"642
+[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
+[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
+[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"643
+[v I2C1_MasterTRBInsert@ptrb_list ptrb_list `*.5S19  1 p 1 0 ]
+"644
+[v I2C1_MasterTRBInsert@pflag pflag `*.4E2972  1 p 1 1 ]
+"648
+[v I2C1_MasterTRBInsert@count count `uc  1 a 1 3 ]
+"692
+} 0
+"694
+[v _I2C1_MasterReadTRBBuild I2C1_MasterReadTRBBuild `(v  1 e 1 0 ]
+{
+[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
+"695
+[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
+[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
+"696
+[v I2C1_MasterReadTRBBuild@pdata pdata `*.39uc  1 p 2 0 ]
+"697
+[v I2C1_MasterReadTRBBuild@length length `uc  1 p 1 2 ]
+"698
+[v I2C1_MasterReadTRBBuild@address address `ui  1 p 2 3 ]
+"700
+"695
+[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.5S19  1 a 1 7 ]
+"705
+} 0
+"224 protocol.c
 [v _PROTOCOL_Print_TLV PROTOCOL_Print_TLV `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Print_TLV@dev_addr dev_addr `uc  1 a 1 wreg ]
-"219
+"225
 [v PROTOCOL_Print_TLV@v v `i  1 a 2 43 ]
-"218
+"224
 [v PROTOCOL_Print_TLV@dev_addr dev_addr `uc  1 a 1 wreg ]
 [v PROTOCOL_Print_TLV@type type `uc  1 p 1 36 ]
 [v PROTOCOL_Print_TLV@length length `uc  1 p 1 37 ]
 [v PROTOCOL_Print_TLV@pbuffer pbuffer `*.5uc  1 p 1 38 ]
-"220
+"226
 [v PROTOCOL_Print_TLV@dev_addr dev_addr `uc  1 a 1 42 ]
-"271
+"277
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -870,14 +1045,14 @@ COMPLETE 3
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "31
 } 0
-"191 protocol.c
+"197 protocol.c
 [v _concat concat `(ui  1 e 2 0 ]
 {
 [v concat@msb msb `uc  1 a 1 wreg ]
 [v concat@msb msb `uc  1 a 1 wreg ]
 [v concat@lsb lsb `uc  1 p 1 0 ]
 [v concat@msb msb `uc  1 a 1 7 ]
-"193
+"199
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
@@ -896,119 +1071,20 @@ COMPLETE 3
 [v ___awmod@dividend dividend `i  1 p 2 2 ]
 "35
 } 0
-"215 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
+"205 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
 [v _detected detected `(uc  1 e 1 0 ]
 {
 [v detected@dev_addr dev_addr `uc  1 a 1 wreg ]
-"218
+"208
 [v detected@exist exist `uc  1 a 1 14 ]
-"217
+"207
 [v detected@x x `uc  1 a 1 13 ]
-"216
+"206
 [v detected@y y `uc  1 a 1 12 ]
-"215
+"205
 [v detected@dev_addr dev_addr `uc  1 a 1 wreg ]
 [v detected@dev_addr dev_addr `uc  1 a 1 15 ]
-"223
-} 0
-"207
-[v _check_plg check_plg `(v  1 e 1 0 ]
-{
-"208
-[v check_plg@status status `uc  1 a 1 34 ]
-"210
-} 0
-"191
-[v _scan_dev scan_dev `(v  1 e 1 0 ]
-{
-"192
-[v scan_dev@dev_addr dev_addr `uc  1 a 1 31 ]
-[v scan_dev@status status `uc  1 a 1 30 ]
-"202
-} 0
-"24 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\i2c1_util.c
-[v _i2c1_read i2c1_read `(uc  1 e 1 0 ]
-{
-"27
-[v i2c1_read@status status `E3078  1 a 1 26 ]
-"26
-[v i2c1_read@reg reg `[1]uc  1 a 1 25 ]
-"28
-[v i2c1_read@read_status read_status `uc  1 a 1 24 ]
-"24
-[v i2c1_read@dev_addr dev_addr `ui  1 p 2 16 ]
-[v i2c1_read@reg_addr reg_addr `uc  1 p 1 18 ]
-[v i2c1_read@pbuf pbuf `*.39uc  1 p 2 19 ]
-[v i2c1_read@len len `uc  1 p 1 21 ]
-"46
-} 0
-"619 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/i2c1.c
-[v _I2C1_MasterRead I2C1_MasterRead `(v  1 e 1 0 ]
-{
-"620
-[v I2C1_MasterRead@pdata pdata `*.39uc  1 p 2 8 ]
-"621
-[v I2C1_MasterRead@length length `uc  1 p 1 10 ]
-"622
-[v I2C1_MasterRead@address address `ui  1 p 2 11 ]
-"623
-[v I2C1_MasterRead@pflag pflag `*.4E2972  1 p 1 13 ]
-[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
-"625
-[v I2C1_MasterRead@trBlock trBlock `S19  1 s 5 trBlock ]
-"639
-} 0
-"694
-[v _I2C1_MasterReadTRBBuild I2C1_MasterReadTRBBuild `(v  1 e 1 0 ]
-{
-[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
-"695
-[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
-[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
-"696
-[v I2C1_MasterReadTRBBuild@pdata pdata `*.39uc  1 p 2 0 ]
-"697
-[v I2C1_MasterReadTRBBuild@length length `uc  1 p 1 2 ]
-"698
-[v I2C1_MasterReadTRBBuild@address address `ui  1 p 2 3 ]
-"700
-"695
-[v I2C1_MasterReadTRBBuild@ptrb ptrb `*.5S19  1 a 1 7 ]
-"705
-} 0
-"143 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
-[v _del_dev del_dev `(v  1 e 1 0 ]
-{
-[v del_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
-"144
-[v del_dev@y y `uc  1 a 1 15 ]
-"145
-[v del_dev@new_map new_map `uc  1 a 1 14 ]
-[v del_dev@old_map old_map `uc  1 a 1 13 ]
-"144
-[v del_dev@x x `uc  1 a 1 12 ]
-"143
-[v del_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
-"146
-[v del_dev@dev_addr dev_addr `uc  1 a 1 16 ]
-"156
-} 0
-"128
-[v _add_dev add_dev `(v  1 e 1 0 ]
-{
-[v add_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
-"129
-[v add_dev@y y `uc  1 a 1 15 ]
-"130
-[v add_dev@new_map new_map `uc  1 a 1 14 ]
-[v add_dev@old_map old_map `uc  1 a 1 13 ]
-"129
-[v add_dev@x x `uc  1 a 1 12 ]
-"128
-[v add_dev@dev_addr dev_addr `uc  1 a 1 wreg ]
-"131
-[v add_dev@dev_addr dev_addr `uc  1 a 1 16 ]
-"141
+"213
 } 0
 "6 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -1022,72 +1098,6 @@ COMPLETE 3
 [v ___awdiv@divisor divisor `i  1 p 2 0 ]
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "42
-} 0
-"49 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\i2c1_util.c
-[v _i2c1_write_no_data i2c1_write_no_data `(uc  1 e 1 0 ]
-{
-"52
-[v i2c1_write_no_data@status status `E3078  1 a 1 20 ]
-"51
-[v i2c1_write_no_data@buf buf `[1]uc  1 a 1 19 ]
-"53
-[v i2c1_write_no_data@write_status write_status `uc  1 a 1 18 ]
-"49
-[v i2c1_write_no_data@dev_addr dev_addr `ui  1 p 2 14 ]
-[v i2c1_write_no_data@reg_addr reg_addr `uc  1 p 1 16 ]
-"64
-} 0
-"598 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/i2c1.c
-[v _I2C1_MasterWrite I2C1_MasterWrite `(v  1 e 1 0 ]
-{
-"599
-[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
-[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 wreg ]
-"600
-[v I2C1_MasterWrite@length length `uc  1 p 1 7 ]
-"601
-[v I2C1_MasterWrite@address address `ui  1 p 2 8 ]
-"602
-[v I2C1_MasterWrite@pflag pflag `*.4E2972  1 p 1 10 ]
-[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
-"604
-[v I2C1_MasterWrite@trBlock trBlock `S19  1 s 5 trBlock ]
-"607
-[v I2C1_MasterWrite@pdata pdata `*.4uc  1 a 1 13 ]
-"617
-} 0
-"707
-[v _I2C1_MasterWriteTRBBuild I2C1_MasterWriteTRBBuild `(v  1 e 1 0 ]
-{
-[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
-"708
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S19  1 a 1 wreg ]
-"709
-[v I2C1_MasterWriteTRBBuild@pdata pdata `*.4uc  1 p 1 0 ]
-"710
-[v I2C1_MasterWriteTRBBuild@length length `uc  1 p 1 1 ]
-"711
-[v I2C1_MasterWriteTRBBuild@address address `ui  1 p 2 2 ]
-"713
-"708
-[v I2C1_MasterWriteTRBBuild@ptrb ptrb `*.5S19  1 a 1 6 ]
-"716
-} 0
-"641
-[v _I2C1_MasterTRBInsert I2C1_MasterTRBInsert `(v  1 e 1 0 ]
-{
-"642
-[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
-[v I2C1_MasterTRBInsert@count count `uc  1 a 1 wreg ]
-[s S19 . 5 `ui 1 address 2 0 `uc 1 length 1 2 `*.39uc 1 pbuffer 2 3 ]
-"643
-[v I2C1_MasterTRBInsert@ptrb_list ptrb_list `*.5S19  1 p 1 0 ]
-"644
-[v I2C1_MasterTRBInsert@pflag pflag `*.4E2972  1 p 1 1 ]
-"648
-[v I2C1_MasterTRBInsert@count count `uc  1 a 1 3 ]
-"692
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\atoi.c
 [v _atoi atoi `(i  1 e 2 0 ]
@@ -1139,21 +1149,16 @@ COMPLETE 3
 [v EUSART_Read@readValue readValue `uc  1 a 1 1 ]
 "130
 } 0
-"59 protocol.c
+"60 protocol.c
 [v _PROTOCOL_Initialize PROTOCOL_Initialize `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Initialize@device_id device_id `*.25DCCuc  1 p 2 1 ]
-[v PROTOCOL_Initialize@start_handler start_handler `*.37v  1 p 2 3 ]
-[v PROTOCOL_Initialize@stop_handler stop_handler `*.37v  1 p 2 5 ]
-[v PROTOCOL_Initialize@set_handler set_handler `*.1v  1 p 1 7 ]
-[v PROTOCOL_Initialize@inv_handler inv_handler `*.37v  1 p 2 8 ]
-[v PROTOCOL_Initialize@scaler scaler `uc  1 p 1 10 ]
-"74
-} 0
-"59 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\main.c
-[v _stop_handler stop_handler `(v  1 e 1 0 ]
-{
-"61
+[v PROTOCOL_Initialize@start_handler start_handler `*.1v  1 p 1 3 ]
+[v PROTOCOL_Initialize@stop_handler stop_handler `*.1v  1 p 1 4 ]
+[v PROTOCOL_Initialize@set_handler set_handler `*.1v  1 p 1 5 ]
+[v PROTOCOL_Initialize@inv_handler inv_handler `*.37v  1 p 2 6 ]
+[v PROTOCOL_Initialize@scaler scaler `uc  1 p 1 8 ]
+"75
 } 0
 "204 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_master.X\mcc_generated_files/memory.c
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]

@@ -10,7 +10,6 @@
 // Backplane-master-specific commands
 #define I2C "I2C"
 #define MAP "MAP"
-#define SCN "SCN"
 #define POS "POS"
 #define WSC "WSC"
 #define RSC "RSC"
@@ -25,8 +24,8 @@
 
 #define MASK 0x01
 
-#define INV_DELAY 100 // INV delay (micro sec)
-#define INV_SEN_DELAY 1500  // INV->SEN delay (micro sec))
+#define INV_DELAY 200 // INV delay (micro sec)
+#define INV_SEN_DELAY 1000  // INV->SEN delay (micro sec))
 #define SEN_DELAY 100   // SEN delay (micro sec)
 
 const uint8_t MAX_Y = MAX_DEV_ADDR/8;
@@ -46,19 +45,10 @@ char cmd_buf[4][BUF_SIZE];
  */
 uint8_t schedule[7][4];
 
-bool running = false;
 uint8_t timer_cnt = 0;
 bool do_func = false;
 uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];  // I2C slave device map
-
-void start_handler(void) {
-    running = true;
-}
-
-void stop_handler(void) {
-    running = false;
-}
 
 void exec_remote_cmd(uint8_t idx) {
     uint8_t data;
@@ -237,7 +227,7 @@ void print_dev_map(void) {
 
 
 /*
- * retrice sensor data from I2C slave device
+ * retrieve sensor data from I2C slave device
  */
 uint8_t sen(uint8_t dev_addr) {
     uint8_t status;
@@ -306,12 +296,34 @@ void fetch(uint8_t *sch) {
 }
 
 /*
+ * periodic task (tick: 8msec)
+ * (every 8 * 60 msec):
+ *   - detect a new device with I2C general call
+ *   - execute a remote command
+ * (every 8 * 600 msec):
+ *   - scan devices
+ */
+void tick_handler(void) {
+    static uint16_t t = 0;
+    static int8_t cmd_next = 0;
+    t++;
+    if (t % 60 == 0) {
+        check_plg();
+        if (cmd_next > 3) cmd_next = 0;
+        exec_remote_cmd(cmd_next);
+        cmd_next++;
+    } else if (t % 600 == 0) {
+        scan_dev();
+        t = 0;
+    }
+}
+
+/*
  * scheduler: periodic tasks
  */
 void inv_handler(void) {
     uint8_t dev_addr, status;
     static uint16_t t = 0;
-    static int8_t cmd_next = -1;
     
     /*** 8msec ***/
     fetch(schedule[0]);
@@ -320,22 +332,14 @@ void inv_handler(void) {
     /*** 48msec (~50msec) ***/
     if (t % 6 == 0) fetch(schedule[2]);
     /*** 96msec (~100msec)***/
-    if (t % 12 == 0) {
-        fetch(schedule[3]);
-        if (++cmd_next > 3) cmd_next = 0;
-        exec_remote_cmd(cmd_next);
-    }
+    if (t % 12 == 0) fetch(schedule[3]);
     /*** 480msec (~500msec) ***/
     if (t % 60 == 0) fetch(schedule[4]);
     /*** 960msec (~1sec) ***/
-    if (t % 120 == 0) {
-        fetch(schedule[5]);
-        check_plg();
-    }
+    if (t % 120 == 0) fetch(schedule[5]);
     /*** 4800msec (~5sec) ***/
     if (t % 600 == 0) {
         fetch(schedule[6]);
-        scan_dev();
         t = 1;
     }
     /*** count up schedule timer */
@@ -351,8 +355,6 @@ void put_cmd(uint8_t *buf) {
     if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
 }
 
-void command_handler(uint8_t *buf);
-
 /*
  * Backplane-master-specific commands
  */
@@ -364,8 +366,6 @@ void command_handler(uint8_t *buf) {
         BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
     } else if (parse(MAP, buf)) {
         print_dev_map();
-    } else if (parse(SCN, buf)) {
-        check_plg();
     } else if (parse(POS, buf)) {
         pos = atoi(&buf[4]);
         if (pos > 27) printf("!:POS:POS LARGER THAN 27\n");
@@ -408,7 +408,8 @@ void main(void)
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
 
-    PROTOCOL_Initialize(DEVICE_ID, start_handler, stop_handler, NULL, inv_handler, 1);
+    PROTOCOL_Initialize(DEVICE_ID, NULL, NULL, NULL, inv_handler, 1);
     PROTOCOL_Set_Extension_Handler(command_handler);
+    PROTOCOL_Set_Tick_Handler(tick_handler);
     PROTOCOL_Loop();
 }
