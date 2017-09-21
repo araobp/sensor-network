@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
   -h+dist/default/production\i2c_slave_speed.X.production.sym \
   --cmf=dist/default/production\i2c_slave_speed.X.production.cmf -z \
-  -Q16F1829 -oC:\Users\shiny\AppData\Local\Temp\s47s.2 \
+  -Q16F1829 -oC:\Users\shiny\AppData\Local\Temp\sb4g.2 \
   -Mdist/default/production/i2c_slave_speed.X.production.map -E1 -ver=XC8 \
   -ASTACK=02120h-023efh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -32,7 +32,7 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-0FFh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\shiny\AppData\Local\Temp\s47s.obj \
+  C:\Users\shiny\AppData\Local\Temp\sb4g.obj \
   dist/default/production\i2c_slave_speed.X.production.obj 
 
 Object code version is 3.11
@@ -42,7 +42,7 @@ Machine type is 16F1829
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\shiny\AppData\Local\Temp\s47s.obj
+C:\Users\shiny\AppData\Local\Temp\sb4g.obj
                 end_init                             30       30        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
@@ -113,13 +113,13 @@ dist/default/production\i2c_slave_speed.X.production.obj
                 clrtext                             DAD      DAD        6     1B5A       0
                 bssBANK3                            1A0      1A0       30      1A0       1
                 bssBANK2                            120      120       30      120       1
-                dataBANK1                            DD       DD        1       A0       1
-                bssBANK1                             A0       A0       35       A0       1
+                dataBANK1                            DF       DF        1       A0       1
+                bssBANK1                             A0       A0       37       A0       1
                 dataBANK0                            6C       6C        4       20       1
                 bssBANK0                             50       50       1C       20       1
                 dataCOMMON                           7D       7D        1       70       1
                 bssCOMMON                            7A       7A        3       70       1
-                nvBANK1                              D5       D5        8       A0       1
+                nvBANK1                              D7       D7        8       A0       1
                 stringtext                          3CF      3CF       C4      79E       0
                 idataBANK1                            2        2        1        0       0
                 idataBANK0                          DA3      DA3        4     1B46       0
@@ -217,9 +217,9 @@ TOTAL           Name                               Link     Load   Length     Sp
                 bssBANK0                             50       50       1C         1
 
         CLASS   BANK1          
-                dataBANK1                            DD       DD        1         1
-                bssBANK1                             A0       A0       35         1
-                nvBANK1                              D5       D5        8         1
+                dataBANK1                            DF       DF        1         1
+                bssBANK1                             A0       A0       37         1
+                nvBANK1                              D7       D7        8         1
 
         CLASS   BANK2          
                 bssBANK2                            120      120       30         1
@@ -370,7 +370,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 intentry                       000004  0003CB  0003CF         8       0  CODE        2
                 cstackBANK0                    000020  000050  000070        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                bssBANK1                       0000A0  00003E  0000DE        A0       1  BANK1       1
+                bssBANK1                       0000A0  000040  0000E0        A0       1  BANK1       1
                 bssBANK2                       000120  000030  000150       120       1  BANK2       1
                 bssBANK3                       0001A0  000030  0001D0       1A0       1  BANK3       1
                 stringtext                     0003CF  0000C4  000493       79E       0  STRCODE     2
@@ -429,7 +429,7 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK1            000DE-000EF              12           1
+        BANK1            000E0-000EF              10           1
         BANK10           00520-0056F              50           1
         BANK11           005A0-005EF              50           1
         BANK12           00620-0064F              30           1
@@ -450,7 +450,7 @@ UNUSED ADDRESS RANGES
         ENTRY            0080A-00D73             100           2
                          01000-01FFF             100
         IDLOC            08000-08003               4           2
-        RAM              000DE-000EF              12           1
+        RAM              000E0-000EF              10           1
                          00150-0016F              20
                          001D0-001EF              20
                          00220-0026F              50
@@ -542,9 +542,9 @@ PROTOCOL_Initialize@stop_handler            cstackBANK0  00024
 PROTOCOL_Loop@c                             cstackBANK0  0004D
 PROTOCOL_Loop@device_address                cstackBANK0  0004E
 PROTOCOL_SET@value_                         cstackBANK0  00021
-PROTOCOL_Send_uint16_t@pbuf                 bssBANK1     000D1
+PROTOCOL_Send_uint16_t@pbuf                 bssBANK1     000D3
 PROTOCOL_Send_uint16_t@value                cstackBANK0  00048
-PROTOCOL_Send_uint8_t@pbuf                  bssBANK1     000D4
+PROTOCOL_Send_uint8_t@pbuf                  bssBANK1     000D6
 PROTOCOL_Set_Func@loop_func                 cstackBANK0  00020
 PROTOCOL_Write_Device_Address@device_id_i2c cstackBANK0  00024
 _ADCON0                                     (abs)        0009D
@@ -597,7 +597,7 @@ _PIN_MANAGER_Initialize                     text35       00F06
 _PIR1bits                                   (abs)        00011
 _PROTOCOL_Backplane_Slave_Enabled           text56       00D8B
 _PROTOCOL_EXT                               text31       00D75
-_PROTOCOL_Extension_Handler                 bssBANK1     000B2
+_PROTOCOL_Extension_Handler                 bssBANK1     000B4
 _PROTOCOL_I2C_GET                           text55       00D76
 _PROTOCOL_I2C_SEN                           text54       00743
 _PROTOCOL_I2C_Send_uint16_t                 text14       005D4
@@ -607,7 +607,7 @@ _PROTOCOL_INV                               text52       00D8F
 _PROTOCOL_Initialize                        text33       006B9
 _PROTOCOL_Inv_Handler                       bssBANK0     00050
 _PROTOCOL_Loop                              text4        00246
-_PROTOCOL_Loop_Func                         bssBANK1     000B4
+_PROTOCOL_Loop_Func                         bssBANK1     000B6
 _PROTOCOL_RST                               text51       00DF4
 _PROTOCOL_Read_Device_Address               text38       00D82
 _PROTOCOL_Read_Lock                         text50       00D7C
@@ -617,9 +617,10 @@ _PROTOCOL_STA                               text27       00D97
 _PROTOCOL_STP                               text26       00D85
 _PROTOCOL_Send_uint16_t                     text13       007EA
 _PROTOCOL_Set_Func                          text3        00DEB
-_PROTOCOL_Set_Handler                       nvBANK1      000D7
-_PROTOCOL_Start_Handler                     nvBANK1      000DB
-_PROTOCOL_Stop_Handler                      nvBANK1      000D9
+_PROTOCOL_Set_Handler                       nvBANK1      000D9
+_PROTOCOL_Start_Handler                     nvBANK1      000DD
+_PROTOCOL_Stop_Handler                      nvBANK1      000DB
+_PROTOCOL_Tick_Handler                      bssBANK1     000B2
 _PROTOCOL_Write_Device_Address              text25       00E27
 _RCREG                                      (abs)        00199
 _RCSTA                                      (abs)        0019D
@@ -961,14 +962,14 @@ __pbssCOMMON                                bssCOMMON    0007A
 __pcstackBANK0                              cstackBANK0  00020
 __pcstackCOMMON                             cstackCOMMON 00070
 __pdataBANK0                                dataBANK0    0006C
-__pdataBANK1                                dataBANK1    000DD
+__pdataBANK1                                dataBANK1    000DF
 __pdataCOMMON                               dataCOMMON   0007D
 __pidataBANK0                               idataBANK0   00DA3
 __pidataBANK1                               idataBANK1   00002
 __pidataCOMMON                              idataCOMMON  00003
 __pintentry                                 intentry     00004
 __pmaintext                                 maintext     0077F
-__pnvBANK1                                  nvBANK1      000D5
+__pnvBANK1                                  nvBANK1      000D7
 __pstringtext                               stringtext   003CF
 __pswtext1                                  swtext1      00800
 __ptext1                                    text1        00D9F
@@ -1092,8 +1093,8 @@ _atoi                                       text21       00648
 _backplane_slave_enabled                    bssBANK0     00054
 _buf                                        bssBANK2     00120
 _cnt                                        bssBANK0     0005C
-_count                                      bssBANK1     000B6
-_device_id_                                 nvBANK1      000D5
+_count                                      bssBANK1     000B8
+_device_id_                                 nvBANK1      000D7
 _dpowers                                    stringtext   003CF
 _eusartRxBuffer                             bssBANK1     000A0
 _eusartRxCount                              bssBANK0     00060
@@ -1107,7 +1108,7 @@ _i                                          bssBANK0     00053
 _inv_handler                                text12       00E0B
 _invoked                                    bssBANK0     00058
 _isdigit                                    text22       00E36
-_isdigit$1245                               cstackBANK0  00020
+_isdigit$1250                               cstackBANK0  00020
 _j                                          bssBANK0     00052
 _locked                                     bssBANK0     0005A
 _loop_func                                  text6        00557
@@ -1118,10 +1119,10 @@ _putch                                      text16       00DA7
 _readbuf                                    bssBANK0     00067
 _running                                    bssBANK0     00059
 _sec_cnt                                    bssBANK0     00057
-_sendbuf                                    bssBANK1     000BC
+_sendbuf                                    bssBANK1     000BE
 _slave_address                              bssBANK0     0005D
 _strncmp                                    text5        00701
-_sum                                        bssBANK1     000B8
+_sum                                        bssBANK1     000BA
 _timer0ReloadVal                            bssBANK0     0005F
 _tmr_cnt                                    bssBANK0     00056
 _tmr_overflow                               bssBANK0     00055
@@ -1280,7 +1281,7 @@ Total ram usage:        1 bytes
 
  *************** function _PROTOCOL_Set_Func *****************
  Defined at:
-		line 76 in file "protocol.c"
+		line 77 in file "protocol.c"
  Parameters:    Size  Location     Type
   loop_func       2    0[BANK0 ] PTR void 
 		 -> loop_func(1), 
@@ -1311,7 +1312,7 @@ Total ram usage:        2 bytes
 
  *************** function _PROTOCOL_Loop *****************
  Defined at:
-		line 131 in file "protocol.c"
+		line 136 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1608,7 +1609,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_Send_uint16_t *****************
  Defined at:
-		line 380 in file "protocol.c"
+		line 386 in file "protocol.c"
  Parameters:    Size  Location     Type
   value           2   40[BANK0 ] unsigned int 
  Auto vars:     Size  Location     Type
@@ -1638,7 +1639,7 @@ Total ram usage:        3 bytes
 
  *************** function _PROTOCOL_I2C_Send_uint16_t *****************
  Defined at:
-		line 309 in file "protocol.c"
+		line 315 in file "protocol.c"
  Parameters:    Size  Location     Type
   length          1    wreg     unsigned char 
   pbuffer         1   34[BANK0 ] PTR unsigned int 
@@ -1850,7 +1851,7 @@ Total ram usage:        8 bytes
 
  *************** function _PROTOCOL_I2C_Set_TLV *****************
  Defined at:
-		line 207 in file "protocol.c"
+		line 213 in file "protocol.c"
  Parameters:    Size  Location     Type
   type            1    wreg     unsigned char 
   length          1    0[BANK0 ] unsigned char 
@@ -1858,7 +1859,7 @@ Total ram usage:        8 bytes
 		 -> PROTOCOL_Send_uint8_t@pbuf(1), sendbuf(16), 
  Auto vars:     Size  Location     Type
   type            1    3[BANK0 ] unsigned char 
-  status          1    4[BANK0 ] enum E3406
+  status          1    4[BANK0 ] enum E3411
  Return value:  Size  Location     Type
                   1    wreg      void 
  Registers used:
@@ -2012,7 +2013,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_Write_Device_Address *****************
  Defined at:
-		line 84 in file "protocol.c"
+		line 89 in file "protocol.c"
  Parameters:    Size  Location     Type
   device_id_i2    1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -2042,7 +2043,7 @@ Total ram usage:        2 bytes
 
  *************** function _PROTOCOL_STP *****************
  Defined at:
-		line 98 in file "protocol.c"
+		line 103 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2072,7 +2073,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_STA *****************
  Defined at:
-		line 93 in file "protocol.c"
+		line 98 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2102,7 +2103,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_SET *****************
  Defined at:
-		line 111 in file "protocol.c"
+		line 116 in file "protocol.c"
  Parameters:    Size  Location     Type
   value_          1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -2132,7 +2133,7 @@ Total ram usage:        2 bytes
 
  *************** function _PROTOCOL_SAV *****************
  Defined at:
-		line 107 in file "protocol.c"
+		line 112 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2195,7 +2196,7 @@ Total ram usage:        3 bytes
 
  *************** function _PROTOCOL_EXT *****************
  Defined at:
-		line 116 in file "protocol.c"
+		line 121 in file "protocol.c"
  Parameters:    Size  Location     Type
   char_buf        1    wreg     PTR unsigned char 
 		 -> buf(48), I2C1_StatusCallback@ext_buf(48), 
@@ -2258,7 +2259,7 @@ Total ram usage:        2 bytes
 
  *************** function _PROTOCOL_Initialize *****************
  Defined at:
-		line 59 in file "protocol.c"
+		line 60 in file "protocol.c"
  Parameters:    Size  Location     Type
   device_id       2    1[BANK0 ] PTR const unsigned char 
 		 -> STR_1(11), 
@@ -2421,7 +2422,7 @@ Total ram usage:        2 bytes
 
  *************** function _PROTOCOL_Read_Device_Address *****************
  Defined at:
-		line 89 in file "protocol.c"
+		line 94 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2620,7 +2621,7 @@ Total ram usage:        3 bytes
 
  *************** function i1_PROTOCOL_STP *****************
  Defined at:
-		line 98 in file "protocol.c"
+		line 103 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2649,7 +2650,7 @@ Total ram usage:        0 bytes
 
  *************** function i1_PROTOCOL_STA *****************
  Defined at:
-		line 93 in file "protocol.c"
+		line 98 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2678,7 +2679,7 @@ Total ram usage:        0 bytes
 
  *************** function i1_PROTOCOL_SET *****************
  Defined at:
-		line 111 in file "protocol.c"
+		line 116 in file "protocol.c"
  Parameters:    Size  Location     Type
   value_          1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -2707,7 +2708,7 @@ Total ram usage:        2 bytes
 
  *************** function i1_PROTOCOL_SAV *****************
  Defined at:
-		line 107 in file "protocol.c"
+		line 112 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2768,7 +2769,7 @@ Total ram usage:        3 bytes
 
  *************** function i1_PROTOCOL_EXT *****************
  Defined at:
-		line 116 in file "protocol.c"
+		line 121 in file "protocol.c"
  Parameters:    Size  Location     Type
   char_buf        1    wreg     PTR unsigned char 
 		 -> buf(48), I2C1_StatusCallback@ext_buf(48), 
@@ -2799,7 +2800,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_Read_Lock *****************
  Defined at:
-		line 124 in file "protocol.c"
+		line 129 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2828,7 +2829,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_RST *****************
  Defined at:
-		line 279 in file "protocol.c"
+		line 285 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2857,7 +2858,7 @@ Total ram usage:        1 bytes
 
  *************** function _PROTOCOL_INV *****************
  Defined at:
-		line 103 in file "protocol.c"
+		line 108 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2886,7 +2887,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_I2C_WHO *****************
  Defined at:
-		line 199 in file "protocol.c"
+		line 205 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2915,7 +2916,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_I2C_SEN *****************
  Defined at:
-		line 398 in file "protocol.c"
+		line 404 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2946,7 +2947,7 @@ Total ram usage:        2 bytes
 
  *************** function _PROTOCOL_I2C_GET *****************
  Defined at:
-		line 203 in file "protocol.c"
+		line 209 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2975,7 +2976,7 @@ Total ram usage:        0 bytes
 
  *************** function _PROTOCOL_Backplane_Slave_Enabled *****************
  Defined at:
-		line 195 in file "protocol.c"
+		line 201 in file "protocol.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type

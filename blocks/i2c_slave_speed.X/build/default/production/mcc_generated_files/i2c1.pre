@@ -4219,6 +4219,7 @@ void PROTOCOL_Loop();
 void PROTOCOL_Set_Func(void *loop_func);
 void PROTOCOL_Set_Extension_Handler(void *extension_handler);
 void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+void PROTOCOL_Set_Tick_Handler(void *tick_handler);
 void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
 uint8_t PROTOCOL_Read_Device_Address(void);
 
@@ -4230,10 +4231,10 @@ void PROTOCOL_INV(void);
 void PROTOCOL_RST(void);
 void PROTOCOL_EXT(uint8_t *pbuffer);
 
-# 64
+# 65
 void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
 
-# 69
+# 70
 void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
 void PROTOCOL_I2C_Reset_TLV(void);
 bool PROTOCOL_I2C_TLV_Status(void);
@@ -4249,7 +4250,7 @@ void PROTOCOL_Send_uint16_t(uint16_t value);
 void PROTOCOL_Send_int16_t(int16_t value);
 void PROTOCOL_Send_float(float value);
 
-# 87
+# 88
 void PROTOCOL_Backplane_Slave_Enabled(void);
 uint8_t PROTOCOL_I2C_WHO(void);
 uint8_t PROTOCOL_I2C_GET(void);
@@ -4258,7 +4259,7 @@ uint8_t* PROTOCOL_I2C_SEN();
 void PROTOCOL_Set_Lock(bool lock);
 bool PROTOCOL_Read_Lock(void);
 
-# 133
+# 134
 uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 
 # 12 "mcc_generated_files/i2c1.c"
