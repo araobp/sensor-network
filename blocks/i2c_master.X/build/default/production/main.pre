@@ -4425,7 +4425,7 @@ bool do_func = 0;
 uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];
 
-void exec_remote_cmd(uint8_t idx) {
+bool exec_remote_cmd(uint8_t idx) {
 uint8_t data;
 uint8_t i, j;
 uint8_t status;
@@ -4433,7 +4433,7 @@ uint8_t status;
 uint8_t send_buf[48 + 2];
 
 char *buf = cmd_buf[idx];
-if (buf[0] == '\0') return;
+if (buf[0] == '\0') return 0;
 
 if (!strncmp(("WHO"), (buf), 3)) {
 status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, 0x01, &data, 1);
@@ -4468,6 +4468,7 @@ if (status != 0) printf("!:NO ACK FROM I2C SLAVE\n");
 
 }
 buf[0] = '\0';
+return 1;
 }
 
 void init(void) {
@@ -4520,7 +4521,7 @@ devs--;
 }
 }
 
-# 151
+# 152
 uint8_t dev_map_iterator() {
 static uint8_t xx = 0;
 static uint8_t yy = 0;
@@ -4548,7 +4549,7 @@ xx++;
 return dev_addr;
 }
 
-# 181
+# 182
 void scan_dev(void) {
 uint8_t dev_addr, status;
 for (dev_addr=0x10; dev_addr<=0x20; dev_addr++) {
@@ -4562,13 +4563,13 @@ del_dev(dev_addr);
 }
 }
 
-# 197
+# 198
 void check_plg(void) {
 uint8_t status = i2c1_write_no_data(0x00, 0x02);
 if (status == 0) scan_dev();
 }
 
-# 205
+# 206
 bool detected(uint8_t dev_addr) {
 uint8_t y = dev_addr / 8;
 uint8_t x = dev_addr % 8;
@@ -4592,7 +4593,7 @@ printf("!:MAP:NO SLAVE FOUND\n");
 }
 }
 
-# 232
+# 233
 uint8_t sen(uint8_t dev_addr) {
 uint8_t status;
 uint8_t type;
@@ -4623,7 +4624,7 @@ PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
 return status;
 }
 
-# 265
+# 266
 void one_shot_sen(uint8_t dev_addr) {
 if (!detected(dev_addr)) {
 printf("!:%%%d:UNDETECTED_DEVICE\n", dev_addr);
@@ -4636,7 +4637,7 @@ i2c1_write_no_data(dev_addr, 0x0c);
 }
 }
 
-# 280
+# 281
 void fetch(uint8_t *sch) {
 uint8_t pos;
 uint8_t dev_addr;
@@ -4655,23 +4656,26 @@ i2c1_write_no_data(dev_addr, 0x0c);
 }
 }
 
-# 306
+# 307
 void tick_handler(void) {
 static uint16_t t = 0;
 static int8_t cmd_next = 0;
 t++;
+
+if (exec_remote_cmd(cmd_next)) {
+cmd_next++;
+if (cmd_next > 3) cmd_next = 0;
+}
+
 if (t % 60 == 0) {
 check_plg();
-if (cmd_next > 3) cmd_next = 0;
-exec_remote_cmd(cmd_next);
-cmd_next++;
 } else if (t % 600 == 0) {
 scan_dev();
 t = 0;
 }
 }
 
-# 324
+# 328
 void inv_handler(void) {
 uint8_t dev_addr, status;
 static uint16_t t = 0;
@@ -4697,14 +4701,14 @@ t = 1;
 t++;
 }
 
-# 352
+# 356
 void put_cmd(uint8_t *buf) {
 static int8_t idx = -1;
 if (++idx > 3) idx = 0;
 if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
 }
 
-# 361
+# 365
 void command_handler(uint8_t *buf) {
 static uint8_t pos = 0;
 uint8_t i;

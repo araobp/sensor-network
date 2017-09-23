@@ -50,7 +50,7 @@ bool do_func = false;
 uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];  // I2C slave device map
 
-void exec_remote_cmd(uint8_t idx) {
+bool exec_remote_cmd(uint8_t idx) {
     uint8_t data;
     uint8_t i, j;
     uint8_t status;
@@ -58,8 +58,8 @@ void exec_remote_cmd(uint8_t idx) {
     uint8_t send_buf[BUF_SIZE + 2];
 
     char *buf = cmd_buf[idx];
-    if (buf[0] == '\0') return;
-    
+    if (buf[0] == '\0') return false;
+        
     if (parse(WHO, buf)) {
         status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, WHO_I2C, &data, 1);
         if (status == 0) printf("$:WHO:%d\n", data);
@@ -93,6 +93,7 @@ void exec_remote_cmd(uint8_t idx) {
         // printf("\n");
     }
     buf[0] = '\0';
+    return true;
 }
 
 void init(void) {
@@ -307,11 +308,14 @@ void tick_handler(void) {
     static uint16_t t = 0;
     static int8_t cmd_next = 0;
     t++;
+
+    if (exec_remote_cmd(cmd_next)) {
+        cmd_next++;
+        if (cmd_next > 3) cmd_next = 0;
+    }
+
     if (t % 60 == 0) {
         check_plg();
-        if (cmd_next > 3) cmd_next = 0;
-        exec_remote_cmd(cmd_next);
-        cmd_next++;
     } else if (t % 600 == 0) {
         scan_dev();
         t = 0;
