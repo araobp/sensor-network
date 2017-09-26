@@ -1,6 +1,6 @@
 # Plug&play protocol (UART/I2C)
 
-Update: 2017-JUL-7
+Update: 2017-SEP-27
 
 This is a very simple I/O link supporting Plug&Play. This protocol works over UART and I2C at a minimal cost. I am also considering to support it over CAN.
 
