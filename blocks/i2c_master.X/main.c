@@ -14,6 +14,7 @@
 #define WSC "WSC"
 #define RSC "RSC"
 #define CSC "CSC"
+#define SSC "SSC"
 #define EDG "EDG"
 #define SEN "SEN"
 
@@ -63,7 +64,7 @@ bool exec_remote_cmd(uint8_t idx) {
     if (parse(WHO, buf)) {
         status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, WHO_I2C, &data, 1);
         if (status == 0) printf("$:WHO:%d\n", data);
-        else printf("!\n");        
+        else printf("!:WHO:NACK\n");        
     } else if (parse(SAV, buf)) {
         status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, SAV_I2C);
     } else if (parse(STA, buf)) {
@@ -109,7 +110,7 @@ void init(void) {
 
     // initialize schedule
     for (i=0; i<28; i++) {
-        dev_addr = DATAEE_ReadByte(DEVICE_SETTING_ADDRESS+i+1);
+        dev_addr = DATAEE_ReadByte(SCHEDULE_ADDRESS+i);
         schedule[i/4][i%4] = dev_addr;
     }
 }
@@ -265,11 +266,11 @@ uint8_t sen(uint8_t dev_addr) {
  */
 void one_shot_sen(uint8_t dev_addr) {
     if (!detected(dev_addr)) {
-        printf("!:%%%d:UNDETECTED_DEVICE\n", dev_addr);
+        printf("!:%%%d:UNDETECTED DEVICE\n", dev_addr);
     } else {
         uint8_t status = sen(dev_addr);
         if (status > 0) {
-            printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
+            printf("!:%%%d:NETWORK ERROR\n", dev_addr);
             i2c1_write_no_data(dev_addr, RST_I2C); 
         }
     }
@@ -289,7 +290,7 @@ void fetch(uint8_t *sch) {
         } else if (detected(dev_addr)) {
             status = sen(dev_addr);
             if (status > 0) {
-                printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
+                printf("!:%%%d:NETWORK ERROR\n", dev_addr);
                 i2c1_write_no_data(dev_addr, RST_I2C); 
             }
         }
@@ -376,10 +377,14 @@ void command_handler(uint8_t *buf) {
     } else if (parse(WSC, buf)) {
         if (pos <= 27) {
             dev_addr = atoi(&buf[4]);
-            DATAEE_WriteByte(DEVICE_SETTING_ADDRESS + pos + 1, dev_addr); // read value from EEPROM
             schedule[pos/4][pos%4] = dev_addr;
         } else {
             printf("!:WSC:POS LARGER THAN 27\n");
+        }
+    } else if (parse(SSC, buf)) {
+        for(i=0; i<28; i++) {
+            dev_addr = schedule[i/4][i%4];
+            DATAEE_WriteByte(SCHEDULE_ADDRESS + i, dev_addr);
         }
     } else if (parse(RSC, buf)) {
         printf("$:RSC:");
@@ -393,7 +398,6 @@ void command_handler(uint8_t *buf) {
         printf("%d\n", schedule[6][3]);
     } else if (parse(CSC, buf)) {
         for (i=0; i<28; i++) {
-            DATAEE_WriteByte(DEVICE_SETTING_ADDRESS+i+1, 0);
             schedule[i/4][i%4] = 0;
         }
     } else if (parse(SEN, buf)) {

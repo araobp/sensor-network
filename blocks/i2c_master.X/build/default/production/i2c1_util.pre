@@ -4226,10 +4226,10 @@ uint8_t i2c1_write(uint16_t dev_addr, uint8_t *pbuf, uint8_t len);
 uint8_t i2c1_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
 uint8_t i2c1_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
 
-# 40 "../lib/protocol.X\protocol.h"
+# 41 "../lib/protocol.X\protocol.h"
 void blink_red(uint8_t times);
 
-# 45
+# 46
 void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
 void PROTOCOL_Loop();
 void PROTOCOL_Set_Func(void *loop_func);
@@ -4247,10 +4247,10 @@ void PROTOCOL_INV(void);
 void PROTOCOL_RST(void);
 void PROTOCOL_EXT(uint8_t *pbuffer);
 
-# 65
+# 66
 void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
 
-# 70
+# 71
 void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
 void PROTOCOL_I2C_Reset_TLV(void);
 bool PROTOCOL_I2C_TLV_Status(void);
@@ -4266,7 +4266,7 @@ void PROTOCOL_Send_uint16_t(uint16_t value);
 void PROTOCOL_Send_int16_t(int16_t value);
 void PROTOCOL_Send_float(float value);
 
-# 88
+# 89
 void PROTOCOL_Backplane_Slave_Enabled(void);
 uint8_t PROTOCOL_I2C_WHO(void);
 uint8_t PROTOCOL_I2C_GET(void);
@@ -4275,7 +4275,7 @@ uint8_t* PROTOCOL_I2C_SEN();
 void PROTOCOL_Set_Lock(bool lock);
 bool PROTOCOL_Read_Lock(void);
 
-# 134
+# 135
 uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 
 # 8 "i2c1_util.c"

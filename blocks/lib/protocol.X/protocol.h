@@ -31,6 +31,7 @@ extern "C" {
      */
     #define DEVICE_ID_I2C_ADDRESS 0
     #define DEVICE_SETTING_ADDRESS 1
+    #define SCHEDULE_ADDRESS 2
     
     /*
      * Command buffer size

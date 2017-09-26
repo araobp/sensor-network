@@ -25,7 +25,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "152 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic.h
 [v __delay `JF2931 ~T0 @X0 0 e ]
 [p i __delay ]
-"65 ../lib/protocol.X\protocol.h
+"66 ../lib/protocol.X\protocol.h
 [v _PROTOCOL_Print_TLV `(v ~T0 @X0 0 ef4`uc`uc`uc`*uc ]
 "35 C:\Program Files (x86)\Microchip\xc8\v1.41\include\string.h
 [v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
@@ -45,13 +45,13 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S25 . . . ]
 "358
 [v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
-"45 ../lib/protocol.X\protocol.h
+"46 ../lib/protocol.X\protocol.h
 [v _PROTOCOL_Initialize `(v ~T0 @X0 0 ef6`*Cuc`*v`*v`*v`*v`uc ]
-"48
+"49
 [v _PROTOCOL_Set_Extension_Handler `(v ~T0 @X0 0 ef1`*v ]
-"50
+"51
 [v _PROTOCOL_Set_Tick_Handler `(v ~T0 @X0 0 ef1`*v ]
-"46
+"47
 [v _PROTOCOL_Loop `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -3081,48 +3081,48 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;mcc.h: 72: void SYSTEM_Initialize(void);
 [; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
 [; ;mcc.h: 98: void WDT_Initialize(void);
-[; ;protocol.X\protocol.h: 40: void blink_red(uint8_t times);
-[; ;protocol.X\protocol.h: 45: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
-[; ;protocol.X\protocol.h: 46: void PROTOCOL_Loop();
-[; ;protocol.X\protocol.h: 47: void PROTOCOL_Set_Func(void *loop_func);
-[; ;protocol.X\protocol.h: 48: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
-[; ;protocol.X\protocol.h: 49: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
-[; ;protocol.X\protocol.h: 50: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
-[; ;protocol.X\protocol.h: 51: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
-[; ;protocol.X\protocol.h: 52: uint8_t PROTOCOL_Read_Device_Address(void);
-[; ;protocol.X\protocol.h: 54: void PROTOCOL_STA(void);
-[; ;protocol.X\protocol.h: 55: void PROTOCOL_STP(void);
-[; ;protocol.X\protocol.h: 56: void PROTOCOL_SET(uint8_t value);
-[; ;protocol.X\protocol.h: 57: void PROTOCOL_SAV(void);
-[; ;protocol.X\protocol.h: 58: void PROTOCOL_INV(void);
-[; ;protocol.X\protocol.h: 59: void PROTOCOL_RST(void);
-[; ;protocol.X\protocol.h: 60: void PROTOCOL_EXT(uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 65: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 70: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 71: void PROTOCOL_I2C_Reset_TLV(void);
-[; ;protocol.X\protocol.h: 72: bool PROTOCOL_I2C_TLV_Status(void);
-[; ;protocol.X\protocol.h: 74: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 75: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
-[; ;protocol.X\protocol.h: 76: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
-[; ;protocol.X\protocol.h: 77: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
-[; ;protocol.X\protocol.h: 78: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
-[; ;protocol.X\protocol.h: 79: void PROTOCOL_Send_uint8_t(uint8_t value);
-[; ;protocol.X\protocol.h: 80: void PROTOCOL_Send_int8_t(int8_t value);
-[; ;protocol.X\protocol.h: 81: void PROTOCOL_Send_uint16_t(uint16_t value);
-[; ;protocol.X\protocol.h: 82: void PROTOCOL_Send_int16_t(int16_t value);
-[; ;protocol.X\protocol.h: 83: void PROTOCOL_Send_float(float value);
-[; ;protocol.X\protocol.h: 88: void PROTOCOL_Backplane_Slave_Enabled(void);
-[; ;protocol.X\protocol.h: 89: uint8_t PROTOCOL_I2C_WHO(void);
-[; ;protocol.X\protocol.h: 90: uint8_t PROTOCOL_I2C_GET(void);
-[; ;protocol.X\protocol.h: 91: uint8_t* PROTOCOL_I2C_SEN();
-[; ;protocol.X\protocol.h: 93: void PROTOCOL_Set_Lock(bool lock);
-[; ;protocol.X\protocol.h: 94: bool PROTOCOL_Read_Lock(void);
-"134 ../lib/protocol.X\protocol.h
+[; ;protocol.X\protocol.h: 41: void blink_red(uint8_t times);
+[; ;protocol.X\protocol.h: 46: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+[; ;protocol.X\protocol.h: 47: void PROTOCOL_Loop();
+[; ;protocol.X\protocol.h: 48: void PROTOCOL_Set_Func(void *loop_func);
+[; ;protocol.X\protocol.h: 49: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+[; ;protocol.X\protocol.h: 50: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+[; ;protocol.X\protocol.h: 51: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
+[; ;protocol.X\protocol.h: 52: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+[; ;protocol.X\protocol.h: 53: uint8_t PROTOCOL_Read_Device_Address(void);
+[; ;protocol.X\protocol.h: 55: void PROTOCOL_STA(void);
+[; ;protocol.X\protocol.h: 56: void PROTOCOL_STP(void);
+[; ;protocol.X\protocol.h: 57: void PROTOCOL_SET(uint8_t value);
+[; ;protocol.X\protocol.h: 58: void PROTOCOL_SAV(void);
+[; ;protocol.X\protocol.h: 59: void PROTOCOL_INV(void);
+[; ;protocol.X\protocol.h: 60: void PROTOCOL_RST(void);
+[; ;protocol.X\protocol.h: 61: void PROTOCOL_EXT(uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 66: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 71: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 72: void PROTOCOL_I2C_Reset_TLV(void);
+[; ;protocol.X\protocol.h: 73: bool PROTOCOL_I2C_TLV_Status(void);
+[; ;protocol.X\protocol.h: 75: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 76: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+[; ;protocol.X\protocol.h: 77: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+[; ;protocol.X\protocol.h: 78: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+[; ;protocol.X\protocol.h: 79: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+[; ;protocol.X\protocol.h: 80: void PROTOCOL_Send_uint8_t(uint8_t value);
+[; ;protocol.X\protocol.h: 81: void PROTOCOL_Send_int8_t(int8_t value);
+[; ;protocol.X\protocol.h: 82: void PROTOCOL_Send_uint16_t(uint16_t value);
+[; ;protocol.X\protocol.h: 83: void PROTOCOL_Send_int16_t(int16_t value);
+[; ;protocol.X\protocol.h: 84: void PROTOCOL_Send_float(float value);
+[; ;protocol.X\protocol.h: 89: void PROTOCOL_Backplane_Slave_Enabled(void);
+[; ;protocol.X\protocol.h: 90: uint8_t PROTOCOL_I2C_WHO(void);
+[; ;protocol.X\protocol.h: 91: uint8_t PROTOCOL_I2C_GET(void);
+[; ;protocol.X\protocol.h: 92: uint8_t* PROTOCOL_I2C_SEN();
+[; ;protocol.X\protocol.h: 94: void PROTOCOL_Set_Lock(bool lock);
+[; ;protocol.X\protocol.h: 95: bool PROTOCOL_Read_Lock(void);
+"135 ../lib/protocol.X\protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS `uc ~T0 @X0 1 e ]
 [i _BACKPLANE_SLAVE_ADDRESS
 -> -> 1 `i `uc
 ]
-[; ;protocol.X\protocol.h: 134: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.X\protocol.h: 135: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 [; ;i2c1_util.h: 8: uint8_t i2c1_write(uint16_t dev_addr, uint8_t *pbuf, uint8_t len);
 [; ;i2c1_util.h: 9: uint8_t i2c1_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
 [; ;i2c1_util.h: 10: uint8_t i2c1_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
@@ -3229,193 +3229,193 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;math.h: 53: extern double fmod(double, double);
 [; ;math.h: 54: extern double trunc(double);
 [; ;math.h: 55: extern double round(double);
-"31 main.c
+"32 main.c
 [v _MAX_Y `Cuc ~T0 @X0 1 e ]
 [i _MAX_Y
 -> / -> 32 `i -> 8 `i `uc
 ]
-[; ;main.c: 31: const uint8_t MAX_Y = 0x20/8;
+[; ;main.c: 32: const uint8_t MAX_Y = 0x20/8;
 [v F3499 `uc ~T0 @X0 -> 48 `i t ]
-"33
+"34
 [v _cmd_buf `F3499 ~T0 @X0 -> 4 `i e ]
-[; ;main.c: 33: char cmd_buf[4][48];
+[; ;main.c: 34: char cmd_buf[4][48];
 [v F3501 `uc ~T0 @X0 -> 4 `i t ]
-"46
+"47
 [v _schedule `F3501 ~T0 @X0 -> 7 `i e ]
-[; ;main.c: 46: uint8_t schedule[7][4];
-"48
+[; ;main.c: 47: uint8_t schedule[7][4];
+"49
 [v _timer_cnt `uc ~T0 @X0 1 e ]
 [i _timer_cnt
 -> -> 0 `i `uc
 ]
-[; ;main.c: 48: uint8_t timer_cnt = 0;
-"49
+[; ;main.c: 49: uint8_t timer_cnt = 0;
+"50
 [v _do_func `uc ~T0 @X0 1 e ]
 [i _do_func
 -> -> 0 `i `uc
 ]
-[; ;main.c: 49: bool do_func = 0;
-"50
-[v _read_buf `uc ~T0 @X0 -> 16 `i e ]
-[; ;main.c: 50: uint8_t read_buf[16];
+[; ;main.c: 50: bool do_func = 0;
 "51
+[v _read_buf `uc ~T0 @X0 -> 16 `i e ]
+[; ;main.c: 51: uint8_t read_buf[16];
+"52
 [v _dev_map `uc ~T0 @X0 -> _MAX_Y `ux e ]
-[; ;main.c: 51: uint8_t dev_map[MAX_Y];
-"53
+[; ;main.c: 52: uint8_t dev_map[MAX_Y];
+"54
 [v _exec_remote_cmd `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 53: bool exec_remote_cmd(uint8_t idx) {
+[; ;main.c: 54: bool exec_remote_cmd(uint8_t idx) {
 [e :U _exec_remote_cmd ]
 [v _idx `uc ~T0 @X0 1 r1 ]
 [f ]
-"54
-[v _data `uc ~T0 @X0 1 a ]
 "55
+[v _data `uc ~T0 @X0 1 a ]
+"56
 [v _i `uc ~T0 @X0 1 a ]
 [v _j `uc ~T0 @X0 1 a ]
-"56
+"57
 [v _status `uc ~T0 @X0 1 a ]
-"58
+"59
 [v _send_buf `uc ~T0 @X0 + -> 48 `i -> 2 `i a ]
-"60
-[v _buf `*uc ~T0 @X0 1 a ]
-[; ;main.c: 54: uint8_t data;
-[; ;main.c: 55: uint8_t i, j;
-[; ;main.c: 56: uint8_t status;
-[; ;main.c: 58: uint8_t send_buf[48 + 2];
-[; ;main.c: 60: char *buf = cmd_buf[idx];
-[e = _buf &U *U + &U _cmd_buf * -> _idx `ux -> * -> # *U &U *U &U _cmd_buf `ui -> -> 48 `i `ui `ux ]
-[; ;main.c: 61: if (buf[0] == '\0') return 0;
 "61
+[v _buf `*uc ~T0 @X0 1 a ]
+[; ;main.c: 55: uint8_t data;
+[; ;main.c: 56: uint8_t i, j;
+[; ;main.c: 57: uint8_t status;
+[; ;main.c: 59: uint8_t send_buf[48 + 2];
+[; ;main.c: 61: char *buf = cmd_buf[idx];
+[e = _buf &U *U + &U _cmd_buf * -> _idx `ux -> * -> # *U &U *U &U _cmd_buf `ui -> -> 48 `i `ui `ux ]
+[; ;main.c: 62: if (buf[0] == '\0') return 0;
+"62
 [e $ ! == -> *U + _buf * -> -> 0 `i `x -> -> # *U _buf `i `x `ui -> 0 `ui 374  ]
 [e ) -> -> 0 `i `uc ]
 [e $UE 373  ]
 [e :U 374 ]
-[; ;main.c: 63: if (!strncmp(("WHO"), (buf), 3)) {
-"63
+[; ;main.c: 64: if (!strncmp(("WHO"), (buf), 3)) {
+"64
 [e $ ! ! != ( _strncmp (3 , , :s 1C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 375  ]
 {
-[; ;main.c: 64: status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, 0x01, &data, 1);
-"64
-[e = _status ( _i2c1_read (4 , , , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 1 `i `uc &U _data -> -> 1 `i `uc ]
-[; ;main.c: 65: if (status == 0) printf("$:WHO:%d\n", data);
+[; ;main.c: 65: status = i2c1_read(BACKPLANE_SLAVE_ADDRESS, 0x01, &data, 1);
 "65
+[e = _status ( _i2c1_read (4 , , , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 1 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;main.c: 66: if (status == 0) printf("$:WHO:%d\n", data);
+"66
 [e $ ! == -> _status `i -> 0 `i 376  ]
 [e ( _printf , (. :s 2C -> _data `i ]
 [e $U 377  ]
-"66
+"67
 [e :U 376 ]
-[; ;main.c: 66: else printf("!\n");
+[; ;main.c: 67: else printf("!:WHO:NACK\n");
 [e ( _printf :s 3C ]
 [e :U 377 ]
-"67
+"68
 }
-[; ;main.c: 67: } else if (!strncmp(("SAV"), (buf), 3)) {
+[; ;main.c: 68: } else if (!strncmp(("SAV"), (buf), 3)) {
 [e $U 378  ]
 [e :U 375 ]
 [e $ ! ! != ( _strncmp (3 , , :s 4C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 379  ]
 {
-[; ;main.c: 68: status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x03);
-"68
-[e = _status ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 3 `i `uc ]
+[; ;main.c: 69: status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x03);
 "69
+[e = _status ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 3 `i `uc ]
+"70
 }
-[; ;main.c: 69: } else if (!strncmp(("STA"), (buf), 3)) {
+[; ;main.c: 70: } else if (!strncmp(("STA"), (buf), 3)) {
 [e $U 380  ]
 [e :U 379 ]
 [e $ ! ! != ( _strncmp (3 , , :s 5C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 381  ]
 {
-[; ;main.c: 70: status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x04);
-"70
-[e = _status ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 4 `i `uc ]
+[; ;main.c: 71: status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x04);
 "71
+[e = _status ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 4 `i `uc ]
+"72
 }
-[; ;main.c: 71: } else if (!strncmp(("STP"), (buf), 3)) {
+[; ;main.c: 72: } else if (!strncmp(("STP"), (buf), 3)) {
 [e $U 382  ]
 [e :U 381 ]
 [e $ ! ! != ( _strncmp (3 , , :s 6C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 383  ]
 {
-[; ;main.c: 72: status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x05);
-"72
-[e = _status ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 5 `i `uc ]
-[; ;main.c: 73: if (status == 0) printf("*:STP:ACK\n");
+[; ;main.c: 73: status = i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x05);
 "73
+[e = _status ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 5 `i `uc ]
+[; ;main.c: 74: if (status == 0) printf("*:STP:ACK\n");
+"74
 [e $ ! == -> _status `i -> 0 `i 384  ]
 [e ( _printf :s 7C ]
 [e $U 385  ]
-"74
+"75
 [e :U 384 ]
-[; ;main.c: 74: else printf("!:STP:NACK\n");
+[; ;main.c: 75: else printf("!:STP:NACK\n");
 [e ( _printf :s 8C ]
 [e :U 385 ]
-"75
+"76
 }
-[; ;main.c: 75: } else if (!strncmp(("SET"), (buf), 3)) {
+[; ;main.c: 76: } else if (!strncmp(("SET"), (buf), 3)) {
 [e $U 386  ]
 [e :U 383 ]
 [e $ ! ! != ( _strncmp (3 , , :s 9C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 387  ]
 {
-[; ;main.c: 76: data = atoi(&buf[4]);
-"76
-[e = _data -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
-[; ;main.c: 77: i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x08);
+[; ;main.c: 77: data = atoi(&buf[4]);
 "77
-[e ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 8 `i `uc ]
-[; ;main.c: 78: i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, data);
+[e = _data -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
+[; ;main.c: 78: i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, 0x08);
 "78
-[e ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui _data ]
+[e ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 8 `i `uc ]
+[; ;main.c: 79: i2c1_write_no_data(BACKPLANE_SLAVE_ADDRESS, data);
 "79
+[e ( _i2c1_write_no_data (2 , -> _BACKPLANE_SLAVE_ADDRESS `ui _data ]
+"80
 }
-[; ;main.c: 79: } else if (!strncmp(("GET"), (buf), 3)) {
+[; ;main.c: 80: } else if (!strncmp(("GET"), (buf), 3)) {
 [e $U 388  ]
 [e :U 387 ]
 [e $ ! ! != ( _strncmp (3 , , :s 10C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 389  ]
 {
-[; ;main.c: 80: i2c1_read(BACKPLANE_SLAVE_ADDRESS, 0x09, &data, 1);
-"80
-[e ( _i2c1_read (4 , , , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 9 `i `uc &U _data -> -> 1 `i `uc ]
-[; ;main.c: 81: printf("$:GET:%d\n", data);
+[; ;main.c: 81: i2c1_read(BACKPLANE_SLAVE_ADDRESS, 0x09, &data, 1);
 "81
+[e ( _i2c1_read (4 , , , -> _BACKPLANE_SLAVE_ADDRESS `ui -> -> 9 `i `uc &U _data -> -> 1 `i `uc ]
+[; ;main.c: 82: printf("$:GET:%d\n", data);
+"82
 [e ( _printf , (. :s 11C -> _data `i ]
-"83
+"84
 }
-[; ;main.c: 83: } else {
+[; ;main.c: 84: } else {
 [e $U 390  ]
 [e :U 389 ]
 {
-[; ;main.c: 84: i = 0;
-"84
-[e = _i -> -> 0 `i `uc ]
-[; ;main.c: 85: j = 2;
+[; ;main.c: 85: i = 0;
 "85
-[e = _j -> -> 2 `i `uc ]
-[; ;main.c: 86: do {
+[e = _i -> -> 0 `i `uc ]
+[; ;main.c: 86: j = 2;
 "86
+[e = _j -> -> 2 `i `uc ]
+[; ;main.c: 87: do {
+"87
 [e :U 393 ]
 {
-[; ;main.c: 87: send_buf[j++] = (uint8_t)buf[i];
-"87
-[e = *U + &U _send_buf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _send_buf `ui `ux *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
+[; ;main.c: 88: send_buf[j++] = (uint8_t)buf[i];
 "88
+[e = *U + &U _send_buf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _send_buf `ui `ux *U + _buf * -> _i `ux -> -> # *U _buf `ui `ux ]
+"89
 }
-[; ;main.c: 88: } while (buf[i++] != '\0');
+[; ;main.c: 89: } while (buf[i++] != '\0');
 [e $ != -> *U + _buf * -> ++ _i -> -> 1 `i `uc `ux -> -> # *U _buf `ui `ux `ui -> 0 `ui 393  ]
 [e :U 392 ]
-[; ;main.c: 89: send_buf[0] = 0x0a;
-"89
-[e = *U + &U _send_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _send_buf `ui `ux -> -> 10 `i `uc ]
-[; ;main.c: 90: send_buf[1] = i;
+[; ;main.c: 90: send_buf[0] = 0x0a;
 "90
-[e = *U + &U _send_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _send_buf `ui `ux _i ]
-[; ;main.c: 91: status = i2c1_write(BACKPLANE_SLAVE_ADDRESS, send_buf, j);
+[e = *U + &U _send_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _send_buf `ui `ux -> -> 10 `i `uc ]
+[; ;main.c: 91: send_buf[1] = i;
 "91
-[e = _status ( _i2c1_write (3 , , -> _BACKPLANE_SLAVE_ADDRESS `ui &U _send_buf _j ]
-[; ;main.c: 92: if (status != 0) printf("!:NO ACK FROM I2C SLAVE\n");
+[e = *U + &U _send_buf * -> -> -> 1 `i `ui `ux -> -> # *U &U _send_buf `ui `ux _i ]
+[; ;main.c: 92: status = i2c1_write(BACKPLANE_SLAVE_ADDRESS, send_buf, j);
 "92
+[e = _status ( _i2c1_write (3 , , -> _BACKPLANE_SLAVE_ADDRESS `ui &U _send_buf _j ]
+[; ;main.c: 93: if (status != 0) printf("!:NO ACK FROM I2C SLAVE\n");
+"93
 [e $ ! != -> _status `i -> 0 `i 394  ]
 [e ( _printf :s 12C ]
 [e :U 394 ]
-"94
+"95
 }
 [e :U 390 ]
 [e :U 388 ]
@@ -3423,53 +3423,53 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 382 ]
 [e :U 380 ]
 [e :U 378 ]
-[; ;main.c: 94: }
-[; ;main.c: 95: buf[0] = '\0';
-"95
-[e = *U + _buf * -> -> 0 `i `x -> -> # *U _buf `i `x -> -> 0 `ui `uc ]
-[; ;main.c: 96: return 1;
+[; ;main.c: 95: }
+[; ;main.c: 96: buf[0] = '\0';
 "96
+[e = *U + _buf * -> -> 0 `i `x -> -> # *U _buf `i `x -> -> 0 `ui `uc ]
+[; ;main.c: 97: return 1;
+"97
 [e ) -> -> 1 `i `uc ]
 [e $UE 373  ]
-[; ;main.c: 97: }
-"97
+[; ;main.c: 98: }
+"98
 [e :UE 373 ]
 }
-"99
+"100
 [v _init `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 99: void init(void) {
+[; ;main.c: 100: void init(void) {
 [e :U _init ]
 [f ]
-"100
+"101
 [v _y `uc ~T0 @X0 1 a ]
 [v _i `uc ~T0 @X0 1 a ]
 [v _j `uc ~T0 @X0 1 a ]
 [v _k `uc ~T0 @X0 1 a ]
 [v _dev_addr `uc ~T0 @X0 1 a ]
-[; ;main.c: 100: uint8_t y, i, j, k, dev_addr;
-[; ;main.c: 103: for (y=0; y<MAX_Y; y++) {
-"103
+[; ;main.c: 101: uint8_t y, i, j, k, dev_addr;
+[; ;main.c: 104: for (y=0; y<MAX_Y; y++) {
+"104
 {
 [e = _y -> -> 0 `i `uc ]
 [e $ < -> _y `i -> _MAX_Y `i 396  ]
 [e $U 397  ]
 [e :U 396 ]
 {
-[; ;main.c: 104: dev_map[y] = 0;
-"104
-[e = *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux -> -> 0 `i `uc ]
+[; ;main.c: 105: dev_map[y] = 0;
 "105
+[e = *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux -> -> 0 `i `uc ]
+"106
 }
-"103
+"104
 [e ++ _y -> -> 1 `i `uc ]
 [e $ < -> _y `i -> _MAX_Y `i 396  ]
 [e :U 397 ]
-"105
+"106
 }
-[; ;main.c: 105: }
-[; ;main.c: 108: for (i=0; i<4; i++) cmd_buf[i][0] = '\0';
-"108
+[; ;main.c: 106: }
+[; ;main.c: 109: for (i=0; i<4; i++) cmd_buf[i][0] = '\0';
+"109
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 4 `i 399  ]
@@ -3480,384 +3480,384 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> 4 `i 399  ]
 [e :U 400 ]
 }
-[; ;main.c: 111: for (i=0; i<28; i++) {
-"111
+[; ;main.c: 112: for (i=0; i<28; i++) {
+"112
 {
 [e = _i -> -> 0 `i `uc ]
 [e $ < -> _i `i -> 28 `i 402  ]
 [e $U 403  ]
 [e :U 402 ]
 {
-[; ;main.c: 112: dev_addr = DATAEE_ReadByte(1+i+1);
-"112
-[e = _dev_addr ( _DATAEE_ReadByte (1 -> + + -> 1 `i -> _i `i -> 1 `i `uc ]
-[; ;main.c: 113: schedule[i/4][i%4] = dev_addr;
+[; ;main.c: 113: dev_addr = DATAEE_ReadByte(2+i);
 "113
-[e = *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux _dev_addr ]
+[e = _dev_addr ( _DATAEE_ReadByte (1 -> + -> 2 `i -> _i `i `uc ]
+[; ;main.c: 114: schedule[i/4][i%4] = dev_addr;
 "114
+[e = *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux _dev_addr ]
+"115
 }
-"111
+"112
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 28 `i 402  ]
 [e :U 403 ]
-"114
-}
-[; ;main.c: 114: }
-[; ;main.c: 115: }
 "115
+}
+[; ;main.c: 115: }
+[; ;main.c: 116: }
+"116
 [e :UE 395 ]
 }
-"117
+"118
 [v _devs `uc ~T0 @X0 1 e ]
 [i _devs
 -> -> 0 `i `uc
 ]
-[; ;main.c: 117: uint8_t devs = 0;
-"119
+[; ;main.c: 118: uint8_t devs = 0;
+"120
 [v _add_dev `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 119: void add_dev(uint8_t dev_addr) {
+[; ;main.c: 120: void add_dev(uint8_t dev_addr) {
 [e :U _add_dev ]
 [v _dev_addr `uc ~T0 @X0 1 r1 ]
 [f ]
-"120
+"121
 [v _x `uc ~T0 @X0 1 a ]
 [v _y `uc ~T0 @X0 1 a ]
-"121
+"122
 [v _new_map `uc ~T0 @X0 1 a ]
 [v _old_map `uc ~T0 @X0 1 a ]
-[; ;main.c: 120: uint8_t x, y;
-[; ;main.c: 121: uint8_t new_map, old_map;
-[; ;main.c: 122: if (dev_addr >= 1 && dev_addr <= 0x20) {
-"122
+[; ;main.c: 121: uint8_t x, y;
+[; ;main.c: 122: uint8_t new_map, old_map;
+[; ;main.c: 123: if (dev_addr >= 1 && dev_addr <= 0x20) {
+"123
 [e $ ! && >= -> _dev_addr `i -> 1 `i <= -> _dev_addr `i -> 32 `i 406  ]
 {
-[; ;main.c: 123: y = dev_addr / 8;
-"123
-[e = _y -> / -> _dev_addr `i -> 8 `i `uc ]
-[; ;main.c: 124: x = dev_addr % 8;
+[; ;main.c: 124: y = dev_addr / 8;
 "124
-[e = _x -> % -> _dev_addr `i -> 8 `i `uc ]
-[; ;main.c: 125: old_map = dev_map[y];
+[e = _y -> / -> _dev_addr `i -> 8 `i `uc ]
+[; ;main.c: 125: x = dev_addr % 8;
 "125
-[e = _old_map *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux ]
-[; ;main.c: 126: new_map = dev_map[y] | (0x01 << x);
+[e = _x -> % -> _dev_addr `i -> 8 `i `uc ]
+[; ;main.c: 126: old_map = dev_map[y];
 "126
-[e = _new_map -> | -> *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux `i << -> 1 `i _x `uc ]
-[; ;main.c: 127: if (old_map != new_map) {
+[e = _old_map *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux ]
+[; ;main.c: 127: new_map = dev_map[y] | (0x01 << x);
 "127
+[e = _new_map -> | -> *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux `i << -> 1 `i _x `uc ]
+[; ;main.c: 128: if (old_map != new_map) {
+"128
 [e $ ! != -> _old_map `i -> _new_map `i 407  ]
 {
-[; ;main.c: 128: dev_map[y] = new_map;
-"128
-[e = *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux _new_map ]
-[; ;main.c: 129: devs++;
+[; ;main.c: 129: dev_map[y] = new_map;
 "129
-[e ++ _devs -> -> 1 `i `uc ]
+[e = *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux _new_map ]
+[; ;main.c: 130: devs++;
 "130
-}
-[e :U 407 ]
+[e ++ _devs -> -> 1 `i `uc ]
 "131
 }
+[e :U 407 ]
+"132
+}
 [e :U 406 ]
-[; ;main.c: 130: }
 [; ;main.c: 131: }
 [; ;main.c: 132: }
-"132
+[; ;main.c: 133: }
+"133
 [e :UE 405 ]
 }
-"134
+"135
 [v _del_dev `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 134: void del_dev(uint8_t dev_addr) {
+[; ;main.c: 135: void del_dev(uint8_t dev_addr) {
 [e :U _del_dev ]
 [v _dev_addr `uc ~T0 @X0 1 r1 ]
 [f ]
-"135
+"136
 [v _x `uc ~T0 @X0 1 a ]
 [v _y `uc ~T0 @X0 1 a ]
-"136
+"137
 [v _new_map `uc ~T0 @X0 1 a ]
 [v _old_map `uc ~T0 @X0 1 a ]
-[; ;main.c: 135: uint8_t x, y;
-[; ;main.c: 136: uint8_t new_map, old_map;
-[; ;main.c: 137: if (dev_addr >= 1 && dev_addr <= 0x20) {
-"137
+[; ;main.c: 136: uint8_t x, y;
+[; ;main.c: 137: uint8_t new_map, old_map;
+[; ;main.c: 138: if (dev_addr >= 1 && dev_addr <= 0x20) {
+"138
 [e $ ! && >= -> _dev_addr `i -> 1 `i <= -> _dev_addr `i -> 32 `i 409  ]
 {
-[; ;main.c: 138: y = dev_addr / 8;
-"138
-[e = _y -> / -> _dev_addr `i -> 8 `i `uc ]
-[; ;main.c: 139: x = dev_addr % 8;
+[; ;main.c: 139: y = dev_addr / 8;
 "139
-[e = _x -> % -> _dev_addr `i -> 8 `i `uc ]
-[; ;main.c: 140: old_map = dev_map[y];
+[e = _y -> / -> _dev_addr `i -> 8 `i `uc ]
+[; ;main.c: 140: x = dev_addr % 8;
 "140
-[e = _old_map *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux ]
-[; ;main.c: 141: new_map = dev_map[y] & ~(0x01 << x);
+[e = _x -> % -> _dev_addr `i -> 8 `i `uc ]
+[; ;main.c: 141: old_map = dev_map[y];
 "141
-[e = _new_map -> & -> *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux `i ~ << -> 1 `i _x `uc ]
-[; ;main.c: 142: if (old_map != new_map) {
+[e = _old_map *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux ]
+[; ;main.c: 142: new_map = dev_map[y] & ~(0x01 << x);
 "142
+[e = _new_map -> & -> *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux `i ~ << -> 1 `i _x `uc ]
+[; ;main.c: 143: if (old_map != new_map) {
+"143
 [e $ ! != -> _old_map `i -> _new_map `i 410  ]
 {
-[; ;main.c: 143: dev_map[y] = new_map;
-"143
-[e = *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux _new_map ]
-[; ;main.c: 144: devs--;
+[; ;main.c: 144: dev_map[y] = new_map;
 "144
-[e -- _devs -> -> 1 `i `uc ]
+[e = *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux _new_map ]
+[; ;main.c: 145: devs--;
 "145
-}
-[e :U 410 ]
+[e -- _devs -> -> 1 `i `uc ]
 "146
 }
+[e :U 410 ]
+"147
+}
 [e :U 409 ]
-[; ;main.c: 145: }
 [; ;main.c: 146: }
 [; ;main.c: 147: }
-"147
+[; ;main.c: 148: }
+"148
 [e :UE 408 ]
 }
-"152
+"153
 [v _dev_map_iterator `(uc ~T0 @X0 1 ef ]
 {
-[; ;main.c: 152: uint8_t dev_map_iterator() {
+[; ;main.c: 153: uint8_t dev_map_iterator() {
 [e :U _dev_map_iterator ]
 [f ]
-"153
+"154
 [v F3536 `uc ~T0 @X0 1 s xx ]
 [i F3536
 -> -> 0 `i `uc
 ]
-"154
+"155
 [v F3537 `uc ~T0 @X0 1 s yy ]
 [i F3537
 -> -> 0 `i `uc
 ]
-"155
+"156
 [v F3538 `uc ~T0 @X0 1 s start ]
 [i F3538
 -> -> 1 `i `uc
 ]
-"156
-[v _exist `uc ~T0 @X0 1 a ]
-[; ;main.c: 153: static uint8_t xx = 0;
-[; ;main.c: 154: static uint8_t yy = 0;
-[; ;main.c: 155: static bool start = 1;
-[; ;main.c: 156: bool exist = 0;
-[e = _exist -> -> 0 `i `uc ]
 "157
+[v _exist `uc ~T0 @X0 1 a ]
+[; ;main.c: 154: static uint8_t xx = 0;
+[; ;main.c: 155: static uint8_t yy = 0;
+[; ;main.c: 156: static bool start = 1;
+[; ;main.c: 157: bool exist = 0;
+[e = _exist -> -> 0 `i `uc ]
+"158
 [v _dev_addr `uc ~T0 @X0 1 a ]
-[; ;main.c: 157: uint8_t dev_addr;
-[; ;main.c: 159: if (devs) {
-"159
+[; ;main.c: 158: uint8_t dev_addr;
+[; ;main.c: 160: if (devs) {
+"160
 [e $ ! != -> _devs `i -> -> -> 0 `i `uc `i 412  ]
 {
-[; ;main.c: 160: while(1) {
-"160
+[; ;main.c: 161: while(1) {
+"161
 [e :U 414 ]
 {
-[; ;main.c: 161: if (xx > 7) {
-"161
+[; ;main.c: 162: if (xx > 7) {
+"162
 [e $ ! > -> F3536 `i -> 7 `i 416  ]
 {
-[; ;main.c: 162: xx = 0;
-"162
-[e = F3536 -> -> 0 `i `uc ]
-[; ;main.c: 163: yy++;
+[; ;main.c: 163: xx = 0;
 "163
-[e ++ F3537 -> -> 1 `i `uc ]
+[e = F3536 -> -> 0 `i `uc ]
+[; ;main.c: 164: yy++;
 "164
+[e ++ F3537 -> -> 1 `i `uc ]
+"165
 }
 [e :U 416 ]
-[; ;main.c: 164: }
-[; ;main.c: 165: if (yy >= MAX_Y) {
-"165
+[; ;main.c: 165: }
+[; ;main.c: 166: if (yy >= MAX_Y) {
+"166
 [e $ ! >= -> F3537 `i -> _MAX_Y `i 417  ]
 {
-[; ;main.c: 166: xx = 0;
-"166
-[e = F3536 -> -> 0 `i `uc ]
-[; ;main.c: 167: yy = 0;
+[; ;main.c: 167: xx = 0;
 "167
-[e = F3537 -> -> 0 `i `uc ]
+[e = F3536 -> -> 0 `i `uc ]
+[; ;main.c: 168: yy = 0;
 "168
+[e = F3537 -> -> 0 `i `uc ]
+"169
 }
 [e :U 417 ]
-[; ;main.c: 168: }
-[; ;main.c: 169: if ((0x01 << xx) & dev_map[yy]) {
-"169
+[; ;main.c: 169: }
+[; ;main.c: 170: if ((0x01 << xx) & dev_map[yy]) {
+"170
 [e $ ! != & << -> 1 `i F3536 -> *U + &U _dev_map * -> F3537 `ux -> -> # *U &U _dev_map `ui `ux `i -> 0 `i 418  ]
 {
-[; ;main.c: 170: dev_addr = yy * 8 + xx++;
-"170
-[e = _dev_addr -> + * -> F3537 `i -> 8 `i -> ++ F3536 -> -> 1 `i `uc `i `uc ]
-[; ;main.c: 171: break;
+[; ;main.c: 171: dev_addr = yy * 8 + xx++;
 "171
-[e $U 415  ]
+[e = _dev_addr -> + * -> F3537 `i -> 8 `i -> ++ F3536 -> -> 1 `i `uc `i `uc ]
+[; ;main.c: 172: break;
 "172
+[e $U 415  ]
+"173
 }
 [e :U 418 ]
-[; ;main.c: 172: }
-[; ;main.c: 173: xx++;
-"173
-[e ++ F3536 -> -> 1 `i `uc ]
+[; ;main.c: 173: }
+[; ;main.c: 174: xx++;
 "174
-}
-[e :U 413 ]
-"160
-[e $U 414  ]
-[e :U 415 ]
+[e ++ F3536 -> -> 1 `i `uc ]
 "175
 }
-[e :U 412 ]
-[; ;main.c: 174: }
-[; ;main.c: 175: }
-[; ;main.c: 176: return dev_addr;
+[e :U 413 ]
+"161
+[e $U 414  ]
+[e :U 415 ]
 "176
+}
+[e :U 412 ]
+[; ;main.c: 175: }
+[; ;main.c: 176: }
+[; ;main.c: 177: return dev_addr;
+"177
 [e ) _dev_addr ]
 [e $UE 411  ]
-[; ;main.c: 177: }
-"177
+[; ;main.c: 178: }
+"178
 [e :UE 411 ]
 }
-"182
+"183
 [v _scan_dev `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 182: void scan_dev(void) {
+[; ;main.c: 183: void scan_dev(void) {
 [e :U _scan_dev ]
 [f ]
-"183
+"184
 [v _dev_addr `uc ~T0 @X0 1 a ]
 [v _status `uc ~T0 @X0 1 a ]
-[; ;main.c: 183: uint8_t dev_addr, status;
-[; ;main.c: 184: for (dev_addr=0x10; dev_addr<=0x20; dev_addr++) {
-"184
+[; ;main.c: 184: uint8_t dev_addr, status;
+[; ;main.c: 185: for (dev_addr=0x10; dev_addr<=0x20; dev_addr++) {
+"185
 {
 [e = _dev_addr -> -> 16 `i `uc ]
 [e $ <= -> _dev_addr `i -> 32 `i 420  ]
 [e $U 421  ]
 [e :U 420 ]
 {
-[; ;main.c: 185: status = i2c1_read(dev_addr, 0x01, &read_buf[0], 1);
-"185
+[; ;main.c: 186: status = i2c1_read(dev_addr, 0x01, &read_buf[0], 1);
+"186
 [e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 1 `i `uc &U *U + &U _read_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _read_buf `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 187: if (status == 0 && dev_addr == read_buf[0]) {
-"187
+[; ;main.c: 188: if (status == 0 && dev_addr == read_buf[0]) {
+"188
 [e $ ! && == -> _status `i -> 0 `i == -> _dev_addr `i -> *U + &U _read_buf * -> -> -> 0 `i `ui `ux -> -> # *U &U _read_buf `ui `ux `i 423  ]
 {
-[; ;main.c: 188: add_dev(dev_addr);
-"188
-[e ( _add_dev (1 _dev_addr ]
+[; ;main.c: 189: add_dev(dev_addr);
 "189
+[e ( _add_dev (1 _dev_addr ]
+"190
 }
-[; ;main.c: 189: } else {
+[; ;main.c: 190: } else {
 [e $U 424  ]
 [e :U 423 ]
 {
-[; ;main.c: 190: del_dev(dev_addr);
-"190
-[e ( _del_dev (1 _dev_addr ]
+[; ;main.c: 191: del_dev(dev_addr);
 "191
-}
-[e :U 424 ]
+[e ( _del_dev (1 _dev_addr ]
 "192
 }
-"184
+[e :U 424 ]
+"193
+}
+"185
 [e ++ _dev_addr -> -> 1 `i `uc ]
 [e $ <= -> _dev_addr `i -> 32 `i 420  ]
 [e :U 421 ]
-"192
+"193
 }
-[; ;main.c: 191: }
 [; ;main.c: 192: }
 [; ;main.c: 193: }
-"193
+[; ;main.c: 194: }
+"194
 [e :UE 419 ]
 }
-"198
+"199
 [v _check_plg `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 198: void check_plg(void) {
+[; ;main.c: 199: void check_plg(void) {
 [e :U _check_plg ]
 [f ]
-"199
-[v _status `uc ~T0 @X0 1 a ]
-[; ;main.c: 199: uint8_t status = i2c1_write_no_data(0x00, 0x02);
-[e = _status ( _i2c1_write_no_data (2 , -> -> 0 `i `ui -> -> 2 `i `uc ]
-[; ;main.c: 200: if (status == 0) scan_dev();
 "200
+[v _status `uc ~T0 @X0 1 a ]
+[; ;main.c: 200: uint8_t status = i2c1_write_no_data(0x00, 0x02);
+[e = _status ( _i2c1_write_no_data (2 , -> -> 0 `i `ui -> -> 2 `i `uc ]
+[; ;main.c: 201: if (status == 0) scan_dev();
+"201
 [e $ ! == -> _status `i -> 0 `i 426  ]
 [e ( _scan_dev ..  ]
 [e :U 426 ]
-[; ;main.c: 201: }
-"201
+[; ;main.c: 202: }
+"202
 [e :UE 425 ]
 }
-"206
+"207
 [v _detected `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 206: bool detected(uint8_t dev_addr) {
+[; ;main.c: 207: bool detected(uint8_t dev_addr) {
 [e :U _detected ]
 [v _dev_addr `uc ~T0 @X0 1 r1 ]
 [f ]
-"207
-[v _y `uc ~T0 @X0 1 a ]
-[; ;main.c: 207: uint8_t y = dev_addr / 8;
-[e = _y -> / -> _dev_addr `i -> 8 `i `uc ]
 "208
-[v _x `uc ~T0 @X0 1 a ]
-[; ;main.c: 208: uint8_t x = dev_addr % 8;
-[e = _x -> % -> _dev_addr `i -> 8 `i `uc ]
+[v _y `uc ~T0 @X0 1 a ]
+[; ;main.c: 208: uint8_t y = dev_addr / 8;
+[e = _y -> / -> _dev_addr `i -> 8 `i `uc ]
 "209
-[v _exist `uc ~T0 @X0 1 a ]
-[; ;main.c: 209: bool exist = 0;
-[e = _exist -> -> 0 `i `uc ]
-[; ;main.c: 210: if ((dev_map[y] & (0x01 << x)) > 0) {
+[v _x `uc ~T0 @X0 1 a ]
+[; ;main.c: 209: uint8_t x = dev_addr % 8;
+[e = _x -> % -> _dev_addr `i -> 8 `i `uc ]
 "210
+[v _exist `uc ~T0 @X0 1 a ]
+[; ;main.c: 210: bool exist = 0;
+[e = _exist -> -> 0 `i `uc ]
+[; ;main.c: 211: if ((dev_map[y] & (0x01 << x)) > 0) {
+"211
 [e $ ! > & -> *U + &U _dev_map * -> _y `ux -> -> # *U &U _dev_map `ui `ux `i << -> 1 `i _x -> 0 `i 428  ]
 {
-[; ;main.c: 211: exist = 1;
-"211
-[e = _exist -> -> 1 `i `uc ]
+[; ;main.c: 212: exist = 1;
 "212
+[e = _exist -> -> 1 `i `uc ]
+"213
 }
 [e :U 428 ]
-[; ;main.c: 212: }
-[; ;main.c: 213: return exist;
-"213
+[; ;main.c: 213: }
+[; ;main.c: 214: return exist;
+"214
 [e ) _exist ]
 [e $UE 427  ]
-[; ;main.c: 214: }
-"214
+[; ;main.c: 215: }
+"215
 [e :UE 427 ]
 }
-"216
+"217
 [v _print_dev_map `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 216: void print_dev_map(void) {
+[; ;main.c: 217: void print_dev_map(void) {
 [e :U _print_dev_map ]
 [f ]
-"217
-[v _i `uc ~T0 @X0 1 a ]
 "218
-[v _len `uc ~T0 @X0 1 a ]
-[; ;main.c: 217: uint8_t i;
-[; ;main.c: 218: uint8_t len = devs;
-[e = _len _devs ]
-[; ;main.c: 219: if (len > 0) {
+[v _i `uc ~T0 @X0 1 a ]
 "219
+[v _len `uc ~T0 @X0 1 a ]
+[; ;main.c: 218: uint8_t i;
+[; ;main.c: 219: uint8_t len = devs;
+[e = _len _devs ]
+[; ;main.c: 220: if (len > 0) {
+"220
 [e $ ! > -> _len `i -> 0 `i 430  ]
 {
-[; ;main.c: 220: len--;
-"220
-[e -- _len -> -> 1 `i `uc ]
-[; ;main.c: 221: printf("$:MAP:");
+[; ;main.c: 221: len--;
 "221
-[e ( _printf :s 13C ]
-[; ;main.c: 222: for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
+[e -- _len -> -> 1 `i `uc ]
+[; ;main.c: 222: printf("$:MAP:");
 "222
+[e ( _printf :s 13C ]
+[; ;main.c: 223: for (i=0; i<len; i++) printf("%d,", dev_map_iterator());
+"223
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 434  ]
@@ -3868,474 +3868,471 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _len `i 431  ]
 [e :U 432 ]
 }
-[; ;main.c: 223: printf("%d\n", dev_map_iterator());
-"223
-[e ( _printf , (. :s 15C -> ( _dev_map_iterator ..  `i ]
+[; ;main.c: 224: printf("%d\n", dev_map_iterator());
 "224
+[e ( _printf , (. :s 15C -> ( _dev_map_iterator ..  `i ]
+"225
 }
-[; ;main.c: 224: } else {
+[; ;main.c: 225: } else {
 [e $U 435  ]
 [e :U 430 ]
 {
-[; ;main.c: 225: printf("!:MAP:NO SLAVE FOUND\n");
-"225
-[e ( _printf :s 16C ]
+[; ;main.c: 226: printf("!:MAP:NO SLAVE FOUND\n");
 "226
+[e ( _printf :s 16C ]
+"227
 }
 [e :U 435 ]
-[; ;main.c: 226: }
 [; ;main.c: 227: }
-"227
+[; ;main.c: 228: }
+"228
 [e :UE 429 ]
 }
-"233
+"234
 [v _sen `(uc ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 233: uint8_t sen(uint8_t dev_addr) {
+[; ;main.c: 234: uint8_t sen(uint8_t dev_addr) {
 [e :U _sen ]
 [v _dev_addr `uc ~T0 @X0 1 r1 ]
 [f ]
-"234
-[v _status `uc ~T0 @X0 1 a ]
 "235
-[v _type `uc ~T0 @X0 1 a ]
+[v _status `uc ~T0 @X0 1 a ]
 "236
+[v _type `uc ~T0 @X0 1 a ]
+"237
 [v _length `uc ~T0 @X0 1 a ]
 [v _data `uc ~T0 @X0 1 a ]
 [v _i `uc ~T0 @X0 1 a ]
-[; ;main.c: 234: uint8_t status;
-[; ;main.c: 235: uint8_t type;
-[; ;main.c: 236: uint8_t length ,data, i;
-[; ;main.c: 237: LATCbits.LATC7 ^= 1;
-"237
+[; ;main.c: 235: uint8_t status;
+[; ;main.c: 236: uint8_t type;
+[; ;main.c: 237: uint8_t length ,data, i;
+[; ;main.c: 238: LATCbits.LATC7 ^= 1;
+"238
 [e =^ . . _LATCbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 239: _delay((unsigned long)((200)*(32000000/4000000.0)));
-"239
-[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 240: i2c1_write_no_data(dev_addr, 0x06);
+[; ;main.c: 240: _delay((unsigned long)((200)*(32000000/4000000.0)));
 "240
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 241: i2c1_write_no_data(dev_addr, 0x06);
+"241
 [e ( _i2c1_write_no_data (2 , -> _dev_addr `ui -> -> 6 `i `uc ]
-[; ;main.c: 242: _delay((unsigned long)((1000)*(32000000/4000000.0)));
-"242
-[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 243: status = i2c1_read(dev_addr, 0x07, &type, 1);
+[; ;main.c: 243: _delay((unsigned long)((1000)*(32000000/4000000.0)));
 "243
-[e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 7 `i `uc &U _type -> -> 1 `i `uc ]
-[; ;main.c: 244: _delay((unsigned long)((100)*(32000000/4000000.0)));
+[e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 244: status = i2c1_read(dev_addr, 0x07, &type, 1);
 "244
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 245: if (status == 0) {
+[e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 7 `i `uc &U _type -> -> 1 `i `uc ]
+[; ;main.c: 245: _delay((unsigned long)((100)*(32000000/4000000.0)));
 "245
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 246: if (status == 0) {
+"246
 [e $ ! == -> _status `i -> 0 `i 437  ]
 {
-[; ;main.c: 246: if (type == 0x06) {
-"246
+[; ;main.c: 247: if (type == 0x06) {
+"247
 [e $ ! == -> _type `i -> 6 `i 438  ]
 {
-[; ;main.c: 247: PROTOCOL_Print_TLV(dev_addr, 0x06, 0, (0));
-"247
-[e ( _PROTOCOL_Print_TLV (4 , , , _dev_addr -> -> 6 `i `uc -> -> 0 `i `uc -> -> 0 `i `*uc ]
+[; ;main.c: 248: PROTOCOL_Print_TLV(dev_addr, 0x06, 0, (0));
 "248
+[e ( _PROTOCOL_Print_TLV (4 , , , _dev_addr -> -> 6 `i `uc -> -> 0 `i `uc -> -> 0 `i `*uc ]
+"249
 }
-[; ;main.c: 248: } else {
+[; ;main.c: 249: } else {
 [e $U 439  ]
 [e :U 438 ]
 {
-[; ;main.c: 249: status = i2c1_read(dev_addr, 0x07, &length, 1);
-"249
-[e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 7 `i `uc &U _length -> -> 1 `i `uc ]
-[; ;main.c: 250: _delay((unsigned long)((100)*(32000000/4000000.0)));
+[; ;main.c: 250: status = i2c1_read(dev_addr, 0x07, &length, 1);
 "250
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 251: if (status == 0) {
+[e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 7 `i `uc &U _length -> -> 1 `i `uc ]
+[; ;main.c: 251: _delay((unsigned long)((100)*(32000000/4000000.0)));
 "251
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 252: if (status == 0) {
+"252
 [e $ ! == -> _status `i -> 0 `i 440  ]
 {
-[; ;main.c: 252: status = i2c1_read(dev_addr, 0x07, read_buf, length);
-"252
-[e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 7 `i `uc &U _read_buf _length ]
-[; ;main.c: 253: _delay((unsigned long)((100)*(32000000/4000000.0)));
+[; ;main.c: 253: status = i2c1_read(dev_addr, 0x07, read_buf, length);
 "253
-[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 254: if (status == 0) {
+[e = _status ( _i2c1_read (4 , , , -> _dev_addr `ui -> -> 7 `i `uc &U _read_buf _length ]
+[; ;main.c: 254: _delay((unsigned long)((100)*(32000000/4000000.0)));
 "254
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 32000000 `l `d .4000000.0 `ul ]
+[; ;main.c: 255: if (status == 0) {
+"255
 [e $ ! == -> _status `i -> 0 `i 441  ]
 {
-[; ;main.c: 255: PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
-"255
-[e ( _PROTOCOL_Print_TLV (4 , , , _dev_addr _type _length &U _read_buf ]
+[; ;main.c: 256: PROTOCOL_Print_TLV(dev_addr, type, length, read_buf);
 "256
-}
-[e :U 441 ]
+[e ( _PROTOCOL_Print_TLV (4 , , , _dev_addr _type _length &U _read_buf ]
 "257
 }
-[e :U 440 ]
+[e :U 441 ]
 "258
 }
-[e :U 439 ]
+[e :U 440 ]
 "259
 }
+[e :U 439 ]
+"260
+}
 [e :U 437 ]
-[; ;main.c: 256: }
 [; ;main.c: 257: }
 [; ;main.c: 258: }
 [; ;main.c: 259: }
-[; ;main.c: 260: return status;
-"260
+[; ;main.c: 260: }
+[; ;main.c: 261: return status;
+"261
 [e ) _status ]
 [e $UE 436  ]
-[; ;main.c: 261: }
-"261
+[; ;main.c: 262: }
+"262
 [e :UE 436 ]
 }
-"266
+"267
 [v _one_shot_sen `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;main.c: 266: void one_shot_sen(uint8_t dev_addr) {
+[; ;main.c: 267: void one_shot_sen(uint8_t dev_addr) {
 [e :U _one_shot_sen ]
 [v _dev_addr `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;main.c: 267: if (!detected(dev_addr)) {
-"267
+[; ;main.c: 268: if (!detected(dev_addr)) {
+"268
 [e $ ! ! != -> ( _detected (1 _dev_addr `i -> -> -> 0 `i `uc `i 443  ]
 {
-[; ;main.c: 268: printf("!:%%%d:UNDETECTED_DEVICE\n", dev_addr);
-"268
-[e ( _printf , (. :s 17C -> _dev_addr `i ]
+[; ;main.c: 269: printf("!:%%%d:UNDETECTED DEVICE\n", dev_addr);
 "269
+[e ( _printf , (. :s 17C -> _dev_addr `i ]
+"270
 }
-[; ;main.c: 269: } else {
+[; ;main.c: 270: } else {
 [e $U 444  ]
 [e :U 443 ]
 {
-"270
-[v _status `uc ~T0 @X0 1 a ]
-[; ;main.c: 270: uint8_t status = sen(dev_addr);
-[e = _status ( _sen (1 _dev_addr ]
-[; ;main.c: 271: if (status > 0) {
 "271
+[v _status `uc ~T0 @X0 1 a ]
+[; ;main.c: 271: uint8_t status = sen(dev_addr);
+[e = _status ( _sen (1 _dev_addr ]
+[; ;main.c: 272: if (status > 0) {
+"272
 [e $ ! > -> _status `i -> 0 `i 445  ]
 {
-[; ;main.c: 272: printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
-"272
-[e ( _printf , (. :s 18C -> _dev_addr `i ]
-[; ;main.c: 273: i2c1_write_no_data(dev_addr, 0x0c);
+[; ;main.c: 273: printf("!:%%%d:NETWORK ERROR\n", dev_addr);
 "273
-[e ( _i2c1_write_no_data (2 , -> _dev_addr `ui -> -> 12 `i `uc ]
+[e ( _printf , (. :s 18C -> _dev_addr `i ]
+[; ;main.c: 274: i2c1_write_no_data(dev_addr, 0x0c);
 "274
-}
-[e :U 445 ]
+[e ( _i2c1_write_no_data (2 , -> _dev_addr `ui -> -> 12 `i `uc ]
 "275
 }
+[e :U 445 ]
+"276
+}
 [e :U 444 ]
-[; ;main.c: 274: }
 [; ;main.c: 275: }
 [; ;main.c: 276: }
-"276
+[; ;main.c: 277: }
+"277
 [e :UE 442 ]
 }
-"281
+"282
 [v _fetch `(v ~T0 @X0 1 ef1`*uc ]
 {
-[; ;main.c: 281: void fetch(uint8_t *sch) {
+[; ;main.c: 282: void fetch(uint8_t *sch) {
 [e :U _fetch ]
 [v _sch `*uc ~T0 @X0 1 r1 ]
 [f ]
-"282
-[v _pos `uc ~T0 @X0 1 a ]
 "283
-[v _dev_addr `uc ~T0 @X0 1 a ]
+[v _pos `uc ~T0 @X0 1 a ]
 "284
-[v _status `uc ~T0 @X0 1 a ]
-[; ;main.c: 282: uint8_t pos;
-[; ;main.c: 283: uint8_t dev_addr;
-[; ;main.c: 284: uint8_t status;
-[; ;main.c: 285: for (pos=0; pos<4; pos++) {
+[v _dev_addr `uc ~T0 @X0 1 a ]
 "285
+[v _status `uc ~T0 @X0 1 a ]
+[; ;main.c: 283: uint8_t pos;
+[; ;main.c: 284: uint8_t dev_addr;
+[; ;main.c: 285: uint8_t status;
+[; ;main.c: 286: for (pos=0; pos<4; pos++) {
+"286
 {
 [e = _pos -> -> 0 `i `uc ]
 [e $ < -> _pos `i -> 4 `i 447  ]
 [e $U 448  ]
 [e :U 447 ]
 {
-[; ;main.c: 286: dev_addr = sch[pos];
-"286
-[e = _dev_addr *U + _sch * -> _pos `ux -> -> # *U _sch `ui `ux ]
-[; ;main.c: 287: if (dev_addr == 0 || dev_addr > 0x20) {
+[; ;main.c: 287: dev_addr = sch[pos];
 "287
+[e = _dev_addr *U + _sch * -> _pos `ux -> -> # *U _sch `ui `ux ]
+[; ;main.c: 288: if (dev_addr == 0 || dev_addr > 0x20) {
+"288
 [e $ ! || == -> _dev_addr `i -> 0 `i > -> _dev_addr `i -> 32 `i 450  ]
 {
-[; ;main.c: 288: break;
-"288
-[e $U 448  ]
+[; ;main.c: 289: break;
 "289
+[e $U 448  ]
+"290
 }
-[; ;main.c: 289: } else if (detected(dev_addr)) {
+[; ;main.c: 290: } else if (detected(dev_addr)) {
 [e $U 451  ]
 [e :U 450 ]
 [e $ ! != -> ( _detected (1 _dev_addr `i -> -> -> 0 `i `uc `i 452  ]
 {
-[; ;main.c: 290: status = sen(dev_addr);
-"290
-[e = _status ( _sen (1 _dev_addr ]
-[; ;main.c: 291: if (status > 0) {
+[; ;main.c: 291: status = sen(dev_addr);
 "291
+[e = _status ( _sen (1 _dev_addr ]
+[; ;main.c: 292: if (status > 0) {
+"292
 [e $ ! > -> _status `i -> 0 `i 453  ]
 {
-[; ;main.c: 292: printf("!:%%%d:NETWORK_ERROR\n", dev_addr);
-"292
-[e ( _printf , (. :s 19C -> _dev_addr `i ]
-[; ;main.c: 293: i2c1_write_no_data(dev_addr, 0x0c);
+[; ;main.c: 293: printf("!:%%%d:NETWORK ERROR\n", dev_addr);
 "293
-[e ( _i2c1_write_no_data (2 , -> _dev_addr `ui -> -> 12 `i `uc ]
+[e ( _printf , (. :s 19C -> _dev_addr `i ]
+[; ;main.c: 294: i2c1_write_no_data(dev_addr, 0x0c);
 "294
-}
-[e :U 453 ]
+[e ( _i2c1_write_no_data (2 , -> _dev_addr `ui -> -> 12 `i `uc ]
 "295
 }
-[e :U 452 ]
+[e :U 453 ]
 "296
+}
+[e :U 452 ]
+"297
 [e :U 451 ]
 }
-"285
+"286
 [e ++ _pos -> -> 1 `i `uc ]
 [e $ < -> _pos `i -> 4 `i 447  ]
 [e :U 448 ]
-"296
+"297
 }
-[; ;main.c: 294: }
 [; ;main.c: 295: }
 [; ;main.c: 296: }
 [; ;main.c: 297: }
-"297
+[; ;main.c: 298: }
+"298
 [e :UE 446 ]
 }
-"307
+"308
 [v _tick_handler `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 307: void tick_handler(void) {
+[; ;main.c: 308: void tick_handler(void) {
 [e :U _tick_handler ]
 [f ]
-"308
+"309
 [v F3579 `ui ~T0 @X0 1 s t ]
 [i F3579
 -> -> 0 `i `ui
 ]
-"309
+"310
 [v F3580 `c ~T0 @X0 1 s cmd_next ]
 [i F3580
 -> -> 0 `i `c
 ]
-[; ;main.c: 308: static uint16_t t = 0;
-[; ;main.c: 309: static int8_t cmd_next = 0;
-[; ;main.c: 310: t++;
-"310
+[; ;main.c: 309: static uint16_t t = 0;
+[; ;main.c: 310: static int8_t cmd_next = 0;
+[; ;main.c: 311: t++;
+"311
 [e ++ F3579 -> -> 1 `i `ui ]
-[; ;main.c: 312: if (exec_remote_cmd(cmd_next)) {
-"312
+[; ;main.c: 313: if (exec_remote_cmd(cmd_next)) {
+"313
 [e $ ! != -> ( _exec_remote_cmd (1 -> F3580 `uc `i -> -> -> 0 `i `uc `i 455  ]
 {
-[; ;main.c: 313: cmd_next++;
-"313
-[e ++ F3580 -> -> 1 `i `c ]
-[; ;main.c: 314: if (cmd_next > 3) cmd_next = 0;
+[; ;main.c: 314: cmd_next++;
 "314
+[e ++ F3580 -> -> 1 `i `c ]
+[; ;main.c: 315: if (cmd_next > 3) cmd_next = 0;
+"315
 [e $ ! > -> F3580 `i -> 3 `i 456  ]
 [e = F3580 -> -> 0 `i `c ]
 [e :U 456 ]
-"315
+"316
 }
 [e :U 455 ]
-[; ;main.c: 315: }
-[; ;main.c: 317: if (t % 60 == 0) {
-"317
+[; ;main.c: 316: }
+[; ;main.c: 318: if (t % 60 == 0) {
+"318
 [e $ ! == % F3579 -> -> 60 `i `ui -> -> 0 `i `ui 457  ]
 {
-[; ;main.c: 318: check_plg();
-"318
-[e ( _check_plg ..  ]
+[; ;main.c: 319: check_plg();
 "319
+[e ( _check_plg ..  ]
+"320
 }
-[; ;main.c: 319: } else if (t % 600 == 0) {
+[; ;main.c: 320: } else if (t % 600 == 0) {
 [e $U 458  ]
 [e :U 457 ]
 [e $ ! == % F3579 -> -> 600 `i `ui -> -> 0 `i `ui 459  ]
 {
-[; ;main.c: 320: scan_dev();
-"320
-[e ( _scan_dev ..  ]
-[; ;main.c: 321: t = 0;
+[; ;main.c: 321: scan_dev();
 "321
-[e = F3579 -> -> 0 `i `ui ]
+[e ( _scan_dev ..  ]
+[; ;main.c: 322: t = 0;
 "322
+[e = F3579 -> -> 0 `i `ui ]
+"323
 }
 [e :U 459 ]
-"323
+"324
 [e :U 458 ]
-[; ;main.c: 322: }
 [; ;main.c: 323: }
+[; ;main.c: 324: }
 [e :UE 454 ]
 }
-"328
+"329
 [v _inv_handler `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 328: void inv_handler(void) {
+[; ;main.c: 329: void inv_handler(void) {
 [e :U _inv_handler ]
 [f ]
-"329
+"330
 [v _dev_addr `uc ~T0 @X0 1 a ]
 [v _status `uc ~T0 @X0 1 a ]
-"330
+"331
 [v F3585 `ui ~T0 @X0 1 s t ]
 [i F3585
 -> -> 0 `i `ui
 ]
-[; ;main.c: 329: uint8_t dev_addr, status;
-[; ;main.c: 330: static uint16_t t = 0;
-[; ;main.c: 333: fetch(schedule[0]);
-"333
+[; ;main.c: 330: uint8_t dev_addr, status;
+[; ;main.c: 331: static uint16_t t = 0;
+[; ;main.c: 334: fetch(schedule[0]);
+"334
 [e ( _fetch (1 &U *U + &U _schedule * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
-[; ;main.c: 335: if (t % 2 == 0) fetch(schedule[1]);
-"335
+[; ;main.c: 336: if (t % 2 == 0) fetch(schedule[1]);
+"336
 [e $ ! == % F3585 -> -> 2 `i `ui -> -> 0 `i `ui 461  ]
 [e ( _fetch (1 &U *U + &U _schedule * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
 [e :U 461 ]
-[; ;main.c: 337: if (t % 6 == 0) fetch(schedule[2]);
-"337
+[; ;main.c: 338: if (t % 6 == 0) fetch(schedule[2]);
+"338
 [e $ ! == % F3585 -> -> 6 `i `ui -> -> 0 `i `ui 462  ]
 [e ( _fetch (1 &U *U + &U _schedule * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
 [e :U 462 ]
-[; ;main.c: 339: if (t % 12 == 0) fetch(schedule[3]);
-"339
+[; ;main.c: 340: if (t % 12 == 0) fetch(schedule[3]);
+"340
 [e $ ! == % F3585 -> -> 12 `i `ui -> -> 0 `i `ui 463  ]
 [e ( _fetch (1 &U *U + &U _schedule * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
 [e :U 463 ]
-[; ;main.c: 341: if (t % 60 == 0) fetch(schedule[4]);
-"341
+[; ;main.c: 342: if (t % 60 == 0) fetch(schedule[4]);
+"342
 [e $ ! == % F3585 -> -> 60 `i `ui -> -> 0 `i `ui 464  ]
 [e ( _fetch (1 &U *U + &U _schedule * -> -> -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
 [e :U 464 ]
-[; ;main.c: 343: if (t % 120 == 0) fetch(schedule[5]);
-"343
+[; ;main.c: 344: if (t % 120 == 0) fetch(schedule[5]);
+"344
 [e $ ! == % F3585 -> -> 120 `i `ui -> -> 0 `i `ui 465  ]
 [e ( _fetch (1 &U *U + &U _schedule * -> -> -> 5 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
 [e :U 465 ]
-[; ;main.c: 345: if (t % 600 == 0) {
-"345
+[; ;main.c: 346: if (t % 600 == 0) {
+"346
 [e $ ! == % F3585 -> -> 600 `i `ui -> -> 0 `i `ui 466  ]
 {
-[; ;main.c: 346: fetch(schedule[6]);
-"346
-[e ( _fetch (1 &U *U + &U _schedule * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
-[; ;main.c: 347: t = 1;
+[; ;main.c: 347: fetch(schedule[6]);
 "347
-[e = F3585 -> -> 1 `i `ui ]
+[e ( _fetch (1 &U *U + &U _schedule * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux ]
+[; ;main.c: 348: t = 1;
 "348
+[e = F3585 -> -> 1 `i `ui ]
+"349
 }
 [e :U 466 ]
-[; ;main.c: 348: }
-[; ;main.c: 350: t++;
-"350
-[e ++ F3585 -> -> 1 `i `ui ]
-[; ;main.c: 351: }
+[; ;main.c: 349: }
+[; ;main.c: 351: t++;
 "351
+[e ++ F3585 -> -> 1 `i `ui ]
+[; ;main.c: 352: }
+"352
 [e :UE 460 ]
 }
-"356
+"357
 [v _put_cmd `(v ~T0 @X0 1 ef1`*uc ]
 {
-[; ;main.c: 356: void put_cmd(uint8_t *buf) {
+[; ;main.c: 357: void put_cmd(uint8_t *buf) {
 [e :U _put_cmd ]
 [v _buf `*uc ~T0 @X0 1 r1 ]
 [f ]
-"357
+"358
 [v F3588 `c ~T0 @X0 1 s idx ]
 [i F3588
 -> -U -> 1 `i `c
 ]
-[; ;main.c: 357: static int8_t idx = -1;
-[; ;main.c: 358: if (++idx > 3) idx = 0;
-"358
+[; ;main.c: 358: static int8_t idx = -1;
+[; ;main.c: 359: if (++idx > 3) idx = 0;
+"359
 [e $ ! > -> =+ F3588 -> -> 1 `i `c `i -> 3 `i 468  ]
 [e = F3588 -> -> 0 `i `c ]
 [e :U 468 ]
-[; ;main.c: 359: if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
-"359
+[; ;main.c: 360: if (cmd_buf[idx][0] == '\0') strcpy(cmd_buf[idx], buf);
+"360
 [e $ ! == -> *U + &U *U + &U _cmd_buf * -> -> F3588 `uc `ux -> * -> # *U &U *U &U _cmd_buf `ui -> -> 48 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _cmd_buf * -> -> F3588 `uc `ux -> * -> # *U &U *U &U _cmd_buf `ui -> -> 48 `i `ui `ux `ui `ux `ui -> 0 `ui 469  ]
 [e ( _strcpy (2 , &U *U + &U _cmd_buf * -> -> F3588 `uc `ux -> * -> # *U &U *U &U _cmd_buf `ui -> -> 48 `i `ui `ux -> _buf `*Cuc ]
 [e :U 469 ]
-[; ;main.c: 360: }
-"360
+[; ;main.c: 361: }
+"361
 [e :UE 467 ]
 }
-"365
+"366
 [v _command_handler `(v ~T0 @X0 1 ef1`*uc ]
 {
-[; ;main.c: 365: void command_handler(uint8_t *buf) {
+[; ;main.c: 366: void command_handler(uint8_t *buf) {
 [e :U _command_handler ]
 [v _buf `*uc ~T0 @X0 1 r1 ]
 [f ]
-"366
+"367
 [v F3591 `uc ~T0 @X0 1 s pos ]
 [i F3591
 -> -> 0 `i `uc
 ]
-"367
-[v _i `uc ~T0 @X0 1 a ]
 "368
-[v _dev_addr `uc ~T0 @X0 1 a ]
-[; ;main.c: 366: static uint8_t pos = 0;
-[; ;main.c: 367: uint8_t i;
-[; ;main.c: 368: uint8_t dev_addr;
-[; ;main.c: 369: if (!strncmp(("I2C"), (buf), 3)) {
+[v _i `uc ~T0 @X0 1 a ]
 "369
+[v _dev_addr `uc ~T0 @X0 1 a ]
+[; ;main.c: 367: static uint8_t pos = 0;
+[; ;main.c: 368: uint8_t i;
+[; ;main.c: 369: uint8_t dev_addr;
+[; ;main.c: 370: if (!strncmp(("I2C"), (buf), 3)) {
+"370
 [e $ ! ! != ( _strncmp (3 , , :s 20C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 471  ]
 {
-[; ;main.c: 370: BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
-"370
-[e = _BACKPLANE_SLAVE_ADDRESS -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
+[; ;main.c: 371: BACKPLANE_SLAVE_ADDRESS = atoi(&buf[4]);
 "371
+[e = _BACKPLANE_SLAVE_ADDRESS -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
+"372
 }
-[; ;main.c: 371: } else if (!strncmp(("MAP"), (buf), 3)) {
+[; ;main.c: 372: } else if (!strncmp(("MAP"), (buf), 3)) {
 [e $U 472  ]
 [e :U 471 ]
 [e $ ! ! != ( _strncmp (3 , , :s 21C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 473  ]
 {
-[; ;main.c: 372: print_dev_map();
-"372
-[e ( _print_dev_map ..  ]
+[; ;main.c: 373: print_dev_map();
 "373
+[e ( _print_dev_map ..  ]
+"374
 }
-[; ;main.c: 373: } else if (!strncmp(("POS"), (buf), 3)) {
+[; ;main.c: 374: } else if (!strncmp(("POS"), (buf), 3)) {
 [e $U 474  ]
 [e :U 473 ]
 [e $ ! ! != ( _strncmp (3 , , :s 22C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 475  ]
 {
-[; ;main.c: 374: pos = atoi(&buf[4]);
-"374
-[e = F3591 -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
-[; ;main.c: 375: if (pos > 27) printf("!:POS:POS LARGER THAN 27\n");
+[; ;main.c: 375: pos = atoi(&buf[4]);
 "375
+[e = F3591 -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
+[; ;main.c: 376: if (pos > 27) printf("!:POS:POS LARGER THAN 27\n");
+"376
 [e $ ! > -> F3591 `i -> 27 `i 476  ]
 [e ( _printf :s 23C ]
 [e :U 476 ]
-"376
+"377
 }
-[; ;main.c: 376: } else if (!strncmp(("WSC"), (buf), 3)) {
+[; ;main.c: 377: } else if (!strncmp(("WSC"), (buf), 3)) {
 [e $U 477  ]
 [e :U 475 ]
 [e $ ! ! != ( _strncmp (3 , , :s 24C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 478  ]
 {
-[; ;main.c: 377: if (pos <= 27) {
-"377
+[; ;main.c: 378: if (pos <= 27) {
+"378
 [e $ ! <= -> F3591 `i -> 27 `i 479  ]
 {
-[; ;main.c: 378: dev_addr = atoi(&buf[4]);
-"378
-[e = _dev_addr -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
-[; ;main.c: 379: DATAEE_WriteByte(1 + pos + 1, dev_addr);
+[; ;main.c: 379: dev_addr = atoi(&buf[4]);
 "379
-[e ( _DATAEE_WriteByte (2 , -> + + -> 1 `i -> F3591 `i -> 1 `i `uc _dev_addr ]
+[e = _dev_addr -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
 [; ;main.c: 380: schedule[pos/4][pos%4] = dev_addr;
 "380
 [e = *U + &U *U + &U _schedule * -> -> / -> F3591 `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> F3591 `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> F3591 `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux _dev_addr ]
@@ -4354,189 +4351,218 @@ Version 3.2 HI-TECH Software Intermediate Code
 "384
 }
 [; ;main.c: 383: }
-[; ;main.c: 384: } else if (!strncmp(("RSC"), (buf), 3)) {
+[; ;main.c: 384: } else if (!strncmp(("SSC"), (buf), 3)) {
 [e $U 481  ]
 [e :U 478 ]
 [e $ ! ! != ( _strncmp (3 , , :s 26C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 482  ]
 {
-[; ;main.c: 385: printf("$:RSC:");
+[; ;main.c: 385: for(i=0; i<28; i++) {
 "385
-[e ( _printf :s 27C ]
-[; ;main.c: 386: for (i=0; i<27; i++) {
-"386
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 27 `i 483  ]
+[e $ < -> _i `i -> 28 `i 483  ]
 [e $U 484  ]
 [e :U 483 ]
 {
-[; ;main.c: 387: if ((i+1) % 4 == 0) {
+[; ;main.c: 386: dev_addr = schedule[i/4][i%4];
+"386
+[e = _dev_addr *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux ]
+[; ;main.c: 387: DATAEE_WriteByte(2 + i, dev_addr);
 "387
-[e $ ! == % + -> _i `i -> 1 `i -> 4 `i -> 0 `i 486  ]
-{
-[; ;main.c: 388: printf("%d|", schedule[i/4][i%4]);
+[e ( _DATAEE_WriteByte (2 , -> + -> 2 `i -> _i `i `uc _dev_addr ]
 "388
-[e ( _printf , (. :s 28C -> *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux `i ]
+}
+"385
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 28 `i 483  ]
+[e :U 484 ]
+"388
+}
 "389
 }
-[; ;main.c: 389: } else {
-[e $U 487  ]
-[e :U 486 ]
-{
-[; ;main.c: 390: printf("%d,", schedule[i/4][i%4]);
-"390
-[e ( _printf , (. :s 29C -> *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux `i ]
-"391
-}
-[e :U 487 ]
-"392
-}
-"386
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 27 `i 483  ]
-[e :U 484 ]
-"392
-}
-[; ;main.c: 391: }
-[; ;main.c: 392: }
-[; ;main.c: 393: printf("%d\n", schedule[6][3]);
-"393
-[e ( _printf , (. :s 30C -> *U + &U *U + &U _schedule * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux `i ]
-"394
-}
-[; ;main.c: 394: } else if (!strncmp(("CSC"), (buf), 3)) {
-[e $U 488  ]
+[; ;main.c: 388: }
+[; ;main.c: 389: } else if (!strncmp(("RSC"), (buf), 3)) {
+[e $U 486  ]
 [e :U 482 ]
-[e $ ! ! != ( _strncmp (3 , , :s 31C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 489  ]
+[e $ ! ! != ( _strncmp (3 , , :s 27C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 487  ]
 {
-[; ;main.c: 395: for (i=0; i<28; i++) {
-"395
+[; ;main.c: 390: printf("$:RSC:");
+"390
+[e ( _printf :s 28C ]
+[; ;main.c: 391: for (i=0; i<27; i++) {
+"391
 {
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 28 `i 490  ]
-[e $U 491  ]
-[e :U 490 ]
+[e $ < -> _i `i -> 27 `i 488  ]
+[e $U 489  ]
+[e :U 488 ]
 {
-[; ;main.c: 396: DATAEE_WriteByte(1+i+1, 0);
-"396
-[e ( _DATAEE_WriteByte (2 , -> + + -> 1 `i -> _i `i -> 1 `i `uc -> -> 0 `i `uc ]
-[; ;main.c: 397: schedule[i/4][i%4] = 0;
-"397
-[e = *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
-"398
+[; ;main.c: 392: if ((i+1) % 4 == 0) {
+"392
+[e $ ! == % + -> _i `i -> 1 `i -> 4 `i -> 0 `i 491  ]
+{
+[; ;main.c: 393: printf("%d|", schedule[i/4][i%4]);
+"393
+[e ( _printf , (. :s 29C -> *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux `i ]
+"394
 }
-"395
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 28 `i 490  ]
+[; ;main.c: 394: } else {
+[e $U 492  ]
 [e :U 491 ]
-"398
+{
+[; ;main.c: 395: printf("%d,", schedule[i/4][i%4]);
+"395
+[e ( _printf , (. :s 30C -> *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux `i ]
+"396
 }
+[e :U 492 ]
+"397
+}
+"391
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 27 `i 488  ]
+[e :U 489 ]
+"397
+}
+[; ;main.c: 396: }
+[; ;main.c: 397: }
+[; ;main.c: 398: printf("%d\n", schedule[6][3]);
+"398
+[e ( _printf , (. :s 31C -> *U + &U *U + &U _schedule * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux `i ]
 "399
 }
-[; ;main.c: 398: }
-[; ;main.c: 399: } else if (!strncmp(("SEN"), (buf), 3)) {
+[; ;main.c: 399: } else if (!strncmp(("CSC"), (buf), 3)) {
 [e $U 493  ]
-[e :U 489 ]
+[e :U 487 ]
 [e $ ! ! != ( _strncmp (3 , , :s 32C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 494  ]
 {
-[; ;main.c: 400: dev_addr = atoi(&buf[4]);
+[; ;main.c: 400: for (i=0; i<28; i++) {
 "400
-[e = _dev_addr -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
-[; ;main.c: 401: one_shot_sen(dev_addr);
+{
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 28 `i 495  ]
+[e $U 496  ]
+[e :U 495 ]
+{
+[; ;main.c: 401: schedule[i/4][i%4] = 0;
 "401
-[e ( _one_shot_sen (1 _dev_addr ]
+[e = *U + &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux * -> -> % -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _schedule * -> -> / -> _i `i -> 4 `i `ui `ux -> * -> # *U &U *U &U _schedule `ui -> -> 4 `i `ui `ux `ui `ux -> -> 0 `i `uc ]
 "402
 }
-[; ;main.c: 402: } else if (BACKPLANE_SLAVE_ADDRESS != 0x01) {
-[e $U 495  ]
-[e :U 494 ]
-[e $ ! != -> _BACKPLANE_SLAVE_ADDRESS `i -> 1 `i 496  ]
-{
-[; ;main.c: 403: put_cmd(buf);
-"403
-[e ( _put_cmd (1 _buf ]
-"404
-}
+"400
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 28 `i 495  ]
 [e :U 496 ]
+"402
+}
+"403
+}
+[; ;main.c: 402: }
+[; ;main.c: 403: } else if (!strncmp(("SEN"), (buf), 3)) {
+[e $U 498  ]
+[e :U 494 ]
+[e $ ! ! != ( _strncmp (3 , , :s 33C -> _buf `*Cuc -> -> 3 `i `ui -> 0 `i 499  ]
+{
+[; ;main.c: 404: dev_addr = atoi(&buf[4]);
+"404
+[e = _dev_addr -> ( _atoi (1 -> &U *U + _buf * -> -> 4 `i `x -> -> # *U _buf `i `x `*Cuc `uc ]
+[; ;main.c: 405: one_shot_sen(dev_addr);
 "405
-[e :U 495 ]
+[e ( _one_shot_sen (1 _dev_addr ]
+"406
+}
+[; ;main.c: 406: } else if (BACKPLANE_SLAVE_ADDRESS != 0x01) {
+[e $U 500  ]
+[e :U 499 ]
+[e $ ! != -> _BACKPLANE_SLAVE_ADDRESS `i -> 1 `i 501  ]
+{
+[; ;main.c: 407: put_cmd(buf);
+"407
+[e ( _put_cmd (1 _buf ]
+"408
+}
+[e :U 501 ]
+"409
+[e :U 500 ]
+[e :U 498 ]
 [e :U 493 ]
-[e :U 488 ]
+[e :U 486 ]
 [e :U 481 ]
 [e :U 477 ]
 [e :U 474 ]
 [e :U 472 ]
-[; ;main.c: 404: }
-[; ;main.c: 405: }
+[; ;main.c: 408: }
+[; ;main.c: 409: }
 [e :UE 470 ]
 }
-"407
+"411
 [v _main `(v ~T0 @X0 1 ef ]
-"408
+"412
 {
-[; ;main.c: 407: void main(void)
-[; ;main.c: 408: {
+[; ;main.c: 411: void main(void)
+[; ;main.c: 412: {
 [e :U _main ]
 [f ]
-[; ;main.c: 409: init();
-"409
-[e ( _init ..  ]
-[; ;main.c: 411: SYSTEM_Initialize();
-"411
-[e ( _SYSTEM_Initialize ..  ]
-[; ;main.c: 412: (INTCONbits.GIE = 1);
-"412
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 413: (INTCONbits.PEIE = 1);
+[; ;main.c: 413: init();
 "413
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 415: PROTOCOL_Initialize("BACKPLANE-MASTER", (0), (0), (0), inv_handler, 1);
+[e ( _init ..  ]
+[; ;main.c: 415: SYSTEM_Initialize();
 "415
-[e ( _PROTOCOL_Initialize (4 , , , , , :s 33C -> -> 0 `i `*v -> -> 0 `i `*v -> -> 0 `i `*v -> &U _inv_handler `*v -> -> 1 `i `uc ]
-[; ;main.c: 416: PROTOCOL_Set_Extension_Handler(command_handler);
+[e ( _SYSTEM_Initialize ..  ]
+[; ;main.c: 416: (INTCONbits.GIE = 1);
 "416
-[e ( _PROTOCOL_Set_Extension_Handler (1 -> &U _command_handler `*v ]
-[; ;main.c: 417: PROTOCOL_Set_Tick_Handler(tick_handler);
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;main.c: 417: (INTCONbits.PEIE = 1);
 "417
-[e ( _PROTOCOL_Set_Tick_Handler (1 -> &U _tick_handler `*v ]
-[; ;main.c: 418: PROTOCOL_Loop();
-"418
-[e ( _PROTOCOL_Loop ..  ]
-[; ;main.c: 419: }
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;main.c: 419: PROTOCOL_Initialize("BACKPLANE-MASTER", (0), (0), (0), inv_handler, 1);
 "419
-[e :UE 497 ]
+[e ( _PROTOCOL_Initialize (4 , , , , , :s 34C -> -> 0 `i `*v -> -> 0 `i `*v -> -> 0 `i `*v -> &U _inv_handler `*v -> -> 1 `i `uc ]
+[; ;main.c: 420: PROTOCOL_Set_Extension_Handler(command_handler);
+"420
+[e ( _PROTOCOL_Set_Extension_Handler (1 -> &U _command_handler `*v ]
+[; ;main.c: 421: PROTOCOL_Set_Tick_Handler(tick_handler);
+"421
+[e ( _PROTOCOL_Set_Tick_Handler (1 -> &U _tick_handler `*v ]
+[; ;main.c: 422: PROTOCOL_Loop();
+"422
+[e ( _PROTOCOL_Loop ..  ]
+[; ;main.c: 423: }
+"423
+[e :UE 502 ]
 }
 [p f _printf 9437312 ]
-[a 28C 37 100 124 0 ]
+[a 29C 37 100 124 0 ]
 [a 4C 83 65 86 0 ]
 [a 9C 83 69 84 0 ]
 [a 10C 71 69 84 0 ]
 [a 22C 80 79 83 0 ]
-[a 33C 66 65 67 75 80 76 65 78 69 45 77 65 83 84 69 82 0 ]
+[a 34C 66 65 67 75 80 76 65 78 69 45 77 65 83 84 69 82 0 ]
 [a 6C 83 84 80 0 ]
 [a 21C 77 65 80 0 ]
 [a 1C 87 72 79 0 ]
-[a 32C 83 69 78 0 ]
+[a 33C 83 69 78 0 ]
 [a 24C 87 83 67 0 ]
-[a 26C 82 83 67 0 ]
-[a 31C 67 83 67 0 ]
+[a 26C 83 83 67 0 ]
+[a 27C 82 83 67 0 ]
+[a 32C 67 83 67 0 ]
 [a 20C 73 50 67 0 ]
 [a 5C 83 84 65 0 ]
 [a 13C 36 58 77 65 80 58 0 ]
-[a 27C 36 58 82 83 67 58 0 ]
+[a 28C 36 58 82 83 67 58 0 ]
 [a 14C 37 100 44 0 ]
-[a 29C 37 100 44 0 ]
+[a 30C 37 100 44 0 ]
 [a 11C 36 58 71 69 84 58 37 100 10 0 ]
 [a 2C 36 58 87 72 79 58 37 100 10 0 ]
 [a 15C 37 100 10 0 ]
-[a 30C 37 100 10 0 ]
-[a 18C 33 58 37 37 37 100 58 78 69 84 87 79 82 75 95 69 82 82 79 82 10 0 ]
-[a 19C 33 58 37 37 37 100 58 78 69 84 87 79 82 75 95 69 82 82 79 82 10 0 ]
+[a 31C 37 100 10 0 ]
+[a 18C 33 58 37 37 37 100 58 78 69 84 87 79 82 75 32 69 82 82 79 82 10 0 ]
+[a 19C 33 58 37 37 37 100 58 78 69 84 87 79 82 75 32 69 82 82 79 82 10 0 ]
 [a 8C 33 58 83 84 80 58 78 65 67 75 10 0 ]
+[a 3C 33 58 87 72 79 58 78 65 67 75 10 0 ]
 [a 7C 42 58 83 84 80 58 65 67 75 10 0 ]
 [a 12C 33 58 78 79 32 65 67 75 32 70 82 79 77 32 73 50 67 32 83 76 65 86 69 10 0 ]
-[a 17C 33 58 37 37 37 100 58 85 78 68 69 84 69 67 84 69 68 95 68 69 86 73 67 69 10 0 ]
+[a 17C 33 58 37 37 37 100 58 85 78 68 69 84 69 67 84 69 68 32 68 69 86 73 67 69 10 0 ]
 [a 16C 33 58 77 65 80 58 78 79 32 83 76 65 86 69 32 70 79 85 78 68 10 0 ]
 [a 23C 33 58 80 79 83 58 80 79 83 32 76 65 82 71 69 82 32 84 72 65 78 32 50 55 10 0 ]
 [a 25C 33 58 87 83 67 58 80 79 83 32 76 65 82 71 69 82 32 84 72 65 78 32 50 55 10 0 ]
-[a 3C 33 10 0 ]
