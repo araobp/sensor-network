@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/shiny/Documents/GitHub/sensor-network/blocks/lib/protocol.X/protocol.h</file>
             <file>file:/C:/Users/shiny/Documents/GitHub/sensor-network/blocks/lib/protocol.X/protocol.c</file>
+            <file>file:/C:/Users/shiny/Documents/GitHub/sensor-network/blocks/lib/protocol.X/mcc_generated_files/pin_manager.c</file>
         </group>
     </open-files>
 </project-private>

@@ -138,6 +138,7 @@ extern "C" {
     #define HDC1000_I2C 0x12  // Temperature and humidity sensor
     #define KXR94_2050_I2C 0x13  // 3-axis accelerometer 
     #define SHT31_DIS_I2C 0x14 // Temperature and humidity sensor
+    #define MULTI_A1324LUA_T_I2C 0x15  // Hall sensors for position sensing 
  
     /*
      * TLV
