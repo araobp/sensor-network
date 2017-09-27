@@ -1,6 +1,6 @@
 # Plug&play protocol (UART/I2C)
 
-Update: 2017-JUL-7
+Update: 2017-SEP-27
 
 This is a very simple I/O link supporting Plug&Play. This protocol works over UART and I2C at a minimal cost. I am also considering to support it over CAN.
 
@@ -228,7 +228,13 @@ slave              master
   |------<*1>------->|
 
 (*1) example output
-$:RSC:0,0,0,0,0,0,0,0,0,0,0,19,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+$:RSC:0,0,0,0|0,0,0,0|0,0,0,19|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0
+```
+
+#### SSC (save schedule onto EEPROM)
+```
+slave              master
+  |<---SSC:<value>---|
 ```
 
 #### % (sensor data)
