@@ -264,7 +264,7 @@ Example:
 %SEN:208_T:26,72
 ```
 
-### Character LCD block
+### Character LCD block (AQM1602XA-RN-GBW)
 
 #### INI (initialize LCD)
 ```
@@ -331,6 +331,26 @@ Example:
 
 line1 and line2 are string data in ASCII code. Both line1 and line2 MUST be 16 characters in length (totally 32 characters).
 
+### Multiple hall sensors block for detecting positions (MULTI_A1324LUA_T)
+
+SEN's value is a bit mask in decimal. Refer to the source code.
+
+```
+const adc_channel_t ANALOG_IN[AINS] = {
+    channel_AN4, channel_AN5, channel_AN6,
+    channel_AN7, channel_AN8, channel_AN11
+};
+
+SET:1 --> analog_in[0] = ANALOG_IN[0];
+SET:2 --> analog_in[1] = ANALOG_IN[1];
+SET:4 --> analog_in[2] = ANALOG_IN[2];
+SET:8 --> analog_in[3] = ANALOG_IN[3];
+SET:16 --> analog_in[4] = ANALOG_IN[4];
+SET:32 --> analog_in[5] = ANALOG_IN[5];
+
+SET:3 corresponds to "SET:1 and SET:2".
+```
+
 ## EEPROM area (PIC16F1829's built-in EEPROM)
 
 |Address|Usage                 |Node                  |
@@ -351,13 +371,14 @@ line1 and line2 are string data in ASCII code. Both line1 and line2 MUST be 16 c
 
 ## I2C address registry
 
-|Address |Device ID              |Capability                     |FOSC  |UART baud rate|
-|--------|-----------------------|-------------------------------|------|--------------|
-|0x01(01)|BACKPLANE-MASTER       |I2C master (w/ 8msec timer)    |32MHz |115200        |
-|0x10(16)|AQM1602XA-RN-GBW       |Character LCD                  |4MHz  |9600          |
-|0x11(17)|A1324LUA-T             |Hall sensor                    |4MHz  |9600          |
-|0x12(18)|HDC1000                |Temperature and humidity sensor|4MHz  |9600          |
-|0x13(19)|KXR94-2050             |Three-axis accelerometer       |32MHz |9600          |
-|0x14(20)|SHT31-DIS              |Temperature and humidity sensor|4MHz  |9600          |
+|Address |Device ID              |Capability                      |FOSC  |UART baud rate|
+|--------|-----------------------|--------------------------------|------|--------------|
+|0x01(01)|BACKPLANE-MASTER       |I2C master (w/ 8msec timer)     |32MHz |115200        |
+|0x10(16)|AQM1602XA-RN-GBW       |Character LCD                   |4MHz  |9600          |
+|0x11(17)|A1324LUA_T             |Hall sensor                     |4MHz  |9600          |
+|0x12(18)|HDC1000                |Temperature and humidity sensor |4MHz  |9600          |
+|0x13(19)|KXR94-2050             |Three-axis accelerometer        |32MHz |9600          |
+|0x14(20)|SHT31-DIS              |Temperature and humidity sensor |4MHz  |9600          |
+|0x11(21)|MULTI_A1324LUA_T       |Hall sensor for position sensing|4MHz  |9600          |
 
 Note: TI does not recommed using HDC1000 in a new design (http://www.ti.com/product/HDC1000/description), so I use SHT31-DIS from now on.
