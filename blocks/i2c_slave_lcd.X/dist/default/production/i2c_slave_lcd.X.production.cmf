@@ -99,7 +99,7 @@ dataBANK0 BANK0 1 6D 6D 3 1
 dataCOMMON COMMON 1 7D 7D 1 1
 clrtext CODE 0 1780 1780 6 2
 bssCOMMON COMMON 1 7C 7C 1 1
-$C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+$C:\Users\shiny\AppData\Local\Temp\s30s.obj
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 48 48 2 2
 config CONFIG 0 8007 8007 2 2
@@ -198,45 +198,45 @@ STRING 1800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\i2c_slave_lcd.X.production.obj
-4A cinit CODE >4396:C:\Users\shiny\AppData\Local\Temp\s7t0.
-4A cinit CODE >4399:C:\Users\shiny\AppData\Local\Temp\s7t0.
-4A cinit CODE >4610:C:\Users\shiny\AppData\Local\Temp\s7t0.
-4D cinit CODE >4611:C:\Users\shiny\AppData\Local\Temp\s7t0.
-4E cinit CODE >4615:C:\Users\shiny\AppData\Local\Temp\s7t0.
-51 cinit CODE >4616:C:\Users\shiny\AppData\Local\Temp\s7t0.
-52 cinit CODE >4617:C:\Users\shiny\AppData\Local\Temp\s7t0.
-55 cinit CODE >4618:C:\Users\shiny\AppData\Local\Temp\s7t0.
-56 cinit CODE >4619:C:\Users\shiny\AppData\Local\Temp\s7t0.
-59 cinit CODE >4620:C:\Users\shiny\AppData\Local\Temp\s7t0.
-5A cinit CODE >4637:C:\Users\shiny\AppData\Local\Temp\s7t0.
-5B cinit CODE >4641:C:\Users\shiny\AppData\Local\Temp\s7t0.
-5C cinit CODE >4642:C:\Users\shiny\AppData\Local\Temp\s7t0.
-5D cinit CODE >4643:C:\Users\shiny\AppData\Local\Temp\s7t0.
-5E cinit CODE >4644:C:\Users\shiny\AppData\Local\Temp\s7t0.
-5F cinit CODE >4645:C:\Users\shiny\AppData\Local\Temp\s7t0.
-60 cinit CODE >4646:C:\Users\shiny\AppData\Local\Temp\s7t0.
-63 cinit CODE >4650:C:\Users\shiny\AppData\Local\Temp\s7t0.
-64 cinit CODE >4651:C:\Users\shiny\AppData\Local\Temp\s7t0.
-65 cinit CODE >4652:C:\Users\shiny\AppData\Local\Temp\s7t0.
-66 cinit CODE >4653:C:\Users\shiny\AppData\Local\Temp\s7t0.
-67 cinit CODE >4654:C:\Users\shiny\AppData\Local\Temp\s7t0.
-68 cinit CODE >4655:C:\Users\shiny\AppData\Local\Temp\s7t0.
-6B cinit CODE >4659:C:\Users\shiny\AppData\Local\Temp\s7t0.
-6C cinit CODE >4660:C:\Users\shiny\AppData\Local\Temp\s7t0.
-6D cinit CODE >4661:C:\Users\shiny\AppData\Local\Temp\s7t0.
-6E cinit CODE >4662:C:\Users\shiny\AppData\Local\Temp\s7t0.
-6F cinit CODE >4663:C:\Users\shiny\AppData\Local\Temp\s7t0.
-70 cinit CODE >4664:C:\Users\shiny\AppData\Local\Temp\s7t0.
-73 cinit CODE >4668:C:\Users\shiny\AppData\Local\Temp\s7t0.
-74 cinit CODE >4669:C:\Users\shiny\AppData\Local\Temp\s7t0.
-75 cinit CODE >4670:C:\Users\shiny\AppData\Local\Temp\s7t0.
-76 cinit CODE >4671:C:\Users\shiny\AppData\Local\Temp\s7t0.
-77 cinit CODE >4672:C:\Users\shiny\AppData\Local\Temp\s7t0.
-78 cinit CODE >4673:C:\Users\shiny\AppData\Local\Temp\s7t0.
-7A cinit CODE >4679:C:\Users\shiny\AppData\Local\Temp\s7t0.
-7A cinit CODE >4681:C:\Users\shiny\AppData\Local\Temp\s7t0.
-7B cinit CODE >4682:C:\Users\shiny\AppData\Local\Temp\s7t0.
-7C cinit CODE >4683:C:\Users\shiny\AppData\Local\Temp\s7t0.
+4A cinit CODE >4396:C:\Users\shiny\AppData\Local\Temp\s30s.
+4A cinit CODE >4399:C:\Users\shiny\AppData\Local\Temp\s30s.
+4A cinit CODE >4610:C:\Users\shiny\AppData\Local\Temp\s30s.
+4D cinit CODE >4611:C:\Users\shiny\AppData\Local\Temp\s30s.
+4E cinit CODE >4615:C:\Users\shiny\AppData\Local\Temp\s30s.
+51 cinit CODE >4616:C:\Users\shiny\AppData\Local\Temp\s30s.
+52 cinit CODE >4617:C:\Users\shiny\AppData\Local\Temp\s30s.
+55 cinit CODE >4618:C:\Users\shiny\AppData\Local\Temp\s30s.
+56 cinit CODE >4619:C:\Users\shiny\AppData\Local\Temp\s30s.
+59 cinit CODE >4620:C:\Users\shiny\AppData\Local\Temp\s30s.
+5A cinit CODE >4637:C:\Users\shiny\AppData\Local\Temp\s30s.
+5B cinit CODE >4641:C:\Users\shiny\AppData\Local\Temp\s30s.
+5C cinit CODE >4642:C:\Users\shiny\AppData\Local\Temp\s30s.
+5D cinit CODE >4643:C:\Users\shiny\AppData\Local\Temp\s30s.
+5E cinit CODE >4644:C:\Users\shiny\AppData\Local\Temp\s30s.
+5F cinit CODE >4645:C:\Users\shiny\AppData\Local\Temp\s30s.
+60 cinit CODE >4646:C:\Users\shiny\AppData\Local\Temp\s30s.
+63 cinit CODE >4650:C:\Users\shiny\AppData\Local\Temp\s30s.
+64 cinit CODE >4651:C:\Users\shiny\AppData\Local\Temp\s30s.
+65 cinit CODE >4652:C:\Users\shiny\AppData\Local\Temp\s30s.
+66 cinit CODE >4653:C:\Users\shiny\AppData\Local\Temp\s30s.
+67 cinit CODE >4654:C:\Users\shiny\AppData\Local\Temp\s30s.
+68 cinit CODE >4655:C:\Users\shiny\AppData\Local\Temp\s30s.
+6B cinit CODE >4659:C:\Users\shiny\AppData\Local\Temp\s30s.
+6C cinit CODE >4660:C:\Users\shiny\AppData\Local\Temp\s30s.
+6D cinit CODE >4661:C:\Users\shiny\AppData\Local\Temp\s30s.
+6E cinit CODE >4662:C:\Users\shiny\AppData\Local\Temp\s30s.
+6F cinit CODE >4663:C:\Users\shiny\AppData\Local\Temp\s30s.
+70 cinit CODE >4664:C:\Users\shiny\AppData\Local\Temp\s30s.
+73 cinit CODE >4668:C:\Users\shiny\AppData\Local\Temp\s30s.
+74 cinit CODE >4669:C:\Users\shiny\AppData\Local\Temp\s30s.
+75 cinit CODE >4670:C:\Users\shiny\AppData\Local\Temp\s30s.
+76 cinit CODE >4671:C:\Users\shiny\AppData\Local\Temp\s30s.
+77 cinit CODE >4672:C:\Users\shiny\AppData\Local\Temp\s30s.
+78 cinit CODE >4673:C:\Users\shiny\AppData\Local\Temp\s30s.
+7A cinit CODE >4679:C:\Users\shiny\AppData\Local\Temp\s30s.
+7A cinit CODE >4681:C:\Users\shiny\AppData\Local\Temp\s30s.
+7B cinit CODE >4682:C:\Users\shiny\AppData\Local\Temp\s30s.
+7C cinit CODE >4683:C:\Users\shiny\AppData\Local\Temp\s30s.
 4 intentry CODE >51:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_lcd.X\mcc_generated_files/interrupt_manager.c
 9 intentry CODE >54:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_lcd.X\mcc_generated_files/interrupt_manager.c
 11 intentry CODE >56:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_lcd.X\mcc_generated_files/interrupt_manager.c
@@ -1027,14 +1027,14 @@ BF0 maintext CODE >193:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c
 BF3 maintext CODE >196:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_lcd.X\main.c
 BF6 maintext CODE >199:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_lcd.X\main.c
 BF8 maintext CODE >200:C:\Users\shiny\Documents\GitHub\sensor-network\blocks\i2c_slave_lcd.X\main.c
-1780 clrtext CODE >4626:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1780 clrtext CODE >4627:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1781 clrtext CODE >4628:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1781 clrtext CODE >4629:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1782 clrtext CODE >4630:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1783 clrtext CODE >4631:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1784 clrtext CODE >4632:C:\Users\shiny\AppData\Local\Temp\s7t0.
-1785 clrtext CODE >4633:C:\Users\shiny\AppData\Local\Temp\s7t0.
+1780 clrtext CODE >4626:C:\Users\shiny\AppData\Local\Temp\s30s.
+1780 clrtext CODE >4627:C:\Users\shiny\AppData\Local\Temp\s30s.
+1781 clrtext CODE >4628:C:\Users\shiny\AppData\Local\Temp\s30s.
+1781 clrtext CODE >4629:C:\Users\shiny\AppData\Local\Temp\s30s.
+1782 clrtext CODE >4630:C:\Users\shiny\AppData\Local\Temp\s30s.
+1783 clrtext CODE >4631:C:\Users\shiny\AppData\Local\Temp\s30s.
+1784 clrtext CODE >4632:C:\Users\shiny\AppData\Local\Temp\s30s.
+1785 clrtext CODE >4633:C:\Users\shiny\AppData\Local\Temp\s30s.
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -1083,13 +1083,13 @@ _TMR0 15 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 _WPUA 20C 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 _WPUB 20D 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 _WPUC 20E 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
-___sp 0 0 STACK 2 stack C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+___sp 0 0 STACK 2 stack C:\Users\shiny\AppData\Local\Temp\s30s.obj
 _atoi 1A4C 0 CODE 0 text23 dist/default/production\i2c_slave_lcd.X.production.obj
 _main 176E 0 CODE 0 maintext dist/default/production\i2c_slave_lcd.X.production.obj
 _pbuf 59 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_lcd.X.production.obj
 btemp 7E 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 _tmr_cnt 51 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_lcd.X.production.obj
-start 90 0 CODE 0 init C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+start 90 0 CODE 0 init C:\Users\shiny\AppData\Local\Temp\s30s.obj
 _EUSART_Write 141C 0 CODE 0 text9 dist/default/production\i2c_slave_lcd.X.production.obj
 i1_extension_handler 2FC4 0 CODE 0 text59 dist/default/production\i2c_slave_lcd.X.production.obj
 __size_of_atoi 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
@@ -1122,12 +1122,12 @@ i1DATAEE_WriteByte@bData 70 0 COMMON 1 cstackCOMMON dist/default/production\i2c_
 __HdataCOMMON 0 0 ABS 0 dataCOMMON -
 __end_of_lcd_clear 111C 0 CODE 0 text18 dist/default/production\i2c_slave_lcd.X.production.obj
 __size_of_lcd_clear 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
-intlevel0 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s7t0.obj
-intlevel1 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s7t0.obj
-intlevel2 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s7t0.obj
-intlevel3 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s7t0.obj
-intlevel4 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s7t0.obj
-intlevel5 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+intlevel0 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s30s.obj
+intlevel1 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s30s.obj
+intlevel2 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s30s.obj
+intlevel3 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s30s.obj
+intlevel4 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s30s.obj
+intlevel5 0 0 CODE 0 functab C:\Users\shiny\AppData\Local\Temp\s30s.obj
 __LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _PROTOCOL_Read_Device_Address 2E96 0 CODE 0 text44 dist/default/production\i2c_slave_lcd.X.production.obj
 __end_of_I2C2_MasterWrite 154E 0 CODE 0 text20 dist/default/production\i2c_slave_lcd.X.production.obj
@@ -1267,7 +1267,7 @@ _readbuf CB 0 BANK1 1 bssBANK1 dist/default/production\i2c_slave_lcd.X.productio
 I2C2_MasterWriteTRBBuild@length 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_lcd.X.production.obj
 __size_of_I2C2_Initialize 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 _WDTCON 97 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
-___int_sp 0 0 STACK 2 stack C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+___int_sp 0 0 STACK 2 stack C:\Users\shiny\AppData\Local\Temp\s30s.obj
 __end_of_EUSART_Read 1354 0 CODE 0 text37 dist/default/production\i2c_slave_lcd.X.production.obj
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -1468,7 +1468,7 @@ __HnvBANK1 0 0 ABS 0 nvBANK1 -
 __Lintentry 8 0 CODE 0 intentry -
 __end_of_I2C2_MasterTRBInsert 187E 0 CODE 0 text22 dist/default/production\i2c_slave_lcd.X.production.obj
 __size_of_i2c2_write 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
-reset_vec 0 0 CODE 0 reset_vec C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+reset_vec 0 0 CODE 0 reset_vec C:\Users\shiny\AppData\Local\Temp\s30s.obj
 __end_ofi1_PROTOCOL_Read_Lock 2E90 0 CODE 0 text61 dist/default/production\i2c_slave_lcd.X.production.obj
 EUSART_Read@readValue 21 0 BANK0 1 cstackBANK0 dist/default/production\i2c_slave_lcd.X.production.obj
 __size_of_DATAEE_ReadByte 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
@@ -1608,8 +1608,8 @@ __size_of_loop_func 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.producti
 i1DATAEE_WriteByte@bAdd 71 0 COMMON 1 cstackCOMMON dist/default/production\i2c_slave_lcd.X.production.obj
 __size_of_EUSART_Read 0 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 I2C2_ISR@i2c_address 6B 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_lcd.X.production.obj
-stackhi 23EF 0 ABS 0 - C:\Users\shiny\AppData\Local\Temp\s7t0.obj
-stacklo 2120 0 ABS 0 - C:\Users\shiny\AppData\Local\Temp\s7t0.obj
+stackhi 23EF 0 ABS 0 - C:\Users\shiny\AppData\Local\Temp\s30s.obj
+stacklo 2120 0 ABS 0 - C:\Users\shiny\AppData\Local\Temp\s30s.obj
 _sec_cnt 52 0 BANK0 1 bssBANK0 dist/default/production\i2c_slave_lcd.X.production.obj
 _OSCTUNE 98 0 ABS 0 - dist/default/production\i2c_slave_lcd.X.production.obj
 _lcd_contrast 1908 0 CODE 0 text17 dist/default/production\i2c_slave_lcd.X.production.obj
