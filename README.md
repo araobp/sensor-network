@@ -65,7 +65,7 @@ It also runs on I2C.
 
 ### 8bit MCU as core of node
 
-I use [PIC16F1829](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements of this project.
+I use [PIC16F1829/PIC16F1825](http://ww1.microchip.com/downloads/en/DeviceDoc/41440A.pdf) that satisfies the requirements of this project.
 
 Clock speed:
 - 4MHz typical
