@@ -237,6 +237,18 @@ slave              master
   |<---SSC:<value>---|
 ```
 
+#### SFT (set NO_DATA filter for subscribers)
+```
+slave              master
+  |<------SFT--------|
+```
+
+#### UFT (unset NO_DATA filter for subscribers) 
+```
+slave              master
+  |<-------UFT-------|
+```
+
 #### % (sensor data)
 ```
 slave                                        master
