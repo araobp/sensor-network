@@ -27,11 +27,14 @@ The network is composed of multiple nodes(blocks) and one scheduler.
           |                     |                           |
    +------|-----+        +------|-----+              +------|-----+
    |   [node]   |        |   [node]   |              |   [node]   |
-   |      |     |        |      |     |              |      |     |                  (         )
-   |  [sensor]  |        |  [sensor]  |              |      +------------[IoT GW]---(   Cloud   )
-   +------------+        +------------+    . . .     +------------+                  (         )
+   |      |     |        |      |     |              |      |     |                      (         )
+   |  [sensor]  |        |  [sensor]  |              |      +------------[IoT GW(*1)]---(   Cloud   )
+   +------------+        +------------+    . . .     +------------+                      (         )
        block                 block                     scheduler
       (slave)               (slave)                    (master)
+
+(*1) I use Node-RED (on RasPi or PC) and Android as IoT gateways.
+
 ```
 
 Note: I am going to support CAN bus as well.
@@ -96,13 +99,13 @@ I use Microchip's MPLAB-X IDE. I also use [MPLAB Code Configurator (MCC)](http:/
 
 #### Implementation: common part among all nodes
 
-All nodes need to import this [protocol library](./blocks/lib/protocol.X):
+All nodes need to import this [protocol library](./blocks/pic16f1829/lib/protocol.X):
 - [Step1: include the protocol library directory](./doc/mcc_eusart4.png)
 - [Step2: include the protocol library in your project](./doc/mcc_eusart3.png)
 
 #### Implementation: I2C-slave-specific part
 
-I2C slaves also require I2C-slave-specific code -- I modified MCC-generated I2C slave code (i2c1.c) to support the protocol on I2C slave side. See this modifed code: [i2c1.c](./blocks/i2c_slave_lcd.X/mcc_generated_files/i2c1.c).
+I2C slaves also require I2C-slave-specific code -- I modified MCC-generated I2C slave code (i2c1.c) to support the protocol on I2C slave side. See this modifed code: [i2c1.c](./blocks/pic16f1829/i2c_slave_lcd.X/mcc_generated_files/i2c1.c).
 
 #### Coding
 
@@ -123,11 +126,11 @@ void main(void)
     TMR0_Initialize();
     EUSART_Initialize();
     I2C1_Initialize();
-    
+
     // Enable interrupt
     INTERRUPT_GlobalInterruptEnable();
     INTERRUPT_PeripheralInterruptEnable();
-    
+
     // Infinite loop
     PROTOCOL_Loop();
 }
@@ -135,11 +138,20 @@ void main(void)
 
 ### Blocks
 
-- [5V: Scheduler (BACKPLANE-MASTER)](./blocks/i2c_master.X)
-- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./blocks/i2c_slave_lcd.X)
-- [5V: Acceleration sensor block （KXR94-2050)](./blocks/i2c_slave_accel.X)
-- [5V: Speed sensor block (A1324LUA-T)](./blocks/i2c_slave_speed.X)
-- [5V: Temperature and humidity sensor block (HDC1000)](./blocks/i2c_slave_temp.X)
+#### PIC16F1829
+
+In this project, PIC16F1829 MCU is used for general-purpose blocks such as a scheduler or LCD controller.
+
+- [5V: Scheduler (BACKPLANE-MASTER)](./blocks/pic16f1829/i2c_master.X)
+- [5V: Character LCD actuator block (AQM1602XA-RN-GBW)](./blocks/pic16f1829/i2c_slave_lcd.X)
+- [5V: Acceleration sensor block （KXR94-2050)](./blocks/pic16f1829/i2c_slave_accel.X)
+- [5V: Speed sensor block (A1324LUA-T)](./blocks/pic16f1829/i2c_slave_speed.X)
+- [5V: Temperature and humidity sensor block (HDC1000)](./blocks/pic16f1829/i2c_slave_temp.X)
+- [5V: Position detector block](./blocks/pic16f1829/i2c_slave_position.X)
+
+#### PIC16F1825
+
+In this project, PIC16F1825 MCU is used for purpose-specific blocks such as a position detector having multiple analog ports.
 
 #### Initial config
 
@@ -209,4 +221,3 @@ Use the CLI to control the scheduler or stream sensor data to the cloud.
 In some projects, I used telephone line (6P4C) with RJ11 moduler plug/jack, as I2C bus. I used this tool to make wires among nodes: [Crimper for RJ11](http://www.mco.co.jp/products/tel/telephonetool/ta-642t.html). Telephone line makes physical wirling very easy.
 
 6P4C telephone line is suitable for I2C with power line: SDA, SCL, 5V, GND.
-
