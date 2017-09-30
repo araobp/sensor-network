@@ -1,6 +1,6 @@
 # Plug&play protocol (UART/I2C)
 
-Update: 2017-SEP-27
+Update: 2017-SEP-30
 
 This is a very simple I/O link supporting Plug&Play. This protocol works over UART and I2C at a minimal cost. I am also considering to support it over CAN.
 
@@ -235,6 +235,18 @@ $:RSC:0,0,0,0|0,0,0,0|0,0,0,19|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0
 ```
 slave              master
   |<---SSC:<value>---|
+```
+
+#### SFT (set NO_DATA filter for subscribers)
+```
+slave              master
+  |<------SFT--------|
+```
+
+#### UFT (unset NO_DATA filter for subscribers) 
+```
+slave              master
+  |<-------UFT-------|
 ```
 
 #### % (sensor data)

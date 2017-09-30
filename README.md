@@ -97,6 +97,8 @@ I use Microchip's MPLAB-X IDE. I also use [MPLAB Code Configurator (MCC)](http:/
 
 [Plug&play protocol specification](./doc/PROTOCOL.md)
 
+Some blocks operates in pubsub mode -- [how it works](./doc/PUBSUB.md).
+
 #### Implementation: common part among all nodes
 
 All nodes need to import this [protocol library](./blocks/pic16f1829/lib/protocol.X):
