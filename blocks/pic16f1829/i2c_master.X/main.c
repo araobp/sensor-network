@@ -17,6 +17,8 @@
 #define SSC "SSC"
 #define EDG "EDG"
 #define SEN "SEN"
+#define SFT "SFT"
+#define UFT "UFT"
 
 // I2C slave device address range handled by backplane master
 // These constants should be larger than 16 and multipels of 8
@@ -50,6 +52,8 @@ uint8_t timer_cnt = 0;
 bool do_func = false;
 uint8_t read_buf[16];
 uint8_t dev_map[MAX_Y];  // I2C slave device map
+
+bool filter = true;  // filter out NO_DATA
 
 bool exec_remote_cmd(uint8_t idx) {
     uint8_t data;
@@ -245,7 +249,9 @@ uint8_t sen(uint8_t dev_addr) {
     __delay_us(SEN_DELAY);
     if (status == 0) {
         if (type == TYPE_NO_DATA) {
+            if (!filter) {
                 PROTOCOL_Print_TLV(dev_addr, TYPE_NO_DATA, 0, NULL);            
+            }
         } else {
             status = i2c1_read(dev_addr, SEN_I2C, &length, 1);
             __delay_us(SEN_DELAY);
@@ -403,6 +409,10 @@ void command_handler(uint8_t *buf) {
     } else if (parse(SEN, buf)) {
         dev_addr = atoi(&buf[4]);
         one_shot_sen(dev_addr);
+    } else if (parse(SFT, buf)) {
+        filter = true;
+    } else if (parse(UFT, buf)) {
+        filter = false;
     } else if (BACKPLANE_SLAVE_ADDRESS != BACKPLANE_MASTER_I2C) {
         put_cmd(buf);
     }
