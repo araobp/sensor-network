@@ -155,6 +155,8 @@ In this project, PIC16F1829 MCU is used for general-purpose blocks such as a sch
 
 In this project, PIC16F1825 MCU is used for purpose-specific blocks such as a position detector having multiple analog ports.
 
+- [5V: Position detector block](./blocks/pic16f1825/i2c_slave_position.X)
+
 #### Initial config
 
 Write I2C slave address on the blocks. For exmaple, if the address is 16 in decimal, then:
