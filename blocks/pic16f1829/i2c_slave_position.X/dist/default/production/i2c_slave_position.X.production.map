@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files (x86)\Microchip\xc8\v1.41\dat\en_msgs.txt -cs \
   -h+dist/default/production\i2c_slave_position.X.production.sym \
   --cmf=dist/default/production\i2c_slave_position.X.production.cmf -z \
-  -Q16F1829 -oC:\Users\shiny\AppData\Local\Temp\s1m0.2 \
+  -Q16F1829 -oC:\Users\shiny\AppData\Local\Temp\sdps.2 \
   -Mdist/default/production/i2c_slave_position.X.production.map -E1 \
   -ver=XC8 -ASTACK=02120h-023efh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -32,7 +32,7 @@ Linker command line:
   -pconfig=CONFIG -DCONFIG=2 -AIDLOC=08000h-08003h -pidloc=IDLOC -DIDLOC=2 \
   -AEEDATA=00h-0FFh/0F000h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
   -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\shiny\AppData\Local\Temp\s1m0.obj \
+  C:\Users\shiny\AppData\Local\Temp\sdps.obj \
   dist/default/production\i2c_slave_position.X.production.obj 
 
 Object code version is 3.11
@@ -42,7 +42,7 @@ Machine type is 16F1829
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\shiny\AppData\Local\Temp\s1m0.obj
+C:\Users\shiny\AppData\Local\Temp\sdps.obj
                 end_init                             30       30        2        8       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2    1000E       0
@@ -1198,7 +1198,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 140 in file "main.c"
+		line 139 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1237,7 +1237,7 @@ Total ram usage:        0 bytes
 
  *************** function _init *****************
  Defined at:
-		line 58 in file "main.c"
+		line 57 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1439,7 +1439,7 @@ Total ram usage:        7 bytes
 
  *************** function _loop_func *****************
  Defined at:
-		line 81 in file "main.c"
+		line 80 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1479,7 +1479,7 @@ Total ram usage:        7 bytes
 
  *************** function _led_blink *****************
  Defined at:
-		line 52 in file "main.c"
+		line 51 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -2322,7 +2322,7 @@ Total ram usage:       10 bytes
 
  *************** function _set_handler *****************
  Defined at:
-		line 67 in file "main.c"
+		line 66 in file "main.c"
  Parameters:    Size  Location     Type
   value           1    1[BANK0 ] unsigned char 
  Auto vars:     Size  Location     Type
@@ -2767,7 +2767,7 @@ Total ram usage:        2 bytes
 
  *************** function i1_set_handler *****************
  Defined at:
-		line 67 in file "main.c"
+		line 66 in file "main.c"
  Parameters:    Size  Location     Type
   value           1    0[COMMON] unsigned char 
  Auto vars:     Size  Location     Type

@@ -4267,12 +4267,6 @@ bool PROTOCOL_Read_Lock(void);
 # 135
 uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 
-# 8 "../lib/i2c2_util.X\i2c2_util.h"
-uint8_t i2c2_write(uint16_t dev_addr, uint8_t reg_addr, uint8_t data);
-uint8_t i2c2_read(uint16_t dev_addr, uint8_t reg_addr, uint8_t *pbuf, uint8_t len);
-uint8_t i2c2_write_no_data(uint16_t dev_addr, uint8_t reg_addr);
-uint8_t i2c2_read_no_reg_addr(uint16_t dev_addr, uint8_t *pbuf, uint8_t len);
-
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdlib.h"
 typedef unsigned short wchar_t;
 
@@ -4379,20 +4373,20 @@ extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
 
-# 17 "main.c"
+# 16 "main.c"
 uint8_t threshold = 50;
 uint8_t continuity = 250;
 
-# 23
+# 22
 const adc_channel_t ANALOG_IN[6] = {
 channel_AN4, channel_AN5, channel_AN6,
 channel_AN7, channel_AN8, channel_AN11
 };
 
-# 40
+# 39
 adc_channel_t analog_in[6];
 
-# 47
+# 46
 uint8_t position[6];
 
 
@@ -4440,7 +4434,7 @@ while(!ADC_IsConversionDone());
 adc_result_t out = ADC_GetConversionResult();
 uint16_t v = abs(out - 511);
 
-# 108
+# 107
 switch (position[i]) {
 case 0:
 if (v >= 50) count[i]++;

@@ -78,23 +78,6 @@
                             DD="dist/default/debug/protocol.X.lpp">
               </makeArtifact>
             </linkerLibProjectItem>
-            <linkerLibProjectItem>
-              <makeArtifact PL="../lib/i2c2_util.X"
-                            CT="3"
-                            CN="default"
-                            AC="true"
-                            BL="true"
-                            WD="../lib/i2c2_util.X"
-                            BC="${MAKE}  -f Makefile CONF=default"
-                            DBC="${MAKE}  -f Makefile CONF=default TYPE_IMAGE=DEBUG_RUN"
-                            CC="rm -rf &quot;build/default&quot; &quot;dist/default&quot;"
-                            OP="dist/default/production/i2c2_util.X.lpp"
-                            DOP="dist/default/debug/i2c2_util.X.lpp"
-                            FL="dist/default/production/i2c2_util.X.lpp"
-                            PD="dist/default/production/i2c2_util.X.lpp"
-                            DD="dist/default/debug/i2c2_util.X.lpp">
-              </makeArtifact>
-            </linkerLibProjectItem>
           </linkerLibItems>
         </linkerTool>
         <archiverTool>
@@ -120,8 +103,7 @@
         <property key="asmlist" value="true"/>
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="false"/>
-        <property key="extra-include-directories"
-                  value="..\lib\protocol.X;..\lib\i2c2_util.X"/>
+        <property key="extra-include-directories" value="..\lib\protocol.X"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="identifier-length" value="255"/>
         <property key="local-generation" value="false"/>
@@ -192,7 +174,6 @@
         <property key="ToolFirmwareFilePath"
                   value="Press to browse for a specific firmware version"/>
         <property key="ToolFirmwareOption.UseLatestFirmware" value="true"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>

@@ -9,5 +9,4 @@ mcc_generated_files/interrupt_manager.h  \
 mcc_generated_files/tmr0.h  \
 mcc_generated_files/eusart.h  \
 mcc_generated_files/pin_manager.h  \
-../lib/protocol.X/protocol.h  \
-../lib/i2c2_util.X/i2c2_util.h 
+../lib/protocol.X/protocol.h 

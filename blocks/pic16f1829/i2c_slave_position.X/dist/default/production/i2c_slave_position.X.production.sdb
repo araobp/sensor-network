@@ -29,7 +29,7 @@ channel_Temp 29
 channel_DAC 30
 channel_FVR 31
 ]
-"23 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"22 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [e E2982 . `uc
 channel_AN4 4
 channel_AN5 5
@@ -82,16 +82,16 @@ COMPLETE 3
 [v _eecpymem eecpymem `(v  1 e 1 0 ]
 "39
 [v _memcpyee memcpyee `(v  1 e 1 0 ]
-"52 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [v _led_blink led_blink `(v  1 e 1 0 ]
-"58
+"57
 [v _init init `(v  1 e 1 0 ]
-"67
+"66
 [v _set_handler set_handler `(v  1 e 1 0 ]
 [v i1_set_handler set_handler `(v  1 e 1 0 ]
-"81
+"80
 [v _loop_func loop_func `(v  1 e 1 0 ]
-"140
+"139
 [v _main main `(v  1 e 1 0 ]
 "64 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
@@ -435,13 +435,13 @@ COMPLETE 3
 [v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
-"23 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"22 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [v _ANALOG_IN ANALOG_IN `DCC[6]E2982  1 e 6 0 ]
-"40
+"39
 [v _analog_in analog_in `[6]E2982  1 e 6 0 ]
-"47
+"46
 [v _position position `[6]uc  1 e 6 0 ]
-"50
+"49
 [v _count count `[6]uc  1 e 6 0 ]
 "61 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\mcc_generated_files/eusart.c
 [v _eusartTxHead eusartTxHead `VEuc  1 e 1 0 ]
@@ -514,17 +514,17 @@ COMPLETE 3
 [v _i i `uc  1 e 1 0 ]
 "135 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS BACKPLANE_SLAVE_ADDRESS `uc  1 e 1 0 ]
-"140 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"139 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"167
+"166
 } 0
-"58
+"57
 [v _init init `(v  1 e 1 0 ]
 {
-"59
+"58
 [v init@i i `uc  1 a 1 2 ]
-"65
+"64
 } 0
 "89 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\mcc_generated_files/mcc.c
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
@@ -559,23 +559,23 @@ COMPLETE 3
 [v strncmp@len len `ui  1 p 2 4 ]
 "14
 } 0
-"81 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"80 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [v _loop_func loop_func `(v  1 e 1 0 ]
 {
-"92
-[v loop_func@v v `ui  1 a 2 44 ]
 "91
+[v loop_func@v v `ui  1 a 2 44 ]
+"90
 [v loop_func@out out `ui  1 a 2 41 ]
-"82
+"81
 [v loop_func@i i `uc  1 a 1 46 ]
-"83
+"82
 [v loop_func@transition_detected transition_detected `uc  1 a 1 43 ]
-"138
+"137
 } 0
-"52
+"51
 [v _led_blink led_blink `(v  1 e 1 0 ]
 {
-"56
+"55
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
@@ -797,16 +797,16 @@ COMPLETE 3
 [v PROTOCOL_Initialize@scaler scaler `uc  1 p 1 12 ]
 "75
 } 0
-"67 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"66 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [v _set_handler set_handler `(v  1 e 1 0 ]
 {
-"68
-[v set_handler@i i `uc  1 a 1 4 ]
-"69
-[v set_handler@mask mask `uc  1 a 1 3 ]
 "67
+[v set_handler@i i `uc  1 a 1 4 ]
+"68
+[v set_handler@mask mask `uc  1 a 1 3 ]
+"66
 [v set_handler@value value `uc  1 p 1 1 ]
-"79
+"78
 } 0
 "204 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\mcc_generated_files/memory.c
 [v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
@@ -899,13 +899,13 @@ COMPLETE 3
 [v i1PROTOCOL_SET@value_ value_ `uc  1 a 1 5 ]
 "119
 } 0
-"67 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
+"66 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1829\i2c_slave_position.X\main.c
 [v i1_set_handler set_handler `(v  1 e 1 0 ]
 {
 [v i1set_handler@i set_handler `uc  1 a 1 3 ]
 [v i1set_handler@mask set_handler `uc  1 a 1 2 ]
 [v i1set_handler@value value `uc  1 p 1 0 ]
-"79
+"78
 } 0
 "112 protocol.c
 [v i1_PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
