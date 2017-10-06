@@ -4,7 +4,7 @@
 
 MULTI_A1324LUA_T runs in pubsub mode, so every SEN request results in type "NO_DATA".
 
-When the sensor block has detected magenetic field change, the block calls "PROTOCOL_I2C_Send_uint8_t(6, position);" to send the change to the master via I2C (or outputs it to UART).
+When the sensor block has detected magenetic field change, the block calls "PROTOCOL_I2C_Send_uint8_t(4, position);" to send the change to the master via I2C (or outputs it to UART).
 
 ```
 #RSC
