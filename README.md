@@ -157,6 +157,52 @@ In this project, PIC16F1825 MCU is used for purpose-specific blocks such as a po
 
 - [5V: Position detector block](./blocks/pic16f1825/i2c_slave_position.X)
 
+![position_detector](./doc/position_detector.jpg)
+
+Example of its usage
+```
+#WHO
+$:WHO:MULTI_A1324LUA_T
+#MAP
+$:MAP:21,22
+#RSC
+$:RSC:0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0
+#POS:0
+#WSC:21
+#POS:1
+#WSC:22
+#RSC
+$:RSC:21,22,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0|0,0,0,0
+#I2C:21
+#WHO
+$:WHO:21
+#SET:15
+#I2C:22
+#SET:9
+#I2C:1
+#STA
+%21:UINT8_T:0,1,0,0
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:0,0,0,1
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:0,0,0,1
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:0,1,0,0
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:1,0,0,0
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:0,1,0,0
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:0,0,0,1
+%21:UINT8_T:0,0,0,0
+%21:UINT8_T:0,0,1,0
+%21:UINT8_T:0,0,0,0
+%22:UINT8_T:0,0,0,1
+%22:UINT8_T:0,0,0,0
+%22:UINT8_T:1,0,0,0
+%22:UINT8_T:0,0,0,0
+```
+
 #### Initial config
 
 Write I2C slave address on the blocks. For exmaple, if the address is 16 in decimal, then:
