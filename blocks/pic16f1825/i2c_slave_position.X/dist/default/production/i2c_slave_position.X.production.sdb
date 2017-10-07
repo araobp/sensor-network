@@ -87,7 +87,7 @@ COMPLETE 3
 [v i1_set_handler set_handler `(v  1 e 1 0 ]
 "80
 [v _loop_func loop_func `(v  1 e 1 0 ]
-"139
+"137
 [v _main main `(v  1 e 1 0 ]
 "64 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/adc.c
 [v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
@@ -496,10 +496,10 @@ COMPLETE 3
 [v _i i `uc  1 e 1 0 ]
 "135 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS BACKPLANE_SLAVE_ADDRESS `uc  1 e 1 0 ]
-"139 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
+"137 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"166
+"164
 } 0
 "57
 [v _init init `(v  1 e 1 0 ]
@@ -544,15 +544,15 @@ COMPLETE 3
 "80 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
 [v _loop_func loop_func `(v  1 e 1 0 ]
 {
-"91
-[v loop_func@v v `ui  1 a 2 43 ]
 "90
+[v loop_func@v v `ui  1 a 2 43 ]
+"89
 [v loop_func@out out `ui  1 a 2 40 ]
 "81
 [v loop_func@i i `uc  1 a 1 45 ]
 "82
 [v loop_func@transition_detected transition_detected `uc  1 a 1 42 ]
-"137
+"135
 } 0
 "51
 [v _led_blink led_blink `(v  1 e 1 0 ]

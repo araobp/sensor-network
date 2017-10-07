@@ -3063,188 +3063,188 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;main.c: 86: ADC_SelectChannel(ANALOG_IN[i]);
 "86
 [e ( _ADC_SelectChannel (1 *U + &U _ANALOG_IN * -> _i `ux -> -> # *U &U _ANALOG_IN `ui `ux ]
-[; ;main.c: 88: ADC_StartConversion();
-"88
+[; ;main.c: 87: ADC_StartConversion();
+"87
 [e ( _ADC_StartConversion ..  ]
-[; ;main.c: 89: while(!ADC_IsConversionDone());
-"89
+[; ;main.c: 88: while(!ADC_IsConversionDone());
+"88
 [e $U 345  ]
 [e :U 346 ]
 [e :U 345 ]
 [e $ ! != -> ( _ADC_IsConversionDone ..  `i -> -> -> 0 `i `uc `i 346  ]
 [e :U 347 ]
-"90
+"89
 [v _out `ui ~T0 @X0 1 a ]
-[; ;main.c: 90: adc_result_t out = ADC_GetConversionResult();
+[; ;main.c: 89: adc_result_t out = ADC_GetConversionResult();
 [e = _out ( _ADC_GetConversionResult ..  ]
-"91
+"90
 [v _v `ui ~T0 @X0 1 a ]
-[; ;main.c: 91: uint16_t v = abs(out - 511);
+[; ;main.c: 90: uint16_t v = abs(out - 511);
 [e = _v -> ( _abs (1 -> - _out -> -> 511 `i `ui `i `ui ]
-[; ;main.c: 107: switch (position[i]) {
-"107
+[; ;main.c: 105: switch (position[i]) {
+"105
 [e $U 349  ]
 {
-[; ;main.c: 108: case 0:
-"108
+[; ;main.c: 106: case 0:
+"106
 [e :U 350 ]
-[; ;main.c: 109: if (v >= 50) count[i]++;
-"109
+[; ;main.c: 107: if (v >= 50) count[i]++;
+"107
 [e $ ! >= _v -> -> 50 `i `ui 351  ]
 [e ++ *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux -> -> 1 `i `uc ]
 [e $U 352  ]
-"110
+"108
 [e :U 351 ]
-[; ;main.c: 110: else count[i] = 0;
+[; ;main.c: 108: else count[i] = 0;
 [e = *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux -> -> 0 `i `uc ]
 [e :U 352 ]
-[; ;main.c: 112: if (count[i] >= 250) {
-"112
+[; ;main.c: 110: if (count[i] >= 250) {
+"110
 [e $ ! >= -> *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux `i -> 250 `i 353  ]
 {
-[; ;main.c: 113: count[i] = 0;
-"113
+[; ;main.c: 111: count[i] = 0;
+"111
 [e = *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 114: position[i] = 1;
-"114
+[; ;main.c: 112: position[i] = 1;
+"112
 [e = *U + &U _position * -> _i `ux -> -> # *U &U _position `ui `ux -> -> 1 `i `uc ]
-[; ;main.c: 115: led_blink();
-"115
+[; ;main.c: 113: led_blink();
+"113
 [e ( _led_blink ..  ]
-[; ;main.c: 116: transition_detected = 1;
-"116
+[; ;main.c: 114: transition_detected = 1;
+"114
 [e = _transition_detected -> -> 1 `i `uc ]
-"117
+"115
 }
 [e :U 353 ]
-[; ;main.c: 117: }
-[; ;main.c: 118: break;
-"118
+[; ;main.c: 115: }
+[; ;main.c: 116: break;
+"116
 [e $U 348  ]
-[; ;main.c: 120: case 1:
-"120
+[; ;main.c: 118: case 1:
+"118
 [e :U 354 ]
-[; ;main.c: 121: if (v < 50) count[i]++;
-"121
+[; ;main.c: 119: if (v < 50) count[i]++;
+"119
 [e $ ! < _v -> -> 50 `i `ui 355  ]
 [e ++ *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux -> -> 1 `i `uc ]
 [e $U 356  ]
-"122
+"120
 [e :U 355 ]
-[; ;main.c: 122: else count[i] = 0;
+[; ;main.c: 120: else count[i] = 0;
 [e = *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux -> -> 0 `i `uc ]
 [e :U 356 ]
-[; ;main.c: 124: if (count[i] >= 250) {
-"124
+[; ;main.c: 122: if (count[i] >= 250) {
+"122
 [e $ ! >= -> *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux `i -> 250 `i 357  ]
 {
-[; ;main.c: 125: count[i] = 0;
-"125
+[; ;main.c: 123: count[i] = 0;
+"123
 [e = *U + &U _count * -> _i `ux -> -> # *U &U _count `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 126: position[i] = 0;
-"126
+[; ;main.c: 124: position[i] = 0;
+"124
 [e = *U + &U _position * -> _i `ux -> -> # *U &U _position `ui `ux -> -> 0 `i `uc ]
-[; ;main.c: 127: led_blink();
-"127
+[; ;main.c: 125: led_blink();
+"125
 [e ( _led_blink ..  ]
-[; ;main.c: 128: transition_detected = 1;
-"128
+[; ;main.c: 126: transition_detected = 1;
+"126
 [e = _transition_detected -> -> 1 `i `uc ]
-"129
+"127
 }
 [e :U 357 ]
-[; ;main.c: 129: }
-[; ;main.c: 130: break;
-"130
+[; ;main.c: 127: }
+[; ;main.c: 128: break;
+"128
 [e $U 348  ]
-"131
+"129
 }
-[; ;main.c: 131: }
+[; ;main.c: 129: }
 [e $U 348  ]
-"107
+"105
 [e :U 349 ]
 [e [\ *U + &U _position * -> _i `ux -> -> # *U &U _position `ui `ux , $ -> -> 0 `i `uc 350
  , $ -> -> 1 `i `uc 354
  348 ]
-"131
+"129
 [e :U 348 ]
-"132
+"130
 }
 "83
 [e :U 343 ]
 [e ++ _i -> -> 1 `i `uc ]
 [e $ < -> _i `i -> 4 `i 341  ]
 [e :U 342 ]
-"132
+"130
 }
-[; ;main.c: 132: }
-[; ;main.c: 133: if (transition_detected) {
-"133
+[; ;main.c: 130: }
+[; ;main.c: 131: if (transition_detected) {
+"131
 [e $ ! != -> _transition_detected `i -> -> -> 0 `i `uc `i 358  ]
 {
-[; ;main.c: 134: PROTOCOL_I2C_Send_uint8_t(4, position);
-"134
+[; ;main.c: 132: PROTOCOL_I2C_Send_uint8_t(4, position);
+"132
 [e ( _PROTOCOL_I2C_Send_uint8_t (2 , -> -> 4 `i `uc &U _position ]
-"135
+"133
 }
 [e :U 358 ]
-[; ;main.c: 135: }
-[; ;main.c: 136: _delay((unsigned long)((1000)*(4000000/4000000.0)));
-"136
+[; ;main.c: 133: }
+[; ;main.c: 134: _delay((unsigned long)((1000)*(4000000/4000000.0)));
+"134
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
-[; ;main.c: 137: }
-"137
+[; ;main.c: 135: }
+"135
 [e :UE 340 ]
 }
-"139
+"137
 [v _main `(v ~T0 @X0 1 ef ]
-"140
+"138
 {
-[; ;main.c: 139: void main(void)
-[; ;main.c: 140: {
+[; ;main.c: 137: void main(void)
+[; ;main.c: 138: {
 [e :U _main ]
 [f ]
-[; ;main.c: 141: init();
-"141
+[; ;main.c: 139: init();
+"139
 [e ( _init ..  ]
-[; ;main.c: 144: PROTOCOL_Initialize("MULTI_A1324LUA_T", (0), (0), set_handler, (0), 1);
-"144
+[; ;main.c: 142: PROTOCOL_Initialize("MULTI_A1324LUA_T", (0), (0), set_handler, (0), 1);
+"142
 [e ( _PROTOCOL_Initialize (4 , , , , , :s 1C -> -> 0 `i `*v -> -> 0 `i `*v -> &U _set_handler `*v -> -> 0 `i `*v -> -> 1 `i `uc ]
-[; ;main.c: 145: PROTOCOL_Set_Func(loop_func);
-"145
+[; ;main.c: 143: PROTOCOL_Set_Func(loop_func);
+"143
 [e ( _PROTOCOL_Set_Func (1 -> &U _loop_func `*v ]
-[; ;main.c: 148: PIN_MANAGER_Initialize();
-"148
+[; ;main.c: 146: PIN_MANAGER_Initialize();
+"146
 [e ( _PIN_MANAGER_Initialize ..  ]
-[; ;main.c: 149: OSCILLATOR_Initialize();
-"149
+[; ;main.c: 147: OSCILLATOR_Initialize();
+"147
 [e ( _OSCILLATOR_Initialize ..  ]
-[; ;main.c: 150: WDT_Initialize();
-"150
+[; ;main.c: 148: WDT_Initialize();
+"148
 [e ( _WDT_Initialize ..  ]
-[; ;main.c: 151: ADC_Initialize();
-"151
+[; ;main.c: 149: ADC_Initialize();
+"149
 [e ( _ADC_Initialize ..  ]
-[; ;main.c: 152: TMR0_Initialize();
-"152
+[; ;main.c: 150: TMR0_Initialize();
+"150
 [e ( _TMR0_Initialize ..  ]
-[; ;main.c: 155: (INTCONbits.GIE = 1);
-"155
+[; ;main.c: 153: (INTCONbits.GIE = 1);
+"153
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
-[; ;main.c: 156: (INTCONbits.PEIE = 1);
-"156
+[; ;main.c: 154: (INTCONbits.PEIE = 1);
+"154
 [e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
-[; ;main.c: 159: EUSART_Initialize();
-"159
+[; ;main.c: 157: EUSART_Initialize();
+"157
 [e ( _EUSART_Initialize ..  ]
-[; ;main.c: 162: I2C_Initialize();
-"162
+[; ;main.c: 160: I2C_Initialize();
+"160
 [e ( _I2C_Initialize ..  ]
-[; ;main.c: 165: PROTOCOL_Loop();
-"165
+[; ;main.c: 163: PROTOCOL_Loop();
+"163
 [e ( _PROTOCOL_Loop ..  ]
-[; ;main.c: 166: }
-"166
+[; ;main.c: 164: }
+"164
 [e :UE 359 ]
 }
 [a 1C 77 85 76 84 73 95 65 49 51 50 52 76 85 65 95 84 0 ]

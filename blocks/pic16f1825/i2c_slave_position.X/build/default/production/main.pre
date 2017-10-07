@@ -4023,13 +4023,12 @@ for (i=0; i < 4; i++) {
 if (analog_in_flags[i] == 0) continue;
 
 ADC_SelectChannel(ANALOG_IN[i]);
-
 ADC_StartConversion();
 while(!ADC_IsConversionDone());
 adc_result_t out = ADC_GetConversionResult();
 uint16_t v = abs(out - 511);
 
-# 107
+# 105
 switch (position[i]) {
 case 0:
 if (v >= 50) count[i]++;
