@@ -1,7 +1,7 @@
 
 
 Microchip Technology PIC LITE Macro Assembler V1.41 build -162212810 
-                                                                                               Sat Sep 30 21:09:40 2017
+                                                                                               Sun Oct 08 09:56:40 2017
 
 Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250102
      1                           	processor	16F1829
@@ -5176,11 +5176,11 @@ Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250
   5097  1691                     l5413:	
   5098                           
   5099                           ;main.c: 322: }
-  5100                           ;main.c: 324: if (t % 60 == 0) {
-  5101  1691  303C               	movlw	60
+  5100                           ;main.c: 324: if (t % 600 == 0) {
+  5101  1691  3058               	movlw	88
   5102  1692  0020               	movlb	0	; select bank0
   5103  1693  00A8               	movwf	___lwmod@divisor
-  5104  1694  3000               	movlw	0
+  5104  1694  3002               	movlw	2
   5105  1695  00A9               	movwf	___lwmod@divisor+1
   5106  1696  0022               	movlb	2	; select bank2
   5107  1697  0837               	movf	(tick_handler@t+1)^(0+256),w
@@ -5195,41 +5195,41 @@ Microchip Technology Omniscient Code Generator v1.41 (Free mode) build 201701250
   5116  16A2  0828               	movf	?___lwmod,w
   5117  16A3  0429               	iorwf	?___lwmod+1,w
   5118  16A4  1D03               	btfss	3,2
-  5119  16A5  2EA9               	goto	l5417
+  5119  16A5  2EAC               	goto	l5419
   5120                           
-  5121                           ;main.c: 325: check_plg();
-  5122  16A6  3192  2245         	fcall	_check_plg
+  5121                           ;main.c: 325: scan_dev();
+  5122  16A6  3188  2002         	fcall	_scan_dev
   5123                           
-  5124                           ;main.c: 326: } else if (t % 600 == 0) {
-  5125  16A8  0008               	return
-  5126  16A9                     l5417:	
-  5127  16A9  3058               	movlw	88
-  5128  16AA  0020               	movlb	0	; select bank0
-  5129  16AB  00A8               	movwf	___lwmod@divisor
-  5130  16AC  3002               	movlw	2
-  5131  16AD  00A9               	movwf	___lwmod@divisor+1
-  5132  16AE  0022               	movlb	2	; select bank2
-  5133  16AF  0837               	movf	(tick_handler@t+1)^(0+256),w
-  5134  16B0  0020               	movlb	0	; select bank0
-  5135  16B1  00AB               	movwf	___lwmod@dividend+1
-  5136  16B2  0022               	movlb	2	; select bank2
-  5137  16B3  0836               	movf	tick_handler@t^(0+256),w
-  5138  16B4  0020               	movlb	0	; select bank0
-  5139  16B5  00AA               	movwf	___lwmod@dividend
-  5140  16B6  3194  2494  3196   	fcall	___lwmod
-  5141  16B9  0020               	movlb	0	; select bank0
-  5142  16BA  0828               	movf	?___lwmod,w
-  5143  16BB  0429               	iorwf	?___lwmod+1,w
-  5144  16BC  1D03               	btfss	3,2
-  5145  16BD  0008               	return
-  5146                           
-  5147                           ;main.c: 327: scan_dev();
-  5148  16BE  3188  2002         	fcall	_scan_dev
-  5149                           
-  5150                           ;main.c: 328: t = 0;
-  5151  16C0  0022               	movlb	2	; select bank2
-  5152  16C1  01B6               	clrf	tick_handler@t^(0+256)
-  5153  16C2  01B7               	clrf	(tick_handler@t+1)^(0+256)
+  5124                           ;main.c: 326: t = 0;
+  5125  16A8  0022               	movlb	2	; select bank2
+  5126  16A9  01B6               	clrf	tick_handler@t^(0+256)
+  5127  16AA  01B7               	clrf	(tick_handler@t+1)^(0+256)
+  5128                           
+  5129                           ;main.c: 327: } else if (t % 60 == 0) {
+  5130  16AB  0008               	return
+  5131  16AC                     l5419:	
+  5132  16AC  303C               	movlw	60
+  5133  16AD  0020               	movlb	0	; select bank0
+  5134  16AE  00A8               	movwf	___lwmod@divisor
+  5135  16AF  3000               	movlw	0
+  5136  16B0  00A9               	movwf	___lwmod@divisor+1
+  5137  16B1  0022               	movlb	2	; select bank2
+  5138  16B2  0837               	movf	(tick_handler@t+1)^(0+256),w
+  5139  16B3  0020               	movlb	0	; select bank0
+  5140  16B4  00AB               	movwf	___lwmod@dividend+1
+  5141  16B5  0022               	movlb	2	; select bank2
+  5142  16B6  0836               	movf	tick_handler@t^(0+256),w
+  5143  16B7  0020               	movlb	0	; select bank0
+  5144  16B8  00AA               	movwf	___lwmod@dividend
+  5145  16B9  3194  2494  3196   	fcall	___lwmod
+  5146  16BC  0020               	movlb	0	; select bank0
+  5147  16BD  0828               	movf	?___lwmod,w
+  5148  16BE  0429               	iorwf	?___lwmod+1,w
+  5149  16BF  1D03               	btfss	3,2
+  5150  16C0  0008               	return
+  5151                           
+  5152                           ;main.c: 328: check_plg();
+  5153  16C1  3192  2245         	fcall	_check_plg
   5154  16C3  0008               	return
   5155  16C4                     __end_of_tick_handler:	
   5156                           
@@ -15379,7 +15379,7 @@ SFR31                0      0       0      32        0.0%
 
 
 Microchip Technology PIC Macro Assembler V1.41 build -162212810 
-Symbol Table                                                                                   Sat Sep 30 21:09:40 2017
+Symbol Table                                                                                   Sun Oct 08 09:56:40 2017
 
                     ??_PROTOCOL_Set_Tick_Handler 0022                                                _i 006B  
                                               _j 013B                                                pc 0002  
@@ -15443,11 +15443,11 @@ Symbol Table                                                                    
                                            l3577 15D0                                             l5329 053A  
                                            l5265 03E0                                             l5441 0797  
                                            l5433 076D                                             l5185 06A2  
-                                           l5417 16A9                                             l3595 08A4  
-                                           l3771 093E                                             l5283 0434  
-                                           l5267 03E7                                             l5259 0395  
-                                           l5451 07C4                                             l3931 1400  
-                                           l5195 06E8                                             l5179 064B  
+                                           l3595 08A4                                             l3771 093E  
+                                           l5283 0434                                             l5267 03E7  
+                                           l5259 0395                                             l5451 07C4  
+                                           l3931 1400                                             l5195 06E8  
+                                           l5179 064B                                             l5419 16AC  
                                            l4821 0EBF                                             l3597 08AE  
                                            l3781 0953                                             l5293 0455  
                                            l5445 07AC                                             l5437 0782  

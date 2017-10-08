@@ -4161,26 +4161,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 456 ]
 [; ;main.c: 322: }
-[; ;main.c: 324: if (t % 60 == 0) {
+[; ;main.c: 324: if (t % 600 == 0) {
 "324
-[e $ ! == % F3580 -> -> 60 `i `ui -> -> 0 `i `ui 458  ]
+[e $ ! == % F3580 -> -> 600 `i `ui -> -> 0 `i `ui 458  ]
 {
-[; ;main.c: 325: check_plg();
+[; ;main.c: 325: scan_dev();
 "325
-[e ( _check_plg ..  ]
+[e ( _scan_dev ..  ]
+[; ;main.c: 326: t = 0;
 "326
+[e = F3580 -> -> 0 `i `ui ]
+"327
 }
-[; ;main.c: 326: } else if (t % 600 == 0) {
+[; ;main.c: 327: } else if (t % 60 == 0) {
 [e $U 459  ]
 [e :U 458 ]
-[e $ ! == % F3580 -> -> 600 `i `ui -> -> 0 `i `ui 460  ]
+[e $ ! == % F3580 -> -> 60 `i `ui -> -> 0 `i `ui 460  ]
 {
-[; ;main.c: 327: scan_dev();
-"327
-[e ( _scan_dev ..  ]
-[; ;main.c: 328: t = 0;
+[; ;main.c: 328: check_plg();
 "328
-[e = F3580 -> -> 0 `i `ui ]
+[e ( _check_plg ..  ]
 "329
 }
 [e :U 460 ]

@@ -320,12 +320,12 @@ void tick_handler(void) {
         cmd_next++;
         if (cmd_next > 3) cmd_next = 0;
     }
-
-    if (t % 60 == 0) {
-        check_plg();
-    } else if (t % 600 == 0) {
+    
+    if (t % 600 == 0) {
         scan_dev();
         t = 0;
+    } else if (t % 60 == 0) {
+        check_plg();
     }
 }
 
