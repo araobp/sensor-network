@@ -2673,18 +2673,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pin_manager.h: 213: void PIN_MANAGER_IOC(void);
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: I2C_SLAVE_GENERAL_CALL_REQUEST,
-[; ;i2c.h: 85: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 114: void I2C_Initialize(void);
-[; ;i2c.h: 134: void I2C_ISR ( void );
-[; ;i2c.h: 141: extern volatile uint8_t I2C_slaveWriteData;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -2726,9 +2714,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 169: void TMR0_WriteTimer(uint8_t timerVal);
 [; ;tmr0.h: 205: void TMR0_Reload(void);
 [; ;tmr0.h: 243: bool TMR0_HasOverflowOccured(void);
-[; ;mcc.h: 72: void SYSTEM_Initialize(void);
-[; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
-[; ;mcc.h: 98: void WDT_Initialize(void);
+[; ;mcc.h: 71: void SYSTEM_Initialize(void);
+[; ;mcc.h: 84: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 97: void WDT_Initialize(void);
 "64 mcc_generated_files/adc.c
 [v _ADC_Initialize `(v ~T0 @X0 1 ef ]
 "65

@@ -4,7 +4,12 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
-   
+
+    #include <stdint.h>
+    #include <stdbool.h>
+    #include <stddef.h>
+    #include <xc.h>
+
     #define LED_RED LATCbits.LATRC3
     
     /*
@@ -152,6 +157,25 @@ extern "C" {
     #define TYPE_FLOAT 0x05
     #define TYPE_NO_DATA 0x06
    
+    /***** I2C backplane slave ************************************************/
+
+    typedef enum
+    {
+        I2C_SLAVE_WRITE_REQUEST,
+        I2C_SLAVE_READ_REQUEST,
+        I2C_SLAVE_WRITE_COMPLETED,
+        I2C_SLAVE_READ_COMPLETED,
+        I2C_SLAVE_GENERAL_CALL_REQUEST,
+    } I2C_SLAVE_DRIVER_STATUS;
+
+    #define I2C_SLAVE_DEFAULT_ADDRESS          0x08
+
+    void I2C_Initialize(void);
+
+    void I2C_ISR ( void );
+
+    extern volatile uint8_t    I2C_slaveWriteData;
+
 #ifdef	__cplusplus
 }
 #endif

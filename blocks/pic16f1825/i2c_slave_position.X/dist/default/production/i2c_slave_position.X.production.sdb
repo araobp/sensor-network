@@ -3,20 +3,6 @@
 [d edition pro ]
 [d chip 16F1825 ]
 [d frameptr 6 ]
-"71 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/i2c.c
-[e E2702 . `uc
-I2C_SLAVE_WRITE_REQUEST 0
-I2C_SLAVE_READ_REQUEST 1
-I2C_SLAVE_WRITE_COMPLETED 2
-I2C_SLAVE_READ_COMPLETED 3
-I2C_SLAVE_GENERAL_CALL_REQUEST 4
-]
-"109
-[e E2914 . `uc
-SLAVE_NORMAL_DATA 0
-SLAVE_DATA_ADDRESS 1
-SLAVE_GENERAL_CALL 2
-]
 "83 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/adc.c
 [e E2698 . `uc
 channel_AN0 0
@@ -28,7 +14,7 @@ channel_DAC 30
 channel_FVR 31
 ]
 "24 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
-[e E2792 . `uc
+[e E2779 . `uc
 channel_AN0 0
 channel_AN1 1
 channel_AN2 2
@@ -37,12 +23,26 @@ channel_Temp 29
 channel_DAC 30
 channel_FVR 31
 ]
-"50 protocol.c
-[e E3128 . `uc
+"56 protocol.c
+[e E3141 . `uc
 TLV_SET 0
 TYPE_SENT 1
 LENGTH_SENT 2
 COMPLETE 3
+]
+"500
+[e E3095 . `uc
+I2C_SLAVE_WRITE_REQUEST 0
+I2C_SLAVE_READ_REQUEST 1
+I2C_SLAVE_WRITE_COMPLETED 2
+I2C_SLAVE_READ_COMPLETED 3
+I2C_SLAVE_GENERAL_CALL_REQUEST 4
+]
+"538
+[e E3241 . `uc
+SLAVE_NORMAL_DATA 0
+SLAVE_DATA_ADDRESS 1
+SLAVE_GENERAL_CALL 2
 ]
 "4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\abs.c
 [v _abs abs `(i  1 e 2 0 ]
@@ -111,17 +111,11 @@ COMPLETE 3
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]
 "184
 [v _EUSART_Receive_ISR EUSART_Receive_ISR `(v  1 e 1 0 ]
-"30 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/i2c.c
-[v _I2C_Initialize I2C_Initialize `(v  1 e 1 0 ]
-"57
-[v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
-"106
-[v _I2C_StatusCallback I2C_StatusCallback `(v  1 e 1 0 ]
-"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/interrupt_manager.c
+"52 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
-"81 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/mcc.c
+"80 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
-"89
+"88
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 "57 mcc_generated_files/memory.c
 [v _FLASH_ReadWord FLASH_ReadWord `(ui  1 e 2 0 ]
@@ -140,60 +134,66 @@ COMPLETE 3
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 "101
 [v _TMR0_HasOverflowOccured TMR0_HasOverflowOccured `(uc  1 e 1 0 ]
-"60 protocol.c
+"66 protocol.c
 [v _PROTOCOL_Initialize PROTOCOL_Initialize `(v  1 e 1 0 ]
-"77
+"83
 [v _PROTOCOL_Set_Func PROTOCOL_Set_Func `(v  1 e 1 0 ]
-"89
+"95
 [v _PROTOCOL_Write_Device_Address PROTOCOL_Write_Device_Address `(v  1 e 1 0 ]
-"94
+"100
 [v _PROTOCOL_Read_Device_Address PROTOCOL_Read_Device_Address `(uc  1 e 1 0 ]
-"98
+"104
 [v _PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
 [v i1_PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
-"103
+"109
 [v _PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
 [v i1_PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
-"108
+"114
 [v _PROTOCOL_INV PROTOCOL_INV `(v  1 e 1 0 ]
-"112
+"118
 [v _PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
 [v i1_PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
-"116
+"122
 [v _PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
 [v i1_PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
-"121
+"127
 [v _PROTOCOL_EXT PROTOCOL_EXT `(v  1 e 1 0 ]
 [v i1_PROTOCOL_EXT PROTOCOL_EXT `(v  1 e 1 0 ]
-"129
+"135
 [v _PROTOCOL_Read_Lock PROTOCOL_Read_Lock `(uc  1 e 1 0 ]
-"136
+"142
 [v _PROTOCOL_Loop PROTOCOL_Loop `(v  1 e 1 0 ]
-"197
+"203
 [v _concat concat `(ui  1 e 2 0 ]
-"201
+"207
 [v _PROTOCOL_Backplane_Slave_Enabled PROTOCOL_Backplane_Slave_Enabled `(v  1 e 1 0 ]
-"205
+"211
 [v _PROTOCOL_I2C_WHO PROTOCOL_I2C_WHO `(uc  1 e 1 0 ]
-"209
+"215
 [v _PROTOCOL_I2C_GET PROTOCOL_I2C_GET `(uc  1 e 1 0 ]
-"213
+"219
 [v _PROTOCOL_I2C_Set_TLV PROTOCOL_I2C_Set_TLV `(v  1 e 1 0 ]
-"285
+"291
 [v _PROTOCOL_RST PROTOCOL_RST `(v  1 e 1 0 ]
-"292
+"298
 [v _PROTOCOL_I2C_Send_uint8_t PROTOCOL_I2C_Send_uint8_t `(v  1 e 1 0 ]
-"302
+"308
 [v _PROTOCOL_I2C_Send_int8_t PROTOCOL_I2C_Send_int8_t `(v  1 e 1 0 ]
-"315
+"321
 [v _PROTOCOL_I2C_Send_uint16_t PROTOCOL_I2C_Send_uint16_t `(v  1 e 1 0 ]
-"330
+"336
 [v _PROTOCOL_I2C_Send_int16_t PROTOCOL_I2C_Send_int16_t `(v  1 e 1 0 ]
-"345
+"351
 [v _PROTOCOL_I2C_Send_float PROTOCOL_I2C_Send_float `(v  1 e 1 0 ]
-"404
+"410
 [v _PROTOCOL_I2C_SEN PROTOCOL_I2C_SEN `(*.4uc  1 e 1 0 ]
-[s S415 . 1 `uc 1 IOCIF 1 0 :1:0 
+"459
+[v _I2C_Initialize I2C_Initialize `(v  1 e 1 0 ]
+"486
+[v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
+"535
+[v _I2C_StatusCallback I2C_StatusCallback `(v  1 e 1 0 ]
+[s S172 . 1 `uc 1 IOCIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 IOCIE 1 0 :1:3 
@@ -203,14 +203,14 @@ COMPLETE 3
 `uc 1 GIE 1 0 :1:7 
 ]
 "358 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1825.h
-[s S424 . 1 `uc 1 . 1 0 :2:0 
+[s S181 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 T0IE 1 0 :1:5 
 ]
-[u S429 . 1 `S415 1 . 1 0 `S424 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES429  1 e 1 @11 ]
-[s S35 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[u S186 . 1 `S172 1 . 1 0 `S181 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES186  1 e 1 @11 ]
+[s S259 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -220,15 +220,15 @@ COMPLETE 3
 `uc 1 TMR1GIF 1 0 :1:7 
 ]
 "527
-[u S44 . 1 `S35 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES44  1 e 1 @17 ]
+[u S268 . 1 `S259 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES268  1 e 1 @17 ]
 "660
 [v _TMR0 TMR0 `VEuc  1 e 1 @21 ]
 "1075
 [v _TRISA TRISA `VEuc  1 e 1 @140 ]
 "1124
 [v _TRISC TRISC `VEuc  1 e 1 @142 ]
-[s S56 . 1 `uc 1 TMR1IE 1 0 :1:0 
+[s S238 . 1 `uc 1 TMR1IE 1 0 :1:0 
 `uc 1 TMR2IE 1 0 :1:1 
 `uc 1 CCP1IE 1 0 :1:2 
 `uc 1 SSP1IE 1 0 :1:3 
@@ -238,11 +238,11 @@ COMPLETE 3
 `uc 1 TMR1GIE 1 0 :1:7 
 ]
 "1190
-[u S65 . 1 `S56 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES65  1 e 1 @145 ]
+[u S247 . 1 `S238 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES247  1 e 1 @145 ]
 "1323
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @149 ]
-[s S272 . 1 `uc 1 PS0 1 0 :1:0 
+[s S27 . 1 `uc 1 PS0 1 0 :1:0 
 `uc 1 PS1 1 0 :1:1 
 `uc 1 PS2 1 0 :1:2 
 `uc 1 PSA 1 0 :1:3 
@@ -252,13 +252,13 @@ COMPLETE 3
 `uc 1 nWPUEN 1 0 :1:7 
 ]
 "1346
-[s S281 . 1 `uc 1 PS 1 0 :3:0 
+[s S36 . 1 `uc 1 PS 1 0 :3:0 
 `uc 1 . 1 0 :1:3 
 `uc 1 T0SE 1 0 :1:4 
 `uc 1 T0CS 1 0 :1:5 
 ]
-[u S286 . 1 `S272 1 . 1 0 `S281 1 . 1 0 ]
-[v _OPTION_REGbits OPTION_REGbits `VES286  1 e 1 @149 ]
+[u S41 . 1 `S27 1 . 1 0 `S36 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES41  1 e 1 @149 ]
 "1455
 [v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
 "1513
@@ -271,7 +271,7 @@ COMPLETE 3
 [v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
 "1746
 [v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
-[s S358 . 1 `uc 1 ADON 1 0 :1:0 
+[s S111 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -280,22 +280,22 @@ COMPLETE 3
 `uc 1 CHS4 1 0 :1:6 
 ]
 "1771
-[s S366 . 1 `uc 1 . 1 0 :1:0 
+[s S119 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 ADGO 1 0 :1:1 
 `uc 1 CHS 1 0 :5:2 
 ]
-[s S370 . 1 `uc 1 . 1 0 :1:0 
+[s S123 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 ]
-[u S373 . 1 `S358 1 . 1 0 `S366 1 . 1 0 `S370 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES373  1 e 1 @157 ]
+[u S126 . 1 `S111 1 . 1 0 `S119 1 . 1 0 `S123 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES126  1 e 1 @157 ]
 "1825
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
 "1896
 [v _LATA LATA `VEuc  1 e 1 @268 ]
 "1940
 [v _LATC LATC `VEuc  1 e 1 @270 ]
-[s S525 . 1 `uc 1 LATC0 1 0 :1:0 
+[s S319 . 1 `uc 1 LATC0 1 0 :1:0 
 `uc 1 LATC1 1 0 :1:1 
 `uc 1 LATC2 1 0 :1:2 
 `uc 1 LATC3 1 0 :1:3 
@@ -303,8 +303,8 @@ COMPLETE 3
 `uc 1 LATC5 1 0 :1:5 
 ]
 "1955
-[u S532 . 1 `S525 1 . 1 0 ]
-[v _LATCbits LATCbits `VES532  1 e 1 @270 ]
+[u S326 . 1 `S319 1 . 1 0 ]
+[v _LATCbits LATCbits `VES326  1 e 1 @270 ]
 "2589
 [v _APFCON0 APFCON0 `VEuc  1 e 1 @285 ]
 "2634
@@ -319,65 +319,13 @@ COMPLETE 3
 [v _WPUA WPUA `VEuc  1 e 1 @524 ]
 "3260
 [v _WPUC WPUC `VEuc  1 e 1 @526 ]
-"3309
-[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
-"3346
-[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
-"3383
-[v _SSP1MSK SSP1MSK `VEuc  1 e 1 @531 ]
-"3420
-[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @532 ]
-[s S78 . 1 `uc 1 BF 1 0 :1:0 
-`uc 1 UA 1 0 :1:1 
-`uc 1 R_nW 1 0 :1:2 
-`uc 1 S 1 0 :1:3 
-`uc 1 P 1 0 :1:4 
-`uc 1 D_nA 1 0 :1:5 
-`uc 1 CKE 1 0 :1:6 
-`uc 1 SMP 1 0 :1:7 
-]
-"3442
-[u S87 . 1 `S78 1 . 1 0 ]
-[v _SSP1STATbits SSP1STATbits `VES87  1 e 1 @532 ]
-"3541
-[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
-[s S131 . 1 `uc 1 SSPM0 1 0 :1:0 
-`uc 1 SSPM1 1 0 :1:1 
-`uc 1 SSPM2 1 0 :1:2 
-`uc 1 SSPM3 1 0 :1:3 
-`uc 1 CKP 1 0 :1:4 
-`uc 1 SSPEN 1 0 :1:5 
-`uc 1 SSPOV 1 0 :1:6 
-`uc 1 WCOL 1 0 :1:7 
-]
-"3570
-[s S140 . 1 `uc 1 SSPM 1 0 :4:0 
-]
-[u S142 . 1 `S131 1 . 1 0 `S140 1 . 1 0 ]
-[v _SSP1CON1bits SSP1CON1bits `VES142  1 e 1 @533 ]
-"3744
-[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
-[s S99 . 1 `uc 1 SEN 1 0 :1:0 
-`uc 1 RSEN 1 0 :1:1 
-`uc 1 PEN 1 0 :1:2 
-`uc 1 RCEN 1 0 :1:3 
-`uc 1 ACKEN 1 0 :1:4 
-`uc 1 ACKDT 1 0 :1:5 
-`uc 1 ACKSTAT 1 0 :1:6 
-`uc 1 GCEN 1 0 :1:7 
-]
-"3766
-[u S108 . 1 `S99 1 . 1 0 ]
-[v _SSP1CON2bits SSP1CON2bits `VES108  1 e 1 @534 ]
-"3865
-[v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @535 ]
 "354 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _dpowers dpowers `DCC[5]ui  1 s 10 dpowers ]
 "2833 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f1825.h
 [v _EEADRL EEADRL `VEuc  1 e 1 @401 ]
 "2880
 [v _EEDATL EEDATL `VEuc  1 e 1 @403 ]
-[s S1247 . 1 `uc 1 RD 1 0 :1:0 
+[s S1209 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -387,8 +335,8 @@ COMPLETE 3
 `uc 1 EEPGD 1 0 :1:7 
 ]
 "2955
-[u S1256 . 1 `S1247 1 . 1 0 ]
-[v _EECON1bits EECON1bits `VES1256  1 e 1 @405 ]
+[u S1218 . 1 `S1209 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES1218  1 e 1 @405 ]
 "3020
 [v _RCREG RCREG `VEuc  1 e 1 @409 ]
 "3040
@@ -399,7 +347,7 @@ COMPLETE 3
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @412 ]
 "3107
 [v _RCSTA RCSTA `VEuc  1 e 1 @413 ]
-[s S696 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S493 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -409,16 +357,68 @@ COMPLETE 3
 `uc 1 SPEN 1 0 :1:7 
 ]
 "3124
-[u S705 . 1 `S696 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES705  1 e 1 @413 ]
+[u S502 . 1 `S493 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES502  1 e 1 @413 ]
 "3169
 [v _TXSTA TXSTA `VEuc  1 e 1 @414 ]
 "3231
 [v _BAUDCON BAUDCON `VEuc  1 e 1 @415 ]
+"3391
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+"3429
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
+"3467
+[v _SSP1MSK SSP1MSK `VEuc  1 e 1 @531 ]
+"3505
+[v _SSP1STAT SSP1STAT `VEuc  1 e 1 @532 ]
+[s S623 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"3527
+[u S632 . 1 `S623 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES632  1 e 1 @532 ]
+"3627
+[v _SSP1CON1 SSP1CON1 `VEuc  1 e 1 @533 ]
+[s S676 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"3656
+[s S685 . 1 `uc 1 SSPM 1 0 :4:0 
+]
+[u S687 . 1 `S676 1 . 1 0 `S685 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES687  1 e 1 @533 ]
+"3831
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
+[s S644 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"3853
+[u S653 . 1 `S644 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES653  1 e 1 @534 ]
+"3953
+[v _SSP1CON3 SSP1CON3 `VEuc  1 e 1 @535 ]
 "7000
 [v _TMR0IF TMR0IF `VEb  1 e 0 @90 ]
 "24 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
-[v _ANALOG_IN ANALOG_IN `DCC[4]E2792  1 e 4 0 ]
+[v _ANALOG_IN ANALOG_IN `DCC[4]E2779  1 e 4 0 ]
 "39
 [v _analog_in_flags analog_in_flags `[4]uc  1 e 4 0 ]
 "46
@@ -441,60 +441,60 @@ COMPLETE 3
 [v _eusartRxBuffer eusartRxBuffer `VE[8]uc  1 e 8 0 ]
 "69
 [v _eusartRxCount eusartRxCount `VEuc  1 e 1 0 ]
-"23 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/i2c.c
-[v _I2C_slaveWriteData I2C_slaveWriteData `VEuc  1 e 1 0 ]
 "57 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/tmr0.c
 [v _timer0ReloadVal timer0ReloadVal `VEuc  1 e 1 0 ]
-"10 protocol.c
+"16 protocol.c
 [v _slave_address slave_address `uc  1 e 1 0 ]
-"13
-[v _PROTOCOL_Start_Handler PROTOCOL_Start_Handler `*.37(v  1 e 2 0 ]
-"14
-[v _PROTOCOL_Stop_Handler PROTOCOL_Stop_Handler `*.37(v  1 e 2 0 ]
-"15
-[v _PROTOCOL_Set_Handler PROTOCOL_Set_Handler `*.37(v  1 e 2 0 ]
-"16
-[v _PROTOCOL_Loop_Func PROTOCOL_Loop_Func `*.37(v  1 e 2 0 ]
-"17
-[v _PROTOCOL_Extension_Handler PROTOCOL_Extension_Handler `*.37(v  1 e 2 0 ]
-"18
-[v _PROTOCOL_Inv_Handler PROTOCOL_Inv_Handler `*.37(v  1 e 2 0 ]
 "19
-[v _PROTOCOL_Tick_Handler PROTOCOL_Tick_Handler `*.37(v  1 e 2 0 ]
+[v _PROTOCOL_Start_Handler PROTOCOL_Start_Handler `*.37(v  1 e 2 0 ]
+"20
+[v _PROTOCOL_Stop_Handler PROTOCOL_Stop_Handler `*.37(v  1 e 2 0 ]
 "21
-[v _cnt cnt `uc  1 e 1 0 ]
+[v _PROTOCOL_Set_Handler PROTOCOL_Set_Handler `*.37(v  1 e 2 0 ]
 "22
-[v _buf buf `[48]uc  1 e 48 0 ]
+[v _PROTOCOL_Loop_Func PROTOCOL_Loop_Func `*.37(v  1 e 2 0 ]
 "23
-[v _value value `uc  1 e 1 0 ]
+[v _PROTOCOL_Extension_Handler PROTOCOL_Extension_Handler `*.37(v  1 e 2 0 ]
 "24
-[v _device_id_ device_id_ `*.25DCCuc  1 e 2 0 ]
+[v _PROTOCOL_Inv_Handler PROTOCOL_Inv_Handler `*.37(v  1 e 2 0 ]
 "25
-[v _locked locked `uc  1 e 1 0 ]
-"26
-[v _running running `uc  1 e 1 0 ]
+[v _PROTOCOL_Tick_Handler PROTOCOL_Tick_Handler `*.37(v  1 e 2 0 ]
 "27
-[v _invoked invoked `uc  1 e 1 0 ]
+[v _cnt cnt `uc  1 e 1 0 ]
 "28
-[v _sec_cnt sec_cnt `uc  1 e 1 0 ]
+[v _buf buf `[48]uc  1 e 48 0 ]
 "29
-[v _tmr_cnt tmr_cnt `uc  1 e 1 0 ]
+[v _value value `uc  1 e 1 0 ]
 "30
-[v _tmr_scaler tmr_scaler `uc  1 e 1 0 ]
+[v _device_id_ device_id_ `*.25DCCuc  1 e 2 0 ]
 "31
-[v _tmr_overflow tmr_overflow `uc  1 e 1 0 ]
+[v _locked locked `uc  1 e 1 0 ]
 "32
+[v _running running `uc  1 e 1 0 ]
+"33
+[v _invoked invoked `uc  1 e 1 0 ]
+"34
+[v _sec_cnt sec_cnt `uc  1 e 1 0 ]
+"35
+[v _tmr_cnt tmr_cnt `uc  1 e 1 0 ]
+"36
+[v _tmr_scaler tmr_scaler `uc  1 e 1 0 ]
+"37
+[v _tmr_overflow tmr_overflow `uc  1 e 1 0 ]
+"38
 [v _type_no_data type_no_data `uc  1 e 1 0 ]
-[s S758 . 5 `uc 1 type 1 0 `uc 1 length 1 1 `*.4uc 1 pbuffer 1 2 `E3128 1 status 1 3 `uc 1 buf_cnt 1 4 ]
-"50
-[v _readbuf readbuf `S758  1 e 5 0 ]
-"53
+[s S555 . 5 `uc 1 type 1 0 `uc 1 length 1 1 `*.4uc 1 pbuffer 1 2 `E3141 1 status 1 3 `uc 1 buf_cnt 1 4 ]
+"56
+[v _readbuf readbuf `S555  1 e 5 0 ]
+"59
 [v _backplane_slave_enabled backplane_slave_enabled `uc  1 e 1 0 ]
-"54
+"60
 [v _sendbuf sendbuf `[16]uc  1 e 16 0 ]
-"55
+"61
 [v _i i `uc  1 e 1 0 ]
-"135 protocol.h
+"452
+[v _I2C_slaveWriteData I2C_slaveWriteData `VEuc  1 e 1 0 ]
+"140 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS BACKPLANE_SLAVE_ADDRESS `uc  1 e 1 0 ]
 "137 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
 [v _main main `(v  1 e 1 0 ]
@@ -508,30 +508,30 @@ COMPLETE 3
 [v init@i i `uc  1 a 1 1 ]
 "64
 } 0
-"89 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/mcc.c
+"88 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/mcc.c
 [v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
 {
-"93
+"92
 } 0
 "62 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
 "77
 } 0
-"77 protocol.c
+"83 protocol.c
 [v _PROTOCOL_Set_Func PROTOCOL_Set_Func `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Set_Func@loop_func loop_func `*.37v  1 p 2 0 ]
-"79
+"85
 } 0
-"136
+"142
 [v _PROTOCOL_Loop PROTOCOL_Loop `(v  1 e 1 0 ]
 {
-"137
+"143
 [v PROTOCOL_Loop@device_address device_address `uc  1 a 1 49 ]
-"138
+"144
 [v PROTOCOL_Loop@c c `uc  1 a 1 48 ]
-"191
+"197
 } 0
 "4 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\strncmp.c
 [v _strncmp strncmp `(i  1 e 2 0 ]
@@ -565,14 +565,14 @@ COMPLETE 3
 [v abs@a a `i  1 p 2 0 ]
 "9
 } 0
-"292 protocol.c
+"298 protocol.c
 [v _PROTOCOL_I2C_Send_uint8_t PROTOCOL_I2C_Send_uint8_t `(v  1 e 1 0 ]
 {
 [v PROTOCOL_I2C_Send_uint8_t@length length `uc  1 a 1 wreg ]
 [v PROTOCOL_I2C_Send_uint8_t@length length `uc  1 a 1 wreg ]
 [v PROTOCOL_I2C_Send_uint8_t@pbuffer pbuffer `*.4uc  1 p 1 34 ]
 [v PROTOCOL_I2C_Send_uint8_t@length length `uc  1 a 1 38 ]
-"300
+"306
 } 0
 "464 C:\Program Files (x86)\Microchip\xc8\v1.41\sources\common\doprnt.c
 [v _printf printf `(i  1 e 2 0 ]
@@ -636,18 +636,18 @@ COMPLETE 3
 [v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
 "31
 } 0
-"213 protocol.c
+"219 protocol.c
 [v _PROTOCOL_I2C_Set_TLV PROTOCOL_I2C_Set_TLV `(v  1 e 1 0 ]
 {
 [v PROTOCOL_I2C_Set_TLV@type type `uc  1 a 1 wreg ]
-"214
-[v PROTOCOL_I2C_Set_TLV@status status `E3128  1 a 1 4 ]
-"213
+"220
+[v PROTOCOL_I2C_Set_TLV@status status `E3141  1 a 1 4 ]
+"219
 [v PROTOCOL_I2C_Set_TLV@type type `uc  1 a 1 wreg ]
 [v PROTOCOL_I2C_Set_TLV@length length `uc  1 p 1 0 ]
 [v PROTOCOL_I2C_Set_TLV@pbuffer pbuffer `*.4uc  1 p 1 1 ]
 [v PROTOCOL_I2C_Set_TLV@type type `uc  1 a 1 3 ]
-"222
+"228
 } 0
 "90 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/adc.c
 [v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
@@ -710,36 +710,36 @@ COMPLETE 3
 {
 "105
 } 0
-"89 protocol.c
+"95 protocol.c
 [v _PROTOCOL_Write_Device_Address PROTOCOL_Write_Device_Address `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Write_Device_Address@device_id_i2c device_id_i2c `uc  1 a 1 wreg ]
 [v PROTOCOL_Write_Device_Address@device_id_i2c device_id_i2c `uc  1 a 1 wreg ]
 [v PROTOCOL_Write_Device_Address@device_id_i2c device_id_i2c `uc  1 a 1 4 ]
-"92
+"98
 } 0
-"103
+"109
 [v _PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
 {
-"106
+"112
 } 0
-"98
+"104
 [v _PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
 {
-"101
+"107
 } 0
-"116
+"122
 [v _PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
 {
 [v PROTOCOL_SET@value_ value_ `uc  1 a 1 wreg ]
 [v PROTOCOL_SET@value_ value_ `uc  1 a 1 wreg ]
 [v PROTOCOL_SET@value_ value_ `uc  1 a 1 5 ]
-"119
+"125
 } 0
-"112
+"118
 [v _PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
 {
-"114
+"120
 } 0
 "180 mcc_generated_files/memory.c
 [v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
@@ -754,12 +754,12 @@ COMPLETE 3
 [v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 1 ]
 "202
 } 0
-"121 protocol.c
+"127 protocol.c
 [v _PROTOCOL_EXT PROTOCOL_EXT `(v  1 e 1 0 ]
 {
 [v PROTOCOL_EXT@char_buf char_buf `*.5uc  1 a 1 wreg ]
 [v PROTOCOL_EXT@char_buf char_buf `*.5uc  1 a 1 wreg ]
-"123
+"129
 } 0
 "112 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/eusart.c
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
@@ -768,7 +768,7 @@ COMPLETE 3
 [v EUSART_Read@readValue readValue `uc  1 a 1 1 ]
 "130
 } 0
-"60 protocol.c
+"66 protocol.c
 [v _PROTOCOL_Initialize PROTOCOL_Initialize `(v  1 e 1 0 ]
 {
 [v PROTOCOL_Initialize@device_id device_id `*.25DCCuc  1 p 2 4 ]
@@ -777,7 +777,7 @@ COMPLETE 3
 [v PROTOCOL_Initialize@set_handler set_handler `*.37v  1 p 2 8 ]
 [v PROTOCOL_Initialize@inv_handler inv_handler `*.1v  1 p 1 10 ]
 [v PROTOCOL_Initialize@scaler scaler `uc  1 p 1 11 ]
-"75
+"81
 } 0
 "66 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
 [v _set_handler set_handler `(v  1 e 1 0 ]
@@ -804,20 +804,20 @@ COMPLETE 3
 {
 "89
 } 0
-"81 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/mcc.c
+"80 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"87
+"86
 } 0
-"30 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/i2c.c
+"459 protocol.c
 [v _I2C_Initialize I2C_Initialize `(v  1 e 1 0 ]
 {
-"55
+"484
 } 0
-"94 protocol.c
+"100
 [v _PROTOCOL_Read_Device_Address PROTOCOL_Read_Device_Address `(uc  1 e 1 0 ]
 {
-"96
+"102
 } 0
 "75 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/eusart.c
 [v _EUSART_Initialize EUSART_Initialize `(v  1 e 1 0 ]
@@ -829,57 +829,57 @@ COMPLETE 3
 {
 "80
 } 0
-"51 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/interrupt_manager.c
+"52 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
 {
-"70
+"71
 } 0
-"57 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/i2c.c
+"486 protocol.c
 [v _I2C_ISR I2C_ISR `(v  1 e 1 0 ]
 {
-"59
+"488
 [v I2C_ISR@i2c_data i2c_data `uc  1 a 1 10 ]
-"104
+"533
 } 0
-"106
+"535
 [v _I2C_StatusCallback I2C_StatusCallback `(v  1 e 1 0 ]
 {
-[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E2702  1 a 1 wreg ]
-"114
+[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E3095  1 a 1 wreg ]
+"543
 [v I2C_StatusCallback@pdata pdata `*.4uc  1 a 1 8 ]
-"106
-[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E2702  1 a 1 wreg ]
-"109
+"535
+[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E3095  1 a 1 wreg ]
+"538
 [v I2C_StatusCallback@slaveWriteType slaveWriteType `uc  1 s 1 slaveWriteType ]
-"110
+"539
 [v I2C_StatusCallback@next next `uc  1 s 1 next ]
-"111
+"540
 [v I2C_StatusCallback@ext_len ext_len `uc  1 s 1 ext_len ]
-"112
+"541
 [v I2C_StatusCallback@ext_cnt ext_cnt `uc  1 s 1 ext_cnt ]
-"113
+"542
 [v I2C_StatusCallback@ext_buf ext_buf `[48]uc  1 s 48 ext_buf ]
-"106
-[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E2702  1 a 1 7 ]
-"217
+"535
+[v I2C_StatusCallback@i2c_bus_state i2c_bus_state `E3095  1 a 1 7 ]
+"646
 } 0
-"103 protocol.c
+"109
 [v i1_PROTOCOL_STP PROTOCOL_STP `(v  1 e 1 0 ]
 {
-"106
+"112
 } 0
-"98
+"104
 [v i1_PROTOCOL_STA PROTOCOL_STA `(v  1 e 1 0 ]
 {
-"101
+"107
 } 0
-"116
+"122
 [v i1_PROTOCOL_SET PROTOCOL_SET `(v  1 e 1 0 ]
 {
 [v i1PROTOCOL_SET@value_ value_ `uc  1 a 1 wreg ]
 [v i1PROTOCOL_SET@value_ value_ `uc  1 a 1 wreg ]
 [v i1PROTOCOL_SET@value_ value_ `uc  1 a 1 5 ]
-"119
+"125
 } 0
 "66 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\main.c
 [v i1_set_handler set_handler `(v  1 e 1 0 ]
@@ -889,10 +889,10 @@ COMPLETE 3
 [v i1set_handler@value value `uc  1 p 1 0 ]
 "78
 } 0
-"112 protocol.c
+"118 protocol.c
 [v i1_PROTOCOL_SAV PROTOCOL_SAV `(v  1 e 1 0 ]
 {
-"114
+"120
 } 0
 "180 mcc_generated_files/memory.c
 [v i1_DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
@@ -905,47 +905,47 @@ COMPLETE 3
 [v i1DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 1 ]
 "202
 } 0
-"121 protocol.c
+"127 protocol.c
 [v i1_PROTOCOL_EXT PROTOCOL_EXT `(v  1 e 1 0 ]
 {
-"123
-} 0
 "129
+} 0
+"135
 [v _PROTOCOL_Read_Lock PROTOCOL_Read_Lock `(uc  1 e 1 0 ]
 {
-"131
+"137
 } 0
-"285
+"291
 [v _PROTOCOL_RST PROTOCOL_RST `(v  1 e 1 0 ]
 {
-"290
+"296
 } 0
-"108
+"114
 [v _PROTOCOL_INV PROTOCOL_INV `(v  1 e 1 0 ]
 {
-"110
+"116
 } 0
-"205
+"211
 [v _PROTOCOL_I2C_WHO PROTOCOL_I2C_WHO `(uc  1 e 1 0 ]
 {
-"207
+"213
 } 0
-"404
+"410
 [v _PROTOCOL_I2C_SEN PROTOCOL_I2C_SEN `(*.4uc  1 e 1 0 ]
 {
-"405
+"411
 [v PROTOCOL_I2C_SEN@pdata pdata `*.4uc  1 a 1 1 ]
-"429
+"435
 } 0
-"209
+"215
 [v _PROTOCOL_I2C_GET PROTOCOL_I2C_GET `(uc  1 e 1 0 ]
 {
-"211
+"217
 } 0
-"201
+"207
 [v _PROTOCOL_Backplane_Slave_Enabled PROTOCOL_Backplane_Slave_Enabled `(v  1 e 1 0 ]
 {
-"203
+"209
 } 0
 "165 C:\Users\shiny\Documents\GitHub\sensor-network\blocks\pic16f1825\i2c_slave_position.X\mcc_generated_files/eusart.c
 [v _EUSART_Transmit_ISR EUSART_Transmit_ISR `(v  1 e 1 0 ]

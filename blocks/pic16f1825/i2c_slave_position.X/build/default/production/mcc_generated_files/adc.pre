@@ -3685,28 +3685,6 @@ void interrupt INTERRUPT_InterruptManager(void);
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stddef.h"
-typedef int ptrdiff_t;
-
-# 78 "mcc_generated_files/i2c.h"
-typedef enum
-{
-I2C_SLAVE_WRITE_REQUEST,
-I2C_SLAVE_READ_REQUEST,
-I2C_SLAVE_WRITE_COMPLETED,
-I2C_SLAVE_READ_COMPLETED,
-I2C_SLAVE_GENERAL_CALL_REQUEST,
-} I2C_SLAVE_DRIVER_STATUS;
-
-# 114
-void I2C_Initialize(void);
-
-# 134
-void I2C_ISR ( void );
-
-# 141
-extern volatile uint8_t I2C_slaveWriteData;
-
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
 typedef void * va_list[1];
 
@@ -3801,13 +3779,13 @@ void TMR0_Reload(void);
 # 243
 bool TMR0_HasOverflowOccured(void);
 
-# 72 "mcc_generated_files/mcc.h"
+# 71 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 85
+# 84
 void OSCILLATOR_Initialize(void);
 
-# 98
+# 97
 void WDT_Initialize(void);
 
 # 64 "mcc_generated_files/adc.c"

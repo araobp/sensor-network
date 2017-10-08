@@ -1,7 +1,7 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "24 main.c
-[c E2792 0 1 2 7 29 30 31 .. ]
-[n E2792 . channel_AN0 channel_AN1 channel_AN2 channel_AN7 channel_Temp channel_DAC channel_FVR  ]
+[c E2779 0 1 2 7 29 30 31 .. ]
+[n E2779 . channel_AN0 channel_AN1 channel_AN2 channel_AN7 channel_Temp channel_DAC channel_FVR  ]
 "1946 C:\Program Files (x86)\Microchip\xc8\v1.41\include\pic16f1825.h
 [s S103 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S103 . LATC0 LATC1 LATC2 LATC3 LATC4 LATC5 ]
@@ -15,7 +15,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v __delay `JF2654 ~T0 @X0 0 e ]
 [p i __delay ]
 "168 mcc_generated_files/adc.h
-[v _ADC_SelectChannel `(v ~T0 @X0 0 ef1`E2792 ]
+[v _ADC_SelectChannel `(v ~T0 @X0 0 ef1`E2779 ]
 "195
 [v _ADC_StartConversion `(v ~T0 @X0 0 ef ]
 "227
@@ -24,18 +24,18 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ADC_GetConversionResult `(ui ~T0 @X0 0 ef ]
 "92 C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdlib.h
 [v _abs `(i ~T0 @X0 0 ef1`i ]
-"75 ../lib/protocol.X\protocol.h
+"80 ../lib/protocol.X\protocol.h
 [v _PROTOCOL_I2C_Send_uint8_t `(v ~T0 @X0 0 ef2`uc`*uc ]
 [p mainexit ]
-"46
+"51
 [v _PROTOCOL_Initialize `(v ~T0 @X0 0 ef6`*Cuc`*v`*v`*v`*v`uc ]
-"48
+"53
 [v _PROTOCOL_Set_Func `(v ~T0 @X0 0 ef1`*v ]
 "201 mcc_generated_files/pin_manager.h
 [v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"85 mcc_generated_files/mcc.h
+"84 mcc_generated_files/mcc.h
 [v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"98
+"97
 [v _WDT_Initialize `(v ~T0 @X0 0 ef ]
 "138 mcc_generated_files/adc.h
 [v _ADC_Initialize `(v ~T0 @X0 0 ef ]
@@ -54,9 +54,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _INTCONbits `VS25 ~T0 @X0 0 e@11 ]
 "106 mcc_generated_files/eusart.h
 [v _EUSART_Initialize `(v ~T0 @X0 0 ef ]
-"114 mcc_generated_files/i2c.h
+"173 ../lib/protocol.X\protocol.h
 [v _I2C_Initialize `(v ~T0 @X0 0 ef ]
-"47 ../lib/protocol.X\protocol.h
+"52
 [v _PROTOCOL_Loop `(v ~T0 @X0 0 ef ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
@@ -2681,18 +2681,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: I2C_SLAVE_GENERAL_CALL_REQUEST,
-[; ;i2c.h: 85: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 114: void I2C_Initialize(void);
-[; ;i2c.h: 134: void I2C_ISR ( void );
-[; ;i2c.h: 141: extern volatile uint8_t I2C_slaveWriteData;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -2756,51 +2744,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 169: void TMR0_WriteTimer(uint8_t timerVal);
 [; ;tmr0.h: 205: void TMR0_Reload(void);
 [; ;tmr0.h: 243: bool TMR0_HasOverflowOccured(void);
-[; ;mcc.h: 72: void SYSTEM_Initialize(void);
-[; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
-[; ;mcc.h: 98: void WDT_Initialize(void);
-[; ;protocol.X\protocol.h: 41: void blink_red(uint8_t times);
-[; ;protocol.X\protocol.h: 46: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
-[; ;protocol.X\protocol.h: 47: void PROTOCOL_Loop();
-[; ;protocol.X\protocol.h: 48: void PROTOCOL_Set_Func(void *loop_func);
-[; ;protocol.X\protocol.h: 49: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
-[; ;protocol.X\protocol.h: 50: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
-[; ;protocol.X\protocol.h: 51: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
-[; ;protocol.X\protocol.h: 52: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
-[; ;protocol.X\protocol.h: 53: uint8_t PROTOCOL_Read_Device_Address(void);
-[; ;protocol.X\protocol.h: 55: void PROTOCOL_STA(void);
-[; ;protocol.X\protocol.h: 56: void PROTOCOL_STP(void);
-[; ;protocol.X\protocol.h: 57: void PROTOCOL_SET(uint8_t value);
-[; ;protocol.X\protocol.h: 58: void PROTOCOL_SAV(void);
-[; ;protocol.X\protocol.h: 59: void PROTOCOL_INV(void);
-[; ;protocol.X\protocol.h: 60: void PROTOCOL_RST(void);
-[; ;protocol.X\protocol.h: 61: void PROTOCOL_EXT(uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 66: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 71: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 72: void PROTOCOL_I2C_Reset_TLV(void);
-[; ;protocol.X\protocol.h: 73: bool PROTOCOL_I2C_TLV_Status(void);
-[; ;protocol.X\protocol.h: 75: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
-[; ;protocol.X\protocol.h: 76: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
-[; ;protocol.X\protocol.h: 77: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
-[; ;protocol.X\protocol.h: 78: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
-[; ;protocol.X\protocol.h: 79: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
-[; ;protocol.X\protocol.h: 80: void PROTOCOL_Send_uint8_t(uint8_t value);
-[; ;protocol.X\protocol.h: 81: void PROTOCOL_Send_int8_t(int8_t value);
-[; ;protocol.X\protocol.h: 82: void PROTOCOL_Send_uint16_t(uint16_t value);
-[; ;protocol.X\protocol.h: 83: void PROTOCOL_Send_int16_t(int16_t value);
-[; ;protocol.X\protocol.h: 84: void PROTOCOL_Send_float(float value);
-[; ;protocol.X\protocol.h: 89: void PROTOCOL_Backplane_Slave_Enabled(void);
-[; ;protocol.X\protocol.h: 90: uint8_t PROTOCOL_I2C_WHO(void);
-[; ;protocol.X\protocol.h: 91: uint8_t PROTOCOL_I2C_GET(void);
-[; ;protocol.X\protocol.h: 92: uint8_t* PROTOCOL_I2C_SEN();
-[; ;protocol.X\protocol.h: 94: void PROTOCOL_Set_Lock(bool lock);
-[; ;protocol.X\protocol.h: 95: bool PROTOCOL_Read_Lock(void);
-"135 ../lib/protocol.X\protocol.h
+[; ;mcc.h: 71: void SYSTEM_Initialize(void);
+[; ;mcc.h: 84: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 97: void WDT_Initialize(void);
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;protocol.X\protocol.h: 46: void blink_red(uint8_t times);
+[; ;protocol.X\protocol.h: 51: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+[; ;protocol.X\protocol.h: 52: void PROTOCOL_Loop();
+[; ;protocol.X\protocol.h: 53: void PROTOCOL_Set_Func(void *loop_func);
+[; ;protocol.X\protocol.h: 54: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+[; ;protocol.X\protocol.h: 55: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+[; ;protocol.X\protocol.h: 56: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
+[; ;protocol.X\protocol.h: 57: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+[; ;protocol.X\protocol.h: 58: uint8_t PROTOCOL_Read_Device_Address(void);
+[; ;protocol.X\protocol.h: 60: void PROTOCOL_STA(void);
+[; ;protocol.X\protocol.h: 61: void PROTOCOL_STP(void);
+[; ;protocol.X\protocol.h: 62: void PROTOCOL_SET(uint8_t value);
+[; ;protocol.X\protocol.h: 63: void PROTOCOL_SAV(void);
+[; ;protocol.X\protocol.h: 64: void PROTOCOL_INV(void);
+[; ;protocol.X\protocol.h: 65: void PROTOCOL_RST(void);
+[; ;protocol.X\protocol.h: 66: void PROTOCOL_EXT(uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 71: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 76: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 77: void PROTOCOL_I2C_Reset_TLV(void);
+[; ;protocol.X\protocol.h: 78: bool PROTOCOL_I2C_TLV_Status(void);
+[; ;protocol.X\protocol.h: 80: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 81: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+[; ;protocol.X\protocol.h: 82: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+[; ;protocol.X\protocol.h: 83: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+[; ;protocol.X\protocol.h: 84: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+[; ;protocol.X\protocol.h: 85: void PROTOCOL_Send_uint8_t(uint8_t value);
+[; ;protocol.X\protocol.h: 86: void PROTOCOL_Send_int8_t(int8_t value);
+[; ;protocol.X\protocol.h: 87: void PROTOCOL_Send_uint16_t(uint16_t value);
+[; ;protocol.X\protocol.h: 88: void PROTOCOL_Send_int16_t(int16_t value);
+[; ;protocol.X\protocol.h: 89: void PROTOCOL_Send_float(float value);
+[; ;protocol.X\protocol.h: 94: void PROTOCOL_Backplane_Slave_Enabled(void);
+[; ;protocol.X\protocol.h: 95: uint8_t PROTOCOL_I2C_WHO(void);
+[; ;protocol.X\protocol.h: 96: uint8_t PROTOCOL_I2C_GET(void);
+[; ;protocol.X\protocol.h: 97: uint8_t* PROTOCOL_I2C_SEN();
+[; ;protocol.X\protocol.h: 99: void PROTOCOL_Set_Lock(bool lock);
+[; ;protocol.X\protocol.h: 100: bool PROTOCOL_Read_Lock(void);
+"140 ../lib/protocol.X\protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS `uc ~T0 @X0 1 e ]
 [i _BACKPLANE_SLAVE_ADDRESS
 -> -> 1 `i `uc
 ]
-[; ;protocol.X\protocol.h: 135: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.X\protocol.h: 140: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.X\protocol.h: 162: typedef enum
+[; ;protocol.X\protocol.h: 163: {
+[; ;protocol.X\protocol.h: 164: I2C_SLAVE_WRITE_REQUEST,
+[; ;protocol.X\protocol.h: 165: I2C_SLAVE_READ_REQUEST,
+[; ;protocol.X\protocol.h: 166: I2C_SLAVE_WRITE_COMPLETED,
+[; ;protocol.X\protocol.h: 167: I2C_SLAVE_READ_COMPLETED,
+[; ;protocol.X\protocol.h: 168: I2C_SLAVE_GENERAL_CALL_REQUEST,
+[; ;protocol.X\protocol.h: 169: } I2C_SLAVE_DRIVER_STATUS;
+[; ;protocol.X\protocol.h: 173: void I2C_Initialize(void);
+[; ;protocol.X\protocol.h: 175: void I2C_ISR ( void );
+[; ;protocol.X\protocol.h: 177: extern volatile uint8_t I2C_slaveWriteData;
 [; ;stdlib.h: 7: typedef unsigned short wchar_t;
 [; ;stdlib.h: 15: typedef struct {
 [; ;stdlib.h: 16: int rem;
@@ -2891,15 +2891,15 @@ Version 3.2 HI-TECH Software Intermediate Code
 ]
 [; ;main.c: 19: uint8_t continuity = 250;
 "24
-[v _ANALOG_IN `CE2792 ~T0 @X0 -> 4 `i e ]
+[v _ANALOG_IN `CE2779 ~T0 @X0 -> 4 `i e ]
 [i _ANALOG_IN
 :U ..
 "25
-. `E2792 2
-. `E2792 1
-. `E2792 0
+. `E2779 2
+. `E2779 1
+. `E2779 0
 "27
-. `E2792 3
+. `E2779 3
 ..
 ]
 [; ;main.c: 24: const adc_channel_t ANALOG_IN[4] = {

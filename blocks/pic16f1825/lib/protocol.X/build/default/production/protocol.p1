@@ -1,16 +1,16 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[v F3096 `(v ~T0 @X0 0 tf ]
-[v F3099 `(v ~T0 @X0 0 tf ]
-[v F3102 `(v ~T0 @X0 0 tf1`uc ]
-[v F3105 `(v ~T0 @X0 0 tf ]
-[v F3108 `(v ~T0 @X0 0 tf1`*uc ]
-[v F3111 `(v ~T0 @X0 0 tf ]
-[v F3114 `(v ~T0 @X0 0 tf ]
-"50 protocol.c
-[c E3128 0 1 2 3 .. ]
-[n E3128 . TLV_SET TYPE_SENT LENGTH_SENT COMPLETE  ]
-"42
-[s S328 `uc 1 `uc 1 `*uc 1 `E3128 1 `uc 1 ]
+[v F3109 `(v ~T0 @X0 0 tf ]
+[v F3112 `(v ~T0 @X0 0 tf ]
+[v F3115 `(v ~T0 @X0 0 tf1`uc ]
+[v F3118 `(v ~T0 @X0 0 tf ]
+[v F3121 `(v ~T0 @X0 0 tf1`*uc ]
+[v F3124 `(v ~T0 @X0 0 tf ]
+[v F3127 `(v ~T0 @X0 0 tf ]
+"56 protocol.c
+[c E3141 0 1 2 3 .. ]
+[n E3141 . TLV_SET TYPE_SENT LENGTH_SENT COMPLETE  ]
+"48
+[s S328 `uc 1 `uc 1 `*uc 1 `E3141 1 `uc 1 ]
 [n S328 . type length pbuffer status buf_cnt ]
 "245 mcc_generated_files/memory.h
 [v _DATAEE_ReadByte `(uc ~T0 @X0 0 ef1`uc ]
@@ -32,6 +32,75 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _atoi `(i ~T0 @X0 0 ef1`*Cuc ]
 "92
 [v _abs `(i ~T0 @X0 0 ef1`i ]
+[v F2654 `(v ~T0 @X0 1 tf1`ul ]
+"152 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic.h
+[v __delay `JF2654 ~T0 @X0 0 e ]
+[p i __delay ]
+"3505 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f1825.h
+[v _SSP1STAT `Vuc ~T0 @X0 0 e@532 ]
+"3627
+[v _SSP1CON1 `Vuc ~T0 @X0 0 e@533 ]
+"3831
+[v _SSP1CON2 `Vuc ~T0 @X0 0 e@534 ]
+"3953
+[v _SSP1CON3 `Vuc ~T0 @X0 0 e@535 ]
+"3467
+[v _SSP1MSK `Vuc ~T0 @X0 0 e@531 ]
+"3429
+[v _SSP1ADD `Vuc ~T0 @X0 0 e@530 ]
+"533
+[s S33 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S33 . TMR1IF TMR2IF CCP1IF SSP1IF TXIF RCIF ADIF TMR1GIF ]
+"532
+[u S32 `S33 1 ]
+[n S32 . . ]
+"544
+[v _PIR1bits `VS32 ~T0 @X0 0 e@17 ]
+"1212
+[s S68 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S68 . TMR1IE TMR2IE CCP1IE SSP1IE TXIE RCIE ADIE TMR1GIE ]
+"1211
+[u S67 `S68 1 ]
+[n S67 . . ]
+"1223
+[v _PIE1bits `VS67 ~T0 @X0 0 e@145 ]
+"3391
+[v _SSP1BUF `Vuc ~T0 @X0 0 e@529 ]
+"3516
+[s S188 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S188 . BF UA R_nW S P D_nA CKE SMP ]
+"3515
+[u S187 `S188 1 ]
+[n S187 . . ]
+"3527
+[v _SSP1STATbits `VS187 ~T0 @X0 0 e@532 ]
+"3842
+[s S201 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S201 . SEN RSEN PEN RCEN ACKEN ACKDT ACKSTAT GCEN ]
+"3841
+[u S200 `S201 1 ]
+[n S200 . . ]
+"3853
+[v _SSP1CON2bits `VS200 ~T0 @X0 0 e@534 ]
+"500 protocol.c
+[c E3095 0 1 2 3 4 .. ]
+[n E3095 . I2C_SLAVE_WRITE_REQUEST I2C_SLAVE_READ_REQUEST I2C_SLAVE_WRITE_COMPLETED I2C_SLAVE_READ_COMPLETED I2C_SLAVE_GENERAL_CALL_REQUEST  ]
+"457
+[v _I2C_StatusCallback `(v ~T0 @X0 0 ef1`E3095 ]
+"3642 C:\Program Files (x86)\Microchip\xc8\v1.42\include\pic16f1825.h
+[s S192 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S192 . SSPM0 SSPM1 SSPM2 SSPM3 CKP SSPEN SSPOV WCOL ]
+"3652
+[s S193 :4 `uc 1 ]
+[n S193 . SSPM ]
+"3641
+[u S191 `S192 1 `S193 1 ]
+[n S191 . . . ]
+"3656
+[v _SSP1CON1bits `VS191 ~T0 @X0 0 e@533 ]
+"538 protocol.c
+[c E3241 0 1 2 .. ]
+[n E3241 . SLAVE_NORMAL_DATA SLAVE_DATA_ADDRESS SLAVE_GENERAL_CALL  ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 28: extern double __fpnormalize(double);
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
@@ -2776,201 +2845,213 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;string.h: 58: extern char * strichr(const char *, int);
 [; ;string.h: 59: extern char * strrchr(const char *, int);
 [; ;string.h: 60: extern char * strrichr(const char *, int);
-[; ;protocol.h: 41: void blink_red(uint8_t times);
-[; ;protocol.h: 46: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
-[; ;protocol.h: 47: void PROTOCOL_Loop();
-[; ;protocol.h: 48: void PROTOCOL_Set_Func(void *loop_func);
-[; ;protocol.h: 49: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
-[; ;protocol.h: 50: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
-[; ;protocol.h: 51: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
-[; ;protocol.h: 52: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
-[; ;protocol.h: 53: uint8_t PROTOCOL_Read_Device_Address(void);
-[; ;protocol.h: 55: void PROTOCOL_STA(void);
-[; ;protocol.h: 56: void PROTOCOL_STP(void);
-[; ;protocol.h: 57: void PROTOCOL_SET(uint8_t value);
-[; ;protocol.h: 58: void PROTOCOL_SAV(void);
-[; ;protocol.h: 59: void PROTOCOL_INV(void);
-[; ;protocol.h: 60: void PROTOCOL_RST(void);
-[; ;protocol.h: 61: void PROTOCOL_EXT(uint8_t *pbuffer);
-[; ;protocol.h: 66: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.h: 71: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
-[; ;protocol.h: 72: void PROTOCOL_I2C_Reset_TLV(void);
-[; ;protocol.h: 73: bool PROTOCOL_I2C_TLV_Status(void);
-[; ;protocol.h: 75: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
-[; ;protocol.h: 76: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
-[; ;protocol.h: 77: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
-[; ;protocol.h: 78: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
-[; ;protocol.h: 79: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
-[; ;protocol.h: 80: void PROTOCOL_Send_uint8_t(uint8_t value);
-[; ;protocol.h: 81: void PROTOCOL_Send_int8_t(int8_t value);
-[; ;protocol.h: 82: void PROTOCOL_Send_uint16_t(uint16_t value);
-[; ;protocol.h: 83: void PROTOCOL_Send_int16_t(int16_t value);
-[; ;protocol.h: 84: void PROTOCOL_Send_float(float value);
-[; ;protocol.h: 89: void PROTOCOL_Backplane_Slave_Enabled(void);
-[; ;protocol.h: 90: uint8_t PROTOCOL_I2C_WHO(void);
-[; ;protocol.h: 91: uint8_t PROTOCOL_I2C_GET(void);
-[; ;protocol.h: 92: uint8_t* PROTOCOL_I2C_SEN();
-[; ;protocol.h: 94: void PROTOCOL_Set_Lock(bool lock);
-[; ;protocol.h: 95: bool PROTOCOL_Read_Lock(void);
-"135 protocol.h
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;protocol.h: 46: void blink_red(uint8_t times);
+[; ;protocol.h: 51: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+[; ;protocol.h: 52: void PROTOCOL_Loop();
+[; ;protocol.h: 53: void PROTOCOL_Set_Func(void *loop_func);
+[; ;protocol.h: 54: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+[; ;protocol.h: 55: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+[; ;protocol.h: 56: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
+[; ;protocol.h: 57: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+[; ;protocol.h: 58: uint8_t PROTOCOL_Read_Device_Address(void);
+[; ;protocol.h: 60: void PROTOCOL_STA(void);
+[; ;protocol.h: 61: void PROTOCOL_STP(void);
+[; ;protocol.h: 62: void PROTOCOL_SET(uint8_t value);
+[; ;protocol.h: 63: void PROTOCOL_SAV(void);
+[; ;protocol.h: 64: void PROTOCOL_INV(void);
+[; ;protocol.h: 65: void PROTOCOL_RST(void);
+[; ;protocol.h: 66: void PROTOCOL_EXT(uint8_t *pbuffer);
+[; ;protocol.h: 71: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.h: 76: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.h: 77: void PROTOCOL_I2C_Reset_TLV(void);
+[; ;protocol.h: 78: bool PROTOCOL_I2C_TLV_Status(void);
+[; ;protocol.h: 80: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+[; ;protocol.h: 81: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+[; ;protocol.h: 82: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+[; ;protocol.h: 83: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+[; ;protocol.h: 84: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+[; ;protocol.h: 85: void PROTOCOL_Send_uint8_t(uint8_t value);
+[; ;protocol.h: 86: void PROTOCOL_Send_int8_t(int8_t value);
+[; ;protocol.h: 87: void PROTOCOL_Send_uint16_t(uint16_t value);
+[; ;protocol.h: 88: void PROTOCOL_Send_int16_t(int16_t value);
+[; ;protocol.h: 89: void PROTOCOL_Send_float(float value);
+[; ;protocol.h: 94: void PROTOCOL_Backplane_Slave_Enabled(void);
+[; ;protocol.h: 95: uint8_t PROTOCOL_I2C_WHO(void);
+[; ;protocol.h: 96: uint8_t PROTOCOL_I2C_GET(void);
+[; ;protocol.h: 97: uint8_t* PROTOCOL_I2C_SEN();
+[; ;protocol.h: 99: void PROTOCOL_Set_Lock(bool lock);
+[; ;protocol.h: 100: bool PROTOCOL_Read_Lock(void);
+"140 protocol.h
 [v _BACKPLANE_SLAVE_ADDRESS `uc ~T0 @X0 1 e ]
 [i _BACKPLANE_SLAVE_ADDRESS
 -> -> 1 `i `uc
 ]
-[; ;protocol.h: 135: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
-"10 protocol.c
+[; ;protocol.h: 140: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.h: 162: typedef enum
+[; ;protocol.h: 163: {
+[; ;protocol.h: 164: I2C_SLAVE_WRITE_REQUEST,
+[; ;protocol.h: 165: I2C_SLAVE_READ_REQUEST,
+[; ;protocol.h: 166: I2C_SLAVE_WRITE_COMPLETED,
+[; ;protocol.h: 167: I2C_SLAVE_READ_COMPLETED,
+[; ;protocol.h: 168: I2C_SLAVE_GENERAL_CALL_REQUEST,
+[; ;protocol.h: 169: } I2C_SLAVE_DRIVER_STATUS;
+[; ;protocol.h: 173: void I2C_Initialize(void);
+[; ;protocol.h: 175: void I2C_ISR ( void );
+[; ;protocol.h: 177: extern volatile uint8_t I2C_slaveWriteData;
+"16 protocol.c
 [v _slave_address `uc ~T0 @X0 1 e ]
-[; ;protocol.c: 10: uint8_t slave_address;
-"13
-[v _PROTOCOL_Start_Handler `*F3096 ~T0 @X0 1 e ]
-[i _PROTOCOL_Start_Handler
--> -> 0 `i `*F3096
-]
-[; ;protocol.c: 13: void (*PROTOCOL_Start_Handler)(void) = (0);
-"14
-[v _PROTOCOL_Stop_Handler `*F3099 ~T0 @X0 1 e ]
-[i _PROTOCOL_Stop_Handler
--> -> 0 `i `*F3099
-]
-[; ;protocol.c: 14: void (*PROTOCOL_Stop_Handler)(void) = (0);
-"15
-[v _PROTOCOL_Set_Handler `*F3102 ~T0 @X0 1 e ]
-[i _PROTOCOL_Set_Handler
--> -> 0 `i `*F3102
-]
-[; ;protocol.c: 15: void (*PROTOCOL_Set_Handler)(uint8_t value) = (0);
-"16
-[v _PROTOCOL_Loop_Func `*F3105 ~T0 @X0 1 e ]
-[i _PROTOCOL_Loop_Func
--> -> 0 `i `*F3105
-]
-[; ;protocol.c: 16: void (*PROTOCOL_Loop_Func)(void) = (0);
-"17
-[v _PROTOCOL_Extension_Handler `*F3108 ~T0 @X0 1 e ]
-[i _PROTOCOL_Extension_Handler
--> -> 0 `i `*F3108
-]
-[; ;protocol.c: 17: void (*PROTOCOL_Extension_Handler)(char*) = (0);
-"18
-[v _PROTOCOL_Inv_Handler `*F3111 ~T0 @X0 1 e ]
-[i _PROTOCOL_Inv_Handler
--> -> 0 `i `*F3111
-]
-[; ;protocol.c: 18: void (*PROTOCOL_Inv_Handler)(void) = (0);
+[; ;protocol.c: 16: uint8_t slave_address;
 "19
-[v _PROTOCOL_Tick_Handler `*F3114 ~T0 @X0 1 e ]
-[i _PROTOCOL_Tick_Handler
--> -> 0 `i `*F3114
+[v _PROTOCOL_Start_Handler `*F3109 ~T0 @X0 1 e ]
+[i _PROTOCOL_Start_Handler
+-> -> 0 `i `*F3109
 ]
-[; ;protocol.c: 19: void (*PROTOCOL_Tick_Handler)(void) = (0);
+[; ;protocol.c: 19: void (*PROTOCOL_Start_Handler)(void) = (0);
+"20
+[v _PROTOCOL_Stop_Handler `*F3112 ~T0 @X0 1 e ]
+[i _PROTOCOL_Stop_Handler
+-> -> 0 `i `*F3112
+]
+[; ;protocol.c: 20: void (*PROTOCOL_Stop_Handler)(void) = (0);
 "21
+[v _PROTOCOL_Set_Handler `*F3115 ~T0 @X0 1 e ]
+[i _PROTOCOL_Set_Handler
+-> -> 0 `i `*F3115
+]
+[; ;protocol.c: 21: void (*PROTOCOL_Set_Handler)(uint8_t value) = (0);
+"22
+[v _PROTOCOL_Loop_Func `*F3118 ~T0 @X0 1 e ]
+[i _PROTOCOL_Loop_Func
+-> -> 0 `i `*F3118
+]
+[; ;protocol.c: 22: void (*PROTOCOL_Loop_Func)(void) = (0);
+"23
+[v _PROTOCOL_Extension_Handler `*F3121 ~T0 @X0 1 e ]
+[i _PROTOCOL_Extension_Handler
+-> -> 0 `i `*F3121
+]
+[; ;protocol.c: 23: void (*PROTOCOL_Extension_Handler)(char*) = (0);
+"24
+[v _PROTOCOL_Inv_Handler `*F3124 ~T0 @X0 1 e ]
+[i _PROTOCOL_Inv_Handler
+-> -> 0 `i `*F3124
+]
+[; ;protocol.c: 24: void (*PROTOCOL_Inv_Handler)(void) = (0);
+"25
+[v _PROTOCOL_Tick_Handler `*F3127 ~T0 @X0 1 e ]
+[i _PROTOCOL_Tick_Handler
+-> -> 0 `i `*F3127
+]
+[; ;protocol.c: 25: void (*PROTOCOL_Tick_Handler)(void) = (0);
+"27
 [v _cnt `uc ~T0 @X0 1 e ]
 [i _cnt
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 21: uint8_t cnt = 0;
-"22
+[; ;protocol.c: 27: uint8_t cnt = 0;
+"28
 [v _buf `uc ~T0 @X0 -> 48 `i e ]
-[; ;protocol.c: 22: uint8_t buf[48];
-"23
+[; ;protocol.c: 28: uint8_t buf[48];
+"29
 [v _value `uc ~T0 @X0 1 e ]
-[; ;protocol.c: 23: uint8_t value;
-"24
+[; ;protocol.c: 29: uint8_t value;
+"30
 [v _device_id_ `*Cuc ~T0 @X0 1 e ]
 [i _device_id_
 -> -> 0 `i `*Cuc
 ]
-[; ;protocol.c: 24: const char *device_id_;
-"25
+[; ;protocol.c: 30: const char *device_id_;
+"31
 [v _locked `uc ~T0 @X0 1 e ]
 [i _locked
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 25: bool locked = 0;
-"26
+[; ;protocol.c: 31: bool locked = 0;
+"32
 [v _running `uc ~T0 @X0 1 e ]
 [i _running
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 26: bool running = 0;
-"27
+[; ;protocol.c: 32: bool running = 0;
+"33
 [v _invoked `uc ~T0 @X0 1 e ]
 [i _invoked
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 27: bool invoked = 0;
-"28
+[; ;protocol.c: 33: bool invoked = 0;
+"34
 [v _sec_cnt `uc ~T0 @X0 1 e ]
 [i _sec_cnt
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 28: uint8_t sec_cnt = 0;
-"29
+[; ;protocol.c: 34: uint8_t sec_cnt = 0;
+"35
 [v _tmr_cnt `uc ~T0 @X0 1 e ]
 [i _tmr_cnt
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 29: uint8_t tmr_cnt = 0;
-"30
+[; ;protocol.c: 35: uint8_t tmr_cnt = 0;
+"36
 [v _tmr_scaler `uc ~T0 @X0 1 e ]
 [i _tmr_scaler
 -> -> 1 `i `uc
 ]
-[; ;protocol.c: 30: uint8_t tmr_scaler = 1;
-"31
+[; ;protocol.c: 36: uint8_t tmr_scaler = 1;
+"37
 [v _tmr_overflow `uc ~T0 @X0 1 e ]
 [i _tmr_overflow
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 31: bool tmr_overflow = 0;
-"32
+[; ;protocol.c: 37: bool tmr_overflow = 0;
+"38
 [v _type_no_data `uc ~T0 @X0 1 e ]
 [i _type_no_data
 -> -> 6 `i `uc
 ]
-[; ;protocol.c: 32: uint8_t type_no_data = 0x06;
-[; ;protocol.c: 35: typedef enum {
-[; ;protocol.c: 36: TLV_SET,
-[; ;protocol.c: 37: TYPE_SENT,
-[; ;protocol.c: 38: LENGTH_SENT,
-[; ;protocol.c: 39: COMPLETE
-[; ;protocol.c: 40: } READBUF_STATUS;
-[; ;protocol.c: 42: typedef struct {
-[; ;protocol.c: 43: uint8_t type;
-[; ;protocol.c: 44: uint8_t length;
-[; ;protocol.c: 45: uint8_t *pbuffer;
-[; ;protocol.c: 46: READBUF_STATUS status;
-[; ;protocol.c: 47: uint8_t buf_cnt;
-[; ;protocol.c: 48: } READBUF;
-"50
+[; ;protocol.c: 38: uint8_t type_no_data = 0x06;
+[; ;protocol.c: 41: typedef enum {
+[; ;protocol.c: 42: TLV_SET,
+[; ;protocol.c: 43: TYPE_SENT,
+[; ;protocol.c: 44: LENGTH_SENT,
+[; ;protocol.c: 45: COMPLETE
+[; ;protocol.c: 46: } READBUF_STATUS;
+[; ;protocol.c: 48: typedef struct {
+[; ;protocol.c: 49: uint8_t type;
+[; ;protocol.c: 50: uint8_t length;
+[; ;protocol.c: 51: uint8_t *pbuffer;
+[; ;protocol.c: 52: READBUF_STATUS status;
+[; ;protocol.c: 53: uint8_t buf_cnt;
+[; ;protocol.c: 54: } READBUF;
+"56
 [v _readbuf `S328 ~T0 @X0 1 e ]
-[; ;protocol.c: 50: READBUF readbuf;
-"51
-[v _readbuf_status `E3128 ~T0 @X0 1 e ]
-[; ;protocol.c: 51: READBUF_STATUS readbuf_status;
-"53
+[; ;protocol.c: 56: READBUF readbuf;
+"57
+[v _readbuf_status `E3141 ~T0 @X0 1 e ]
+[; ;protocol.c: 57: READBUF_STATUS readbuf_status;
+"59
 [v _backplane_slave_enabled `uc ~T0 @X0 1 e ]
 [i _backplane_slave_enabled
 -> -> 0 `i `uc
 ]
-[; ;protocol.c: 53: bool backplane_slave_enabled = 0;
-"54
+[; ;protocol.c: 59: bool backplane_slave_enabled = 0;
+"60
 [v _sendbuf `uc ~T0 @X0 -> 16 `i e ]
-[; ;protocol.c: 54: uint8_t sendbuf[16];
-"55
+[; ;protocol.c: 60: uint8_t sendbuf[16];
+"61
 [v _i `uc ~T0 @X0 1 e ]
 [v _j `uc ~T0 @X0 1 e ]
-[; ;protocol.c: 55: uint8_t i, j;
-"56
+[; ;protocol.c: 61: uint8_t i, j;
+"62
 [v _float100 `i ~T0 @X0 1 e ]
-[; ;protocol.c: 56: int16_t float100;
-"57
+[; ;protocol.c: 62: int16_t float100;
+"63
 [v _data `*uc ~T0 @X0 1 e ]
-[; ;protocol.c: 57: uint8_t *data;
-"60
+[; ;protocol.c: 63: uint8_t *data;
+"66
 [v _PROTOCOL_Initialize `(v ~T0 @X0 1 ef6`*Cuc`*v`*v`*v`*v`uc ]
 {
-[; ;protocol.c: 60: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler, void *inv_handler, uint8_t scaler) {
+[; ;protocol.c: 66: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_handler, void *set_handler, void *inv_handler, uint8_t scaler) {
 [e :U _PROTOCOL_Initialize ]
 [v _device_id `*Cuc ~T0 @X0 1 r1 ]
 [v _start_handler `*v ~T0 @X0 1 r2 ]
@@ -2979,455 +3060,455 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _inv_handler `*v ~T0 @X0 1 r5 ]
 [v _scaler `uc ~T0 @X0 1 r6 ]
 [f ]
-[; ;protocol.c: 61: device_id_ = device_id;
-"61
+[; ;protocol.c: 67: device_id_ = device_id;
+"67
 [e = _device_id_ _device_id ]
-[; ;protocol.c: 62: PROTOCOL_Start_Handler = start_handler;
-"62
-[e = _PROTOCOL_Start_Handler -> _start_handler `*F3096 ]
-[; ;protocol.c: 63: PROTOCOL_Stop_Handler = stop_handler;
-"63
-[e = _PROTOCOL_Stop_Handler -> _stop_handler `*F3099 ]
-[; ;protocol.c: 64: PROTOCOL_Set_Handler = set_handler;
-"64
-[e = _PROTOCOL_Set_Handler -> _set_handler `*F3102 ]
-[; ;protocol.c: 66: if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
-"66
-[e $ ! != _PROTOCOL_Stop_Handler -> -> 0 `i `*F3099 330  ]
+[; ;protocol.c: 68: PROTOCOL_Start_Handler = start_handler;
+"68
+[e = _PROTOCOL_Start_Handler -> _start_handler `*F3109 ]
+[; ;protocol.c: 69: PROTOCOL_Stop_Handler = stop_handler;
+"69
+[e = _PROTOCOL_Stop_Handler -> _stop_handler `*F3112 ]
+[; ;protocol.c: 70: PROTOCOL_Set_Handler = set_handler;
+"70
+[e = _PROTOCOL_Set_Handler -> _set_handler `*F3115 ]
+[; ;protocol.c: 72: if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
+"72
+[e $ ! != _PROTOCOL_Stop_Handler -> -> 0 `i `*F3112 330  ]
 [e ( *U _PROTOCOL_Stop_Handler ..  ]
 [e :U 330 ]
-[; ;protocol.c: 67: value = DATAEE_ReadByte(1);
-"67
+[; ;protocol.c: 73: value = DATAEE_ReadByte(1);
+"73
 [e = _value ( _DATAEE_ReadByte (1 -> -> 1 `i `uc ]
-[; ;protocol.c: 68: if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
-"68
-[e $ ! != _PROTOCOL_Set_Handler -> -> 0 `i `*F3102 331  ]
+[; ;protocol.c: 74: if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
+"74
+[e $ ! != _PROTOCOL_Set_Handler -> -> 0 `i `*F3115 331  ]
 [e ( *U _PROTOCOL_Set_Handler (1 _value ]
 [e :U 331 ]
-[; ;protocol.c: 69: slave_address = DATAEE_ReadByte(0);
-"69
-[e = _slave_address ( _DATAEE_ReadByte (1 -> -> 0 `i `uc ]
-[; ;protocol.c: 72: readbuf.status = COMPLETE;
-"72
-[e = . _readbuf 3 . `E3128 3 ]
-[; ;protocol.c: 73: PROTOCOL_Inv_Handler = inv_handler;
-"73
-[e = _PROTOCOL_Inv_Handler -> _inv_handler `*F3111 ]
-[; ;protocol.c: 74: tmr_scaler = scaler;
-"74
-[e = _tmr_scaler _scaler ]
-[; ;protocol.c: 75: }
+[; ;protocol.c: 75: slave_address = DATAEE_ReadByte(0);
 "75
+[e = _slave_address ( _DATAEE_ReadByte (1 -> -> 0 `i `uc ]
+[; ;protocol.c: 78: readbuf.status = COMPLETE;
+"78
+[e = . _readbuf 3 . `E3141 3 ]
+[; ;protocol.c: 79: PROTOCOL_Inv_Handler = inv_handler;
+"79
+[e = _PROTOCOL_Inv_Handler -> _inv_handler `*F3124 ]
+[; ;protocol.c: 80: tmr_scaler = scaler;
+"80
+[e = _tmr_scaler _scaler ]
+[; ;protocol.c: 81: }
+"81
 [e :UE 329 ]
 }
-"77
+"83
 [v _PROTOCOL_Set_Func `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;protocol.c: 77: void PROTOCOL_Set_Func(void *loop_func) {
+[; ;protocol.c: 83: void PROTOCOL_Set_Func(void *loop_func) {
 [e :U _PROTOCOL_Set_Func ]
 [v _loop_func `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 78: PROTOCOL_Loop_Func = loop_func;
-"78
-[e = _PROTOCOL_Loop_Func -> _loop_func `*F3105 ]
-[; ;protocol.c: 79: }
-"79
+[; ;protocol.c: 84: PROTOCOL_Loop_Func = loop_func;
+"84
+[e = _PROTOCOL_Loop_Func -> _loop_func `*F3118 ]
+[; ;protocol.c: 85: }
+"85
 [e :UE 332 ]
 }
-"81
+"87
 [v _PROTOCOL_Set_Extension_Handler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;protocol.c: 81: void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
+[; ;protocol.c: 87: void PROTOCOL_Set_Extension_Handler(void *extension_handler) {
 [e :U _PROTOCOL_Set_Extension_Handler ]
 [v _extension_handler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 82: PROTOCOL_Extension_Handler = extension_handler;
-"82
-[e = _PROTOCOL_Extension_Handler -> _extension_handler `*F3108 ]
-[; ;protocol.c: 83: }
-"83
+[; ;protocol.c: 88: PROTOCOL_Extension_Handler = extension_handler;
+"88
+[e = _PROTOCOL_Extension_Handler -> _extension_handler `*F3121 ]
+[; ;protocol.c: 89: }
+"89
 [e :UE 333 ]
 }
-"85
+"91
 [v _PROTOCOL_Set_Tick_Handler `(v ~T0 @X0 1 ef1`*v ]
 {
-[; ;protocol.c: 85: void PROTOCOL_Set_Tick_Handler(void *tick_handler) {
+[; ;protocol.c: 91: void PROTOCOL_Set_Tick_Handler(void *tick_handler) {
 [e :U _PROTOCOL_Set_Tick_Handler ]
 [v _tick_handler `*v ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 86: PROTOCOL_Tick_Handler = tick_handler;
-"86
-[e = _PROTOCOL_Tick_Handler -> _tick_handler `*F3114 ]
-[; ;protocol.c: 87: }
-"87
+[; ;protocol.c: 92: PROTOCOL_Tick_Handler = tick_handler;
+"92
+[e = _PROTOCOL_Tick_Handler -> _tick_handler `*F3127 ]
+[; ;protocol.c: 93: }
+"93
 [e :UE 334 ]
 }
-"89
+"95
 [v _PROTOCOL_Write_Device_Address `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;protocol.c: 89: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
+[; ;protocol.c: 95: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c) {
 [e :U _PROTOCOL_Write_Device_Address ]
 [v _device_id_i2c `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 90: DATAEE_WriteByte(0, device_id_i2c);
-"90
+[; ;protocol.c: 96: DATAEE_WriteByte(0, device_id_i2c);
+"96
 [e ( _DATAEE_WriteByte (2 , -> -> 0 `i `uc _device_id_i2c ]
-[; ;protocol.c: 91: slave_address = device_id_i2c;
-"91
+[; ;protocol.c: 97: slave_address = device_id_i2c;
+"97
 [e = _slave_address _device_id_i2c ]
-[; ;protocol.c: 92: }
-"92
+[; ;protocol.c: 98: }
+"98
 [e :UE 335 ]
 }
-"94
+"100
 [v _PROTOCOL_Read_Device_Address `(uc ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 94: uint8_t PROTOCOL_Read_Device_Address() {
+[; ;protocol.c: 100: uint8_t PROTOCOL_Read_Device_Address() {
 [e :U _PROTOCOL_Read_Device_Address ]
 [f ]
-[; ;protocol.c: 95: return slave_address;
-"95
+[; ;protocol.c: 101: return slave_address;
+"101
 [e ) _slave_address ]
 [e $UE 336  ]
-[; ;protocol.c: 96: }
-"96
+[; ;protocol.c: 102: }
+"102
 [e :UE 336 ]
 }
-"98
+"104
 [v _PROTOCOL_STA `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 98: void PROTOCOL_STA(void) {
+[; ;protocol.c: 104: void PROTOCOL_STA(void) {
 [e :U _PROTOCOL_STA ]
 [f ]
-[; ;protocol.c: 99: if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
-"99
-[e $ ! != _PROTOCOL_Start_Handler -> -> 0 `i `*F3096 338  ]
+[; ;protocol.c: 105: if (PROTOCOL_Start_Handler) PROTOCOL_Start_Handler();
+"105
+[e $ ! != _PROTOCOL_Start_Handler -> -> 0 `i `*F3109 338  ]
 [e ( *U _PROTOCOL_Start_Handler ..  ]
 [e :U 338 ]
-[; ;protocol.c: 100: running = 1;
-"100
+[; ;protocol.c: 106: running = 1;
+"106
 [e = _running -> -> 1 `i `uc ]
-[; ;protocol.c: 101: }
-"101
+[; ;protocol.c: 107: }
+"107
 [e :UE 337 ]
 }
-"103
+"109
 [v _PROTOCOL_STP `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 103: void PROTOCOL_STP(void) {
+[; ;protocol.c: 109: void PROTOCOL_STP(void) {
 [e :U _PROTOCOL_STP ]
 [f ]
-[; ;protocol.c: 104: if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
-"104
-[e $ ! != _PROTOCOL_Stop_Handler -> -> 0 `i `*F3099 340  ]
+[; ;protocol.c: 110: if (PROTOCOL_Stop_Handler) PROTOCOL_Stop_Handler();
+"110
+[e $ ! != _PROTOCOL_Stop_Handler -> -> 0 `i `*F3112 340  ]
 [e ( *U _PROTOCOL_Stop_Handler ..  ]
 [e :U 340 ]
-[; ;protocol.c: 105: running = 0;
-"105
+[; ;protocol.c: 111: running = 0;
+"111
 [e = _running -> -> 0 `i `uc ]
-[; ;protocol.c: 106: }
-"106
+[; ;protocol.c: 112: }
+"112
 [e :UE 339 ]
 }
-"108
+"114
 [v _PROTOCOL_INV `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 108: void PROTOCOL_INV(void) {
+[; ;protocol.c: 114: void PROTOCOL_INV(void) {
 [e :U _PROTOCOL_INV ]
 [f ]
-[; ;protocol.c: 109: invoked = 1;
-"109
+[; ;protocol.c: 115: invoked = 1;
+"115
 [e = _invoked -> -> 1 `i `uc ]
-[; ;protocol.c: 110: }
-"110
+[; ;protocol.c: 116: }
+"116
 [e :UE 341 ]
 }
-"112
+"118
 [v _PROTOCOL_SAV `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 112: void PROTOCOL_SAV() {
+[; ;protocol.c: 118: void PROTOCOL_SAV() {
 [e :U _PROTOCOL_SAV ]
 [f ]
-[; ;protocol.c: 113: DATAEE_WriteByte(1, value);
-"113
+[; ;protocol.c: 119: DATAEE_WriteByte(1, value);
+"119
 [e ( _DATAEE_WriteByte (2 , -> -> 1 `i `uc _value ]
-[; ;protocol.c: 114: }
-"114
+[; ;protocol.c: 120: }
+"120
 [e :UE 342 ]
 }
-"116
+"122
 [v _PROTOCOL_SET `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;protocol.c: 116: void PROTOCOL_SET(uint8_t value_) {
+[; ;protocol.c: 122: void PROTOCOL_SET(uint8_t value_) {
 [e :U _PROTOCOL_SET ]
 [v _value_ `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 117: value = value_;
-"117
+[; ;protocol.c: 123: value = value_;
+"123
 [e = _value _value_ ]
-[; ;protocol.c: 118: if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
-"118
-[e $ ! != _PROTOCOL_Set_Handler -> -> 0 `i `*F3102 344  ]
+[; ;protocol.c: 124: if (PROTOCOL_Set_Handler) PROTOCOL_Set_Handler(value);
+"124
+[e $ ! != _PROTOCOL_Set_Handler -> -> 0 `i `*F3115 344  ]
 [e ( *U _PROTOCOL_Set_Handler (1 _value ]
 [e :U 344 ]
-[; ;protocol.c: 119: }
-"119
+[; ;protocol.c: 125: }
+"125
 [e :UE 343 ]
 }
-"121
+"127
 [v _PROTOCOL_EXT `(v ~T0 @X0 1 ef1`*uc ]
 {
-[; ;protocol.c: 121: void PROTOCOL_EXT(char *char_buf) {
+[; ;protocol.c: 127: void PROTOCOL_EXT(char *char_buf) {
 [e :U _PROTOCOL_EXT ]
 [v _char_buf `*uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 122: if (PROTOCOL_Extension_Handler) PROTOCOL_Extension_Handler(char_buf);
-"122
-[e $ ! != _PROTOCOL_Extension_Handler -> -> 0 `i `*F3108 346  ]
+[; ;protocol.c: 128: if (PROTOCOL_Extension_Handler) PROTOCOL_Extension_Handler(char_buf);
+"128
+[e $ ! != _PROTOCOL_Extension_Handler -> -> 0 `i `*F3121 346  ]
 [e ( *U _PROTOCOL_Extension_Handler (1 _char_buf ]
 [e :U 346 ]
-[; ;protocol.c: 123: }
-"123
+[; ;protocol.c: 129: }
+"129
 [e :UE 345 ]
 }
-"125
+"131
 [v _PROTOCOL_Set_Lock `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;protocol.c: 125: void PROTOCOL_Set_Lock(bool lock) {
+[; ;protocol.c: 131: void PROTOCOL_Set_Lock(bool lock) {
 [e :U _PROTOCOL_Set_Lock ]
 [v _lock `uc ~T0 @X0 1 r1 ]
 [f ]
-[; ;protocol.c: 126: locked = lock;
-"126
+[; ;protocol.c: 132: locked = lock;
+"132
 [e = _locked _lock ]
-[; ;protocol.c: 127: }
-"127
+[; ;protocol.c: 133: }
+"133
 [e :UE 347 ]
 }
-"129
+"135
 [v _PROTOCOL_Read_Lock `(uc ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 129: bool PROTOCOL_Read_Lock(void) {
+[; ;protocol.c: 135: bool PROTOCOL_Read_Lock(void) {
 [e :U _PROTOCOL_Read_Lock ]
 [f ]
-[; ;protocol.c: 130: return locked;
-"130
+[; ;protocol.c: 136: return locked;
+"136
 [e ) _locked ]
 [e $UE 348  ]
-[; ;protocol.c: 131: }
-"131
+[; ;protocol.c: 137: }
+"137
 [e :UE 348 ]
 }
-"136
+"142
 [v _PROTOCOL_Loop `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 136: void PROTOCOL_Loop() {
+[; ;protocol.c: 142: void PROTOCOL_Loop() {
 [e :U _PROTOCOL_Loop ]
 [f ]
-"137
+"143
 [v _device_address `uc ~T0 @X0 1 a ]
-"138
+"144
 [v _c `uc ~T0 @X0 1 a ]
-[; ;protocol.c: 137: uint8_t device_address;
-[; ;protocol.c: 138: uint8_t c;
-[; ;protocol.c: 139: while (1) {
-"139
+[; ;protocol.c: 143: uint8_t device_address;
+[; ;protocol.c: 144: uint8_t c;
+[; ;protocol.c: 145: while (1) {
+"145
 [e :U 351 ]
 {
-[; ;protocol.c: 140: tmr_overflow = TMR0_HasOverflowOccured();
-"140
+[; ;protocol.c: 146: tmr_overflow = TMR0_HasOverflowOccured();
+"146
 [e = _tmr_overflow ( _TMR0_HasOverflowOccured ..  ]
-[; ;protocol.c: 141: if (tmr_overflow) {
-"141
+[; ;protocol.c: 147: if (tmr_overflow) {
+"147
 [e $ ! != -> _tmr_overflow `i -> -> -> 0 `i `uc `i 353  ]
 {
-[; ;protocol.c: 142: TMR0IF = 0;
-"142
+[; ;protocol.c: 148: TMR0IF = 0;
+"148
 [e = _TMR0IF -> -> 0 `i `b ]
-[; ;protocol.c: 143: if (PROTOCOL_Tick_Handler) PROTOCOL_Tick_Handler();
-"143
-[e $ ! != _PROTOCOL_Tick_Handler -> -> 0 `i `*F3114 354  ]
+[; ;protocol.c: 149: if (PROTOCOL_Tick_Handler) PROTOCOL_Tick_Handler();
+"149
+[e $ ! != _PROTOCOL_Tick_Handler -> -> 0 `i `*F3127 354  ]
 [e ( *U _PROTOCOL_Tick_Handler ..  ]
 [e :U 354 ]
-[; ;protocol.c: 144: if (PROTOCOL_Inv_Handler && (++tmr_cnt >= value)) {
-"144
-[e $ ! && != _PROTOCOL_Inv_Handler -> -> 0 `i `*F3111 >= -> =+ _tmr_cnt -> -> 1 `i `uc `i -> _value `i 355  ]
+[; ;protocol.c: 150: if (PROTOCOL_Inv_Handler && (++tmr_cnt >= value)) {
+"150
+[e $ ! && != _PROTOCOL_Inv_Handler -> -> 0 `i `*F3124 >= -> =+ _tmr_cnt -> -> 1 `i `uc `i -> _value `i 355  ]
 {
-[; ;protocol.c: 145: tmr_cnt = 0;
-"145
+[; ;protocol.c: 151: tmr_cnt = 0;
+"151
 [e = _tmr_cnt -> -> 0 `i `uc ]
-[; ;protocol.c: 146: if (++sec_cnt >= tmr_scaler) {
-"146
+[; ;protocol.c: 152: if (++sec_cnt >= tmr_scaler) {
+"152
 [e $ ! >= -> =+ _sec_cnt -> -> 1 `i `uc `i -> _tmr_scaler `i 356  ]
 {
-[; ;protocol.c: 147: if (running) invoked = 1;
-"147
+[; ;protocol.c: 153: if (running) invoked = 1;
+"153
 [e $ ! != -> _running `i -> -> -> 0 `i `uc `i 357  ]
 [e = _invoked -> -> 1 `i `uc ]
 [e :U 357 ]
-[; ;protocol.c: 148: sec_cnt = 0;
-"148
-[e = _sec_cnt -> -> 0 `i `uc ]
-"149
-}
-[e :U 356 ]
-"150
-}
-[e :U 355 ]
-"151
-}
-[e :U 353 ]
-[; ;protocol.c: 149: }
-[; ;protocol.c: 150: }
-[; ;protocol.c: 151: }
-[; ;protocol.c: 152: if (invoked && PROTOCOL_Inv_Handler) {
-"152
-[e $ ! && != -> _invoked `i -> -> -> 0 `i `uc `i != _PROTOCOL_Inv_Handler -> -> 0 `i `*F3111 358  ]
-{
-[; ;protocol.c: 153: PROTOCOL_Inv_Handler();
-"153
-[e ( *U _PROTOCOL_Inv_Handler ..  ]
-[; ;protocol.c: 154: invoked = 0;
+[; ;protocol.c: 154: sec_cnt = 0;
 "154
-[e = _invoked -> -> 0 `i `uc ]
+[e = _sec_cnt -> -> 0 `i `uc ]
 "155
 }
-[e :U 358 ]
-[; ;protocol.c: 155: }
-[; ;protocol.c: 156: if (PROTOCOL_Loop_Func) PROTOCOL_Loop_Func();
+[e :U 356 ]
 "156
-[e $ ! != _PROTOCOL_Loop_Func -> -> 0 `i `*F3105 359  ]
+}
+[e :U 355 ]
+"157
+}
+[e :U 353 ]
+[; ;protocol.c: 155: }
+[; ;protocol.c: 156: }
+[; ;protocol.c: 157: }
+[; ;protocol.c: 158: if (invoked && PROTOCOL_Inv_Handler) {
+"158
+[e $ ! && != -> _invoked `i -> -> -> 0 `i `uc `i != _PROTOCOL_Inv_Handler -> -> 0 `i `*F3124 358  ]
+{
+[; ;protocol.c: 159: PROTOCOL_Inv_Handler();
+"159
+[e ( *U _PROTOCOL_Inv_Handler ..  ]
+[; ;protocol.c: 160: invoked = 0;
+"160
+[e = _invoked -> -> 0 `i `uc ]
+"161
+}
+[e :U 358 ]
+[; ;protocol.c: 161: }
+[; ;protocol.c: 162: if (PROTOCOL_Loop_Func) PROTOCOL_Loop_Func();
+"162
+[e $ ! != _PROTOCOL_Loop_Func -> -> 0 `i `*F3118 359  ]
 [e ( *U _PROTOCOL_Loop_Func ..  ]
 [e :U 359 ]
-[; ;protocol.c: 157: if ((eusartRxCount)) {
-"157
+[; ;protocol.c: 163: if ((eusartRxCount)) {
+"163
 [e $ ! != -> _eusartRxCount `i -> -> -> 0 `i `Vuc `i 360  ]
 {
-[; ;protocol.c: 158: c = EUSART_Read();
-"158
+[; ;protocol.c: 164: c = EUSART_Read();
+"164
 [e = _c ( _EUSART_Read ..  ]
-[; ;protocol.c: 159: buf[cnt++] = c;
-"159
+[; ;protocol.c: 165: buf[cnt++] = c;
+"165
 [e = *U + &U _buf * -> ++ _cnt -> -> 1 `i `uc `ux -> -> # *U &U _buf `ui `ux _c ]
-[; ;protocol.c: 160: if (c == '\n') {
-"160
+[; ;protocol.c: 166: if (c == '\n') {
+"166
 [e $ ! == -> _c `ui -> 10 `ui 361  ]
 {
-[; ;protocol.c: 161: buf[--cnt] = '\0';
-"161
+[; ;protocol.c: 167: buf[--cnt] = '\0';
+"167
 [e = *U + &U _buf * -> =- _cnt -> -> 1 `i `uc `ux -> -> # *U &U _buf `ui `ux -> -> 0 `ui `uc ]
-[; ;protocol.c: 162: cnt = 0;
-"162
+[; ;protocol.c: 168: cnt = 0;
+"168
 [e = _cnt -> -> 0 `i `uc ]
-[; ;protocol.c: 163: printf("#%s\n", buf);
-"163
+[; ;protocol.c: 169: printf("#%s\n", buf);
+"169
 [e ( _printf , (. :s 1C -> &U _buf `*Cuc ]
-[; ;protocol.c: 164: if (BACKPLANE_SLAVE_ADDRESS != 0x01) {
-"164
+[; ;protocol.c: 170: if (BACKPLANE_SLAVE_ADDRESS != 0x01) {
+"170
 [e $ ! != -> _BACKPLANE_SLAVE_ADDRESS `i -> 1 `i 362  ]
 {
-[; ;protocol.c: 165: PROTOCOL_EXT(buf);
-"165
+[; ;protocol.c: 171: PROTOCOL_EXT(buf);
+"171
 [e ( _PROTOCOL_EXT (1 &U _buf ]
-"166
+"172
 }
-[; ;protocol.c: 166: } else if (!strncmp(("WHO"), (buf), 3)) {
+[; ;protocol.c: 172: } else if (!strncmp(("WHO"), (buf), 3)) {
 [e $U 363  ]
 [e :U 362 ]
 [e $ ! ! != ( _strncmp (3 , , :s 2C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 364  ]
 {
-[; ;protocol.c: 167: printf("$:WHO:%s\n", device_id_);
-"167
+[; ;protocol.c: 173: printf("$:WHO:%s\n", device_id_);
+"173
 [e ( _printf , (. :s 3C _device_id_ ]
-"168
+"174
 }
-[; ;protocol.c: 168: } else if (!strncmp(("SAV"), (buf), 3)) {
+[; ;protocol.c: 174: } else if (!strncmp(("SAV"), (buf), 3)) {
 [e $U 365  ]
 [e :U 364 ]
 [e $ ! ! != ( _strncmp (3 , , :s 4C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 366  ]
 {
-[; ;protocol.c: 169: PROTOCOL_SAV();
-"169
+[; ;protocol.c: 175: PROTOCOL_SAV();
+"175
 [e ( _PROTOCOL_SAV ..  ]
-"170
+"176
 }
-[; ;protocol.c: 170: } else if (!strncmp(("STA"), (buf), 3)) {
+[; ;protocol.c: 176: } else if (!strncmp(("STA"), (buf), 3)) {
 [e $U 367  ]
 [e :U 366 ]
 [e $ ! ! != ( _strncmp (3 , , :s 5C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 368  ]
 {
-[; ;protocol.c: 171: PROTOCOL_STA();
-"171
+[; ;protocol.c: 177: PROTOCOL_STA();
+"177
 [e ( _PROTOCOL_STA ..  ]
-"172
+"178
 }
-[; ;protocol.c: 172: } else if (!strncmp(("STP"), (buf), 3)) {
+[; ;protocol.c: 178: } else if (!strncmp(("STP"), (buf), 3)) {
 [e $U 369  ]
 [e :U 368 ]
 [e $ ! ! != ( _strncmp (3 , , :s 6C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 370  ]
 {
-[; ;protocol.c: 173: PROTOCOL_STP();
-"173
+[; ;protocol.c: 179: PROTOCOL_STP();
+"179
 [e ( _PROTOCOL_STP ..  ]
-[; ;protocol.c: 174: printf("*:STP:%s\n", "ACK");
-"174
+[; ;protocol.c: 180: printf("*:STP:%s\n", "ACK");
+"180
 [e ( _printf , (. :s 7C :s 8C ]
-"175
+"181
 }
-[; ;protocol.c: 175: } else if (!strncmp(("SET"), (buf), 3)) {
+[; ;protocol.c: 181: } else if (!strncmp(("SET"), (buf), 3)) {
 [e $U 371  ]
 [e :U 370 ]
 [e $ ! ! != ( _strncmp (3 , , :s 9C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 372  ]
 {
-[; ;protocol.c: 176: PROTOCOL_SET(atoi(&buf[4]));
-"176
+[; ;protocol.c: 182: PROTOCOL_SET(atoi(&buf[4]));
+"182
 [e ( _PROTOCOL_SET (1 -> ( _atoi (1 -> &U *U + &U _buf * -> -> -> 4 `i `ui `ux -> -> # *U &U _buf `ui `ux `*Cuc `uc ]
-"177
+"183
 }
-[; ;protocol.c: 177: } else if (!strncmp(("GET"), (buf), 3)) {
+[; ;protocol.c: 183: } else if (!strncmp(("GET"), (buf), 3)) {
 [e $U 373  ]
 [e :U 372 ]
 [e $ ! ! != ( _strncmp (3 , , :s 10C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 374  ]
 {
-[; ;protocol.c: 178: printf("$:GET:%d\n", value);
-"178
+[; ;protocol.c: 184: printf("$:GET:%d\n", value);
+"184
 [e ( _printf , (. :s 11C -> _value `i ]
-"179
+"185
 }
-[; ;protocol.c: 179: } else if (!strncmp(("WDA"), (buf), 3)) {
+[; ;protocol.c: 185: } else if (!strncmp(("WDA"), (buf), 3)) {
 [e $U 375  ]
 [e :U 374 ]
 [e $ ! ! != ( _strncmp (3 , , :s 12C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 376  ]
 {
-[; ;protocol.c: 180: device_address = atoi(&buf[4]);
-"180
+[; ;protocol.c: 186: device_address = atoi(&buf[4]);
+"186
 [e = _device_address -> ( _atoi (1 -> &U *U + &U _buf * -> -> -> 4 `i `ui `ux -> -> # *U &U _buf `ui `ux `*Cuc `uc ]
-[; ;protocol.c: 181: PROTOCOL_Write_Device_Address(device_address);
-"181
+[; ;protocol.c: 187: PROTOCOL_Write_Device_Address(device_address);
+"187
 [e ( _PROTOCOL_Write_Device_Address (1 _device_address ]
-"182
+"188
 }
-[; ;protocol.c: 182: } else if (!strncmp(("RDA"), (buf), 3)) {
+[; ;protocol.c: 188: } else if (!strncmp(("RDA"), (buf), 3)) {
 [e $U 377  ]
 [e :U 376 ]
 [e $ ! ! != ( _strncmp (3 , , :s 13C -> &U _buf `*Cuc -> -> 3 `i `ui -> 0 `i 378  ]
 {
-[; ;protocol.c: 183: device_address = PROTOCOL_Read_Device_Address();
-"183
+[; ;protocol.c: 189: device_address = PROTOCOL_Read_Device_Address();
+"189
 [e = _device_address ( _PROTOCOL_Read_Device_Address ..  ]
-[; ;protocol.c: 184: printf("$:RDA:%d\n", device_address);
-"184
+[; ;protocol.c: 190: printf("$:RDA:%d\n", device_address);
+"190
 [e ( _printf , (. :s 14C -> _device_address `i ]
-"185
+"191
 }
-[; ;protocol.c: 185: } else {
+[; ;protocol.c: 191: } else {
 [e $U 379  ]
 [e :U 378 ]
 {
-[; ;protocol.c: 186: PROTOCOL_EXT(buf);
-"186
+[; ;protocol.c: 192: PROTOCOL_EXT(buf);
+"192
 [e ( _PROTOCOL_EXT (1 &U _buf ]
-"187
+"193
 }
 [e :U 379 ]
 [e :U 377 ]
@@ -3438,156 +3519,156 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 367 ]
 [e :U 365 ]
 [e :U 363 ]
-"188
+"194
 }
 [e :U 361 ]
-"189
+"195
 }
 [e :U 360 ]
-"190
+"196
 }
 [e :U 350 ]
-"139
+"145
 [e $U 351  ]
 [e :U 352 ]
-[; ;protocol.c: 187: }
-[; ;protocol.c: 188: }
-[; ;protocol.c: 189: }
-[; ;protocol.c: 190: }
-[; ;protocol.c: 191: }
-"191
+[; ;protocol.c: 193: }
+[; ;protocol.c: 194: }
+[; ;protocol.c: 195: }
+[; ;protocol.c: 196: }
+[; ;protocol.c: 197: }
+"197
 [e :UE 349 ]
 }
-"197
+"203
 [v _concat `(ui ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;protocol.c: 197: uint16_t concat(uint8_t msb, uint8_t lsb) {
+[; ;protocol.c: 203: uint16_t concat(uint8_t msb, uint8_t lsb) {
 [e :U _concat ]
 [v _msb `uc ~T0 @X0 1 r1 ]
 [v _lsb `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;protocol.c: 198: return (uint16_t)msb * 256 + (uint16_t)lsb;
-"198
+[; ;protocol.c: 204: return (uint16_t)msb * 256 + (uint16_t)lsb;
+"204
 [e ) + * -> _msb `ui -> -> 256 `i `ui -> _lsb `ui ]
 [e $UE 380  ]
-[; ;protocol.c: 199: }
-"199
+[; ;protocol.c: 205: }
+"205
 [e :UE 380 ]
 }
-"201
+"207
 [v _PROTOCOL_Backplane_Slave_Enabled `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 201: void PROTOCOL_Backplane_Slave_Enabled(void) {
+[; ;protocol.c: 207: void PROTOCOL_Backplane_Slave_Enabled(void) {
 [e :U _PROTOCOL_Backplane_Slave_Enabled ]
 [f ]
-[; ;protocol.c: 202: backplane_slave_enabled = 1;
-"202
+[; ;protocol.c: 208: backplane_slave_enabled = 1;
+"208
 [e = _backplane_slave_enabled -> -> 1 `i `uc ]
-[; ;protocol.c: 203: }
-"203
+[; ;protocol.c: 209: }
+"209
 [e :UE 381 ]
 }
-"205
+"211
 [v _PROTOCOL_I2C_WHO `(uc ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 205: uint8_t PROTOCOL_I2C_WHO(void) {
+[; ;protocol.c: 211: uint8_t PROTOCOL_I2C_WHO(void) {
 [e :U _PROTOCOL_I2C_WHO ]
 [f ]
-[; ;protocol.c: 206: return slave_address;
-"206
+[; ;protocol.c: 212: return slave_address;
+"212
 [e ) _slave_address ]
 [e $UE 382  ]
-[; ;protocol.c: 207: }
-"207
+[; ;protocol.c: 213: }
+"213
 [e :UE 382 ]
 }
-"209
+"215
 [v _PROTOCOL_I2C_GET `(uc ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 209: uint8_t PROTOCOL_I2C_GET(void) {
+[; ;protocol.c: 215: uint8_t PROTOCOL_I2C_GET(void) {
 [e :U _PROTOCOL_I2C_GET ]
 [f ]
-[; ;protocol.c: 210: return value;
-"210
+[; ;protocol.c: 216: return value;
+"216
 [e ) _value ]
 [e $UE 383  ]
-[; ;protocol.c: 211: }
-"211
+[; ;protocol.c: 217: }
+"217
 [e :UE 383 ]
 }
-"213
+"219
 [v _PROTOCOL_I2C_Set_TLV `(v ~T0 @X0 1 ef3`uc`uc`*uc ]
 {
-[; ;protocol.c: 213: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
+[; ;protocol.c: 219: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer) {
 [e :U _PROTOCOL_I2C_Set_TLV ]
 [v _type `uc ~T0 @X0 1 r1 ]
 [v _length `uc ~T0 @X0 1 r2 ]
 [v _pbuffer `*uc ~T0 @X0 1 r3 ]
 [f ]
-"214
-[v _status `E3128 ~T0 @X0 1 a ]
-[; ;protocol.c: 214: READBUF_STATUS status = readbuf.status;
-[e = _status . _readbuf 3 ]
-[; ;protocol.c: 215: if (status == COMPLETE) {
-"215
-[e $ ! == -> _status `i -> . `E3128 3 `i 385  ]
-{
-[; ;protocol.c: 216: readbuf.type = type;
-"216
-[e = . _readbuf 0 _type ]
-[; ;protocol.c: 217: readbuf.length = length;
-"217
-[e = . _readbuf 1 _length ]
-[; ;protocol.c: 218: readbuf.pbuffer = pbuffer;
-"218
-[e = . _readbuf 2 _pbuffer ]
-[; ;protocol.c: 219: readbuf.buf_cnt = 0;
-"219
-[e = . _readbuf 4 -> -> 0 `i `uc ]
-[; ;protocol.c: 220: readbuf.status = TLV_SET;
 "220
-[e = . _readbuf 3 . `E3128 0 ]
+[v _status `E3141 ~T0 @X0 1 a ]
+[; ;protocol.c: 220: READBUF_STATUS status = readbuf.status;
+[e = _status . _readbuf 3 ]
+[; ;protocol.c: 221: if (status == COMPLETE) {
 "221
+[e $ ! == -> _status `i -> . `E3141 3 `i 385  ]
+{
+[; ;protocol.c: 222: readbuf.type = type;
+"222
+[e = . _readbuf 0 _type ]
+[; ;protocol.c: 223: readbuf.length = length;
+"223
+[e = . _readbuf 1 _length ]
+[; ;protocol.c: 224: readbuf.pbuffer = pbuffer;
+"224
+[e = . _readbuf 2 _pbuffer ]
+[; ;protocol.c: 225: readbuf.buf_cnt = 0;
+"225
+[e = . _readbuf 4 -> -> 0 `i `uc ]
+[; ;protocol.c: 226: readbuf.status = TLV_SET;
+"226
+[e = . _readbuf 3 . `E3141 0 ]
+"227
 }
 [e :U 385 ]
-[; ;protocol.c: 221: }
-[; ;protocol.c: 222: }
-"222
+[; ;protocol.c: 227: }
+[; ;protocol.c: 228: }
+"228
 [e :UE 384 ]
 }
-"224
+"230
 [v _PROTOCOL_Print_TLV `(v ~T0 @X0 1 ef4`uc`uc`uc`*uc ]
 {
-[; ;protocol.c: 224: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer) {
+[; ;protocol.c: 230: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer) {
 [e :U _PROTOCOL_Print_TLV ]
 [v _dev_addr `uc ~T0 @X0 1 r1 ]
 [v _type `uc ~T0 @X0 1 r2 ]
 [v _length `uc ~T0 @X0 1 r3 ]
 [v _pbuffer `*uc ~T0 @X0 1 r4 ]
 [f ]
-"225
+"231
 [v _v `i ~T0 @X0 1 a ]
-[; ;protocol.c: 225: int16_t v;
-[; ;protocol.c: 226: if (dev_addr != 0) printf("%%%d:", dev_addr);
-"226
+[; ;protocol.c: 231: int16_t v;
+[; ;protocol.c: 232: if (dev_addr != 0) printf("%%%d:", dev_addr);
+"232
 [e $ ! != -> _dev_addr `i -> 0 `i 387  ]
 [e ( _printf , (. :s 15C -> _dev_addr `i ]
 [e :U 387 ]
-[; ;protocol.c: 227: switch(type) {
-"227
+[; ;protocol.c: 233: switch(type) {
+"233
 [e $U 389  ]
 {
-[; ;protocol.c: 228: case 0x01:
-"228
+[; ;protocol.c: 234: case 0x01:
+"234
 [e :U 390 ]
-[; ;protocol.c: 229: length--;
-"229
+[; ;protocol.c: 235: length--;
+"235
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 230: printf("UINT8_T:");
-"230
+[; ;protocol.c: 236: printf("UINT8_T:");
+"236
 [e ( _printf :s 16C ]
-[; ;protocol.c: 231: for (i=0; i<length; i++) printf("%u,", pbuffer[i]);
-"231
+[; ;protocol.c: 237: for (i=0; i<length; i++) printf("%u,", pbuffer[i]);
+"237
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 394  ]
@@ -3598,23 +3679,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 391  ]
 [e :U 392 ]
 }
-[; ;protocol.c: 232: printf("%u\n", pbuffer[i]);
-"232
+[; ;protocol.c: 238: printf("%u\n", pbuffer[i]);
+"238
 [e ( _printf , (. :s 18C -> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux `i ]
-[; ;protocol.c: 233: break;
-"233
+[; ;protocol.c: 239: break;
+"239
 [e $U 388  ]
-[; ;protocol.c: 234: case 0x02:
-"234
+[; ;protocol.c: 240: case 0x02:
+"240
 [e :U 395 ]
-[; ;protocol.c: 235: length--;
-"235
+[; ;protocol.c: 241: length--;
+"241
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 236: printf("INT8_T:");
-"236
+[; ;protocol.c: 242: printf("INT8_T:");
+"242
 [e ( _printf :s 19C ]
-[; ;protocol.c: 237: for (i=0; i<length; i++) printf("%d,", (int8_t)pbuffer[i]);
-"237
+[; ;protocol.c: 243: for (i=0; i<length; i++) printf("%d,", (int8_t)pbuffer[i]);
+"243
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 399  ]
@@ -3625,23 +3706,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 396  ]
 [e :U 397 ]
 }
-[; ;protocol.c: 238: printf("%d\n", (int8_t)pbuffer[i]);
-"238
+[; ;protocol.c: 244: printf("%d\n", (int8_t)pbuffer[i]);
+"244
 [e ( _printf , (. :s 21C -> -> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux `c `i ]
-[; ;protocol.c: 239: break;
-"239
+[; ;protocol.c: 245: break;
+"245
 [e $U 388  ]
-[; ;protocol.c: 240: case 0x03:
-"240
+[; ;protocol.c: 246: case 0x03:
+"246
 [e :U 400 ]
-[; ;protocol.c: 241: printf("UINT16_T:");
-"241
+[; ;protocol.c: 247: printf("UINT16_T:");
+"247
 [e ( _printf :s 22C ]
-[; ;protocol.c: 242: length = length - 2;
-"242
+[; ;protocol.c: 248: length = length - 2;
+"248
 [e = _length -> - -> _length `i -> 2 `i `uc ]
-[; ;protocol.c: 243: for(i=0; i<length; i=i+2) printf("%u,", concat(pbuffer[i], pbuffer[i+1]));
-"243
+[; ;protocol.c: 249: for(i=0; i<length; i=i+2) printf("%u,", concat(pbuffer[i], pbuffer[i+1]));
+"249
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 404  ]
@@ -3652,23 +3733,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 401  ]
 [e :U 402 ]
 }
-[; ;protocol.c: 244: printf("%u\n", concat(pbuffer[i], pbuffer[i+1]));
-"244
+[; ;protocol.c: 250: printf("%u\n", concat(pbuffer[i], pbuffer[i+1]));
+"250
 [e ( _printf , (. :s 24C ( _concat (2 , *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux *U + _pbuffer * -> + -> _i `i -> 1 `i `x -> -> # *U _pbuffer `i `x ]
-[; ;protocol.c: 245: break;
-"245
+[; ;protocol.c: 251: break;
+"251
 [e $U 388  ]
-[; ;protocol.c: 246: case 0x04:
-"246
+[; ;protocol.c: 252: case 0x04:
+"252
 [e :U 405 ]
-[; ;protocol.c: 247: printf("INT16_T:");
-"247
+[; ;protocol.c: 253: printf("INT16_T:");
+"253
 [e ( _printf :s 25C ]
-[; ;protocol.c: 248: length = length - 2;
-"248
+[; ;protocol.c: 254: length = length - 2;
+"254
 [e = _length -> - -> _length `i -> 2 `i `uc ]
-[; ;protocol.c: 249: for(i=0; i<length; i=i+2) printf("%d,", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
-"249
+[; ;protocol.c: 255: for(i=0; i<length; i=i+2) printf("%d,", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
+"255
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 409  ]
@@ -3679,110 +3760,110 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 406  ]
 [e :U 407 ]
 }
-[; ;protocol.c: 250: printf("%d\n", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
-"250
+[; ;protocol.c: 256: printf("%d\n", (int16_t)(concat(pbuffer[i], pbuffer[i+1])));
+"256
 [e ( _printf , (. :s 27C -> ( _concat (2 , *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux *U + _pbuffer * -> + -> _i `i -> 1 `i `x -> -> # *U _pbuffer `i `x `i ]
-[; ;protocol.c: 251: break;
-"251
+[; ;protocol.c: 257: break;
+"257
 [e $U 388  ]
-[; ;protocol.c: 252: case 0x05:
-"252
+[; ;protocol.c: 258: case 0x05:
+"258
 [e :U 410 ]
-[; ;protocol.c: 253: printf("FLOAT:");
-"253
+[; ;protocol.c: 259: printf("FLOAT:");
+"259
 [e ( _printf :s 28C ]
-[; ;protocol.c: 254: length = length - 2;
-"254
+[; ;protocol.c: 260: length = length - 2;
+"260
 [e = _length -> - -> _length `i -> 2 `i `uc ]
-[; ;protocol.c: 255: for (i=0; i<length; i=i+2) {
-"255
+[; ;protocol.c: 261: for (i=0; i<length; i=i+2) {
+"261
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 414  ]
 [e :U 411 ]
 {
-[; ;protocol.c: 256: v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
-"256
+[; ;protocol.c: 262: v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
+"262
 [e = _v -> ( _concat (2 , *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux *U + _pbuffer * -> + -> _i `i -> 1 `i `x -> -> # *U _pbuffer `i `x `i ]
-[; ;protocol.c: 257: if (v <= -100 || v >= 0) {
-"257
+[; ;protocol.c: 263: if (v <= -100 || v >= 0) {
+"263
 [e $ ! || <= _v -U -> 100 `i >= _v -> 0 `i 415  ]
 {
-[; ;protocol.c: 258: printf("%d.%02d,", v/100, abs(v%100));
-"258
+[; ;protocol.c: 264: printf("%d.%02d,", v/100, abs(v%100));
+"264
 [e ( _printf , , (. :s 29C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"259
+"265
 }
-[; ;protocol.c: 259: } else {
+[; ;protocol.c: 265: } else {
 [e $U 416  ]
 [e :U 415 ]
 {
-[; ;protocol.c: 260: printf("-%d.%02d,", v/100, abs(v%100));
-"260
+[; ;protocol.c: 266: printf("-%d.%02d,", v/100, abs(v%100));
+"266
 [e ( _printf , , (. :s 30C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"261
+"267
 }
 [e :U 416 ]
-"262
+"268
 }
-"255
+"261
 [e = _i -> + -> _i `i -> 2 `i `uc ]
 [e :U 414 ]
 [e $ < -> _i `i -> _length `i 411  ]
 [e :U 412 ]
-"262
+"268
 }
-[; ;protocol.c: 261: }
-[; ;protocol.c: 262: }
-[; ;protocol.c: 263: v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
-"263
+[; ;protocol.c: 267: }
+[; ;protocol.c: 268: }
+[; ;protocol.c: 269: v = (int16_t)(concat(pbuffer[i], pbuffer[i+1]));
+"269
 [e = _v -> ( _concat (2 , *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux *U + _pbuffer * -> + -> _i `i -> 1 `i `x -> -> # *U _pbuffer `i `x `i ]
-[; ;protocol.c: 264: if (v <= -100 || v >= 0) {
-"264
+[; ;protocol.c: 270: if (v <= -100 || v >= 0) {
+"270
 [e $ ! || <= _v -U -> 100 `i >= _v -> 0 `i 417  ]
 {
-[; ;protocol.c: 265: printf("%d.%02d\n", v/100, abs(v%100));
-"265
+[; ;protocol.c: 271: printf("%d.%02d\n", v/100, abs(v%100));
+"271
 [e ( _printf , , (. :s 31C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"266
+"272
 }
-[; ;protocol.c: 266: } else {
+[; ;protocol.c: 272: } else {
 [e $U 418  ]
 [e :U 417 ]
 {
-[; ;protocol.c: 267: printf("-%d.%02d\n", v/100, abs(v%100));
-"267
+[; ;protocol.c: 273: printf("-%d.%02d\n", v/100, abs(v%100));
+"273
 [e ( _printf , , (. :s 32C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"268
+"274
 }
 [e :U 418 ]
-[; ;protocol.c: 268: }
-[; ;protocol.c: 269: break;
-"269
-[e $U 388  ]
-[; ;protocol.c: 270: case 0x06:
-"270
-[e :U 419 ]
-[; ;protocol.c: 271: printf("NO_DATA\n");
-"271
-[e ( _printf :s 33C ]
-[; ;protocol.c: 272: break;
-"272
-[e $U 388  ]
-[; ;protocol.c: 273: default:
-"273
-[e :U 420 ]
-[; ;protocol.c: 274: printf("ILLEGAL_TYPE\n");
-"274
-[e ( _printf :s 34C ]
+[; ;protocol.c: 274: }
 [; ;protocol.c: 275: break;
 "275
 [e $U 388  ]
+[; ;protocol.c: 276: case 0x06:
 "276
-}
-[; ;protocol.c: 276: }
+[e :U 419 ]
+[; ;protocol.c: 277: printf("NO_DATA\n");
+"277
+[e ( _printf :s 33C ]
+[; ;protocol.c: 278: break;
+"278
 [e $U 388  ]
-"227
+[; ;protocol.c: 279: default:
+"279
+[e :U 420 ]
+[; ;protocol.c: 280: printf("ILLEGAL_TYPE\n");
+"280
+[e ( _printf :s 34C ]
+[; ;protocol.c: 281: break;
+"281
+[e $U 388  ]
+"282
+}
+[; ;protocol.c: 282: }
+[e $U 388  ]
+"233
 [e :U 389 ]
 [e [\ _type , $ -> -> 1 `i `uc 390
  , $ -> -> 2 `i `uc 395
@@ -3791,88 +3872,88 @@ Version 3.2 HI-TECH Software Intermediate Code
  , $ -> -> 5 `i `uc 410
  , $ -> -> 6 `i `uc 419
  420 ]
-"276
+"282
 [e :U 388 ]
-[; ;protocol.c: 277: }
-"277
+[; ;protocol.c: 283: }
+"283
 [e :UE 386 ]
 }
-"279
+"285
 [v _PROTOCOL_I2C_TLV_Status `(uc ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 279: bool PROTOCOL_I2C_TLV_Status(void) {
+[; ;protocol.c: 285: bool PROTOCOL_I2C_TLV_Status(void) {
 [e :U _PROTOCOL_I2C_TLV_Status ]
 [f ]
-[; ;protocol.c: 280: if (readbuf.status == TLV_SET) {
-"280
-[e $ ! == -> . _readbuf 3 `i -> . `E3128 0 `i 422  ]
+[; ;protocol.c: 286: if (readbuf.status == TLV_SET) {
+"286
+[e $ ! == -> . _readbuf 3 `i -> . `E3141 0 `i 422  ]
 {
-[; ;protocol.c: 281: return 1;
-"281
+[; ;protocol.c: 287: return 1;
+"287
 [e ) -> -> 1 `i `uc ]
 [e $UE 421  ]
-"282
+"288
 }
-[; ;protocol.c: 282: } else return 0;
+[; ;protocol.c: 288: } else return 0;
 [e $U 423  ]
 [e :U 422 ]
 [e ) -> -> 0 `i `uc ]
 [e $UE 421  ]
 [e :U 423 ]
-[; ;protocol.c: 283: }
-"283
+[; ;protocol.c: 289: }
+"289
 [e :UE 421 ]
 }
-"285
+"291
 [v _PROTOCOL_RST `(v ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 285: void PROTOCOL_RST(void) {
+[; ;protocol.c: 291: void PROTOCOL_RST(void) {
 [e :U _PROTOCOL_RST ]
 [f ]
-[; ;protocol.c: 286: if (readbuf.status != TLV_SET) {
-"286
-[e $ ! != -> . _readbuf 3 `i -> . `E3128 0 `i 425  ]
+[; ;protocol.c: 292: if (readbuf.status != TLV_SET) {
+"292
+[e $ ! != -> . _readbuf 3 `i -> . `E3141 0 `i 425  ]
 {
-[; ;protocol.c: 287: readbuf.buf_cnt = 0;
-"287
+[; ;protocol.c: 293: readbuf.buf_cnt = 0;
+"293
 [e = . _readbuf 4 -> -> 0 `i `uc ]
-[; ;protocol.c: 288: readbuf.status = COMPLETE;
-"288
-[e = . _readbuf 3 . `E3128 3 ]
-"289
+[; ;protocol.c: 294: readbuf.status = COMPLETE;
+"294
+[e = . _readbuf 3 . `E3141 3 ]
+"295
 }
 [e :U 425 ]
-[; ;protocol.c: 289: }
-[; ;protocol.c: 290: }
-"290
+[; ;protocol.c: 295: }
+[; ;protocol.c: 296: }
+"296
 [e :UE 424 ]
 }
-"292
+"298
 [v _PROTOCOL_I2C_Send_uint8_t `(v ~T0 @X0 1 ef2`uc`*uc ]
 {
-[; ;protocol.c: 292: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer) {
+[; ;protocol.c: 298: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer) {
 [e :U _PROTOCOL_I2C_Send_uint8_t ]
 [v _length `uc ~T0 @X0 1 r1 ]
 [v _pbuffer `*uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;protocol.c: 293: if (backplane_slave_enabled) {
-"293
+[; ;protocol.c: 299: if (backplane_slave_enabled) {
+"299
 [e $ ! != -> _backplane_slave_enabled `i -> -> -> 0 `i `uc `i 427  ]
 {
-[; ;protocol.c: 294: PROTOCOL_I2C_Set_TLV(0x01, length, &pbuffer[0]);
-"294
+[; ;protocol.c: 300: PROTOCOL_I2C_Set_TLV(0x01, length, &pbuffer[0]);
+"300
 [e ( _PROTOCOL_I2C_Set_TLV (3 , , -> -> 1 `i `uc _length &U *U + _pbuffer * -> -> 0 `i `x -> -> # *U _pbuffer `i `x ]
-"295
+"301
 }
-[; ;protocol.c: 295: } else {
+[; ;protocol.c: 301: } else {
 [e $U 428  ]
 [e :U 427 ]
 {
-[; ;protocol.c: 296: length--;
-"296
+[; ;protocol.c: 302: length--;
+"302
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 297: for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
-"297
+[; ;protocol.c: 303: for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
+"303
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 432  ]
@@ -3883,63 +3964,63 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 429  ]
 [e :U 430 ]
 }
-[; ;protocol.c: 298: printf("%d\n", pbuffer[i]);
-"298
+[; ;protocol.c: 304: printf("%d\n", pbuffer[i]);
+"304
 [e ( _printf , (. :s 36C -> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux `i ]
-"299
+"305
 }
 [e :U 428 ]
-[; ;protocol.c: 299: }
-[; ;protocol.c: 300: }
-"300
+[; ;protocol.c: 305: }
+[; ;protocol.c: 306: }
+"306
 [e :UE 426 ]
 }
-"302
+"308
 [v _PROTOCOL_I2C_Send_int8_t `(v ~T0 @X0 1 ef2`uc`*c ]
 {
-[; ;protocol.c: 302: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer) {
+[; ;protocol.c: 308: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer) {
 [e :U _PROTOCOL_I2C_Send_int8_t ]
 [v _length `uc ~T0 @X0 1 r1 ]
 [v _pbuffer `*c ~T0 @X0 1 r2 ]
 [f ]
-[; ;protocol.c: 303: if (backplane_slave_enabled) {
-"303
+[; ;protocol.c: 309: if (backplane_slave_enabled) {
+"309
 [e $ ! != -> _backplane_slave_enabled `i -> -> -> 0 `i `uc `i 434  ]
 {
-[; ;protocol.c: 304: for (i=0; i<length; i++) {
-"304
+[; ;protocol.c: 310: for (i=0; i<length; i++) {
+"310
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 438  ]
 [e :U 435 ]
 {
-[; ;protocol.c: 305: sendbuf[i] = (uint8_t)pbuffer[i];
-"305
+[; ;protocol.c: 311: sendbuf[i] = (uint8_t)pbuffer[i];
+"311
 [e = *U + &U _sendbuf * -> _i `ux -> -> # *U &U _sendbuf `ui `ux -> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux `uc ]
-"306
+"312
 }
-"304
+"310
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 438 ]
 [e $ < -> _i `i -> _length `i 435  ]
 [e :U 436 ]
-"306
+"312
 }
-[; ;protocol.c: 306: }
-[; ;protocol.c: 307: PROTOCOL_I2C_Set_TLV(0x02, length, &sendbuf[0]);
-"307
+[; ;protocol.c: 312: }
+[; ;protocol.c: 313: PROTOCOL_I2C_Set_TLV(0x02, length, &sendbuf[0]);
+"313
 [e ( _PROTOCOL_I2C_Set_TLV (3 , , -> -> 2 `i `uc _length &U *U + &U _sendbuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _sendbuf `ui `ux ]
-"308
+"314
 }
-[; ;protocol.c: 308: } else {
+[; ;protocol.c: 314: } else {
 [e $U 439  ]
 [e :U 434 ]
 {
-[; ;protocol.c: 309: length--;
-"309
+[; ;protocol.c: 315: length--;
+"315
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 310: for (i=0; i<length; i++) printf("%d,", (int8_t)pbuffer[i]);
-"310
+[; ;protocol.c: 316: for (i=0; i<length; i++) printf("%d,", (int8_t)pbuffer[i]);
+"316
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 443  ]
@@ -3950,69 +4031,69 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 440  ]
 [e :U 441 ]
 }
-[; ;protocol.c: 311: printf("%d\n", (int8_t)pbuffer[i]);
-"311
+[; ;protocol.c: 317: printf("%d\n", (int8_t)pbuffer[i]);
+"317
 [e ( _printf , (. :s 38C -> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux `i ]
-"312
+"318
 }
 [e :U 439 ]
-[; ;protocol.c: 312: }
-[; ;protocol.c: 313: }
-"313
+[; ;protocol.c: 318: }
+[; ;protocol.c: 319: }
+"319
 [e :UE 433 ]
 }
-"315
+"321
 [v _PROTOCOL_I2C_Send_uint16_t `(v ~T0 @X0 1 ef2`uc`*ui ]
 {
-[; ;protocol.c: 315: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer) {
+[; ;protocol.c: 321: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer) {
 [e :U _PROTOCOL_I2C_Send_uint16_t ]
 [v _length `uc ~T0 @X0 1 r1 ]
 [v _pbuffer `*ui ~T0 @X0 1 r2 ]
 [f ]
-[; ;protocol.c: 316: if (backplane_slave_enabled) {
-"316
+[; ;protocol.c: 322: if (backplane_slave_enabled) {
+"322
 [e $ ! != -> _backplane_slave_enabled `i -> -> -> 0 `i `uc `i 445  ]
 {
-[; ;protocol.c: 317: j = 0;
-"317
+[; ;protocol.c: 323: j = 0;
+"323
 [e = _j -> -> 0 `i `uc ]
-[; ;protocol.c: 318: for(i=0; i<length; i++) {
-"318
+[; ;protocol.c: 324: for(i=0; i<length; i++) {
+"324
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 449  ]
 [e :U 446 ]
 {
-[; ;protocol.c: 319: sendbuf[j++] = (uint8_t)((pbuffer[i] >> 8) & 0x00ff);
-"319
+[; ;protocol.c: 325: sendbuf[j++] = (uint8_t)((pbuffer[i] >> 8) & 0x00ff);
+"325
 [e = *U + &U _sendbuf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _sendbuf `ui `ux -> & >> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> 8 `i -> -> 255 `i `ui `uc ]
-[; ;protocol.c: 320: sendbuf[j++] = (uint8_t)(pbuffer[i] & 0x00ff);
-"320
+[; ;protocol.c: 326: sendbuf[j++] = (uint8_t)(pbuffer[i] & 0x00ff);
+"326
 [e = *U + &U _sendbuf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _sendbuf `ui `ux -> & *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> -> 255 `i `ui `uc ]
-"321
+"327
 }
-"318
+"324
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 449 ]
 [e $ < -> _i `i -> _length `i 446  ]
 [e :U 447 ]
-"321
+"327
 }
-[; ;protocol.c: 321: }
-[; ;protocol.c: 322: PROTOCOL_I2C_Set_TLV(0x03, length*2, &sendbuf[0]);
-"322
+[; ;protocol.c: 327: }
+[; ;protocol.c: 328: PROTOCOL_I2C_Set_TLV(0x03, length*2, &sendbuf[0]);
+"328
 [e ( _PROTOCOL_I2C_Set_TLV (3 , , -> -> 3 `i `uc -> * -> _length `i -> 2 `i `uc &U *U + &U _sendbuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _sendbuf `ui `ux ]
-"323
+"329
 }
-[; ;protocol.c: 323: } else {
+[; ;protocol.c: 329: } else {
 [e $U 450  ]
 [e :U 445 ]
 {
-[; ;protocol.c: 324: length--;
-"324
+[; ;protocol.c: 330: length--;
+"330
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 325: for(i=0; i<length; i++) printf("%u,", pbuffer[i]);
-"325
+[; ;protocol.c: 331: for(i=0; i<length; i++) printf("%u,", pbuffer[i]);
+"331
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 454  ]
@@ -4023,69 +4104,69 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 451  ]
 [e :U 452 ]
 }
-[; ;protocol.c: 326: printf("%u\n", pbuffer[i]);
-"326
+[; ;protocol.c: 332: printf("%u\n", pbuffer[i]);
+"332
 [e ( _printf , (. :s 40C *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux ]
-"327
+"333
 }
 [e :U 450 ]
-[; ;protocol.c: 327: }
-[; ;protocol.c: 328: }
-"328
+[; ;protocol.c: 333: }
+[; ;protocol.c: 334: }
+"334
 [e :UE 444 ]
 }
-"330
+"336
 [v _PROTOCOL_I2C_Send_int16_t `(v ~T0 @X0 1 ef2`uc`*i ]
 {
-[; ;protocol.c: 330: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer) {
+[; ;protocol.c: 336: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer) {
 [e :U _PROTOCOL_I2C_Send_int16_t ]
 [v _length `uc ~T0 @X0 1 r1 ]
 [v _pbuffer `*i ~T0 @X0 1 r2 ]
 [f ]
-[; ;protocol.c: 331: if (backplane_slave_enabled) {
-"331
+[; ;protocol.c: 337: if (backplane_slave_enabled) {
+"337
 [e $ ! != -> _backplane_slave_enabled `i -> -> -> 0 `i `uc `i 456  ]
 {
-[; ;protocol.c: 332: j = 0;
-"332
+[; ;protocol.c: 338: j = 0;
+"338
 [e = _j -> -> 0 `i `uc ]
-[; ;protocol.c: 333: for (i=0; i<length; i++) {
-"333
+[; ;protocol.c: 339: for (i=0; i<length; i++) {
+"339
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 460  ]
 [e :U 457 ]
 {
-[; ;protocol.c: 334: sendbuf[j++] = (uint8_t)((pbuffer[i] >> 8) & 0x00ff);
-"334
+[; ;protocol.c: 340: sendbuf[j++] = (uint8_t)((pbuffer[i] >> 8) & 0x00ff);
+"340
 [e = *U + &U _sendbuf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _sendbuf `ui `ux -> & >> *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> 8 `i -> 255 `i `uc ]
-[; ;protocol.c: 335: sendbuf[j++] = (uint8_t)(pbuffer[i] & 0x00ff);
-"335
+[; ;protocol.c: 341: sendbuf[j++] = (uint8_t)(pbuffer[i] & 0x00ff);
+"341
 [e = *U + &U _sendbuf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _sendbuf `ui `ux -> & *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> 255 `i `uc ]
-"336
+"342
 }
-"333
+"339
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 460 ]
 [e $ < -> _i `i -> _length `i 457  ]
 [e :U 458 ]
-"336
+"342
 }
-[; ;protocol.c: 336: }
-[; ;protocol.c: 337: PROTOCOL_I2C_Set_TLV(0x04, length*2, &sendbuf[0]);
-"337
+[; ;protocol.c: 342: }
+[; ;protocol.c: 343: PROTOCOL_I2C_Set_TLV(0x04, length*2, &sendbuf[0]);
+"343
 [e ( _PROTOCOL_I2C_Set_TLV (3 , , -> -> 4 `i `uc -> * -> _length `i -> 2 `i `uc &U *U + &U _sendbuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _sendbuf `ui `ux ]
-"338
+"344
 }
-[; ;protocol.c: 338: } else {
+[; ;protocol.c: 344: } else {
 [e $U 461  ]
 [e :U 456 ]
 {
-[; ;protocol.c: 339: length--;
-"339
+[; ;protocol.c: 345: length--;
+"345
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 340: for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
-"340
+[; ;protocol.c: 346: for(i=0; i<length; i++) printf("%d,", pbuffer[i]);
+"346
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 465  ]
@@ -4096,341 +4177,893 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e $ < -> _i `i -> _length `i 462  ]
 [e :U 463 ]
 }
-[; ;protocol.c: 341: printf("%d\n", pbuffer[i]);
-"341
+[; ;protocol.c: 347: printf("%d\n", pbuffer[i]);
+"347
 [e ( _printf , (. :s 42C *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux ]
-"342
+"348
 }
 [e :U 461 ]
-[; ;protocol.c: 342: }
-[; ;protocol.c: 343: }
-"343
+[; ;protocol.c: 348: }
+[; ;protocol.c: 349: }
+"349
 [e :UE 455 ]
 }
-"345
+"351
 [v _PROTOCOL_I2C_Send_float `(v ~T0 @X0 1 ef2`uc`*f ]
 {
-[; ;protocol.c: 345: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
+[; ;protocol.c: 351: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer) {
 [e :U _PROTOCOL_I2C_Send_float ]
 [v _length `uc ~T0 @X0 1 r1 ]
 [v _pbuffer `*f ~T0 @X0 1 r2 ]
 [f ]
-"346
+"352
 [v _v `i ~T0 @X0 1 a ]
-[; ;protocol.c: 346: int16_t v;
-[; ;protocol.c: 347: if (backplane_slave_enabled) {
-"347
+[; ;protocol.c: 352: int16_t v;
+[; ;protocol.c: 353: if (backplane_slave_enabled) {
+"353
 [e $ ! != -> _backplane_slave_enabled `i -> -> -> 0 `i `uc `i 467  ]
 {
-[; ;protocol.c: 348: j = 0;
-"348
+[; ;protocol.c: 354: j = 0;
+"354
 [e = _j -> -> 0 `i `uc ]
-[; ;protocol.c: 349: for (i=0; i<length; i++) {
-"349
+[; ;protocol.c: 355: for (i=0; i<length; i++) {
+"355
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 471  ]
 [e :U 468 ]
 {
-[; ;protocol.c: 350: float100 = (int16_t)(pbuffer[i] * 100);
-"350
+[; ;protocol.c: 356: float100 = (int16_t)(pbuffer[i] * 100);
+"356
 [e = _float100 -> * *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> -> 100 `i `f `i ]
-[; ;protocol.c: 351: sendbuf[j++] = (uint8_t)((float100 >> 8) & 0x00ff);
-"351
+[; ;protocol.c: 357: sendbuf[j++] = (uint8_t)((float100 >> 8) & 0x00ff);
+"357
 [e = *U + &U _sendbuf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _sendbuf `ui `ux -> & >> _float100 -> 8 `i -> 255 `i `uc ]
-[; ;protocol.c: 352: sendbuf[j++] = (uint8_t)(float100 & 0x00ff);
-"352
+[; ;protocol.c: 358: sendbuf[j++] = (uint8_t)(float100 & 0x00ff);
+"358
 [e = *U + &U _sendbuf * -> ++ _j -> -> 1 `i `uc `ux -> -> # *U &U _sendbuf `ui `ux -> & _float100 -> 255 `i `uc ]
-"353
+"359
 }
-"349
+"355
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 471 ]
 [e $ < -> _i `i -> _length `i 468  ]
 [e :U 469 ]
-"353
+"359
 }
-[; ;protocol.c: 353: }
-[; ;protocol.c: 354: PROTOCOL_I2C_Set_TLV(0x05, length*2, &sendbuf[0]);
-"354
+[; ;protocol.c: 359: }
+[; ;protocol.c: 360: PROTOCOL_I2C_Set_TLV(0x05, length*2, &sendbuf[0]);
+"360
 [e ( _PROTOCOL_I2C_Set_TLV (3 , , -> -> 5 `i `uc -> * -> _length `i -> 2 `i `uc &U *U + &U _sendbuf * -> -> -> 0 `i `ui `ux -> -> # *U &U _sendbuf `ui `ux ]
-"355
+"361
 }
-[; ;protocol.c: 355: } else {
+[; ;protocol.c: 361: } else {
 [e $U 472  ]
 [e :U 467 ]
 {
-[; ;protocol.c: 356: length--;
-"356
+[; ;protocol.c: 362: length--;
+"362
 [e -- _length -> -> 1 `i `uc ]
-[; ;protocol.c: 357: for (i=0; i<length; i++) {
-"357
+[; ;protocol.c: 363: for (i=0; i<length; i++) {
+"363
 {
 [e = _i -> -> 0 `i `uc ]
 [e $U 476  ]
 [e :U 473 ]
 {
-[; ;protocol.c: 358: v = (int16_t)(pbuffer[i] * 100);
-"358
+[; ;protocol.c: 364: v = (int16_t)(pbuffer[i] * 100);
+"364
 [e = _v -> * *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> -> 100 `i `f `i ]
-[; ;protocol.c: 359: if (v <= -100 || v >= 0) {
-"359
+[; ;protocol.c: 365: if (v <= -100 || v >= 0) {
+"365
 [e $ ! || <= _v -U -> 100 `i >= _v -> 0 `i 477  ]
 {
-[; ;protocol.c: 360: printf("%d.%02d,", v/100, abs(v%100));
-"360
+[; ;protocol.c: 366: printf("%d.%02d,", v/100, abs(v%100));
+"366
 [e ( _printf , , (. :s 43C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"361
+"367
 }
-[; ;protocol.c: 361: } else {
+[; ;protocol.c: 367: } else {
 [e $U 478  ]
 [e :U 477 ]
 {
-[; ;protocol.c: 362: printf("-%d.%02d,", v/100, abs(v%100));
-"362
+[; ;protocol.c: 368: printf("-%d.%02d,", v/100, abs(v%100));
+"368
 [e ( _printf , , (. :s 44C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"363
+"369
 }
 [e :U 478 ]
-"364
+"370
 }
-"357
+"363
 [e ++ _i -> -> 1 `i `uc ]
 [e :U 476 ]
 [e $ < -> _i `i -> _length `i 473  ]
 [e :U 474 ]
-"364
+"370
 }
-[; ;protocol.c: 363: }
-[; ;protocol.c: 364: }
-[; ;protocol.c: 365: v = (int16_t)(pbuffer[i] * 100);
-"365
+[; ;protocol.c: 369: }
+[; ;protocol.c: 370: }
+[; ;protocol.c: 371: v = (int16_t)(pbuffer[i] * 100);
+"371
 [e = _v -> * *U + _pbuffer * -> _i `ux -> -> # *U _pbuffer `ui `ux -> -> 100 `i `f `i ]
-[; ;protocol.c: 366: if (v <= -100 || v >= 0) {
-"366
+[; ;protocol.c: 372: if (v <= -100 || v >= 0) {
+"372
 [e $ ! || <= _v -U -> 100 `i >= _v -> 0 `i 479  ]
 {
-[; ;protocol.c: 367: printf("%d.%02d\n", v/100, abs(v%100));
-"367
+[; ;protocol.c: 373: printf("%d.%02d\n", v/100, abs(v%100));
+"373
 [e ( _printf , , (. :s 45C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"368
+"374
 }
-[; ;protocol.c: 368: } else {
+[; ;protocol.c: 374: } else {
 [e $U 480  ]
 [e :U 479 ]
 {
-[; ;protocol.c: 369: printf("-%d.%02d\n", v/100, abs(v%100));
-"369
+[; ;protocol.c: 375: printf("-%d.%02d\n", v/100, abs(v%100));
+"375
 [e ( _printf , , (. :s 46C / _v -> 100 `i ( _abs (1 % _v -> 100 `i ]
-"370
+"376
 }
 [e :U 480 ]
-"371
+"377
 }
 [e :U 472 ]
-[; ;protocol.c: 370: }
-[; ;protocol.c: 371: }
-[; ;protocol.c: 372: }
-"372
+[; ;protocol.c: 376: }
+[; ;protocol.c: 377: }
+[; ;protocol.c: 378: }
+"378
 [e :UE 466 ]
 }
-"374
+"380
 [v _PROTOCOL_Send_uint8_t `(v ~T0 @X0 1 ef1`uc ]
 {
-[; ;protocol.c: 374: void PROTOCOL_Send_uint8_t(uint8_t value) {
+[; ;protocol.c: 380: void PROTOCOL_Send_uint8_t(uint8_t value) {
 [e :U _PROTOCOL_Send_uint8_t ]
 [v _value `uc ~T0 @X0 1 r1 ]
 [f ]
-"375
-[v F3217 `uc ~T0 @X0 -> -> 1 `i `ux s pbuf ]
-[; ;protocol.c: 375: static uint8_t pbuf[1];
-[; ;protocol.c: 376: pbuf[0] = value;
-"376
-[e = *U + &U F3217 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3217 `ui `ux _value ]
-[; ;protocol.c: 377: PROTOCOL_I2C_Send_uint8_t(1, pbuf);
-"377
-[e ( _PROTOCOL_I2C_Send_uint8_t (2 , -> -> 1 `i `uc &U F3217 ]
-[; ;protocol.c: 378: }
-"378
+"381
+[v F3230 `uc ~T0 @X0 -> -> 1 `i `ux s pbuf ]
+[; ;protocol.c: 381: static uint8_t pbuf[1];
+[; ;protocol.c: 382: pbuf[0] = value;
+"382
+[e = *U + &U F3230 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3230 `ui `ux _value ]
+[; ;protocol.c: 383: PROTOCOL_I2C_Send_uint8_t(1, pbuf);
+"383
+[e ( _PROTOCOL_I2C_Send_uint8_t (2 , -> -> 1 `i `uc &U F3230 ]
+[; ;protocol.c: 384: }
+"384
 [e :UE 481 ]
 }
-"380
+"386
 [v _PROTOCOL_Send_int8_t `(v ~T0 @X0 1 ef1`c ]
 {
-[; ;protocol.c: 380: void PROTOCOL_Send_int8_t(int8_t value) {
+[; ;protocol.c: 386: void PROTOCOL_Send_int8_t(int8_t value) {
 [e :U _PROTOCOL_Send_int8_t ]
 [v _value `c ~T0 @X0 1 r1 ]
 [f ]
-"381
-[v F3219 `c ~T0 @X0 -> -> 1 `i `ux s pbuf ]
-[; ;protocol.c: 381: static int8_t pbuf[1];
-[; ;protocol.c: 382: pbuf[0] = value;
-"382
-[e = *U + &U F3219 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3219 `ui `ux _value ]
-[; ;protocol.c: 383: PROTOCOL_I2C_Send_int8_t(1, pbuf);
-"383
-[e ( _PROTOCOL_I2C_Send_int8_t (2 , -> -> 1 `i `uc &U F3219 ]
-[; ;protocol.c: 384: }
-"384
+"387
+[v F3232 `c ~T0 @X0 -> -> 1 `i `ux s pbuf ]
+[; ;protocol.c: 387: static int8_t pbuf[1];
+[; ;protocol.c: 388: pbuf[0] = value;
+"388
+[e = *U + &U F3232 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3232 `ui `ux _value ]
+[; ;protocol.c: 389: PROTOCOL_I2C_Send_int8_t(1, pbuf);
+"389
+[e ( _PROTOCOL_I2C_Send_int8_t (2 , -> -> 1 `i `uc &U F3232 ]
+[; ;protocol.c: 390: }
+"390
 [e :UE 482 ]
 }
-"386
+"392
 [v _PROTOCOL_Send_uint16_t `(v ~T0 @X0 1 ef1`ui ]
 {
-[; ;protocol.c: 386: void PROTOCOL_Send_uint16_t(uint16_t value) {
+[; ;protocol.c: 392: void PROTOCOL_Send_uint16_t(uint16_t value) {
 [e :U _PROTOCOL_Send_uint16_t ]
 [v _value `ui ~T0 @X0 1 r1 ]
 [f ]
-"387
-[v F3221 `ui ~T0 @X0 -> -> 1 `i `ux s pbuf ]
-[; ;protocol.c: 387: static uint16_t pbuf[1];
-[; ;protocol.c: 388: pbuf[0] = value;
-"388
-[e = *U + &U F3221 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3221 `ui `ux _value ]
-[; ;protocol.c: 389: PROTOCOL_I2C_Send_uint16_t(1, pbuf);
-"389
-[e ( _PROTOCOL_I2C_Send_uint16_t (2 , -> -> 1 `i `uc &U F3221 ]
-[; ;protocol.c: 390: }
-"390
+"393
+[v F3234 `ui ~T0 @X0 -> -> 1 `i `ux s pbuf ]
+[; ;protocol.c: 393: static uint16_t pbuf[1];
+[; ;protocol.c: 394: pbuf[0] = value;
+"394
+[e = *U + &U F3234 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3234 `ui `ux _value ]
+[; ;protocol.c: 395: PROTOCOL_I2C_Send_uint16_t(1, pbuf);
+"395
+[e ( _PROTOCOL_I2C_Send_uint16_t (2 , -> -> 1 `i `uc &U F3234 ]
+[; ;protocol.c: 396: }
+"396
 [e :UE 483 ]
 }
-"392
+"398
 [v _PROTOCOL_Send_int16_t `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;protocol.c: 392: void PROTOCOL_Send_int16_t(int16_t value) {
+[; ;protocol.c: 398: void PROTOCOL_Send_int16_t(int16_t value) {
 [e :U _PROTOCOL_Send_int16_t ]
 [v _value `i ~T0 @X0 1 r1 ]
 [f ]
-"393
-[v F3223 `i ~T0 @X0 -> -> 1 `i `ux s pbuf ]
-[; ;protocol.c: 393: static int16_t pbuf[1];
-[; ;protocol.c: 394: pbuf[0] = value;
-"394
-[e = *U + &U F3223 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3223 `ui `ux _value ]
-[; ;protocol.c: 395: PROTOCOL_I2C_Send_int16_t(1, pbuf);
-"395
-[e ( _PROTOCOL_I2C_Send_int16_t (2 , -> -> 1 `i `uc &U F3223 ]
-[; ;protocol.c: 396: }
-"396
+"399
+[v F3236 `i ~T0 @X0 -> -> 1 `i `ux s pbuf ]
+[; ;protocol.c: 399: static int16_t pbuf[1];
+[; ;protocol.c: 400: pbuf[0] = value;
+"400
+[e = *U + &U F3236 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3236 `ui `ux _value ]
+[; ;protocol.c: 401: PROTOCOL_I2C_Send_int16_t(1, pbuf);
+"401
+[e ( _PROTOCOL_I2C_Send_int16_t (2 , -> -> 1 `i `uc &U F3236 ]
+[; ;protocol.c: 402: }
+"402
 [e :UE 484 ]
 }
-"398
+"404
 [v _PROTOCOL_Send_float `(v ~T0 @X0 1 ef1`f ]
 {
-[; ;protocol.c: 398: void PROTOCOL_Send_float(float value) {
+[; ;protocol.c: 404: void PROTOCOL_Send_float(float value) {
 [e :U _PROTOCOL_Send_float ]
 [v _value `f ~T0 @X0 1 r1 ]
 [f ]
-"399
-[v F3225 `f ~T0 @X0 -> -> 1 `i `ux s pbuf ]
-[; ;protocol.c: 399: static float pbuf[1];
-[; ;protocol.c: 400: pbuf[0] = value;
-"400
-[e = *U + &U F3225 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3225 `ui `ux _value ]
-[; ;protocol.c: 401: PROTOCOL_I2C_Send_float(1, pbuf);
-"401
-[e ( _PROTOCOL_I2C_Send_float (2 , -> -> 1 `i `uc &U F3225 ]
-[; ;protocol.c: 402: }
-"402
+"405
+[v F3238 `f ~T0 @X0 -> -> 1 `i `ux s pbuf ]
+[; ;protocol.c: 405: static float pbuf[1];
+[; ;protocol.c: 406: pbuf[0] = value;
+"406
+[e = *U + &U F3238 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3238 `ui `ux _value ]
+[; ;protocol.c: 407: PROTOCOL_I2C_Send_float(1, pbuf);
+"407
+[e ( _PROTOCOL_I2C_Send_float (2 , -> -> 1 `i `uc &U F3238 ]
+[; ;protocol.c: 408: }
+"408
 [e :UE 485 ]
 }
-"404
+"410
 [v _PROTOCOL_I2C_SEN `(*uc ~T0 @X0 1 ef ]
 {
-[; ;protocol.c: 404: uint8_t* PROTOCOL_I2C_SEN(void) {
+[; ;protocol.c: 410: uint8_t* PROTOCOL_I2C_SEN(void) {
 [e :U _PROTOCOL_I2C_SEN ]
 [f ]
-"405
+"411
 [v _pdata `*uc ~T0 @X0 1 a ]
-[; ;protocol.c: 405: uint8_t *pdata;
-[; ;protocol.c: 406: switch(readbuf.status) {
-"406
+[; ;protocol.c: 411: uint8_t *pdata;
+[; ;protocol.c: 412: switch(readbuf.status) {
+"412
 [e $U 488  ]
 {
-[; ;protocol.c: 407: case TLV_SET:
-"407
-[e :U 489 ]
-[; ;protocol.c: 408: pdata = &readbuf.type;
-"408
-[e = _pdata &U . _readbuf 0 ]
-[; ;protocol.c: 409: readbuf.status = TYPE_SENT;
-"409
-[e = . _readbuf 3 . `E3128 1 ]
-[; ;protocol.c: 410: break;
-"410
-[e $U 487  ]
-[; ;protocol.c: 411: case TYPE_SENT:
-"411
-[e :U 490 ]
-[; ;protocol.c: 412: pdata = &readbuf.length;
-"412
-[e = _pdata &U . _readbuf 1 ]
-[; ;protocol.c: 413: readbuf.status = LENGTH_SENT;
+[; ;protocol.c: 413: case TLV_SET:
 "413
-[e = . _readbuf 3 . `E3128 2 ]
-[; ;protocol.c: 414: break;
+[e :U 489 ]
+[; ;protocol.c: 414: pdata = &readbuf.type;
 "414
-[e $U 487  ]
-[; ;protocol.c: 415: case LENGTH_SENT:
+[e = _pdata &U . _readbuf 0 ]
+[; ;protocol.c: 415: readbuf.status = TYPE_SENT;
 "415
-[e :U 491 ]
-[; ;protocol.c: 416: if (readbuf.buf_cnt < readbuf.length) {
+[e = . _readbuf 3 . `E3141 1 ]
+[; ;protocol.c: 416: break;
 "416
+[e $U 487  ]
+[; ;protocol.c: 417: case TYPE_SENT:
+"417
+[e :U 490 ]
+[; ;protocol.c: 418: pdata = &readbuf.length;
+"418
+[e = _pdata &U . _readbuf 1 ]
+[; ;protocol.c: 419: readbuf.status = LENGTH_SENT;
+"419
+[e = . _readbuf 3 . `E3141 2 ]
+[; ;protocol.c: 420: break;
+"420
+[e $U 487  ]
+[; ;protocol.c: 421: case LENGTH_SENT:
+"421
+[e :U 491 ]
+[; ;protocol.c: 422: if (readbuf.buf_cnt < readbuf.length) {
+"422
 [e $ ! < -> . _readbuf 4 `i -> . _readbuf 1 `i 492  ]
 {
-[; ;protocol.c: 417: pdata = &readbuf.pbuffer[readbuf.buf_cnt++];
-"417
+[; ;protocol.c: 423: pdata = &readbuf.pbuffer[readbuf.buf_cnt++];
+"423
 [e = _pdata &U *U + . _readbuf 2 * -> ++ . _readbuf 4 -> -> 1 `i `uc `ux -> -> # *U . _readbuf 2 `ui `ux ]
-"418
+"424
 }
 [e :U 492 ]
-[; ;protocol.c: 418: }
-[; ;protocol.c: 419: if (readbuf.buf_cnt == readbuf.length) {
-"419
+[; ;protocol.c: 424: }
+[; ;protocol.c: 425: if (readbuf.buf_cnt == readbuf.length) {
+"425
 [e $ ! == -> . _readbuf 4 `i -> . _readbuf 1 `i 493  ]
 {
-[; ;protocol.c: 420: readbuf.buf_cnt = 0;
-"420
+[; ;protocol.c: 426: readbuf.buf_cnt = 0;
+"426
 [e = . _readbuf 4 -> -> 0 `i `uc ]
-[; ;protocol.c: 421: readbuf.status = COMPLETE;
-"421
-[e = . _readbuf 3 . `E3128 3 ]
-"422
+[; ;protocol.c: 427: readbuf.status = COMPLETE;
+"427
+[e = . _readbuf 3 . `E3141 3 ]
+"428
 }
 [e :U 493 ]
-[; ;protocol.c: 422: }
-[; ;protocol.c: 423: break;
-"423
+[; ;protocol.c: 428: }
+[; ;protocol.c: 429: break;
+"429
 [e $U 487  ]
-[; ;protocol.c: 424: case COMPLETE:
-"424
+[; ;protocol.c: 430: case COMPLETE:
+"430
 [e :U 494 ]
-[; ;protocol.c: 425: pdata = &type_no_data;
-"425
+[; ;protocol.c: 431: pdata = &type_no_data;
+"431
 [e = _pdata &U _type_no_data ]
-[; ;protocol.c: 426: break;
-"426
+[; ;protocol.c: 432: break;
+"432
 [e $U 487  ]
-"427
+"433
 }
-[; ;protocol.c: 427: }
+[; ;protocol.c: 433: }
 [e $U 487  ]
-"406
+"412
 [e :U 488 ]
-[e [\ . _readbuf 3 , $ . `E3128 0 489
- , $ . `E3128 1 490
- , $ . `E3128 2 491
- , $ . `E3128 3 494
+[e [\ . _readbuf 3 , $ . `E3141 0 489
+ , $ . `E3141 1 490
+ , $ . `E3141 2 491
+ , $ . `E3141 3 494
  487 ]
-"427
+"433
 [e :U 487 ]
-[; ;protocol.c: 428: return pdata;
-"428
+[; ;protocol.c: 434: return pdata;
+"434
 [e ) _pdata ]
 [e $UE 486  ]
-[; ;protocol.c: 429: }
-"429
+[; ;protocol.c: 435: }
+"435
 [e :UE 486 ]
+}
+[; ;protocol.c: 441: typedef enum
+[; ;protocol.c: 442: {
+[; ;protocol.c: 443: SLAVE_NORMAL_DATA,
+[; ;protocol.c: 444: SLAVE_DATA_ADDRESS,
+[; ;protocol.c: 445: SLAVE_GENERAL_CALL,
+[; ;protocol.c: 446: } SLAVE_WRITE_DATA_TYPE;
+"452
+[v _I2C_slaveWriteData `Vuc ~T0 @X0 1 e ]
+[i _I2C_slaveWriteData
+-> -> 85 `i `uc
+]
+[; ;protocol.c: 452: volatile uint8_t I2C_slaveWriteData = 0x55;
+[; ;protocol.c: 457: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state);
+"459
+[v _I2C_Initialize `(v ~T0 @X0 1 ef ]
+"460
+{
+[; ;protocol.c: 459: void I2C_Initialize(void)
+[; ;protocol.c: 460: {
+[e :U _I2C_Initialize ]
+[f ]
+[; ;protocol.c: 463: _delay((unsigned long)((2000)*(4000000/4000.0)));
+"463
+[e ( __delay (1 -> * -> -> 2000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;protocol.c: 467: SSP1STAT = 0x80;
+"467
+[e = _SSP1STAT -> -> 128 `i `uc ]
+[; ;protocol.c: 469: SSP1CON1 = 0x26;
+"469
+[e = _SSP1CON1 -> -> 38 `i `uc ]
+[; ;protocol.c: 471: SSP1CON2 = 0x81;
+"471
+[e = _SSP1CON2 -> -> 129 `i `uc ]
+[; ;protocol.c: 473: SSP1CON3 = 0x00;
+"473
+[e = _SSP1CON3 -> -> 0 `i `uc ]
+[; ;protocol.c: 475: SSP1MSK = (0x7F << 1);
+"475
+[e = _SSP1MSK -> << -> 127 `i -> 1 `i `uc ]
+[; ;protocol.c: 477: SSP1ADD = (PROTOCOL_Read_Device_Address() << 1);
+"477
+[e = _SSP1ADD -> << -> ( _PROTOCOL_Read_Device_Address ..  `i -> 1 `i `uc ]
+[; ;protocol.c: 480: PIR1bits.SSP1IF = 0;
+"480
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;protocol.c: 482: PIE1bits.SSP1IE = 1;
+"482
+[e = . . _PIE1bits 0 3 -> -> 1 `i `uc ]
+[; ;protocol.c: 484: }
+"484
+[e :UE 495 ]
+}
+"486
+[v _I2C_ISR `(v ~T0 @X0 1 ef ]
+"487
+{
+[; ;protocol.c: 486: void I2C_ISR ( void )
+[; ;protocol.c: 487: {
+[e :U _I2C_ISR ]
+[f ]
+"488
+[v _i2c_data `uc ~T0 @X0 1 a ]
+[; ;protocol.c: 488: uint8_t i2c_data = 0x55;
+[e = _i2c_data -> -> 85 `i `uc ]
+[; ;protocol.c: 493: PIR1bits.SSP1IF = 0;
+"493
+[e = . . _PIR1bits 0 3 -> -> 0 `i `uc ]
+[; ;protocol.c: 494: i2c_data = SSP1BUF;
+"494
+[e = _i2c_data _SSP1BUF ]
+[; ;protocol.c: 495: if(1 == SSP1STATbits.R_nW)
+"495
+[e $ ! == -> 1 `i -> . . _SSP1STATbits 0 2 `i 497  ]
+[; ;protocol.c: 496: {
+"496
+{
+[; ;protocol.c: 497: if((1 == SSP1STATbits.D_nA) && (1 == SSP1CON2bits.ACKSTAT))
+"497
+[e $ ! && == -> 1 `i -> . . _SSP1STATbits 0 5 `i == -> 1 `i -> . . _SSP1CON2bits 0 6 `i 498  ]
+[; ;protocol.c: 498: {
+"498
+{
+[; ;protocol.c: 500: I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
+"500
+[e ( _I2C_StatusCallback (1 . `E3095 3 ]
+"501
+}
+[; ;protocol.c: 501: }
+[e $U 499  ]
+"502
+[e :U 498 ]
+[; ;protocol.c: 502: else
+[; ;protocol.c: 503: {
+"503
+{
+[; ;protocol.c: 505: I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
+"505
+[e ( _I2C_StatusCallback (1 . `E3095 1 ]
+"506
+}
+[e :U 499 ]
+"507
+}
+[; ;protocol.c: 506: }
+[; ;protocol.c: 507: }
+[e $U 500  ]
+"508
+[e :U 497 ]
+[; ;protocol.c: 508: else if(0 == SSP1STATbits.D_nA)
+[e $ ! == -> 0 `i -> . . _SSP1STATbits 0 5 `i 501  ]
+[; ;protocol.c: 509: {
+"509
+{
+[; ;protocol.c: 512: if(0x00 == i2c_data)
+"512
+[e $ ! == -> 0 `i -> _i2c_data `i 502  ]
+[; ;protocol.c: 513: {
+"513
+{
+[; ;protocol.c: 515: I2C_StatusCallback(I2C_SLAVE_GENERAL_CALL_REQUEST);
+"515
+[e ( _I2C_StatusCallback (1 . `E3095 4 ]
+"516
+}
+[; ;protocol.c: 516: }
+[e $U 503  ]
+"517
+[e :U 502 ]
+[; ;protocol.c: 517: else
+[; ;protocol.c: 518: {
+"518
+{
+[; ;protocol.c: 520: I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
+"520
+[e ( _I2C_StatusCallback (1 . `E3095 0 ]
+"521
+}
+[e :U 503 ]
+"522
+}
+[; ;protocol.c: 521: }
+[; ;protocol.c: 522: }
+[e $U 504  ]
+"523
+[e :U 501 ]
+[; ;protocol.c: 523: else
+[; ;protocol.c: 524: {
+"524
+{
+[; ;protocol.c: 525: I2C_slaveWriteData = i2c_data;
+"525
+[e = _I2C_slaveWriteData _i2c_data ]
+[; ;protocol.c: 528: I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
+"528
+[e ( _I2C_StatusCallback (1 . `E3095 2 ]
+"529
+}
+[e :U 504 ]
+[e :U 500 ]
+[; ;protocol.c: 529: }
+[; ;protocol.c: 531: SSP1CON1bits.CKP = 1;
+"531
+[e = . . _SSP1CON1bits 0 4 -> -> 1 `i `uc ]
+[; ;protocol.c: 533: }
+"533
+[e :UE 496 ]
+}
+"535
+[v _I2C_StatusCallback `(v ~T0 @X0 1 ef1`E3095 ]
+"536
+{
+[; ;protocol.c: 535: void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
+[; ;protocol.c: 536: {
+[e :U _I2C_StatusCallback ]
+"535
+[v _i2c_bus_state `E3095 ~T0 @X0 1 r1 ]
+"536
+[f ]
+"538
+[v F3253 `uc ~T0 @X0 1 s slaveWriteType ]
+[i F3253
+-> . `E3241 0 `uc
+]
+"539
+[v F3254 `uc ~T0 @X0 1 s next ]
+[i F3254
+-> -> 0 `i `uc
+]
+"540
+[v F3255 `uc ~T0 @X0 1 s ext_len ]
+[i F3255
+-> -> 0 `i `uc
+]
+"541
+[v F3256 `uc ~T0 @X0 1 s ext_cnt ]
+[i F3256
+-> -> 0 `i `uc
+]
+"542
+[v F3257 `uc ~T0 @X0 -> 48 `i s ext_buf ]
+"543
+[v _pdata `*uc ~T0 @X0 1 a ]
+[; ;protocol.c: 538: static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
+[; ;protocol.c: 539: static uint8_t next = 0x00;
+[; ;protocol.c: 540: static uint8_t ext_len = 0;
+[; ;protocol.c: 541: static uint8_t ext_cnt = 0;
+[; ;protocol.c: 542: static char ext_buf[48];
+[; ;protocol.c: 543: uint8_t *pdata;
+[; ;protocol.c: 544: switch (i2c_bus_state)
+"544
+[e $U 507  ]
+[; ;protocol.c: 545: {
+"545
+{
+[; ;protocol.c: 546: case I2C_SLAVE_WRITE_REQUEST:
+"546
+[e :U 508 ]
+[; ;protocol.c: 547: slaveWriteType = SLAVE_DATA_ADDRESS;
+"547
+[e = F3253 -> . `E3241 1 `uc ]
+[; ;protocol.c: 548: break;
+"548
+[e $U 506  ]
+[; ;protocol.c: 550: case I2C_SLAVE_GENERAL_CALL_REQUEST:
+"550
+[e :U 509 ]
+[; ;protocol.c: 552: slaveWriteType = SLAVE_GENERAL_CALL;
+"552
+[e = F3253 -> . `E3241 2 `uc ]
+[; ;protocol.c: 553: break;
+"553
+[e $U 506  ]
+[; ;protocol.c: 555: case I2C_SLAVE_WRITE_COMPLETED:
+"555
+[e :U 510 ]
+[; ;protocol.c: 557: switch(slaveWriteType)
+"557
+[e $U 512  ]
+[; ;protocol.c: 558: {
+"558
+{
+[; ;protocol.c: 559: case SLAVE_DATA_ADDRESS:
+"559
+[e :U 513 ]
+[; ;protocol.c: 560: switch(next) {
+"560
+[e $U 515  ]
+{
+[; ;protocol.c: 561: case 0x01:
+"561
+[e :U 516 ]
+[; ;protocol.c: 562: PROTOCOL_SET(I2C_slaveWriteData);
+"562
+[e ( _PROTOCOL_SET (1 _I2C_slaveWriteData ]
+[; ;protocol.c: 563: next = 0x00;
+"563
+[e = F3254 -> -> 0 `i `uc ]
+[; ;protocol.c: 564: break;
+"564
+[e $U 514  ]
+[; ;protocol.c: 565: case 0x00:
+"565
+[e :U 517 ]
+[; ;protocol.c: 566: switch(I2C_slaveWriteData) {
+"566
+[e $U 519  ]
+{
+[; ;protocol.c: 567: case 0x04:
+"567
+[e :U 520 ]
+[; ;protocol.c: 568: PROTOCOL_STA();
+"568
+[e ( _PROTOCOL_STA ..  ]
+[; ;protocol.c: 569: break;
+"569
+[e $U 518  ]
+[; ;protocol.c: 570: case 0x05:
+"570
+[e :U 521 ]
+[; ;protocol.c: 571: PROTOCOL_STP();
+"571
+[e ( _PROTOCOL_STP ..  ]
+[; ;protocol.c: 572: break;
+"572
+[e $U 518  ]
+[; ;protocol.c: 573: case 0x03:
+"573
+[e :U 522 ]
+[; ;protocol.c: 574: PROTOCOL_SAV();
+"574
+[e ( _PROTOCOL_SAV ..  ]
+[; ;protocol.c: 575: break;
+"575
+[e $U 518  ]
+[; ;protocol.c: 576: case 0x06:
+"576
+[e :U 523 ]
+[; ;protocol.c: 577: PROTOCOL_INV();
+"577
+[e ( _PROTOCOL_INV ..  ]
+[; ;protocol.c: 578: break;
+"578
+[e $U 518  ]
+[; ;protocol.c: 579: case 0x0c:
+"579
+[e :U 524 ]
+[; ;protocol.c: 580: PROTOCOL_RST();
+"580
+[e ( _PROTOCOL_RST ..  ]
+[; ;protocol.c: 581: break;
+"581
+[e $U 518  ]
+[; ;protocol.c: 582: case 0x08:
+"582
+[e :U 525 ]
+[; ;protocol.c: 583: next = 0x01;
+"583
+[e = F3254 -> -> 1 `i `uc ]
+[; ;protocol.c: 584: break;
+"584
+[e $U 518  ]
+[; ;protocol.c: 585: case 0x0a:
+"585
+[e :U 526 ]
+[; ;protocol.c: 586: next = 0x02;
+"586
+[e = F3254 -> -> 2 `i `uc ]
+[; ;protocol.c: 587: break;
+"587
+[e $U 518  ]
+"588
+}
+[; ;protocol.c: 588: }
+[e $U 518  ]
+"566
+[e :U 519 ]
+[e [\ _I2C_slaveWriteData , $ -> -> 4 `i `uc 520
+ , $ -> -> 5 `i `uc 521
+ , $ -> -> 3 `i `uc 522
+ , $ -> -> 6 `i `uc 523
+ , $ -> -> 12 `i `uc 524
+ , $ -> -> 8 `i `uc 525
+ , $ -> -> 10 `i `uc 526
+ 518 ]
+"588
+[e :U 518 ]
+[; ;protocol.c: 589: break;
+"589
+[e $U 514  ]
+"590
+}
+[; ;protocol.c: 590: }
+[e $U 514  ]
+"560
+[e :U 515 ]
+[e [\ F3254 , $ -> -> 1 `i `uc 516
+ , $ -> -> 0 `i `uc 517
+ 514 ]
+"590
+[e :U 514 ]
+[; ;protocol.c: 591: break;
+"591
+[e $U 511  ]
+[; ;protocol.c: 593: case SLAVE_GENERAL_CALL:
+"593
+[e :U 527 ]
+[; ;protocol.c: 594: if (I2C_slaveWriteData == 0x02) {
+"594
+[e $ ! == -> _I2C_slaveWriteData `i -> 2 `i 528  ]
+{
+[; ;protocol.c: 595: SSP1CON2bits.GCEN = 0;
+"595
+[e = . . _SSP1CON2bits 0 7 -> -> 0 `i `uc ]
+[; ;protocol.c: 596: PROTOCOL_Backplane_Slave_Enabled();
+"596
+[e ( _PROTOCOL_Backplane_Slave_Enabled ..  ]
+"597
+}
+[e :U 528 ]
+[; ;protocol.c: 597: }
+[; ;protocol.c: 598: break;
+"598
+[e $U 511  ]
+[; ;protocol.c: 600: case SLAVE_NORMAL_DATA:
+"600
+[e :U 529 ]
+[; ;protocol.c: 601: switch(next) {
+"601
+[e $U 531  ]
+{
+[; ;protocol.c: 602: case 0x02:
+"602
+[e :U 532 ]
+[; ;protocol.c: 603: ext_len = I2C_slaveWriteData;
+"603
+[e = F3255 _I2C_slaveWriteData ]
+[; ;protocol.c: 604: ext_cnt = 0;
+"604
+[e = F3256 -> -> 0 `i `uc ]
+[; ;protocol.c: 605: next = 0x03;
+"605
+[e = F3254 -> -> 3 `i `uc ]
+[; ;protocol.c: 606: break;
+"606
+[e $U 530  ]
+[; ;protocol.c: 607: case 0x03:
+"607
+[e :U 533 ]
+[; ;protocol.c: 608: ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
+"608
+[e = *U + &U F3257 * -> ++ F3256 -> -> 1 `i `uc `ux -> -> # *U &U F3257 `ui `ux _I2C_slaveWriteData ]
+[; ;protocol.c: 609: if (ext_cnt >= ext_len) {
+"609
+[e $ ! >= -> F3256 `i -> F3255 `i 534  ]
+{
+[; ;protocol.c: 610: if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
+"610
+[e $ ! ! != -> ( _PROTOCOL_Read_Lock ..  `i -> -> -> 0 `i `uc `i 535  ]
+[e ( _PROTOCOL_EXT (1 &U *U + &U F3257 * -> -> -> 0 `i `ui `ux -> -> # *U &U F3257 `ui `ux ]
+[e :U 535 ]
+[; ;protocol.c: 611: next = 0x00;
+"611
+[e = F3254 -> -> 0 `i `uc ]
+"612
+}
+[e :U 534 ]
+[; ;protocol.c: 612: }
+[; ;protocol.c: 613: break;
+"613
+[e $U 530  ]
+"614
+}
+[; ;protocol.c: 614: }
+[e $U 530  ]
+"601
+[e :U 531 ]
+[e [\ F3254 , $ -> -> 2 `i `uc 532
+ , $ -> -> 3 `i `uc 533
+ 530 ]
+"614
+[e :U 530 ]
+[; ;protocol.c: 615: break;
+"615
+[e $U 511  ]
+[; ;protocol.c: 616: default:
+"616
+[e :U 536 ]
+[; ;protocol.c: 617: break;
+"617
+[e $U 511  ]
+"619
+}
+[; ;protocol.c: 619: }
+[e $U 511  ]
+"557
+[e :U 512 ]
+[e [\ F3253 , $ -> . `E3241 1 `uc 513
+ , $ -> . `E3241 2 `uc 527
+ , $ -> . `E3241 0 `uc 529
+ 536 ]
+"619
+[e :U 511 ]
+[; ;protocol.c: 621: slaveWriteType = SLAVE_NORMAL_DATA;
+"621
+[e = F3253 -> . `E3241 0 `uc ]
+[; ;protocol.c: 622: break;
+"622
+[e $U 506  ]
+[; ;protocol.c: 624: case I2C_SLAVE_READ_REQUEST:
+"624
+[e :U 537 ]
+[; ;protocol.c: 625: switch (I2C_slaveWriteData)
+"625
+[e $U 539  ]
+[; ;protocol.c: 626: {
+"626
+{
+[; ;protocol.c: 627: case 0x01:
+"627
+[e :U 540 ]
+[; ;protocol.c: 628: SSP1BUF = PROTOCOL_I2C_WHO();
+"628
+[e = _SSP1BUF ( _PROTOCOL_I2C_WHO ..  ]
+[; ;protocol.c: 629: break;
+"629
+[e $U 538  ]
+[; ;protocol.c: 630: case 0x07:
+"630
+[e :U 541 ]
+[; ;protocol.c: 631: pdata = PROTOCOL_I2C_SEN();
+"631
+[e = _pdata ( _PROTOCOL_I2C_SEN ..  ]
+[; ;protocol.c: 632: SSP1BUF = *pdata;
+"632
+[e = _SSP1BUF *U _pdata ]
+[; ;protocol.c: 633: break;
+"633
+[e $U 538  ]
+[; ;protocol.c: 634: case 0x09:
+"634
+[e :U 542 ]
+[; ;protocol.c: 635: SSP1BUF = PROTOCOL_I2C_GET();
+"635
+[e = _SSP1BUF ( _PROTOCOL_I2C_GET ..  ]
+[; ;protocol.c: 636: break;
+"636
+[e $U 538  ]
+"637
+}
+[; ;protocol.c: 637: }
+[e $U 538  ]
+"625
+[e :U 539 ]
+[e [\ _I2C_slaveWriteData , $ -> -> 1 `i `uc 540
+ , $ -> -> 7 `i `uc 541
+ , $ -> -> 9 `i `uc 542
+ 538 ]
+"637
+[e :U 538 ]
+[; ;protocol.c: 638: break;
+"638
+[e $U 506  ]
+[; ;protocol.c: 640: case I2C_SLAVE_READ_COMPLETED:
+"640
+[e :U 543 ]
+[; ;protocol.c: 641: break;
+"641
+[e $U 506  ]
+[; ;protocol.c: 642: default:
+"642
+[e :U 544 ]
+[; ;protocol.c: 643: break;
+"643
+[e $U 506  ]
+"645
+}
+[; ;protocol.c: 645: }
+[e $U 506  ]
+"544
+[e :U 507 ]
+[e [\ _i2c_bus_state , $ . `E3095 0 508
+ , $ . `E3095 4 509
+ , $ . `E3095 2 510
+ , $ . `E3095 1 537
+ , $ . `E3095 3 543
+ 544 ]
+"645
+[e :U 506 ]
+[; ;protocol.c: 646: }
+"646
+[e :UE 505 ]
 }
 [p f _printf 9733252 ]
 [a 4C 83 65 86 0 ]

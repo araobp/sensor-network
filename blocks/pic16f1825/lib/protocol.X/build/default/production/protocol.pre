@@ -3866,10 +3866,13 @@ extern char * strichr(const char *, int);
 extern char * strrchr(const char *, int);
 extern char * strrichr(const char *, int);
 
-# 41 "protocol.h"
+# 6 "C:\Program Files (x86)\Microchip\xc8\v1.42\include\stddef.h"
+typedef int ptrdiff_t;
+
+# 46 "protocol.h"
 void blink_red(uint8_t times);
 
-# 46
+# 51
 void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
 void PROTOCOL_Loop();
 void PROTOCOL_Set_Func(void *loop_func);
@@ -3887,10 +3890,10 @@ void PROTOCOL_INV(void);
 void PROTOCOL_RST(void);
 void PROTOCOL_EXT(uint8_t *pbuffer);
 
-# 66
+# 71
 void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
 
-# 71
+# 76
 void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
 void PROTOCOL_I2C_Reset_TLV(void);
 bool PROTOCOL_I2C_TLV_Status(void);
@@ -3906,7 +3909,7 @@ void PROTOCOL_Send_uint16_t(uint16_t value);
 void PROTOCOL_Send_int16_t(int16_t value);
 void PROTOCOL_Send_float(float value);
 
-# 89
+# 94
 void PROTOCOL_Backplane_Slave_Enabled(void);
 uint8_t PROTOCOL_I2C_WHO(void);
 uint8_t PROTOCOL_I2C_GET(void);
@@ -3915,10 +3918,28 @@ uint8_t* PROTOCOL_I2C_SEN();
 void PROTOCOL_Set_Lock(bool lock);
 bool PROTOCOL_Read_Lock(void);
 
-# 135
+# 140
 uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
 
-# 10 "protocol.c"
+# 162
+typedef enum
+{
+I2C_SLAVE_WRITE_REQUEST,
+I2C_SLAVE_READ_REQUEST,
+I2C_SLAVE_WRITE_COMPLETED,
+I2C_SLAVE_READ_COMPLETED,
+I2C_SLAVE_GENERAL_CALL_REQUEST,
+} I2C_SLAVE_DRIVER_STATUS;
+
+
+
+void I2C_Initialize(void);
+
+void I2C_ISR ( void );
+
+extern volatile uint8_t I2C_slaveWriteData;
+
+# 16 "protocol.c"
 uint8_t slave_address;
 
 
@@ -4042,7 +4063,7 @@ bool PROTOCOL_Read_Lock(void) {
 return locked;
 }
 
-# 136
+# 142
 void PROTOCOL_Loop() {
 uint8_t device_address;
 uint8_t c;
@@ -4100,7 +4121,7 @@ PROTOCOL_EXT(buf);
 }
 }
 
-# 197
+# 203
 uint16_t concat(uint8_t msb, uint8_t lsb) {
 return (uint16_t)msb * 256 + (uint16_t)lsb;
 }
@@ -4335,3 +4356,205 @@ break;
 return pdata;
 }
 
+# 441
+typedef enum
+{
+SLAVE_NORMAL_DATA,
+SLAVE_DATA_ADDRESS,
+SLAVE_GENERAL_CALL,
+} SLAVE_WRITE_DATA_TYPE;
+
+# 452
+volatile uint8_t I2C_slaveWriteData = 0x55;
+
+# 457
+void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state);
+
+void I2C_Initialize(void)
+{
+
+
+_delay((unsigned long)((2000)*(4000000/4000.0)));
+
+
+
+SSP1STAT = 0x80;
+
+SSP1CON1 = 0x26;
+
+SSP1CON2 = 0x81;
+
+SSP1CON3 = 0x00;
+
+SSP1MSK = (0x7F << 1);
+
+SSP1ADD = (PROTOCOL_Read_Device_Address() << 1);
+
+
+PIR1bits.SSP1IF = 0;
+
+PIE1bits.SSP1IE = 1;
+
+}
+
+void I2C_ISR ( void )
+{
+uint8_t i2c_data = 0x55;
+
+
+
+
+PIR1bits.SSP1IF = 0;
+i2c_data = SSP1BUF;
+if(1 == SSP1STATbits.R_nW)
+{
+if((1 == SSP1STATbits.D_nA) && (1 == SSP1CON2bits.ACKSTAT))
+{
+
+I2C_StatusCallback(I2C_SLAVE_READ_COMPLETED);
+}
+else
+{
+
+I2C_StatusCallback(I2C_SLAVE_READ_REQUEST);
+}
+}
+else if(0 == SSP1STATbits.D_nA)
+{
+
+
+if(0x00 == i2c_data)
+{
+
+I2C_StatusCallback(I2C_SLAVE_GENERAL_CALL_REQUEST);
+}
+else
+{
+
+I2C_StatusCallback(I2C_SLAVE_WRITE_REQUEST);
+}
+}
+else
+{
+I2C_slaveWriteData = i2c_data;
+
+
+I2C_StatusCallback(I2C_SLAVE_WRITE_COMPLETED);
+}
+
+SSP1CON1bits.CKP = 1;
+
+}
+
+void I2C_StatusCallback(I2C_SLAVE_DRIVER_STATUS i2c_bus_state)
+{
+
+static uint8_t slaveWriteType = SLAVE_NORMAL_DATA;
+static uint8_t next = 0x00;
+static uint8_t ext_len = 0;
+static uint8_t ext_cnt = 0;
+static char ext_buf[48];
+uint8_t *pdata;
+switch (i2c_bus_state)
+{
+case I2C_SLAVE_WRITE_REQUEST:
+slaveWriteType = SLAVE_DATA_ADDRESS;
+break;
+
+case I2C_SLAVE_GENERAL_CALL_REQUEST:
+
+slaveWriteType = SLAVE_GENERAL_CALL;
+break;
+
+case I2C_SLAVE_WRITE_COMPLETED:
+
+switch(slaveWriteType)
+{
+case SLAVE_DATA_ADDRESS:
+switch(next) {
+case 0x01:
+PROTOCOL_SET(I2C_slaveWriteData);
+next = 0x00;
+break;
+case 0x00:
+switch(I2C_slaveWriteData) {
+case 0x04:
+PROTOCOL_STA();
+break;
+case 0x05:
+PROTOCOL_STP();
+break;
+case 0x03:
+PROTOCOL_SAV();
+break;
+case 0x06:
+PROTOCOL_INV();
+break;
+case 0x0c:
+PROTOCOL_RST();
+break;
+case 0x08:
+next = 0x01;
+break;
+case 0x0a:
+next = 0x02;
+break;
+}
+break;
+}
+break;
+
+case SLAVE_GENERAL_CALL:
+if (I2C_slaveWriteData == 0x02) {
+SSP1CON2bits.GCEN = 0;
+PROTOCOL_Backplane_Slave_Enabled();
+}
+break;
+
+case SLAVE_NORMAL_DATA:
+switch(next) {
+case 0x02:
+ext_len = I2C_slaveWriteData;
+ext_cnt = 0;
+next = 0x03;
+break;
+case 0x03:
+ext_buf[ext_cnt++] = (char)I2C_slaveWriteData;
+if (ext_cnt >= ext_len) {
+if (!PROTOCOL_Read_Lock()) PROTOCOL_EXT(&ext_buf[0]);
+next = 0x00;
+}
+break;
+}
+break;
+default:
+break;
+
+}
+
+slaveWriteType = SLAVE_NORMAL_DATA;
+break;
+
+case I2C_SLAVE_READ_REQUEST:
+switch (I2C_slaveWriteData)
+{
+case 0x01:
+SSP1BUF = PROTOCOL_I2C_WHO();
+break;
+case 0x07:
+pdata = PROTOCOL_I2C_SEN();
+SSP1BUF = *pdata;
+break;
+case 0x09:
+SSP1BUF = PROTOCOL_I2C_GET();
+break;
+}
+break;
+
+case I2C_SLAVE_READ_COMPLETED:
+break;
+default:
+break;
+
+}
+}

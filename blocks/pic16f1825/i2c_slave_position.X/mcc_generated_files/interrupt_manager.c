@@ -47,6 +47,7 @@
 
 #include "interrupt_manager.h"
 #include "mcc.h"
+#include "protocol.h"
 
 void interrupt INTERRUPT_InterruptManager (void)
 {

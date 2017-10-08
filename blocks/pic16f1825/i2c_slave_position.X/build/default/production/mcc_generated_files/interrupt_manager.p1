@@ -30,7 +30,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EUSART_Transmit_ISR `(v ~T0 @X0 0 ef ]
 "222
 [v _EUSART_Receive_ISR `(v ~T0 @X0 0 ef ]
-"134 mcc_generated_files/i2c.h
+"175 ../lib/protocol.X\protocol.h
 [v _I2C_ISR `(v ~T0 @X0 0 ef ]
 [; ;interrupt_manager.h: 110: void interrupt INTERRUPT_InterruptManager(void);
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
@@ -2655,18 +2655,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdint.h: 215: typedef uint16_t uintptr_t;
 [; ;stdbool.h: 12: typedef unsigned char bool;
 [; ;__size_t.h: 4: typedef unsigned size_t;
-[; ;stddef.h: 6: typedef int ptrdiff_t;
-[; ;i2c.h: 78: typedef enum
-[; ;i2c.h: 79: {
-[; ;i2c.h: 80: I2C_SLAVE_WRITE_REQUEST,
-[; ;i2c.h: 81: I2C_SLAVE_READ_REQUEST,
-[; ;i2c.h: 82: I2C_SLAVE_WRITE_COMPLETED,
-[; ;i2c.h: 83: I2C_SLAVE_READ_COMPLETED,
-[; ;i2c.h: 84: I2C_SLAVE_GENERAL_CALL_REQUEST,
-[; ;i2c.h: 85: } I2C_SLAVE_DRIVER_STATUS;
-[; ;i2c.h: 114: void I2C_Initialize(void);
-[; ;i2c.h: 134: void I2C_ISR ( void );
-[; ;i2c.h: 141: extern volatile uint8_t I2C_slaveWriteData;
 [; ;stdarg.h: 7: typedef void * va_list[1];
 [; ;stdarg.h: 10: extern void * __va_start(void);
 [; ;stdarg.h: 13: extern void * __va_arg(void *, ...);
@@ -2730,72 +2718,126 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;tmr0.h: 169: void TMR0_WriteTimer(uint8_t timerVal);
 [; ;tmr0.h: 205: void TMR0_Reload(void);
 [; ;tmr0.h: 243: bool TMR0_HasOverflowOccured(void);
-[; ;mcc.h: 72: void SYSTEM_Initialize(void);
-[; ;mcc.h: 85: void OSCILLATOR_Initialize(void);
-[; ;mcc.h: 98: void WDT_Initialize(void);
+[; ;mcc.h: 71: void SYSTEM_Initialize(void);
+[; ;mcc.h: 84: void OSCILLATOR_Initialize(void);
+[; ;mcc.h: 97: void WDT_Initialize(void);
+[; ;stddef.h: 6: typedef int ptrdiff_t;
+[; ;protocol.X\protocol.h: 46: void blink_red(uint8_t times);
+[; ;protocol.X\protocol.h: 51: void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+[; ;protocol.X\protocol.h: 52: void PROTOCOL_Loop();
+[; ;protocol.X\protocol.h: 53: void PROTOCOL_Set_Func(void *loop_func);
+[; ;protocol.X\protocol.h: 54: void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+[; ;protocol.X\protocol.h: 55: void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+[; ;protocol.X\protocol.h: 56: void PROTOCOL_Set_Tick_Handler(void *tick_handler);
+[; ;protocol.X\protocol.h: 57: void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+[; ;protocol.X\protocol.h: 58: uint8_t PROTOCOL_Read_Device_Address(void);
+[; ;protocol.X\protocol.h: 60: void PROTOCOL_STA(void);
+[; ;protocol.X\protocol.h: 61: void PROTOCOL_STP(void);
+[; ;protocol.X\protocol.h: 62: void PROTOCOL_SET(uint8_t value);
+[; ;protocol.X\protocol.h: 63: void PROTOCOL_SAV(void);
+[; ;protocol.X\protocol.h: 64: void PROTOCOL_INV(void);
+[; ;protocol.X\protocol.h: 65: void PROTOCOL_RST(void);
+[; ;protocol.X\protocol.h: 66: void PROTOCOL_EXT(uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 71: void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 76: void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 77: void PROTOCOL_I2C_Reset_TLV(void);
+[; ;protocol.X\protocol.h: 78: bool PROTOCOL_I2C_TLV_Status(void);
+[; ;protocol.X\protocol.h: 80: void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+[; ;protocol.X\protocol.h: 81: void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+[; ;protocol.X\protocol.h: 82: void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+[; ;protocol.X\protocol.h: 83: void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+[; ;protocol.X\protocol.h: 84: void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+[; ;protocol.X\protocol.h: 85: void PROTOCOL_Send_uint8_t(uint8_t value);
+[; ;protocol.X\protocol.h: 86: void PROTOCOL_Send_int8_t(int8_t value);
+[; ;protocol.X\protocol.h: 87: void PROTOCOL_Send_uint16_t(uint16_t value);
+[; ;protocol.X\protocol.h: 88: void PROTOCOL_Send_int16_t(int16_t value);
+[; ;protocol.X\protocol.h: 89: void PROTOCOL_Send_float(float value);
+[; ;protocol.X\protocol.h: 94: void PROTOCOL_Backplane_Slave_Enabled(void);
+[; ;protocol.X\protocol.h: 95: uint8_t PROTOCOL_I2C_WHO(void);
+[; ;protocol.X\protocol.h: 96: uint8_t PROTOCOL_I2C_GET(void);
+[; ;protocol.X\protocol.h: 97: uint8_t* PROTOCOL_I2C_SEN();
+[; ;protocol.X\protocol.h: 99: void PROTOCOL_Set_Lock(bool lock);
+[; ;protocol.X\protocol.h: 100: bool PROTOCOL_Read_Lock(void);
+"140 ../lib/protocol.X\protocol.h
+[v _BACKPLANE_SLAVE_ADDRESS `uc ~T0 @X0 1 e ]
+[i _BACKPLANE_SLAVE_ADDRESS
+-> -> 1 `i `uc
+]
+[; ;protocol.X\protocol.h: 140: uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+[; ;protocol.X\protocol.h: 162: typedef enum
+[; ;protocol.X\protocol.h: 163: {
+[; ;protocol.X\protocol.h: 164: I2C_SLAVE_WRITE_REQUEST,
+[; ;protocol.X\protocol.h: 165: I2C_SLAVE_READ_REQUEST,
+[; ;protocol.X\protocol.h: 166: I2C_SLAVE_WRITE_COMPLETED,
+[; ;protocol.X\protocol.h: 167: I2C_SLAVE_READ_COMPLETED,
+[; ;protocol.X\protocol.h: 168: I2C_SLAVE_GENERAL_CALL_REQUEST,
+[; ;protocol.X\protocol.h: 169: } I2C_SLAVE_DRIVER_STATUS;
+[; ;protocol.X\protocol.h: 173: void I2C_Initialize(void);
+[; ;protocol.X\protocol.h: 175: void I2C_ISR ( void );
+[; ;protocol.X\protocol.h: 177: extern volatile uint8_t I2C_slaveWriteData;
 [v F3 `(v ~T0 @X0 1 tf ]
-"51 mcc_generated_files/interrupt_manager.c
+"52 mcc_generated_files/interrupt_manager.c
 [v _INTERRUPT_InterruptManager `IF3 ~T0 @X0 1 e ]
-"52
+"53
 {
-[; ;interrupt_manager.c: 51: void interrupt INTERRUPT_InterruptManager (void)
-[; ;interrupt_manager.c: 52: {
+[; ;interrupt_manager.c: 52: void interrupt INTERRUPT_InterruptManager (void)
+[; ;interrupt_manager.c: 53: {
 [e :U _INTERRUPT_InterruptManager ]
 [f ]
-[; ;interrupt_manager.c: 54: if(INTCONbits.PEIE == 1 && PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
-"54
-[e $ ! && && == -> . . _INTCONbits 0 6 `i -> 1 `i == -> . . _PIE1bits 0 4 `i -> 1 `i == -> . . _PIR1bits 0 4 `i -> 1 `i 326  ]
-[; ;interrupt_manager.c: 55: {
+[; ;interrupt_manager.c: 55: if(INTCONbits.PEIE == 1 && PIE1bits.TXIE == 1 && PIR1bits.TXIF == 1)
 "55
-{
-[; ;interrupt_manager.c: 56: EUSART_Transmit_ISR();
+[e $ ! && && == -> . . _INTCONbits 0 6 `i -> 1 `i == -> . . _PIE1bits 0 4 `i -> 1 `i == -> . . _PIR1bits 0 4 `i -> 1 `i 326  ]
+[; ;interrupt_manager.c: 56: {
 "56
-[e ( _EUSART_Transmit_ISR ..  ]
+{
+[; ;interrupt_manager.c: 57: EUSART_Transmit_ISR();
 "57
-}
-[; ;interrupt_manager.c: 57: }
-[e $U 327  ]
+[e ( _EUSART_Transmit_ISR ..  ]
 "58
-[e :U 326 ]
-[; ;interrupt_manager.c: 58: else if(INTCONbits.PEIE == 1 && PIE1bits.RCIE == 1 && PIR1bits.RCIF == 1)
-[e $ ! && && == -> . . _INTCONbits 0 6 `i -> 1 `i == -> . . _PIE1bits 0 5 `i -> 1 `i == -> . . _PIR1bits 0 5 `i -> 1 `i 328  ]
-[; ;interrupt_manager.c: 59: {
+}
+[; ;interrupt_manager.c: 58: }
+[e $U 327  ]
 "59
-{
-[; ;interrupt_manager.c: 60: EUSART_Receive_ISR();
+[e :U 326 ]
+[; ;interrupt_manager.c: 59: else if(INTCONbits.PEIE == 1 && PIE1bits.RCIE == 1 && PIR1bits.RCIF == 1)
+[e $ ! && && == -> . . _INTCONbits 0 6 `i -> 1 `i == -> . . _PIE1bits 0 5 `i -> 1 `i == -> . . _PIR1bits 0 5 `i -> 1 `i 328  ]
+[; ;interrupt_manager.c: 60: {
 "60
-[e ( _EUSART_Receive_ISR ..  ]
+{
+[; ;interrupt_manager.c: 61: EUSART_Receive_ISR();
 "61
-}
-[; ;interrupt_manager.c: 61: }
-[e $U 329  ]
+[e ( _EUSART_Receive_ISR ..  ]
 "62
-[e :U 328 ]
-[; ;interrupt_manager.c: 62: else if(INTCONbits.PEIE == 1 && PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
-[e $ ! && && == -> . . _INTCONbits 0 6 `i -> 1 `i == -> . . _PIE1bits 0 3 `i -> 1 `i == -> . . _PIR1bits 0 3 `i -> 1 `i 330  ]
-[; ;interrupt_manager.c: 63: {
-"63
-{
-[; ;interrupt_manager.c: 64: I2C_ISR();
-"64
-[e ( _I2C_ISR ..  ]
-"65
 }
-[; ;interrupt_manager.c: 65: }
-[e $U 331  ]
-"66
-[e :U 330 ]
-[; ;interrupt_manager.c: 66: else
-[; ;interrupt_manager.c: 67: {
-"67
+[; ;interrupt_manager.c: 62: }
+[e $U 329  ]
+"63
+[e :U 328 ]
+[; ;interrupt_manager.c: 63: else if(INTCONbits.PEIE == 1 && PIE1bits.SSP1IE == 1 && PIR1bits.SSP1IF == 1)
+[e $ ! && && == -> . . _INTCONbits 0 6 `i -> 1 `i == -> . . _PIE1bits 0 3 `i -> 1 `i == -> . . _PIR1bits 0 3 `i -> 1 `i 330  ]
+[; ;interrupt_manager.c: 64: {
+"64
 {
-"69
+[; ;interrupt_manager.c: 65: I2C_ISR();
+"65
+[e ( _I2C_ISR ..  ]
+"66
+}
+[; ;interrupt_manager.c: 66: }
+[e $U 331  ]
+"67
+[e :U 330 ]
+[; ;interrupt_manager.c: 67: else
+[; ;interrupt_manager.c: 68: {
+"68
+{
+"70
 }
 [e :U 331 ]
 [e :U 329 ]
 [e :U 327 ]
-[; ;interrupt_manager.c: 69: }
 [; ;interrupt_manager.c: 70: }
-"70
+[; ;interrupt_manager.c: 71: }
+"71
 [e :UE 325 ]
 }

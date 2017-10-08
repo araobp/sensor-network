@@ -3645,28 +3645,6 @@ typedef unsigned char bool;
 # 4 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\__size_t.h"
 typedef unsigned size_t;
 
-# 6 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stddef.h"
-typedef int ptrdiff_t;
-
-# 78 "mcc_generated_files/i2c.h"
-typedef enum
-{
-I2C_SLAVE_WRITE_REQUEST,
-I2C_SLAVE_READ_REQUEST,
-I2C_SLAVE_WRITE_COMPLETED,
-I2C_SLAVE_READ_COMPLETED,
-I2C_SLAVE_GENERAL_CALL_REQUEST,
-} I2C_SLAVE_DRIVER_STATUS;
-
-# 114
-void I2C_Initialize(void);
-
-# 134
-void I2C_ISR ( void );
-
-# 141
-extern volatile uint8_t I2C_slaveWriteData;
-
 # 7 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stdarg.h"
 typedef void * va_list[1];
 
@@ -3801,16 +3779,89 @@ void TMR0_Reload(void);
 # 243
 bool TMR0_HasOverflowOccured(void);
 
-# 72 "mcc_generated_files/mcc.h"
+# 71 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
 
-# 85
+# 84
 void OSCILLATOR_Initialize(void);
 
-# 98
+# 97
 void WDT_Initialize(void);
 
-# 51 "mcc_generated_files/interrupt_manager.c"
+# 6 "C:\Program Files (x86)\Microchip\xc8\v1.41\include\stddef.h"
+typedef int ptrdiff_t;
+
+# 46 "../lib/protocol.X\protocol.h"
+void blink_red(uint8_t times);
+
+# 51
+void PROTOCOL_Initialize(const char *device_id, void *start_handler, void *stop_hanldler, void *set_handler, void *inv_handler, uint8_t scaler);
+void PROTOCOL_Loop();
+void PROTOCOL_Set_Func(void *loop_func);
+void PROTOCOL_Set_Extension_Handler(void *extension_handler);
+void PROTOCOL_Set_Inv_Handler(void *inv_handler, uint8_t scaler);
+void PROTOCOL_Set_Tick_Handler(void *tick_handler);
+void PROTOCOL_Write_Device_Address(uint8_t device_id_i2c);
+uint8_t PROTOCOL_Read_Device_Address(void);
+
+void PROTOCOL_STA(void);
+void PROTOCOL_STP(void);
+void PROTOCOL_SET(uint8_t value);
+void PROTOCOL_SAV(void);
+void PROTOCOL_INV(void);
+void PROTOCOL_RST(void);
+void PROTOCOL_EXT(uint8_t *pbuffer);
+
+# 71
+void PROTOCOL_Print_TLV(uint8_t dev_addr, uint8_t type, uint8_t length, uint8_t *pbuffer);
+
+# 76
+void PROTOCOL_I2C_Set_TLV(uint8_t type, uint8_t length, uint8_t *pbuffer);
+void PROTOCOL_I2C_Reset_TLV(void);
+bool PROTOCOL_I2C_TLV_Status(void);
+
+void PROTOCOL_I2C_Send_uint8_t(uint8_t length, uint8_t *pbuffer);
+void PROTOCOL_I2C_Send_int8_t(uint8_t length, int8_t *pbuffer);
+void PROTOCOL_I2C_Send_uint16_t(uint8_t length, uint16_t *pbuffer);
+void PROTOCOL_I2C_Send_int16_t(uint8_t length, int16_t *pbuffer);
+void PROTOCOL_I2C_Send_float(uint8_t length, float *pbuffer);
+void PROTOCOL_Send_uint8_t(uint8_t value);
+void PROTOCOL_Send_int8_t(int8_t value);
+void PROTOCOL_Send_uint16_t(uint16_t value);
+void PROTOCOL_Send_int16_t(int16_t value);
+void PROTOCOL_Send_float(float value);
+
+# 94
+void PROTOCOL_Backplane_Slave_Enabled(void);
+uint8_t PROTOCOL_I2C_WHO(void);
+uint8_t PROTOCOL_I2C_GET(void);
+uint8_t* PROTOCOL_I2C_SEN();
+
+void PROTOCOL_Set_Lock(bool lock);
+bool PROTOCOL_Read_Lock(void);
+
+# 140
+uint8_t BACKPLANE_SLAVE_ADDRESS = 0x01 ;
+
+# 162
+typedef enum
+{
+I2C_SLAVE_WRITE_REQUEST,
+I2C_SLAVE_READ_REQUEST,
+I2C_SLAVE_WRITE_COMPLETED,
+I2C_SLAVE_READ_COMPLETED,
+I2C_SLAVE_GENERAL_CALL_REQUEST,
+} I2C_SLAVE_DRIVER_STATUS;
+
+
+
+void I2C_Initialize(void);
+
+void I2C_ISR ( void );
+
+extern volatile uint8_t I2C_slaveWriteData;
+
+# 52 "mcc_generated_files/interrupt_manager.c"
 void interrupt INTERRUPT_InterruptManager (void)
 {
 
