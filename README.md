@@ -157,6 +157,8 @@ In this project, PIC16F1825 MCU is used for purpose-specific blocks such as a po
 
 - [5V: Position detector block](./blocks/pic16f1825/i2c_slave_position.X)
 
+A typical usage of the position detector is to detect a position of a moving object (such as a doll) on a catwalk miniature.
+
 ![position_detector](./doc/position_detector.jpg)
 
 Example of its usage
