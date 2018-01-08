@@ -79,6 +79,8 @@ The base board below is a common hardware part of node:
 
 ![pico2](https://docs.google.com/drawings/d/1_WCC4vuPbIT2im9c337ibk5xEq9WKzrT9907IOWTCCA/pub?w=680&h=400)
 
+![pico1](https://docs.google.com/drawings/d/e/2PACX-1vTHoT0TZIyVhAgkDVHyuWkc1-_6oFHT2mF53g2q36bgH_qxplkvvRIkJ3PqJBNuTZauhhMmSiemMoZO/pub?w=680&h=400)
+
 ## Networking examples
 
 One I2C master and three I2C slaves are connected with each other via backplane bus on the back of base board
